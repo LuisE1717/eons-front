@@ -1,0 +1,39 @@
+---
+import { SITE_TITLE } from '../consts'
+---
+
+<div class="social-links logo">
+    <img 
+    src='../../public/logo.webp' alt="logo-header"
+    height="48" width="128"
+    >
+    <h2><a class="text-3xl" href="/">{SITE_TITLE}</a></h2>
+</div>
+
+<style>
+    h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+    
+    .logo{
+		display: flex;
+	}
+
+    .social-links a {
+		display: flex;
+	}
+
+    a {
+        color: var(--black);
+        padding: 1em 0em;
+    }
+
+    h2 a.active {
+		text-decoration: none;
+	}
+
+    img {
+		padding: 0.5em 1em;
+	}
+</style>

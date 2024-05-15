@@ -1,10 +1,13 @@
 ---
+import Logo from "./Logo.astro";
+
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
-	<div class="social-links">
+	<!-- &copy; {today.getFullYear()} Your name here. All rights reserved. -->
+	<Logo/>
+	<div class="flex flex-col md:flex-row justify-space-around social-links">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
 			<span class="text-base p-4">Acerca de Nosotros</span>
 		</a>
@@ -21,16 +24,12 @@ const today = new Date();
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		margin: 0;
-		padding: 2em 1em 3em 1em;
+		padding: 0em 1em 0em 1em;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		color: rgb(var(--gray-dark));
-	}
-	.social-links {
-		display: flex;
-		justify-content: space-around;
 	}
 	.social-links a {
 		text-decoration: none;
@@ -38,5 +37,20 @@ const today = new Date();
 	}
 	.social-links a:hover {
 		color: rgb(var(--gray));
+	}
+
+	span {
+		padding: 1rem
+	}
+
+	@media (max-width: 720px){
+		footer{
+			padding: 0em;
+		}
+
+		span {
+			font-size: 0.75rem;
+			padding: 0rem;
+		}
 	}
 </style>
