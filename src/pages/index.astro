@@ -2,10 +2,10 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import manos from "../../public/manos.webp";
-import cofre from "../../public/cofre.webp";
+// import manos from "../../public/manos.webp";
+// import cofre from "../../public/cofre.webp";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 ---
 
 <!doctype html>
@@ -36,7 +36,7 @@ import Image from "astro/components/Image.astro";
         </div>
 
         <div class="img-conteiner">
-          <Image width={720} height={960} src={manos} alt="" />
+          <img width={720} height={960} src={"../../public/manos.webp"} alt="manos" />
         </div>
       </div>
 
@@ -82,11 +82,11 @@ import Image from "astro/components/Image.astro";
         </div>
 
         <div class="img-conteiner">
-          <Image
+          <img
             width={720}
             height={960}
-            src={manos}
-            alt=""
+            src={"../../public/manos.webp"}
+            alt="puerta"
           />
         </div>
       </div>
@@ -101,7 +101,7 @@ import Image from "astro/components/Image.astro";
 
       <div class="flex flex-col md:flex-row items-center">
         <div class="img-conteiner">
-          <Image width={720} height={960} src={cofre} alt="" />
+          <img width={720} height={960} src="../../public/cofre.webp" alt="cofre" />
         </div>
 
         <div class="landing-text">
