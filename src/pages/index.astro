@@ -40,7 +40,7 @@ import Image from "astro/components/Image.astro";
         </div>
       </div>
 
-      <div class="flex flex-col items-center">
+      <div class="flex flex-col items-center landing-text-large">
         <p class="py-4">
           Eons es el punto medio donde converge la Ciencia, la Tecnología, el
           Misticismo, la Luz y las Ciencias Ocultas. Uno de nuestros principales
@@ -67,11 +67,13 @@ import Image from "astro/components/Image.astro";
           <div class="flex justify-center">
             <a
               href="/"
-              class="inline-flex justify-center rounded-full text-md font-semibold py-3 px-4 bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15"
+              class="inline-flex justify-center
+			   rounded-full shadow-md shadow-black/5
+			   text-md py-3 px-4 bg-white/0 hover:bg-white/25 hover:bg-slate-100"
             >
-              <span class="text-slate-900">
+              <span class="pl-4">
                 Ver Producto
-                <span aria-hidden="true" class="text-black/50 text-xl"
+                <span aria-hidden="true" class="font-semibold text-black/50 text-xl pl-3 pr-4"
                   >{">"}</span
                 >
               </span>
@@ -80,16 +82,16 @@ import Image from "astro/components/Image.astro";
         </div>
 
         <div class="img-conteiner">
-          <img
+          <Image
             width={720}
             height={960}
-            src={"/emile-seguin-R9OueKOtGGU-unsplash.jpg"}
+            src={manos}
             alt=""
           />
         </div>
       </div>
 
-      <div class="flex flex-col items-center">
+      <div class="flex flex-col items-center landing-text-large">
         <p class="py-4">
           No importa quien usted sea ni en qué posición se encuentre. Con la
           llegada de Eons, su vida evolucionará infinitamente en todos los
@@ -131,11 +133,20 @@ import Image from "astro/components/Image.astro";
         width: 50%;
       }
 
+	  .landing-text-large {
+        padding: 1em;
+		margin: 4em 0em;
+      }
+
       img {
         max-width: 100%;
-        padding: 5em;
+        padding: 0em;
         border-radius: 8px;
       }
+
+	  span {
+		color: rgb(var(--gray-dark));
+	  }
 
       @media (max-width: 720px) {
         body {

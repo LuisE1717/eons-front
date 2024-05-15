@@ -1,11 +1,22 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+import Logo from './Logo.astro';
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<!-- <div class="social-links logo">
+			<img 
+			src='../../public/logo.webp' alt="logo-header"
+			height="48" width="128"
+			>
+			<h2><a c
+				lass="text-3xl" href="/">{SITE_TITLE}</a></h2>
+		</div> -->
+
+		<Logo/>
+		
 		<div class="social-links">
 		<div class="px-2">
 			<svg fill="#6b6b6b" width="32" height="32" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46.42 46.42" xml:space="preserve" stroke="#6b6b6b">
@@ -31,7 +42,7 @@ import { SITE_TITLE } from '../consts';
 <style>
 	header {
 		margin: 0;
-		padding: 1em 1em;
+		padding: 0em 1em;
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 	}
@@ -40,7 +51,6 @@ import { SITE_TITLE } from '../consts';
 		font-size: 1em;
 	}
 
-	h2 a,
 	h2 a.active {
 		text-decoration: none;
 	}
@@ -50,7 +60,7 @@ import { SITE_TITLE } from '../consts';
 		justify-content: space-between;
 	}
 	nav a {
-		padding: 1em 0.5em;
+		padding: 1em 0em;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
@@ -65,7 +75,15 @@ import { SITE_TITLE } from '../consts';
 	}
 	@media (max-width: 720px) {
 		.social-links {
-			display: none;
+			
 		}
+	}
+
+	.logo{
+		display: flex;
+	}
+
+	img {
+		padding: 0.5em 1em;
 	}
 </style>
