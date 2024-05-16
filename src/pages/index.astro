@@ -39,7 +39,7 @@ import { Image } from "astro:assets";
       </div>
 
       <div class="flex flex-col items-center landing-text-large">
-        <p class="py-4">
+        <p class="pt-2">
           Eons es el punto medio donde converge la Ciencia, la Tecnología, el
           Misticismo, la Luz y las Ciencias Ocultas. Uno de nuestros principales
           objetivos es promover la expansión y la evolución de la conciencia a
@@ -90,7 +90,7 @@ import { Image } from "astro:assets";
       </div>
 
       <div class="flex flex-col items-center landing-text-large">
-        <p class="py-4">
+        <p class="pt-2">
           No importa quien usted sea ni en qué posición se encuentre. Con la
           llegada de Eons, su vida evolucionará infinitamente en todos los
           aspectos.
@@ -133,7 +133,7 @@ import { Image } from "astro:assets";
 
 	  .landing-text-large {
         padding: 1em;
-		margin: 4em 0em;
+		    margin: 4em 0em;
       }
 
       img {
@@ -146,7 +146,7 @@ import { Image } from "astro:assets";
 		color: rgb(var(--gray-dark));
 	  }
 
-      @media (max-width: 720px) {
+      @media (max-width: 1000px) {
         body {
           font-size: 18px;
         }
@@ -158,7 +158,13 @@ import { Image } from "astro:assets";
           padding: 0em;
         }
         .landing-text {
-          width: 90%;
+          width: 100%;
+          padding: 0em;
+        }
+
+        .landing-text-large{
+          padding: 0em 0em;
+          margin: 1.5em 0em;
         }
       }
     </style>
