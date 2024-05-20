@@ -1,0 +1,23 @@
+.inputs {
+    padding: 0em 10%;
+    margin-top: 2em;
+}
+
+@media (min-width: 1500px){
+    .inputs {
+        padding: 0em 25%;
+    }
+}
+
+@media (max-width: 800px){
+    
+    .inputs {
+        padding: 0em 1em;
+    }
+
+    @media (max-width: 600px){
+        .inputs {
+            padding: 0em 0em;
+        }
+    }
+}

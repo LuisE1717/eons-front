@@ -1,0 +1,119 @@
+---
+import Coin from "../../../modules/lanzamiento/UI/Coin.astro";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import Button from "../../components/UI/Button.astro";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+
+    <body>
+        <Header/>
+        <main class="flex flex-col">
+        <div class="card z-10 
+        rounded-xl bg-white shadow-xl shadow-black/5 
+        ring-1 ring-slate-700/10">
+            <div class="flex flex-col items-center">
+                <span>
+                    ¿Qué símbolo cayó hacia arriba?
+                </span>
+            </div>
+
+            <div class="flex flex-col coin-number">
+                <span>
+                    Moneda 1
+                </span>
+            </div>
+
+            <div class="flex grid-col justify-center">
+                <Coin svg="sun" condition="face"/>
+                <Coin svg="sun" condition="cross"/>
+            </div>
+
+            <div class="flex flex-col coin-number">
+                <span>
+                    Moneda 2
+                </span>
+            </div>
+
+            <div class="flex grid-col justify-center">
+                <Coin svg="sun" condition="face"/>
+                <Coin svg="sun" condition="cross"/>
+            </div>
+
+            <div class="flex flex-col items-center top">
+                <span>
+                    ¿Qué símbolo cayó hacia arriba?
+                </span>
+            </div>
+
+            <div class="flex flex-wrap gap-2 justify-center">
+                <Button color="white" bgColor="#232323" bg_hover="#334155" text="Cayeron montadas"/>
+                <Button color="white" bgColor="#232323" bg_hover="#334155" text="Cayeron paradas"/>
+                <Button color="white" bgColor="#232323" bg_hover="#334155" text="Cayó tranversal"/>
+            </div>
+        </div>
+        </main>
+        <Footer/>
+    </body>
+</html>
+
+<style>
+    span {
+        color: #232323;
+        font-weight: 700;
+    }
+
+    div {
+        margin: 1rem 0rem;
+    }
+
+    main {
+        width: 50%
+    }
+
+    .card{
+        border-width: 1px;
+        padding: 1em;
+    }
+
+    .coin-number{
+        align-items: center;
+    }
+
+    .coin-number span{
+        font-weight: 500;
+    }
+
+    .top{
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 800px){
+        main {
+            width: 60%;
+        }
+
+        @media (max-width: 600px){
+            main{
+                width: 80%;
+                height: 80vh;
+            }
+
+            @media (max-width: 500px){
+                main{
+                    width: 100%;
+                }
+            }
+        }
+    }
+</style>
+
+
+
