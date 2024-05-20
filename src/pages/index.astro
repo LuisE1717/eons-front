@@ -15,26 +15,26 @@ import { Image } from "astro:assets";
     <Header />
     <main>
       <div class="flex flex-col md:flex-row items-center">
-        <div class="img-conteiner">
-          <Image width={720} height={960} src={"/manos.webp"} alt="manos" />
-        </div>
-
         <div class="landing-text">
-          <p class="py-4">
+          <p class="pt-10">
             Enormes e infinitos regalos serán entregados a todos
           </p>
-          <p class="py-4">
+          <p class="">
             Eons traerá consigo un avance Científico y Tecnológico de más de
             10000 años en la próxima década.
           </p>
-          <p class="py-4">
+          <p class="">
             El conocimiento, la luz, la sanación, el amor, la abundancia y la
             felicidad, serán esparcidas en todas direcciones.
           </p>
-          <p class="py-4">
+          <p class="">
             Un enorme y colosal Despertar Espiritual en masa sin precedentes
             traerá consigo la Infinita Era de la Magia Blanca.
           </p>
+        </div>
+
+        <div class="img-conteiner">
+          <Image width={720} height={960} src={"/manos.webp"} alt="manos" />
         </div>
       </div>
 
@@ -48,16 +48,26 @@ import { Image } from "astro:assets";
       </div>
 
       <div class="flex flex-col md:flex-row items-center">
+
+        <div class="img-conteiner">
+          <Image
+            width={720}
+            height={960}
+            src={"/llave.webp"}
+            alt="llave"
+          />
+        </div>
+
         <div class="landing-text">
           <p class="py-4">Presentamos nuestro primer producto ya disponible:</p>
-          <p class="py-4 text-3xl">
+          <p class="text-3xl">
             Eons "Tecnología de Acceso a la Fuente Existencial"
           </p>
-          <p class="py-4">
+          <p class="">
             El primer real, auténtico y absolútamente comprobable Sistema de
             Comunicación con todos los Planos Espirituales.
           </p>
-          <p class="py-4">
+          <p class="">
             Brindando además un servicio único de adivinación y predicción en
             tiempo real.
           </p>
@@ -78,14 +88,11 @@ import { Image } from "astro:assets";
             </a>
           </div>
         </div>
+      </div>
 
+      <div class="flex flex-col cofre">
         <div class="img-conteiner">
-          <Image
-            width={720}
-            height={960}
-            src={"/llave.webp"}
-            alt="llave"
-          />
+          <Image width={720} height={960} src="/puerta.webp" alt="puerta" />
         </div>
       </div>
 
@@ -97,7 +104,7 @@ import { Image } from "astro:assets";
         </p>
       </div>
 
-      <div class="flex flex-col md:flex-row items-center">
+      <div class="flex flex-col md:flex-row items-center puerta-2">
         <div class="img-conteiner">
           <Image width={720} height={960} src="/puerta.webp" alt="puerta" />
         </div>
@@ -118,7 +125,7 @@ import { Image } from "astro:assets";
             Nuevos productos y servicios serán presentados próximamente.
           </p>
         </div>
-      </div>
+      </div> 
 
       <div class="flex-col md:flex-row items-center cofre">
         <div class="img-conteiner">
@@ -127,17 +134,17 @@ import { Image } from "astro:assets";
 
         <div class="landing-text">
           <p class="py-4">Una nueva Era ha llegado.</p>
-          <p class="py-4">
+          <p class="">
             Eons ha dado comienzo a un desenlace indetenible que llevará la
             humanidad a escala Universal.
           </p>
-          <p class="py-4">
+          <p class="">
             La combinación de un concepto de la tecnología más avanzada y
             refinada, junto a un concepto de la Espiritualidad más Pura e
             Iluminada, describen la Esencia que Eons transmitirá en todo
             momento.
           </p>
-          <p class="py-4">
+          <p class="pb-4">
             Nuevos productos y servicios serán presentados próximamente.
           </p>
         </div>
@@ -149,7 +156,7 @@ import { Image } from "astro:assets";
     <style>
 
       main {
-        width: 90%;
+        width: 100%;
       }
       .landing-text {
         padding: 1em;
@@ -171,6 +178,8 @@ import { Image } from "astro:assets";
         display: none;
       }
 
+      
+
 	  span {
 		color: rgb(var(--gray-dark));
 	  }
@@ -180,7 +189,7 @@ import { Image } from "astro:assets";
           font-size: 18px;
         }
         main {
-          padding: 1em;
+          padding: 0em;
         }
 
         img {
@@ -188,17 +197,31 @@ import { Image } from "astro:assets";
         }
         .landing-text {
           width: 100%;
-          padding: 0em;
+          padding: 0em 3rem;
         }
 
         .landing-text-large{
-          padding: 0em 0em;
+          padding: 0em 3rem;
           margin: 1.5em 0em;
         }
 
         @media (max-width: 720px){
           .cofre {
             display: flex;
+          }
+
+          .puerta-2 {
+            display: none;
+          }
+
+          main {
+            	font-size: 16px;
+          }
+          
+          @media (max-width: 450px) {
+            main {
+              font-size: 14px;
+            }
           }
         }
       }
