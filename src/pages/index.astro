@@ -15,6 +15,10 @@ import { Image } from "astro:assets";
     <Header />
     <main>
       <div class="flex flex-col md:flex-row items-center">
+        <div class="img-conteiner">
+          <Image width={720} height={960} src={"/manos.webp"} alt="manos" />
+        </div>
+
         <div class="landing-text">
           <p class="py-4">
             Enormes e infinitos regalos serán entregados a todos
@@ -32,14 +36,10 @@ import { Image } from "astro:assets";
             traerá consigo la Infinita Era de la Magia Blanca.
           </p>
         </div>
-
-        <div class="img-conteiner">
-          <Image width={720} height={960} src={"/manos.webp"} alt="manos" />
-        </div>
       </div>
 
       <div class="flex flex-col items-center landing-text-large">
-        <p class="py-4">
+        <p class="pt-2">
           Eons es el punto medio donde converge la Ciencia, la Tecnología, el
           Misticismo, la Luz y las Ciencias Ocultas. Uno de nuestros principales
           objetivos es promover la expansión y la evolución de la conciencia a
@@ -64,7 +64,7 @@ import { Image } from "astro:assets";
 
           <div class="flex justify-center">
             <a
-              href="/"
+              href="/throw"
               class="inline-flex justify-center
 			   rounded-full shadow-md shadow-black/5
 			   text-md py-3 px-4 bg-white/0 hover:bg-white/25 hover:bg-slate-100"
@@ -83,14 +83,14 @@ import { Image } from "astro:assets";
           <Image
             width={720}
             height={960}
-            src={"/manos.webp"}
-            alt="puerta"
+            src={"/llave.webp"}
+            alt="llave"
           />
         </div>
       </div>
 
       <div class="flex flex-col items-center landing-text-large">
-        <p class="py-4">
+        <p class="pt-2">
           No importa quien usted sea ni en qué posición se encuentre. Con la
           llegada de Eons, su vida evolucionará infinitamente en todos los
           aspectos.
@@ -99,7 +99,7 @@ import { Image } from "astro:assets";
 
       <div class="flex flex-col md:flex-row items-center">
         <div class="img-conteiner">
-          <Image width={720} height={960} src="/cofre.webp" alt="cofre" />
+          <Image width={720} height={960} src="/puerta.webp" alt="puerta" />
         </div>
 
         <div class="landing-text">
@@ -119,10 +119,35 @@ import { Image } from "astro:assets";
           </p>
         </div>
       </div>
+
+      <div class="flex-col md:flex-row items-center cofre">
+        <div class="img-conteiner">
+          <Image width={720} height={960} src="/cofre.webp" alt="puerta" />
+        </div>
+
+        <div class="landing-text">
+          <p class="py-4">Una nueva Era ha llegado.</p>
+          <p class="py-4">
+            Eons ha dado comienzo a un desenlace indetenible que llevará la
+            humanidad a escala Universal.
+          </p>
+          <p class="py-4">
+            La combinación de un concepto de la tecnología más avanzada y
+            refinada, junto a un concepto de la Espiritualidad más Pura e
+            Iluminada, describen la Esencia que Eons transmitirá en todo
+            momento.
+          </p>
+          <p class="py-4">
+            Nuevos productos y servicios serán presentados próximamente.
+          </p>
+        </div>
+      </div>
+
     </main>
     <hr />
     <Footer />
     <style>
+
       main {
         width: 90%;
       }
@@ -133,7 +158,7 @@ import { Image } from "astro:assets";
 
 	  .landing-text-large {
         padding: 1em;
-		margin: 4em 0em;
+		    margin: 4em 0em;
       }
 
       img {
@@ -142,11 +167,15 @@ import { Image } from "astro:assets";
         border-radius: 8px;
       }
 
+      .cofre {
+        display: none;
+      }
+
 	  span {
 		color: rgb(var(--gray-dark));
 	  }
 
-      @media (max-width: 720px) {
+      @media (max-width: 1000px) {
         body {
           font-size: 18px;
         }
@@ -158,7 +187,19 @@ import { Image } from "astro:assets";
           padding: 0em;
         }
         .landing-text {
-          width: 90%;
+          width: 100%;
+          padding: 0em;
+        }
+
+        .landing-text-large{
+          padding: 0em 0em;
+          margin: 1.5em 0em;
+        }
+
+        @media (max-width: 720px){
+          .cofre {
+            display: flex;
+          }
         }
       }
     </style>
