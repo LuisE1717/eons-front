@@ -1,0 +1,79 @@
+---
+type InputType = 'text' | 'email' | 'number' | 'password' | 'date' | 'datetime-local' | 'month' | 'range' | 'search' | 'tel' | 'time' | 'url' | 'week';
+
+interface Props {
+    type:InputType | null;
+    label:string
+}
+
+const {type,label} = Astro.props
+---
+
+<div class="form">
+    <input type={type} name="text" autocomplete="off" required />
+    <label for="text" class="label-name">
+      <span class="content-name">
+        {label}
+      </span>
+    </label>
+</div>
+
+<style>
+.form {
+  width: 100%;
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+}
+
+.form input {
+  width: 100%;
+  height: 100%;
+  /* color: #fff; */
+  padding-top: 20px;
+  border: none;
+  background-color: transparent;
+}
+.form label {
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 2px solid #e5e5e5;
+}
+.form label::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  /* left: 4%; */
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #e5e5e5;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+}
+.form input:focus {
+  outline: none;
+}
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name {
+  transform: translateY(-100%);
+  font-size: 14px;
+  left: 0px;
+  /* color: #fce38a; */
+}
+.form input:focus + .label-name::after,
+.form input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+</style>
