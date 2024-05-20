@@ -1,0 +1,39 @@
+---
+interface Props {
+	text: string;
+    bgColor?:string;
+    bg_hover?:string;
+    color?:string
+}
+
+const {text, bgColor, bg_hover, color} = Astro.props
+---
+
+<div class=`inline-flex justify-center 
+  text-sm font-semibold
+  py-3 px-4
+  text-${color?color:''}`
+  >
+
+    <span>
+        {text}
+    </span>
+</div>
+
+<style
+define:vars={{ Color: color?color:"white", bgColor: bgColor?bgColor:'transparent', bg_hover: bg_hover?bg_hover:"#f1f5f9"}}
+>
+    div {
+        background-color: var(--bgColor);
+        cursor: pointer;
+        border-radius: 1.3rem;
+    }
+
+    div:hover{
+        background-color: var(--bg_hover);
+    }
+
+    span {
+        color: var(--Color);
+    }
+</style>
