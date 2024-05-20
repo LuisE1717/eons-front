@@ -16,7 +16,7 @@ import { Image } from "astro:assets";
     <main>
       <div class="flex flex-col md:flex-row items-center">
         <div class="landing-text">
-          <p class="pt-10">
+          <p class="initial-text">
             Enormes e infinitos regalos serán entregados a todos
           </p>
           <p class="">
@@ -178,7 +178,9 @@ import { Image } from "astro:assets";
         display: none;
       }
 
-      
+      .initial-text {
+        padding-top: 1rem;
+      }
 
 	  span {
 		color: rgb(var(--gray-dark));
@@ -208,6 +210,10 @@ import { Image } from "astro:assets";
         @media (max-width: 720px){
           .cofre {
             display: flex;
+          }
+
+          .initial-text {
+            padding-top: 2.5rem;
           }
 
           .puerta-2 {
