@@ -19,5 +19,11 @@
         .inputs {
             padding: 0em 0em;
         }
+        @media (max-width:500px){
+            .login {
+                font-size: 0.75rem;
+                line-height: 1rem;
+            }
+        }
     }
 }
