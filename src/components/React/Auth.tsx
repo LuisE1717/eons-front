@@ -27,9 +27,9 @@ const Auth: React.FC<Props> = ({
                 alt="login-image"
                 />
                 
-            <div className="login inline-flex justify-around
+            <div className={`${styles.login} inline-flex justify-around
                 rounded-full shadow-md shadow-black/5
-                text-md bg-white/0 hover:bg-white/25 hover:bg-slate-100"
+                bg-white/0 hover:bg-white/25 hover:bg-slate-100`}
                 style={{
                     borderColor: "#e5e5e6",
                     borderWidth: "1px",
