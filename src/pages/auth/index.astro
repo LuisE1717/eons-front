@@ -21,12 +21,7 @@ const section = "login"
   <body>
     <AuthHeader/>
     <main class="flex flex-col">
-        <Auth state={section} client:load>
-            <div class="flex flex-col inputs">
-                <OutlineInput type={"email"} label="Email"/>
-                <OutlineInput type={"password"} label="Contraseña"/>
-            </div>
-        </Auth>
+        <Auth state={section} client:load/>
 
         <div class="flex flex-row justify-around accounts">
             <AccountsButton text="Microsoft"/>
@@ -57,7 +52,7 @@ const section = "login"
     }
 
     .inputs {
-        padding: 0em 10%;
+        padding: 0em 20%;
         margin-top: 2em;
     }
 
@@ -80,8 +75,19 @@ const section = "login"
     @media (max-width: 800px){
 
         main {
-            height: 90vh;
+            height: 80vh;
         }
+
+        @media (max-height: 800px){
+                main {
+                    height: 90vh;
+                }
+                @media (max-height: 720px){
+                    main {
+                        height: 100vh;
+                    }
+                } 
+        } 
 
         .accounts {
             padding: 0em 1em;
@@ -99,17 +105,6 @@ const section = "login"
             .accounts {
                 padding: 0em 0em;
             }
-
-            @media (max-height: 800px){
-                main {
-                    height: 100vh;
-                }
-                @media (max-height: 720px){
-                    main {
-                        height: 120vh;
-                    }
-                } 
-            } 
         }
     }
 
