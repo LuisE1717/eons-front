@@ -47,11 +47,21 @@ const today = new Date();
 		footer{
 			padding: 0em;
 			height: min-content;
+			justify-content:flex-start
 		}
 
+		.social-links {
+			margin-left: 8em;
+		}
 		span {
 			font-size: 0.75rem;
 			padding: 0rem;
+		}
+
+		@media (max-width: 550px){
+			.social-links {
+				margin-left: 4em;
+			}
 		}
 	}
 </style>
