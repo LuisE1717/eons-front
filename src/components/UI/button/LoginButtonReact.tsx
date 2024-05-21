@@ -12,7 +12,7 @@ const LoginButtonReact: React.FC<Props> = ({ text, bgColor = 'transparent', bgHo
     return (
         <div className={
             `inline-flex justify-center 
-            shadow-black/5 py-3 px-4 
+            shadow-black/5 py-1 px-4 
             ${color? `text-${color}` : ''}
             ${style.LoginButton}
             `}
