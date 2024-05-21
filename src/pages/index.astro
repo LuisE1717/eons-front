@@ -90,8 +90,8 @@ import { Image } from "astro:assets";
         </div>
       </div>
 
-      <div class="flex flex-col cofre">
-        <div class="img-conteiner">
+      <div class="flex flex-col puerta-sola cofre">
+        <div class="img-conteiner img-puerta">
           <Image width={720} height={960} src="/puerta.webp" alt="puerta" />
         </div>
       </div>
@@ -121,7 +121,7 @@ import { Image } from "astro:assets";
             Iluminada, describen la Esencia que Eons transmitirá en todo
             momento.
           </p>
-          <p class="py-4">
+          <p class="py-4 resaltado">
             Nuevos productos y servicios serán presentados próximamente.
           </p>
         </div>
@@ -129,7 +129,7 @@ import { Image } from "astro:assets";
 
       <div class="flex-col md:flex-row items-center cofre">
         <div class="img-conteiner">
-          <Image width={720} height={960} src="/cofre.webp" alt="puerta" />
+          <img width={720} height={960} src="/cofre.webp" alt="puerta" />
         </div>
 
         <div class="landing-text">
@@ -144,7 +144,7 @@ import { Image } from "astro:assets";
             Iluminada, describen la Esencia que Eons transmitirá en todo
             momento.
           </p>
-          <p class="pb-4">
+          <p class="pb-4 resaltado">
             Nuevos productos y servicios serán presentados próximamente.
           </p>
         </div>
@@ -155,12 +155,21 @@ import { Image } from "astro:assets";
     <Footer />
     <style>
 
+      html {
+        overflow-x: hidden;
+      }
+
       main {
         width: 100%;
       }
       .landing-text {
         padding: 1em;
         width: 50%;
+      }
+
+      .resaltado {
+        font-size: 1.875rem; 
+        line-height: 2.25rem; 
       }
 
 	  .landing-text-large {
@@ -173,7 +182,6 @@ import { Image } from "astro:assets";
         padding: 0em;
         border-radius: 8px;
       }
-
       .cofre {
         display: none;
       }
@@ -181,6 +189,7 @@ import { Image } from "astro:assets";
       .initial-text {
         padding-top: 1rem;
       }
+
 
 	  span {
 		color: rgb(var(--gray-dark));
@@ -215,6 +224,16 @@ import { Image } from "astro:assets";
           .initial-text {
             padding-top: 2.5rem;
           }
+
+          .resaltado {
+            font-size: 1.25rem; 
+            line-height: 1.75rem; 
+          }
+
+          /*.img-puerta img{
+            max-width: 160%;
+            margin-left: -33%;
+          }  */
 
           .puerta-2 {
             display: none;
