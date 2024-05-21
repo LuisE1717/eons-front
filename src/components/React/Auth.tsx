@@ -5,17 +5,13 @@ import OutlineInputReact from '../UI/input/OutlineInputReact';
 
 interface Props {
     state:string;
-    children:any
 }
 
 const Auth: React.FC<Props> = ({
     state,
-    children
 }) => {
 
     const [section,setSection] = useState(state)
-
-    console.log(children)
 
   return (
     <>
@@ -38,7 +34,7 @@ const Auth: React.FC<Props> = ({
                 >
                 <button 
                 onClick={() => setSection('login')}
-                className="py-3 px-5 login" 
+                className="py-1 px-5 login" 
                 style={{borderColor: section=="login"?"#d161b4":"#e5e5e6",
                     borderWidth: section=="login"?"1px":"0px",
                     borderRadius: "9999px"
@@ -48,7 +44,7 @@ const Auth: React.FC<Props> = ({
 
                 <button 
                 onClick={() => setSection('sing-up')}
-                className="py-3 px-5 login" 
+                className="py-1 px-5 login" 
                 style={{borderColor: section=="sing-up"?"#d161b4":"#e5e5e6",
                     borderWidth: section=="sing-up"?"1px":"0px",
                     borderRadius: "9999px"
@@ -59,7 +55,7 @@ const Auth: React.FC<Props> = ({
         </div>
 
         <div className={`flex flex-col ${styles.inputs}`}>
-            <OutlineInputReact type={"email"} label="Email"/>
+            <OutlineInputReact type={"text"} label="Email"/>
             <OutlineInputReact type={"password"} label="Contraseña"/>
         </div>
 
