@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { type Dispatch, type SetStateAction } from 'react';
 
 interface Props {
     type: string;
     label: string;
+    setValue:Dispatch<SetStateAction<string>>;
+    value:string;
 }
 
-const OutlineInputReact: React.FC<Props> = ({ type, label }) => {
+const OutlineInputReact: React.FC<Props> = ({ type, label, setValue, value }) => {
     return (
         <div className='form'> {/* Aplica el estilo form */}
             <input 
                 type={type} 
+                value={value}
+                onInput={(e)=>setValue(e.currentTarget.value)}
                 name="text" 
                 autoComplete="off" 
                 required 

@@ -1,0 +1,242 @@
+---
+import BaseHead from "../BaseHead.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { Image } from "astro:assets";
+
+import { getI18N } from "../../i18n";
+import Dropdown from "../UI/Dropdown/Dropdown.astro";
+
+const currentLocale  = Astro?.currentLocale || 'en'
+const i18 = getI18N({currentLocale})
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="landing-text">
+          <p class="initial-text">
+            {i18['Landing'].text1}
+          </p>
+          <p class="">
+            {i18['Landing'].text2}
+          </p>
+          <p class="">
+            {i18['Landing'].text3}
+          </p>
+          <p class="">
+            {i18['Landing'].text4}
+          </p>
+        </div>
+
+        <div class="img-conteiner">
+          <Image width={720} height={960} src={"/manos.webp"} alt="manos" />
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center landing-text-large">
+        <p class="pt-2">
+          {i18['Landing'].text5}
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center">
+
+        <div class="img-conteiner">
+          <Image
+            width={720}
+            height={960}
+            src={"/llave.webp"}
+            alt="llave"
+          />
+        </div>
+
+        <div class="landing-text">
+          <p class="py-4">{i18['Landing'].text6}</p>
+          <p class="text-3xl">
+            Eons "{i18['Landing'].text7}"
+          </p>
+          <p class="">
+            {i18['Landing'].text8}
+          </p>
+          <p class="">
+            {i18['Landing'].text9}
+          </p>
+
+          <div class="flex justify-center">
+            <a
+              href="/throw"
+              class="inline-flex justify-center
+			   rounded-full shadow-md shadow-black/5
+			   text-md py-3 px-4 bg-white/0 hover:bg-white/25 hover:bg-slate-100"
+            >
+              <span class="pl-4">
+                {i18['Landing'].text15}
+                <span aria-hidden="true" class="font-semibold text-black/50 text-xl pl-3 pr-4"
+                  >{">"}</span
+                >
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col puerta-sola cofre">
+        <div class="img-conteiner img-puerta">
+          <Image width={720} height={960} src="/puerta.webp" alt="puerta" />
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center landing-text-large">
+        <p class="pt-2">
+          {i18['Landing'].text10}
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center puerta-2">
+        <div class="img-conteiner">
+          <Image width={720} height={960} src="/puerta.webp" alt="puerta" />
+        </div>
+
+        <div class="landing-text">
+          <p class="py-4">{i18['Landing'].text11}</p>
+          <p class="py-4">
+            {i18['Landing'].text12}
+          </p>
+          <p class="py-4">
+            {i18['Landing'].text13}
+          </p>
+          <p class="py-4 resaltado">
+            {i18['Landing'].text14}
+          </p>
+        </div>
+      </div> 
+
+      <div class="flex-col md:flex-row items-center cofre">
+        <div class="img-conteiner">
+          <img width={720} height={960} src="/cofre.webp" alt="puerta" />
+        </div>
+
+        <div class="landing-text">
+          <p class="pt-2">{i18['Landing'].text11}</p>
+          <p class="">
+            {i18['Landing'].text12}
+          </p>
+          <p class="">
+            {i18['Landing'].text13}
+          </p>
+          <p class="pb-4 resaltado">
+            {i18['Landing'].text14}
+          </p>
+        </div>
+      </div>
+    </main>
+    <hr />
+    <Footer />
+    <style>
+
+      html {
+        overflow-x: hidden;
+      }
+
+      main {
+        width: 100%;
+      }
+      .landing-text {
+        padding: 1em;
+        width: 50%;
+      }
+
+      .resaltado {
+        font-size: 1.875rem; 
+        line-height: 2.25rem; 
+      }
+
+	  .landing-text-large {
+        padding: 1em;
+		    margin: 4em 0em;
+      }
+
+      img {
+        max-width: 100%;
+        padding: 0em;
+        border-radius: 8px;
+      }
+      .cofre {
+        display: none;
+      }
+
+      .initial-text {
+        padding-top: 1rem;
+      }
+
+
+	  span {
+		color: rgb(var(--gray-dark));
+	  }
+
+      @media (max-width: 1000px) {
+        body {
+          font-size: 18px;
+        }
+        main {
+          padding: 0em;
+        }
+
+        img {
+          padding: 0em;
+        }
+        .landing-text {
+          width: 100%;
+          padding: 0em 3rem;
+        }
+
+        .landing-text-large{
+          padding: 0em 3rem;
+          margin: 1.5em 0em;
+        }
+
+        @media (max-width: 720px){
+          .cofre {
+            display: flex;
+          }
+
+          .initial-text {
+            padding-top: 2.5rem;
+          }
+
+          .resaltado {
+            font-size: 1.25rem; 
+            line-height: 1.75rem; 
+          }
+
+          /*.img-puerta img{
+            max-width: 160%;
+            margin-left: -33%;
+          }  */
+
+          .puerta-2 {
+            display: none;
+          }
+
+          main {
+            	font-size: 16px;
+          }
+          
+          @media (max-width: 450px) {
+            main {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    </style>
+  </body>
+</html>
