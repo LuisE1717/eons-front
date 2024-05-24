@@ -5,13 +5,28 @@ import OutlineInputReact from '../UI/input/OutlineInputReact';
 
 interface Props {
     state:string;
+    button_login:string;
+    button_singUp:string;
+    login_switch:string;
+    sing_up_switch:string;
+    password_input_label:string;
+    forget_pass:string;
 }
 
-const Auth: React.FC<Props> = ({
+const AuthReact: React.FC<Props> = ({
     state,
+    button_login,
+    button_singUp,
+    login_switch,
+    sing_up_switch,
+    password_input_label,
+    forget_pass
 }) => {
 
     const [section,setSection] = useState(state)
+
+    const [email,setEmail] = useState('')
+    const [pass,setPass] = useState('')
 
   return (
     <>
@@ -39,7 +54,7 @@ const Auth: React.FC<Props> = ({
                     borderWidth: section=="login"?"1px":"0px",
                     borderRadius: "9999px"
                 }}>
-                    Iniciar Sessión
+                    {login_switch}
                 </button>
 
                 <button 
@@ -49,18 +64,24 @@ const Auth: React.FC<Props> = ({
                     borderWidth: section=="sing-up"?"1px":"0px",
                     borderRadius: "9999px"
                 }}>
-                    Crear Cuenta
+                    {sing_up_switch}
                 </button>
             </div>    
         </div>
 
         <div className={`flex flex-col ${styles.inputs}`}>
-            <OutlineInputReact type={"text"} label="Email"/>
-            <OutlineInputReact type={"password"} label="Contraseña"/>
+            <OutlineInputReact setValue={setEmail} value={email} type={"text"} label="Email"/>
+            <OutlineInputReact setValue={setPass} value={pass} type={"password"} label={password_input_label}/>
         </div>
 
         <div className={`flex flex-col mt-8 ${styles.inputs}`}>
-            <LoginButtonReact text={section=="login"?"Inciar":"Crear"}/>
+            <LoginButtonReact
+             text={section=="login"?button_login:button_singUp}
+             email={email}
+             pass={pass}
+             setEmail={setEmail}
+             setPass={setPass}
+             />
         </div>  
 
         {section == "login" &&
@@ -69,11 +90,11 @@ const Auth: React.FC<Props> = ({
             className="text-sm"
             style={{color: "#d161b4"}}
             >
-                Haz olvidado la contraseña?
+                {forget_pass}
             </span>
         </div>}   
     </>
   )
 }
 
-export default Auth
+export default AuthReact

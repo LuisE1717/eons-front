@@ -1,0 +1,123 @@
+---
+import SpainFlag from "../../../../public/SpainFlag.astro";
+import EnglandFlag from "../../../../public/EnglandFlag.astro";
+
+// Obtener la URL completa de la solicitud
+const fullUrl = Astro.request.url;
+
+// Crear un objeto URL a partir de la URL completa
+const urlObj = new URL(fullUrl);
+
+// Extraer la ruta de la URL
+const currentPath = urlObj.pathname;
+
+// Remover el primer slash si está presente
+const cleanCurrentPath = currentPath.startsWith('/')? currentPath.slice(1) : currentPath;
+
+//Remover el /es
+const pathForUse = cleanCurrentPath.replace('es/','')
+
+console.log(pathForUse)
+---
+
+
+<button id="language-switcher">
+  <svg width="24" height="24" viewBox="0 0 25 25" fill="#6b6b6b" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.4 5.4H4V6.6H13.2189C13.1612 6.78478 13.0895 6.99578 13.0025 7.22211C12.7032 8.00031 12.2402 8.91125 11.5757 9.57574L10 11.1515L9.42426 10.5757C8.72102 9.8725 8.25297 9.16987 7.96199 8.64611C7.81668 8.38455 7.71617 8.16874 7.65305 8.02146C7.62151 7.94787 7.59937 7.89154 7.5857 7.85534C7.57886 7.83725 7.57415 7.8242 7.57144 7.81657L7.56886 7.80922C7.56886 7.80922 7.56921 7.81026 7 8C6.43079 8.18974 6.43091 8.19009 6.43091 8.19009L6.43133 8.19135L6.43206 8.19351L6.4341 8.19948L6.44052 8.21786C6.44587 8.23292 6.45336 8.25357 6.46313 8.27942C6.48266 8.33112 6.5113 8.40369 6.55008 8.49416C6.62758 8.67501 6.74582 8.92795 6.91301 9.22889C7.24703 9.83013 7.77898 10.6275 8.57574 11.4243L9.15147 12L4.57964 16.5718L4.57655 16.5749L4.57577 16.5757L5.4243 17.4242L5.42688 17.4216L10.0368 12.8117L12.6159 14.9609L13.3841 14.0391L10.8888 11.9597L12.4243 10.4243C13.2598 9.58875 13.7968 8.49969 14.1225 7.65289C14.2818 7.23863 14.395 6.87072 14.4696 6.6H16V5.4H10.6V4H9.4V5.4ZM17.4405 10L21.553 19.7672H20.2509L19.1279 17.1H14.8721L13.7491 19.7672H12.447L16.5595 10H17.4405ZM15.3773 15.9H18.6227L17 12.0462L15.3773 15.9Z" fill="#121923"/>
+  </svg>
+</button>
+  
+  <!-- Dropdown menu -->
+  <div id="dropdownUsers" class="drop-menu z-10 bg-white rounded-lg shadow w-24">
+    <ul class="py-2 overflow-y-auto text-gray-700" aria-labelledby="dropdownUsersButton">
+      <li id="English">
+        <a href=`/${pathForUse}` class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <EnglandFlag/>
+          <span class="ml-2">English</span>
+        </a>
+      </li>
+      <li id="Spanish">
+        <a href=`/es/${pathForUse}` class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <SpainFlag/>
+          <span class="ml-2">Español</span>
+        </a>
+      </li>
+  </div>
+
+<style>
+  .drop-menu {
+    display: none;
+    left: 70%;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdownButton = document.getElementById('language-switcher');
+    const dropdownMenu = document.getElementById('dropdownUsers');
+    const english = document.getElementById('English');
+    const spanish = document.getElementById('Spanish');
+
+    // Función para mostrar el menú
+    function showMenu() {
+      if(dropdownMenu && dropdownButton){
+        dropdownMenu.style.display = 'block'
+        dropdownMenu.style.position = 'absolute'
+
+        // console.log(`Top: ${dropdownButton.getBoundingClientRect().top}
+        // , Left: ${dropdownButton.getBoundingClientRect().left},
+        //  Right: ${dropdownButton.getBoundingClientRect().right},
+        //   Bottom: ${dropdownButton.getBoundingClientRect().bottom},
+        //   width: ${dropdownButton.getBoundingClientRect().width}`);
+
+          //Setting Postion
+          dropdownMenu.style.left = `${dropdownButton.getBoundingClientRect().left - 38}px`
+          dropdownMenu.style.right = `${dropdownButton.getBoundingClientRect().right}px`
+
+          //Seeting font-size
+          dropdownMenu.style.fontSize = "12px"
+      }
+      // Asegúrate de usar 'block' o 'inline-block' según sea necesario
+    }
+
+    // Función para ocultar el menú
+    function hideMenu() {
+      if(dropdownMenu){
+        dropdownMenu.style.display = 'none'
+      }
+    }
+
+    function setEnglish(){
+      if(english){
+        let date = new Date()
+        date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000))
+        Astro.cookies.set("lng","en",{expires: date})
+      }
+    }
+
+    function setSpanish(){
+      if(english){
+        let date = new Date()
+        date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000))
+        Astro.cookies.set("lng","es",{expires: date})
+      }
+    }
+    
+    if(dropdownMenu && dropdownButton){
+      // Agregar event listeners
+      dropdownButton.addEventListener('click', showMenu);
+      document.addEventListener('mousedown', function(event) {
+      if (event.target && !dropdownMenu.contains(event.target as Node)) {
+          hideMenu();
+      }
+    }, true);
+    }
+    if(english && spanish){
+      english.addEventListener('click', setEnglish);
+      spanish.addEventListener('click', setSpanish);
+    }
+  });
+</script>
+
+
+  
