@@ -1,0 +1,112 @@
+---
+import AuthIcon from "../../../../public/customized/AuthIcon.astro"
+import { getI18N } from "../../../i18n"
+import Cookies from 'js-cookie'
+
+const currentLocale  = Astro?.currentLocale || 'en'
+const i18 = getI18N({currentLocale})
+
+const user = Astro.cookies.get('eons_user')?.value
+console.log(user)
+---
+
+<button id="session-menu">
+    <AuthIcon/>
+  </button>
+    
+    <!-- Dropdown menu -->
+    <div id="dropdownUsers" class="drop-menu z-10 bg-white rounded-lg shadow w-64">
+      <ul class="py-2 overflow-y-auto text-gray-700" aria-labelledby="dropdownUsersButton">
+        <li id="profile">
+          <a href=`/` class="flex items-center px-4 py-2 hover:bg-slate-100">
+            <span class="ml-2">{user}</span>
+          </a>
+        </li>
+        <li id="log-out">
+          <a href=`${currentLocale=='en'?'':'/es'}/auth` class="flex items-center px-4 py-2 hover:bg-slate-100">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M10 12H20M20 12L17 9M20 12L17 15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+             </g>
+            </svg>
+            <span class="ml-2">Cerrar Sesion</span>
+          </a>
+        </li>
+    </div>
+  
+<style>
+    .drop-menu {
+      display: none;
+      left: 70%;
+    }
+</style>
+  
+<script>
+    import Cookies from 'js-cookie'
+    import { setCookie } from '../../../utils/cookies/Cookies';
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownButton = document.getElementById('session-menu');
+      const dropdownMenu = document.getElementById('dropdownUsers');
+      const english = document.getElementById('profile');
+      const spanish = document.getElementById('log-out');
+  
+      // Función para mostrar el menú
+      function showMenu() {
+        if(dropdownMenu && dropdownButton){
+          dropdownMenu.style.display = 'block'
+          dropdownMenu.style.position = 'absolute'
+  
+          // console.log(`Top: ${dropdownButton.getBoundingClientRect().top}
+          // , Left: ${dropdownButton.getBoundingClientRect().left},
+          //  Right: ${dropdownButton.getBoundingClientRect().right},
+          //   Bottom: ${dropdownButton.getBoundingClientRect().bottom},
+          //   width: ${dropdownButton.getBoundingClientRect().width}`);
+  
+            //Setting Postion
+            dropdownMenu.style.left = `${dropdownButton.getBoundingClientRect().left - 200}px`
+            dropdownMenu.style.right = `${dropdownButton.getBoundingClientRect().right }px`
+  
+            //Seeting font-size
+            dropdownMenu.style.fontSize = "12px"
+        }
+        // Asegúrate de usar 'block' o 'inline-block' según sea necesario
+      }
+  
+      // Función para ocultar el menú
+      function hideMenu() {
+        if(dropdownMenu){
+          dropdownMenu.style.display = 'none'
+        }
+      }
+  
+      function setEnglish(){
+        if(english){
+          let date = new Date()
+          date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000))
+          setCookie('eons_lang','en',10)
+        }
+      }
+  
+      function setSpanish(){
+        if(spanish){
+          let date = new Date()
+          date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000))
+          setCookie('eons_lang','es',10)
+        }
+      }
+      
+      if(dropdownMenu && dropdownButton){
+        // Agregar event listeners
+        dropdownButton.addEventListener('click', showMenu);
+        document.addEventListener('mousedown', function(event) {
+        if (event.target && !dropdownMenu.contains(event.target as Node)) {
+            hideMenu();
+        }
+      }, true);
+      }
+      if(english && spanish){
+        english.addEventListener('click', setEnglish);
+        spanish.addEventListener('click', setSpanish);
+      }
+    });
+</script>

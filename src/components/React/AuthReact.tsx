@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginButtonReact from '../UI/button/LoginButtonReact';
 import styles from './Auth.module.css'
 import OutlineInputReact from '../UI/input/OutlineInputReact';
+import { validMail, validPass } from '../../utils/validations';
 
 interface Props {
     state:string;
     button_login:string;
     button_singUp:string;
+    text_loading:string;
     login_switch:string;
     sing_up_switch:string;
     password_input_label:string;
@@ -20,13 +22,23 @@ const AuthReact: React.FC<Props> = ({
     login_switch,
     sing_up_switch,
     password_input_label,
-    forget_pass
+    forget_pass,
+    text_loading
 }) => {
 
     const [section,setSection] = useState(state)
 
     const [email,setEmail] = useState('')
-    const [pass,setPass] = useState('')
+    const [password,setPass] = useState('')
+    const [loading,setLoading] = useState(false)
+
+    const [validation_mail,setValidation_mail] = useState(true)
+    const [validation_pass,setValidation_pass] = useState(true)
+
+    useEffect(()=>{
+        setValidation_mail(validMail(email))
+        setValidation_pass(validPass(password))
+    },[email,password])
 
   return (
     <>
@@ -70,17 +82,23 @@ const AuthReact: React.FC<Props> = ({
         </div>
 
         <div className={`flex flex-col ${styles.inputs}`}>
-            <OutlineInputReact setValue={setEmail} value={email} type={"text"} label="Email"/>
-            <OutlineInputReact setValue={setPass} value={pass} type={"password"} label={password_input_label}/>
+            <OutlineInputReact loading={loading} setValue={setEmail} value={email} type={"text"} label="Email"/>
+            <label className={`${validation_mail || email==''?'hidden':''} ml-5 text-lg text-red-600`}>*sfafadfs</label>
+            <OutlineInputReact loading={loading} setValue={setPass} value={password} type={"password"} label={password_input_label}/>
+            <label className={`${validation_pass || password==''?'hidden':''} ml-5 text-lg text-red-600`}>*sfafadfs</label>
         </div>
 
         <div className={`flex flex-col mt-8 ${styles.inputs}`}>
             <LoginButtonReact
-             text={section=="login"?button_login:button_singUp}
+             text={section=="login"?
+             loading?text_loading:button_login:
+             loading?text_loading:button_singUp}
              email={email}
-             pass={pass}
+             password={password}
              setEmail={setEmail}
              setPass={setPass}
+             loading={loading}
+             setLoading={setLoading}
              />
         </div>  
 
