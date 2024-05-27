@@ -19,6 +19,7 @@
     "Auth":{
         "login_button":"Start",
         "singUp_button":"Create",
+        "text_loading":"Loading...",
         "login_switch":"Login",
         "sing_up_switch":"Sing-Up",
         "password_input_label":"Password",
