@@ -1,10 +1,11 @@
 ---
-import Coin from "../../../modules/lanzamiento/UI/Coin.astro";
+import Coin from "../../../modules/lanzamiento/UI/Coin"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import BaseHead from "../BaseHead.astro";
 import Footer from "../Footer.astro";
 import Header from "../Header.astro";
 import Button from "../UI/Button.astro";
+import ThrowReact from '../React/ThrowReact'
 ---
 
 <!doctype html>
@@ -16,52 +17,7 @@ import Button from "../UI/Button.astro";
     <body>
         <Header/>
         <main class="flex flex-col">
-        <div class="card z-10 
-        rounded-xl bg-white shadow-xl shadow-black/5 
-        ring-1 ring-slate-700/10">
-            <div class="">
-                
-            </div>
-            <div class="flex flex-col items-center">
-                <span>
-                    ¿Qué símbolo cayó hacia arriba?
-                </span>
-            </div>
-
-            <div class="flex flex-col coin-number">
-                <span>
-                    Moneda 1
-                </span>
-            </div>
-
-            <div class="flex grid-col justify-center">
-                <Coin svg="sun" condition="face"/>
-                <Coin svg="sun" condition="cross"/>
-            </div>
-
-            <div class="flex flex-col coin-number">
-                <span>
-                    Moneda 2
-                </span>
-            </div>
-
-            <div class="flex grid-col justify-center">
-                <Coin svg="moon" condition="face"/>
-                <Coin svg="moon" condition="cross"/>
-            </div>
-
-            <div class="flex flex-col items-center top">
-                <span>
-                    ¿Qué símbolo cayó hacia arriba?
-                </span>
-            </div>
-
-            <div class="flex flex-wrap gap-2 justify-center">
-                <Button color="white" bgColor="#232323" bg_hover="#334155" text="Cayeron montadas"/>
-                <Button color="white" bgColor="#232323" bg_hover="#334155" text="Cayeron paradas"/>
-                <Button color="white" bgColor="#232323" bg_hover="#334155" text="Cayó tranversal"/>
-            </div>
-        </div>
+            <ThrowReact client:load/>
         </main>
         <Footer/>
     </body>
@@ -75,6 +31,10 @@ import Button from "../UI/Button.astro";
 
     div {
         margin: 1rem 0rem;
+    }
+
+    .throw-counter{
+        margin: 0rem
     }
 
     main {
