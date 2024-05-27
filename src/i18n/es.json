@@ -19,6 +19,7 @@
     "Auth":{
         "login_button":"Iniciar",
         "singUp_button":"Crear",
+        "text_loading":"Cargando...",
         "login_switch":"Iniciar Sesión",
         "sing_up_switch":"Crear Cuenta",
         "password_input_label":"Contraseña",

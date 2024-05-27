@@ -5,12 +5,15 @@ interface Props {
     label: string;
     setValue:Dispatch<SetStateAction<string>>;
     value:string;
+    loading:boolean;
 }
 
-const OutlineInputReact: React.FC<Props> = ({ type, label, setValue, value }) => {
+const OutlineInputReact: React.FC<Props> = ({ type, label, setValue, value, loading }) => {
+    console.log(value)
     return (
         <div className='form'> {/* Aplica el estilo form */}
             <input 
+                disabled={loading}
                 type={type} 
                 value={value}
                 onInput={(e)=>setValue(e.currentTarget.value)}
