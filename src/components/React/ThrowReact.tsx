@@ -4,13 +4,16 @@ import Button from '../UI/Button.astro'
 import styles from './ThrowReact.module.css'
 import ButtonReact from '../UI/ButtonReact'
 import NextButton from '../UI/NextButton'
-import { postThrow } from '../../utils/api/throwApi'
+import { closeThrow, postThrow } from '../../utils/api/throwApi'
 import Cookies from 'js-cookie'
 import { CoinsInterpreter, types } from '../../utils/CoinsInterprete'
 import NormalThrow from '../../../modules/lanzamiento/views/NormalThrow'
 import MountThrow from '../../../modules/lanzamiento/views/MountThrow'
 import StandThrow from '../../../modules/lanzamiento/views/StandThrow'
 import TranversalThrow from '../../../modules/lanzamiento/views/TranversalThrow'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ReloadButton from '../UI/ReloadButton'
 
 const ThrowReact = () => {
 
@@ -62,6 +65,7 @@ const ThrowReact = () => {
                         setCount(count+1)
                         setMoneda1(0)
                         setMoneda2(0)
+                        toast.info(result?.message)
 
                         if(CoinsInterpreter(throwType,moneda1,moneda2)<'04' && lastThrow<'04'){
                             setCount(count+1)
@@ -71,20 +75,58 @@ const ThrowReact = () => {
                     }
                     else{
                         console.log(result)
-                        window.location.href = `/throw/response/${result?.data}`
+                        toast.success("Su Respuesta está lista!")
+                        
+                        setTimeout(() => {
+                            window.location.href = `/throw/response/${result?.data}`
+                        }, 4000);
                     }
                 })
                 } catch (error) {
                     console.log(error)
+                    toast.error("Error Inesperado")
                     setLoading(false)
                 }
             setLoading(false)
+    }
+
+    const closeDialog = async () =>{
+        try {
+           await closeThrow(Cookies.get('eons_token')||'')
+           .then((response)=>{
+                console.log(response)
+                toast.success("Diálogo Cerrado Exitosamente")
+
+                setTimeout(() => {
+                    setCount(1)
+                    setLastThrow('00')
+                }, 4000);
+           })
+        } catch (error) {
+            
+        }
     }
 
     useEffect(()=>{
         setMoneda1(0)
         setMoneda2(0)
     },[throwType])
+
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+          event.preventDefault();
+        //   event.returnValue = '';
+          console.log(window.location.href) // Esto solicita confirmación al usuario
+          console.log('El usuario está intentando salir de la página');
+          closeThrow(Cookies.get('eons_token')||'')
+        };
+      
+        window.addEventListener('beforeunload', handleBeforeUnload);
+      
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+      }, []);
 
     const viewController = () =>{
 
@@ -110,6 +152,7 @@ const ThrowReact = () => {
                 setMoneda2={setMoneda2}
                 handleSelectCoin={handleSelectCoin}
                 handleSelectDobleCoin={handleSelectDobleCoin}
+                setThrowType={setThrowType}
                 />)
             case types.montado:
                 return (
@@ -120,7 +163,6 @@ const ThrowReact = () => {
                 moneda2={moneda2}
                 setMoneda2={setMoneda2}
                 handleSelectDobleCoin={handleSelectDobleCoin}
-                sendThrow={sendThrow}
                 />)
             case types.tranversal:
                 return (
@@ -133,6 +175,16 @@ const ThrowReact = () => {
                 handleSelectCoin={handleSelectCoin}
                 setType={setThrowType}
                 sendThrow={sendThrow}
+                />)
+            case types.parado_montado:
+                return (
+                    <MountThrow
+                    loading={loading}
+                    moneda1={moneda1}
+                    setMoneda1={setMoneda1}
+                    moneda2={moneda2}
+                    setMoneda2={setMoneda2}
+                    handleSelectDobleCoin={handleSelectDobleCoin}
                 />)
 
             default:
@@ -170,9 +222,22 @@ const ThrowReact = () => {
             </div> 
         </div>
 
-        <div className='flex mt-8 flex-col items-center'>
+        <div className='flex mt-8 flex-row justify-center'>
+          {lastThrow!='00' && <ReloadButton loading={loading} closeDialog={closeDialog}/>}
           <NextButton loading={loading} sendThrow={sendThrow}/>  
         </div>
+
+        <ToastContainer
+            position="bottom-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+        />
         
     </>
   )

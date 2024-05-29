@@ -11,6 +11,7 @@ interface Props{
     setMoneda2:Dispatch<SetStateAction<number>>;
     handleSelectCoin:any;
     handleSelectDobleCoin:any;
+    setThrowType:Dispatch<SetStateAction<string>>;
 }
 
 const StandThrow: FC<Props> = ({
@@ -20,7 +21,8 @@ const StandThrow: FC<Props> = ({
     moneda2,
     setMoneda2,
     handleSelectCoin,
-    handleSelectDobleCoin
+    handleSelectDobleCoin,
+    setThrowType
 }) => {
 
   const [step,setStep] = useState(0)
@@ -171,69 +173,7 @@ const StandThrow: FC<Props> = ({
         );
 
       case 3:
-        return(
-          <>
-      <div className="flex flex-col items-center my-4">
-                <span className={styles.span}>
-                    Caracterize su Lanzamiento Especial
-                </span>
-        </div>
-
-      <div className="flex flex-col items-center my-4">
-                <span className={styles.span}>
-                    ¿Qué símbolos cayeron parados?
-                </span>
-            </div>
-
-            <div className={`flex flex-col ${styles.coin_number} my-4`}>
-                <span className={styles.span}>
-                    Moneda 1
-                </span>
-            </div>
-
-            <div className="flex grid-col justify-center my-4">
-                <Coin
-                loading={loading}
-                id={1} 
-                svg="sun" 
-                condition="face"
-                selectedCoin={moneda1}
-                setSelected={setMoneda1}
-                handleSelect={handleSelectCoin}
-                />
-                <Coin
-                loading={loading}
-                id={2}
-                svg="sun" 
-                condition="cross"
-                selectedCoin={moneda1}
-                setSelected={setMoneda1}
-                handleSelect={handleSelectCoin}
-                />
-            </div>
-
-            <div className={`flex flex-col ${styles.coin_number} my-4`}>
-                <span>
-                    Moneda 2
-                </span>
-            </div>
-
-            <div className="flex grid-col justify-center my-4">
-                <Coin id={1} svg="moon" condition="face"
-                loading={loading}
-                selectedCoin={moneda2}
-                setSelected={setMoneda2}
-                handleSelect={handleSelectCoin}
-                />
-                <Coin id={2} svg="moon" condition="cross"
-                loading={loading}
-                selectedCoin={moneda2}
-                setSelected={setMoneda2}
-                handleSelect={handleSelectCoin}
-                />
-            </div>
-    </>
-        )
+       setThrowType('parado_montado')
         case 4:
           return (
             <>

@@ -7,7 +7,7 @@ interface Props{
 
 const NextButton: FC<Props> = ({sendThrow,loading}) => {
   return (
-    <button disabled={loading} onClick={sendThrow} className="flex rounded-full bg-gray-200 p-6 cursor-pointer hover:bg-slate-300">
+    <button disabled={loading} onClick={sendThrow} className="flex rounded-full bg-gray-200 p-6 mx-4 cursor-pointer hover:bg-slate-300">
         {loading ?
             <svg width='24' height='24' className="animate-spin text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
