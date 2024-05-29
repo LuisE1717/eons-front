@@ -9,7 +9,6 @@ interface Props{
     moneda2:number;
     setMoneda2:Dispatch<SetStateAction<number>>;
     handleSelectDobleCoin:any;
-    sendThrow:any
 }
 
 const MountThrow:FC<Props> = ({
@@ -19,7 +18,6 @@ const MountThrow:FC<Props> = ({
     moneda2,
     setMoneda2,
     handleSelectDobleCoin,
-    sendThrow
 }) => {
 
     console.log(moneda1)
