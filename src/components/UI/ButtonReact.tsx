@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { type Dispatch, type FC, type SetStateAction } from 'react'
 
-const ButtonReact = ({color,text,loading}) => {
+interface Props{
+  color:string;
+  text:string;
+  loading:boolean;
+}
+
+const ButtonReact:FC<Props> = ({color,text,loading}) => {
   return (
-    <div aria-disabled={loading}
+    <button
+    disabled={loading}
   className={`inline-flex justify-center 
   text-sm font-semibold
   py-3 px-4
@@ -13,7 +20,7 @@ const ButtonReact = ({color,text,loading}) => {
     <span>
         {text}
     </span>
-</div>
+</button>
   )
 }
 

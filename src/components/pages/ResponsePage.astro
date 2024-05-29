@@ -1,0 +1,116 @@
+---
+import Coin from "../../../modules/lanzamiento/UI/Coin"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import BaseHead from "../BaseHead.astro";
+import Footer from "../Footer.astro";
+import Header from "../Header.astro";
+import Button from "../UI/Button.astro";
+import ThrowReact from '../React/ThrowReact'
+
+
+const {response} = Astro.props
+console.log(response)
+
+let arrayResponses = response.split(',')
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+
+    <body>
+        <Header/>
+        <main class="flex flex-col">
+            <div class= {`card z-10 
+        rounded-xl bg-white shadow-xl shadow-black/5 
+        ring-1 ring-slate-700/10`}>
+
+            {arrayResponses.map((item,key)=>(
+            <div >
+            <div class="flex flex-col items-center my-4">
+                <span >
+                    {key==0?
+                        'Respuesta Principal'
+                        :
+                        `Respuesta Especial:${key}`
+                    }
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center my-4">
+                <p >
+                    {item}
+                </p>
+            </div>
+            </div>
+            ))
+            
+            }
+            
+        
+            
+        </div>
+        </main>
+        <Footer/>
+    </body>
+</html>
+
+<style>
+    span {
+        color: #232323;
+        font-weight: 700;
+    }
+
+    div {
+        margin: 1rem 0rem;
+    }
+
+    .throw-counter{
+        margin: 0rem
+    }
+
+    main {
+        width: 50%
+    }
+
+    .card{
+        border-width: 1px;
+        padding: 1em;
+    }
+
+    .coin-number{
+        align-items: center;
+    }
+
+    .coin-number span{
+        font-weight: 500;
+    }
+
+    .top{
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 800px){
+        main {
+            width: 60%;
+        }
+
+        @media (max-width: 600px){
+            main{
+                width: 80%;
+                height: 80vh;
+            }
+
+            @media (max-width: 500px){
+                main{
+                    width: 100%;
+                    height: 100vh;
+                }
+            }
+        }
+    }
+</style>
+
+
