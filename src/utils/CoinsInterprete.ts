@@ -1,10 +1,9 @@
 export const types = {
     normal:'normal',
     parado:'parado',
+    parado_montado:'parado_montado',
     montado:'montado',
-    ambos_parados:'ambos_parados',
     tranversal:'tranversal',
-    ambos_tranversal:'ambos_tranversal'
 }
 
 export function CoinsInterpreter (type:string,coin1:number,coin2:number) {
@@ -62,9 +61,24 @@ export function CoinsInterpreter (type:string,coin1:number,coin2:number) {
                 return '23';
             if(coin1 == 4 && coin2 == 3)
                 return '24'; 
-        
-        case types.ambos_parados:
-            return '';
+
+        case types.parado_montado:
+            if(coin1 == 1 && coin2 == 3)
+                return '25';
+            if(coin1 == 1 && coin2 == 4)
+                return '26';
+            if(coin1 == 2 && coin2 == 3)
+                return '27';
+            if(coin1 == 2 && coin2 == 4)
+                return '28';
+            if(coin1 == 3 && coin2 == 1)
+                return '29';
+            if(coin1 == 3 && coin2 == 2)
+                return '30';
+            if(coin1 == 4 && coin2 == 1)
+                return '31';
+            if(coin1 == 4 && coin2 == 2)
+                return '32';
             
         case types.tranversal:
             if(coin1 == 1 && coin2 == 0)
@@ -77,9 +91,6 @@ export function CoinsInterpreter (type:string,coin1:number,coin2:number) {
                 return '37';
             if(coin1 == 0 && coin2 == 0)
                 return '33';
-            
-        case types.ambos_tranversal:
-            return '';
         
         default:
             return '';
