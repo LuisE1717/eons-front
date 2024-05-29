@@ -43,8 +43,8 @@ const LoginButtonReact: React.FC<Props> = ({
                         const user_info = response.data
                         console.log(response)
 
-                        setCookie('eons_token',user_info.token,7)
-                        setCookie('eons_user',user_info.email,7)
+                        setCookie('eons_token',user_info.token,1)
+                        setCookie('eons_user',user_info.email,1)
                         window.location.href = '/'
                     }
                 })
@@ -63,8 +63,8 @@ const LoginButtonReact: React.FC<Props> = ({
                             const user_info = loginResponse.data
                             console.log(loginResponse)
     
-                            setCookie('eons_token',user_info.token,7)
-                            setCookie('eons_user',user_info.email,7)
+                            setCookie('eons_token',user_info.token,1)
+                            setCookie('eons_user',user_info.email,1)
                             window.location.href = '/'
                         })
                     }
