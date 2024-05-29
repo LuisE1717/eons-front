@@ -19,18 +19,64 @@ export function CoinsInterpreter (type:string,coin1:number,coin2:number) {
                 return '03';
             if(coin1 == 2 && coin2 == 2)
                 return '04';
-        
-        case types.parado:
-            return '';
-        
         case types.montado:
-            return '';    
+            if(coin1 == 1 && coin2 == 3)
+                return '05';
+            if(coin1 == 1 && coin2 == 4)
+                return '06';
+            if(coin1 == 2 && coin2 == 3)
+                return '07';
+            if(coin1 == 2 && coin2 == 4)
+                return '08';
+            if(coin1 == 3 && coin2 == 1)
+                return '09';
+            if(coin1 == 3 && coin2 == 2)
+                return '10';
+            if(coin1 == 4 && coin2 == 1)
+                return '11';
+            if(coin1 == 4 && coin2 == 2)
+                return '12';
+                
+        case types.parado:
+            if(coin1 == 3 && coin2 == 1)
+                return '13';
+            if(coin1 == 3 && coin2 == 2)
+                return '14';
+            if(coin1 == 4 && coin2 == 1)
+                return '15';
+            if(coin1 == 4 && coin2 == 2)
+                return '16';
+            if(coin1 == 1 && coin2 == 3)
+                return '17';
+            if(coin1 == 2 && coin2 == 3)
+                return '18';
+            if(coin1 == 1 && coin2 == 4)
+                return '19';
+            if(coin1 == 2 && coin2 == 4)
+                return '20';
+            if(coin1 == 3 && coin2 == 3)
+                return '21';
+            if(coin1 == 4 && coin2 == 4)
+                return '22';
+            if(coin1 == 3 && coin2 == 4)
+                return '23';
+            if(coin1 == 4 && coin2 == 3)
+                return '24'; 
         
         case types.ambos_parados:
             return '';
             
         case types.tranversal:
-            return '';
+            if(coin1 == 1 && coin2 == 0)
+                return '34';
+            if(coin1 == 2 && coin2 == 0)
+                return '35';
+            if(coin1 == 0 && coin2 == 1)
+                return '36';
+            if(coin1 == 0 && coin2 == 2)
+                return '37';
+            if(coin1 == 0 && coin2 == 0)
+                return '33';
             
         case types.ambos_tranversal:
             return '';
