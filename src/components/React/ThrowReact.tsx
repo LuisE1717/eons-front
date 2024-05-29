@@ -22,6 +22,8 @@ const ThrowReact = () => {
 
     const [throwType,setThrowType] = useState('normal')
 
+    const [lastThrow,setLastThrow] = useState('00')
+
     const handleSelectCoin = (setState:Dispatch<SetStateAction<number>>,value:number,target:number) =>{
         if(target == value)
             setState(0)
@@ -30,25 +32,59 @@ const ThrowReact = () => {
         }
     }
 
+    const handleSelectDobleCoin = (setState:Dispatch<SetStateAction<number>>,value:number,target:number,secondValue:number) =>{
+        if(target == value)
+            setState(0)
+        else{
+            if(target > 2){
+                if(secondValue <= 2)
+                    setState(target)
+            }
+            else if(target<=2){
+                if(secondValue>2 || secondValue==0)
+                    setState(target)
+            }
+        }
+    }
+
     console.log(throwType)
 
     const sendThrow = async () =>{
             setLoading(true)
                 try {
-                    await postThrow(Cookies.get('eons_token')||'',CoinsInterpreter('normal',moneda1,moneda2),'dialog')
+                    await postThrow(Cookies.get('eons_token')||'',CoinsInterpreter(throwType,moneda1,moneda2),'dialog')
                 .then((response)=>{
-                    const user_info = response.data
+                    const result = response.data
                     console.log(response)
-                    setCount(count+1)
+                    
+                    if(result?.message == "Vuelve a tirar"){
+                        setThrowType('normal')
+                        setCount(count+1)
+                        setMoneda1(0)
+                        setMoneda2(0)
+
+                        if(CoinsInterpreter(throwType,moneda1,moneda2)<'04' && lastThrow<'04'){
+                            setCount(count+1)
+                        }
+
+                        setLastThrow(CoinsInterpreter(throwType,moneda1,moneda2))
+                    }
+                    else{
+                        console.log(result)
+                        window.location.href = `/throw/response/${result?.data}`
+                    }
                 })
                 } catch (error) {
                     console.log(error)
                     setLoading(false)
                 }
             setLoading(false)
-            setMoneda1(0)
-            setMoneda2(0)
     }
+
+    useEffect(()=>{
+        setMoneda1(0)
+        setMoneda2(0)
+    },[throwType])
 
     const viewController = () =>{
 
@@ -62,6 +98,7 @@ const ThrowReact = () => {
                 moneda2={moneda2}
                 setMoneda2={setMoneda2}
                 handleSelectCoin={handleSelectCoin}
+                lastThrow={lastThrow}
                 />)
             case types.parado:
                 return (
@@ -72,6 +109,7 @@ const ThrowReact = () => {
                 moneda2={moneda2}
                 setMoneda2={setMoneda2}
                 handleSelectCoin={handleSelectCoin}
+                handleSelectDobleCoin={handleSelectDobleCoin}
                 />)
             case types.montado:
                 return (
@@ -81,10 +119,21 @@ const ThrowReact = () => {
                 setMoneda1={setMoneda1}
                 moneda2={moneda2}
                 setMoneda2={setMoneda2}
-                handleSelectCoin={handleSelectCoin}
+                handleSelectDobleCoin={handleSelectDobleCoin}
+                sendThrow={sendThrow}
                 />)
             case types.tranversal:
-                return (<TranversalThrow/>)
+                return (
+                <TranversalThrow
+                loading={loading}
+                moneda1={moneda1}
+                setMoneda1={setMoneda1}
+                moneda2={moneda2}
+                setMoneda2={setMoneda2}
+                handleSelectCoin={handleSelectCoin}
+                setType={setThrowType}
+                sendThrow={sendThrow}
+                />)
 
             default:
                 return (<></>)
@@ -112,10 +161,10 @@ const ThrowReact = () => {
                 <div onClick={()=>{setThrowType('montado')}}>
                 <ButtonReact loading={loading} color="white" text="Cayeron montadas"/>
                 </div>
-                <div>
+                <div onClick={()=>{setThrowType('parado')}}>
                 <ButtonReact loading={loading} color="white" text="Cayeron paradas"/>
                 </div>
-                <div>
+                <div onClick={()=>{setThrowType('tranversal')}}>
                 <ButtonReact loading={loading} color="white" text="Cayó tranversal"/>
                 </div>
             </div> 
