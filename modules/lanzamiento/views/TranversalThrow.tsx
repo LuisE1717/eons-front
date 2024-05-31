@@ -44,7 +44,7 @@ const TranversalThrow: FC<Props> = ({
           <div onClick={()=>{setStep(1)}}>
           <ButtonReact loading={loading} color="white" text="Solo una cayó tranversal"/>
           </div>
-          <div onClick={()=>{setStep(2)}}>
+          <div onClick={()=>{sendThrow()}}>
             <ButtonReact loading={loading} color="white" text="Ambas cayeron tranversales"/>
           </div>
           </div> 
@@ -99,24 +99,21 @@ const TranversalThrow: FC<Props> = ({
             </div>
 
             <div className="flex grid-col justify-center my-4">
-                <Coin id={1} svg="moon" condition="face"
+                <Coin id={3} svg="moon" condition="face"
                 loading={loading}
-                selectedCoin={moneda2}
-                setSelected={setMoneda2}
+                selectedCoin={moneda1}
+                setSelected={setMoneda1}
                 handleSelect={handleSelectCoin}
                 />
-                <Coin id={2} svg="moon" condition="cross"
+                <Coin id={4} svg="moon" condition="cross"
                 loading={loading}
-                selectedCoin={moneda2}
-                setSelected={setMoneda2}
+                selectedCoin={moneda1}
+                setSelected={setMoneda1}
                 handleSelect={handleSelectCoin}
                 />
             </div>
     </>
         );
-
-        case 2:
-          sendThrow()
     }
       
   }

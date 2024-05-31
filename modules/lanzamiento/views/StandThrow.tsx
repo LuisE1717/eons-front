@@ -82,6 +82,8 @@ const StandThrow: FC<Props> = ({
                 condition="face"
                 selectedCoin={moneda1}
                 setSelected={setMoneda1}
+                doble
+                secondCoin={moneda2}
                 handleSelect={handleSelectDobleCoin}
                 />
                 <Coin
@@ -91,6 +93,8 @@ const StandThrow: FC<Props> = ({
                 condition="cross"
                 selectedCoin={moneda1}
                 setSelected={setMoneda1}
+                doble
+                secondCoin={moneda2}
                 handleSelect={handleSelectDobleCoin}
                 />
             </div>
@@ -102,16 +106,20 @@ const StandThrow: FC<Props> = ({
             </div>
 
             <div className="flex grid-col justify-center my-4">
-                <Coin id={1} svg="moon" condition="face"
+                <Coin id={3} svg="moon" condition="face"
                 loading={loading}
-                selectedCoin={moneda2}
-                setSelected={setMoneda2}
+                selectedCoin={moneda1}
+                setSelected={setMoneda1}
+                doble
+                secondCoin={moneda2}
                 handleSelect={handleSelectDobleCoin}
                 />
-                <Coin id={2} svg="moon" condition="cross"
+                <Coin id={4} svg="moon" condition="cross"
                 loading={loading}
-                selectedCoin={moneda2}
-                setSelected={setMoneda2}
+                selectedCoin={moneda1}
+                setSelected={setMoneda1}
+                doble
+                secondCoin={moneda2}
                 handleSelect={handleSelectDobleCoin}
                 />
             </div>
@@ -134,9 +142,77 @@ const StandThrow: FC<Props> = ({
                 id={1} 
                 svg="sun" 
                 condition="face"
+                selectedCoin={moneda2}
+                setSelected={setMoneda2}
+                doble
+                secondCoin={moneda1}
+                handleSelect={handleSelectDobleCoin}
+                />
+                <Coin
+                loading={loading}
+                id={2}
+                svg="sun" 
+                condition="cross"
+                selectedCoin={moneda2}
+                setSelected={setMoneda2}
+                doble
+                secondCoin={moneda1}
+                handleSelect={handleSelectDobleCoin}
+                />
+            </div>
+
+            <div className={`flex flex-col ${styles.coin_number} my-4`}>
+                <span>
+                    Moneda 2
+                </span>
+            </div>
+
+            <div className="flex grid-col justify-center my-4">
+                <Coin id={3} svg="moon" condition="face"
+                loading={loading}
+                selectedCoin={moneda2}
+                setSelected={setMoneda2}
+                doble
+                secondCoin={moneda1}
+                handleSelect={handleSelectDobleCoin}
+                />
+                <Coin id={4} svg="moon" condition="cross"
+                loading={loading}
+                selectedCoin={moneda2}
+                setSelected={setMoneda2}
+                doble
+                secondCoin={moneda1}
+                handleSelect={handleSelectDobleCoin}
+                />
+            </div>
+    </>
+        );
+
+        case 2:
+            return(
+                <>
+    <div className="flex flex-col items-center my-4">
+
+                <span className={styles.span}>
+                    ¿Qué símbolos cayeron parados?
+                </span>
+            </div>
+
+            <div className={`flex flex-col ${styles.coin_number} my-4`}>
+                <span className={styles.span}>
+                    Moneda 1
+                </span>
+            </div>
+
+            <div className="flex grid-col justify-center my-4">
+                <Coin
+                loading={loading}
+                id={1} 
+                svg="sun" 
+                condition="face"
                 selectedCoin={moneda1}
                 setSelected={setMoneda1}
-                handleSelect={handleSelectDobleCoin}
+                handleSelect={handleSelectCoin}
                 />
                 <Coin
                 loading={loading}
@@ -145,7 +221,7 @@ const StandThrow: FC<Props> = ({
                 condition="cross"
                 selectedCoin={moneda1}
                 setSelected={setMoneda1}
-                handleSelect={handleSelectDobleCoin}
+                handleSelect={handleSelectCoin}
                 />
             </div>
 
@@ -160,17 +236,17 @@ const StandThrow: FC<Props> = ({
                 loading={loading}
                 selectedCoin={moneda2}
                 setSelected={setMoneda2}
-                handleSelect={handleSelectDobleCoin}
+                handleSelect={handleSelectCoin}
                 />
                 <Coin id={2} svg="moon" condition="cross"
                 loading={loading}
                 selectedCoin={moneda2}
                 setSelected={setMoneda2}
-                handleSelect={handleSelectDobleCoin}
+                handleSelect={handleSelectCoin}
                 />
             </div>
     </>
-        );
+            )
 
       case 3:
        setThrowType('parado_montado')
