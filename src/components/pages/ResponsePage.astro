@@ -12,6 +12,22 @@ const {response} = Astro.props
 console.log(response)
 
 let arrayResponses = response.split(';')
+
+function textExtract(texto: string): string {
+    // Expresión regular para encontrar el texto entre "Primer lanzamiento:" y la primera coma
+    const regex = /Primer lanzamiento:(.*?)\s*,/;
+    
+    // Buscar coincidencias en el texto
+    const resultado = texto.match(regex);
+    
+    // Si se encontró una coincidencia, devolver el primer grupo capturado
+    if (resultado && resultado[1]) {
+        return resultado[1].trim(); // Eliminar espacios en blanco al principio y al final
+    }
+    
+    // Si no se encontró ninguna coincidencia o el resultado es nulo, devolver null
+    return '';
+}
 ---
 
 <!doctype html>
@@ -30,13 +46,12 @@ let arrayResponses = response.split(';')
             {arrayResponses.map((item,key)=>(
             <div >
             <div class="flex flex-col items-center my-4">
-                <span >
-                    {key==0?
-                        'Respuesta Principal'
-                        :
-                        `Respuesta Especial:${key}`
-                    }
-                </span>
+                {key==0?
+                    <span>Respuesta Principal</span>
+                    :
+                    <span>Respuesta Especial:</span>
+                    <p>{textExtract(item)}</p>
+                }
             </div>
 
             <div class="flex flex-col items-center my-4">
@@ -46,11 +61,7 @@ let arrayResponses = response.split(';')
             </div>
             </div>
             ))
-            
             }
-            
-        
-            
         </div>
         </main>
         <Footer/>
