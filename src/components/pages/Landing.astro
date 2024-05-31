@@ -10,6 +10,8 @@ import Dropdown from "../UI/Dropdown/TranslationMenu.astro";
 
 const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})
+
+const user = Astro.cookies.get('eons_user')?.value
 ---
 
 <!doctype html>
@@ -72,7 +74,7 @@ const i18 = getI18N({currentLocale})
 
           <div class="flex justify-center">
             <a
-              href="/throw"
+              href={user?"/throw":`${currentLocale=='en'?'':'/es'}/auth`}
               class="inline-flex justify-center
 			   rounded-full shadow-md shadow-black/5
 			   text-md py-3 px-4 bg-white/0 hover:bg-white/25 hover:bg-slate-100"

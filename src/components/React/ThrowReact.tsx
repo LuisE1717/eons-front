@@ -61,18 +61,29 @@ const ThrowReact = () => {
                     console.log(response)
                     
                     if(result?.message == "Vuelve a tirar"){
-                        setThrowType('normal')
+                        console.log(lastThrow)
+                        toast.info("Vuelva a Lanzar")
                         setCount(count+1)
+
+                        // if(CoinsInterpreter(throwType,moneda1,moneda2)<='04' && lastThrow<='04'){
+                            
+                        // }
+                        // else{
+                        //     if(CoinsInterpreter(throwType,moneda1,moneda2)>='04')
+                        //         toast.warning("Vuelva a lanzar las monedas para definir su tiro especial")
+                        // }
+                        scrollToTop()
+                        setThrowType('normal')
+                        setLastThrow(CoinsInterpreter(throwType,moneda1,moneda2))
                         setMoneda1(0)
                         setMoneda2(0)
-                        toast.info(result?.message)
-
-                        if(CoinsInterpreter(throwType,moneda1,moneda2)<'04' && lastThrow<'04'){
-                            setCount(count+1)
-                        }
-
-                        setLastThrow(CoinsInterpreter(throwType,moneda1,moneda2))
                     }
+                    else if(result?.message == "Vuelve a tirar para caracterizar el lanzamiento especial"){
+                        toast.warning("Vuelva a lanzar las monedas para definir su tiro especial")
+                    }
+                    // else if(!result.data && result.statusCode==200){
+                    //     toast.success("Lanzamiento especial resuelto, continue")
+                    // }
                     else{
                         console.log(result)
                         toast.success("Su Respuesta está lista!")
@@ -81,6 +92,11 @@ const ThrowReact = () => {
                             window.location.href = `/throw/response/${result?.data}`
                         }, 4000);
                     }
+                    scrollToTop()
+                    setLastThrow(CoinsInterpreter(throwType,moneda1,moneda2))
+                    setThrowType('normal')
+                    setMoneda1(0)
+                    setMoneda2(0)
                 })
                 } catch (error) {
                     console.log(error)
@@ -97,36 +113,43 @@ const ThrowReact = () => {
                 console.log(response)
                 toast.success("Diálogo Cerrado Exitosamente")
 
-                setTimeout(() => {
-                    setCount(1)
-                    setLastThrow('00')
-                }, 4000);
+                setCount(1)
+                setLastThrow('00')
+                scrollToTop()
            })
         } catch (error) {
             
         }
     }
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Opcionalmente, puedes usar 'behavior: 'auto'' si prefieres un desplazamiento sin animación
+      };
+
     useEffect(()=>{
         setMoneda1(0)
         setMoneda2(0)
     },[throwType])
 
-    useEffect(() => {
-        const handleBeforeUnload = (event) => {
-          event.preventDefault();
-        //   event.returnValue = '';
-          console.log(window.location.href) // Esto solicita confirmación al usuario
-          console.log('El usuario está intentando salir de la página');
-          closeThrow(Cookies.get('eons_token')||'')
-        };
+    useEffect(()=>{
+        closeThrow(Cookies.get('eons_token')||'')
+    },[])
+
+    // useEffect(() => {
+    //     const handleBeforeUnload = (event) => {
+    //     //   event.preventDefault();
+    //     //   event.returnValue = '';
+    //       console.log(event) // Esto solicita confirmación al usuario
+    //       console.log('El usuario está intentando salir de la página');
+    //       //closeThrow(Cookies.get('eons_token')||'')
+    //     };
       
-        window.addEventListener('beforeunload', handleBeforeUnload);
+    //     window.addEventListener('beforeunload', handleBeforeUnload);
       
-        return () => {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-      }, []);
+    //     return () => {
+    //       window.removeEventListener('beforeunload', handleBeforeUnload);
+    //     };
+    //   }, []);
 
     const viewController = () =>{
 
@@ -210,13 +233,29 @@ const ThrowReact = () => {
             </div>
 
             <div className="flex flex-wrap gap-2 justify-center my-4">
-                <div onClick={()=>{setThrowType('montado')}}>
+                <div onClick={()=>{
+                    toast.update("Defina su tiro especial")
+                    scrollToTop();
+                    setThrowType('montado')
+                    setMoneda1(0)
+                    setMoneda2(0)
+                }}>
                 <ButtonReact loading={loading} color="white" text="Cayeron montadas"/>
                 </div>
-                <div onClick={()=>{setThrowType('parado')}}>
+                <div onClick={()=>{
+                    scrollToTop();
+                    setThrowType('parado')
+                    setMoneda1(0)
+                    setMoneda2(0)
+                }}>
                 <ButtonReact loading={loading} color="white" text="Cayeron paradas"/>
                 </div>
-                <div onClick={()=>{setThrowType('tranversal')}}>
+                <div onClick={()=>{
+                    scrollToTop();
+                    setThrowType('tranversal')
+                    setMoneda1(0)
+                    setMoneda2(0)
+                }}>
                 <ButtonReact loading={loading} color="white" text="Cayó tranversal"/>
                 </div>
             </div> 
