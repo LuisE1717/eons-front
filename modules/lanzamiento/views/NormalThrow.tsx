@@ -25,10 +25,10 @@ const NormalThrow: FC<Props> = ({
   return (
     <>
     <div className="flex flex-col items-center my-4">
-                {lastThrow>'04' && 
+                {/* {lastThrow>'04' && 
                 <span className={styles.span}>
                     Lance las monedas para definir su lanzamiento especial
-                </span>}
+                </span>} */}
 
                 <span className={styles.span}>
                     ¿Qué símbolo cayó hacia arriba?
