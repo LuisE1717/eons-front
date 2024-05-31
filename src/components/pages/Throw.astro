@@ -6,6 +6,7 @@ import Footer from "../Footer.astro";
 import Header from "../Header.astro";
 import Button from "../UI/Button.astro";
 import ThrowReact from '../React/ThrowReact'
+import ReloadButton from "../UI/ReloadButton.astro";
 ---
 
 <!doctype html>
@@ -16,6 +17,7 @@ import ThrowReact from '../React/ThrowReact'
 
     <body>
         <Header/>
+        <ReloadButton/>
         <main class="flex flex-col">
             <ThrowReact client:load/>
         </main>
@@ -38,6 +40,7 @@ import ThrowReact from '../React/ThrowReact'
     }
 
     main {
+        padding: 1em;
         width: 50%
     }
 

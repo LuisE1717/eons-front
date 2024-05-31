@@ -13,7 +13,7 @@ import StandThrow from '../../../modules/lanzamiento/views/StandThrow'
 import TranversalThrow from '../../../modules/lanzamiento/views/TranversalThrow'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ReloadButton from '../UI/ReloadButton'
+import ReloadButtonReact from '../UI/ReloadButtonReact'
 
 const ThrowReact = () => {
 
@@ -53,7 +53,9 @@ const ThrowReact = () => {
     console.log(throwType)
 
     const sendThrow = async () =>{
-            setLoading(true)
+        //console.log(throwType)
+            if(CoinsInterpreter(throwType,moneda1,moneda2)!='00'){
+                setLoading(true)
                 try {
                     await postThrow(Cookies.get('eons_token')||'',CoinsInterpreter(throwType,moneda1,moneda2),'dialog')
                 .then((response)=>{
@@ -62,8 +64,7 @@ const ThrowReact = () => {
                     
                     if(result?.message == "Vuelve a tirar"){
                         console.log(lastThrow)
-                        toast.info("Vuelva a Lanzar")
-                        setCount(count+1)
+                        
 
                         // if(CoinsInterpreter(throwType,moneda1,moneda2)<='04' && lastThrow<='04'){
                             
@@ -72,26 +73,15 @@ const ThrowReact = () => {
                         //     if(CoinsInterpreter(throwType,moneda1,moneda2)>='04')
                         //         toast.warning("Vuelva a lanzar las monedas para definir su tiro especial")
                         // }
-                        scrollToTop()
-                        setThrowType('normal')
-                        setLastThrow(CoinsInterpreter(throwType,moneda1,moneda2))
-                        setMoneda1(0)
-                        setMoneda2(0)
-                    }
-                    else if(result?.message == "Vuelve a tirar para caracterizar el lanzamiento especial"){
-                        toast.warning("Vuelva a lanzar las monedas para definir su tiro especial")
                     }
                     // else if(!result.data && result.statusCode==200){
                     //     toast.success("Lanzamiento especial resuelto, continue")
                     // }
-                    else{
+                    else if(result?.data){
                         console.log(result)
-                        toast.success("Su Respuesta está lista!")
-                        
-                        setTimeout(() => {
-                            window.location.href = `/throw/response/${result?.data}`
-                        }, 4000);
+                        window.location.href = `/throw/response/${result?.data}`
                     }
+                    setCount(count+1)
                     scrollToTop()
                     setLastThrow(CoinsInterpreter(throwType,moneda1,moneda2))
                     setThrowType('normal')
@@ -100,14 +90,16 @@ const ThrowReact = () => {
                 })
                 } catch (error) {
                     console.log(error)
-                    toast.error("Error Inesperado")
+                    toast.error("Error Inesperado, Verifique su conexión a internet")
                     setLoading(false)
                 }
             setLoading(false)
+            }
     }
 
     const closeDialog = async () =>{
         try {
+            setLoading(true)
            await closeThrow(Cookies.get('eons_token')||'')
            .then((response)=>{
                 console.log(response)
@@ -117,8 +109,9 @@ const ThrowReact = () => {
                 setLastThrow('00')
                 scrollToTop()
            })
+           setLoading(false)
         } catch (error) {
-            
+            setLoading(false)
         }
     }
 
@@ -262,7 +255,7 @@ const ThrowReact = () => {
         </div>
 
         <div className='flex mt-8 flex-row justify-center'>
-          {lastThrow!='00' && <ReloadButton loading={loading} closeDialog={closeDialog}/>}
+          {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
           <NextButton loading={loading} sendThrow={sendThrow}/>  
         </div>
 
