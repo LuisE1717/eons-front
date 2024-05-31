@@ -53,13 +53,13 @@ export function CoinsInterpreter (type:string,coin1:number,coin2:number) {
                 return '19';
             if(coin1 == 2 && coin2 == 4)
                 return '20';
-            if(coin1 == 3 && coin2 == 3)
+            if(coin1 == 1 && coin2 == 1)
                 return '21';
-            if(coin1 == 4 && coin2 == 4)
+            if(coin1 == 2 && coin2 == 1)
                 return '22';
-            if(coin1 == 3 && coin2 == 4)
+            if(coin1 == 1 && coin2 == 2)
                 return '23';
-            if(coin1 == 4 && coin2 == 3)
+            if(coin1 == 2 && coin2 == 2)
                 return '24'; 
 
         case types.parado_montado:
@@ -85,9 +85,9 @@ export function CoinsInterpreter (type:string,coin1:number,coin2:number) {
                 return '34';
             if(coin1 == 2 && coin2 == 0)
                 return '35';
-            if(coin1 == 0 && coin2 == 1)
+            if(coin1 == 3 && coin2 == 0)
                 return '36';
-            if(coin1 == 0 && coin2 == 2)
+            if(coin1 == 4 && coin2 == 0)
                 return '37';
             if(coin1 == 0 && coin2 == 0)
                 return '33';
