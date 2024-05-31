@@ -9,7 +9,7 @@ import ThrowReact from '../React/ThrowReact'
 
 
 const {response} = Astro.props
-console.log(response)
+//console.log(response)
 
 let arrayResponses = response.split(';')
 
@@ -26,6 +26,53 @@ function textExtract(texto: string): string {
     }
     
     // Si no se encontró ninguna coincidencia o el resultado es nulo, devolver null
+    return '';
+}
+
+// function extraerAntesDeLaPrimeraComa(texto: string): string {
+//     // Encuentra la posición de la primera coma
+//     const posicionComa = texto.indexOf(',');
+
+//     // Si no hay comas, retorna el texto original
+//     if (posicionComa === -1) {
+//         return texto;
+//     }
+
+//     // Extrae el texto antes de la primera coma
+//     const textoAntesDeLaComa = texto.substring(0, posicionComa);
+
+//     // Retorna el texto extraído
+//     return textoAntesDeLaComa.trim(); // trim() se usa para eliminar espacios al principio y al final
+// }
+
+function getTextAfterFirstComma(texto: string): string {
+    // Divide el texto en dos partes: antes y después de la primera coma
+    const partes = texto.split(',', 2); // El segundo argumento limita el split a solo dos partes
+    
+    // Verifica si hay al menos una coma en el texto
+    if (partes.length > 1) {
+        const newText = texto.replace(partes[0].trim(),'')
+        const result = newText.replace(',', ' ')
+        console.log(result[0])
+        // Retorna el texto después de la primera coma, excluyendo la coma
+        return result; // trim() se usa para eliminar espacios al principio y al final del texto
+    }
+    
+    // Si no hay comas, retorna una cadena vacía o un mensaje indicando que no se encontró la coma
+    return '';
+}
+
+function getTextBeforeFirstComma(texto: string): string {
+    // Divide el texto en dos partes: antes y después de la primera coma
+    const partes = texto.split(',', 2); // El segundo argumento limita el split a solo dos partes
+    
+    // Verifica si hay al menos una coma en el texto
+    if (partes.length > 1) {
+        // Retorna el texto después de la primera coma, excluyendo la coma
+        return partes[0].trim(); // trim() se usa para eliminar espacios al principio y al final del texto
+    }
+    
+    // Si no hay comas, retorna una cadena vacía o un mensaje indicando que no se encontró la coma
     return '';
 }
 ---
@@ -50,13 +97,13 @@ function textExtract(texto: string): string {
                     <span>Respuesta Principal</span>
                     :
                     <span>Respuesta Especial:</span>
-                    <p>{textExtract(item)}</p>
+                    <p>{getTextBeforeFirstComma(item)}</p>
                 }
             </div>
 
             <div class="flex flex-col items-center my-4">
                 <p >
-                    {item}
+                    {key>0? getTextAfterFirstComma(item):item}
                 </p>
             </div>
             </div>
