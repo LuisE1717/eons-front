@@ -53,11 +53,6 @@ const TranversalThrow: FC<Props> = ({
       case 1:
         return(
 <>
-      <div className="flex flex-col items-center my-4">
-                <span className={styles.span}>
-                    Caracterize su Lanzamiento Especial
-                </span>
-        </div>
 
       <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
