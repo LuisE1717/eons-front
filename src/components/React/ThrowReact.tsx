@@ -13,7 +13,7 @@ import StandThrow from '../../../modules/lanzamiento/views/StandThrow'
 import TranversalThrow from '../../../modules/lanzamiento/views/TranversalThrow'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ReloadButton from '../UI/ReloadButton'
+import ReloadButtonReact from '../UI/ReloadButtonReact'
 
 const ThrowReact = () => {
 
@@ -255,7 +255,7 @@ const ThrowReact = () => {
         </div>
 
         <div className='flex mt-8 flex-row justify-center'>
-          {lastThrow!='00' && <ReloadButton loading={loading} closeDialog={closeDialog}/>}
+          {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
           <NextButton loading={loading} sendThrow={sendThrow}/>  
         </div>
 
