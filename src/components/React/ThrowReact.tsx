@@ -74,6 +74,9 @@ const ThrowReact = () => {
                         //         toast.warning("Vuelva a lanzar las monedas para definir su tiro especial")
                         // }
                     }
+                    else if(result?.message == "No puede hacer más lanzamientos especiales. Debe continuar con los lanzamientos normales."){
+                        window.location.reload()
+                    }
                     // else if(!result.data && result.statusCode==200){
                     //     toast.success("Lanzamiento especial resuelto, continue")
                     // }
@@ -173,6 +176,7 @@ const ThrowReact = () => {
             case types.montado:
                 return (
                 <MountThrow
+                throwType={throwType}
                 loading={loading}
                 moneda1={moneda1}
                 setMoneda1={setMoneda1}
@@ -195,6 +199,7 @@ const ThrowReact = () => {
             case types.parado_montado:
                 return (
                     <MountThrow
+                    throwType={throwType}
                     loading={loading}
                     moneda1={moneda1}
                     setMoneda1={setMoneda1}

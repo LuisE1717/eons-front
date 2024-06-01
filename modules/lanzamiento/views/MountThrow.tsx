@@ -9,6 +9,7 @@ interface Props{
     moneda2:number;
     setMoneda2:Dispatch<SetStateAction<number>>;
     handleSelectDobleCoin:any;
+    throwType:string;
 }
 
 const MountThrow:FC<Props> = ({
@@ -18,6 +19,7 @@ const MountThrow:FC<Props> = ({
     moneda2,
     setMoneda2,
     handleSelectDobleCoin,
+    throwType
 }) => {
 
     console.log(moneda1)
@@ -27,7 +29,7 @@ const MountThrow:FC<Props> = ({
     <>
       <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó encima?
+                    {throwType=='parado_montado'? "¿Qué símbolo cayó delante?" :"¿Qué símbolo cayó encima?"}
                 </span>
             </div>
 
@@ -89,7 +91,7 @@ const MountThrow:FC<Props> = ({
 
             <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó debajo?
+                {throwType=='parado_montado'? "¿Qué símbolo cayó detrás?" :"¿Qué símbolo cayó debajo?"}
                 </span>
             </div>
 
