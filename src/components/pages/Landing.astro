@@ -274,24 +274,33 @@ const user = Astro.cookies.get('eons_user')?.value
   window.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('img');
   const loader = document.getElementById('spinner')
+  const html = document.querySelector('html')
   let loadedImagesCount = 0;
 
   const startTime = performance.now();
-  const endTime = startTime + 1000;
 
-  // if(loader)
-  // loader.style.display = 'flex';
+  if(loader && html){
+    loader.style.display = 'flex';
+    html.style.overflowY = 'hidden'
+  }
+  
 
-  const checkLoadTime = () => {
-        if (performance.now() > endTime && loader) {
-          loader.style.display = 'flex';
-        } else {
-          clearInterval(intervalId);
-        }
-      };
+  const checkContentLoaded = () => {
+    const currentTime = Date.now();
+    const loadTime = currentTime - startTime;
 
-      const intervalId = setInterval(checkLoadTime, 100); // Verifica cada 100 ms
-    });
+    // Ocultar el spinner si el contenido se ha cargado o si ya han pasado 1 segundo
+    if (document.readyState === 'complete' || loadTime > 1000) {
+      if(loader && html){
+        loader.style.display = 'none';
+        html.style.overflowY = 'auto'
+      }
+    } else {
+      setTimeout(checkContentLoaded, 100);
+    }
+  };
+
+  setInterval(checkContentLoaded,100)
 
   // images.forEach(function(image) {
   //   image.onload = function() {
@@ -303,6 +312,6 @@ const user = Astro.cookies.get('eons_user')?.value
   //     }
   //   };
   // });
-
+});
 
 </script>
