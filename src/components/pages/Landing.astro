@@ -253,54 +253,29 @@ const user = Astro.cookies.get('eons_user')?.value
 </html>
 
 <script>
-// const loader = document.getElementById('spinner')
-
-// const isload = () =>{
-//   if(loader)
-//     loader.style.display = 'flex'
-//   window.onload = function() {
-//   console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
-  
-//   if (loader)
-//     loader.style.display = 'none';
-// }
-
-
-  
-// };
-
-
-
-  window.addEventListener('DOMContentLoaded', function() {
-  const images = document.querySelectorAll('img');
-  const loader = document.getElementById('spinner')
-  const html = document.querySelector('html')
-  let loadedImagesCount = 0;
-
-  const startTime = performance.now();
+const loader = document.getElementById('spinner')
+const html = document.querySelector('html')
 
   if(loader && html){
-    loader.style.display = 'flex';
+    loader.style.display = 'flex'
     html.style.overflowY = 'hidden'
   }
+  window.onload = function() {
+  console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
   
+  if (loader && html){
+    loader.style.display = 'none';
+    html.style.overflowY = 'auto'
+  }
+    
+};
 
-  const checkContentLoaded = () => {
-    const currentTime = Date.now();
-    const loadTime = currentTime - startTime;
 
-    // Ocultar el spinner si el contenido se ha cargado o si ya han pasado 1 segundo
-    if (document.readyState === 'complete' || loadTime > 1000) {
-      if(loader && html){
-        loader.style.display = 'none';
-        html.style.overflowY = 'auto'
-      }
-    } else {
-      setTimeout(checkContentLoaded, 100);
-    }
-  };
 
-  setInterval(checkContentLoaded,100)
+  document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  const loader = document.getElementById('spinner')
+  let loadedImagesCount = 0;
 
   // images.forEach(function(image) {
   //   image.onload = function() {
