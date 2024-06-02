@@ -17,11 +17,7 @@ const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
+
   <body>
     <AuthHeader/>
     <main class="flex flex-col">
@@ -44,7 +40,6 @@ const i18 = getI18N({currentLocale})
     </main>
     <Footer/>
   </body>
-<html/>
 
 <style>
 
