@@ -15,14 +15,7 @@ const i18 = getI18N({currentLocale})
 const user = Astro.cookies.get('eons_user')?.value
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <div class="spinner" id="spinner">
-    <LoadingSpinner/>
-  </div>
+
   <body id="app">
     <Header />
 
@@ -157,9 +150,6 @@ const user = Astro.cookies.get('eons_user')?.value
         width: 100%;
       }
 
-      #app {
-        display: none;
-      }
       .landing-text {
         padding: 1em;
         width: 50%;
@@ -250,7 +240,6 @@ const user = Astro.cookies.get('eons_user')?.value
       }
     </style>
   </body>
-</html>
 
 <script>
 const loader = document.getElementById('spinner')
