@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 
 import { getI18N } from "../../i18n";
 import Dropdown from "../UI/Dropdown/TranslationMenu.astro";
+import LoadingSpinner from '../../components/UI/LoadingSpinner.astro'
 
 const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})
@@ -19,8 +20,12 @@ const user = Astro.cookies.get('eons_user')?.value
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <div class="spinner" id="spinner">
+    <LoadingSpinner/>
+  </div>
+  <body id="app">
     <Header />
+
     <main>
       <div class="flex flex-col md:flex-row items-center">
         <div class="landing-text">
@@ -151,6 +156,10 @@ const user = Astro.cookies.get('eons_user')?.value
       main {
         width: 100%;
       }
+
+      #app {
+        display: none;
+      }
       .landing-text {
         padding: 1em;
         width: 50%;
@@ -242,3 +251,42 @@ const user = Astro.cookies.get('eons_user')?.value
     </style>
   </body>
 </html>
+
+<script>
+const loader = document.getElementById('spinner')
+const html = document.querySelector('html')
+
+  if(loader && html){
+    loader.style.display = 'flex'
+    html.style.overflowY = 'hidden'
+  }
+  window.onload = function() {
+  console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
+  
+  if (loader && html){
+    loader.style.display = 'none';
+    html.style.overflowY = 'auto'
+  }
+    
+};
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  const loader = document.getElementById('spinner')
+  let loadedImagesCount = 0;
+
+  // images.forEach(function(image) {
+  //   image.onload = function() {
+  //     console.log(loadedImagesCount)
+  //     console.log(images.length)
+  //     loadedImagesCount++;
+  //     if (loadedImagesCount === images.length && loader) {
+  //       loader.style.display = 'none';
+  //     }
+  //   };
+  // });
+});
+
+</script>
