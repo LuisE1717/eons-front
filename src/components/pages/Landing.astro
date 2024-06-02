@@ -253,45 +253,29 @@ const user = Astro.cookies.get('eons_user')?.value
 </html>
 
 <script>
-// const loader = document.getElementById('spinner')
+const loader = document.getElementById('spinner')
+const html = document.querySelector('html')
 
-// const isload = () =>{
-//   if(loader)
-//     loader.style.display = 'flex'
-//   window.onload = function() {
-//   console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
+  if(loader && html){
+    loader.style.display = 'flex'
+    html.style.overflowY = 'hidden'
+  }
+  window.onload = function() {
+  console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
   
-//   if (loader)
-//     loader.style.display = 'none';
-// }
+  if (loader && html){
+    loader.style.display = 'none';
+    html.style.overflowY = 'auto'
+  }
+    
+};
 
 
-  
-// };
 
-
-
-  window.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('img');
   const loader = document.getElementById('spinner')
   let loadedImagesCount = 0;
-
-  const startTime = performance.now();
-  const endTime = startTime + 1000;
-
-  // if(loader)
-  // loader.style.display = 'flex';
-
-  const checkLoadTime = () => {
-        if (performance.now() > endTime && loader) {
-          loader.style.display = 'flex';
-        } else {
-          clearInterval(intervalId);
-        }
-      };
-
-      const intervalId = setInterval(checkLoadTime, 100); // Verifica cada 100 ms
-    });
 
   // images.forEach(function(image) {
   //   image.onload = function() {
@@ -303,6 +287,6 @@ const user = Astro.cookies.get('eons_user')?.value
   //     }
   //   };
   // });
-
+});
 
 </script>
