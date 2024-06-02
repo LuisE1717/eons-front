@@ -1,4 +1,5 @@
 ---
+import AppContainer from "../layouts/AppContainer.astro";
 import Landing from "../components/pages/Landing.astro";
 
 // if( Astro.cookies.get("lng") == 'es')
@@ -6,4 +7,6 @@ import Landing from "../components/pages/Landing.astro";
 console.log(Astro.cookies.get("lng"))
 ---
 
-<Landing/>
+<AppContainer>
+    <Landing/>
+</AppContainer>
