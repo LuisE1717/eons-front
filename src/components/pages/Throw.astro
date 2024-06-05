@@ -7,6 +7,11 @@ import Header from "../Header.astro";
 import Button from "../UI/Button.astro";
 import ThrowReact from '../React/ThrowReact'
 import ReloadButton from "../UI/ReloadButton.astro";
+import { getI18N } from "../../i18n";
+import BackButton from "../UI/BackButton.astro";
+
+const currentLocale  = Astro?.currentLocale || 'en'
+const i18 = getI18N({currentLocale})
 ---
 
 <!doctype html>
@@ -17,9 +22,10 @@ import ReloadButton from "../UI/ReloadButton.astro";
 
     <body>
         <Header/>
+        <BackButton/>
         <ReloadButton/>
         <main class="flex flex-col">
-            <ThrowReact client:load/>
+            <ThrowReact i18={i18} client:load/>
         </main>
         <Footer/>
     </body>
@@ -29,6 +35,10 @@ import ReloadButton from "../UI/ReloadButton.astro";
     span {
         color: #232323;
         font-weight: 700;
+    }
+
+    html{
+        overflow-y: auto;
     }
 
     div {

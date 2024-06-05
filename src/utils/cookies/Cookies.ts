@@ -7,3 +7,7 @@ export function setCookie(name:string, value:string, days:number) {
         Cookies.set(name,value,{expires:expires})
     }
 }
+
+export function deleteCookie(name) {
+    setCookie(name, "", -1);
+}

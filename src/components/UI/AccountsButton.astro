@@ -1,4 +1,7 @@
 ---
+import { getSession } from 'auth-astro/server'
+import { postLogin, singUp } from '../../utils/api/userApi';
+import { setCookie } from '../../utils/cookies/Cookies';
 interface Props {
 	text: string;
     bgColor?:string;
@@ -14,6 +17,7 @@ const {text, bgColor, bg_hover, color} = Astro.props
   mt-2
   py-1 px-4
   text-${color?color:''}`
+  id={text}
   >
 
   {text=="Microsoft"?
@@ -24,7 +28,6 @@ const {text, bgColor, bg_hover, color} = Astro.props
     <rect x="5" y="5" width="10" height="10" fill="#F25325"/>
   </svg>
     : text=="Google"?
-    <a href="https://eons-back.onrender.com/google">
     <svg width="24" height="24" viewBox="-0.5 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Google-color</title>
     <desc>Created with Sketch.</desc>
@@ -41,7 +44,6 @@ const {text, bgColor, bg_hover, color} = Astro.props
             </g>
         </g>
     </svg>
-    </a>
     :
     <svg width="24" height="24" viewBox="-1.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>apple [#173]</title><desc>Created with Sketch.</desc><defs>
@@ -55,6 +57,29 @@ const {text, bgColor, bg_hover, color} = Astro.props
         {text}
     </span>
 </div>
+
+<script>
+    const { signIn, signOut } = await import("auth-astro/client")
+    
+    const google = document.querySelector("#Google")
+    const microsoft = document.querySelector('#Microsoft')
+    if(google){
+        google.addEventListener('click', async (e) => {
+            e.preventDefault()
+            console.log(e.target)
+            await signIn("google")            
+        })
+        //console.log(google)
+    }
+
+    if(microsoft){
+        microsoft.addEventListener('click', async (e) =>{
+            e.preventDefault()
+            //await signIn('az')
+        })
+    }
+         
+</script>
 
 <style
 define:vars={{ bgColor: bgColor?bgColor:'transparent', bg_hover: bg_hover?bg_hover:"#f1f5f9"}}
