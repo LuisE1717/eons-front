@@ -1,28 +1,35 @@
 {
-    "Landing":{
-        "text1":"Enormes e infinitos regalos serán entregados a todos",
-        "text2":"Eons traerá consigo un avance Científico y Tecnológico de más de 10000 años en la próxima década.",
-        "text3":"El conocimiento, la luz, la sanación, el amor, la abundancia y la felicidad, serán esparcidas en todas direcciones.",
-        "text4":"Un enorme y colosal Despertar Espiritual en masa sin precedentes traerá consigo la Infinita Era de la Magia Blanca.",
-        "text5":"Eons es el punto medio donde converge la Ciencia, la Tecnología, el Misticismo, la Luz y las Ciencias Ocultas. Uno de nuestros principales objetivos es promover la expansión y la evolución de la conciencia a nivel Existencial.",
-        "text6":"Presentamos nuestro primer producto ya disponible:",
-        "text7":"Tecnología de Acceso a la Fuente Existencial",
-        "text8":"El primer real, auténtico y absolútamente comprobable Sistema de Comunicación con todos los Planos Espirituales.",
-        "text9":"Brindando además un servicio único de adivinación y predicción en tiempo real.",
-        "text10":"No importa quien usted sea ni en qué posición se encuentre. Con la llegada de Eons, su vida evolucionará infinitamente en todos los aspectos.",
-        "text11":"Una nueva Era ha llegado.",
-        "text12":"Eons ha dado comienzo a un desenlace indetenible que llevará la humanidad a escala Universal.",
-        "text13":"La combinación de un concepto de la tecnología más avanzada y refinada, junto a un concepto de la Espiritualidad más Pura e Iluminada, describen la Esencia que Eons transmitirá en todo momento.",
-        "text14":"Nuevos productos y servicios serán presentados próximamente.",
-        "text15":"Ver Producto"
-    },
-    "Auth":{
-        "login_button":"Iniciar",
-        "singUp_button":"Crear",
-        "text_loading":"Cargando...",
-        "login_switch":"Iniciar Sesión",
-        "sing_up_switch":"Crear Cuenta",
-        "password_input_label":"Contraseña",
-        "forget_pass":"¿Has olvidado tu contraseña?"
+  "Landing": {
+    "text1": "Enormes e infinitos regalos serán entregados a todos",
+    "text2": "Eons traerá consigo un avance Científico y Tecnológico de más de 10000 años en la próxima década.",
+    "text3": "El conocimiento, la luz, la sanación, el amor, la abundancia y la felicidad, serán esparcidas en todas direcciones.",
+    "text4": "Un enorme y colosal Despertar Espiritual en masa sin precedentes traerá consigo la Infinita Era de la Magia Blanca.",
+    "text5": "Eons es el punto medio donde converge la Ciencia, la Tecnología, el Misticismo, la Luz y las Ciencias Ocultas. Uno de nuestros principales objetivos es promover la expansión y la evolución de la conciencia a nivel Existencial.",
+    "text6": "Presentamos nuestro primer producto ya disponible:",
+    "text7": "Tecnología de Acceso a la Fuente Existencial",
+    "text8": "El primer real, auténtico y absolútamente comprobable Sistema de Comunicación con todos los Planos Espirituales.",
+    "text9": "Brindando además un servicio único de adivinación y predicción en tiempo real.",
+    "text10": "No importa quien usted sea ni en qué posición se encuentre. Con la llegada de Eons, su vida evolucionará infinitamente en todos los aspectos.",
+    "text11": "Una nueva Era ha llegado.",
+    "text12": "Eons ha dado comienzo a un desenlace indetenible que llevará la humanidad a escala Universal.",
+    "text13": "La combinación de un concepto de la tecnología más avanzada y refinada, junto a un concepto de la Espiritualidad más Pura e Iluminada, describen la Esencia que Eons transmitirá en todo momento.",
+    "text14": "Nuevos productos y servicios serán presentados próximamente.",
+    "text15": "Ver Producto"
+  },
+  "Auth": {
+    "login_button": "Iniciar",
+    "singUp_button": "Crear",
+    "text_loading": "Cargando...",
+    "login_switch": "Iniciar Sesión",
+    "sing_up_switch": "Crear Cuenta",
+    "password_input_label": "Contraseña",
+    "forget_pass": "¿Has olvidado tu contraseña?"
+  },
+  "Payment": {
+    "Labels": {
+      "number": "Número de tarjeta",
+      "expiration_date": "Día de expiración",
+      "name": "Nombre en Tarjeta"
     }
+  }
 }
