@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
@@ -8,15 +8,15 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  output: 'server',
+  site: "https://example.com",
+  output: "server",
   integrations: [mdx(), sitemap(), tailwind(), react()],
   i18n: {
     defaultLocale: "en",
     locales: ["es", "en"],
     routing: {
-      prefixDefaultLocale: false
-    }
+      prefixDefaultLocale: false,
+    },
   },
-  adapter: vercel()
+  adapter: vercel(),
 });
