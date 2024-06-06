@@ -10,6 +10,9 @@ import OutlineInput from "../../components/UI/input/OutlineInput.astro";
 import LoginButton from "../../components/UI/button/LoginButton.astro";
 import AccountsButton from "../../components/UI/AccountsButton.astro";
 import { getI18N } from "../../i18n";
+import { getSession } from "auth-astro/server";
+import { singUp } from "../../utils/api/userApi";
+import { setCookie } from "../../utils/cookies/Cookies";
 
 const section = "login"
 
