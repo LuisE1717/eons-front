@@ -14,17 +14,25 @@ if(Astro.cookies.get("eons_lng")?.value === 'es'){
  const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})
 
+let token = ''
+
 const session = await getSession(Astro.request)
   try {
     if(session?.user?.email){
         await singUp({email:session.user.email,password: import.meta.env.AUTH_SECRET})
        .then((response)=>{
-         setCookie('eons_user',session.user?.email || '',1)
-         setCookie('eons_token',response.data || '',1)
-         console.log('redi')
+        Astro.cookies.set('eons_token',response.data)
+         Astro.cookies.set('eons_user',session?.user?.email || '')
+         token=Astro.cookies.get('eons_token')?.value || '';
+         console.log(token)
        })
        .catch(({response})=>{console.log(response)})
-       return Astro.redirect('/',302)
+       if(token)
+        return Astro.redirect('/',302)
+  }
+  else{
+    Astro.cookies.delete('eons_token')
+    Astro.cookies.delete('eons_user')
   }
   } catch (error) {
     console.log(error)
