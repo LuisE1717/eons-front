@@ -1,3 +1,7 @@
+---
+
+const {text} = Astro.props
+---
 
 <button 
 id="reload"
@@ -8,11 +12,16 @@ class="ml-4 mt-4 flex rounded-full bg-gray-200 p-4 mx-4 cursor-pointer hover:bg-
 </button>
 
 <script>
+    import Cookies from "js-cookie";
+    const text = Cookies.get('eons_lng')=='es'?
+    '¿Desea reiniciar su diálogo? Todo el progreso sera eliminado'
+    :
+    'Do you want to restart your dialogue? All progress will be deleted'
     document.addEventListener('DOMContentLoaded', function() {
         const reloadButton = document.getElementById('reload');
 
         function confirmAndReload() {
-      if (window.confirm("¿Desea reiniciar su dialogo? Todo el progreso sera eliminado")) {
+      if (window.confirm(text)) {
         location.reload();
       }
     }

@@ -61,7 +61,7 @@ const LoginButtonReact: React.FC<Props> = ({
                         await postLogin({email,password})
                         .then((loginResponse)=>{
                             const user_info = loginResponse.data
-                            console.log(loginResponse)
+                            console.log('entra en submit')
     
                             setCookie('eons_token',user_info.token,1)
                             setCookie('eons_user',user_info.email,1)

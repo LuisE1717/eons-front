@@ -1,23 +1,6 @@
 ---
 import SpainFlag from "../../../../public/customized/SpainFlag.astro";
 import EnglandFlag from "../../../../public/customized/EnglandFlag.astro";
-
-// Obtener la URL completa de la solicitud
-const fullUrl = Astro.request.url;
-
-// Crear un objeto URL a partir de la URL completa
-const urlObj = new URL(fullUrl);
-
-// Extraer la ruta de la URL
-const currentPath = urlObj.pathname;
-
-// Remover el primer slash si está presente
-const cleanCurrentPath = currentPath.startsWith('/')? currentPath.slice(1) : currentPath;
-
-//Remover el /es
-const pathForUse = cleanCurrentPath.replace('es/','')
-
-console.log(pathForUse)
 ---
 
 
@@ -53,26 +36,7 @@ console.log(pathForUse)
 
 <script>
 import { setCookie } from "../../../utils/cookies/Cookies";
-
-  function cleanURL (url:string) {
-    // Obtener la URL completa de la solicitud
-    const fullUrl = window.location.href;
-
-    // Crear un objeto URL a partir de la URL completa
-    const urlObj = new URL(fullUrl);
-
-    // Extraer la ruta de la URL
-    const currentPath = urlObj.pathname;
-
-    // Remover el primer slash si está presente
-    const cleanCurrentPath = currentPath.startsWith('/')? currentPath.slice(1) : currentPath;
-
-    //Remover el /es
-    const pathForUse = cleanCurrentPath.replace('es/','')
-    return pathForUse
-  }
-
-
+import { cleanURL } from "../../../utils/navigation"
   document.addEventListener('DOMContentLoaded', function() {
     const dropdownButton = document.getElementById('language-switcher');
     const dropdownMenu = document.getElementById('dropdownLang');
@@ -112,6 +76,7 @@ import { setCookie } from "../../../utils/cookies/Cookies";
       if(english){
         setCookie("eons_lng","en",10)
         const pathForUse = cleanURL(document.location.href)
+        console.log(pathForUse)
         document.location.href = `/${pathForUse}`
       }
     }
@@ -120,6 +85,7 @@ import { setCookie } from "../../../utils/cookies/Cookies";
       if(spanish){
         setCookie("eons_lng","es",10)
         const pathForUse = cleanURL(document.location.href)
+        console.log(pathForUse)
         document.location.href = `/es/${pathForUse}`
       }
     }

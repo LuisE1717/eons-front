@@ -10,6 +10,7 @@ interface Props{
     setMoneda2:Dispatch<SetStateAction<number>>;
     handleSelectDobleCoin:any;
     throwType:string;
+    i18:any;
 }
 
 const MountThrow:FC<Props> = ({
@@ -19,7 +20,8 @@ const MountThrow:FC<Props> = ({
     moneda2,
     setMoneda2,
     handleSelectDobleCoin,
-    throwType
+    throwType,
+    i18
 }) => {
 
     console.log(moneda1)
@@ -29,13 +31,13 @@ const MountThrow:FC<Props> = ({
     <>
       <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    {throwType=='parado_montado'? "¿Qué símbolo cayó delante?" :"¿Qué símbolo cayó encima?"}
+                    {throwType=='parado_montado'? i18["Throw"].question_mount_stops1 :i18["Throw"].question_mount1}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                    {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -66,7 +68,7 @@ const MountThrow:FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                {i18["Throw"].coin2}
                 </span>
             </div>
 
@@ -91,13 +93,13 @@ const MountThrow:FC<Props> = ({
 
             <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                {throwType=='parado_montado'? "¿Qué símbolo cayó detrás?" :"¿Qué símbolo cayó debajo?"}
+                {throwType=='parado_montado'? i18["Throw"].question_mount_stops2 :i18["Throw"].question_mount2}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                    {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -128,7 +130,7 @@ const MountThrow:FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                    {i18["Throw"].coin2}
                 </span>
             </div>
 

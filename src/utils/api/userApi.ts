@@ -22,7 +22,7 @@ export async function singUp(dataLogin:ILogin) {
     const res = await intanceAxios.post('auth/register', dataLogin);
 
     const data = await res.data;
-    console.log(data);
+    //console.log(data);
 
     if (!data) {
         return {
