@@ -12,6 +12,7 @@ interface Props{
     handleSelectCoin:any;
     handleSelectDobleCoin:any;
     setThrowType:Dispatch<SetStateAction<string>>;
+    i18:any
 }
 
 const StandThrow: FC<Props> = ({
@@ -22,7 +23,8 @@ const StandThrow: FC<Props> = ({
     setMoneda2,
     handleSelectCoin,
     handleSelectDobleCoin,
-    setThrowType
+    setThrowType,
+    i18
 }) => {
 
   const [step,setStep] = useState(0)
@@ -36,19 +38,19 @@ const StandThrow: FC<Props> = ({
           <>
             <div className="flex flex-col items-center mt-8 my-4">
                     <span>
-                        Como cayeron las monedas?
+                        {i18["Throw"].question2}
                     </span>
                 </div>
 
           <div className="flex flex-wrap gap-2 justify-center my-4">
           <div onClick={()=>{setStep(1)}}>
-          <ButtonReact loading={loading} color="white" text="Solo cayo una parada"/>
+          <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_stop1}/>
           </div>
           <div onClick={()=>{setStep(2)}}>
-            <ButtonReact loading={loading} color="white" text="Las dos cayeron paradas"/>
+            <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_stop2}/>
           </div>
           <div onClick={()=>{setStep(3)}}>
-            <ButtonReact loading={loading} color="white" text="Las dos cayeron paradas y montadas"/>
+            <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_stop3}/>
           </div>
           </div> 
         </>
@@ -59,13 +61,13 @@ const StandThrow: FC<Props> = ({
 
       <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó parado?
+                {i18["Throw"].question_stop1}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -96,7 +98,7 @@ const StandThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                {i18["Throw"].coin2}
                 </span>
             </div>
 
@@ -121,13 +123,13 @@ const StandThrow: FC<Props> = ({
 
             <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó normal?
+                    {i18["Throw"].question_stop2}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -158,7 +160,7 @@ const StandThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                {i18["Throw"].coin2}
                 </span>
             </div>
 
@@ -189,13 +191,13 @@ const StandThrow: FC<Props> = ({
     <div className="flex flex-col items-center my-4">
 
                 <span className={styles.span}>
-                    ¿Qué símbolos cayeron parados?
+                    {i18["Throw"].question_stop3}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                    {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -222,7 +224,7 @@ const StandThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                    {i18["Throw"].coin2}
                 </span>
             </div>
 
@@ -248,21 +250,16 @@ const StandThrow: FC<Props> = ({
         case 4:
           return (
             <>
-      <div className="flex flex-col items-center my-4">
-                <span className={styles.span}>
-                    Caracterize su Lanzamiento Especial
-                </span>
-        </div>
 
       <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó delante?
+                    {i18["Throw"].question_mount_stops1}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                    {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -293,7 +290,7 @@ const StandThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                    {i18["Throw"].coin2}
                 </span>
             </div>
 
@@ -318,13 +315,13 @@ const StandThrow: FC<Props> = ({
 
             <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó detras?
+                    {i18["Throw"].question_mount_stops2}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                    {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -355,7 +352,7 @@ const StandThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                    {i18["Throw"].coin2}
                 </span>
             </div>
 

@@ -15,7 +15,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReloadButtonReact from '../UI/ReloadButtonReact'
 
-const ThrowReact = () => {
+const ThrowReact = ({i18}) => {
 
     const [moneda1,setMoneda1] = useState(0)
     const [moneda2,setMoneda2] = useState(0)
@@ -82,7 +82,8 @@ const ThrowReact = () => {
                     // }
                     else if(result?.data){
                         console.log(result)
-                        window.location.href = `/throw/response/${result?.data}`
+                        const lng = Cookies.get('eons_lng') || 'en'
+                        window.location.href = `${lng=='es'?'/es':''}/throw/response/${result?.data}`
                     }
                     setCount(count+1)
                     scrollToTop()
@@ -93,7 +94,7 @@ const ThrowReact = () => {
                 })
                 } catch (error) {
                     console.log(error)
-                    toast.error("Error Inesperado, Verifique su conexión a internet")
+                    toast.error(i18['Throw'].fecth_error)
                     setLoading(false)
                 }
             setLoading(false)
@@ -106,7 +107,7 @@ const ThrowReact = () => {
            await closeThrow(Cookies.get('eons_token')||'')
            .then((response)=>{
                 console.log(response)
-                toast.success("Diálogo Cerrado Exitosamente")
+                toast.success(i18['Throw'].dialog_close)
 
                 setCount(1)
                 setLastThrow('00')
@@ -153,6 +154,7 @@ const ThrowReact = () => {
             case types.normal:
                 return (
                 <NormalThrow
+                i18={i18}
                 loading={loading}
                 moneda1={moneda1}
                 setMoneda1={setMoneda1}
@@ -164,6 +166,7 @@ const ThrowReact = () => {
             case types.parado:
                 return (
                 <StandThrow
+                i18={i18}
                 loading={loading}
                 moneda1={moneda1}
                 setMoneda1={setMoneda1}
@@ -176,6 +179,7 @@ const ThrowReact = () => {
             case types.montado:
                 return (
                 <MountThrow
+                i18={i18}
                 throwType={throwType}
                 loading={loading}
                 moneda1={moneda1}
@@ -187,6 +191,7 @@ const ThrowReact = () => {
             case types.tranversal:
                 return (
                 <TranversalThrow
+                i18={i18}
                 loading={loading}
                 moneda1={moneda1}
                 setMoneda1={setMoneda1}
@@ -199,6 +204,7 @@ const ThrowReact = () => {
             case types.parado_montado:
                 return (
                     <MountThrow
+                    i18={i18}
                     throwType={throwType}
                     loading={loading}
                     moneda1={moneda1}
@@ -219,26 +225,26 @@ const ThrowReact = () => {
         rounded-xl bg-white shadow-xl shadow-black/5 
         ring-1 ring-slate-700/10`}>
             <div className="throw-counter my-4">
-                <label>lanzamiento {count}</label>
+                <label>{i18['Throw'].throw} {count}</label>
             </div>
             
             {viewController()}
 
             <div className="flex flex-col items-center mt-8 my-4">
                 <span>
-                    Lanzamiento Especial
+                    {i18['Throw'].especial_throw}
                 </span>
             </div>
 
             <div className="flex flex-wrap gap-2 justify-center my-4">
                 <div onClick={()=>{
-                    toast.update("Defina su tiro especial")
+                    //toast.update("Defina su tiro especial")
                     scrollToTop();
                     setThrowType('montado')
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text="Cayeron montadas"/>
+                <ButtonReact loading={loading} color="white" text={i18['Throw'].mount_throw}/>
                 </div>
                 <div onClick={()=>{
                     scrollToTop();
@@ -246,7 +252,7 @@ const ThrowReact = () => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text="Cayeron paradas"/>
+                <ButtonReact loading={loading} color="white" text={i18['Throw'].tranversal_throw}/>
                 </div>
                 <div onClick={()=>{
                     scrollToTop();
@@ -254,7 +260,7 @@ const ThrowReact = () => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text="Cayó tranversal"/>
+                <ButtonReact loading={loading} color="white" text={i18['Throw'].stops_throw}/>
                 </div>
             </div> 
         </div>

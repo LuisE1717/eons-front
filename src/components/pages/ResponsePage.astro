@@ -6,6 +6,7 @@ import Footer from "../Footer.astro";
 import Header from "../Header.astro";
 import Button from "../UI/Button.astro";
 import ThrowReact from '../React/ThrowReact'
+import { getI18N } from "../../i18n";
 
 
 const {response} = Astro.props
@@ -75,6 +76,9 @@ function getTextBeforeFirstComma(texto: string): string {
     // Si no hay comas, retorna una cadena vacía o un mensaje indicando que no se encontró la coma
     return '';
 }
+
+const currentLocale  = Astro?.currentLocale || 'en'
+const i18 = getI18N({currentLocale})
 ---
 
 <!doctype html>
@@ -94,9 +98,9 @@ function getTextBeforeFirstComma(texto: string): string {
             <div >
             <div class="flex flex-col items-center my-4">
                 {key==0?
-                    <span>Respuesta Principal</span>
+                    <span>{i18['Throw'].main_response}:</span>
                     :
-                    <span>Respuesta Especial:</span>
+                    <span>{i18['Throw'].especial_response}:</span>
                     <p>{getTextBeforeFirstComma(item)}</p>
                 }
             </div>
@@ -119,6 +123,10 @@ function getTextBeforeFirstComma(texto: string): string {
     span {
         color: #232323;
         font-weight: 700;
+    }
+
+    html{
+        overflow-y: auto;
     }
 
     div {

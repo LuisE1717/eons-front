@@ -11,7 +11,8 @@ interface Props{
     setMoneda2:Dispatch<SetStateAction<number>>;
     handleSelectCoin:any;
     setType:Dispatch<SetStateAction<string>>;
-    sendThrow:any
+    sendThrow:any;
+    i18:any;
 }
 
 const TranversalThrow: FC<Props> = ({
@@ -22,7 +23,8 @@ const TranversalThrow: FC<Props> = ({
     setMoneda2,
     handleSelectCoin,
     setType,
-    sendThrow
+    sendThrow,
+    i18
 }) => {
 
   const [step,setStep] = useState(0)
@@ -36,16 +38,16 @@ const TranversalThrow: FC<Props> = ({
           <>
             <div className="flex flex-col items-center mt-8 my-4">
                     <span>
-                        Como cayeron las monedas?
+                      {i18["Throw"].question2}
                     </span>
                 </div>
 
           <div className="flex flex-wrap gap-2 justify-center my-4">
           <div onClick={()=>{setStep(1)}}>
-          <ButtonReact loading={loading} color="white" text="Solo una cayó tranversal"/>
+          <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_tranversal1}/>
           </div>
           <div onClick={()=>{sendThrow()}}>
-            <ButtonReact loading={loading} color="white" text="Ambas cayeron tranversales"/>
+            <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_tranversal2}/>
           </div>
           </div> 
         </>
@@ -56,13 +58,13 @@ const TranversalThrow: FC<Props> = ({
 
       <div className="flex flex-col items-center my-4">
                 <span className={styles.span}>
-                    ¿Qué moneda no cayó tranversal?
+                  {i18["Throw"].question_tranversal}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                  {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -89,7 +91,7 @@ const TranversalThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                  {i18["Throw"].coin2}
                 </span>
             </div>
 
