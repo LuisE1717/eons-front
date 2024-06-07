@@ -1,12 +1,12 @@
 import React, { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
 import Coin from '../UI/Coins/Coin'
-import Button from '../../../src/components/UI/Button.astro'
+import Button from '../../../components/UI/Button.astro'
 import styles from './ThrowReact.module.css'
-import ButtonReact from '../../../src/components/UI/ButtonReact'
-import NextButton from '../../../src/components/UI/NextButton'
-import { closeThrow, postThrow } from '../../../src/utils/api/throwApi'
+import ButtonReact from '../../../components/UI/ButtonReact'
+import NextButton from '../../../components/UI/NextButton'
+import { closeThrow, postThrow } from '../../../utils/api/throwApi'
 import Cookies from 'js-cookie'
-import { CoinsInterpreter, types } from '../../../src/utils/CoinsInterprete'
+import { CoinsInterpreter, types } from '../../../utils/CoinsInterprete'
 import NormalThrow from '../views/NormalThrow'
 import MountThrow from '../views/MountThrow'
 import StandThrow from '../views/StandThrow'
@@ -223,19 +223,19 @@ const ThrowReact = ({i18}) => {
     <div className= {`${styles.card} z-10 
         rounded-xl bg-white shadow-xl shadow-black/5 
         ring-1 ring-slate-700/10`}>
-            <div className="throw-counter my-4">
+            <div className={`throw-counter my-4`}>
                 <label>{i18['Throw'].throw} {count}</label>
             </div>
             
             {viewController()}
 
-            <div className="flex flex-col items-center mt-8 my-4">
+            <div className={`flex flex-col items-center mt-8 my-4`}>
                 <span>
                     {i18['Throw'].especial_throw}
                 </span>
             </div>
 
-            <div className="flex flex-wrap gap-2 justify-center my-4">
+            <div className={`flex flex-wrap gap-2 justify-center my-4`}>
                 <div onClick={()=>{
                     //toast.update("Defina su tiro especial")
                     scrollToTop();
@@ -264,7 +264,7 @@ const ThrowReact = ({i18}) => {
             </div> 
         </div>
 
-        <div className='flex mt-8 flex-row justify-center'>
+        <div className={`flex flex-row justify-center mt-8`}>
           {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
           <NextButton loading={loading} sendThrow={sendThrow}/>  
         </div>

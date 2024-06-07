@@ -1,7 +1,7 @@
 import React, { useEffect, useState, type FC } from 'react'
-import OutlineInputReact from '../../../../../src/components/UI/input/OutlineInputReact'
+import OutlineInputReact from '../../../../../components/UI/input/OutlineInputReact'
 import styles from '../../Auth/React/Auth.module.css'
-import { validMail } from '../../../../../src/utils/validations';
+import { validMail } from '../../../../../utils/validations';
 
 interface Props {
     token?:string;

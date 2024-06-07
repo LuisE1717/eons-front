@@ -1,10 +1,10 @@
 import React, { type Dispatch, type SetStateAction } from 'react'
 import style from './LoginButtonReact.module.css'
-import {intanceAxios} from '../../../../../src/utils/api/index'
-import { postLogin, singUp } from '../../../../../src/utils/api/userApi';
+import {intanceAxios} from '../../../../../utils/api/index'
+import { postLogin, singUp } from '../../../../../utils/api/userApi';
 import Cookies from 'js-cookie'
-import { validMail, validPass } from '../../../../../src/utils/validations';
-import { setCookie } from '../../../../../src/utils/cookies/Cookies';
+import { validMail, validPass } from '../../../../../utils/validations';
+import { setCookie } from '../../../../../utils/cookies/Cookies';
 
 interface Props {
     text: string;
