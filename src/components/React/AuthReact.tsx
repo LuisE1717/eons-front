@@ -13,6 +13,8 @@ interface Props {
     sing_up_switch:string;
     password_input_label:string;
     forget_pass:string;
+    invalid_email_text:string;
+    invalid_pass_text:string;
 }
 
 const AuthReact: React.FC<Props> = ({
@@ -23,7 +25,9 @@ const AuthReact: React.FC<Props> = ({
     sing_up_switch,
     password_input_label,
     forget_pass,
-    text_loading
+    text_loading,
+    invalid_email_text,
+    invalid_pass_text
 }) => {
 
     const [section,setSection] = useState(state)
@@ -83,9 +87,9 @@ const AuthReact: React.FC<Props> = ({
 
         <div className={`flex flex-col ${styles.inputs}`}>
             <OutlineInputReact loading={loading} setValue={setEmail} value={email} type={"text"} label="Email"/>
-            <label className={`${validation_mail || email==''?'hidden':''} ml-5 text-lg text-red-600`}>*sfafadfs</label>
+            <label className={`${validation_mail || email==''?'hidden':''} ml-5 text-lg text-red-600`}>{invalid_email_text}</label>
             <OutlineInputReact loading={loading} setValue={setPass} value={password} type={"password"} label={password_input_label}/>
-            <label className={`${validation_pass || password==''?'hidden':''} ml-5 text-lg text-red-600`}>*sfafadfs</label>
+            <label className={`${validation_pass || password==''?'hidden':''} ml-5 text-lg text-red-600`}>{invalid_email_text}</label>
         </div>
 
         <div className={`flex flex-col mt-8 ${styles.inputs}`}>
