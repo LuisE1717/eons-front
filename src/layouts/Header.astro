@@ -1,12 +1,12 @@
 ---
 
-import HeaderLink from './HeaderLink.astro';
+import HeaderLink from '../components/HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
-import Logo from './Logo.astro';
-import Dropdown from './UI/Dropdown/TranslationMenu.astro';
+import Logo from '../components/Logo.astro';
+import Dropdown from '../components/UI/Dropdown/TranslationMenu.astro';
 import { getI18N } from '../i18n';
-import SesionMenu from './UI/Dropdown/SesionMenu.astro';
-import Essence from './UI/Essence.astro';
+import SesionMenu from '../components/UI/Dropdown/SesionMenu.astro';
+import Essence from '../components/UI/EssenceCounter.astro';
 
 const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})

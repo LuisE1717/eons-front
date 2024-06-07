@@ -1,19 +1,18 @@
 import React, { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
-import Coin from '../../../modules/lanzamiento/UI/Coin'
-import Button from '../UI/Button.astro'
+import Coin from '../UI/Coins/Coin'
+import Button from '../../../src/components/UI/Button.astro'
 import styles from './ThrowReact.module.css'
-import ButtonReact from '../UI/ButtonReact'
-import NextButton from '../UI/NextButton'
-import { closeThrow, postThrow } from '../../utils/api/throwApi'
+import ButtonReact from '../../../src/components/UI/ButtonReact'
+import NextButton from '../../../src/components/UI/NextButton'
+import { closeThrow, postThrow } from '../../../src/utils/api/throwApi'
 import Cookies from 'js-cookie'
-import { CoinsInterpreter, types } from '../../utils/CoinsInterprete'
-import NormalThrow from '../../../modules/lanzamiento/views/NormalThrow'
-import MountThrow from '../../../modules/lanzamiento/views/MountThrow'
-import StandThrow from '../../../modules/lanzamiento/views/StandThrow'
-import TranversalThrow from '../../../modules/lanzamiento/views/TranversalThrow'
+import { CoinsInterpreter, types } from '../../../src/utils/CoinsInterprete'
+import NormalThrow from '../views/NormalThrow'
+import MountThrow from '../views/MountThrow'
+import StandThrow from '../views/StandThrow'
+import TranversalThrow from '../views/TranversalThrow'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ReloadButtonReact from '../UI/ReloadButtonReact'
 
 const ThrowReact = ({i18}) => {
 
