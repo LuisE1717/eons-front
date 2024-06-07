@@ -1,5 +1,5 @@
 import React, { type Dispatch, type FC, type SetStateAction } from 'react'
-import ButtonReact from '../../../src/components/UI/ButtonReact'
+import ButtonReact from '../../../components/UI/ButtonReact'
 import Coin from '../UI/Coins/Coin'
 import styles from '../aplication/ThrowReact.module.css'
 
@@ -70,7 +70,7 @@ const NormalThrow: FC<Props> = ({
                 </span>
             </div>
 
-            <div className="flex grid-col justify-center my-4">
+            <div className={`flex grid-col justify-center my-4`} >
                 <Coin id={1} svg="moon" condition="face"
                 loading={loading}
                 selectedCoin={moneda2}
