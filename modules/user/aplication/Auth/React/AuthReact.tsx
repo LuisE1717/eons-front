@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import LoginButtonReact from '../UI/button/LoginButtonReact';
+import LoginButtonReact from '../Components/LoginButtonReact';
 import styles from './Auth.module.css'
-import OutlineInputReact from '../UI/input/OutlineInputReact';
-import { validMail, validPass } from '../../utils/validations';
+import OutlineInputReact from '../../../../../src/components/UI/input/OutlineInputReact';
+import { validMail, validPass } from '../../../../../src/utils/validations';
 
 interface Props {
     state:string;

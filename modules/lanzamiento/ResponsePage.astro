@@ -1,12 +1,12 @@
 ---
-import Coin from "../../../modules/lanzamiento/UI/Coin"
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import BaseHead from "../BaseHead.astro";
-import Footer from "../Footer.astro";
-import Header from "../Header.astro";
-import Button from "../UI/Button.astro";
-import ThrowReact from '../React/ThrowReact'
-import { getI18N } from "../../i18n";
+import Coin from "./UI/Coins/Coin"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../src/consts";
+import BaseHead from "../../src/layouts/BaseHead.astro";
+import Footer from "../../src/layouts/Footer.astro";
+import Header from "../../src/layouts/Header.astro";
+import Button from "../../src/components/UI/Button.astro";
+import ThrowReact from './aplication/ThrowReact'
+import { getI18N } from "../../src/i18n";
 
 
 const {response} = Astro.props
