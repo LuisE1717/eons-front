@@ -11,6 +11,7 @@ interface Props{
     setMoneda2:Dispatch<SetStateAction<number>>;
     handleSelectCoin:any;
     lastThrow:string;
+    i18:any
 }
 
 const NormalThrow: FC<Props> = ({
@@ -20,7 +21,8 @@ const NormalThrow: FC<Props> = ({
     moneda2,
     setMoneda2,
     handleSelectCoin,
-    lastThrow
+    lastThrow,
+    i18
 }) => {
   return (
     <>
@@ -31,13 +33,13 @@ const NormalThrow: FC<Props> = ({
                 </span>} */}
 
                 <span className={styles.span}>
-                    ¿Qué símbolo cayó hacia arriba?
+                    {i18["Throw"].question}
                 </span>
             </div>
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span className={styles.span}>
-                    Moneda 1
+                {i18["Throw"].coin1}
                 </span>
             </div>
 
@@ -64,7 +66,7 @@ const NormalThrow: FC<Props> = ({
 
             <div className={`flex flex-col ${styles.coin_number} my-4`}>
                 <span>
-                    Moneda 2
+                {i18["Throw"].coin2}
                 </span>
             </div>
 

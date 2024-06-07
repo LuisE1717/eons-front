@@ -49,10 +49,10 @@ console.log(user)
 </style>
   
 <script>
-    import { setCookie } from '../../../utils/cookies/Cookies';
     import Cookies from 'js-cookie';
-
-    document.addEventListener('DOMContentLoaded', function() {
+    import { deleteCookie, setCookie } from '../../../utils/cookies/Cookies';
+    document.addEventListener('DOMContentLoaded', async function() {
+      const { signOut } = await import("auth-astro/client")
       const dropdownButton = document.getElementById('session-menu');
       const dropdownMenu = document.getElementById('dropdownUsers');
       const english = document.getElementById('profile');
@@ -87,11 +87,13 @@ console.log(user)
         }
       }
   
-      function LogOut(){
+      async function LogOut (){
         if(log_out){
           const currentLocale = Cookies.get('eons_lng')
           Cookies.remove('eons_token')
           Cookies.remove('eons_user')
+          //console.log('e')
+          await signOut()
           window.location.href = `${currentLocale=='en'?'':'/es'}/auth`
         }
       }

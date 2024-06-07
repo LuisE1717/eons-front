@@ -1,13 +1,19 @@
 ---
+
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import Logo from './Logo.astro';
 import Dropdown from './UI/Dropdown/TranslationMenu.astro';
 import { getI18N } from '../i18n';
 import SesionMenu from './UI/Dropdown/SesionMenu.astro';
+import Essence from './UI/Essence.astro';
 
 const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})
+
+const {path} = Astro.props
+
+console.log(path)
 ---
 
 <header>
@@ -24,15 +30,21 @@ const i18 = getI18N({currentLocale})
 		<Logo/>
 
 		
-		
-		<div class="social-links">
+		<div class="flex">
+			
+			<div class={`essence ${path=="landing"?'hidden':''}`}>
+				<Essence/>
+			</div>
+			
+			<div class="social-links">
 
-		<div class="px-2 svg">
-			<Dropdown/>
-		</div>
-		<div class="px-2 svg">
-			<SesionMenu/>
-		</div>
+			<div class="px-2 svg">
+				<Dropdown/>
+			</div>
+			<div class="px-2 svg">
+				<SesionMenu/>
+			</div>
+			</div>
 		</div>
 	</nav>
 </header>
@@ -66,8 +78,11 @@ const i18 = getI18N({currentLocale})
 	}
 
 	.social-links {
-		margin-top: -2em;
+		margin-top: -1em;
 		margin-right: 2em;
+	}
+	.essence {
+		margin-right: 4em;
 	}
 	@media (max-width: 720px) {
 		.social-links {
