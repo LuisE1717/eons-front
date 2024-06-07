@@ -252,7 +252,7 @@ const ThrowReact = ({i18}) => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text={i18['Throw'].tranversal_throw}/>
+                <ButtonReact loading={loading} color="white" text={i18['Throw'].stops_throw}/>
                 </div>
                 <div onClick={()=>{
                     scrollToTop();
@@ -260,7 +260,7 @@ const ThrowReact = ({i18}) => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text={i18['Throw'].stops_throw}/>
+                <ButtonReact loading={loading} color="white" text={i18['Throw'].tranversal_throw}/>
                 </div>
             </div> 
         </div>

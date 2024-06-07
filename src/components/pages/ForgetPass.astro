@@ -1,40 +1,12 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { Image } from "astro:assets";
-import AuthHeader from "../../components/AuthHeader.astro";
-import AuthReact from "../React/AuthReact"
-import OutlineInput from "../../components/UI/input/OutlineInput.astro";
-import LoginButton from "../../components/UI/button/LoginButton.astro";
-import AccountsButton from "../../components/UI/AccountsButton.astro";
-import { getI18N } from "../../i18n";
-import { getSession } from "auth-astro/server";
-import { singUp } from "../../utils/api/userApi";
-import { setCookie } from "../../utils/cookies/Cookies";
-
-const section = "login"
-
-const currentLocale  = Astro?.currentLocale || 'en'
-const i18 = getI18N({currentLocale})
+import AuthHeader from "../AuthHeader.astro";
+import Footer from "../Footer.astro";
 ---
 
-
-  <body>
+<body>
     <AuthHeader/>
     <main class="flex flex-col">
-        <AuthReact button_login={i18["Auth"].login_button} 
-        text_loading={i18["Auth"].text_loading}
-        button_singUp={i18["Auth"].singUp_button} 
-        state={section} 
-        login_switch={i18["Auth"].login_switch}
-        sing_up_switch={i18["Auth"].sing_up_switch}
-        password_input_label={i18["Auth"].password_input_label}
-        forget_pass={i18["Auth"].forget_pass}
-        invalid_email_text={i18["Auth"].invalid_email_text}
-        invalid_pass_text={i18["Auth"].invalid_pass_text}
-        client:load/>
+        
 
         <div class="flex flex-row justify-around accounts">
             <AccountsButton text="Microsoft"/>
