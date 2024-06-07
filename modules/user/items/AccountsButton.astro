@@ -1,7 +1,7 @@
 ---
 import { getSession } from 'auth-astro/server'
-import { postLogin, singUp } from '../../utils/api/userApi';
-import { setCookie } from '../../utils/cookies/Cookies';
+import { postLogin, singUp } from '../../../src/utils/api/userApi';
+import { setCookie } from '../../../src/utils/cookies/Cookies';
 interface Props {
 	text: string;
     bgColor?:string;

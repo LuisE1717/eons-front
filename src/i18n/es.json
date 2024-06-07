@@ -23,14 +23,17 @@
     "login_switch": "Iniciar Sesión",
     "sing_up_switch": "Crear Cuenta",
     "password_input_label": "Contraseña",
-    "forget_pass": "¿Has olvidado tu contraseña?"
+    "forget_pass": "¿Has olvidado tu contraseña?",
+    "invalid_email_text":"*Correo no válido",
+    "invalid_pass_text":"*Contraseña no valida, debe contener entre 8 y 16 caracteres"
   },
   "Payment": {
     "Labels": {
       "number": "Número de tarjeta",
       "expiration_date": "Día de expiración",
       "name": "Nombre en Tarjeta"
-  }
+    }
+  },
   "Throw": {
         "fecth_error":"Error inesperado, Verifique su conexión a internet",
         "dialog_close":"Diálogo cerrado exitosamente",

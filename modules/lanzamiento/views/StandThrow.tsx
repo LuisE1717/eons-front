@@ -1,6 +1,6 @@
 import React, { useState, type Dispatch, type FC, type SetStateAction } from 'react'
-import Coin from '../UI/Coin';
-import styles from '../../../src/components/React/ThrowReact.module.css'
+import Coin from '../UI/Coins/Coin';
+import styles from '../aplication/ThrowReact.module.css'
 import ButtonReact from '../../../src/components/UI/ButtonReact';
 
 interface Props{
