@@ -1,7 +1,7 @@
 ---
-import BaseHead from "../BaseHead.astro";
-import Header from "../Header.astro";
-import Footer from "../Footer.astro";
+import BaseHead from "../../layouts/BaseHead.astro";
+import Header from "../../layouts/Header.astro";
+import Footer from "../../layouts/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { Image } from "astro:assets";
 
@@ -16,8 +16,6 @@ const lng = Astro.cookies.get('eons_lng')?.value
 
 const user = Astro.cookies.get('eons_user')?.value
 ---
-
-
   <body id="app">
     <Header path={"landing"}/>
 
@@ -74,7 +72,7 @@ const user = Astro.cookies.get('eons_user')?.value
 
           <div class="flex justify-center">
             <a
-              href={user?(lng==='es'?"es/throw":'/throw'):`${lng==='es'?'':'/es'}/auth`}
+              href={user?(lng==='es'?"/es/throw":'/throw'):(`${lng==='es'?'':'/es'}/auth`)}
               class="inline-flex justify-center
 			   rounded-full shadow-md shadow-black/5
 			   text-md py-3 px-4 bg-white/0 hover:bg-white/25 hover:bg-slate-100"

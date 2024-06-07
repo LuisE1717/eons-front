@@ -23,13 +23,16 @@
     "login_switch": "Login",
     "sing_up_switch": "Sing-Up",
     "password_input_label": "Password",
-    "forget_pass": "Has you forgot your password?"
+    "forget_pass": "Has you forgot your password?",
+    "invalid_email_text":"*Invalid Email",
+    "invalid_pass_text":"*Invalid Password, must contain between 8 and 16 characters"
   },
   "Payment": {
     "Labels": {
       "number": "Número de tarjeta",
       "expiration_date": "Día de expiración",
       "name": "Nombre en Tarjeta"
+    }
   },
   "Throw":{
         "fecth_error":"Unexpected Error, Check your internet connection",
