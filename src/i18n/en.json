@@ -30,6 +30,33 @@
       "number": "Número de tarjeta",
       "expiration_date": "Día de expiración",
       "name": "Nombre en Tarjeta"
-    }
+  },
+  "Throw":{
+        "fecth_error":"Unexpected Error, Check your internet connection",
+        "dialog_close":"Dialog Successfully Closed",
+        "throw":"throw",
+        "especial_throw":"Especial Throw",
+        "mount_throw":"Mounted",
+        "tranversal_throw":"Cross",
+        "stops_throw":"Stops",
+        "question":"Which symbol fell up?",
+        "coin1":"Coin 1",
+        "coin2":"Coin 2",
+        "question2":"How did the coins fall?",
+        "question_throw_stop1":"It only fell one stop",
+        "question_throw_stop2":"They both fell still",
+        "question_throw_stop3":"They both fell standing and mounted",
+        "question_mount1":"What symbol fell on top?",
+        "question_mount_stops1":"What symbol fell in front?",
+        "question_mount2":"What symbol fell under?",
+        "question_mount_stops2":"What symbol fell behind?",
+        "question_stop1":"What symbol fell flat?",
+        "question_stop2":"What symbol fell normal?",
+        "question_stop3":"What symbols fell still?",
+        "question_throw_tranversal1":"Only one transverse fell",
+        "question_throw_tranversal2":"Both fell transversally",
+        "question_tranversal":"Only one transverse fell",
+        "main_response":"Main Answer",
+        "especial_response":"Especial Answer"
   }
 }

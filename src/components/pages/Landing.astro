@@ -12,12 +12,14 @@ import LoadingSpinner from '../../components/UI/LoadingSpinner.astro'
 const currentLocale  = Astro?.currentLocale || 'en'
 const i18 = getI18N({currentLocale})
 
+const lng = Astro.cookies.get('eons_lng')?.value
+
 const user = Astro.cookies.get('eons_user')?.value
 ---
 
 
   <body id="app">
-    <Header />
+    <Header path={"landing"}/>
 
     <main>
       <div class="flex flex-col md:flex-row items-center">
@@ -72,7 +74,7 @@ const user = Astro.cookies.get('eons_user')?.value
 
           <div class="flex justify-center">
             <a
-              href={user?"/throw":`${currentLocale=='en'?'':'/es'}/auth`}
+              href={user?(lng==='es'?"es/throw":'/throw'):`${lng==='es'?'':'/es'}/auth`}
               class="inline-flex justify-center
 			   rounded-full shadow-md shadow-black/5
 			   text-md py-3 px-4 bg-white/0 hover:bg-white/25 hover:bg-slate-100"
@@ -240,42 +242,3 @@ const user = Astro.cookies.get('eons_user')?.value
       }
     </style>
   </body>
-
-<script>
-const loader = document.getElementById('spinner')
-const html = document.querySelector('html')
-
-  if(loader && html){
-    loader.style.display = 'flex'
-    html.style.overflowY = 'hidden'
-  }
-  window.onload = function() {
-  console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
-  
-  if (loader && html){
-    loader.style.display = 'none';
-    html.style.overflowY = 'auto'
-  }
-    
-};
-
-
-
-  document.addEventListener('DOMContentLoaded', function() {
-  const images = document.querySelectorAll('img');
-  const loader = document.getElementById('spinner')
-  let loadedImagesCount = 0;
-
-  // images.forEach(function(image) {
-  //   image.onload = function() {
-  //     console.log(loadedImagesCount)
-  //     console.log(images.length)
-  //     loadedImagesCount++;
-  //     if (loadedImagesCount === images.length && loader) {
-  //       loader.style.display = 'none';
-  //     }
-  //   };
-  // });
-});
-
-</script>

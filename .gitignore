@@ -12,10 +12,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-pnpm-lock.yaml
 
 # environment variables
 .env
+.env.local
 .env.production
 
 # macOS-specific files
