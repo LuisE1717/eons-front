@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 
-export default function Button() {
+interface Props {
+  text: string;
+  question: string;
+}
+
+export default function Button({ question, text }: Props) {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
@@ -33,10 +38,10 @@ export default function Button() {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <p className="mb-2 text-sm text-gray-400">No te ha llegado el correo?</p>
+      <p className="mb-2 text-sm text-gray-400">{question}</p>
 
       <button disabled={disabled} onClick={handleClick} className={CLASS}>
-        Reenviar correo
+        {text}
       </button>
     </div>
   );
