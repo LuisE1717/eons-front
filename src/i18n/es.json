@@ -24,8 +24,8 @@
     "sing_up_switch": "Crear Cuenta",
     "password_input_label": "Contraseña",
     "forget_pass": "¿Has olvidado tu contraseña?",
-    "invalid_email_text":"*Correo no válido",
-    "invalid_pass_text":"*Contraseña no valida, debe contener entre 8 y 16 caracteres"
+    "invalid_email_text": "*Correo no válido",
+    "invalid_pass_text": "*Contraseña no valida, debe contener entre 8 y 16 caracteres"
   },
   "Payment": {
     "Labels": {
@@ -34,32 +34,38 @@
       "name": "Nombre en Tarjeta"
     }
   },
+  "Verification": {
+    "title": "Validar tu cuenta de correo",
+    "message": "Pronto recibirás un correo con la clave para validar tu cuenta",
+    "send_button": "Reenviar correo",
+    "error_question": "No te ha llegado el correo?"
+  },
   "Throw": {
-        "fecth_error":"Error inesperado, Verifique su conexión a internet",
-        "dialog_close":"Diálogo cerrado exitosamente",
-        "throw":"lanzamiento",
-        "especial_throw":"Lanzamiento Especial",
-        "mount_throw":"Cayeron Montadas",
-        "tranversal_throw":"Cayeron Tranversal",
-        "stops_throw":"Cayeron Paradas",
-        "question":"¿Qué símbolo cayó hacia arriba?",
-        "coin1":"Moneda 1",
-        "coin2":"Moneda 2",
-        "question2":"¿Cómo cayeron las monedas?",
-        "question_throw_stop1":"Sólo cayó una parada",
-        "question_throw_stop2":"Cayeron paradas",
-        "question_throw_stop3":"Cayeron de paradas y montadas",
-        "question_mount1":"¿Qué símbolo cayó encima?",
-        "question_mount_stops1":"¿Qué símbolo cayó delante?",
-        "question_mount2":"¿Qué símbolo cayó debajo?",
-        "question_mount_stops2":"¿Qué símbolo cayó detrás?",
-        "question_stop1":"¿Qué símbolo cayó parado?",
-        "question_stop2":"¿Qué símbolo cayó normal?",
-        "question_stop3":"¿Qué símbolos se quedaron parados?",
-        "question_throw_tranversal1":"Sólo cayó un transversal",
-        "question_throw_tranversal2":"Ambos cayeron transversal",
-        "question_tranversal":"Sólo cayó uno transversal",
-        "main_response":"Respuesta Princiapal",
-        "especial_response":"Respuesta Especial"
+    "fecth_error": "Error inesperado, Verifique su conexión a internet",
+    "dialog_close": "Diálogo cerrado exitosamente",
+    "throw": "lanzamiento",
+    "especial_throw": "Lanzamiento Especial",
+    "mount_throw": "Cayeron Montadas",
+    "tranversal_throw": "Cayeron Tranversal",
+    "stops_throw": "Cayeron Paradas",
+    "question": "¿Qué símbolo cayó hacia arriba?",
+    "coin1": "Moneda 1",
+    "coin2": "Moneda 2",
+    "question2": "¿Cómo cayeron las monedas?",
+    "question_throw_stop1": "Sólo cayó una parada",
+    "question_throw_stop2": "Cayeron paradas",
+    "question_throw_stop3": "Cayeron de paradas y montadas",
+    "question_mount1": "¿Qué símbolo cayó encima?",
+    "question_mount_stops1": "¿Qué símbolo cayó delante?",
+    "question_mount2": "¿Qué símbolo cayó debajo?",
+    "question_mount_stops2": "¿Qué símbolo cayó detrás?",
+    "question_stop1": "¿Qué símbolo cayó parado?",
+    "question_stop2": "¿Qué símbolo cayó normal?",
+    "question_stop3": "¿Qué símbolos se quedaron parados?",
+    "question_throw_tranversal1": "Sólo cayó un transversal",
+    "question_throw_tranversal2": "Ambos cayeron transversal",
+    "question_tranversal": "Sólo cayó uno transversal",
+    "main_response": "Respuesta Princiapal",
+    "especial_response": "Respuesta Especial"
   }
 }
