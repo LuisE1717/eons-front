@@ -3,6 +3,7 @@ import LoginButtonReact from '../Components/LoginButtonReact';
 import styles from './Auth.module.css'
 import OutlineInputReact from '../../../../../components/UI/input/OutlineInputReact';
 import { validMail, validPass } from '../../../../../utils/validations';
+import Cookies from 'js-cookie';
 
 interface Props {
     state:string;
@@ -107,13 +108,15 @@ const AuthReact: React.FC<Props> = ({
         </div>  
 
         {section == "login" &&
-            <div className="flex flex-col mt-8 items-center">
+        <div className="flex flex-col mt-8 items-center">
+            <a href={`${Cookies.get('eons_lng') =='es'?'/es':''}/auth/forget-password`}>
             <span
             className="text-sm"
             style={{color: "#d161b4"}}
             >
                 {forget_pass}
             </span>
+            </a>
         </div>}   
     </>
   )
