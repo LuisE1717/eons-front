@@ -1,23 +1,33 @@
 ---
+import OutlineInputReact from "../../../../components/UI/input/OutlineInputReact";
 import AuthHeader from "../../../../layouts/AuthHeader.astro";
 import Footer from "../../../../layouts/Footer.astro";
 import AccountsButton from "../../items/AccountsButton.astro";
+import ForgetPassReact from './React/ForgetPassReact'
+import styles from '../Auth/React/Auth.module.css'
 ---
 
 <body>
     <AuthHeader/>
     <main class="flex flex-col">
-        
 
-        <div class="flex flex-row justify-around accounts">
-            <AccountsButton text="Microsoft"/>
-            <AccountsButton text="Apple"/>
-            <AccountsButton text="Google"/>
+        <div class="flex flex-col items-center">
+            <img 
+            src={"/pixelcut-export.webp"}
+            width={400} 
+            height={400}
+            alt="login-image"
+            />
         </div>
-        
+
+        <div class="flex flex-col items-center">
+            <h4>asfasffsaf</h4>
+        </div>
+
+        <ForgetPassReact client:load/>
     </main>
     <Footer/>
-  </body>
+</body>
 
 <style>
 
