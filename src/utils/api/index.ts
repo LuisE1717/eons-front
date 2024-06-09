@@ -43,7 +43,7 @@ export function axiosI(apiToken : string|undefined ) {
                 const originalConfig = error.config;
                 // Access Token was expired
                 if (error.response.status === 401) {
-                    window.location.href =`${Cookies.get('eons_lng')=='es'?'/es':''}/auth}`
+                    window.location.href =`${Cookies.get('eons_lng')=='es'?'/es':''}/auth`
                 }
             }
             return Promise.reject(error);
