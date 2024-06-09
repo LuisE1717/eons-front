@@ -19,7 +19,7 @@ export default function ImageSection({
     "xl:items-start items-center",
     className,
     {
-      "flex-row-reverse": reverse,
+      "xl:flex-row-reverse": reverse,
       "flex-col-reverse": reverse,
       "flex-col": !reverse,
     }
