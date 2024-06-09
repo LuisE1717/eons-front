@@ -1,0 +1,104 @@
+---
+
+import HeaderLink from '../components/HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+import Logo from '../components/Logo.astro';
+import Dropdown from '../components/UI/Dropdown/TranslationMenu.astro';
+import { getI18N } from '../i18n';
+import SesionMenu from '../components/UI/Dropdown/SesionMenu.astro';
+import Essence from '../components/UI/EssenceCounter.astro';
+
+const currentLocale  = Astro?.currentLocale || 'en'
+const i18 = getI18N({currentLocale})
+
+const {path} = Astro.props
+
+console.log(path)
+---
+
+<header>
+	<nav>
+		<!-- <div class="social-links logo">
+			<img 
+			src='../../public/logo.webp' alt="logo-header"
+			height="48" width="128"
+			>
+			<h2><a c
+				lass="text-3xl" href="/">{SITE_TITLE}</a></h2>
+		</div> -->
+
+		<Logo/>
+
+		
+		<div class="flex">
+			
+			<div class={`essence ${path=="landing"?'hidden':''}`}>
+				<Essence/>
+			</div>
+			
+			<div class="social-links">
+
+			<div class="px-2 svg">
+				<Dropdown/>
+			</div>
+			<div class="px-2 svg">
+				<SesionMenu/>
+			</div>
+			</div>
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		margin: 0;
+		padding: 0em 0em;
+		background: white;
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	}
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+	.social-links,
+	.social-links a {
+		display: flex;
+	}
+
+	.social-links {
+		margin-top: -1em;
+		margin-right: 2em;
+	}
+	.essence {
+		margin-right: 4em;
+	}
+	@media (max-width: 720px) {
+		.social-links {
+			
+		}
+		svg {
+			width: 24;
+			height: 24;
+		}
+	}
+
+	.logo{
+		display: flex;
+	}
+
+	img {
+		padding: 0.5em 1em;
+	}
+</style>

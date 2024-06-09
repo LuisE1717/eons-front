@@ -1,0 +1,34 @@
+.inputs {
+    padding: 0em 20%;
+    margin-top: 2em;
+}
+
+.inputs2 {
+    padding: 0em 20%;
+    margin-bottom: 2em;
+}
+
+@media (min-width: 1500px){
+    .inputs {
+        padding: 0em 25%;
+    }
+}
+
+@media (max-width: 800px){
+    
+    .inputs {
+        padding: 0em 1em;
+    }
+
+    @media (max-width: 600px){
+        .inputs {
+            padding: 0em 0em;
+        }
+        @media (max-width:500px){
+            .login {
+                font-size: 0.75rem;
+                line-height: 1rem;
+            }
+        }
+    }
+}
