@@ -1,4 +1,7 @@
 {
+  "fecth_error": "Error inesperado, Verifique su conexión a internet",
+  "text_loading": "Cargando...",
+
   "Landing": {
     "text1": "Enormes e infinitos regalos serán entregados a todos",
     "text2": "Eons traerá consigo un avance Científico y Tecnológico de más de 10000 años en la próxima década.",
@@ -19,7 +22,6 @@
   "Auth": {
     "login_button": "Iniciar",
     "singUp_button": "Crear",
-    "text_loading": "Cargando...",
     "login_switch": "Iniciar Sesión",
     "sing_up_switch": "Crear Cuenta",
     "password_input_label": "Contraseña",
@@ -41,7 +43,6 @@
     "error_question": "No te ha llegado el correo?"
   },
   "Throw": {
-    "fecth_error": "Error inesperado, Verifique su conexión a internet",
     "dialog_close": "Diálogo cerrado exitosamente",
     "throw": "lanzamiento",
     "especial_throw": "Lanzamiento Especial",
@@ -67,5 +68,18 @@
     "question_tranversal": "Sólo cayó uno transversal",
     "main_response": "Respuesta Princiapal",
     "especial_response": "Respuesta Especial"
+  },
+  "RessetPassword":{
+    "title":"Recuperar contraseña",
+    "dont_exist_error":"Este correo no pertenece a ninguna cuenta",
+    "succes_send_mail":"Revisa tu bandeja de entrada de correo electrónico",
+    "message":"Introduce correctamente el correo electrónico asociado a tu cuenta. Pronto recibirás un correo electrónico con la clave para restablecer tu contraseña."
+  },
+  "ChangePassword":{
+    "title":"Recuperar contraseña",
+    "message":"Introduce correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
+    "label":"Nueva contraseña",
+    "send":"Enviar",
+    "succes":"Contraseña cambiada correctamente"
   }
 }

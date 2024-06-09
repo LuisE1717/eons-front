@@ -3,8 +3,10 @@ import LoginButtonReact from "../Components/LoginButtonReact";
 import styles from "./Auth.module.css";
 import OutlineInputReact from "../../../../../components/UI/input/OutlineInputReact";
 import { validMail, validPass } from "../../../../../utils/validations";
+import Cookies from 'js-cookie';
 
 interface Props {
+  currentLocale:string;
   state: string;
   button_login: string;
   button_singUp: string;
@@ -18,6 +20,7 @@ interface Props {
 }
 
 const AuthReact: React.FC<Props> = ({
+  currentLocale,
   state,
   button_login,
   button_singUp,
@@ -42,6 +45,8 @@ const AuthReact: React.FC<Props> = ({
     setValidation_mail(validMail(email));
     setValidation_pass(validPass(password));
   }, [email, password]);
+
+  //console.log(`${Cookies.get('eons_lng') =='es'?'/es':''}/auth/forget-password`)
 
   return (
     <>
@@ -140,11 +145,17 @@ const AuthReact: React.FC<Props> = ({
         />
       </div>
 
-      {section == "login" && (
+        {section == "login" &&
         <div className="flex flex-col mt-8 items-center">
-          <span className="text-sm text-primary">{forget_pass}</span>
-        </div>
-      )}
+            <a href={`${currentLocale =='es'?'/es':''}/auth/forget-password`}>
+            <span
+            className="text-sm"
+            style={{color: "#d161b4"}}
+            >
+                {forget_pass}
+            </span>
+            </a>
+        </div>}   
     </>
   );
 };
