@@ -1,0 +1,23 @@
+---
+import Footer from "../../layouts/Footer.astro";
+import Header from "../../layouts/Header.astro";
+import First from './components/First/First'
+import Third from './components/Third/Third'
+import Second from './components/Second/Second'
+import FirstStep from './components/FirstStep/FirstStep'
+import SecondStep from './components/SecondStep/SecondStep'
+---
+
+<body>
+    <Header/>
+        <div class="flex flex-col items-center w-full px-8">
+            <div class="flex flex-col max-w-[1200px] w-full">
+                <First/>
+                <FirstStep/>
+                <Second client:load/>
+                <SecondStep/>
+                <Third/>
+            </div>
+        </div>
+    <Footer/>
+</body>
