@@ -1,16 +1,19 @@
 import React, { useEffect, useState, type FC } from 'react'
 import OutlineInputReact from '../../../../../components/UI/input/OutlineInputReact'
-import styles from '../../Auth/React/Auth.module.css'
 import { validMail } from '../../../../../utils/validations';
-import buttonStyles from '../../Auth/Components/LoginButtonReact.module.css'
+import EmailConfirmation from '../../../../EmailConfirmation/EmailConfirmation.astro';
+import Button from '../React/components/Button/Button';
+import { postResetPass } from '../../../../../utils/api/userApi';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
-    token?:string;
+    i18:any;
 }
 
-const ForgetPassReact:FC<Props> = ({token}) => {
+const ForgetPassReact:FC<Props> = ({i18}) => {
 
-    const [state,setState] = useState<number>(token?3:1)
+    const [state,setState] = useState<number>(1)
     const [loading,setLoading] = useState(false)
 
     const [email,setEmail] = useState('')
@@ -21,44 +24,61 @@ const ForgetPassReact:FC<Props> = ({token}) => {
     },[email])
 
     const handleSubmit = async () =>{
+      setLoading(true)
         if(validMail(email)){
-
+            await postResetPass({email})
+            .then((response)=>{
+              toast.success(i18["RessetPassword"].succes_send_mail)
+              setLoading(false)
+            })
+            .catch(({response})=>{
+              console.log(response?.data?.message)
+              if(response?.data?.message=="Email does not exist")
+                toast.error(i18["RessetPassword"].dont_exist_error)
+              else{
+                toast.error(i18.fecth_error)
+              }
+              setLoading(false)
+            })
         }
     }
 
   return (
     <>
-        <div className="flex flex-col items-center">
-            <p>dgodijgiodsgosjdigjsdgoijdjgiosjgojsdgsdjgsdgsdgs</p>
+        <div className="flex flex-col text-center w-full mb-10">
+        <OutlineInputReact
+          loading={loading}
+          setValue={setEmail}
+          value={email}
+          type={"text"}
+          label="Email"
+        />
+        <label
+          className={`${
+            validation_mail || email == "" ? "hidden" : ""
+          } ml-5 text-lg text-red-600`}
+        >
+          {i18["Auth"].invalid_email_text}
+        </label>
         </div>
+        <Button 
+        loading={loading} 
+        handleSubmit={handleSubmit} 
+        text={i18.Verification.send_button} 
+        loading_text={i18["text_loading"]} 
+        question={i18.Verification.error_question}/>
 
-        <div className={`flex flex-col ${styles.inputs2}`}>
-            <OutlineInputReact
-            type="email"
-            label="Email"
-            setValue={setEmail}
-            value={email}
-            loading={loading}
-            />
-            <label className={`${validation_mail || email==''?'hidden':''} ml-5 text-lg text-red-600`}>{"invalid_email_text"}</label>
-        </div>
-
-        <div className={`flex flex-col mt-8 ${styles.inputs}`}>
-            <button disabled={loading} onClick={handleSubmit} className={
-                `inline-flex justify-center 
-                shadow-black/5 py-1 px-4 mb-4 mt-8
-                ${buttonStyles.LoginButton}
-                `}
-                >
-                {loading &&
-                <svg className="animate-spin -ml-1 mr-2 sm:mt-0 md:mt-1.5 md:h-5 md:w-5 h-4 w-4 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                }
-                <span>{'Siguiente'}</span>
-            </button>
-        </div>
+        <ToastContainer
+            position="bottom-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+        />
     </>
   )
 }

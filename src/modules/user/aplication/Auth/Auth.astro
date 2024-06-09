@@ -23,8 +23,10 @@ const i18 = getI18N({currentLocale})
   <body>
     <AuthHeader/>
     <main class="flex flex-col">
-        <AuthReact button_login={i18["Auth"].login_button} 
-        text_loading={i18["Auth"].text_loading}
+        <AuthReact 
+        currentLocale={currentLocale}
+        button_login={i18["Auth"].login_button} 
+        text_loading={i18["text_loading"]}
         button_singUp={i18["Auth"].singUp_button} 
         state={section} 
         login_switch={i18["Auth"].login_switch}
