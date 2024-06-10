@@ -8,7 +8,7 @@ interface Props {
 
 export default function Icon({ selected, icon, handleClick }: Props) {
   const CLASS = clsx(
-    "shadow-md shadow-gray-400",
+    "shadow-gray-400",
     "sm:px-6 px-3.5 sm:py-4 py-2.5",
     "rounded-2xl",
     "cursor-pointer",
@@ -16,6 +16,7 @@ export default function Icon({ selected, icon, handleClick }: Props) {
 
     {
       "shadow-inner": selected,
+      "shadow-md": !selected,
     }
   );
 
