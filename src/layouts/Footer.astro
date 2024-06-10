@@ -1,67 +1,39 @@
 ---
 import Logo from "../components/Logo.astro";
-
-const today = new Date();
 ---
 
-<footer>
-	<!-- &copy; {today.getFullYear()} Your name here. All rights reserved. -->
+<footer class="flex lg:flex-row flex-col py-2 sm:px-10 px-5 items-center justify-between gap-y-2">
 	<Logo/>
-	<div class="flex flex-col md:flex-row justify-space-around social-links">
+
+	<div class="flex items-center social-links text-base gap-x-8 text-center">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
-			<span class="text-base p-4">Acerca de Nosotros</span>
+			Acerca de Nosotros
 		</a>
+
 		<a href="https://twitter.com/astrodotbuild" target="_blank">
-			<span class="text-base p-4">Términos y Condiciones</span>
+			Términos y Condiciones
 		</a>
+
 		<a href="https://github.com/withastro/astro" target="_blank">
-			<span class="text-base p-4">Política de Privacidad</span>
+			Política de Privacidad
 		</a>
 	</div>
 </footer>
+
 <style>
 	footer {
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
-		margin: 0;
-		padding: 0em 1em 0em 1em;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
 		color: rgb(var(--gray-dark));
 	}
+
 	.social-links a {
 		text-decoration: none;
 		color: rgb(var(--gray-dark));
 	}
+
 	.social-links a:hover {
 		color: rgb(var(--gray));
-	}
-
-	span {
-		padding: 1rem
-	}
-
-	@media (max-width: 720px){
-		footer{
-			padding: 0em;
-			height: min-content;
-			justify-content:flex-start
-		}
-
-		.social-links {
-			margin-left: 8em;
-		}
-		span {
-			font-size: 0.75rem;
-			padding: 0rem;
-		}
-
-		@media (max-width: 550px){
-			.social-links {
-				margin-left: 4em;
-			}
-		}
 	}
 </style>

@@ -42,6 +42,12 @@
     "send_button": "Resend e-mail",
     "error_question": "You haven't received the email?"
   },
+  "Dialogs": {
+    "add_text": "Add",
+    "delete_text": "Delete",
+    "favorites": "Favorites",
+    "saved_dialogs": "Saved Dialogues"
+  },
   "Throw": {
     "dialog_close": "Dialog Successfully Closed",
     "throw": "throw",
