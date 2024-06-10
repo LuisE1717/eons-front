@@ -1,4 +1,7 @@
 {
+  "fecth_error": "Unexpected Error, Check your internet connection",
+  "text_loading": "Loading...",
+
   "Landing": {
     "text1": "Huge and infinite gifts will be given to everyone",
     "text2": "Eons will bring with it a Scientific and Technological advance of more than 10,000 years in the next decade.",
@@ -19,7 +22,6 @@
   "Auth": {
     "login_button": "Start",
     "singUp_button": "Create",
-    "text_loading": "Loading...",
     "login_switch": "Login",
     "sing_up_switch": "Sing-Up",
     "password_input_label": "Password",
@@ -47,7 +49,6 @@
     "saved_dialogs": "Saved Dialogues"
   },
   "Throw": {
-    "fecth_error": "Unexpected Error, Check your internet connection",
     "dialog_close": "Dialog Successfully Closed",
     "throw": "throw",
     "especial_throw": "Especial Throw",
@@ -73,5 +74,18 @@
     "question_tranversal": "Only one transverse fell",
     "main_response": "Main Answer",
     "especial_response": "Especial Answer"
+  },
+  "RessetPassword":{
+    "title":"Recover password",
+    "succes_send_mail":"Check your email inbox",
+    "dont_exist_error":"This email does not belong to any account",
+    "message":"Correctly enter the email associated with your account. You will soon receive an email with the key to reset your password"
+  },
+  "ChangePassword":{
+    "title":"Recover password",
+    "message":"Enter the new password correctly that you will associate with your account. Use it to log in later",
+    "label":"New Password",
+    "send":"Send",
+    "succes":"Password Successfully Changed"
   }
 }
