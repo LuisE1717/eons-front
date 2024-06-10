@@ -93,7 +93,7 @@ const ThrowReact = ({i18}) => {
                 })
                 } catch (error) {
                     console.log(error)
-                    toast.error(i18['Throw'].fecth_error)
+                    toast.error(i18.fecth_error)
                     setLoading(false)
                 }
             setLoading(false)
