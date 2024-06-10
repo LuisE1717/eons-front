@@ -40,6 +40,12 @@
     "send_button": "Resend e-mail",
     "error_question": "You haven't received the email?"
   },
+  "Dialogs": {
+    "add_text": "Add",
+    "delete_text": "Delete",
+    "favorites": "Favorites",
+    "saved_dialogs": "Saved Dialogues"
+  },
   "Throw": {
     "fecth_error": "Unexpected Error, Check your internet connection",
     "dialog_close": "Dialog Successfully Closed",

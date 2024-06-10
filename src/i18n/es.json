@@ -34,6 +34,12 @@
       "name": "Nombre en Tarjeta"
     }
   },
+  "Dialogs": {
+    "add_text": "Añadir",
+    "delete_text": "Eliminar",
+    "favorites": "Favoritos",
+    "saved_dialogs": "Diálogos salvados"
+  },
   "Verification": {
     "title": "Validar tu cuenta de correo",
     "message": "Pronto recibirás un correo con la clave para validar tu cuenta",
