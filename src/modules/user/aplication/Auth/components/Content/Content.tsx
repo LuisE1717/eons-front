@@ -7,7 +7,6 @@ import useContent from "./hooks/useContent";
 interface Props {
   button_login: string;
   button_singUp: string;
-  text_loading: string;
   login_switch: string;
   sing_up_switch: string;
   password_input_label: string;
