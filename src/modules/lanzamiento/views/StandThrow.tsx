@@ -1,7 +1,7 @@
 import React, { useState, type Dispatch, type FC, type SetStateAction } from 'react'
 import Coin from '../UI/Coins/Coin';
 import styles from '../aplication/ThrowReact.module.css'
-import ButtonReact from '../../../components/UI/ButtonReact';
+import Button from '../../../components/UI/Button/Button'
 
 interface Props{
     loading:boolean;
@@ -44,13 +44,19 @@ const StandThrow: FC<Props> = ({
 
           <div className="flex flex-wrap gap-2 justify-center my-4">
           <div onClick={()=>{setStep(1)}}>
-          <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_stop1}/>
+            <Button loading={loading} >
+                {i18["Throw"].question_throw_stop1}
+            </Button>
           </div>
           <div onClick={()=>{setStep(2)}}>
-            <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_stop2}/>
+            <Button loading={loading}>
+                {i18["Throw"].question_throw_stop2}
+            </Button>
           </div>
           <div onClick={()=>{setStep(3)}}>
-            <ButtonReact loading={loading} color="white" text={i18["Throw"].question_throw_stop3}/>
+            <Button loading={loading}>
+                {i18["Throw"].question_throw_stop3}
+            </Button>
           </div>
           </div> 
         </>

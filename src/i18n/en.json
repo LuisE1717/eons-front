@@ -42,6 +42,12 @@
     "send_button": "Resend e-mail",
     "error_question": "You haven't received the email?"
   },
+  "Dialogs": {
+    "add_text": "Add",
+    "delete_text": "Delete",
+    "favorites": "Favorites",
+    "saved_dialogs": "Saved Dialogues"
+  },
   "Throw": {
     "dialog_close": "Dialog Successfully Closed",
     "throw": "throw",
@@ -69,17 +75,24 @@
     "main_response": "Main Answer",
     "especial_response": "Especial Answer"
   },
-  "RessetPassword":{
-    "title":"Recover password",
-    "succes_send_mail":"Check your email inbox",
-    "dont_exist_error":"This email does not belong to any account",
-    "message":"Correctly enter the email associated with your account. You will soon receive an email with the key to reset your password"
+  "RessetPassword": {
+    "title": "Recover password",
+    "succes_send_mail": "Check your email inbox",
+    "dont_exist_error": "This email does not belong to any account",
+    "message": "Correctly enter the email associated with your account. You will soon receive an email with the key to reset your password"
   },
-  "ChangePassword":{
-    "title":"Recover password",
-    "message":"Enter the new password correctly that you will associate with your account. Use it to log in later",
-    "label":"New Password",
-    "send":"Send",
-    "succes":"Password Successfully Changed"
+  "ChangePassword": {
+    "title": "Recover password",
+    "message": "Enter the new password correctly that you will associate with your account. Use it to log in later",
+    "label": "New Password",
+    "send": "Send",
+    "succes": "Password Successfully Changed"
+  },
+  "Spiritual_Family": {
+    "header": "Spiritual Family",
+    "empty_1": "No Spirits have been added to the Spirit Family yet!",
+    "empty_2": "There are 2 ways in which a Spirit can be added:",
+    "empty_3": "1- Manually.",
+    "empty_4": "2- That it is presented through the use of the System."
   }
 }

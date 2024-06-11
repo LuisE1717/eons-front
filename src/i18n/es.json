@@ -36,6 +36,12 @@
       "name": "Nombre en Tarjeta"
     }
   },
+  "Dialogs": {
+    "add_text": "Añadir",
+    "delete_text": "Eliminar",
+    "favorites": "Favoritos",
+    "saved_dialogs": "Diálogos salvados"
+  },
   "Verification": {
     "title": "Validar tu cuenta de correo",
     "message": "Pronto recibirás un correo con la clave para validar tu cuenta",
@@ -69,17 +75,24 @@
     "main_response": "Respuesta Princiapal",
     "especial_response": "Respuesta Especial"
   },
-  "RessetPassword":{
-    "title":"Recuperar contraseña",
-    "dont_exist_error":"Este correo no pertenece a ninguna cuenta",
-    "succes_send_mail":"Revisa tu bandeja de entrada de correo electrónico",
-    "message":"Introduce correctamente el correo electrónico asociado a tu cuenta. Pronto recibirás un correo electrónico con la clave para restablecer tu contraseña."
+  "RessetPassword": {
+    "title": "Recuperar contraseña",
+    "dont_exist_error": "Este correo no pertenece a ninguna cuenta",
+    "succes_send_mail": "Revisa tu bandeja de entrada de correo electrónico",
+    "message": "Introduce correctamente el correo electrónico asociado a tu cuenta. Pronto recibirás un correo electrónico con la clave para restablecer tu contraseña."
   },
-  "ChangePassword":{
-    "title":"Recuperar contraseña",
-    "message":"Introduce correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
-    "label":"Nueva contraseña",
-    "send":"Enviar",
-    "succes":"Contraseña cambiada correctamente"
+  "ChangePassword": {
+    "title": "Recuperar contraseña",
+    "message": "Introduce correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
+    "label": "Nueva contraseña",
+    "send": "Enviar",
+    "succes": "Contraseña cambiada correctamente"
+  },
+  "Spiritual_Family": {
+    "header": "Familia Espiritual",
+    "empty_1": "!Aún no se ha agregado ningún Espíritu a la Familia Espiritual!",
+    "empty_2": "Existen 2 formas mediante la cual un Espíritu puede ser agregado:",
+    "empty_3": "1- De manera manual.",
+    "empty_4": "2- Que el mismo se presente mediante el uso del Sistema."
   }
 }

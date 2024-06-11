@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import clsx from "clsx";
+import AppButton from "../../../../components/UI/Button/Button";
 
 interface Props {
   text: string;
@@ -21,28 +21,13 @@ export default function Button({ question, text }: Props) {
     setDisabled(true);
   }
 
-  const CLASS = clsx(
-    "border-2 border-gray-200",
-    "px-8 py-3",
-    "font-medium",
-    "rounded-full",
-    "transition-all duration-200",
-    "bg-white",
-    "w-full",
-    "sm:text-lg text-base",
-    "shadow-md",
-
-    { "hover:shadow-lg": !disabled },
-    { "opacity-60": disabled }
-  );
-
   return (
     <div className="flex flex-col items-center w-full">
       <p className="mb-2 text-sm text-gray-400">{question}</p>
 
-      <button disabled={disabled} onClick={handleClick} className={CLASS}>
+      <AppButton loading={false} disabled={disabled} onClick={handleClick}>
         {text}
-      </button>
+      </AppButton>
     </div>
   );
 }
