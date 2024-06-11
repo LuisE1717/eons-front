@@ -1,5 +1,4 @@
 import React, { type Dispatch, type FC, type SetStateAction } from 'react'
-import ButtonReact from '../../../components/UI/ButtonReact'
 import Coin from '../UI/Coins/Coin'
 import styles from '../aplication/ThrowReact.module.css'
 

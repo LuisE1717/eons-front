@@ -1,5 +1,12 @@
-export default function Loading() {
+import type { FC } from "react";
+
+interface Props{
+  text_loading?:string;
+}
+
+const Loading:FC<Props> = ({text_loading}) => {
   return (
+    <>
     <svg
       className="animate-spin -ml-1 mr-2 sm:mt-0 md:mt-1.5 md:h-5 md:w-5 h-4 w-4 text-fuchsia-500"
       xmlns="http://www.w3.org/2000/svg"
@@ -20,5 +27,12 @@ export default function Loading() {
         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
       ></path>
     </svg>
+    {text_loading?
+    <span>{text_loading}</span>
+    :
+    ''}
+    </>
   );
 }
+
+export default Loading
