@@ -8,7 +8,8 @@ interface Props {
 
 export default function ImageSection({ children, reverse, image }: Props) {
   const CLASS = clsx("flex items-center", "gap-x-10", {
-    "flex-row-reverse": !reverse,
+    "flex-col lg:flex-row": reverse,
+    "lg:flex-row-reverse flex-col-reverse": !reverse,
   });
 
   return (
