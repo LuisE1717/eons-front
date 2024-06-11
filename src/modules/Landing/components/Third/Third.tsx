@@ -7,7 +7,7 @@ export default function Third() {
   const { translation } = useTranslation();
 
   return (
-    <ImageSection reverse={true} image="/puerta.webp">
+    <ImageSection reverse={true} image="/cofre.webp">
       <P>{translation.Landing.text11}</P>
       <P>{translation.Landing.text12}</P>
       <P>{translation.Landing.text13}</P>
