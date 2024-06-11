@@ -31,7 +31,7 @@ export default function useContent() {
             if (response.data) {
               const user_info = response.data;
 
-              setCookie("eons_token", user_info.token, 1);
+              setCookie("eons_token", user_info.accessToken, 1);
               setCookie("eons_user", user_info.email, 1);
               window.location.href = "/";
             } else {
@@ -48,7 +48,7 @@ export default function useContent() {
               postLogin({ email, password }).then((loginResponse) => {
                 const user_info = loginResponse.data;
 
-                setCookie("eons_token", user_info.token, 1);
+                setCookie("eons_token", user_info.accessToken, 1);
                 setCookie("eons_user", user_info.email, 1);
                 window.location.href = "/";
               });

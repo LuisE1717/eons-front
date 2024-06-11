@@ -7,6 +7,7 @@ interface Props {
   onClick?: () => void;
   type?: "button" | "submit";
   loading: boolean;
+  text_loading?:string;
 }
 
 export default function Button({
@@ -15,6 +16,7 @@ export default function Button({
   onClick,
   loading,
   type = "button",
+  text_loading
 }: Props) {
   const CLASS = clsx(
     "border-2 border-gray-200",
@@ -39,7 +41,9 @@ export default function Button({
       onClick={onClick}
       className={CLASS}
     >
-      {loading ? <Loading /> : children}
+      {loading ?
+        <Loading text_loading={text_loading}/> 
+       : children}
     </button>
   );
 }
