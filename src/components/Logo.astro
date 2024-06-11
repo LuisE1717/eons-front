@@ -2,38 +2,9 @@
 import { SITE_TITLE } from '../consts'
 ---
 
-<div class="social-links logo">
-    <img 
-    src='/logo.webp' alt="logo-header"
-    height="48" width="96"
-    >
+<div class="flex items-center gap-x-3">
+    <img src='/logo.webp' alt="logo-header" height="56" width="56">
+
     <h2><a class="text-2xl" href="/">{SITE_TITLE}</a></h2>
 </div>
 
-<style>
-    h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-    
-    .logo{
-		display: flex;
-	}
-
-    .social-links a {
-		display: flex;
-	}
-
-    a {
-        color: var(--black);
-        padding: 1em 0em;
-    }
-
-    h2 a.active {
-		text-decoration: none;
-	}
-
-    img {
-		  padding: 0.5em 0.7em 0.5em 0.5em;
-	}
-</style>
