@@ -13,6 +13,7 @@ interface Props {
   forget_pass: string;
   invalid_email_text: string;
   invalid_pass_text: string;
+  text_loading:string;
 }
 
 export default function Content({
@@ -24,6 +25,7 @@ export default function Content({
   forget_pass,
   invalid_email_text,
   invalid_pass_text,
+  text_loading
 }: Props) {
   const {
     loading,
@@ -49,7 +51,7 @@ export default function Content({
         />
 
         <div
-          className="inline-flex rounded-full justify-around shadow-md shadow-black/5 bg-white/0 hover:bg-white/25 hover:bg-slate-100"
+          className="inline-flex rounded-full justify-around shadow-md shadow-black/5 bg-white/0 hover:bg-white/25 hover:bg-slate-100 my-4"
           style={{
             borderColor: "#e5e5e6",
             borderWidth: "1px",
@@ -99,7 +101,7 @@ export default function Content({
               validation_pass || password == "" ? "hidden" : ""
             } ml-5 text-lg text-red-600`}
           >
-            {invalid_email_text}
+            {invalid_pass_text}
           </label>
         </div>
 
@@ -107,6 +109,7 @@ export default function Content({
           <LoginButton
             text={section === SECTIONS.LOGIN ? button_login : button_singUp}
             loading={loading}
+            text_loading={text_loading}
           />
         </div>
       </form>
