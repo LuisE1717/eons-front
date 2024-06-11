@@ -1,8 +1,7 @@
 import React, { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
 import Coin from '../UI/Coins/Coin'
-import Button from '../../../components/UI/Button.astro'
 import styles from './ThrowReact.module.css'
-import ButtonReact from '../../../components/UI/ButtonReact'
+import Button from '../../../components/UI/Button/Button'
 import NextButton from '../../../components/UI/NextButton'
 import { closeThrow, postThrow } from '../../../utils/api/throwApi'
 import Cookies from 'js-cookie'
@@ -243,7 +242,9 @@ const ThrowReact = ({i18}) => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text={i18['Throw'].mount_throw}/>
+                <Button loading={loading}>
+                    {i18['Throw'].mount_throw}
+                </Button>
                 </div>
                 <div onClick={()=>{
                     scrollToTop();
@@ -251,7 +252,9 @@ const ThrowReact = ({i18}) => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text={i18['Throw'].stops_throw}/>
+                <Button loading={loading}>
+                    {i18['Throw'].stops_throw}
+                </Button>
                 </div>
                 <div onClick={()=>{
                     scrollToTop();
@@ -259,7 +262,9 @@ const ThrowReact = ({i18}) => {
                     setMoneda1(0)
                     setMoneda2(0)
                 }}>
-                <ButtonReact loading={loading} color="white" text={i18['Throw'].tranversal_throw}/>
+                <Button loading={loading}>
+                    {i18['Throw'].tranversal_throw}
+                </Button>
                 </div>
             </div> 
         </div>

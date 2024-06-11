@@ -1,124 +1,38 @@
 ---
-import BaseHead from "../../../../layouts/BaseHead.astro";
-import Header from "../../../../layouts/Header.astro";
 import Footer from "../../../../layouts/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../../../consts";
-import { Image } from "astro:assets";
 import AuthHeader from "../../../../layouts/AuthHeader.astro";
-import AuthReact from "./React/AuthReact"
-import OutlineInput from "../../../../components/UI/input/OutlineInput.astro";
+import Content from "./components/Content/Content"
 import AccountsButton from "../../items/AccountsButton.astro";
 import { getI18N } from "../../../../i18n";
-import { getSession } from "auth-astro/server";
-import { singUp } from "../../../../utils/api/userApi";
-import { setCookie } from "../../../../utils/cookies/Cookies";
 
-const section = "login"
 
 const currentLocale  = Astro?.currentLocale || 'en'
-const i18 = getI18N({currentLocale})
+const i18 = getI18N({ currentLocale })
 ---
 
+<AuthHeader/>
 
-  <body>
-    <AuthHeader/>
-    <main class="flex flex-col">
-        <AuthReact 
-        currentLocale={currentLocale}
-        button_login={i18["Auth"].login_button} 
-        text_loading={i18["text_loading"]}
-        button_singUp={i18["Auth"].singUp_button} 
-        state={section} 
-        login_switch={i18["Auth"].login_switch}
-        sing_up_switch={i18["Auth"].sing_up_switch}
-        password_input_label={i18["Auth"].password_input_label}
-        forget_pass={i18["Auth"].forget_pass}
-        invalid_email_text={i18["Auth"].invalid_email_text}
-        invalid_pass_text={i18["Auth"].invalid_pass_text}
-        client:load/>
+<div class="flex w-full justify-center px-10 mb-12">
+    <main class="flex flex-col w-full max-w-[500px]">
+        <Content
+            button_login={i18["Auth"].login_button} 
+            button_singUp={i18["Auth"].singUp_button} 
+            login_switch={i18["Auth"].login_switch}
+            sing_up_switch={i18["Auth"].sing_up_switch}
+            password_input_label={i18["Auth"].password_input_label}
+            forget_pass={i18["Auth"].forget_pass}
+            invalid_email_text={i18["Auth"].invalid_email_text}
+            invalid_pass_text={i18["Auth"].invalid_pass_text}
+            text_loading={i18.text_loading}
+            client:load
+        />
 
-        <div class="flex flex-row justify-around accounts">
+        <div class="flex flex-row justify-around mt-4">
             <AccountsButton text="Microsoft"/>
             <AccountsButton text="Apple"/>
             <AccountsButton text="Google"/>
         </div>
-        
     </main>
-    <Footer/>
-  </body>
+</div>
 
-<style>
-
-    html, body{
-        margin: 0;
-        padding: 0;
-    }
-
-    main {
-        width: 70%;
-        padding: 1em 1em
-    }
-
-    .login {
-        border-width: 1px;
-        border-radius: 9999px;
-    }
-
-    .inputs {
-        padding: 0em 20%;
-        margin-top: 2em;
-    }
-
-    .accounts {
-        padding: 0em 10%;
-        margin-top: 1em;
-        margin-bottom: 1em;
-    }
-
-    @media (min-width: 1500px){
-        .inputs {
-            padding: 0em 25%;
-        }
-
-        .accounts {
-            padding: 0em 25%;
-        }
-    }
-
-    @media (max-width: 800px){
-
-        main {
-            height: 80vh;
-        }
-
-        @media (max-height: 800px){
-                main {
-                    height: 90vh;
-                }
-                @media (max-height: 720px){
-                    main {
-                        height: 100vh;
-                    }
-                } 
-        } 
-
-        .accounts {
-            padding: 0em 1em;
-        }
-        
-        .inputs {
-            padding: 0em 1em;
-        }
-
-        @media (max-width: 600px){
-            .inputs {
-                padding: 0em 0em;
-            }
-
-            .accounts {
-                padding: 0em 0em;
-            }
-        }
-    }
-
-</style>
+<Footer/>
