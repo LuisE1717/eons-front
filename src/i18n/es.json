@@ -93,6 +93,12 @@
     "empty_1": "!Aún no se ha agregado ningún Espíritu a la Familia Espiritual!",
     "empty_2": "Existen 2 formas mediante la cual un Espíritu puede ser agregado:",
     "empty_3": "1- De manera manual.",
-    "empty_4": "2- Que el mismo se presente mediante el uso del Sistema."
+    "empty_4": "2- Que el mismo se presente mediante el uso del Sistema.",
+    "chat_text": "Dialogar con Espíritu",
+    "info_text": "Investigar espíritu",
+    "edit_name_text": "Editar nombre",
+    "edit_image_text": "Editar imagen",
+    "edit_description_text": "Editar descripción",
+    "delete_text": "Eliminar"
   }
 }
