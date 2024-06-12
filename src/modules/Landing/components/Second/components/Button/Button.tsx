@@ -6,7 +6,7 @@ export default function SectionButton() {
 
   return (
     <div className="flex justify-center mt-4">
-      <a href="/throw">
+      <a href="/services">
         <Button loading={false}>
           {translation.Landing.text15} {">"}
         </Button>
