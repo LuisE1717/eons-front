@@ -2,6 +2,7 @@
 import BaseHead from "./BaseHead.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import { LanguageProvider } from "../modules/Shared/context/LanguageContext"
+import LoadingSpinner from "../components/UI/LoadingSpinner.astro"
 
 const locale  = Astro?.currentLocale || 'en'
 ---
@@ -11,6 +12,9 @@ const locale  = Astro?.currentLocale || 'en'
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
 
+  <div class="spinner" id="spinner">
+    <LoadingSpinner/>
+  </div>
   
   <body>
     <LanguageProvider locale={locale} client:load>
@@ -18,4 +22,26 @@ const locale  = Astro?.currentLocale || 'en'
     </LanguageProvider>
   </body>
 </html>
+
+<style>
+  html {
+	  overflow-y: hidden;
+  }
+
+</style>
+
+<script>
+  const loader = document.getElementById('spinner')
+  const html = document.querySelector('html')
+  
+    window.onload = function() {
+    console.log('Todo el contenido del DOM, incluyendo imágenes, ha cargado.');
+    
+    if (loader && html){
+      loader.style.display = 'none';
+      html.style.overflowY = 'auto'
+    }
+      
+  };
+  </script>
 
