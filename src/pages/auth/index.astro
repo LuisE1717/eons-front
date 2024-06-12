@@ -35,7 +35,7 @@ const session = await getSession(Astro.request)
        })
        .catch(({response})=>{console.log(response)})
        if(token)
-        return Astro.redirect('/',302)
+        return Astro.redirect('/services',302)
   }
   else{
     Astro.cookies.delete('eons_token')
