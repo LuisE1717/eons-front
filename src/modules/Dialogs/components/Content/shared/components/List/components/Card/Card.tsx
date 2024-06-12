@@ -1,8 +1,9 @@
-import { createRef, useState } from "react";
+import Dropdown from "../../../../../../../../Shared/components/Dropdown/Dropdown";
 import type { Dialog } from "../../../../../../../interfaces";
 import Icon from "./components/Icon/Icon";
-import Menu from "./components/Menu/Menu";
 import moment from "moment";
+import DropdownItem from "../../../../../../../../Shared/components/DropdownItem/DropdownItem";
+import useTranslation from "../../../../../../../../Shared/hooks/useTranslation";
 
 interface Props {
   dialog: Dialog;
@@ -15,20 +16,10 @@ export default function Card({
   handleAddDialog,
   handleDeleteDialog,
 }: Props) {
-  const ref = createRef<HTMLDivElement>();
-
-  const [openMenu, setOpenMenu] = useState(false);
+  const { translation } = useTranslation();
 
   const time = moment(dialog.date).format("hh:mm A");
   const dateStr = dialog.date.toLocaleDateString();
-
-  function handleOpen() {
-    setOpenMenu((prev) => !prev);
-  }
-
-  function handleClose() {
-    setOpenMenu(false);
-  }
 
   return (
     <article className="flex justify-between items-center py-2 px-7 rounded-full bg-white">
@@ -42,20 +33,16 @@ export default function Card({
           <p className="mb-0">{dateStr}</p>
         </div>
 
-        <div className="cursor-pointer" ref={ref}>
-          <div onClick={handleOpen}>
-            <Icon />
-          </div>
-
-          {openMenu && (
-            <Menu
-              wrapRef={ref}
-              handleClose={handleClose}
-              handleAdd={handleAddDialog}
-              handleDelete={handleDeleteDialog}
-            />
-          )}
-        </div>
+        <Dropdown header={<Icon />}>
+          <DropdownItem
+            handleClick={handleAddDialog}
+            text={translation.Dialogs.add_text}
+          />
+          <DropdownItem
+            handleClick={handleDeleteDialog}
+            text={translation.Dialogs.delete_text}
+          />
+        </Dropdown>
       </div>
     </article>
   );

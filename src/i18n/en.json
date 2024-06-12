@@ -93,6 +93,12 @@
     "empty_1": "No Spirits have been added to the Spirit Family yet!",
     "empty_2": "There are 2 ways in which a Spirit can be added:",
     "empty_3": "1- Manually.",
-    "empty_4": "2- That it is presented through the use of the System."
+    "empty_4": "2- That it is presented through the use of the System.",
+    "chat_text": "Dialogue with Spirit",
+    "info_text": "Investigate spirit",
+    "edit_name_text": "Edit name",
+    "edit_image_text": "Edit image",
+    "edit_description_text": "Edit description",
+    "delete_text": "Delete"
   }
 }
