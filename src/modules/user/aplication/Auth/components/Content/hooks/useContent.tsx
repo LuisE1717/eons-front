@@ -33,7 +33,7 @@ export default function useContent() {
 
               setCookie("eons_token", user_info.accessToken, 1);
               setCookie("eons_user", user_info.email, 1);
-              window.location.href = "/";
+              window.location.href = "/services";
             } else {
               setLoading(false);
             }
@@ -50,7 +50,7 @@ export default function useContent() {
 
                 setCookie("eons_token", user_info.accessToken, 1);
                 setCookie("eons_user", user_info.email, 1);
-                window.location.href = "/";
+                window.location.href = "/services";
               });
             } else {
               setLoading(false);
