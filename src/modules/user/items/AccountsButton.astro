@@ -1,7 +1,5 @@
 ---
-import { getSession } from 'auth-astro/server'
-import { postLogin, singUp } from '../../../src/utils/api/userApi';
-import { setCookie } from '../../../src/utils/cookies/Cookies';
+
 interface Props {
 	text: string;
     bgColor?:string;
@@ -68,7 +66,7 @@ const {text, bgColor, bg_hover, color} = Astro.props
         google.addEventListener('click', async (e) => {
             e.preventDefault()
             console.log(e.target)
-            await signIn("google")            
+            await signIn("google")           
         })
         //console.log(google)
     }

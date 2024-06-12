@@ -3,8 +3,10 @@ import BaseHead from "./BaseHead.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import { LanguageProvider } from "../modules/Shared/context/LanguageContext"
 import LoadingSpinner from "../components/UI/LoadingSpinner.astro"
+import { UserProvider } from "../modules/Shared/context/UserContext"
 
-const locale  = Astro?.currentLocale || 'en'
+const locale  = Astro.currentLocale || 'en'
+const token = Astro.cookies.get('refresh_token')
 ---
 <!doctype html>
 <html lang="en">
@@ -18,7 +20,9 @@ const locale  = Astro?.currentLocale || 'en'
   
   <body>
     <LanguageProvider locale={locale} client:load>
-      <slot/>
+      <UserProvider client:load token={token?.value}>
+         <slot/>
+      </UserProvider>
     </LanguageProvider>
   </body>
 </html>
@@ -43,5 +47,5 @@ const locale  = Astro?.currentLocale || 'en'
     }
       
   };
-  </script>
+</script>
 
