@@ -1,7 +1,7 @@
-import Button from "./components/Button/Button";
-import Check from "./components/Check/Check";
-import Section from "./components/Section/Section";
-import useForm from "./hooks/useForm";
+import Button from "../Form/components/Button/Button";
+import Check from "../Form/components/Check/Check";
+import Section from "../Form/components/Section/Section";
+import useForm from "../Form/hooks/useForm";
 
 interface Props {
   numberLabel: string;
@@ -42,7 +42,7 @@ export default function Form({ dateLabel, nameLabel, numberLabel }: Props) {
 
       <Check handleChange={handleChangeSave} value={form.save} />
 
-      <Button loading={loading} />
+      
     </form>
   );
 }
