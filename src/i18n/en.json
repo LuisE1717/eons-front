@@ -100,5 +100,30 @@
     "edit_image_text": "Edit image",
     "edit_description_text": "Edit description",
     "delete_text": "Delete"
+  },
+  "ServiceMenu":{
+    "general_evaluation":"General evaluation",
+    "spirit_calc":"Calculate Spirituality",
+    "open_dialog_mod":"Open dialog mode",
+    "contact_spirit":"Contact a specific Being",
+    "day_dialog":"How will my day go today?",
+    "adivination_general":"General Divination",
+    "concient_evaluation":"Evaluate form of consciousness",
+    "fact_evaluation":"Evaluate an event",
+    "free":"free",
+
+    "spiritual_family":"Spiritual Family",
+    "inf_general_evulation":"General Evaluation Information",
+    "inf_calc_spiritual":"Spirituality Calculation Information",
+    "save_dialogs":"Saved Dialogs",
+    "save_services":"Saved Services",
+    "money_admin":"Monetary Management",
+
+    "use_instruction":"Instructions for use",
+    "thinks_to_know":"Things to know",
+    "cautions":"Cautions",
+    "security":"Security and Protection",
+    "examples":"Services and examples",
+    "demostration":"Scientific Demonstrations"
   }
 }
