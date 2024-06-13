@@ -3,16 +3,10 @@ import { getSession } from "auth-astro/server";
 import Auth from "../../modules/user/aplication/Auth/Auth.astro";
 import AppContainer from "../../layouts/AppContainer.astro";
 import { singUp } from "../../utils/api/userApi";
-import { getI18N } from "../../i18n";
-import { setCookie } from "../../utils/cookies/Cookies";
 
 if(Astro.cookies.get("eons_lng")?.value === 'es'){
-    console.log('redicteing')
     return Astro.redirect('/es/auth')
  }
-
- const currentLocale  = Astro?.currentLocale || 'en'
-const i18 = getI18N({currentLocale})
 
 function getExpire() {
   var expires = new Date();
@@ -20,9 +14,7 @@ function getExpire() {
   return expires
 }
 
-
-
-const session = await getSession(Astro.request)
+/* const session = await getSession(Astro.request)
   try {
     let token = ''
     if(session?.user?.email){
@@ -43,7 +35,7 @@ const session = await getSession(Astro.request)
   }
   } catch (error) {
     console.log(error)
-  }
+  }*/
 ---
 
 <AppContainer>
