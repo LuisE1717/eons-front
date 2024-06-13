@@ -178,3 +178,12 @@ hr {
 .form input:valid + .label-name::after {
   transform: translateX(0%);
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
