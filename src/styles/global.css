@@ -30,10 +30,6 @@
   font-display: swap;
 }
 
-html{
-	overflow-y: hidden;
-}
-
 main {
 	width: 720px;
 	max-width: calc(100% - 1em);
