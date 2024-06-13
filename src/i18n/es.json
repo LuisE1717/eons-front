@@ -100,5 +100,30 @@
     "edit_image_text": "Editar imagen",
     "edit_description_text": "Editar descripción",
     "delete_text": "Eliminar"
+  },
+  "ServiceMenu":{
+    "general_evaluation":"Evaluación general",
+    "spirit_calc":"Calcular Espiritualidad",
+    "open_dialog_mod":"Modo diálogo abierto",
+    "contact_spirit":"Contactar un Ser específico",
+    "day_dialog":"Como irá mi dia de hoy",
+    "adivination_general":"Adivinación General",
+    "concient_evaluation":"Evaluar forma de conciencia",
+    "fact_evaluation":"Evaluar un suceso",
+    "free":"gratis",
+
+    "spiritual_family":"Familia Espiritual",
+    "inf_general_evulation":"Información de Evaluación General",
+    "inf_calc_spiritual":"Información de Cálculo de Espiritualidad",
+    "save_dialogs":"Diálogos Guardados",
+    "save_services":"Servicios Guardados",
+    "money_admin":"Gestión Monetaria",
+
+    "use_instruction":"Instrucciones de uso",
+    "thinks_to_know":"Cosas a saber",
+    "cautions":"Precauciones",
+    "security":"Seguridad y Protección",
+    "examples":"Servicios y ejemplos",
+    "demostration":"Demostraciones Científicas"
   }
 }
