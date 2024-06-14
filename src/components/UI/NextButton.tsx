@@ -1,11 +1,13 @@
-import { type FC } from "react";
+import { useContext, type FC } from "react";
+import { CoinContext } from "../../modules/Throw/context/CoinContext";
 
 interface Props {
-  handleSendThrow: any;
-  loading: boolean;
+  handleSendThrow(): void;
 }
 
-export default function NextButton({ handleSendThrow, loading }: Props) {
+export default function NextButton({ handleSendThrow }: Props) {
+  const { loading } = useContext(CoinContext);
+
   return (
     <div className="flex flex-row justify-center mt-8">
       <button
