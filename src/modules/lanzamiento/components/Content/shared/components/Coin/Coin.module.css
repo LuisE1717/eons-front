@@ -1,0 +1,15 @@
+.coinbase {
+  border-radius: 9999px;
+  width: 4em;
+  background-color: #cccccc;
+  margin: 0em 2em;
+  cursor: pointer;
+}
+
+.coinbaseActive {
+  border-radius: 9999px;
+  width: 4em;
+  background-color: #94a3b8;
+  margin: 0em 2em;
+  cursor: pointer;
+}
