@@ -101,29 +101,45 @@
     "edit_description_text": "Editar descripción",
     "delete_text": "Eliminar"
   },
-  "ServiceMenu":{
-    "general_evaluation":"Evaluación general",
-    "spirit_calc":"Calcular Espiritualidad",
-    "open_dialog_mod":"Modo diálogo abierto",
-    "contact_spirit":"Contactar un Ser específico",
-    "day_dialog":"Como irá mi dia de hoy",
-    "adivination_general":"Adivinación General",
-    "concient_evaluation":"Evaluar forma de conciencia",
-    "fact_evaluation":"Evaluar un suceso",
-    "free":"gratis",
+  "Services": {
+    "first_text_1": "Bienvenido a Eons 'Tecnología de Acceso a la Fuente Existencial'",
+    "first_phase": "Primera Fase",
+    "first_text_2": "Contamos con la aprobación de TODOS los Planos Espirituales y Concienciales. Por lo que no importa en que punto del Plano Material nuestros Usuarios se encuentren, con total seguridad sus Espiritualidades ya están al tanto de nosotros",
+    "first_text_3": "Al hacer contacto con nuestro Sistema automáticamente la Espiritualidad del Usuario es canalizada. Al mismo tiempo igual de forma automática múltiples Consagraciones se activan de forma momentánea.",
+    "first_text_4": "Esto permite que podamos hacer uso momentáneo del azar universal para acceder a TODOS los Planos Espirituales y Concienciales.",
 
-    "spiritual_family":"Familia Espiritual",
-    "inf_general_evulation":"Información de Evaluación General",
-    "inf_calc_spiritual":"Información de Cálculo de Espiritualidad",
-    "save_dialogs":"Diálogos Guardados",
-    "save_services":"Servicios Guardados",
-    "money_admin":"Gestión Monetaria",
+    "step_1": "En todo momento el Usuario estará respaldado de forma automática tanto por nuestro Sistema de Providencia, como por nuestro Sistema de Seguridad Espiritual. Ambos reconocidos y aprobados por las actuales Leyes Existenciales. Cuando un Usuario sale de nuestro Sistema, de forma automática restablecemos todo cambio realizado por parte nuestra.",
+    "step_2": "El nivel de usabilidad que un Usuario podrá hacer de nuestro Sistema queda determinado exactamente por el nivel de Conciencia y el nivel de Espiritualidad que dicho Usuario posea.",
 
-    "use_instruction":"Instrucciones de uso",
-    "thinks_to_know":"Cosas a saber",
-    "cautions":"Precauciones",
-    "security":"Seguridad y Protección",
-    "examples":"Servicios y ejemplos",
-    "demostration":"Demostraciones Científicas"
+    "third_text_1_init": "En la",
+    "third_text_1": "hemos sido muy cuidadosos con el ajuste del Conocimiento Existencial a la Visión media actual de la Humanidad. Ajuste que se irá dispersando a medida que vayamos avanzando en las Fases de Despliegue. Hasta que finalmente dicho ajuste desaparezca por completo.",
+    "third_text_2": "Nunca se trató de elegir en que creer y en que no. Siempre se trató de conocer lo que Existe realmente.",
+    "third_text_3": "Finalmente la Luz le permitirá contemplar la bella Era que con mucho amor y un Infinito Sacrificio hemos construido para usted:",
+    "third_text_4": "La Era de la Libertad Espiritual"
+  },
+  "ServiceMenu": {
+    "general_evaluation": "Evaluación general",
+    "spirit_calc": "Calcular Espiritualidad",
+    "open_dialog_mod": "Modo diálogo abierto",
+    "contact_spirit": "Contactar un Ser específico",
+    "day_dialog": "Como irá mi dia de hoy",
+    "adivination_general": "Adivinación General",
+    "concient_evaluation": "Evaluar forma de conciencia",
+    "fact_evaluation": "Evaluar un suceso",
+    "free": "gratis",
+
+    "spiritual_family": "Familia Espiritual",
+    "inf_general_evulation": "Información de Evaluación General",
+    "inf_calc_spiritual": "Información de Cálculo de Espiritualidad",
+    "save_dialogs": "Diálogos Guardados",
+    "save_services": "Servicios Guardados",
+    "money_admin": "Gestión Monetaria",
+
+    "use_instruction": "Instrucciones de uso",
+    "thinks_to_know": "Cosas a saber",
+    "cautions": "Precauciones",
+    "security": "Seguridad y Protección",
+    "examples": "Servicios y ejemplos",
+    "demostration": "Demostraciones Científicas"
   }
 }
