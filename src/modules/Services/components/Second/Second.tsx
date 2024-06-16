@@ -7,9 +7,10 @@ import Icon from "./shared/components/Icon/Icon";
 import User from "./components/User/User";
 import Book from "./components/Book/Book";
 import Message from "./components/Message/Message";
+import Empty from "./components/Empty/Empty";
 
 export default function Second() {
-  const [selected, setSelected] = useState<SECTIONS>(SECTIONS.BOOK);
+  const [selected, setSelected] = useState<SECTIONS | null>(null);
 
   function handleChange(s: SECTIONS) {
     setSelected(s);
@@ -32,6 +33,7 @@ export default function Second() {
           handleClick={() => handleChange(SECTIONS.BOOK)}
         />
 
+        {selected === null && <Empty />}
         {selected === SECTIONS.BOOK && <BookInfo />}
         {selected === SECTIONS.MESSAGES && <MessageInfo />}
         {selected === SECTIONS.USER && <UserInfo />}
