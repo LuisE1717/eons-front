@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function Selected({ spirit, handleClose }: Props) {
-  const [showImage, setShowImage] = useState(spirit.image);
+  const [showImage, setShowImage] = useState<string|null>(spirit.foto);
 
   function handleChangeImage(list: FileList) {
     for (let i = 0; i < list.length; i++) {
@@ -33,13 +33,13 @@ export default function Selected({ spirit, handleClose }: Props) {
 
   return (
     <div>
-      <Header handleClose={handleClose} />
+      <Header id={spirit.id} handleClose={handleClose} />
       <Image
-        image={showImage}
-        name={spirit.name}
+        image={showImage||''}
+        name={spirit.nombre}
         handleChangeImage={handleChangeImage}
       />
-      <Name>{spirit.name}</Name>
+      <Name>{spirit.nombre}</Name>
       <Description>{spirit.description}</Description>
 
       <Buttons />

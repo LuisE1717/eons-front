@@ -27,6 +27,7 @@ export default function useCoinSelected({ coin }: Props) {
 
   const handleChangeSelected = useCallback(
     (v: number) => {
+      console.log(v)
       if (coin === "1") {
         handleChangeMoneda1(v);
       } else {

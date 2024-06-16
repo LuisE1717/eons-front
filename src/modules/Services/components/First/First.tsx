@@ -24,7 +24,7 @@ export default function First() {
       <P>{translation.Services.first_text_2}</P>
 
       <PhoneView>
-        <Image image="paper.png" />
+        <Image image="/paper.png" />
       </PhoneView>
 
       <P>{translation.Services.first_text_3}</P>

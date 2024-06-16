@@ -3,7 +3,7 @@ import NextButton from "../../../../components/UI/NextButton";
 import { closeThrow, postThrow } from "../../../../utils/api/throwApi";
 import Cookies from "js-cookie";
 import { coinsInterpreter } from "../../domain/interpreter";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import useTranslation from "../../../Shared/hooks/useTranslation";
 import { TYPES } from "../../domain/types";
 import Header from "./components/Header/Header";
@@ -12,9 +12,7 @@ import Throws from "./components/Throws/Throws";
 import { CoinContext, CoinProvider } from "../../context/CoinContext";
 import CoinText from "./shared/components/CoinText/CoinText";
 
-import "react-toastify/dist/ReactToastify.css";
-
-export default function Content() {
+export default function Content({action,param1} : {action:string, param1:number}) {
   const {
     throwType,
     moneda1,
@@ -155,18 +153,6 @@ export default function Content() {
 
         {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
         <NextButton handleSendThrow={handleSendThrow} />
-
-        <ToastContainer
-          position="bottom-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={true}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-        />
       </main>
     </CoinProvider>
   );

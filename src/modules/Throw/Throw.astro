@@ -5,6 +5,7 @@ import ReloadButton from "../user/items/ReloadButton.astro";
 import BackButton from "../../components/UI/BackButton.astro";
 import Content from './components/Content/Content'
 
+const {action,param1} = Astro.props
 ---
 
 <Header/>
@@ -16,7 +17,10 @@ import Content from './components/Content/Content'
             <ReloadButton/>
         </div>
 
-        <Content client:load/>
+        <Content 
+        action={action}
+        param1={param1}
+        client:load/>
     </div>
 </div>
 

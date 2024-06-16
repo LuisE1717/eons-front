@@ -1,17 +1,17 @@
 interface Props {
-  condition: boolean;
+  condition: string;
 }
 
 export default function Moon({ condition }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      fill={condition ? "#fff" : "#232323"}
+      fill={condition=='face' ? "#fff" : "#232323"}
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       width={48}
       height={48}
-      stroke={condition ? "#fff" : "#232323"}
+      stroke={condition=='face' ? "#fff" : "#232323"}
     >
       <path
         strokeLinecap="round"
