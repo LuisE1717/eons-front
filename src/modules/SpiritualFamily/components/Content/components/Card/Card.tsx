@@ -13,7 +13,7 @@ export default function Card({ spirit, handleClick }: Props) {
       onClick={handleClick}
     >
       <Icon />
-      <p className="sm:text-lg text-base">{spirit.name}</p>
+      <p className="sm:text-lg text-base">{spirit.nombre}</p>
     </article>
   );
 }

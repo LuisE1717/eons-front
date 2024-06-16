@@ -7,9 +7,10 @@ import useTranslation from "../../../../../../../Shared/hooks/useTranslation";
 
 interface Props {
   handleClose(): void;
+  id:string;
 }
 
-export default function Header({ handleClose }: Props) {
+export default function Header({ handleClose, id }: Props) {
   const { translation } = useTranslation();
 
   return (
@@ -24,7 +25,7 @@ export default function Header({ handleClose }: Props) {
         <DropdownItem
           text={translation.Spiritual_Family.edit_description_text}
         />
-        <DropdownItem text={translation.Spiritual_Family.delete_text} />
+        <DropdownItem id={id} text={translation.Spiritual_Family.delete_text} />
       </Dropdown>
     </header>
   );

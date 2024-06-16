@@ -3,9 +3,10 @@ import clsx from "clsx";
 interface Props {
   handleClick?: () => void;
   text: string;
+  id?:string;
 }
 
-export default function DropdownItem({ handleClick, text }: Props) {
+export default function DropdownItem({ handleClick, text, id }: Props) {
   const CLASS = clsx(
     "text-sm",
     "bg-white",
@@ -18,7 +19,9 @@ export default function DropdownItem({ handleClick, text }: Props) {
 
   return (
     <div className={CLASS} onClick={handleClick}>
+      <a href={`/throw/01/${id}`}>
       {text}
+      </a>
     </div>
   );
 }
