@@ -1,0 +1,28 @@
+---
+import Footer from "../../layouts/Footer.astro";
+import Header from "../../layouts/Header.astro";
+import ReloadButton from "../user/items/ReloadButton.astro";
+import BackButton from "../../components/UI/BackButton.astro";
+import Content from './components/Content/Content'
+
+---
+
+<Header/>
+
+<div class="flex flex-col items-center w-full px-5 mb-12">
+    <div class="flex flex-col w-full max-w-[900px]">
+        <div class="flex w-full justify-between items-center mb-4">
+            <BackButton/>
+            <ReloadButton/>
+        </div>
+
+        <Content client:load/>
+    </div>
+</div>
+
+<Footer/>
+
+
+
+
+

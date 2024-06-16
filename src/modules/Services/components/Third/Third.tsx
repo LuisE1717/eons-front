@@ -1,30 +1,37 @@
-import React from "react";
-import Title from "../../shared/components/Title/Title";
 import P from "../../shared/components/P/P";
 import ImageSection from "../../shared/components/ImageSection/ImageSection";
+import useTranslation from "../../../Shared/hooks/useTranslation";
+import Span from "../../shared/components/Span/Span";
+import Title from "../../shared/components/Title/Title";
+import PhoneView from "../../shared/components/PhoneView/PhoneView";
+import Image from "../../shared/components/Image/Image";
 
 export default function Third() {
+  const { translation } = useTranslation();
+
   return (
-    <ImageSection image="/services-2.webp" reverse={true} className="mb-12">
-      <Title>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui dicta quae
-        at.
-      </Title>
-
+    <ImageSection
+      image="/services-2.webp"
+      reverse={true}
+      className="mb-12"
+      phoneReverse={false}
+      imageInPhone={false}
+    >
       <P>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores at
-        sint architecto, eius nisi nostrum quasi alias nihil nobis consectetur?
+        {translation.Services.third_text_1_init}{" "}
+        <Span>{translation.Services.first_phase}</Span>{" "}
+        {translation.Services.third_text_1}
       </P>
 
-      <P>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores at
-        sint architecto, eius nisi nostrum quasi alias nihil nobis consectetur?
-      </P>
+      <PhoneView>
+        <Image image="/services-2.webp" />
+      </PhoneView>
 
-      <P>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores at
-        sint architecto, eius nisi nostrum quasi alias nihil nobis consectetur?
-      </P>
+      <P>{translation.Services.first_text_2}</P>
+
+      <P>{translation.Services.third_text_3}</P>
+
+      <Title>{translation.Services.third_text_4}</Title>
     </ImageSection>
   );
 }
