@@ -4,6 +4,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import { LanguageProvider } from "../modules/Shared/context/LanguageContext"
 import LoadingSpinner from "../components/UI/LoadingSpinner.astro"
 import { UserProvider } from "../modules/Shared/context/UserContext"
+import { toast, ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const locale  = Astro.currentLocale || 'en'
 const token = Astro.cookies.get('refresh_token')
@@ -24,6 +27,18 @@ const token = Astro.cookies.get('refresh_token')
          <slot/>
       </UserProvider>
     </LanguageProvider>
+
+    <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+        />
   </body>
 </html>
 
