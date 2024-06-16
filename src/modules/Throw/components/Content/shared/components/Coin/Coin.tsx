@@ -28,6 +28,8 @@ export default function Coin({ svg, condition, coin, id }: Props) {
     "flex justify-center items-center"
   );
 
+  console.log(selectedCoin)
+
   return (
     <button
       disabled={loading}
@@ -36,9 +38,9 @@ export default function Coin({ svg, condition, coin, id }: Props) {
       style={{ backgroundColor: selectedCoin === id ? "#94a3b8" : "#cccccc" }}
     >
       {svg == "moon" ? (
-        <Moon condition={condition === "face"} />
+        <Moon condition={condition} />
       ) : (
-        <Cross condition={condition === "cross"} />
+        <Cross condition={condition} />
       )}
     </button>
   );

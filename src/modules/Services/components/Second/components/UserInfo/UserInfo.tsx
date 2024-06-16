@@ -3,14 +3,15 @@ import Line from "../../../../shared/components/Line/Line";
 import P from "../../../../shared/components/P/P";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
+import A from "../../../../shared/components/A/A";
 
 export default function UserInfo() {
   const { translation } = useTranslation();
   return (
     <Info>
-      <P>
+      <A href="/services/spiritual-family">
         {translation.ServiceMenu.spiritual_family} <Span>{translation.ServiceMenu.free}</Span>
-      </P>
+      </A>
       <Line />
       <P>
         {translation.ServiceMenu.inf_general_evulation} <Span>{translation.ServiceMenu.free}</Span>

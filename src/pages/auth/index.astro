@@ -14,13 +14,13 @@ function getExpire() {
   return expires
 }
 
-/* const session = await getSession(Astro.request)
+ const session = await getSession(Astro.request)
   try {
     let token = ''
     if(session?.user?.email){
         await singUp({email:session.user.email,password: import.meta.env.AUTH_SECRET})
        .then((response)=>{
-         Astro.cookies.set('eons_token',response.data,{expires: getExpire()})
+         Astro.cookies.set('eons_token',response.data.accessToken,{expires: getExpire()})
          Astro.cookies.set('eons_user',session?.user?.email || '',{expires: getExpire()})
          token=Astro.cookies.get('eons_token')?.value || '';
          console.log(token)
@@ -35,7 +35,7 @@ function getExpire() {
   }
   } catch (error) {
     console.log(error)
-  }*/
+  }
 ---
 
 <AppContainer>
