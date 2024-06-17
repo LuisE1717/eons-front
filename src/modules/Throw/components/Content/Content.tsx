@@ -30,6 +30,7 @@ export default function Content({ action, param1 }: Props) {
     moneda1,
     moneda2,
     throwType,
+    initStore,
   } = useStore();
 
   const [count, setCount] = useState(1);
@@ -38,6 +39,10 @@ export default function Content({ action, param1 }: Props) {
     handleChangeMoneda1(0);
     handleChangeMoneda2(0);
   }, [throwType]);
+
+  useEffect(() => {
+    initStore();
+  }, []);
 
   async function handleSendThrow() {
     const coin = coinsInterpreter({
