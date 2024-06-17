@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import Moon from "../Moon/Moon";
 import Cross from "../Cross/Cross";
 import type { CoinProps } from "../../domain";
 import useCoinSelected from "../../hooks/useCoinSelected";
-import { CoinContext } from "../../../../../context/CoinContext";
 import clsx from "clsx";
+import useStore from "../../hooks/useStore";
 
 interface Props extends CoinProps {}
 
 export default function DobleCoin({ svg, condition, id, coin }: Props) {
-  const { loading } = useContext(CoinContext);
+  const { loading } = useStore();
   const { handleChangeSelected, secondCoin, selectedCoin } = useCoinSelected({
     coin: coin,
   });

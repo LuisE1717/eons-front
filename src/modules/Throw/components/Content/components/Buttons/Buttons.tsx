@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Button from "../../../../../../components/UI/Button/Button";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";
-import { CoinContext } from "../../../../context/CoinContext";
 import ButtonsContainer from "../../shared/components/ButtonsContainer/ButtonsContainer";
+import useStore from "../../shared/hooks/useStore";
 
 interface Props {
   handleClickMontado(): void;
@@ -16,7 +16,7 @@ export default function Buttons({
   handleClickTranversal,
 }: Props) {
   const { translation } = useTranslation();
-  const { loading } = useContext(CoinContext);
+  const { loading } = useStore();
 
   return (
     <ButtonsContainer>

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import NextButton from "../../../../components/UI/NextButton";
 import { closeThrow, postThrow } from "../../../../utils/api/throwApi";
 import Cookies from "js-cookie";
@@ -9,24 +9,40 @@ import { TYPES } from "../../domain/types";
 import Header from "./components/Header/Header";
 import Buttons from "./components/Buttons/Buttons";
 import Throws from "./components/Throws/Throws";
-import { CoinContext, CoinProvider } from "../../context/CoinContext";
 import CoinText from "./shared/components/CoinText/CoinText";
+import Layout from "./components/Layout/Layout";
+import useStore from "./shared/hooks/useStore";
 
-export default function Content({action,param1} : {action:string, param1:number}) {
+interface Props {
+  action: string;
+  param1: number;
+}
+
+export default function Content({ action, param1 }: Props) {
+  const { translation } = useTranslation();
   const {
-    throwType,
-    moneda1,
-    moneda2,
-    handleChangeLoading,
-    lastThrow,
-    handleChangeThrowType,
-    handleChangeLastThrow,
     handleChangeMoneda1,
     handleChangeMoneda2,
-  } = useContext(CoinContext);
-  const { translation } = useTranslation();
+    handleChangeLastThrow,
+    handleChangeLoading,
+    handleChangeThrowType,
+    lastThrow,
+    moneda1,
+    moneda2,
+    throwType,
+    initStore,
+  } = useStore();
 
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    handleChangeMoneda1(0);
+    handleChangeMoneda2(0);
+  }, [throwType]);
+
+  useEffect(() => {
+    initStore();
+  }, []);
 
   async function handleSendThrow() {
     const coin = coinsInterpreter({
@@ -135,25 +151,21 @@ export default function Content({action,param1} : {action:string, param1:number}
   }
 
   return (
-    <CoinProvider>
-      <main className="flex flex-col w-full items-center">
-        <div className="rounded-xl bg-white shadow-xl w-full shadow-black/5 ring-1 ring-slate-700/10 px-10 py-5">
-          <Header count={count} />
+    <Layout>
+      <Header count={count} />
 
-          <Throws handleSendThrow={handleSendThrow} />
+      <Throws handleSendThrow={handleSendThrow} />
 
-          <CoinText>{translation.Throw.especial_throw}</CoinText>
+      <CoinText>{translation.Throw.especial_throw}</CoinText>
 
-          <Buttons
-            handleClickMontado={() => handleClickType(TYPES.MONTADO)}
-            handleClickParado={() => handleClickType(TYPES.PARADO)}
-            handleClickTranversal={() => handleClickType(TYPES.TRANVERSAL)}
-          />
-        </div>
+      <Buttons
+        handleClickMontado={() => handleClickType(TYPES.MONTADO)}
+        handleClickParado={() => handleClickType(TYPES.PARADO)}
+        handleClickTranversal={() => handleClickType(TYPES.TRANVERSAL)}
+      />
 
-        {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
-        <NextButton handleSendThrow={handleSendThrow} />
-      </main>
-    </CoinProvider>
+      {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
+      <NextButton handleSendThrow={handleSendThrow} />
+    </Layout>
   );
 }

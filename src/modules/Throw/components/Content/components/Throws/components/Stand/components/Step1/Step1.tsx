@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import useTranslation from "../../../../../../../../../Shared/hooks/useTranslation";
-import { CoinContext } from "../../../../../../../../context/CoinContext";
 import Button from "../../../../../../../../../../components/UI/Button/Button";
 import ButtonsContainer from "../../../../../../shared/components/ButtonsContainer/ButtonsContainer";
 import CoinText from "../../../../../../shared/components/CoinText/CoinText";
+import useStore from "../../../../../../shared/hooks/useStore";
 
 interface Props {
   handleChangeStep(v: number): void;
 }
 
 export default function Step1({ handleChangeStep }: Props) {
-  const { loading } = useContext(CoinContext);
+  const { loading } = useStore();
   const { translation } = useTranslation();
 
   return (
