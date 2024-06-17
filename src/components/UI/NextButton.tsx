@@ -1,12 +1,12 @@
 import { useContext, type FC } from "react";
-import { CoinContext } from "../../modules/Throw/context/CoinContext";
+import useStore from "../../modules/Throw/components/Content/shared/hooks/useStore";
 
 interface Props {
   handleSendThrow(): void;
 }
 
 export default function NextButton({ handleSendThrow }: Props) {
-  const { loading } = useContext(CoinContext);
+  const { loading } = useStore();
 
   return (
     <div className="flex flex-row justify-center mt-8">

@@ -17,10 +17,12 @@ const {action,param1} = Astro.props
             <ReloadButton/>
         </div>
 
+
         <Content 
-        action={action}
-        param1={param1}
-        client:load/>
+            action={action}
+            param1={param1}
+            client:load
+        />
     </div>
 </div>
 
