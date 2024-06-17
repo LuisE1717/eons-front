@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import Step1 from "./components/Step1/Step1";
-import { CoinContext } from "../../../../../../context/CoinContext";
 import { TYPES } from "../../../../../../domain/types";
 import Step2 from "./components/Step2/Step2";
 import Step3 from "./components/Step3/Step3";
 import Step4 from "./components/Step4/Step4";
+import useStore from "../../../../shared/hooks/useStore";
 
 export default function Stand() {
-  const { handleChangeThrowType } = useContext(CoinContext);
+  const { handleChangeThrowType } = useStore();
 
   const [step, setStep] = useState(0);
 

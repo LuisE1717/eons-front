@@ -1,20 +1,13 @@
-import React, {
-  useContext,
-  type Dispatch,
-  type FC,
-  type SetStateAction,
-} from "react";
-import Coin from "../../../../shared/components/Coin/Coin";
 import useTranslation from "../../../../../../../Shared/hooks/useTranslation";
 import { TYPES } from "../../../../../../domain/types";
 import CoinText from "../../../../shared/components/CoinText/CoinText";
 import CoinContainer from "../../../../shared/components/CoinContainer/CoinContainer";
 import DobleCoin from "../../../../shared/components/DobleCoin/DobleCoin";
-import { CoinContext } from "../../../../../../context/CoinContext";
+import useStore from "../../../../shared/hooks/useStore";
 
 export default function Mount() {
   const { translation } = useTranslation();
-  const { throwType: type } = useContext(CoinContext);
+  const { throwType: type } = useStore();
 
   return (
     <>
