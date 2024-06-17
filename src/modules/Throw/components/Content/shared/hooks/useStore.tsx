@@ -6,7 +6,7 @@ import {
   loading as _loading,
   lastThrow as _lastThrow,
 } from "../../store";
-import type { TYPES } from "../../../../domain/types";
+import { TYPES } from "../../../../domain/types";
 
 export default function useStore() {
   const throwType = useNanoStore(_throwType);
@@ -14,6 +14,14 @@ export default function useStore() {
   const moneda2 = useNanoStore(_moneda2);
   const loading = useNanoStore(_loading);
   const lastThrow = useNanoStore(_lastThrow);
+
+  function initStore() {
+    handleChangeLoading(false);
+    handleChangeMoneda1(0);
+    handleChangeMoneda2(0);
+    handleChangeThrowType(TYPES.NORMAL);
+    handleChangeLastThrow("00");
+  }
 
   function handleChangeMoneda1(v: number) {
     _moneda1.set(v);
@@ -46,5 +54,6 @@ export default function useStore() {
     handleChangeMoneda1,
     handleChangeMoneda2,
     handleChangeThrowType,
+    initStore,
   };
 }
