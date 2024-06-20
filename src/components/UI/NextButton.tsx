@@ -1,12 +1,10 @@
 import { useContext, type FC } from "react";
-import useStore from "../../modules/Throw/components/Content/shared/hooks/useStore";
-
 interface Props {
   handleSendThrow(): void;
+  loading:boolean;
 }
 
-export default function NextButton({ handleSendThrow }: Props) {
-  const { loading } = useStore();
+export default function NextButton({ handleSendThrow,loading }: Props) {
 
   return (
     <div className="flex flex-row justify-center mt-8">

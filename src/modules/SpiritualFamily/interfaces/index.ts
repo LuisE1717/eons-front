@@ -2,6 +2,6 @@ export interface Spirit {
   id: string;
   nombre: string;
   description: string|null;
-  description_sistema: string;
+  descripcion_sistema: string;
   foto: null;
 }

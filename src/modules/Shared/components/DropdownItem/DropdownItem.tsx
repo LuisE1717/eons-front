@@ -4,9 +4,10 @@ interface Props {
   handleClick?: () => void;
   text: string;
   id?:string;
+  href?:string;
 }
 
-export default function DropdownItem({ handleClick, text, id }: Props) {
+export default function DropdownItem({ handleClick, text, id, href }: Props) {
   const CLASS = clsx(
     "text-sm",
     "bg-white",
@@ -19,9 +20,15 @@ export default function DropdownItem({ handleClick, text, id }: Props) {
 
   return (
     <div className={CLASS} onClick={handleClick}>
-      <a href={`/throw/01/${id}`}>
+      {href?
+      <a href={href}>
       {text}
       </a>
+      :
+      <>
+      {text}
+      </>
+      }
     </div>
   );
 }
