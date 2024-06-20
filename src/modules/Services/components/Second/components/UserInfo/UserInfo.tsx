@@ -9,7 +9,7 @@ export default function UserInfo() {
   const { translation } = useTranslation();
   return (
     <Info>
-      <A href="/services/spiritual-family">
+      <A href="/spiritual-family">
         {translation.ServiceMenu.spiritual_family} <Span>{translation.ServiceMenu.free}</Span>
       </A>
       <Line />

@@ -1,7 +1,15 @@
 interface Props {
-  children: React.ReactNode;
+  descripcion:string;
+  descripcion_sistema:string;
 }
 
-export default function Description({ children }: Props) {
-  return <p className="leading-7 text-base text-justify">{children}</p>;
+export default function Description({ descripcion, descripcion_sistema }: Props) {
+  console.log(descripcion_sistema)
+  return (
+  <div className="flex flex-row">
+  <p className="leading-7 text-base text-justify">{descripcion_sistema}</p>
+  <br/>
+  <p className="leading-7 text-base text-justify">{descripcion}</p>
+  </div>
+  )
 }
