@@ -20,8 +20,8 @@ function getExpire() {
     if(session?.user?.email){
         await singUp({email:session.user.email,password: import.meta.env.AUTH_SECRET})
        .then((response)=>{
-         Astro.cookies.set('eons_token',response.data.accessToken,{expires: getExpire()})
-         Astro.cookies.set('eons_user',session?.user?.email || '',{expires: getExpire()})
+         Astro.cookies.set('eons_token',response.data.accessToken,{expires: getExpire(),path:'/'})
+         Astro.cookies.set('eons_user',session?.user?.email || '',{expires: getExpire(),path:'/'})
          token=Astro.cookies.get('eons_token')?.value || '';
          console.log(token)
        })
