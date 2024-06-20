@@ -1,12 +1,12 @@
 import { TYPES } from "./types";
 
 interface Props {
-  type: TYPES;
+  type: string;
   coin1: number;
   coin2: number;
 }
 
-export function coinsInterpreter({ coin1, coin2, type }: Props): string {
+export function coinsInterpreter(type:string, coin1:number, coin2:number ): string {
   switch (type) {
     case TYPES.NORMAL:
       if (coin1 == 1 && coin2 == 1) return "01";
@@ -68,5 +68,22 @@ export function coinsInterpreter({ coin1, coin2, type }: Props): string {
 
     default:
       return "00";
+  }
+}
+
+export function actionsInterprete (action:string,response:string) {
+  if(action >= '04'){
+    if(response.includes('not') || response.includes('no')){
+      return "/spiritual-family"
+    }
+    else if(action == '05'){
+
+    }
+    else if(action == '06'){
+      
+    }
+  }
+  else{
+    return "/spiritual-family"
   }
 }
