@@ -29,7 +29,7 @@ export default function Icon({ selected, icon, handleClick, visible }: Props) {
       style={{
         opacity: visible ? "1" : "0.1",
         transform: visible ? `translateX(0)` : `translateX(-20px)`,
-        transitionDelay: "0.5s",
+        transitionDelay: "0.4s",
       }}
     >
       <i className="stroke-primary">{icon({ size: 36 })}</i>
