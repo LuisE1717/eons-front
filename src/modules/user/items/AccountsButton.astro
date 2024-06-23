@@ -58,7 +58,7 @@ const {text, bgColor, bg_hover, color} = Astro.props
 </div>
 
 <script>
-    const { signIn, signOut } = await import("auth-astro/client")
+    const { signIn, } = await import("auth-astro/client")
     
     const google = document.querySelector("#Google")
     const microsoft = document.querySelector('#Microsoft')
@@ -66,7 +66,7 @@ const {text, bgColor, bg_hover, color} = Astro.props
         google.addEventListener('click', async (e) => {
             e.preventDefault()
             console.log(e.target)
-            await signIn("google")           
+            signIn("google", {}).then(data => console.log(data))           
         })
         //console.log(google)
     }

@@ -17,7 +17,7 @@ export default function Second() {
 
   const isInView = useInView(ref, {
     once: true,
-    amount: "all",
+    amount: "some",
   });
 
   function handleChange(s: SECTIONS) {
