@@ -1,0 +1,47 @@
+---
+import { getSession } from "auth-astro/server";
+import Auth from "../../../modules/user/aplication/Auth/Auth.astro";
+import AppContainer from "../../../layouts/AppContainer.astro";
+import { singUp } from "../../../utils/api/userApi";
+import { getI18N } from "../../../i18n";
+import { setCookie } from "../../../utils/cookies/Cookies";
+
+const currentLocale  = Astro?.currentLocale || 'en'
+const i18 = getI18N({currentLocale})
+
+function getExpire() {
+  var expires = new Date();
+  expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+  return expires
+}
+
+  
+  try {
+    const session = await getSession(Astro.request)
+    let token = ''
+    if(session?.user?.email){
+      console.log({email:session.user.email,password: import.meta.env.AUTH_SECRET})
+        await singUp({email:session.user.email,password: import.meta.env.AUTH_SECRET})
+       .then((response)=>{
+         Astro.cookies.set('eons_token',response.data.accessToken,{expires: getExpire()})
+         Astro.cookies.set('eons_user',session?.user?.email || '',{expires: getExpire()})
+         token=Astro.cookies.get('eons_token')?.value || '';
+         //console.log(token)
+       })
+       .catch((response)=>{console.log(response)})
+       if(token)
+        return Astro.redirect(`${currentLocale=='en'?'':'/' + currentLocale}/services`,302)
+  }
+  else{
+    Astro.cookies.delete('eons_token')
+    Astro.cookies.delete('eons_user')
+  }
+  } catch (error) {
+    console.log(error)
+  }
+  
+---
+
+<AppContainer>
+    <Auth/>
+</AppContainer>

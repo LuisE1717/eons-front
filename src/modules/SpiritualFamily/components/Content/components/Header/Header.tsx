@@ -1,5 +1,6 @@
 import React from "react";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";
+import Cookies from "js-cookie";
 
 export default function Header() {
   const { translation } = useTranslation();

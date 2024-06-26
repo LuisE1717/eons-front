@@ -3,6 +3,7 @@ import A from "../../../../shared/components/A/A";
 import Line from "../../../../shared/components/Line/Line";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
+import Cookies from "js-cookie";
 
 export default function MessageInfo() {
   const { translation } = useTranslation();

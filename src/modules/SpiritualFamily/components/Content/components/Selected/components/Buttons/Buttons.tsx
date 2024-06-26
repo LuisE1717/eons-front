@@ -3,6 +3,7 @@ import Card from "./components/Card/Card";
 import Info from "./components/Info/Info";
 import Chat from "./components/Chat/Chat";
 import useTranslation from "../../../../../../../Shared/hooks/useTranslation";
+import Cookies from "js-cookie";
 
 export default function Buttons() {
   const { translation } = useTranslation();

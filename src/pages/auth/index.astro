@@ -4,18 +4,15 @@ import Auth from "../../modules/user/aplication/Auth/Auth.astro";
 import AppContainer from "../../layouts/AppContainer.astro";
 import { singUp } from "../../utils/api/userApi";
 
-if(Astro.cookies.get("eons_lng")?.value === 'es'){
-    return Astro.redirect('/es/auth')
- }
+const currentLocale  = Astro?.currentLocale || 'en'
 
 function getExpire() {
   var expires = new Date();
   expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
   return expires
 }
-
- const session = await getSession(Astro.request)
   try {
+    const session = await getSession(Astro.request)
     let token = ''
     if(session?.user?.email){
         await singUp({email:session.user.email,password: import.meta.env.AUTH_SECRET})
@@ -27,7 +24,7 @@ function getExpire() {
        })
        .catch(({response})=>{console.log(response)})
        if(token)
-        return Astro.redirect('/services',302)
+        return Astro.redirect(`${currentLocale}/services`,302)
   }
   else{
     Astro.cookies.delete('eons_token')
@@ -35,6 +32,7 @@ function getExpire() {
   }
   } catch (error) {
     console.log(error)
+    
   }
 ---
 
