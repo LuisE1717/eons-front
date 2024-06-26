@@ -9,7 +9,7 @@ import ReloadButton from "../user/items/ReloadButton.astro";
 import { getI18N } from "../../i18n";
 import BackButton from "../../components/UI/BackButton.astro";
 
-const currentLocale  = Astro?.currentLocale || 'en'
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
 const {action,param1} = Astro.props
