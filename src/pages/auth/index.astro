@@ -4,8 +4,6 @@ import Auth from "../../modules/user/aplication/Auth/Auth.astro";
 import AppContainer from "../../layouts/AppContainer.astro";
 import { singUp } from "../../utils/api/userApi";
 
-const currentLocale  = Astro?.currentLocale || 'en'
-
 function getExpire() {
   var expires = new Date();
   expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
@@ -24,7 +22,7 @@ function getExpire() {
        })
        .catch(({response})=>{console.log(response)})
        if(token)
-        return Astro.redirect(`${currentLocale}/services`,302)
+        return Astro.redirect(`/services`,302)
   }
   else{
     Astro.cookies.delete('eons_token')
