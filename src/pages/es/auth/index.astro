@@ -30,7 +30,7 @@ function getExpire() {
        })
        .catch((response)=>{console.log(response)})
        if(token)
-        return Astro.redirect('/services',302)
+        return Astro.redirect(`${currentLocale}/services`,302)
   }
   else{
     Astro.cookies.delete('eons_token')

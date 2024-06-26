@@ -5,6 +5,7 @@ import Span from "../../shared/components/Span/Span";
 import Title from "../../shared/components/Title/Title";
 import PhoneView from "../../shared/components/PhoneView/PhoneView";
 import Image from "../../shared/components/Image/Image";
+import Cookies from "js-cookie";
 
 export default function Third() {
   const { translation } = useTranslation();
