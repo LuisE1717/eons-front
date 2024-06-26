@@ -2,6 +2,7 @@ import React from "react";
 import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import useTranslation from "../../../Shared/hooks/useTranslation";
 import P from "../../shared/components/P/P";
+import Cookies from "js-cookie";
 
 export default function Third() {
   const { translation } = useTranslation();

@@ -3,6 +3,7 @@ import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import useTranslation from "../../../Shared/hooks/useTranslation";
 import P from "../../shared/components/P/P";
 import Button from "./components/Button/Button";
+import Cookies from "js-cookie";
 
 export default function Second() {
   const { translation } = useTranslation();

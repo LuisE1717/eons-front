@@ -5,11 +5,27 @@ import { LanguageProvider } from "../modules/Shared/context/LanguageContext"
 import LoadingSpinner from "../components/UI/LoadingSpinner.astro"
 import { UserProvider } from "../modules/Shared/context/UserContext"
 import { toast, ToastContainer } from "react-toastify";
+import { cleanURL } from "../utils/navigation";
+import { useStore } from '@nanostores/react';
+import { locale } from '../LanguageStore';
 
 import "react-toastify/dist/ReactToastify.css";
 
-const locale  = Astro.currentLocale || 'en'
+locale.set(Astro.cookies.get('eons_lng')?.value || 'en') 
+
+//console.log(locale)
 const token = Astro.cookies.get('refresh_token')
+
+cleanURL(Astro.url.href)
+
+console.log(cleanURL(Astro.url.href))
+
+// if(locale !== 'en' && !(Astro.url.href.includes(locale))){
+//   return Astro.redirect(`/${locale}${cleanURL(Astro.url.href)}`)
+// }
+// else if(locale === 'en'){
+//   return Astro.redirect(`/${cleanURL(Astro.url.href)}`)
+// }
 ---
 <!doctype html>
 <html lang="en">
@@ -22,11 +38,9 @@ const token = Astro.cookies.get('refresh_token')
   </div>
   
   <body>
-    <LanguageProvider locale={locale} client:load>
       <UserProvider client:load token={token?.value}>
          <slot/>
       </UserProvider>
-    </LanguageProvider>
 
     <ToastContainer
           position="bottom-right"
