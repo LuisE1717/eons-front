@@ -1,6 +1,5 @@
 import { setCookie } from "./cookies/Cookies"
 import { cleanURL } from "./navigation"
-import i18next from "i18next";
 import { useStore } from '@nanostores/react';
 import { locale } from '../LanguageStore';
 
