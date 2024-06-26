@@ -74,7 +74,7 @@ function getTextBeforeFirstComma(texto: string): string {
     return '';
 }
 
-const currentLocale  = Astro?.currentLocale || 'en'
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
 const navigate = actionsInterprete(action,response)
