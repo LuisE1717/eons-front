@@ -4,6 +4,7 @@ import Icon from "./components/Icon/Icon";
 import moment from "moment";
 import DropdownItem from "../../../../../../../../Shared/components/DropdownItem/DropdownItem";
 import useTranslation from "../../../../../../../../Shared/hooks/useTranslation";
+import Cookies from "js-cookie";
 
 interface Props {
   dialog: Dialog;

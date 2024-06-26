@@ -3,6 +3,7 @@ import Line from "../../../../shared/components/Line/Line";
 import P from "../../../../shared/components/P/P";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
+import Cookies from "js-cookie";
 
 export default function BookInfo() {
   const { translation } = useTranslation();
