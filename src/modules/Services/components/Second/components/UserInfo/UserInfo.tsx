@@ -4,6 +4,7 @@ import P from "../../../../shared/components/P/P";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
 import A from "../../../../shared/components/A/A";
+import Cookies from "js-cookie";
 
 export default function UserInfo() {
   const { translation } = useTranslation();

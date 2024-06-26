@@ -13,6 +13,7 @@ export function LanguageProvider({
   children: React.ReactNode;
   locale: string;
 }) {
+  console.log(locale)
   return (
     <LanguageContext.Provider value={{ locale: locale }}>
       {children}

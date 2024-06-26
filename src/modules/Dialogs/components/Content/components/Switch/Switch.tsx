@@ -2,7 +2,7 @@ import { getI18N } from "../../../../../../i18n";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";
 import { SECTIONS } from "../../../../constants";
 import Section from "./components/Section/Section";
-
+import Cookies from "js-cookie";
 interface Props {
   selected: SECTIONS;
   handleChangeSection(s: SECTIONS): void;

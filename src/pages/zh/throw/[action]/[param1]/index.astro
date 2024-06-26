@@ -1,0 +1,11 @@
+---
+import Throw from "../../../../../modules/Throw/Throw.astro";
+import AppContainer from '../../../../../layouts/AppContainer.astro'
+
+const {action,param1} = Astro.params
+---
+
+<AppContainer>
+    <Throw action={action} param1={param1}/>
+</AppContainer>
+

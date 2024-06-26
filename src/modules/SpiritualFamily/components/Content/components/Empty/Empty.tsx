@@ -2,6 +2,7 @@ import React from "react";
 import P from "./components/P/P";
 import Button from "./components/Button/Button";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";
+import Cookies from "js-cookie";
 
 interface Props {
   handleAdd(): void;

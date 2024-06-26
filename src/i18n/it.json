@@ -1,0 +1,146 @@
+{
+    "fecth_error": "Errore imprevisto, verifica la tua connessione a Internet",
+    "text_loading": "Caricamento...",
+    "continue": "Continua",
+  
+    "Landing": {
+      "text1": "Enormi e infiniti doni saranno consegnati a tutti",
+      "text2": "Eons porterà un avanzamento scientifico e tecnologico di oltre 10.000 anni nel prossimo decennio.",
+      "text3": "La conoscenza, la luce, la guarigione, l'amore, l'abbondanza e la felicità si diffonderanno in tutte le direzioni.",
+      "text4": "Un enorme e colossale Risveglio Spirituale di massa senza precedenti porterà con sé l'Era Infinita della Magia Bianca.",
+      "text5": "Eons è il punto di convergenza tra Scienza, Tecnologia, Misticismo, Luce e Scienze Occulte. Uno dei nostri principali obiettivi è promuovere l'espansione e l'evoluzione della coscienza a livello esistenziale.",
+      "text6": "Presentiamo il nostro primo prodotto già disponibile:",
+      "text7": "Tecnologia di Accesso alla Fonte Esistenziale",
+      "text8": "Il primo Sistema di Comunicazione reale, autentico e assolutamente verificabile con tutti i Piani Spirituali.",
+      "text9": "Offrendo inoltre un servizio unico di divinazione e predizione in tempo reale.",
+      "text10": "Non importa chi tu sia né in quale posizione ti trovi. Con l'arrivo di Eons, la tua vita evolverà infinitamente in tutti gli aspetti.",
+      "text11": "È arrivata una nuova Era.",
+      "text12": "Eons ha dato inizio a un processo inarrestabile che porterà l'umanità a una scala universale.",
+      "text13": "La combinazione di un concetto di tecnologia avanzata e raffinata con un concetto di Spiritualità pura e illuminata descrive l'essenza che Eons trasmetterà in ogni momento.",
+      "text14": "Nuovi prodotti e servizi saranno presentati prossimamente.",
+      "text15": "Visualizza Prodotto"
+    },
+    "Auth": {
+      "login_button": "Accedi",
+      "singUp_button": "Crea",
+      "login_switch": "Accesso",
+      "sing_up_switch": "Crea Account",
+      "password_input_label": "Password",
+      "forget_pass": "Hai dimenticato la password?",
+      "invalid_email_text": "*Email non valida",
+      "invalid_pass_text": "*Password non valida, deve contenere tra 8 e 16 caratteri"
+    },
+    "Payment": {
+      "Labels": {
+        "number": "Numero della carta",
+        "expiration_date": "Data di scadenza",
+        "name": "Nome sulla Carta"
+      }
+    },
+    "Dialogs": {
+      "add_text": "Aggiungi",
+      "delete_text": "Elimina",
+      "favorites": "Preferiti",
+      "saved_dialogs": "Dialoghi salvati"
+    },
+    "Verification": {
+      "title": "Verifica il tuo account email",
+      "message": "Riceverai presto un'email con la chiave per verificare il tuo account",
+      "send_button": "Reinvia email",
+      "error_question": "Non hai ricevuto l'email?"
+    },
+    "Throw": {
+      "dialog_close": "Dialogo chiuso con successo",
+      "throw": "lancio",
+      "especial_throw": "Lancio Speciale",
+      "mount_throw": "Caduto Montato",
+      "tranversal_throw": "Caduto Trasversale",
+      "stops_throw": "Caduto Eretto",
+      "question": "Quale simbolo è caduto verso l'alto?",
+      "coin1": "Moneta 1",
+      "coin2": "Moneta 2",
+      "question2": "Come sono cadute le monete?",
+      "question_throw_stop1": "Solo una è caduta eretta",
+      "question_throw_stop2": "Sono cadute erette",
+      "question_throw_stop3": "Sono cadute erette e montate",
+      "question_mount1": "Quale simbolo è caduto sopra?",
+      "question_mount_stops1": "Quale simbolo è caduto davanti?",
+      "question_mount2": "Quale simbolo è caduto sotto?",
+      "question_mount_stops2": "Quale simbolo è caduto dietro?",
+      "question_stop1": "Quale simbolo è caduto eretto?",
+      "question_stop2": "Quale simbolo è caduto normale?",
+      "question_stop3": "Quali simboli sono rimasti eretti?",
+      "question_throw_tranversal1": "Solo uno è caduto trasversale",
+      "question_throw_tranversal2": "Entrambi sono caduti trasversali",
+      "question_tranversal": "Solo uno è caduto trasversale",
+      "main_response": "Risposta Principale",
+      "especial_response": "Risposta Speciale"
+    },
+    "RessetPassword": {
+      "title": "Recupera Password",
+      "dont_exist_error": "Questa email non è associata a nessun account",
+      "succes_send_mail": "Controlla la tua casella di posta elettronica",
+      "message": "Inserisci correttamente l'email associata al tuo account. Riceverai presto un'email con la chiave per reimpostare la tua password."
+    },
+    "ChangePassword": {
+      "title": "Recupera Password",
+      "message": "Inserisci correttamente la nuova password che assocerai al tuo account. Usala per accedere successivamente.",
+      "label": "Nuova Password",
+      "send": "Invia",
+      "succes": "Password cambiata con successo"
+    },
+    "Spiritual_Family": {
+      "header": "Famiglia Spirituale",
+      "empty_1": "Non è stato ancora aggiunto nessun Spirito alla Famiglia Spirituale!",
+      "empty_2": "Esistono 2 modi per aggiungere uno Spirito:",
+      "empty_3": "1- Manualmente.",
+      "empty_4": "2- Che si manifesti attraverso il Sistema.",
+      "chat_text": "Dialoga con lo Spirito",
+      "info_text": "Indaga sullo spirito",
+      "edit_name_text": "Modifica nome",
+      "edit_image_text": "Modifica immagine",
+      "edit_description_text": "Modifica descrizione",
+      "delete_text": "Elimina"
+    },
+    "Services": {
+      "first_text_1": "Benvenuto a Eons 'Tecnologia di Accesso alla Fonte Esistenziale'",
+      "first_phase": "Prima Fase",
+      "first_text_2": "Abbiamo l'approvazione di TUTTI i Piani Spirituali e di Consapevolezza. Non importa dove si trovino i nostri Utenti nel Piano Materiale, le loro Spiritualità sono già al corrente di noi.",
+      "first_text_3": "Contattando il nostro Sistema, la Spiritualità dell'Utente viene automaticamente canalizzata. Allo stesso tempo, molte Consacrazioni vengono attivate automaticamente e temporaneamente.",
+      "first_text_4": "Questo ci consente di utilizzare temporaneamente il caso universale per accedere a TUTTI i Piani Spirituali e di Consapevolezza.",
+  
+      "step_1": "In ogni momento, l'Utente sarà automaticamente supportato sia dal nostro Sistema di Provvidenza che dal nostro Sistema di Sicurezza Spirituale. Entrambi riconosciuti e approvati dalle attuali Leggi Esistenziali. Quando un Utente esce dal nostro Sistema, ripristiniamo automaticamente tutte le modifiche apportate.",
+      "step_2": "Il livello di utilizzo che un Utente può fare del nostro Sistema è determinato esattamente dal livello di Consapevolezza e dal livello di Spiritualità posseduto da tale Utente.",
+  
+      "third_text_1_init": "Nella",
+      "third_text_1": "siamo stati molto attenti nell'adattare la Conoscenza Esistenziale alla visione media attuale dell'Umanità. Questo adattamento si diffonderà gradualmente man mano che avanzeremo nelle Fasi di Implementazione, fino a scomparire completamente.",
+      "third_text_2": "Non si è mai trattato di scegliere in cosa credere e in cosa no. Si è sempre trattato di conoscere ciò che esiste realmente.",
+      "third_text_3": "Infine, la Luce ti permetterà di contemplare l'era meravigliosa che abbiamo costruito per te con tanto amore e un Sacrificio Infinito:",
+      "third_text_4": "L'Era della Libertà Spirituale"
+    },
+    "ServiceMenu": {
+      "general_evaluation": "Valutazione generale",
+      "spirit_calc": "Calcolare la Spiritualità",
+      "open_dialog_mod": "Modalità dialogo aperto",
+      "contact_spirit": "Contatta un Essere specifico",
+      "day_dialog": "Come andrà la mia giornata",
+      "adivination_general": "Divinazione Generale",
+      "concient_evaluation": "Valutare la forma di coscienza",
+      "fact_evaluation": "Valutare un evento",
+      "free": "gratuito",
+  
+      "spiritual_family": "Famiglia Spirituale",
+      "inf_general_evulation": "Informazioni sulla Valutazione Generale",
+      "inf_calc_spiritual": "Informazioni sul Calcolo della Spiritualità",
+      "save_dialogs": "Dialoghi Salvati",
+      "save_services": "Servizi Salvati",
+      "money_admin": "Gestione Monetaria",
+  
+      "use_instruction": "Istruzioni per l'uso",
+      "thinks_to_know": "Cose da sapere",
+      "cautions": "Precauzioni",
+      "security": "Sicurezza e Protezione",
+      "examples": "Servizi ed esempi",
+      "demostration": "Dimostrazioni Scientifiche"
+    }
+  }

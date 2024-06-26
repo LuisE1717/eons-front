@@ -6,6 +6,7 @@ import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import useTranslation from "../../../Shared/hooks/useTranslation";
 import PhoneView from "../../shared/components/PhoneView/PhoneView";
 import Image from "../../shared/components/Image/Image";
+import Cookies from "js-cookie";
 
 export default function First() {
   const { translation } = useTranslation();
