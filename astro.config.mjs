@@ -14,7 +14,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind(), react(), auth()],
   i18n: {
     defaultLocale: "en",
-    locales: ["es", "en"],
+    locales: ["es", "en", "ar", "fr", "it", "hi", "ja", "pt", "ru", "zh"],
     routing: {
       prefixDefaultLocale: false,
     },
