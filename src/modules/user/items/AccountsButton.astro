@@ -4,10 +4,11 @@ interface Props {
 	text: string;
     bgColor?:string;
     bg_hover?:string;
-    color?:string
+    color?:string;
+    error?:string;
 }
 
-const {text, bgColor, bg_hover, color} = Astro.props
+const {text, bgColor, bg_hover, color, error} = Astro.props
 ---
 
 <div class=`inline-flex justify-center 
@@ -58,7 +59,13 @@ const {text, bgColor, bg_hover, color} = Astro.props
 </div>
 
 <script>
-    const { signIn, } = await import("auth-astro/client")
+    const { signIn } = await import("auth-astro/client")
+    import { toast } from "react-toastify";
+    import { getI18N } from "../../../i18n";
+    import Cookies from "js-cookie"
+
+    const currentLocale  = Cookies.get('eons_lng') || 'en'
+    const i18 = getI18N({ currentLocale })
     
     const google = document.querySelector("#Google")
     const microsoft = document.querySelector('#Microsoft')
@@ -66,7 +73,9 @@ const {text, bgColor, bg_hover, color} = Astro.props
         google.addEventListener('click', async (e) => {
             e.preventDefault()
             console.log(e.target)
-            signIn("google", {}).then(data => console.log(data))           
+            await signIn("google", {})
+            .then(data => toast.error(i18.fecth_error))     
+            .catch(error => toast.error(i18.fecth_error))
         })
         //console.log(google)
     }
@@ -74,7 +83,9 @@ const {text, bgColor, bg_hover, color} = Astro.props
     if(microsoft){
         microsoft.addEventListener('click', async (e) =>{
             e.preventDefault()
-            //await signIn('az')
+            await signIn("azure-ad", {})
+            .then(data => toast.error(i18.fecth_error))     
+            .catch(error => toast.error(i18.fecth_error))
         })
     }
          

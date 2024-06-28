@@ -13,3 +13,9 @@ export function setCookie(name:string, value:string, days:number) {
 export function deleteCookie(name) {
     setCookie(name, "", -1);
 }
+
+export function getExpire() {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+    return expires
+}
