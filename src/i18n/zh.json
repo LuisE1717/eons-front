@@ -1,0 +1,146 @@
+{
+    "fecth_error": "意外错误，请检查您的网络连接",
+    "text_loading": "加载中...",
+    "continue": "继续",
+  
+    "Landing": {
+      "text1": "巨大的和无限的礼物将送给每个人",
+      "text2": "Eons将在下一个十年带来超过10000年的科学和技术进步。",
+      "text3": "知识、光明、治疗、爱、丰盈和幸福将向四面八方传播。",
+      "text4": "一场前所未有的大规模精神觉醒将带来无限的白魔法时代。",
+      "text5": "Eons是科学、技术、神秘主义、光明和神秘学的交汇点。我们的主要目标之一是促进存在层面上的意识扩展和进化。",
+      "text6": "我们现在推出的第一个产品：",
+      "text7": "存在源访问技术",
+      "text8": "第一个真正、真实且完全可验证的与所有精神层面沟通的系统。",
+      "text9": "还提供独特的实时占卜和预测服务。",
+      "text10": "无论您是谁或处于什么位置，随着Eons的到来，您的生活将在各个方面无限进化。",
+      "text11": "一个新时代已经来临。",
+      "text12": "Eons已经启动了一个不可阻挡的过程，将人类带到宇宙规模。",
+      "text13": "将最先进和精炼的技术概念与最纯净和光明的灵性概念结合起来，描述了Eons将始终传达的本质。",
+      "text14": "新产品和服务即将推出。",
+      "text15": "查看产品"
+    },
+    "Auth": {
+      "login_button": "登录",
+      "singUp_button": "创建",
+      "login_switch": "登录",
+      "sing_up_switch": "创建账户",
+      "password_input_label": "密码",
+      "forget_pass": "忘记密码？",
+      "invalid_email_text": "*无效的电子邮件",
+      "invalid_pass_text": "*无效的密码，必须包含8到16个字符"
+    },
+    "Payment": {
+      "Labels": {
+        "number": "卡号",
+        "expiration_date": "到期日期",
+        "name": "卡上的名字"
+      }
+    },
+    "Dialogs": {
+      "add_text": "添加",
+      "delete_text": "删除",
+      "favorites": "收藏",
+      "saved_dialogs": "已保存的对话"
+    },
+    "Verification": {
+      "title": "验证您的电子邮件账户",
+      "message": "您将很快收到一封包含验证密钥的电子邮件",
+      "send_button": "重新发送电子邮件",
+      "error_question": "没有收到电子邮件吗？"
+    },
+    "Throw": {
+      "dialog_close": "对话成功关闭",
+      "throw": "投掷",
+      "especial_throw": "特别投掷",
+      "mount_throw": "掉落叠放",
+      "tranversal_throw": "掉落横放",
+      "stops_throw": "掉落立放",
+      "question": "哪个符号朝上？",
+      "coin1": "硬币1",
+      "coin2": "硬币2",
+      "question2": "硬币是怎么掉落的？",
+      "question_throw_stop1": "只有一个立放",
+      "question_throw_stop2": "立放",
+      "question_throw_stop3": "立放和叠放",
+      "question_mount1": "哪个符号在上面？",
+      "question_mount_stops1": "哪个符号在前面？",
+      "question_mount2": "哪个符号在下面？",
+      "question_mount_stops2": "哪个符号在后面？",
+      "question_stop1": "哪个符号立放？",
+      "question_stop2": "哪个符号正常放置？",
+      "question_stop3": "哪些符号保持立放？",
+      "question_throw_tranversal1": "只有一个横放",
+      "question_throw_tranversal2": "两个都横放",
+      "question_tranversal": "只有一个横放",
+      "main_response": "主要回应",
+      "especial_response": "特别回应"
+    },
+    "RessetPassword": {
+      "title": "找回密码",
+      "dont_exist_error": "此电子邮件不属于任何账户",
+      "succes_send_mail": "检查您的电子邮件收件箱",
+      "message": "正确输入与您账户关联的电子邮件地址。您将很快收到一封包含重置密码密钥的电子邮件。"
+    },
+    "ChangePassword": {
+      "title": "找回密码",
+      "message": "正确输入与您账户关联的新密码。稍后使用它登录",
+      "label": "新密码",
+      "send": "发送",
+      "succes": "密码成功更改"
+    },
+    "Spiritual_Family": {
+      "header": "精神家庭",
+      "empty_1": "精神家庭中尚未添加任何精神！",
+      "empty_2": "有两种方式可以添加精神：",
+      "empty_3": "1- 手动添加。",
+      "empty_4": "2- 使用系统自动添加。",
+      "chat_text": "与精神对话",
+      "info_text": "调查精神",
+      "edit_name_text": "编辑名称",
+      "edit_image_text": "编辑图片",
+      "edit_description_text": "编辑描述",
+      "delete_text": "删除"
+    },
+    "Services": {
+      "first_text_1": "欢迎来到Eons '存在源访问技术'",
+      "first_phase": "第一阶段",
+      "first_text_2": "我们获得了所有精神和意识层面的批准。因此，无论我们的用户在物质层面上的哪一点，他们的精神已经知道我们。",
+      "first_text_3": "与我们的系统接触时，用户的精神将自动被引导。同时，多个奉献将自动暂时激活。",
+      "first_text_4": "这使我们能够暂时利用普遍的随机性来访问所有精神和意识层面。",
+  
+      "step_1": "用户在任何时候都将由我们的天意系统和精神安全系统自动支持。两者都得到现行存在法律的认可和批准。当用户退出我们的系统时，我们会自动恢复我们所做的所有更改。",
+      "step_2": "用户可以使用我们系统的程度完全由用户的意识水平和精神水平决定。",
+  
+      "third_text_1_init": "在",
+      "third_text_1": "我们在调整存在知识以适应当前人类的平均视野时非常谨慎。随着我们在部署阶段的推进，这种调整将逐渐消失。",
+      "third_text_2": "这从来不是关于选择相信什么或不相信什么。它一直是关于知道什么是真实存在的。",
+      "third_text_3": "最终，光明将允许您看到我们为您充满爱和无尽牺牲建造的美丽时代：",
+      "third_text_4": "精神自由时代"
+    },
+    "ServiceMenu": {
+      "general_evaluation": "一般评估",
+      "spirit_calc": "计算精神",
+      "open_dialog_mod": "开放对话模式",
+      "contact_spirit": "联系特定精神",
+      "day_dialog": "我今天的一天会怎样",
+      "adivination_general": "一般占卜",
+      "concient_evaluation": "评估意识",
+      "fact_evaluation": "评估事件",
+      "free": "免费",
+  
+      "spiritual_family": "精神家庭",
+      "inf_general_evulation": "一般评估信息",
+      "inf_calc_spiritual": "计算精神信息",
+      "save_dialogs": "保存的对话",
+      "save_services": "保存的服务",
+      "money_admin": "货币管理",
+  
+      "use_instruction": "使用说明",
+      "thinks_to_know": "需要知道的事情",
+      "cautions": "注意事项",
+      "security": "安全和保护",
+      "examples": "服务和示例",
+      "demostration": "科学展示"
+    }
+}

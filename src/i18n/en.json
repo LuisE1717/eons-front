@@ -1,6 +1,7 @@
 {
   "fecth_error": "Unexpected Error, Check your internet connection",
   "text_loading": "Loading...",
+  "continue":"Continue",
 
   "Landing": {
     "text1": "Huge and infinite gifts will be given to everyone",
@@ -93,6 +94,53 @@
     "empty_1": "No Spirits have been added to the Spirit Family yet!",
     "empty_2": "There are 2 ways in which a Spirit can be added:",
     "empty_3": "1- Manually.",
-    "empty_4": "2- That it is presented through the use of the System."
+    "empty_4": "2- That it is presented through the use of the System.",
+    "chat_text": "Dialogue with Spirit",
+    "info_text": "Investigate spirit",
+    "edit_name_text": "Edit name",
+    "edit_image_text": "Edit image",
+    "edit_description_text": "Edit description",
+    "delete_text": "Delete"
+  },
+  "Services": {
+    "first_text_1": "Welcome to Eons 'Access Technology to the Existential Source'",
+    "first_phase": "First phase",
+    "first_text_2": "We have the approval of ALL Spiritual and Conscientious Planes. So it doesn't matter where our Users are on the Material Plane, their Spiritualities are surely already aware of us.",
+    "first_text_3": "When making contact with our System, the User's Spirituality is automatically channeled. At the same time, multiple Consecrations are automatically activated momentarily.",
+    "first_text_4": "This allows us to make momentary use of universal chance to access ALL Spiritual and Conscious Planes.",
+
+    "step_1": "At all times the User will be automatically supported by both our Providence System and our Spiritual Security System. Both recognized and approved by the current Existential Laws. When a User leaves our System, we automatically restore any changes made by us.",
+    "step_2": "The level of usability that a User will be able to make of our System is determined exactly by the level of Consciousness and the level of Spirituality that said User possesses.",
+
+    "third_text_1_init": "On",
+    "third_text_1": "we have been very careful with the adjustment of Existential Knowledge to the current average View of Humanity. Adjustment that will be dispersed as we advance in the Deployment Phases. Until finally said adjustment disappears completely.",
+    "third_text_2": "It was never about choosing what to believe in and what not to believe. It was always about knowing what really exists.",
+    "third_text_3": "Finally the Light will allow you to contemplate the beautiful Era that with much love and Infinite Sacrifice we have built for you:",
+    "third_text_4": "The Era of Spiritual Freedom"
+  },
+  "ServiceMenu": {
+    "general_evaluation": "General evaluation",
+    "spirit_calc": "Calculate Spirituality",
+    "open_dialog_mod": "Open dialog mode",
+    "contact_spirit": "Contact a specific Being",
+    "day_dialog": "How will my day go today?",
+    "adivination_general": "General Divination",
+    "concient_evaluation": "Evaluate form of consciousness",
+    "fact_evaluation": "Evaluate an event",
+    "free": "free",
+
+    "spiritual_family": "Spiritual Family",
+    "inf_general_evulation": "General Evaluation Information",
+    "inf_calc_spiritual": "Spirituality Calculation Information",
+    "save_dialogs": "Saved Dialogs",
+    "save_services": "Saved Services",
+    "money_admin": "Monetary Management",
+
+    "use_instruction": "Instructions for use",
+    "thinks_to_know": "Things to know",
+    "cautions": "Cautions",
+    "security": "Security and Protection",
+    "examples": "Services and examples",
+    "demostration": "Scientific Demonstrations"
   }
 }

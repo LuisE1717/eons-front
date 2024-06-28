@@ -3,29 +3,33 @@ import P from "../../shared/components/P/P";
 import Title from "../../shared/components/Title/Title";
 import Span from "../../shared/components/Span/Span";
 import ImageSection from "../../shared/components/ImageSection/ImageSection";
+import useTranslation from "../../../Shared/hooks/useTranslation";
+import PhoneView from "../../shared/components/PhoneView/PhoneView";
+import Image from "../../shared/components/Image/Image";
+import Cookies from "js-cookie";
 
 export default function First() {
+  const { translation } = useTranslation();
+
   return (
-    <ImageSection image="/services-1.webp" reverse={false}>
+    <ImageSection
+      image="/services-1.webp"
+      reverse={false}
+      phoneReverse={true}
+      imageInPhone={true}
+    >
       <Title>
-        Bienvenidos a Eones "Tecnología de Acceso a la Fuente Existencial"{" "}
-        <Span>Primera Fase</Span>
+        {translation.Services.first_text_1}{" "}
+        <Span>{translation.Services.first_phase}</Span>
       </Title>
-      <P>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, eius?
-        Sunt aliquam provident debitis tempore molestias sit blanditiis quos
-        quae.
-      </P>
-      <P>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, eius?
-        Sunt aliquam provident debitis tempore molestias sit blanditiis quos
-        quae.
-      </P>
-      <P>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, eius?
-        Sunt aliquam provident debitis tempore molestias sit blanditiis quos
-        quae.
-      </P>
+      <P>{translation.Services.first_text_2}</P>
+
+      <PhoneView>
+        <Image image="/paper.png" />
+      </PhoneView>
+
+      <P>{translation.Services.first_text_3}</P>
+      <P>{translation.Services.first_text_4}</P>
     </ImageSection>
   );
 }

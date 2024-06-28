@@ -1,4 +1,7 @@
 export interface Spirit {
   id: string;
-  name: string;
+  nombre: string;
+  description: string|null;
+  descripcion_sistema: string;
+  foto: null;
 }

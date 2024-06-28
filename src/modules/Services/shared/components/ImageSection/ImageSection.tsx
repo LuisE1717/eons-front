@@ -1,10 +1,13 @@
 import clsx from "clsx";
+import Image from "../Image/Image";
 
 interface Props {
   children: React.ReactNode;
   reverse: boolean;
   image: string;
+  phoneReverse: boolean;
   className?: string;
+  imageInPhone: boolean;
 }
 
 export default function ImageSection({
@@ -12,17 +15,19 @@ export default function ImageSection({
   image,
   reverse,
   className,
+  phoneReverse,
+  imageInPhone,
 }: Props) {
   const CLASS = clsx(
-    "flex xl:flex-row",
+    "flex ",
     "gap-x-8 sm:gap-y-12",
     "xl:items-start items-center",
     className,
     {
       "xl:flex-row-reverse": reverse,
-      "flex-col-reverse": reverse,
-      "flex-col": !reverse,
-    }
+      "xl:flex-row": !reverse,
+    },
+    { "flex-col-reverse": phoneReverse, "flex-col": !phoneReverse }
   );
 
   return (
@@ -33,12 +38,13 @@ export default function ImageSection({
         {children}
       </div>
 
-      <div className="w-full flex justify-center">
-        <img
-          src={image}
-          alt="service"
-          className="object-contain w-full max-w-[600px]"
-        />
+      <div
+        className={clsx("w-full", {
+          "hidden sm:flex": !imageInPhone,
+          "flex justify-center": imageInPhone,
+        })}
+      >
+        <Image image={image} />
       </div>
     </section>
   );
