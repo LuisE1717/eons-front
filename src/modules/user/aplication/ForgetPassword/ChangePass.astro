@@ -8,7 +8,7 @@ import AuthHeader from "../../../../layouts/AuthHeader.astro";
 import Footer from "../../../../layouts/Footer.astro";
 import ChangePassReact from "./React/ChangePass";
 
-const currentLocale  = Astro?.currentLocale || 'en'
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
 const {token,email} = Astro.props

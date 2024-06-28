@@ -1,0 +1,146 @@
+{
+    "fecth_error": "Erreur inattendue, vérifiez votre connexion Internet",
+    "text_loading": "Chargement...",
+    "continue": "Continuer",
+  
+    "Landing": {
+      "text1": "D'énormes et infinis cadeaux seront offerts à tous",
+      "text2": "Eons apportera une avancée scientifique et technologique de plus de 10 000 ans dans la prochaine décennie.",
+      "text3": "La connaissance, la lumière, la guérison, l'amour, l'abondance et le bonheur se répandront dans toutes les directions.",
+      "text4": "Un réveil spirituel massif et sans précédent apportera l'Ère infinie de la Magie blanche.",
+      "text5": "Eons est le point de convergence de la science, de la technologie, du mysticisme, de la lumière et des sciences occultes. L'un de nos principaux objectifs est de promouvoir l'expansion et l'évolution de la conscience au niveau existentiel.",
+      "text6": "Nous présentons notre premier produit déjà disponible :",
+      "text7": "Technologie d'accès à la source existentielle",
+      "text8": "Le premier système de communication réel, authentique et absolument vérifiable avec tous les plans spirituels.",
+      "text9": "Offrant également un service unique de divination et de prédiction en temps réel.",
+      "text10": "Peu importe qui vous êtes ni votre position. Avec l'arrivée d'Eons, votre vie évoluera infiniment dans tous les aspects.",
+      "text11": "Une nouvelle ère est arrivée.",
+      "text12": "Eons a déclenché un processus inarrêtable qui mènera l'humanité à une échelle universelle.",
+      "text13": "La combinaison d'un concept de technologie la plus avancée et raffinée avec un concept de spiritualité la plus pure et éclairée décrit l'essence qu'Eons transmettra à tout moment.",
+      "text14": "De nouveaux produits et services seront bientôt présentés.",
+      "text15": "Voir le produit"
+    },
+    "Auth": {
+      "login_button": "Se connecter",
+      "singUp_button": "Créer",
+      "login_switch": "Connexion",
+      "sing_up_switch": "Créer un compte",
+      "password_input_label": "Mot de passe",
+      "forget_pass": "Vous avez oublié votre mot de passe ?",
+      "invalid_email_text": "*Email non valide",
+      "invalid_pass_text": "*Mot de passe non valide, doit contenir entre 8 et 16 caractères"
+    },
+    "Payment": {
+      "Labels": {
+        "number": "Numéro de carte",
+        "expiration_date": "Date d'expiration",
+        "name": "Nom sur la carte"
+      }
+    },
+    "Dialogs": {
+      "add_text": "Ajouter",
+      "delete_text": "Supprimer",
+      "favorites": "Favoris",
+      "saved_dialogs": "Dialogues enregistrés"
+    },
+    "Verification": {
+      "title": "Vérifiez votre compte de messagerie",
+      "message": "Vous recevrez bientôt un email avec la clé pour vérifier votre compte",
+      "send_button": "Renvoyer l'email",
+      "error_question": "Vous n'avez pas reçu l'email ?"
+    },
+    "Throw": {
+      "dialog_close": "Dialogue fermé avec succès",
+      "throw": "lancer",
+      "especial_throw": "Lancer spécial",
+      "mount_throw": "Monté",
+      "tranversal_throw": "Transversal",
+      "stops_throw": "Arrêté",
+      "question": "Quel symbole est tombé vers le haut ?",
+      "coin1": "Pièce 1",
+      "coin2": "Pièce 2",
+      "question2": "Comment les pièces sont-elles tombées ?",
+      "question_throw_stop1": "Une seule est tombée arrêtée",
+      "question_throw_stop2": "Elles sont tombées arrêtées",
+      "question_throw_stop3": "Elles sont tombées arrêtées et montées",
+      "question_mount1": "Quel symbole est tombé dessus ?",
+      "question_mount_stops1": "Quel symbole est tombé devant ?",
+      "question_mount2": "Quel symbole est tombé dessous ?",
+      "question_mount_stops2": "Quel symbole est tombé derrière ?",
+      "question_stop1": "Quel symbole est tombé arrêté ?",
+      "question_stop2": "Quel symbole est tombé normalement ?",
+      "question_stop3": "Quels symboles sont restés arrêtés ?",
+      "question_throw_tranversal1": "Un seul est tombé transversal",
+      "question_throw_tranversal2": "Les deux sont tombés transversaux",
+      "question_tranversal": "Un seul est tombé transversal",
+      "main_response": "Réponse principale",
+      "especial_response": "Réponse spéciale"
+    },
+    "RessetPassword": {
+      "title": "Réinitialiser le mot de passe",
+      "dont_exist_error": "Cet email n'est associé à aucun compte",
+      "succes_send_mail": "Vérifiez votre boîte de réception",
+      "message": "Veuillez saisir correctement l'adresse email associée à votre compte. Vous recevrez bientôt un email avec la clé pour réinitialiser votre mot de passe."
+    },
+    "ChangePassword": {
+      "title": "Réinitialiser le mot de passe",
+      "message": "Veuillez saisir correctement le nouveau mot de passe que vous associerez à votre compte. Utilisez-le pour vous connecter plus tard.",
+      "label": "Nouveau mot de passe",
+      "send": "Envoyer",
+      "succes": "Mot de passe changé avec succès"
+    },
+    "Spiritual_Family": {
+      "header": "Famille spirituelle",
+      "empty_1": "Aucun esprit n'a encore été ajouté à la famille spirituelle !",
+      "empty_2": "Il existe 2 façons par lesquelles un esprit peut être ajouté :",
+      "empty_3": "1- Manuellement.",
+      "empty_4": "2- Qu'il se manifeste lui-même à travers le système.",
+      "chat_text": "Dialoguer avec l'esprit",
+      "info_text": "Enquêter sur l'esprit",
+      "edit_name_text": "Modifier le nom",
+      "edit_image_text": "Modifier l'image",
+      "edit_description_text": "Modifier la description",
+      "delete_text": "Supprimer"
+    },
+    "Services": {
+      "first_text_1": "Bienvenue chez Eons 'Technologie d'accès à la source existentielle'",
+      "first_phase": "Première phase",
+      "first_text_2": "Nous avons l'approbation de TOUS les plans spirituels et de conscience. Peu importe où nos utilisateurs se trouvent dans le plan matériel, leurs spiritualités sont déjà au courant de notre existence.",
+      "first_text_3": "En entrant en contact avec notre système, la spiritualité de l'utilisateur est automatiquement canalisée. En même temps, plusieurs consécrations sont automatiquement et temporairement activées.",
+      "first_text_4": "Cela nous permet d'utiliser temporairement le hasard universel pour accéder à TOUS les plans spirituels et de conscience.",
+  
+      "step_1": "À tout moment, l'utilisateur sera automatiquement soutenu par notre système de providence ainsi que par notre système de sécurité spirituelle. Les deux sont reconnus et approuvés par les lois existentielles actuelles. Lorsqu'un utilisateur quitte notre système, nous rétablissons automatiquement tous les changements que nous avons effectués.",
+      "step_2": "Le niveau d'utilisation que l'utilisateur pourra faire de notre système est déterminé exactement par le niveau de conscience et de spiritualité de cet utilisateur.",
+  
+      "third_text_1_init": "Dans le",
+      "third_text_1": "nous avons été très prudents pour ajuster les connaissances existentielles à la vision moyenne actuelle de l'humanité. Cet ajustement se diffusera progressivement à mesure que nous progressons dans les phases de déploiement, jusqu'à ce qu'il disparaisse complètement.",
+      "third_text_2": "Il n'a jamais été question de choisir en quoi croire et en quoi ne pas croire. Il s'est toujours agi de connaître ce qui existe réellement.",
+      "third_text_3": "Enfin, la lumière vous permettra de contempler l'ère magnifique que nous avons construite pour vous avec beaucoup d'amour et un sacrifice infini :",
+      "third_text_4": "L'ère de la liberté spirituelle"
+    },
+    "ServiceMenu": {
+      "general_evaluation": "Évaluation générale",
+      "spirit_calc": "Calculer la spiritualité",
+      "open_dialog_mod": "Mode dialogue ouvert",
+      "contact_spirit": "Contacter un être spécifique",
+      "day_dialog": "Comment se déroulera ma journée",
+      "adivination_general": "Divination générale",
+      "concient_evaluation": "Évaluer la forme de conscience",
+      "fact_evaluation": "Évaluer un événement",
+      "free": "gratuit",
+  
+      "spiritual_family": "Famille spirituelle",
+      "inf_general_evulation": "Informations sur l'évaluation générale",
+      "inf_calc_spiritual": "Informations sur le calcul de la spiritualité",
+      "save_dialogs": "Dialogues enregistrés",
+      "save_services": "Services enregistrés",
+      "money_admin": "Gestion financière",
+  
+      "use_instruction": "Instructions d'utilisation",
+      "thinks_to_know": "Choses à savoir",
+      "cautions": "Précautions",
+      "security": "Sécurité et protection",
+      "examples": "Services et exemples",
+      "demostration": "Démonstrations scientifiques"
+    }
+}

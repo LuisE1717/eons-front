@@ -2,11 +2,10 @@
 import AuthIcon from "../../../../public/customized/AuthIcon.astro"
 import { getI18N } from "../../../i18n"
 
-const currentLocale  = Astro?.currentLocale || 'en'
+const currentLocale = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
 const user = Astro.cookies.get('eons_user')?.value
-console.log(user)
 ---
 
 {user?
@@ -15,7 +14,7 @@ console.log(user)
 </button>
 :
 <button>
-  <a href={`${currentLocale=='en'?'':'/es'}/auth`}>
+  <a href={`/auth`}>
     <AuthIcon/>
   </a>
 </button>
@@ -38,9 +37,6 @@ console.log(user)
           </label>
         </li>
     </div>
-
-    
-  
 <style>
     .drop-menu {
       display: none;
@@ -89,12 +85,12 @@ console.log(user)
   
       async function LogOut (){
         if(log_out){
-          const currentLocale = Cookies.get('eons_lng')
+          const currentLocale = Cookies.get('eons_lng') || 'en'
           Cookies.remove('eons_token')
           Cookies.remove('eons_user')
           //console.log('e')
           await signOut()
-          window.location.href = `${currentLocale=='en'?'':'/es'}/auth`
+          window.location.href = `/auth`
         }
       }
       

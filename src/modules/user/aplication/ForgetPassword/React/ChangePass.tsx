@@ -32,7 +32,7 @@ const ChangePassReact:FC<Props> = ({token,email,i18,currentLocale}) => {
         toast.success(i18["ChangePassword"].succes)
         setTimeout(() => {
           setLoading(false)
-          window.location.href = `${currentLocale == 'es'?'/es':''}/auth`
+          window.location.href = `/auth`
         }, 3000);
       })
       .catch((error)=>{

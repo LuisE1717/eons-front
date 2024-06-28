@@ -1,7 +1,7 @@
 import { axiosI } from ".";
 
-export async function postThrow(token:string,code:string,type:string) {
-    const res = await axiosI(token).get(`respuestas/${code}?type=${type}`)
+export async function postThrow(token:string,code:string,dataE) {
+    const res = await axiosI(token).get(`respuestas/${code}/${dataE}`)
     const data = await res.data;
 
     if (!data) {
@@ -20,9 +20,7 @@ export async function closeThrow(token:string) {
     const data = await res.data;
 
     if (!data) {
-        return {
-            notFound: true,
-        }
+        console.log(res)
     } else {
         return {
             data: data

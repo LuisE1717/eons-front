@@ -3,8 +3,29 @@ import BaseHead from "./BaseHead.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import { LanguageProvider } from "../modules/Shared/context/LanguageContext"
 import LoadingSpinner from "../components/UI/LoadingSpinner.astro"
+import { UserProvider } from "../modules/Shared/context/UserContext"
+import { toast, ToastContainer } from "react-toastify";
+import { cleanURL } from "../utils/navigation";
+import { useStore } from '@nanostores/react';
+import { locale } from '../LanguageStore';
 
-const locale  = Astro?.currentLocale || 'en'
+import "react-toastify/dist/ReactToastify.css";
+
+locale.set(Astro.cookies.get('eons_lng')?.value || 'en') 
+
+//console.log(locale)
+const token = Astro.cookies.get('refresh_token')
+
+cleanURL(Astro.url.href)
+
+console.log(cleanURL(Astro.url.href))
+
+// if(locale !== 'en' && !(Astro.url.href.includes(locale))){
+//   return Astro.redirect(`/${locale}${cleanURL(Astro.url.href)}`)
+// }
+// else if(locale === 'en'){
+//   return Astro.redirect(`/${cleanURL(Astro.url.href)}`)
+// }
 ---
 <!doctype html>
 <html lang="en">
@@ -17,9 +38,21 @@ const locale  = Astro?.currentLocale || 'en'
   </div>
   
   <body>
-    <LanguageProvider locale={locale} client:load>
-      <slot/>
-    </LanguageProvider>
+      <UserProvider client:load token={token?.value}>
+         <slot/>
+      </UserProvider>
+
+    <ToastContainer
+          position="bottom-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+        />
   </body>
 </html>
 
@@ -43,5 +76,5 @@ const locale  = Astro?.currentLocale || 'en'
     }
       
   };
-  </script>
+</script>
 

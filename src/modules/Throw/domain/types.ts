@@ -1,0 +1,23 @@
+export enum TYPES {
+  NORMAL = "normal",
+  PARADO = "parado",
+  AMBOS_PARADOS = "ambos_parados",
+  PARADO_MONTADO = "parado_montado",
+  MONTADO = "montado",
+  TRANVERSAL = "tranversal",
+}
+
+export enum ACTIONS {
+  //eliminar espiritu
+  ELIMINAR_SPIRIT = '01',
+  //editar foto espiritu
+  EDITAR_FOTO = '02',
+  //editar nombre espiritu
+  EDITAR_NOMBRE = '03',
+  //editar descripcion espiritu
+  EDITAR_DESC = '04',
+  //dialogar con espiritu
+  DIALOGAR = '05',
+  //estudiar espiritu
+  ESTUDIAR = '06',
+};

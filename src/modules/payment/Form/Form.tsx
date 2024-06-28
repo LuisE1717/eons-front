@@ -22,7 +22,7 @@ export default function Form({ dateLabel, nameLabel, numberLabel }: Props) {
   } = useForm();
 
   return (
-    <form className="flex flex-col gap-y-7" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-y-7 rounded-sm shadow-md" onSubmit={handleSubmit}>
       <Section
         value={form.number}
         handleChange={handleChangeNumber}

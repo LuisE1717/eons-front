@@ -5,28 +5,50 @@ import type { Spirit } from "../../interfaces";
 import Header from "./components/Header/Header";
 import Empty from "./components/Empty/Empty";
 import Card from "./components/Card/Card";
+import Selected from "./components/Selected/Selected";
+import useGetAllSpirits from "./hooks/useGetAllSpirits";
+import Cookies from "js-cookie";
+import { postCreateSpirit } from "../../../../utils/api/spiritsApi";
 
 export default function Content() {
-  useTranslation();
+  const i18 = useTranslation();
 
   const [spirits, setSpirits] = useState<Spirit[]>([]);
 
-  function handleAdd() {
-    setSpirits((prev) => [...prev, { id: "1", name: "Espíritu 1" }]);
+  const [selected, setSelected] = useState<Spirit | null>(null);
+
+  const [control,setControl] = useState<boolean>(true)
+
+  const dataSpirits = useGetAllSpirits(control,setControl)
+
+  async function handleAdd() {
+    await postCreateSpirit(Cookies.get('eons_token') || '')
+    setControl(true)
+  }
+
+  function handleSelect(s: Spirit) {
+    setSelected(s);
+  }
+
+  function handleDesSelect() {
+    setSelected(null);
   }
 
   return (
     <ListContainer>
-      <Header />
+      {!selected && <Header />}
 
-      {spirits.length === 0 && <Empty handleAdd={handleAdd} />}
-
-      {spirits.length > 0 && (
+      {dataSpirits.data.length === 0 && <Empty handleAdd={handleAdd} />}
+      {dataSpirits.data.length > 0 && !selected && (
         <div className="flex flex-col gap-y-2 min-h-[400px] overflow-y-auto">
-          {spirits.map((s) => (
-            <Card spirit={s} key={s.id} />
+          {dataSpirits.data.map((s) => (
+            <Card spirit={s} key={s.id} handleClick={() => handleSelect(s)} />
           ))}
         </div>
+      )}
+
+      {dataSpirits.data.length > 0 && selected && (
+        <Selected handleClose={handleDesSelect} spirit={selected} />
       )}
     </ListContainer>
   );

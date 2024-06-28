@@ -1,0 +1,146 @@
+{
+    "fecth_error": "Erro inesperado, verifique sua conexão com a internet",
+    "text_loading": "Carregando...",
+    "continue": "Continuar",
+  
+    "Landing": {
+      "text1": "Enormes e infinitos presentes serão entregues a todos",
+      "text2": "Eons trará um avanço Científico e Tecnológico de mais de 10.000 anos na próxima década.",
+      "text3": "Conhecimento, luz, cura, amor, abundância e felicidade se espalharão em todas as direções.",
+      "text4": "Um enorme e colossal Despertar Espiritual em massa sem precedentes trará consigo a Era Infinita da Magia Branca.",
+      "text5": "Eons é o ponto médio onde convergem Ciência, Tecnologia, Misticismo, Luz e Ciências Ocultas. Um dos nossos principais objetivos é promover a expansão e a evolução da consciência a nível Existencial.",
+      "text6": "Apresentamos nosso primeiro produto já disponível:",
+      "text7": "Tecnologia de Acesso à Fonte Existencial",
+      "text8": "O primeiro Sistema de Comunicação real, autêntico e absolutamente comprovável com todos os Planos Espirituais.",
+      "text9": "Oferecendo também um serviço único de adivinhação e previsão em tempo real.",
+      "text10": "Não importa quem você é nem em que posição está. Com a chegada de Eons, sua vida evoluirá infinitamente em todos os aspectos.",
+      "text11": "Uma nova Era chegou.",
+      "text12": "Eons deu início a um desfecho inabalável que levará a humanidade a uma escala Universal.",
+      "text13": "A combinação de um conceito de tecnologia mais avançada e refinada, juntamente com um conceito de Espiritualidade mais Pura e Iluminada, descrevem a Essência que Eons transmitirá a todo momento.",
+      "text14": "Novos produtos e serviços serão apresentados em breve.",
+      "text15": "Ver Produto"
+    },
+    "Auth": {
+      "login_button": "Iniciar",
+      "singUp_button": "Criar",
+      "login_switch": "Iniciar Sessão",
+      "sing_up_switch": "Criar Conta",
+      "password_input_label": "Senha",
+      "forget_pass": "Esqueceu sua senha?",
+      "invalid_email_text": "*Email inválido",
+      "invalid_pass_text": "*Senha inválida, deve conter entre 8 e 16 caracteres"
+    },
+    "Payment": {
+      "Labels": {
+        "number": "Número do cartão",
+        "expiration_date": "Data de expiração",
+        "name": "Nome no Cartão"
+      }
+    },
+    "Dialogs": {
+      "add_text": "Adicionar",
+      "delete_text": "Excluir",
+      "favorites": "Favoritos",
+      "saved_dialogs": "Diálogos salvos"
+    },
+    "Verification": {
+      "title": "Validar sua conta de email",
+      "message": "Você receberá em breve um email com a chave para validar sua conta",
+      "send_button": "Reenviar email",
+      "error_question": "Não recebeu o email?"
+    },
+    "Throw": {
+      "dialog_close": "Diálogo fechado com sucesso",
+      "throw": "lançamento",
+      "especial_throw": "Lançamento Especial",
+      "mount_throw": "Caíram Montadas",
+      "tranversal_throw": "Caíram Transversal",
+      "stops_throw": "Caíram Paradas",
+      "question": "Qual símbolo caiu virado para cima?",
+      "coin1": "Moeda 1",
+      "coin2": "Moeda 2",
+      "question2": "Como caíram as moedas?",
+      "question_throw_stop1": "Apenas uma caiu parada",
+      "question_throw_stop2": "Caíram paradas",
+      "question_throw_stop3": "Caíram paradas e montadas",
+      "question_mount1": "Qual símbolo caiu em cima?",
+      "question_mount_stops1": "Qual símbolo caiu na frente?",
+      "question_mount2": "Qual símbolo caiu embaixo?",
+      "question_mount_stops2": "Qual símbolo caiu atrás?",
+      "question_stop1": "Qual símbolo caiu parado?",
+      "question_stop2": "Qual símbolo caiu normal?",
+      "question_stop3": "Quais símbolos ficaram parados?",
+      "question_throw_tranversal1": "Apenas um caiu transversal",
+      "question_throw_tranversal2": "Ambos caíram transversal",
+      "question_tranversal": "Apenas um caiu transversal",
+      "main_response": "Resposta Principal",
+      "especial_response": "Resposta Especial"
+    },
+    "RessetPassword": {
+      "title": "Recuperar senha",
+      "dont_exist_error": "Este email não pertence a nenhuma conta",
+      "succes_send_mail": "Verifique sua caixa de entrada de email",
+      "message": "Insira corretamente o email associado à sua conta. Você receberá em breve um email com a chave para redefinir sua senha."
+    },
+    "ChangePassword": {
+      "title": "Recuperar senha",
+      "message": "Insira corretamente a nova senha que associará à sua conta. Use-a para fazer login mais tarde.",
+      "label": "Nova senha",
+      "send": "Enviar",
+      "succes": "Senha alterada com sucesso"
+    },
+    "Spiritual_Family": {
+      "header": "Família Espiritual",
+      "empty_1": "Ainda não foi adicionado nenhum Espírito à Família Espiritual!",
+      "empty_2": "Existem 2 formas de adicionar um Espírito:",
+      "empty_3": "1- Manualmente.",
+      "empty_4": "2- Que ele se apresente através do Sistema.",
+      "chat_text": "Conversar com Espírito",
+      "info_text": "Investigar espírito",
+      "edit_name_text": "Editar nome",
+      "edit_image_text": "Editar imagem",
+      "edit_description_text": "Editar descrição",
+      "delete_text": "Excluir"
+    },
+    "Services": {
+      "first_text_1": "Bem-vindo a Eons 'Tecnologia de Acesso à Fonte Existencial'",
+      "first_phase": "Primeira Fase",
+      "first_text_2": "Temos a aprovação de TODOS os Planos Espirituais e de Consciência. Não importa em que ponto do Plano Material nossos Usuários se encontrem, suas Espiritualidades já estão cientes de nós.",
+      "first_text_3": "Ao entrar em contato com nosso Sistema, a Espiritualidade do Usuário é automaticamente canalizada. Ao mesmo tempo, múltiplas Consagrações são ativadas automaticamente de forma temporária.",
+      "first_text_4": "Isso nos permite usar temporariamente o acaso universal para acessar TODOS os Planos Espirituais e de Consciência.",
+  
+      "step_1": "Em todo momento o Usuário estará automaticamente apoiado pelo nosso Sistema de Providência e pelo nosso Sistema de Segurança Espiritual. Ambos reconhecidos e aprovados pelas atuais Leis Existenciais. Quando um Usuário sai do nosso Sistema, restauramos automaticamente todas as mudanças feitas por nós.",
+      "step_2": "O nível de usabilidade que um Usuário poderá fazer do nosso Sistema é determinado exatamente pelo nível de Consciência e pelo nível de Espiritualidade que esse Usuário possui.",
+  
+      "third_text_1_init": "Na",
+      "third_text_1": "temos sido muito cuidadosos ao ajustar o Conhecimento Existencial à visão média atual da Humanidade. Este ajuste será disperso à medida que avançarmos nas Fases de Implementação, até que finalmente desapareça completamente.",
+      "third_text_2": "Nunca se tratou de escolher no que acreditar e no que não acreditar. Sempre se tratou de conhecer o que realmente Existe.",
+      "third_text_3": "Finalmente a Luz permitirá que você contemple a bela Era que construímos para você com muito amor e um Sacrifício Infinito:",
+      "third_text_4": "A Era da Liberdade Espiritual"
+    },
+    "ServiceMenu": {
+      "general_evaluation": "Avaliação geral",
+      "spirit_calc": "Calcular Espiritualidade",
+      "open_dialog_mod": "Modo de diálogo aberto",
+      "contact_spirit": "Contatar um Ser específico",
+      "day_dialog": "Como será meu dia hoje",
+      "adivination_general": "Adivinhação Geral",
+      "concient_evaluation": "Avaliar forma de consciência",
+      "fact_evaluation": "Avaliar um evento",
+      "free": "grátis",
+  
+      "spiritual_family": "Família Espiritual",
+      "inf_general_evulation": "Informação sobre Avaliação Geral",
+      "inf_calc_spiritual": "Informação sobre Cálculo de Espiritualidade",
+      "save_dialogs": "Diálogos Salvos",
+      "save_services": "Serviços Salvos",
+      "money_admin": "Gestão Monetária",
+  
+      "use_instruction": "Instruções de uso",
+      "thinks_to_know": "Coisas a saber",
+      "cautions": "Precauções",
+      "security": "Segurança e Proteção",
+      "examples": "Serviços e exemplos",
+      "demostration": "Demonstrações Científicas"
+    }
+  }

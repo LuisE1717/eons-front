@@ -1,6 +1,14 @@
 ---
 import SpainFlag from "../../../../public/customized/SpainFlag.astro";
 import EnglandFlag from "../../../../public/customized/EnglandFlag.astro";
+import FranceFlag from "../../../../public/customized/FranceFlag.astro";
+import ItalianFlag from "../../../../public/customized/ItalianFlag.astro";
+import RusianFlag from "../../../../public/customized/RusianFlag.astro";
+import JapanFlag from "../../../../public/customized/JapanFlag.astro";
+import PortugalFlag from "../../../../public/customized/PortugalFlag.astro";
+import ChinaFlag from "../../../../public/customized/ChinaFlag.astro";
+import IndiaFlag from "../../../../public/customized/IndiaFlag.astro";
+import ArabianFlag from "../../../../public/customized/ArabianFlag.astro";
 ---
 
 
@@ -11,7 +19,7 @@ import EnglandFlag from "../../../../public/customized/EnglandFlag.astro";
 </button>
 
   <!-- Dropdown menu -->
-  <div id="dropdownLang" class="drop-menu z-10 bg-white rounded-lg shadow w-24">
+  <div id="dropdownLang" class="drop-menu z-10 bg-white rounded-lg shadow w-36">
     <ul class="py-2 overflow-y-auto text-gray-700" aria-labelledby="dropdownUsersButton">
       <li class="cursor-pointer" id="English">
         <div class="flex items-center px-4 py-2 hover:bg-slate-100">
@@ -23,6 +31,54 @@ import EnglandFlag from "../../../../public/customized/EnglandFlag.astro";
         <div class="flex items-center px-4 py-2 hover:bg-slate-100">
           <SpainFlag/>
           <span class="ml-2">Español</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="france">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <FranceFlag/>
+          <span class="ml-2">Français</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="italian">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <ItalianFlag/>
+          <span class="ml-2">Italiano</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="rusia">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <RusianFlag/>
+          <span class="ml-2">Русский</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="japan">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <JapanFlag/>
+          <span class="ml-2">日本語</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="hindi">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <IndiaFlag/>
+          <span class="ml-2">हिंदी</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="portugues">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <PortugalFlag/>
+          <span class="ml-2">Português</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="chiness">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <ChinaFlag/>
+          <span class="ml-2">中國人</span>
+        </div>
+      </li>
+      <li class="cursor-pointer" id="arabian">
+        <div class="flex items-center px-4 py-2 hover:bg-slate-100">
+          <ArabianFlag/>
+          <span class="ml-2">عرب</span>
         </div>
       </li>
   </div>
@@ -37,11 +93,34 @@ import EnglandFlag from "../../../../public/customized/EnglandFlag.astro";
 <script>
 import { setCookie } from "../../../utils/cookies/Cookies";
 import { cleanURL } from "../../../utils/navigation"
+import { 
+  setEnglish,
+  setSpanish,
+  setFrance,
+  setItalian,
+  setRusia,
+  setHindi,
+  setPortugues,
+  setJapan,
+  setArabian,
+  setChiness
+} from "../../../utils/SetLang";
+
+
   document.addEventListener('DOMContentLoaded', function() {
     const dropdownButton = document.getElementById('language-switcher');
     const dropdownMenu = document.getElementById('dropdownLang');
+
     const english = document.getElementById('English');
     const spanish = document.getElementById('Spanish');
+    const france = document.getElementById('france');
+    const italian = document.getElementById('italian');
+    const rusia = document.getElementById('rusia');
+    const japan = document.getElementById('japan');
+    const hindi = document.getElementById('hindi');
+    const portugues = document.getElementById('portugues');
+    const chiness = document.getElementById('chiness');
+    const arabian = document.getElementById('arabian');
 
     // Función para mostrar el menú
     function showMenu() {
@@ -56,7 +135,7 @@ import { cleanURL } from "../../../utils/navigation"
         //   width: ${dropdownButton.getBoundingClientRect().width}`);
 
           //Setting Postion
-          dropdownMenu.style.left = `${dropdownButton.getBoundingClientRect().left - 38}px`
+          dropdownMenu.style.left = `${dropdownButton.getBoundingClientRect().left - 64}px`
           dropdownMenu.style.right = `${dropdownButton.getBoundingClientRect().right}px`
 
           //Seeting font-size
@@ -72,24 +151,6 @@ import { cleanURL } from "../../../utils/navigation"
       }
     }
 
-    function setEnglish(){
-      if(english){
-        setCookie("eons_lng","en",10)
-        const pathForUse = cleanURL(document.location.href)
-        console.log(pathForUse)
-        document.location.href = `/${pathForUse}`
-      }
-    }
-
-    function setSpanish(){
-      if(spanish){
-        setCookie("eons_lng","es",10)
-        const pathForUse = cleanURL(document.location.href)
-        console.log(pathForUse)
-        document.location.href = `/es/${pathForUse}`
-      }
-    }
-
     if(dropdownMenu && dropdownButton){
       // Agregar event listeners
       dropdownButton.addEventListener('click', showMenu);
@@ -99,9 +160,31 @@ import { cleanURL } from "../../../utils/navigation"
       }
     }, true);
     }
-    if(english && spanish){
-      english.addEventListener('click', setEnglish);
-      spanish.addEventListener('click', setSpanish);
+    if(english &&
+       spanish &&
+       france &&
+       italian &&
+       rusia &&
+       japan &&
+       hindi &&
+       portugues &&
+       chiness &&
+       arabian
+       ){
+      english.addEventListener('click', () => setEnglish(english));
+      spanish.addEventListener('click', () => setSpanish(spanish));
+
+      france.addEventListener('click',() => setFrance(france));
+      italian.addEventListener('click',() => setItalian(italian));
+
+      rusia.addEventListener('click',() => setRusia(rusia));
+      japan.addEventListener('click',() => setJapan(japan));
+
+      hindi.addEventListener('click',() => setHindi(hindi));
+      portugues.addEventListener('click',() => setPortugues(portugues));
+
+      chiness.addEventListener('click',() => setChiness(chiness));
+      arabian.addEventListener('click',() => setArabian(arabian));
     }
   });
 </script>
