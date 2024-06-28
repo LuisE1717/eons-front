@@ -7,6 +7,7 @@ export default {
       colors: {
         primary: "#d161b4",
       },
+      backgroundImage: { triangle: "url('/triangle.webp')" },
     },
   },
   plugins: [],
