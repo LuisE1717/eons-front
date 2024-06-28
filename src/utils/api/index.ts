@@ -1,5 +1,5 @@
 import axios, {Axios, type AxiosInstance, type InternalAxiosRequestConfig } from "axios";
-import configEnv from "./env_config";
+import configEnv from "../../../env_config";
 import Cookies from "js-cookie";
 
 export const intanceAxios : AxiosInstance = axios.create ({
