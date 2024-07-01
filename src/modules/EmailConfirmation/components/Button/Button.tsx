@@ -1,24 +1,47 @@
 import { useEffect, useState } from "react";
 import AppButton from "../../../../components/UI/Button/Button";
-
+import { validMail } from "../../../../utils/validations";
+import { getValidateMail, sendVerificationMail } from "../../../../utils/api/userApi";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import useTranslation from "../../../Shared/hooks/useTranslation";
 interface Props {
   text: string;
   question: string;
+  email:string;
 }
 
-export default function Button({ question, text }: Props) {
+export default function Button({ question, text, email }: Props) {
   const [disabled, setDisabled] = useState(false);
+  const [pending,setPending] = useState(false)
+
+  const { translation } = useTranslation()
 
   useEffect(() => {
-    if (disabled) {
+    if (disabled && !pending) {
       setTimeout(() => {
         setDisabled(false);
       }, 10000);
     }
-  }, [disabled]);
+  }, [disabled,pending]);
 
-  function handleClick() {
-    setDisabled(true);
+  useEffect(() => {
+    handleClick()
+  }, []);
+
+  async function handleClick() {
+    try {
+      setDisabled(true);
+      setPending(true)
+      const mail = await sendVerificationMail(Cookies.get('eons_token')||'',email)
+      setPending(false)
+      console.log(mail)
+      toast.info('verifique su buzon de correo ' + '(' + email + ')')
+    } catch (error) {
+      setPending(false)
+      console.log(error)
+      toast.error(translation.fecth_error)
+    }
   }
 
   return (
