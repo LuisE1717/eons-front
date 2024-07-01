@@ -46,7 +46,7 @@ export function UserProvider({
             window.location.href='/services'
         }
         else {
-          if(window.location.pathname!='/auth')
+          if(window.location.pathname!='/auth' && window.location.pathname!='/')
             window.location.href='/auth'
         }
       }
