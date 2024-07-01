@@ -12,19 +12,20 @@ const i18 = getI18N({ currentLocale:locale })
 
   try {
     const session = await getSession(Astro.request)
+    console.log(session?.user?.id)
     let token = ''
     if(session?.user?.email){
         await singUp({email:session.user.email,password: import.meta.env.AUTH_SECRET})
        .then((response)=>{
          Astro.cookies.set('eons_token',response.data.accessToken,{expires: getExpire(),path:'/'})
          Astro.cookies.set('eons_user',session?.user?.email || '',{expires: getExpire(),path:'/'})
+         Astro.cookies.set('eons_refresh_token',response.data.refreshToken || '',{expires: getExpire(7),path:'/'})
          token=Astro.cookies.get('eons_token')?.value || '';
-         console.log(token)
+         //console.log(session)
        })
        .catch(({response})=>{console.log(response)})
-       toast.error(i18.fecth_error)
-       if(token)
-        return Astro.redirect(`/services`,302)
+        if(token)
+         return Astro.redirect(`/services`,302)
   }
   else{
     Astro.cookies.delete('eons_token')

@@ -4,6 +4,7 @@ import Services from '../../modules/Services/Services.astro'
 
 if(!Astro.cookies.get('eons_token')?.value)
     return Astro.redirect('/auth')
+
 ---
 
 <AppContainer>
