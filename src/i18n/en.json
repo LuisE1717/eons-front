@@ -28,7 +28,8 @@
     "password_input_label": "Password",
     "forget_pass": "Has you forgot your password?",
     "invalid_email_text": "*Invalid Email",
-    "invalid_pass_text": "*Invalid Password, must contain between 8 and 16 characters"
+    "invalid_pass_text": "*Invalid Password, must contain between 8 and 16 characters",
+    "unauthorized":"Your credentials are not correct, verify your email and password"
   },
   "Payment": {
     "Labels": {

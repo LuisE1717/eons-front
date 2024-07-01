@@ -14,8 +14,11 @@ export function deleteCookie(name) {
     setCookie(name, "", -1);
 }
 
-export function getExpire() {
+export function getExpire(days?:number) {
     var expires = new Date();
-    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+    days?
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000))
+    :
+    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000))
     return expires
 }
