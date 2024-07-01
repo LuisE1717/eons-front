@@ -7,12 +7,14 @@ import { getI18N } from "../../i18n";
 
 const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
+
+const {email} = Astro.props
 ---
 
 <div class="flex w-full justify-center px-7 pt-16">
     <div class="max-w-[420px] w-full flex flex-col items-center">
         <Header/>
         <Message message={i18.Verification.message} title={i18.Verification.title}/>
-        <Button client:load text={i18.Verification.send_button} question={i18.Verification.error_question}/>
+        <Button email={email} client:load text={i18.Verification.send_button} question={i18.Verification.error_question}/>
     </div>
 </div>
