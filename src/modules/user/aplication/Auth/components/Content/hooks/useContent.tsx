@@ -51,6 +51,9 @@ export default function useContent() {
           .catch(({response}) => {
             if(response.status==401)
               toast.error("translation.Auth.unauthorized")
+            else{
+              toast.error(translation.fecth_error)
+            }
             console.log(response.status)
           })
           .finally(() => {
@@ -77,6 +80,11 @@ export default function useContent() {
           })
           .catch((error)=>{
             console.log(error)
+            if(error.status==401)
+              toast.error("translation.Auth.unauthorized")
+            else{
+              toast.error(translation.fecth_error)
+            }
           })
           .finally(() => {
             setLoading(false);
