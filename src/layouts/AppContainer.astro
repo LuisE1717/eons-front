@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 locale.set(Astro.cookies.get('eons_lng')?.value || 'en') 
 
 //console.log(locale)
-const token = Astro.cookies.get('refresh_token')
+const token = Astro.cookies.get('eons_refresh_token')
 
 cleanURL(Astro.url.href)
 
@@ -52,6 +52,7 @@ console.log(cleanURL(Astro.url.href))
           pauseOnFocusLoss
           draggable
           pauseOnHover={false}
+          client:load
         />
   </body>
 </html>
