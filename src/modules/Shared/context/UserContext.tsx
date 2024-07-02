@@ -19,7 +19,7 @@ export const UserContext = createContext<Props>({
 
 export function UserProvider({
   children,
-  token
+  token,
 }: {
   children: React.ReactNode;
   token: string | undefined;
@@ -31,32 +31,36 @@ export function UserProvider({
 
   const handleRefreshSection = async () => {
     try {
-      if(!Cookies.get('eons_token')){
-        if(token){
-          setLoading(true)
-          const response = await refreshSection(token)
-          const profile = response.data
-          console.log(response)
-  
-          setCookie('eons_token',profile.accessToken,1)
-          setCookie('eons_user',profile.email,1)
-          setCookie('eons_refresh_token',profile.refreshToken,7)
+      if (!Cookies.get("eons_token")) {
+        if (token) {
+          setLoading(true);
+          const response = await refreshSection(token);
+          const profile = response.data;
+          console.log(response);
 
-          if(window.location.pathname=='/auth')
-            window.location.href='/services'
-        }
-        else {
-          if(window.location.pathname!='/auth' && window.location.pathname!='/')
-            window.location.href='/auth'
+          setCookie("eons_token", profile.accessToken, 1);
+          setCookie("eons_user", profile.email, 1);
+          setCookie("eons_refresh_token", profile.refreshToken, 7);
+
+          if (window.location.pathname == "/auth") {
+            window.location.href = "/services";
+          }
+        } else {
+          if (
+            window.location.pathname != "/auth" &&
+            window.location.pathname != "/"
+          ) {
+            // window.location.href = "/auth";
+          }
         }
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    handleRefreshSection()
+    handleRefreshSection();
   }, []);
 
   return (

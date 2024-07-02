@@ -6,6 +6,7 @@ import Header from "../../layouts/Header.astro";
 import { getI18N } from "../../i18n";
 import Button from "../../components/UI/Button/Button"
 import {actionsInterprete} from "./domain/interpreter";
+import Save from '../Response/components/Save/Save'
 
 const {action,response} = Astro.props
 
@@ -77,9 +78,8 @@ function getTextBeforeFirstComma(texto: string): string {
 const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
-const navigate = actionsInterprete(action,response)
 
-console.log(navigate)
+
 ---
 
 <!doctype html>
@@ -88,38 +88,34 @@ console.log(navigate)
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
 
-    <body>
+    <body class="flex flex-col items-center">
         <Header/>
         <main class="flex flex-col">
             <div class= {`card z-10 
-        rounded-xl bg-white shadow-xl shadow-black/5 
-        ring-1 ring-slate-700/10`}>
+            rounded-xl bg-white shadow-xl shadow-black/5 
+            ring-1 ring-slate-700/10`}>
+                {arrayResponses.map((item,key)=>(
+                <div >
+                <div class="flex flex-col items-center my-4">
+                    {key==0?
+                        <span>{i18['Throw'].main_response}:</span>
+                        :
+                        <span>{i18['Throw'].especial_response}:</span>
+                        <p>{getTextBeforeFirstComma(item)}</p>
+                    }
+                </div>
 
-            {arrayResponses.map((item,key)=>(
-            <div >
-            <div class="flex flex-col items-center my-4">
-                {key==0?
-                    <span>{i18['Throw'].main_response}:</span>
-                    :
-                    <span>{i18['Throw'].especial_response}:</span>
-                    <p>{getTextBeforeFirstComma(item)}</p>
+                <div class="flex flex-col items-center my-4">
+                    <p >
+                        {key>0? getTextAfterFirstComma(item):item}
+                    </p>
+                </div>
+                </div>
+                ))
                 }
             </div>
 
-            <div class="flex flex-col items-center my-4">
-                <p >
-                    {key>0? getTextAfterFirstComma(item):item}
-                </p>
-            </div>
-            </div>
-            ))
-            }
-        </div>
-        <a href={navigate}>
-        <Button loading={false} client:load>
-            {i18.continue}
-        </Button>
-        </a>
+            <Save client:load action={action} response={response}/>
         </main>
         <Footer/>
     </body>
