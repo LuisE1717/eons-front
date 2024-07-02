@@ -4,7 +4,7 @@ import AuthHeader from "../../../../layouts/AuthHeader.astro";
 import Content from "./components/Content/Content"
 import AccountsButton from "../../items/AccountsButton.astro";
 import { getI18N } from "../../../../i18n";
-
+import { toast, ToastContainer } from "react-toastify";
 
 const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({ currentLocale })
@@ -32,6 +32,8 @@ const i18 = getI18N({ currentLocale })
             <AccountsButton error={i18.fecth_error} text="Apple"/>
             <AccountsButton error={i18.fecth_error} text="Google"/>
         </div>
+
+        
     </main>
 </div>
 

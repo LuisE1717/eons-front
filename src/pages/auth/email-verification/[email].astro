@@ -1,0 +1,10 @@
+---
+import AppContainer from "../../../layouts/AppContainer.astro"
+import EmailConfirmation from '../../../modules/EmailConfirmation/EmailConfirmation.astro'
+
+const {email} = Astro.params
+---
+
+<AppContainer>
+    <EmailConfirmation email={email}/>
+</AppContainer>
