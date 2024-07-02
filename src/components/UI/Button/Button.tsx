@@ -7,7 +7,8 @@ interface Props {
   onClick?: () => void;
   type?: "button" | "submit";
   loading: boolean;
-  text_loading?:string;
+  text_loading?: string;
+  color?: "default" | "primary";
 }
 
 export default function Button({
@@ -16,7 +17,8 @@ export default function Button({
   onClick,
   loading,
   type = "button",
-  text_loading
+  text_loading,
+  color = "default",
 }: Props) {
   const CLASS = clsx(
     "border-2 border-gray-200",
@@ -24,14 +26,17 @@ export default function Button({
     "font-medium",
     "rounded-full",
     "transition-all duration-200",
-    "bg-white",
     "w-full",
     "sm:text-lg text-base",
     "shadow-md",
     "flex justify-center",
 
     { "hover:shadow-lg": !disabled },
-    { "opacity-60": disabled }
+    { "opacity-60": disabled },
+
+    { "bg-white": color === "default", "bg-primary": color === "primary" },
+
+    { "text-black": color === "default", "text-white": color === "primary" }
   );
 
   return (
@@ -41,9 +46,7 @@ export default function Button({
       onClick={onClick}
       className={CLASS}
     >
-      {loading ?
-        <Loading text_loading={text_loading}/> 
-       : children}
+      {loading ? <Loading text_loading={text_loading} /> : children}
     </button>
   );
 }
