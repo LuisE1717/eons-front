@@ -101,18 +101,21 @@ const ThrowReact = ({ i18, action, param1 }) => {
           //     toast.success("Lanzamiento especial resuelto, continue")
           // }
           else if (result?.data) {
-            if (action && param1) {
+            if (action) {
               console.log(result);
-              const lng = Cookies.get("eons_lng") || "en";
-              window.location.href = `${
-                lng == "es" ? "/es" : ""
-              }/throw/response/${result?.data}/${action}`;
-            } else {
+              if(action && param1)
+                window.location.href = `/throw/response/${result?.data}/${action}/${param1}`;
+              else{
+                window.location.href = `/throw/response/${result?.data}/${action}`;
+              }
+            }
+            else if(question){
               console.log(result);
-              const lng = Cookies.get("eons_lng") || "en";
-              window.location.href = `${
-                lng == "es" ? "/es" : ""
-              }/throw/response/${result?.data}`;
+              window.location.href = `/throw/response/${result?.data}/${question}`;
+            }
+            else {
+              console.log(result);
+              window.location.href = `/throw/response/${result?.data}`;
             }
           }
           setCount(count + 1);

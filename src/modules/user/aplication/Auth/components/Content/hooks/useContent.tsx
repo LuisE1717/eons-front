@@ -49,12 +49,12 @@ export default function useContent() {
             }
           })
           .catch(({response}) => {
-            if(response.status==401)
+            if(response?.status==401)
               toast.error("translation.Auth.unauthorized")
             else{
               toast.error(translation.fecth_error)
             }
-            console.log(response.status)
+            console.log(response?.status)
           })
           .finally(() => {
             setLoading(false);
