@@ -1,9 +1,5 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import BaseHead from "../../layouts/BaseHead.astro";
-import Footer from "../../layouts/Footer.astro";
 import Header from "../../layouts/Header.astro";
-import Button from "../../components/UI/Button.astro";
 import ThrowReact from './aplication/OpenDialog/OpenDialog'
 import ReloadButton from "../user/items/ReloadButton.astro";
 import { getI18N } from "../../i18n";
@@ -15,27 +11,17 @@ const i18 = getI18N({currentLocale})
 const {action,param1} = Astro.props
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
+<Header/>
+<div class="card-conteiner">
+<div class="flex flex-row justify-between">
+    <BackButton/>
+    <ReloadButton/>
+</div>
 
-    <body>
-        <Header/>
-        <div class="card-conteiner">
-        <div class="flex flex-row justify-between">
-            <BackButton/>
-            <ReloadButton/>
-        </div>
-        
-        <main class="flex flex-col">
-            <ThrowReact action={action} param1={param1} i18={i18} client:load/>
-        </main>
-        </div>
-        <Footer/>
-    </body>
-</html>
+<main class="flex flex-col">
+    <ThrowReact action={action} param1={param1} i18={i18} client:load/>
+</main>
+
 
 <style>
     span {

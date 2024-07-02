@@ -8,18 +8,14 @@ import FirstStep from './components/FirstStep/FirstStep'
 import SecondStep from './components/SecondStep/SecondStep'
 
 ---
-<html>
-<body>
-    <Header/>
-        <div class="flex flex-col items-center w-full px-8">
-            <div class="flex flex-col max-w-[1200px] w-full">
-                <First/>
-                <FirstStep/>
-                <Second client:load/>
-                <SecondStep/>
-                <Third/>
-            </div>
-        </div>
-    <Footer/>
-</body>
-</html>
+<Header/>
+<div class="flex flex-col items-center w-full px-8">
+    <div class="flex flex-col max-w-[1200px] w-full">
+        <First/>
+        <FirstStep/>
+        <Second client:load/>
+        <SecondStep/>
+        <Third/>
+    </div>
+</div>
+<Footer/>

@@ -1,19 +1,8 @@
 import { motion } from "framer-motion";
 
-interface Props {
-  visible: boolean;
-}
-
-export default function Empty({ visible }: Props) {
+export default function Empty() {
   return (
-    <motion.figure
-      style={{
-        width: "100%",
-        maxWidth: `500px`,
-        transform: visible ? "scale(1)" : "scale(0.1)",
-      }}
-      className="transition-all duration-700"
-    >
+    <motion.figure className="w-full max-w-[650px] md:hidden">
       <img src="/triangle.webp" alt="" className="object-contain w-full" />
     </motion.figure>
   );
