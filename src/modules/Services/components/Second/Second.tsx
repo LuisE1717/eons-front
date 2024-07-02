@@ -9,6 +9,7 @@ import Book from "./components/Book/Book";
 import Message from "./components/Message/Message";
 import Empty from "./components/Empty/Empty";
 import { useInView, motion } from "framer-motion";
+import clsx from "clsx";
 
 export default function Second() {
   const ref = createRef<HTMLDivElement>();
@@ -21,15 +22,23 @@ export default function Second() {
   });
 
   function handleChange(s: SECTIONS) {
-    setSelected(s);
+    setSelected((prev) => {
+      return s === prev ? null : s;
+    });
   }
 
+  const CLASS = clsx(
+    "bg-no-repeat bg-center bg-contain",
+    "w-full flex max-w-[650px] md:min-h-[600px] h-max",
+    "justify-center items-center",
+    "transition-all duration-700"
+  );
   return (
     <section
       ref={ref}
       className="flex flex-col items-center sm:py-14 py-6 w-full"
     >
-      <div ref={ref} className="flex justify-center mb-6 gap-x-10">
+      <div ref={ref} className="flex justify-center md:mb-0 mb-6 gap-x-10">
         <Icon
           visible={isInView}
           selected={selected === SECTIONS.USER}
@@ -38,7 +47,7 @@ export default function Second() {
         />
       </div>
 
-      <motion.div className="flex items-end sm:gap-x-12 gap-x-4 w-full justify-center">
+      <motion.div className="flex items-end w-full justify-center gap-x-4">
         <Icon
           visible={isInView}
           selected={selected === SECTIONS.BOOK}
@@ -46,10 +55,17 @@ export default function Second() {
           handleClick={() => handleChange(SECTIONS.BOOK)}
         />
 
-        {selected === null && <Empty visible={isInView} />}
-        {selected === SECTIONS.BOOK && <BookInfo />}
-        {selected === SECTIONS.MESSAGES && <MessageInfo />}
-        {selected === SECTIONS.USER && <UserInfo />}
+        <motion.div
+          style={{
+            transform: isInView ? "scale(1)" : "scale(0.1)",
+          }}
+          className={clsx(CLASS, "md:bg-triangle bg-none")}
+        >
+          {selected === null && <Empty />}
+          {selected === SECTIONS.BOOK && <BookInfo />}
+          {selected === SECTIONS.MESSAGES && <MessageInfo />}
+          {selected === SECTIONS.USER && <UserInfo />}
+        </motion.div>
 
         <Icon
           visible={isInView}
