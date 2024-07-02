@@ -22,7 +22,7 @@ export async function singUp(dataLogin:ILogin) {
     const res = await intanceAxios.post('auth/register', dataLogin);
 
     const data = await res.data;
-    console.log(res);
+    //console.log(res);
 
     if (!data) {
         return {
@@ -47,6 +47,23 @@ export async function postLogout() {
         return {
             data: data
         }
+    }
+}
+
+export async function refreshSection(refreshToken:string) {
+    const res = await axiosI(refreshToken).get('auth/login');
+
+    const data = await res.data;
+    console.log(data);
+
+    if (!data) {
+        return {
+            notFound: true,
+        };
+    } else {
+        return {
+            data: data,
+        };
     }
 }
 
@@ -76,4 +93,25 @@ export async function postResetPass(dataH:any) {
     }
 }
 
+export async function getValidateMail(dataH:any) {
+    const res = await intanceAxios.get('/auth/verify-email',dataH)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
+
+export async function sendVerificationMail(token:string,email:string) {
+    const res = await axiosI(token).get(`/auth/request-verify-email/?email=${email}`)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
 

@@ -19,7 +19,7 @@ export default function First() {
       imageInPhone={true}
     >
       <Title>
-        {translation.Services.first_text_1}{" "}
+        {translation.Services.first_text_1}{`"Access Technology to the Existential Source"`}{" "}
         <Span>{translation.Services.first_phase}</Span>
       </Title>
       <P>{translation.Services.first_text_2}</P>
