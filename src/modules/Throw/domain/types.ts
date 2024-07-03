@@ -20,4 +20,10 @@ export enum ACTIONS {
   DIALOGAR = '05',
   //estudiar espiritu
   ESTUDIAR = '06',
+
+  DIALOGO_ABIERTO = '07',
+
+  DIALOGO_DIA = '08',
+
+  CONTACTAR_EE = '09'
 };

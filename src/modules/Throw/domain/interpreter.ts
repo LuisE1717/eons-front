@@ -1,4 +1,4 @@
-import { TYPES } from "./types";
+import { ACTIONS, TYPES } from "./types";
 
 interface Props {
   type: string;
