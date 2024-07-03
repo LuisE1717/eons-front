@@ -1,16 +1,16 @@
 import axios, {Axios, type AxiosInstance, type InternalAxiosRequestConfig } from "axios";
-import configEnv from "../../../env_config";
+import configEnv from "../../../.env_config";
 import Cookies from "js-cookie";
 
 export const intanceAxios : AxiosInstance = axios.create ({
-    baseURL: configEnv?.api,
+    baseURL: configEnv?.api
 });
 
 export function axiosI(apiToken : string|undefined ) {
     //console.log(configEnv)
 
     const intance = axios.create({
-        baseURL: configEnv?.api,
+        baseURL: configEnv?.api
     });
 
     intance.interceptors.request.use(

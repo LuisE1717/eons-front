@@ -9,12 +9,12 @@ const { path } = Astro.props
 <nav class="flex justify-between w-full items-center sm:px-8 px-3 py-3">
 	<Logo/>
 
-	<div class="flex items-center">
+	<div class="flex items-center gap-x-4">
 		<div class={`essence ${path=="landing" ? 'hidden' : ''}`}>
 			<Essence/>
 		</div>
 		
-		<div class="flex items-center gap-x-7">
+		<div class="flex items-center gap-x-4 pt-2">
 			<div class="svg">
 				<Dropdown/>
 			</div>
