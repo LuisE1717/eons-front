@@ -3,6 +3,7 @@ import useList from "./hooks/useList";
 import Card from "./components/Card/Card";
 import Header from "./components/Header/Header";
 import ListContainer from "../../../Shared/components/ListContainer/ListContainer";
+import Custom from "./components/Custom/Custom";
 
 export default function List() {
   const { list, handleClick } = useList();
@@ -15,6 +16,7 @@ export default function List() {
         {list.map((e) => (
           <Card key={e.id} essence={e} handleClick={() => handleClick(e.id)} />
         ))}
+        <Custom />
       </div>
     </ListContainer>
   );
