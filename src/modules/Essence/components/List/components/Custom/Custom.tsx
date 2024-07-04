@@ -28,7 +28,7 @@ export default function Custom() {
           type="number"
           className="px-3 py-1 outline-none border-2 border-gray-300 rounded w-full max-w-[100px] text-sm focus:border-gray-400"
           value={count}
-          min={0}
+          min={1000}
           onChange={(e) => handleChange(Number(e.target.value))}
         />
 
