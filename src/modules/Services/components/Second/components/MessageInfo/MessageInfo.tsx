@@ -13,34 +13,34 @@ export default function MessageInfo() {
         {translation.ServiceMenu.general_evaluation} <Span>{translation.ServiceMenu.free}</Span>
       </A>
       <A>
-        {translation.ServiceMenu.spirit_calc} <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.spirit_calc} <Span>{"proximamente"}</Span>
       </A>
 
       <Line />
 
-      <A>
+      <A href="/throw/07">
         {translation.ServiceMenu.open_dialog_mod} <Span>{translation.ServiceMenu.free}</Span>
       </A>
-      <A>
+      <A href="/throw/09">
         {translation.ServiceMenu.contact_spirit} <Span>{translation.ServiceMenu.free}</Span>
       </A>
 
       <Line />
 
-      <A>
+      <A href="/throw/08">
         {translation.ServiceMenu.day_dialog} <Span>{translation.ServiceMenu.free}</Span>
       </A>
       <A>
-        {translation.ServiceMenu.adivination_general} <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.adivination_general} <Span>{"proximamente"}</Span>
       </A>
 
       <Line />
 
       <A>
-        {translation.ServiceMenu.concient_evaluation} <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.concient_evaluation} <Span>{"proximamente"}</Span>
       </A>
       <A>
-        {translation.ServiceMenu.fact_evaluation} <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.fact_evaluation} <Span>{"proximamente"}</Span>
       </A>
     </Info>
   );
