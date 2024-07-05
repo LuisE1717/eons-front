@@ -1,0 +1,6 @@
+---
+import ResponsePage from "../../../../../../modules/Throw/ResponsePage.astro"
+const {id,action,question} = Astro.params
+---
+
+<ResponsePage action={action} response={id} question={question}/>
