@@ -5,8 +5,10 @@ import { SECTIONS } from "../../../domain";
 import { postLogin, singUp } from "../../../../../../../utils/api/userApi";
 import { toast } from "react-toastify";
 import useTranslation from "../../../../../../Shared/hooks/useTranslation";
+import type { Session } from "@auth/core/types";
+import Cookies from "js-cookie";
 
-export default function useContent() {
+export default function useContent(session:Session|null) {
   const [section, setSection] = useState(SECTIONS.LOGIN);
 
   const [email, setEmail] = useState("");
@@ -22,6 +24,12 @@ export default function useContent() {
     setValidation_mail(validMail(email));
     setValidation_pass(validPass(password));
   }, [email, password]);
+
+  useEffect(() =>{
+    if(session){
+      handleSession()
+    }
+  },[session])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -49,12 +57,12 @@ export default function useContent() {
             }
           })
           .catch(({response}) => {
-            if(response.status==401)
+            if(response?.status==401)
               toast.error("translation.Auth.unauthorized")
             else{
               toast.error(translation.fecth_error)
             }
-            console.log(response.status)
+            console.log(response?.status)
           })
           .finally(() => {
             setLoading(false);
@@ -93,6 +101,39 @@ export default function useContent() {
     }
   }
 
+async function handleSession() {
+  let token = ''
+  try {
+    if(session?.user?.email && session?.user?.id){
+      setLoading(true)
+      await singUp({email:session.user.email,password: session?.user?.id || ''})
+      .then((response)=>{
+        setCookie('eons_token',response.data.accessToken,1)
+        setCookie('eons_user',session?.user?.email || '',1)
+        setCookie('eons_refresh_token',response.data.refreshToken || '',1)
+        token=response.data.accessToken;
+      })
+      .catch(({response})=>{
+        toast.error(translation.fecth_error)
+        console.log(response)
+      })
+      setLoading(false)
+        if(token)
+          window.location.href = `/services`
+    }
+    else{
+      setLoading(false)
+      Cookies.remove('eons_token')
+      Cookies.remove('eons_user')
+    }
+  }
+  catch (error) {
+    console.log(error)
+    toast.error(translation.fecth_error)
+    setLoading(false)
+  }
+}
+
   function handleChangeSection(s: SECTIONS) {
     setSection(s);
   }
@@ -116,5 +157,6 @@ export default function useContent() {
     handleChangePassword,
     handleChangeEmail,
     section,
+    session
   };
 }

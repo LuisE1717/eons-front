@@ -1,0 +1,19 @@
+---
+const {provider} = Astro.params
+---
+
+<main id="provider" class=`flex min-h-screen items-center justify-center text-center ${provider}`>
+	Redirigiendo a {provider}...
+</main>
+
+<script>
+	const { signIn } = await import("auth-astro/client")
+
+    const provider = document.getElementById('provider')
+    if(provider && provider?.className.includes('google')){
+        signIn("google", { callbackUrl: "/auth/callback" })
+    }
+    else if(provider && provider?.className.includes('microsoft')){
+        signIn("microsoft", { callbackUrl: "/oauth/callback" })
+    }
+</script>
