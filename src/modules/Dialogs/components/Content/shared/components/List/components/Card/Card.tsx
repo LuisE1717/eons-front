@@ -19,13 +19,16 @@ export default function Card({
 }: Props) {
   const { translation } = useTranslation();
 
-  const time = moment(dialog.date).format("hh:mm A");
-  const dateStr = dialog.date.toLocaleDateString();
+  console.log(dialog)
+  const time = moment(dialog.fecha).format("hh:mm A");
+  const dateStr = moment(dialog.fecha).toLocaleString();
+
+  console.log()
 
   return (
     <article className="flex justify-between items-center py-2 px-7 rounded-full bg-white">
       <div>
-        <h2 className="text-base font-medium mb-0">{dialog.name}</h2>
+        <h2 className="text-base font-medium mb-0">{dialog.descripcion}</h2>
       </div>
 
       <div className="flex items-center gap-x-2">

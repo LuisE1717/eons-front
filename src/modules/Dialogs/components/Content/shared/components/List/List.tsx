@@ -18,8 +18,8 @@ export default function List({
         <Card
           dialog={d}
           key={d.id}
-          handleAddDialog={() => handleAddDialog(d.id)}
-          handleDeleteDialog={() => handleDeleteDialog(d.id)}
+          handleAddDialog={() => handleAddDialog(d.id.toString())}
+          handleDeleteDialog={() => handleDeleteDialog(d.id.toString())}
         />
       ))}
     </div>

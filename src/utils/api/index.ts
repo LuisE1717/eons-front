@@ -1,16 +1,18 @@
 import axios, {Axios, type AxiosInstance, type InternalAxiosRequestConfig } from "axios";
-import configEnv from "../../../env_config";
+import configEnv from "../../../.env_config";
 import Cookies from "js-cookie";
+import { setCookie } from "../cookies/Cookies";
+import { validMail } from "../validations";
 
 export const intanceAxios : AxiosInstance = axios.create ({
-    baseURL: configEnv?.api,
+    baseURL: configEnv?.api
 });
 
 export function axiosI(apiToken : string|undefined ) {
     //console.log(configEnv)
 
     const intance = axios.create({
-        baseURL: configEnv?.api,
+        baseURL: configEnv?.api
     });
 
     intance.interceptors.request.use(
@@ -42,8 +44,15 @@ export function axiosI(apiToken : string|undefined ) {
             if (error.response) {
                 const originalConfig = error.config;
                 // Access Token was expired
+                setCookie('comeback_url',window.location.href,1)
                 if (error.response.status === 401) {
-                    window.location.href =`/auth`
+                    window.location.reload()
+                }
+                else if (error.response.status === 403){
+                    if(validMail(Cookies.get('eons_user')))
+                        window.location.href =`/auth/email-verification/${Cookies.get('eons_user')}`
+                    else
+                        window.location.href =`/auth` 
                 }
             }
             return Promise.reject(error);
