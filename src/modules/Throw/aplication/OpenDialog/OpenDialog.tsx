@@ -21,7 +21,7 @@ import { TYPES } from "../../domain/types";
 import { transformDataToQuery } from "../../../../utils/queryTransformers";
 import Question from "../../components/Question";
 
-const ThrowReact = ({ i18, action, param1 }) => {
+const ThrowReact = ({ i18, action, param1, param2 }) => {
   const [moneda1, setMoneda1] = useState(0);
   const [moneda2, setMoneda2] = useState(0);
 
@@ -105,13 +105,13 @@ const ThrowReact = ({ i18, action, param1 }) => {
               console.log(result);
               if(action && param1)
                 window.location.href = `/throw/response/${result?.data}/${action}/${param1}`;
+              else if(question){
+                console.log(result);
+                window.location.href = `/throw/response/${result?.data}/${action}/${question}`;
+              }
               else{
                 window.location.href = `/throw/response/${result?.data}/${action}`;
               }
-            }
-            else if(question){
-              console.log(result);
-              window.location.href = `/throw/response/${result?.data}/${question}`;
             }
             else {
               console.log(result);
@@ -271,7 +271,7 @@ const ThrowReact = ({ i18, action, param1 }) => {
         <Question
           question={question}
           handleChangeQuestion={setQuestion}
-          disabled={block}
+          disabled={count>1}
         />
 
         {viewController()}

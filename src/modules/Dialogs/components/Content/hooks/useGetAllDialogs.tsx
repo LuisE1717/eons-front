@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState, type Dispatch, type SetStateAction } from "react"
-import type { Spirit } from "../../../interfaces"
 import Cookies from "js-cookie"
 import { getAllSpirits } from "../../../../../utils/api/spiritsApi"
 import { toast } from "react-toastify"
 import useTranslation from "../../../../Shared/hooks/useTranslation"
+import { getAllDialogs } from "../../../../../utils/api/dialogApi"
 
-export default function useGetAllSpirits (
+export default function useGetAllDialogs (
     control:boolean,
     setControl:Dispatch<SetStateAction<boolean>>
     )  {
@@ -13,15 +13,15 @@ export default function useGetAllSpirits (
 
     const [loading, setloading] = useState<boolean>(false)
     const [error, setError] = useState<any>(null)
-    const [data, setData] = useState<Spirit[]>([])
+    const [data, setData] = useState<any[]>([])
     const [total_pages,setTotal_pages] = useState<number>()
 
-    const fetchBookings = useCallback(async () =>{
+    const fetchDialogs = useCallback(async () =>{
         if(control){
             const token = Cookies.get('eons_token') || ''
             setloading(true)
             try {
-                const spirits = await getAllSpirits(token)
+                const spirits = await getAllDialogs(token)
                 console.log(spirits)
                 setData(spirits.data)
             } catch (error) {
@@ -35,8 +35,8 @@ export default function useGetAllSpirits (
     },[control])
 
     useEffect(() => {
-        fetchBookings()
-    }, [fetchBookings])
+        fetchDialogs()
+    }, [fetchDialogs])
     
   return {loading: loading , error: error ,data: data, total_pages: total_pages }
 }
