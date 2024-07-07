@@ -1,4 +1,4 @@
-import type { Essence } from "../../interfaces";
+import type { Essence } from "../../domain";
 import Fire from "./components/Fire/Fire";
 
 interface Props {
