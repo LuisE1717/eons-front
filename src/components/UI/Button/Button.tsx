@@ -9,6 +9,8 @@ interface Props {
   loading: boolean;
   text_loading?: string;
   color?: "default" | "primary";
+  full?: boolean;
+  size?: "base" | "sm";
 }
 
 export default function Button({
@@ -19,15 +21,14 @@ export default function Button({
   type = "button",
   text_loading,
   color = "default",
+  full = true,
+  size = "base",
 }: Props) {
   const CLASS = clsx(
     "border-2 border-gray-200",
-    "px-8 py-3",
     "font-medium",
     "rounded-full",
     "transition-all duration-200",
-    "w-full",
-    "sm:text-lg text-base",
     "shadow-md",
     "flex justify-center",
 
@@ -36,7 +37,13 @@ export default function Button({
 
     { "bg-white": color === "default", "bg-primary": color === "primary" },
 
-    { "text-black": color === "default", "text-white": color === "primary" }
+    { "text-black": color === "default", "text-white": color === "primary" },
+
+    { "w-full": full, "w-max": !full },
+
+    { "px-8 py-3": size === "base", "px-5 py-2": size === "sm" },
+
+    { "sm:text-lg text-base": size === "base", "text-sm": size === "sm" }
   );
 
   return (

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 
 export default function Custom() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(1000);
 
   const price = useMemo(() => {
     return count * 5;
