@@ -1,5 +1,8 @@
 export interface Dialog {
-  id: string;
-  name: string;
-  date: Date;
+  id: number;
+  descripcion: string;
+  respuesta: string;
+  id_usuario: string;
+  fecha: Date;
+  tipo: string;
 }
