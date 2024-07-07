@@ -1,4 +1,4 @@
-const env = 'production';
+const env = 'local';
 //const env = 'production';
 //const env = 'refactor';
 
