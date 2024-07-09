@@ -35,11 +35,11 @@ export function UserProvider({
           if(response.data){
             const profile = response.data;
             setUser(response.data)
-            console.log(user);
+            console.log(response.data);
   
-            setCookie("eons_user",profile.email,1)
-            setCookie("eons_essence",profile.essence,1)
-            setCookie("eons_token", profile.accessToken, 1);
+            setCookie("eons_user",profile.email,0.25)
+            setCookie("eons_essence",profile.essence,0.25)
+            setCookie("eons_token", profile.accessToken,0.25)
             setCookie("eons_refresh_token", profile.refreshToken, 7);
   
             userProfile.set({
