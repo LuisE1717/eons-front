@@ -45,7 +45,7 @@ export function axiosI(apiToken : string|undefined ) {
             if (error.response) {
                 const originalConfig = error.config;
                 // Access Token was expired
-                setCookie('comeback_url',window.location.href,1)
+                setCookie('comeback_url',window.location.href,0.25)
                 if (error.response.status === 401) {
                     window.location.reload()
                 }
