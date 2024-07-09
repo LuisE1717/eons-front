@@ -32,27 +32,26 @@ export function UserProvider({
         if (token) {
           setLoading(true);
           const response = await refreshSection(token);
-          if(response.data){
+          if (response.data) {
             const profile = response.data;
-            setUser(response.data)
+            setUser(response.data);
             console.log(user);
-  
-            setCookie("eons_user",profile.email,1)
-            setCookie("eons_essence",profile.essence,1)
+
+            setCookie("eons_user", profile.email, 1);
+            setCookie("eons_essence", profile.essence, 1);
             setCookie("eons_token", profile.accessToken, 1);
             setCookie("eons_refresh_token", profile.refreshToken, 7);
-  
+
             userProfile.set({
-              email: profile.email || '',
+              email: profile.email || "",
               valid: profile.valid || false,
-              essence: profile.essence || 0
-            })
-  
+              essence: profile.essence || 0,
+            });
+
             if (window.location.pathname == "/auth") {
               window.location.href = "/services";
-            }
-            else {
-              window.location.reload()
+            } else {
+              window.location.reload();
             }
           }
         } else {
