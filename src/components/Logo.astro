@@ -1,10 +1,12 @@
 ---
 import { SITE_TITLE } from '../consts'
+
+const url = Astro.cookies.get('eons_token')?.value? '/services' : '/'
 ---
 
 <div class="flex items-center gap-x-3">
     <img src='/Asset 2.png' alt="logo-header" height="56" width="56">
 
-    <h2><a class="text-2xl" href="/">{SITE_TITLE}</a></h2>
+    <h2><a class="text-2xl" href={url}>{SITE_TITLE}</a></h2>
 </div>
 
