@@ -14,9 +14,9 @@ export default function Card({ essence, handleClick }: Props) {
     >
       <section className="flex flex-col">
         <h1 className="sm:text-lg text-base mb-0 font-semibold">
-          {essence.name}
+          {essence.descripcion}
         </h1>
-        <span className="sm:text-base text-sm text-gray-400">{`$${essence.price}`}</span>
+        <span className="sm:text-base text-sm text-gray-400">{`$${essence.precio}`}</span>
       </section>
 
       <i>
