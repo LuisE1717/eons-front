@@ -25,5 +25,7 @@ export enum ACTIONS {
 
   DIALOGO_DIA = '08',
 
-  CONTACTAR_EE = '09'
+  CONTACTAR_EE = '09',
+
+  DIALOGO_EE = "10"
 };

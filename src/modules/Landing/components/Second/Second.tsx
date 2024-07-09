@@ -6,7 +6,7 @@ import Button from "./components/Button/Button";
 import Cookies from "js-cookie";
 import Span from "../../shared/components/Span/Span";
 
-export default function Second() {
+export default function Second({auth} : {auth:string}) {
   const { translation } = useTranslation();
 
   return (
@@ -15,7 +15,7 @@ export default function Second() {
       <P bold>Eons "Access Technology to the Existential Source"</P>
       <P>{translation.Landing.text8}</P>
       <P>{translation.Landing.text9}</P>
-      <Button />
+      <Button auth={auth} />
     </ImageSection>
   );
 }

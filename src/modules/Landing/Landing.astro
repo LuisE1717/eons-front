@@ -7,6 +7,8 @@ import Third from "./components/Third/Third";
 import FirstStep from './components/FirstStep/FirstStep'
 import SecondStep from './components/SecondStep/SecondStep'
 import Forth from './components/Forth/Forth'
+
+const auth = Astro.cookies.get('eons_token')?.value || ''
 ---
 <div class="flex w-full flex-col">
     <Header path="landing"/>
@@ -15,7 +17,7 @@ import Forth from './components/Forth/Forth'
       <main class="w-full flex-col flex max-w-[1100px] lg:pt-0 pt-10">
         <First/>
         <FirstStep />
-        <Second />
+        <Second auth={auth}/>
         <Forth />
         <SecondStep />
         <Third />
