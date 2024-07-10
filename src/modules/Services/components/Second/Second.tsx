@@ -10,6 +10,8 @@ import Message from "./components/Message/Message";
 import Empty from "./components/Empty/Empty";
 import { useInView, motion } from "framer-motion";
 import clsx from "clsx";
+import { userProfile } from "../../../../UserStore";
+import { useStore } from "@nanostores/react";
 
 export default function Second() {
   const ref = createRef<HTMLDivElement>();

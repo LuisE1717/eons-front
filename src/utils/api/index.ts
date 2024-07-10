@@ -3,6 +3,7 @@ import configEnv from "../../../.env_config";
 import Cookies from "js-cookie";
 import { setCookie } from "../cookies/Cookies";
 import { validMail } from "../validations";
+import { userProfile } from "../../UserStore";
 
 export const intanceAxios : AxiosInstance = axios.create ({
     baseURL: configEnv?.api
@@ -44,13 +45,13 @@ export function axiosI(apiToken : string|undefined ) {
             if (error.response) {
                 const originalConfig = error.config;
                 // Access Token was expired
-                setCookie('comeback_url',window.location.href,1)
+                setCookie('comeback_url',window.location.href,0.25)
                 if (error.response.status === 401) {
                     window.location.reload()
                 }
                 else if (error.response.status === 403){
-                    if(validMail(Cookies.get('eons_user')))
-                        window.location.href =`/auth/email-verification/${Cookies.get('eons_user')}`
+                    if(validMail(userProfile.get()?.email))
+                        window.location.href =`/auth/email-verification/${userProfile.get()?.email}`
                     else
                         window.location.href =`/auth` 
                 }
