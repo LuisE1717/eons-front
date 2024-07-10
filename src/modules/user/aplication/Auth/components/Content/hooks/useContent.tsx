@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import useTranslation from "../../../../../../Shared/hooks/useTranslation";
 import type { Session } from "@auth/core/types";
 import Cookies from "js-cookie";
+import { userProfile } from "../../../../../../../UserStore";
 
 export default function useContent(session:Session|null) {
   const [section, setSection] = useState(SECTIONS.LOGIN);
@@ -42,10 +43,17 @@ export default function useContent(session:Session|null) {
           .then((response) => {
             if (response.data) {
               const user_info = response.data;
-
-              setCookie("eons_token", user_info.accessToken, 1);
-              setCookie("eons_user", user_info.email, 1);
-              setCookie("eons_refresh_token", user_info.refreshToken, 7);
+              
+              setCookie("eons_user",user_info.email,0.25)
+              setCookie("eons_essence",user_info.essence,0.25)
+              setCookie("eons_token", user_info.accessToken, 0.25);
+              setCookie("eons_refresh_token", user_info.refreshToken, 7)
+              
+              userProfile.set({
+                email: user_info.email || '',
+                valid: user_info.valid || false,
+                essence: user_info.essence || 0
+              });
 
               if(user_info.valid)
                   window.location.href = "/services";
@@ -73,9 +81,16 @@ export default function useContent(session:Session|null) {
             if (response.data) {
                 const user_info = response.data;
 
-                setCookie("eons_token", user_info.accessToken, 1);
-                setCookie("eons_user", user_info.email, 1);
+                setCookie("eons_user",user_info.email,0.25)
+                setCookie("eons_essence",user_info.essence,0.25)
+                setCookie("eons_token", user_info.accessToken, 0.25);
                 setCookie("eons_refresh_token", user_info.refreshToken, 7);
+
+                userProfile.set({
+                  email: user_info.email || '',
+                  valid: user_info.valid || false,
+                  essence: user_info.essence || 0
+                });
 
                 if(user_info.valid)
                   window.location.href = "/services";
@@ -108,10 +123,22 @@ async function handleSession() {
       setLoading(true)
       await singUp({email:session.user.email,password: session?.user?.id || ''})
       .then((response)=>{
-        setCookie('eons_token',response.data.accessToken,1)
-        setCookie('eons_user',session?.user?.email || '',1)
-        setCookie('eons_refresh_token',response.data.refreshToken || '',1)
-        token=response.data.accessToken;
+        if(response.data){
+          const user_info = response.data;
+
+          setCookie("eons_user",user_info.email,0.25)
+          setCookie("eons_essence",user_info.essence,0.25)
+          setCookie('eons_token',response.data.accessToken,0.25)
+          setCookie('eons_refresh_token',response.data.refreshToken || '',0.25)
+  
+          userProfile.set({
+            email: user_info.email || '',
+            valid: user_info.valid || false,
+            essence: user_info.essence || 0
+          });
+  
+          token=response.data.accessToken;
+        }
       })
       .catch(({response})=>{
         toast.error(translation.fecth_error)
@@ -124,7 +151,7 @@ async function handleSession() {
     else{
       setLoading(false)
       Cookies.remove('eons_token')
-      Cookies.remove('eons_user')
+      userProfile.set(null)
     }
   }
   catch (error) {

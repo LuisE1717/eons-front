@@ -10,7 +10,7 @@ import Button from "../../../../components/UI/Button/Button";
 import NextButton from "../../../../components/UI/NextButton";
 import { postThrow, closeThrow } from "../../../../utils/api/throwApi";
 import Cookies from "js-cookie";
-import { coinsInterpreter } from "../../domain/interpreter";
+import { actionsInterprete, coinsInterpreter } from "../../domain/interpreter";
 import NormalThrow from "../../views/NormalThrow";
 import MountThrow from "../../views/MountThrow";
 import StandThrow from "../../views/StandThrow";
@@ -72,7 +72,7 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           Cookies.get("eons_token") || "",
           coinsInterpreter(throwType, moneda1, moneda2),
           transformDataToQuery({
-            type: action == "01" ? "predialog" : "dialog",
+            type: actionsInterprete(action),
             lang: Cookies.get("eons_lng") || "en",
             action,
             param1,
@@ -268,11 +268,20 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           </label>
         </div>
 
+        {actionsInterprete(action) == 'day' ?
+        <header className="flex items-center w-full flex-col mb-5">
+        <h2 className="text-xl mb-2 font-bold">Lance las monedas para revelar como irá su día</h2>
+        </header>
+        :
+        actionsInterprete(action) == 'dialog'?
         <Question
           question={question}
           handleChangeQuestion={setQuestion}
           disabled={count>1}
         />
+        :
+        <></>
+        }
 
         {viewController()}
 
