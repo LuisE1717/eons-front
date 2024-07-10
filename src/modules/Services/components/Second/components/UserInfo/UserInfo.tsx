@@ -10,29 +10,27 @@ export default function UserInfo() {
   const { translation } = useTranslation();
   return (
     <Info>
-      <A href="/spiritual-family">
+      <A >
         {translation.ServiceMenu.spiritual_family} <Span>{translation.ServiceMenu.free}</Span>
       </A>
       <Line />
-      <P>
+      <A>
         {translation.ServiceMenu.inf_general_evulation} <Span>{translation.ServiceMenu.free}</Span>
-      </P>
-      <P>
+      </A>
+      <A>
         {translation.ServiceMenu.inf_calc_spiritual} <Span>{translation.ServiceMenu.free}</Span>
-      </P>
+      </A>
       <Line />
-      <P>
+      <A href="/dialogs">
         {translation.ServiceMenu.save_dialogs} <Span>{translation.ServiceMenu.free}</Span>
-      </P>
-      <P>
+      </A>
+      <A>
         {translation.ServiceMenu.save_services} <Span>{translation.ServiceMenu.free}</Span>
-      </P>
-
+      </A>
       <Line />
-
-      <P>
+      <A href="/essence">
         {translation.ServiceMenu.money_admin} <Span>{translation.ServiceMenu.free}</Span>
-      </P>
+      </A>
     </Info>
   );
 }

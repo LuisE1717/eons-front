@@ -71,13 +71,14 @@ export function coinsInterpreter(type:string, coin1:number, coin2:number ): stri
   }
 }
 
-export async function actionsInterprete (action:string,response:string,question?:string) {
-  if(ACTIONS.DIALOGO_ABIERTO == action){
-    if(question){
-      
-    }
-    else{
-
-    }
+export function actionsInterprete (action:string,question?:string) {
+  if(action == ACTIONS.DIALOGO_ABIERTO){
+    return "dialog"
+  }
+  else if(action == ACTIONS.DIALOGO_DIA){
+    return "day"
+  }
+  else {
+    return "predialog"
   }
 }
