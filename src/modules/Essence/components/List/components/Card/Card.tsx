@@ -10,18 +10,18 @@ export default function Card({ essence, handleClick }: Props) {
   return (
     <article
       onClick={handleClick}
-      className="bg-white cursor-pointer rounded-lg flex items-center justify-between py-3 sm:px-7 px-5 transition-all duration-200 hover:scale-105 shadow-sm"
+      className="shadow-lg shadow-gray-300 rounded-3xl px-6 py-4 flex flex-col items-center"
     >
-      <section className="flex flex-col">
-        <h1 className="sm:text-lg text-base mb-0 font-semibold">
-          {essence.descripcion}
-        </h1>
-        <span className="sm:text-base text-sm text-gray-400">{`$${essence.precio}`}</span>
-      </section>
-
-      <i>
+      <figure className="mb-2">
         <Fire />
-      </i>
+      </figure>
+
+      <h2 className="font-semibold text-base mb-0.5">{essence.descripcion}</h2>
+
+      <span className="text-sm text-gray-400">
+        {`${essence.precio}$`}{" "}
+        <span className="text-green-400">{`(-${15}%)`}</span>
+      </span>
     </article>
   );
 }

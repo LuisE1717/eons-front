@@ -13,5 +13,6 @@ export interface Transfer {
 
 export enum SECTION {
   TRANSFER,
-  BUY,
+  DONATION,
+  PAY,
 }
