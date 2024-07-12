@@ -1,46 +1,44 @@
 import useList from "./hooks/useList";
 import Card from "./components/Card/Card";
-import Header from "./components/Header/Header";
-import ListContainer from "../../../Shared/components/ListContainer/ListContainer";
 import Custom from "./components/Custom/Custom";
-import Sections from "./components/Sections/Sections";
 import { SECTION } from "./domain";
-import TransferCard from "./components/TransferCard/TransferCard";
 import Form from "./components/Form/Form";
+import HeaderImage from "./components/HeaderImage/HeaderImage";
+import Sections from "./components/Sections/Sections";
 
 export default function List() {
   const { list, handleClick, handleChangeSection, section, transferList } =
     useList();
 
   return (
-    <ListContainer>
-      <Header />
+    <div className="flex flex-col w-full items-center px-6">
+      <main className="flex flex-col max-w-[1100px] w-full">
+        <div className="flex lg:flex-row flex-col-reverse items-center gap-x-10 gap-y-7 mb-10">
+          <section className="flex flex-col w-full max-w-[700px]">
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
+              {list.map((e) => (
+                <Card
+                  key={e.id}
+                  essence={e}
+                  handleClick={() => handleClick(e.id)}
+                />
+              ))}
+            </div>
 
-      <Sections handleChange={handleChangeSection} selected={section} />
+            <Custom />
+          </section>
 
-      {section === SECTION.BUY && (
-        <div className="flex flex-col sm:gap-y-4 gap-y-2.5">
-          {list.map((e) => (
-            <Card
-              key={e.id}
-              essence={e}
-              handleClick={() => handleClick(e.id)}
-            />
-          ))}
-
-          <Custom />
+          <HeaderImage />
         </div>
-      )}
 
-      {section === SECTION.TRANSFER && (
-        <div className="flex flex-col sm:gap-y-4 gap-y-2.5">
-          <Form />
+        <div className="flex w-full justify-center mb-10">
+          {section === null && (
+            <Sections handleChange={handleChangeSection} selected={section} />
+          )}
 
-          {transferList.map((t) => (
-            <TransferCard key={t.id} transfer={t} />
-          ))}
+          {section === SECTION.TRANSFER && <Form />}
         </div>
-      )}
-    </ListContainer>
+      </main>
+    </div>
   );
 }
