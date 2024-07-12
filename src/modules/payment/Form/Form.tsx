@@ -1,48 +1,46 @@
+import { useEffect } from "react";
+import Loading from "../../../components/UI/Button/components/Loading/Loading";
 import Button from "./components/Button/Button";
 import Check from "./components/Check/Check";
 import Section from "./components/Section/Section";
 import useForm from "./hooks/useForm";
-
+import { confirmPayment } from "../../../utils/api/essenceApi";
+import Cookies from "js-cookie";
 interface Props {
-  numberLabel: string;
-  dateLabel: string;
-  nameLabel: string;
+  bankOrderCode?:string,
+  reference?:string,
+  state?:string;
 }
 
-export default function Form({ dateLabel, nameLabel, numberLabel }: Props) {
-  const {
-    form,
-    handleChangeCVV,
-    handleChangeExpirationDate,
-    handleChangeName,
-    handleChangeNumber,
-    handleChangeSave,
-    handleSubmit,
-    loading,
-  } = useForm();
+export default function Form({
+  bankOrderCode,
+  reference,
+  state
+} : Props) {
+
+  useEffect(()=>{
+    handleVerifyPay()
+  },[])
+
+  async function handleVerifyPay() {
+    if(bankOrderCode && reference){
+      await confirmPayment(Cookies.get('eons_token') || '',{
+        bankOrderCode,
+        reference
+      })
+      .then(()=>{window.location.href = '/payment/success'})
+      .catch((error)=>{console.log(error)})
+    }
+    else{
+      window.location.href = '/payment/failed'
+    }
+  }
 
   return (
-    <form className="flex flex-col gap-y-7 rounded-sm shadow-md" onSubmit={handleSubmit}>
-      <Section
-        value={form.number}
-        handleChange={handleChangeNumber}
-        label={numberLabel}
-      />
-      <Section
-        value={form.expirationDate}
-        handleChange={handleChangeExpirationDate}
-        label={dateLabel}
-      />
-      <Section
-        value={form.name}
-        handleChange={handleChangeName}
-        label={nameLabel}
-      />
-      <Section value={form.cvv} handleChange={handleChangeCVV} label="CVV" />
-
-      <Check handleChange={handleChangeSave} value={form.save} />
-
-      <Button loading={loading} />
+    <form className="flex flex-col gap-y-7 items-center" >
+      <div className="flex flex-row">
+        <Loading text_loading={"Verificando Pago..."} />
+      </div>
     </form>
   );
 }

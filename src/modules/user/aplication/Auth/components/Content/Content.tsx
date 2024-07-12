@@ -119,7 +119,9 @@ export default function Content({
 
       {SECTIONS.LOGIN === section && (
         <div className="flex flex-col mt-8 items-center">
+          <a href="auth/forget-password">
           <span className="text-sm text-primary">{forget_pass}</span>
+          </a>
         </div>
       )}
     </>
