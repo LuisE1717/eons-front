@@ -44,9 +44,9 @@ export default function useContent(session:Session|null) {
             if (response.data) {
               const user_info = response.data;
               
-              setCookie("eons_user",user_info.email,1)
-              setCookie("eons_essence",user_info.essence,1)
-              setCookie("eons_token", user_info.accessToken, 1);
+              setCookie("eons_user",user_info.email,0.25)
+              setCookie("eons_essence",user_info.essence,0.25)
+              setCookie("eons_token", user_info.accessToken, 0.25);
               setCookie("eons_refresh_token", user_info.refreshToken, 7)
               
               userProfile.set({
@@ -81,9 +81,9 @@ export default function useContent(session:Session|null) {
             if (response.data) {
                 const user_info = response.data;
 
-                setCookie("eons_user",user_info.email,1)
-                setCookie("eons_essence",user_info.essence,1)
-                setCookie("eons_token", user_info.accessToken, 1);
+                setCookie("eons_user",user_info.email,0.25)
+                setCookie("eons_essence",user_info.essence,0.25)
+                setCookie("eons_token", user_info.accessToken, 0.25);
                 setCookie("eons_refresh_token", user_info.refreshToken, 7);
 
                 userProfile.set({
@@ -126,10 +126,10 @@ async function handleSession() {
         if(response.data){
           const user_info = response.data;
 
-          setCookie("eons_user",user_info.email,1)
-          setCookie("eons_essence",user_info.essence,1)
-          setCookie('eons_token',response.data.accessToken,1)
-          setCookie('eons_refresh_token',response.data.refreshToken || '',1)
+          setCookie("eons_user",user_info.email,0.25)
+          setCookie("eons_essence",user_info.essence,0.25)
+          setCookie('eons_token',response.data.accessToken,0.25)
+          setCookie('eons_refresh_token',response.data.refreshToken || '',0.25)
   
           userProfile.set({
             email: user_info.email || '',

@@ -24,8 +24,6 @@ export function UserProvider({
   const [user, setUser] = useState<ICurrentUser | null>(null);
   const [loading, setLoading] = useState(false);
 
-  //console.log(token)
-
   const handleRefreshSection = async () => {
     try {
       if (!Cookies.get("eons_token")) {
@@ -35,11 +33,11 @@ export function UserProvider({
           if (response.data) {
             const profile = response.data;
             setUser(response.data);
-            console.log(user);
+            console.log(response.data);
 
-            setCookie("eons_user", profile.email, 1);
-            setCookie("eons_essence", profile.essence, 1);
-            setCookie("eons_token", profile.accessToken, 1);
+            setCookie("eons_user", profile.email, 0.25);
+            setCookie("eons_essence", profile.essence, 0.25);
+            setCookie("eons_token", profile.accessToken, 0.25);
             setCookie("eons_refresh_token", profile.refreshToken, 7);
 
             userProfile.set({
@@ -59,7 +57,7 @@ export function UserProvider({
             window.location.pathname != "/auth" &&
             window.location.pathname != "/"
           ) {
-            window.location.href = "/auth";
+            // window.location.href = "/auth";
           }
         }
       }
