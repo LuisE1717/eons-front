@@ -14,8 +14,6 @@ interface Props {
 export default function Save({ action, response, question }: Props) {
   const { translation } = useTranslation();
 
-  const navigate = actionsInterprete(action, response,question);
-
   console.log(action)
   console.log(question)
 
@@ -31,7 +29,7 @@ export default function Save({ action, response, question }: Props) {
         .then((response) => {
           toast.success('Dialogo Guardado')
           setTimeout(() => {
-            window.location.href = '/dialogs'
+            window.location.href = '/dialogs/dialog'
           }, 3000);
         })
       }
@@ -50,7 +48,7 @@ export default function Save({ action, response, question }: Props) {
         .then((response) => {
           toast.success('Consulta del dia Guardada')
           setTimeout(() => {
-            window.location.href = '/dialogs'
+            window.location.href = '/dialogs/day'
           }, 3000);
         })
       }

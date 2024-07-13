@@ -1,0 +1,62 @@
+  .select {
+    transition: 300ms;
+    overflow: hidden;
+  }
+  
+  .selected {
+    z-index: 100000;
+    font-size: 15px;
+    display: flex;
+    width: max-content;
+  }
+  
+  .options {
+    visibility: hidden;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+    top: -100px;
+    opacity: 1;
+    height: 0;
+    transition: 300ms;
+  }
+  
+  .select:hover > .options {
+    visibility: visible;
+    top: 0;
+    opacity: 1;
+    height: auto;
+  }
+  
+  .option {
+    border-radius: 5px;
+    padding: 5px;
+    transition: 300ms;
+    width: 150px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  
+  .options label {
+    display: inline-block;
+  }
+  
+  /* .option:hover {
+     background-color: #323741; 
+  } */
+  
+  /* .select:hover > .selected .arrow {
+    transform: rotate(0deg);
+  } */
+  
+  /* .arrow {
+    position: relative;
+    right: 0px;
+    height: 10px;
+    transform: rotate(-90deg);
+    width: 25px;
+    fill: white;
+    z-index: 100000;
+    transition: 300ms;
+  } */

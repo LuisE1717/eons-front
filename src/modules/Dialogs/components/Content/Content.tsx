@@ -6,9 +6,9 @@ import Favorites from "./components/Favorites/Favorites";
 import Switch from "./components/Switch/Switch";
 import useContent from "./hooks/useContent";
 
-export default function Content() {
+export default function Content({type}) {
   const { selected, handleChangeSection, handleAddDialog, handleDeleteDialog, dataDialogs } =
-    useContent();
+    useContent(type);
 
   return (
   <>
