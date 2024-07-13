@@ -7,7 +7,8 @@ import { getAllDialogs } from "../../../../../utils/api/dialogApi"
 
 export default function useGetAllDialogs (
     control:boolean,
-    setControl:Dispatch<SetStateAction<boolean>>
+    setControl:Dispatch<SetStateAction<boolean>>,
+    type: string
     )  {
     const {translation} = useTranslation()
 
@@ -21,7 +22,7 @@ export default function useGetAllDialogs (
             const token = Cookies.get('eons_token') || ''
             setloading(true)
             try {
-                const spirits = await getAllDialogs(token)
+                const spirits = await getAllDialogs(token,type)
                 console.log(spirits)
                 setData(spirits.data)
             } catch (error) {
