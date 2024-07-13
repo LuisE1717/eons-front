@@ -33,7 +33,7 @@ export default function Button({ question, text, email }: Props) {
     try {
       setDisabled(true);
       setPending(true)
-      const mail = await sendVerificationMail(Cookies.get('eons_token')||'',email)
+      const mail = await sendVerificationMail(email)
       setPending(false)
       console.log(mail)
       toast.info('verifique su buzon de correo ' + '(' + email + ')')

@@ -10,6 +10,7 @@ import { useStore } from '@nanostores/react';
 import { locale } from '../UserStore'
 
 import "react-toastify/dist/ReactToastify.css";
+import WebSocketComponent from "../modules/Shared/context/WebSocket"
 
 locale.set(Astro.cookies.get('eons_lng')?.value || 'en') 
 
@@ -31,6 +32,7 @@ console.log(cleanURL(Astro.url.href))
   </div>
   
   <body>
+    <WebSocketComponent client:load/>
       <UserProvider client:load token={token?.value}>
          <slot/>
       </UserProvider>

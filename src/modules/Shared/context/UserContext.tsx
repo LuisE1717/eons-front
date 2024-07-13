@@ -4,6 +4,8 @@ import { refreshSection } from "../../../utils/api/userApi";
 import { setCookie } from "../../../utils/cookies/Cookies";
 import type { ICurrentUser } from "../../user/domain/user";
 import { userProfile } from "../../../UserStore";
+import  useWebSocket  from "react-use-websocket"
+import WebSocketComponent from "./WebSocket";
 interface Props {
   user: ICurrentUser | null;
   loading: boolean;
@@ -23,7 +25,6 @@ export function UserProvider({
 }) {
   const [user, setUser] = useState<ICurrentUser | null>(null);
   const [loading, setLoading] = useState(false);
-
   //console.log(token)
 
   const handleRefreshSection = async () => {
@@ -68,6 +69,8 @@ export function UserProvider({
       console.log(error);
     }
   };
+
+  
 
   useEffect(() => {
     handleRefreshSection();
