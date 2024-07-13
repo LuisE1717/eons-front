@@ -29,7 +29,7 @@ export default function Form({
         reference
       })
       .then(()=>{window.location.href = '/payment/success'})
-      .catch((error)=>{console.log(error)})
+      .catch((error)=>{console.log(error); window.location.href ='/payment/failed'})
     }
     else{
       window.location.href = '/payment/failed'
