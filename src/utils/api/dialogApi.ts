@@ -1,7 +1,7 @@
 import { axiosI } from ".";
 
-export async function getAllDialogs(token:string) {
-    const res = await axiosI(token).get(`preguntas/`)
+export async function getAllDialogs(token:string,type:string) {
+    const res = await axiosI(token).get(`preguntas/?type=${type}`)
     const data = await res.data;
 
     return {
