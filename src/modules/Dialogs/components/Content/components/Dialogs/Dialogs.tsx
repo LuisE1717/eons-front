@@ -5,15 +5,14 @@ import List from "../../shared/components/List/List";
 interface Props {
   handleAddDialog(id: string): void;
   handleDeleteDialog(id: string): void;
-  dialogs:Dialog[];
+  dialogs: Dialog[];
 }
 
 export default function Dialogs({
   handleAddDialog,
   handleDeleteDialog,
-  dialogs
+  dialogs,
 }: Props) {
-
   return (
     <List
       dialogs={dialogs}

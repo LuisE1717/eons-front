@@ -9,16 +9,16 @@ interface Props {
 export default function Section({ text, handleClick, selected }: Props) {
   const CLASS = clsx(
     "flex justify-center items-center",
-    "w-full",
+    "w-max",
     "cursor-pointer",
     "text-center",
-    "text-white",
     "rounded-full",
-    "sm:text-lg text-base",
-    "px-6 py-3",
+    "text-base",
+    "px-8 py-2",
+    "bg-white",
 
     {
-      "bg-black": selected,
+      "border-2 border-primary": selected,
     }
   );
 
