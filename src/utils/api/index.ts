@@ -50,8 +50,8 @@ export function axiosI(apiToken : string|undefined ) {
                     window.location.reload()
                 }
                 else if (error.response.status === 403){
-                    if(validMail(userProfile.get()?.email))
-                        window.location.href =`/auth/email-verification/${userProfile.get()?.email}`
+                    if(validMail(Cookies.get('eons_user')))
+                        window.location.href =`/auth/email-verification/${Cookies.get('eons_user') || ''}`
                     else
                         window.location.href =`/auth` 
                 }

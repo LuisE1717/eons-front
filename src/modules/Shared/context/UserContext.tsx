@@ -4,6 +4,7 @@ import { refreshSection } from "../../../utils/api/userApi";
 import { setCookie } from "../../../utils/cookies/Cookies";
 import type { ICurrentUser } from "../../user/domain/user";
 import { userProfile } from "../../../UserStore";
+
 interface Props {
   user: ICurrentUser | null;
   loading: boolean;
