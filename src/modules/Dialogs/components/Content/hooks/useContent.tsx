@@ -7,50 +7,7 @@ export default function useContent(type: string) {
   const [selected, setSelected] = useState(SECTIONS.DIALOGS);
 
   const [control, setControl] = useState(true);
-  // const dataDialogs = useGetAllDialogs(control,setControl,type)
-
-  const dataDialogs: Dialog[] = [
-    {
-      descripcion: "Dialogo 1",
-      fecha: new Date(),
-      id: 1,
-      id_usuario: "2",
-      respuesta: "buenas",
-      tipo: "",
-    },
-    {
-      descripcion: "Dialogo 1",
-      fecha: new Date(),
-      id: 1,
-      id_usuario: "2",
-      respuesta: "buenas",
-      tipo: "",
-    },
-    {
-      descripcion: "Dialogo 1",
-      fecha: new Date(),
-      id: 1,
-      id_usuario: "2",
-      respuesta: "buenas",
-      tipo: "",
-    },
-    {
-      descripcion: "Dialogo 1",
-      fecha: new Date(),
-      id: 1,
-      id_usuario: "2",
-      respuesta: "buenas",
-      tipo: "",
-    },
-    {
-      descripcion: "Dialogo 1",
-      fecha: new Date(),
-      id: 1,
-      id_usuario: "2",
-      respuesta: "buenas",
-      tipo: "",
-    },
-  ];
+  const dataDialogs = useGetAllDialogs(control, setControl, type);
 
   function handleChangeSection(s: SECTIONS) {
     setSelected(s);

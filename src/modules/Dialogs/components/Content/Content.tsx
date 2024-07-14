@@ -26,7 +26,7 @@ export default function Content({ type }) {
 
             {selected === SECTIONS.DIALOGS && (
               <Dialogs
-                dialogs={dataDialogs}
+                dialogs={dataDialogs.data}
                 handleAddDialog={handleAddDialog}
                 handleDeleteDialog={handleDeleteDialog}
               />
@@ -34,7 +34,7 @@ export default function Content({ type }) {
 
             {selected === SECTIONS.FAVORITES && (
               <Favorites
-                dialogs={dataDialogs}
+                dialogs={dataDialogs.data}
                 handleAddDialog={handleAddDialog}
                 handleDeleteDialog={handleDeleteDialog}
               />
