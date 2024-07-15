@@ -4,9 +4,14 @@ import Menu from "./components/Menu/Menu";
 interface Props {
   header: React.ReactNode;
   children: React.ReactNode;
+  position?: "bottom" | "left";
 }
 
-export default function Dropdown({ header, children }: Props) {
+export default function Dropdown({
+  header,
+  children,
+  position = "bottom",
+}: Props) {
   const ref = createRef<HTMLDivElement>();
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -20,11 +25,11 @@ export default function Dropdown({ header, children }: Props) {
   }
 
   return (
-    <div className="cursor-pointer" ref={ref}>
+    <div className="cursor-pointer relative" ref={ref}>
       <div onClick={handleOpen}>{header}</div>
 
       {openMenu && (
-        <Menu wrapRef={ref} handleClose={handleClose}>
+        <Menu wrapRef={ref} handleClose={handleClose} position={position}>
           {children}
         </Menu>
       )}

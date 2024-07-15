@@ -6,9 +6,15 @@ interface Props {
   handleClose(): void;
   wrapRef: RefObject<HTMLDivElement>;
   children: React.ReactNode;
+  position: "bottom" | "left";
 }
 
-export default function Menu({ handleClose, wrapRef, children }: Props) {
+export default function Menu({
+  handleClose,
+  wrapRef,
+  children,
+  position,
+}: Props) {
   useClickOutside({ element: wrapRef, onClickOutside: handleClose });
 
   return (
@@ -17,12 +23,17 @@ export default function Menu({ handleClose, wrapRef, children }: Props) {
       className={clsx(
         "absolute",
         "z-20",
-        "-translate-x-8",
+        position === "left" && "left-0 top-0",
+        position === "left" && "flex",
         "overflow-auto",
         "mt-2",
         "bg-white",
-        "shadow"
+        "shadow",
+        "rounded-md"
       )}
+      style={{
+        transform: position === "left" ? `translateX(-100%)` : undefined,
+      }}
     >
       {children}
     </ul>

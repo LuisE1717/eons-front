@@ -17,25 +17,19 @@ export default function useGetAllSpirits (
     const [total_pages,setTotal_pages] = useState<number>()
 
     const fetchBookings = useCallback(async () =>{
-        if(Cookies.get('eons_token')){
-            if(control){
-                const token = Cookies.get('eons_token') || ''
-                setloading(true)
-                try {
-                    const spirits = await getAllSpirits(token)
-                    console.log(spirits)
-                    setData(spirits.data)
-                } catch (error) {
-                    toast.error(translation.fecth_error)
-                    setError(error)
-                    setloading(false)
-                }
-                setControl(false)
+        if(control){
+            const token = Cookies.get('eons_token') || ''
+            setloading(true)
+            try {
+                const spirits = await getAllSpirits(token)
+                console.log(spirits)
+                setData(spirits.data)
+            } catch (error) {
+                toast.error(translation.fecth_error)
+                setError(error)
+                setloading(false)
             }
-        }
-        else{
-            toast.error('No estas Autenticado')
-            window.location.href = ''
+            setControl(false)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[control])

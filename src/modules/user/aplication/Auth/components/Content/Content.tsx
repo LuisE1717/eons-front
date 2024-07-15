@@ -1,3 +1,4 @@
+import type { Session } from "@auth/core/types";
 import OutlineInputReact from "../../../../../../components/UI/input/OutlineInputReact";
 import { SECTIONS } from "../../domain";
 import { LoginButton } from "./components/LoginButton/LoginButton";
@@ -14,6 +15,7 @@ interface Props {
   invalid_email_text: string;
   invalid_pass_text: string;
   text_loading:string;
+  session:Session|null;
 }
 
 export default function Content({
@@ -25,7 +27,8 @@ export default function Content({
   forget_pass,
   invalid_email_text,
   invalid_pass_text,
-  text_loading
+  text_loading,
+  session
 }: Props) {
   const {
     loading,
@@ -37,8 +40,8 @@ export default function Content({
     handleChangeEmail,
     handleChangePassword,
     password,
-    section,
-  } = useContent();
+    section
+  } = useContent(session);
 
   return (
     <>
@@ -116,7 +119,9 @@ export default function Content({
 
       {SECTIONS.LOGIN === section && (
         <div className="flex flex-col mt-8 items-center">
+          <a href="auth/forget-password">
           <span className="text-sm text-primary">{forget_pass}</span>
+          </a>
         </div>
       )}
     </>
