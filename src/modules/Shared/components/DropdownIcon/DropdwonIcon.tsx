@@ -1,13 +1,11 @@
 import clsx from "clsx";
 
 interface Props {
-  handleClick?: () => void;
-  text: string;
-  id?: string;
-  href?: string;
+  icon: React.ReactNode;
+  handleClick(): void;
 }
 
-export default function DropdownItem({ handleClick, text, id, href }: Props) {
+export default function DropdwonIcon({ icon, handleClick }: Props) {
   const CLASS = clsx(
     "text-sm",
     "bg-white",
@@ -20,7 +18,7 @@ export default function DropdownItem({ handleClick, text, id, href }: Props) {
 
   return (
     <div className={CLASS} onClick={handleClick}>
-      {href ? <a href={href}>{text}</a> : <>{text}</>}
+      {icon}
     </div>
   );
 }
