@@ -5,9 +5,15 @@ import Content from "./components/Content/Content"
 import AccountsButton from "../../items/AccountsButton.astro";
 import { getI18N } from "../../../../i18n";
 import { toast, ToastContainer } from "react-toastify";
+import { getSession } from "auth-astro/server";
+import { singUp } from "../../../../utils/api/userApi";
+import { getExpire } from "../../../../utils/cookies/Cookies";
 
 const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({ currentLocale })
+
+const session = await getSession(Astro.request)
+console.log(session)
 ---
 
 <AuthHeader/>
@@ -24,6 +30,7 @@ const i18 = getI18N({ currentLocale })
             invalid_email_text={i18["Auth"].invalid_email_text}
             invalid_pass_text={i18["Auth"].invalid_pass_text}
             text_loading={i18.text_loading}
+            session={session}
             client:load
         />
 
@@ -32,8 +39,6 @@ const i18 = getI18N({ currentLocale })
             <AccountsButton error={i18.fecth_error} text="Apple"/>
             <AccountsButton error={i18.fecth_error} text="Google"/>
         </div>
-
-        
     </main>
 </div>
 

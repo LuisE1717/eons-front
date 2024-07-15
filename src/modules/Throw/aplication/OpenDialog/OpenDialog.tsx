@@ -10,7 +10,7 @@ import Button from "../../../../components/UI/Button/Button";
 import NextButton from "../../../../components/UI/NextButton";
 import { postThrow, closeThrow } from "../../../../utils/api/throwApi";
 import Cookies from "js-cookie";
-import { coinsInterpreter } from "../../domain/interpreter";
+import { actionsInterprete, coinsInterpreter } from "../../domain/interpreter";
 import NormalThrow from "../../views/NormalThrow";
 import MountThrow from "../../views/MountThrow";
 import StandThrow from "../../views/StandThrow";
@@ -21,7 +21,7 @@ import { TYPES } from "../../domain/types";
 import { transformDataToQuery } from "../../../../utils/queryTransformers";
 import Question from "../../components/Question";
 
-const ThrowReact = ({ i18, action, param1 }) => {
+const ThrowReact = ({ i18, action, param1, param2 }) => {
   const [moneda1, setMoneda1] = useState(0);
   const [moneda2, setMoneda2] = useState(0);
 
@@ -72,7 +72,7 @@ const ThrowReact = ({ i18, action, param1 }) => {
           Cookies.get("eons_token") || "",
           coinsInterpreter(throwType, moneda1, moneda2),
           transformDataToQuery({
-            type: action == "01" ? "predialog" : "dialog",
+            type: actionsInterprete(action),
             lang: Cookies.get("eons_lng") || "en",
             action,
             param1,
@@ -101,18 +101,21 @@ const ThrowReact = ({ i18, action, param1 }) => {
           //     toast.success("Lanzamiento especial resuelto, continue")
           // }
           else if (result?.data) {
-            if (action && param1) {
+            if (action) {
               console.log(result);
-              const lng = Cookies.get("eons_lng") || "en";
-              window.location.href = `${
-                lng == "es" ? "/es" : ""
-              }/throw/response/${result?.data}/${action}`;
-            } else {
+              if(action && param1)
+                window.location.href = `/throw/response/${result?.data}/${action}/${param1}`;
+              else if(question){
+                console.log(result);
+                window.location.href = `/throw/response/${result?.data}/${action}/${question}`;
+              }
+              else{
+                window.location.href = `/throw/response/${result?.data}/${action}`;
+              }
+            }
+            else {
               console.log(result);
-              const lng = Cookies.get("eons_lng") || "en";
-              window.location.href = `${
-                lng == "es" ? "/es" : ""
-              }/throw/response/${result?.data}`;
+              window.location.href = `/throw/response/${result?.data}`;
             }
           }
           setCount(count + 1);
@@ -265,11 +268,20 @@ const ThrowReact = ({ i18, action, param1 }) => {
           </label>
         </div>
 
+        {actionsInterprete(action) == 'day' ?
+        <header className="flex items-center w-full flex-col mb-5">
+        <h2 className="text-xl mb-2 font-bold">Lance las monedas para revelar como irá su día</h2>
+        </header>
+        :
+        actionsInterprete(action) == 'dialog'?
         <Question
           question={question}
           handleChangeQuestion={setQuestion}
-          disabled={block}
+          disabled={count>1}
         />
+        :
+        <></>
+        }
 
         {viewController()}
 

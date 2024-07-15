@@ -2,9 +2,9 @@ import Dropdown from "../../../../../../../../Shared/components/Dropdown/Dropdow
 import type { Dialog } from "../../../../../../../interfaces";
 import Icon from "./components/Icon/Icon";
 import moment from "moment";
-import DropdownItem from "../../../../../../../../Shared/components/DropdownItem/DropdownItem";
-import useTranslation from "../../../../../../../../Shared/hooks/useTranslation";
-import Cookies from "js-cookie";
+import DropdwonIcon from "../../../../../../../../Shared/components/DropdownIcon/DropdwonIcon";
+import Heart from "./components/Heart/Heart";
+import Trash from "./components/Trash/Trash";
 
 interface Props {
   dialog: Dialog;
@@ -17,31 +17,29 @@ export default function Card({
   handleAddDialog,
   handleDeleteDialog,
 }: Props) {
-  const { translation } = useTranslation();
-
-  const time = moment(dialog.date).format("hh:mm A");
-  const dateStr = dialog.date.toLocaleDateString();
+  const time = moment(dialog.fecha).format("hh:mm A");
+  const dateStr = moment(dialog.fecha).format("YYYY/MM/DD");
 
   return (
-    <article className="flex justify-between items-center py-2 px-7 rounded-full bg-white">
+    <article className="flex justify-between shadow-md shadow-gray-400 items-center py-2 sm:px-7 px-5 rounded-2xl bg-white border-2">
       <div>
-        <h2 className="text-base font-medium mb-0">{dialog.name}</h2>
+        <h2 className="text-base font-medium mb-0">{dialog.descripcion}</h2>
       </div>
 
       <div className="flex items-center gap-x-2">
-        <div className="text-sm text-gray-500 text-center">
+        <div className="text-sm text-gray-500 text-right">
           <p className="mb-0.5">{time}</p>
           <p className="mb-0">{dateStr}</p>
         </div>
 
-        <Dropdown header={<Icon />}>
-          <DropdownItem
+        <Dropdown header={<Icon />} position="left">
+          <DropdwonIcon
+            icon={<Heart size={20} />}
             handleClick={handleAddDialog}
-            text={translation.Dialogs.add_text}
           />
-          <DropdownItem
+          <DropdwonIcon
+            icon={<Trash size={20} />}
             handleClick={handleDeleteDialog}
-            text={translation.Dialogs.delete_text}
           />
         </Dropdown>
       </div>

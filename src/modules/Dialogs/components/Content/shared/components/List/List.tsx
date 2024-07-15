@@ -13,13 +13,13 @@ export default function List({
   handleDeleteDialog,
 }: Props) {
   return (
-    <div className="flex flex-col w-full gap-y-3">
+    <div className="flex flex-col w-full gap-y-6 pt-5">
       {dialogs.map((d) => (
         <Card
           dialog={d}
           key={d.id}
-          handleAddDialog={() => handleAddDialog(d.id)}
-          handleDeleteDialog={() => handleDeleteDialog(d.id)}
+          handleAddDialog={() => handleAddDialog(d.id.toString())}
+          handleDeleteDialog={() => handleDeleteDialog(d.id.toString())}
         />
       ))}
     </div>

@@ -1,4 +1,4 @@
-import { TYPES } from "./types";
+import { ACTIONS, TYPES } from "./types";
 
 interface Props {
   type: string;
@@ -71,19 +71,14 @@ export function coinsInterpreter(type:string, coin1:number, coin2:number ): stri
   }
 }
 
-export function actionsInterprete (action:string,response:string) {
-  if(action >= '04'){
-    if(response.includes('not') || response.includes('no')){
-      return "/spiritual-family"
-    }
-    else if(action == '05'){
-
-    }
-    else if(action == '06'){
-      
-    }
+export function actionsInterprete (action:string,question?:string) {
+  if(action == ACTIONS.DIALOGO_ABIERTO){
+    return "dialog"
   }
-  else{
-    return "/spiritual-family"
+  else if(action == ACTIONS.DIALOGO_DIA){
+    return "day"
+  }
+  else {
+    return "predialog"
   }
 }

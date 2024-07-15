@@ -1,0 +1,8 @@
+---
+import ResponsePage from "../../../../../../modules/Throw/ResponsePage.astro"
+import AppContainer from "../../../../../../layouts/AppContainer.astro"
+const {id,action,question} = Astro.params
+---
+<AppContainer>
+<ResponsePage action={action} response={id} question={question}/>
+</AppContainer>

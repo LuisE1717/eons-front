@@ -1,7 +1,7 @@
 import { setCookie } from "./cookies/Cookies"
 import { cleanURL } from "./navigation"
 import { useStore } from '@nanostores/react';
-import { locale } from '../LanguageStore';
+import { locale } from '../UserStore';
 
 export function setEnglish(english){
     if(english){

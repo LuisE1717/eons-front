@@ -8,7 +8,7 @@ import Button from "../../components/UI/Button/Button"
 import {actionsInterprete} from "./domain/interpreter";
 import Save from '../Response/components/Save/Save'
 
-const {action,response} = Astro.props
+const {action,param1,response,question} = Astro.props
 
 let arrayResponses = response.split(';')
 
@@ -115,7 +115,7 @@ const i18 = getI18N({currentLocale})
                 }
             </div>
 
-            <Save client:load action={action} response={response}/>
+            <Save client:load action={action} response={response} question={question}/>
         </main>
         <Footer/>
     </body>
