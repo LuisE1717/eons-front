@@ -38,7 +38,7 @@ export default function Save({ action, response, question }: Props) {
       }
     }
     else if(ACTIONS.DIALOGO_DIA == action){
-      if(question && save){
+      if(save){
         const datah = {
           respuesta:response,
           descripcion: question,
@@ -64,9 +64,9 @@ export default function Save({ action, response, question }: Props) {
         if(question){
           return(
             <>
-              <Button onClick={() => scriptHandler(false)} loading={false}>{"Continuar sin guardar"}</Button>
+              <Button size="sm" onClick={() => scriptHandler(false)} loading={false}>{"Continuar sin guardar"}</Button>
 
-              <Button onClick={() => scriptHandler(true)} loading={false} color="primary">
+              <Button size="sm" onClick={() => scriptHandler(true)} loading={false} color="primary">
                 {"Guardar diálogo"}
               </Button>
             </>
@@ -83,9 +83,9 @@ export default function Save({ action, response, question }: Props) {
         if (ACTIONS.DIALOGO_DIA == action){
           return(
             <>
-              <Button loading={false}>{"Continuar sin guardar"}</Button>
+              <Button size="sm" onClick={() => scriptHandler(false)} loading={false}>{"Continuar sin guardar"}</Button>
 
-              <Button loading={false} color="primary">
+              <Button size="sm" onClick={() => scriptHandler(true)} loading={false} color="primary">
                 {"Guardar consulta de día de hoy"}
               </Button>
             </>
