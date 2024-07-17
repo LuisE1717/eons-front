@@ -8,24 +8,26 @@ import Trash from "../../shared/components/Trash/Trash";
 import Heart from "../../shared/components/Heart/Heart";
 
 interface Props {
-  handleAddDialog(id: number): void;
+  handleFavDialog(id: number): void;
   handleDeleteDialog(id: number): void;
   dialogs: Dialog[];
 }
 
 export default function Favorites({
-  handleAddDialog,
+  handleFavDialog,
   handleDeleteDialog,
   dialogs,
 }: Props) {
   return (
     <List>
-      {dialogs.map((d) => (
+      {dialogs.map((d) => 
+      d.favorito &&
+      (
         <Card key={d.id} date={d.fecha} name={d.descripcion}>
-          <Dropdown header={<Icon />} position="left">
+          <Dropdown no_close header={<Icon />} position="left">
             <DropdwonIcon
-              icon={<Heart size={20} />}
-              handleClick={() => handleAddDialog(d.id)}
+              icon={<Heart favorite={d.favorito} size={20} />}
+              handleClick={() => handleFavDialog(d.id)}
             />
             <DropdwonIcon
               icon={<Trash size={20} />}

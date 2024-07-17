@@ -3,6 +3,9 @@ import { SECTIONS } from "../../../constants";
 import useGetAllDialogs from "./useGetAllDialogs";
 import type { SwitchItem } from "../../../../Shared/components/ListContainer/domain";
 import useTranslation from "../../../../Shared/hooks/useTranslation";
+import { deleteDialog, putDialog } from "../../../../../utils/api/dialogApi";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export default function useContent(type: string) {
   const { translation } = useTranslation();
@@ -16,9 +19,38 @@ export default function useContent(type: string) {
     setSelected(s);
   }
 
-  function handleAddDialog(id: number) {}
+  console.log(dataDialogs.data)
 
-  function handleDeleteDialog(id: number) {}
+  async function handleFavDialog(id: number) {
+    const dialog = dataDialogs.data.find((x) => x.id==id)
+    if(dialog){
+      let dialog_send 
+      if(dialog.favorito){
+        dialog_send = {
+          ...dialog,
+          favorito: false
+        }
+      }
+      else{
+        dialog_send = {
+          ...dialog,
+          favorito: true
+        }
+      }
+      await putDialog(Cookies.get('eons_token')||'',dialog_send,id.toString())
+        .then(() => {setControl(true)})
+        .catch(() =>{toast.error(translation.fecth_error)})
+    }
+  }
+
+  async function handleDeleteDialog(id: number) {
+    const dialog = dataDialogs.data.find((x) => x.id==id)
+    if(dialog){
+      await deleteDialog(Cookies.get('eons_token')||'',id.toString())
+        .then(() => {setControl(true)})
+        .catch(() =>{toast.error(translation.fecth_error)})
+    }
+  }
 
   const items: SwitchItem[] = [
     {
@@ -36,7 +68,7 @@ export default function useContent(type: string) {
   return {
     selected,
     handleChangeSection,
-    handleAddDialog,
+    handleFavDialog,
     handleDeleteDialog,
     dataDialogs,
     items,
