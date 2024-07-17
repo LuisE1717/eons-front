@@ -103,17 +103,15 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           else if (result?.data) {
             if (action) {
               console.log(result);
-              if(action && param1)
+              if (action && param1)
                 window.location.href = `/throw/response/${result?.data}/${action}/${param1}`;
-              else if(question){
+              else if (question) {
                 console.log(result);
                 window.location.href = `/throw/response/${result?.data}/${action}/${question}`;
-              }
-              else{
+              } else {
                 window.location.href = `/throw/response/${result?.data}/${action}`;
               }
-            }
-            else {
+            } else {
               console.log(result);
               window.location.href = `/throw/response/${result?.data}`;
             }
@@ -268,28 +266,25 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           </label>
         </div>
 
-        {actionsInterprete(action) == 'day' ?
-        <header className="flex items-center w-full flex-col mb-5">
-        <h2 className="text-xl mb-2 font-bold">Lance las monedas para revelar como irá su día</h2>
-        </header>
-        :
-        actionsInterprete(action) == 'dialog'?
-        <Question
-          question={question}
-          handleChangeQuestion={setQuestion}
-          disabled={count>1}
-        />
-        :
-        <></>
-        }
+        {actionsInterprete(action) == "day" ? (
+          <header className="flex items-center w-full flex-col mb-5">
+            <h2 className="text-xl mb-2 font-bold">
+              Lance las monedas para revelar como irá su día
+            </h2>
+          </header>
+        ) : actionsInterprete(action) == "dialog" ? (
+          <Question
+            question={question}
+            handleChangeQuestion={setQuestion}
+            disabled={count > 1}
+          />
+        ) : (
+          <></>
+        )}
 
         {viewController()}
 
-        <div className={`flex flex-col items-center mt-8 my-4`}>
-          <span>{i18["Throw"].especial_throw}</span>
-        </div>
-
-        <div className={`flex flex-wrap gap-2 justify-center my-4`}>
+        <div className={`flex flex-wrap gap-2 justify-center mt-8 mb-4`}>
           <div
             onClick={() => {
               //toast.update("Defina su tiro especial")
