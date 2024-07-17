@@ -10,18 +10,20 @@ import Heart from "../../shared/components/Heart/Heart";
 interface Props {
   handleFavDialog(id: number): void;
   handleDeleteDialog(id: number): void;
+  handleWatchDialog(id: number): void;
   dialogs: Dialog[];
 }
 
 export default function Dialogs({
   handleFavDialog,
   handleDeleteDialog,
+  handleWatchDialog,
   dialogs,
 }: Props) {
   return (
     <List>
       {dialogs.map((d) => (
-        <Card key={d.id} date={d.fecha} name={d.tipo=='dialog'?d.descripcion:d.tipo}>
+        <Card dialog={d} key={d.id}  handleWatchDialog={handleWatchDialog}>
           <Dropdown no_close header={<Icon />} position="left">
             <DropdwonIcon
               icon={<Heart favorite={d.favorito} size={20} />}

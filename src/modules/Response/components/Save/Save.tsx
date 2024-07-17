@@ -56,6 +56,15 @@ export default function Save({ action, response, question }: Props) {
         window.location.href = "/services"
       }
     }
+
+    else if(ACTIONS.VER_DIALOGO_ABIERTO == action){
+      window.location.href = "/dialogs/dialog"
+    }
+
+    else if(ACTIONS.VER_DIALOGO_DIA == action){
+      window.location.href = "/dialogs/day"
+    }
+    
   }
 
   const viewHandler = () =>{
@@ -92,10 +101,20 @@ export default function Save({ action, response, question }: Props) {
           )
         }
 
-        else{
+        else if(ACTIONS.VER_DIALOGO_ABIERTO == action){
           return(
-            <></>
+            <Button onClick={() => scriptHandler(false)} loading={false}>{"Volver a Dialogos"}</Button>
           )
+        }
+
+        else if(ACTIONS.VER_DIALOGO_DIA == action){
+          return(
+            <Button onClick={() => scriptHandler(false)} loading={false}>{"Volver a Servicios"}</Button>
+          )
+        }
+
+        else{
+          <></>
         }
 
   }

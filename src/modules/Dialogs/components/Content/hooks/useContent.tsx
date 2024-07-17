@@ -52,6 +52,13 @@ export default function useContent(type: string) {
     }
   }
 
+  function handleWatchDialog(id: number) {
+    const dialog = dataDialogs.data.find((x) => x.id==id)
+    if(dialog){
+      window.location.href = `/throw/response/${dialog.respuesta}/${dialog.tipo=='dialog'?'11':'12'}`
+    }
+  }
+
   const items: SwitchItem[] = [
     {
       click: () => handleChangeSection(SECTIONS.DIALOGS),
@@ -72,5 +79,6 @@ export default function useContent(type: string) {
     handleDeleteDialog,
     dataDialogs,
     items,
+    handleWatchDialog
   };
 }
