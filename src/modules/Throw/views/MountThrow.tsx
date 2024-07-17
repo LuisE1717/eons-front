@@ -44,7 +44,7 @@ const MountThrow: FC<Props> = ({
         <Coin
           loading={loading}
           id={1}
-          svg="sun"
+          big={true}
           condition="face"
           selectedCoin={moneda1}
           setSelected={setMoneda1}
@@ -55,7 +55,7 @@ const MountThrow: FC<Props> = ({
         <Coin
           loading={loading}
           id={2}
-          svg="sun"
+          big={true}
           condition="cross"
           selectedCoin={moneda1}
           setSelected={setMoneda1}
@@ -72,7 +72,7 @@ const MountThrow: FC<Props> = ({
       <div className="flex grid-col justify-center my-4">
         <Coin
           id={3}
-          svg="moon"
+          big={false}
           condition="face"
           loading={loading}
           selectedCoin={moneda1}
@@ -83,7 +83,7 @@ const MountThrow: FC<Props> = ({
         />
         <Coin
           id={4}
-          svg="moon"
+          big={false}
           condition="cross"
           loading={loading}
           selectedCoin={moneda1}
@@ -110,7 +110,7 @@ const MountThrow: FC<Props> = ({
         <Coin
           loading={loading}
           id={1}
-          svg="sun"
+          big={true}
           condition="face"
           selectedCoin={moneda2}
           setSelected={setMoneda2}
@@ -121,7 +121,7 @@ const MountThrow: FC<Props> = ({
         <Coin
           loading={loading}
           id={2}
-          svg="sun"
+          big={true}
           condition="cross"
           selectedCoin={moneda2}
           setSelected={setMoneda2}
@@ -138,7 +138,7 @@ const MountThrow: FC<Props> = ({
       <div className="flex grid-col justify-center my-4">
         <Coin
           id={3}
-          svg="moon"
+          big={false}
           condition="face"
           loading={loading}
           selectedCoin={moneda2}
@@ -149,7 +149,7 @@ const MountThrow: FC<Props> = ({
         />
         <Coin
           id={4}
-          svg="moon"
+          big={false}
           condition="cross"
           loading={loading}
           selectedCoin={moneda2}
