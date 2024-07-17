@@ -23,7 +23,7 @@ export default function Favorites({
       {dialogs.map((d) => 
       d.favorito &&
       (
-        <Card key={d.id} date={d.fecha} name={d.descripcion}>
+        <Card key={d.id} date={d.fecha} name={d.tipo=='dialog'?d.descripcion:d.tipo}>
           <Dropdown no_close header={<Icon />} position="left">
             <DropdwonIcon
               icon={<Heart favorite={d.favorito} size={20} />}

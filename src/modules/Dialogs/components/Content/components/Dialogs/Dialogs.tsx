@@ -21,7 +21,7 @@ export default function Dialogs({
   return (
     <List>
       {dialogs.map((d) => (
-        <Card key={d.id} date={d.fecha} name={d.descripcion}>
+        <Card key={d.id} date={d.fecha} name={d.tipo=='dialog'?d.descripcion:d.tipo}>
           <Dropdown no_close header={<Icon />} position="left">
             <DropdwonIcon
               icon={<Heart favorite={d.favorito} size={20} />}
