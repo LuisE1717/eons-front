@@ -5,12 +5,14 @@ interface Props {
   header: React.ReactNode;
   children: React.ReactNode;
   position?: "bottom" | "left";
+  no_close?:boolean;
 }
 
 export default function Dropdown({
   header,
   children,
   position = "bottom",
+  no_close
 }: Props) {
   const ref = createRef<HTMLDivElement>();
 
@@ -29,7 +31,7 @@ export default function Dropdown({
       <div onClick={handleOpen}>{header}</div>
 
       {openMenu && (
-        <Menu wrapRef={ref} handleClose={handleClose} position={position}>
+        <Menu wrapRef={ref} handleClose={no_close?() =>{}:handleClose} position={position}>
           {children}
         </Menu>
       )}

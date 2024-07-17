@@ -10,6 +10,7 @@ import { getAllSpirits } from "../../../../../utils/api/spiritsApi";
 import { toast } from "react-toastify";
 import useTranslation from "../../../../Shared/hooks/useTranslation";
 import { getAllDialogs } from "../../../../../utils/api/dialogApi";
+import type { Dialog } from "../../../interfaces";
 
 export default function useGetAllDialogs(
   control: boolean,
@@ -20,7 +21,7 @@ export default function useGetAllDialogs(
 
   const [loading, setloading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Dialog[]>([]);
   const [total_pages, setTotal_pages] = useState<number>();
 
   const fetchDialogs = useCallback(async () => {
@@ -43,7 +44,7 @@ export default function useGetAllDialogs(
 
   useEffect(() => {
     fetchDialogs();
-  }, []);
+  }, [fetchDialogs]);
 
   return {
     loading: loading,
