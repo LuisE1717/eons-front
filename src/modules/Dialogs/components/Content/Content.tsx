@@ -5,7 +5,7 @@ import useContent from "./hooks/useContent";
 import ListContainer from "../../../Shared/components/ListContainer/ListContainer";
 
 export default function Content({ type }) {
-  const { selected, handleAddDialog, handleDeleteDialog, dataDialogs, items } =
+  const { selected, handleFavDialog, handleDeleteDialog, dataDialogs, items } =
     useContent(type);
 
   return (
@@ -13,7 +13,7 @@ export default function Content({ type }) {
       {selected === SECTIONS.DIALOGS && (
         <Dialogs
           dialogs={dataDialogs.data}
-          handleAddDialog={handleAddDialog}
+          handleFavDialog={handleFavDialog}
           handleDeleteDialog={handleDeleteDialog}
         />
       )}
@@ -21,7 +21,7 @@ export default function Content({ type }) {
       {selected === SECTIONS.FAVORITES && (
         <Favorites
           dialogs={dataDialogs.data}
-          handleAddDialog={handleAddDialog}
+          handleFavDialog={handleFavDialog}
           handleDeleteDialog={handleDeleteDialog}
         />
       )}

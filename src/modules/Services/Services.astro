@@ -7,13 +7,14 @@ import Second from './components/Second/Second'
 import FirstStep from './components/FirstStep/FirstStep'
 import SecondStep from './components/SecondStep/SecondStep'
 
+const {first_time} = Astro.props
 ---
 <Header/>
 <div class="flex flex-col items-center w-full px-8">
     <div class="flex flex-col max-w-[1200px] w-full">
         <First/>
         <FirstStep/>
-        <Second client:load/>
+        <Second first_time={first_time?true:false} client:load/>
         <SecondStep/>
         <Third/>
     </div>
