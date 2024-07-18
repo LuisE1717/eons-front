@@ -1,0 +1,13 @@
+---
+import AppContainer from "../../layouts/AppContainer.astro";
+import Footer from "../../layouts/Footer.astro";
+import Header from "../../layouts/Header.astro";
+import Inf from '../../modules/Inf/Inf'
+
+---
+
+<AppContainer>
+    <Header/>
+    <Inf client:load/>
+    <Footer/>
+</AppContainer>
