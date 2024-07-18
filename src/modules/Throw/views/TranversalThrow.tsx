@@ -33,7 +33,7 @@ const TranversalThrow: FC<Props> = ({
 }) => {
   const [step, setStep] = useState(0);
 
-  console.log(step);
+
 
   const showStep = () => {
     switch (step) {

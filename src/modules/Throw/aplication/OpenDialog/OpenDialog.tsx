@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { TYPES } from "../../domain/types";
 import { transformDataToQuery } from "../../../../utils/queryTransformers";
 import Question from "../../components/Question";
+import Book from "../../components/Book";
 
 const ThrowReact = ({ i18, action, param1, param2 }) => {
   const [moneda1, setMoneda1] = useState(0);
@@ -260,12 +261,6 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
         rounded-xl bg-white shadow-xl shadow-black/5 
         ring-1 ring-slate-700/10`}
       >
-        <div className={`throw-counter my-4`}>
-          <label>
-            {i18["Throw"].throw} {count}
-          </label>
-        </div>
-
         {actionsInterprete(action) == "day" ? (
           <header className="flex items-center w-full flex-col mb-5">
             <h2 className="text-xl mb-2 font-bold">
