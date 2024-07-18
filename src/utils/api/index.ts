@@ -50,11 +50,11 @@ export function axiosI(apiToken: string | undefined) {
         if (error.response.status === 401) {
           window.location.reload();
         } else if (error.response.status === 403) {
-          /* if (validMail(Cookies.get("eons_user")))
+           if (validMail(Cookies.get("eons_user")))
             window.location.href = `/auth/email-verification/${
               Cookies.get("eons_user") || ""
             }`;
-          else window.location.href = `/auth`; */
+          else window.location.href = `/auth`;
         }
       }
       return Promise.reject(error);
