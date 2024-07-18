@@ -1,24 +1,47 @@
 import React, { useState, type FormEvent } from "react";
 import Button from "../../../../../../components/UI/Button/Button";
 import Section from "./components/Section/Section";
-
+import { validMail } from "../../../../../../utils/validations";
+import { toast } from "react-toastify";
+import useTranslation from "../../../../../Shared/hooks/useTranslation";
+import { transferEssence } from "../../../../../../utils/api/essenceApi";
+import Cookies from "js-cookie";
 interface IForm {
   count: number;
   user: string;
 }
 
 export default function Form() {
+  const {translation} = useTranslation()
+
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState<IForm>({ count: 1000, user: "" });
+  const [form, setForm] = useState<IForm>({ count: 100, user: "" });
 
   function handleChangeCount(c: number) {
     setForm((prev) => ({ ...prev, count: c }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     setLoading(true);
+    try {
+      if(validMail(form.user) && form.count>10){
+        const datah = {
+          receiver: form.user,
+          amount: form.count
+        }
+        await transferEssence(Cookies.get('eons_token') || '',datah)
+        .then(() => {
+          toast.success(`Se transferido ${form.count} esencias a ${form.user} exitosamente`)
+        })
+        .catch(() => toast.error(translation.fecth_error))
+      }
+      setLoading(false);
+    } catch (error) {
+      toast.error(translation.fecth_error)
+      setLoading(false);
+    }
   }
 
   function handleChangeUser(u: string) {
@@ -47,12 +70,13 @@ export default function Form() {
             type="number"
             className="py-1.5 outline-none border-b-2 focus:border-b-primary border-gray-300 w-full text-base focus:border-gray-400"
             value={form.count}
-            min={1000}
+            min={10}
             onChange={(e) => handleChangeCount(Number(e.target.value))}
           />
         </Section>
 
-        <Button type="submit" loading={loading} full={true} size="base">
+        <Button disabled={!validMail(form.user)}
+         type="submit" loading={loading} full={true} size="base">
           Transferir
         </Button>
       </form>
