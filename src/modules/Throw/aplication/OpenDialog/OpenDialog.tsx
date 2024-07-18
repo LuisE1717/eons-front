@@ -279,39 +279,41 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
 
         {viewController()}
 
-        <div className={`flex flex-wrap gap-2 justify-center mt-8 mb-4`}>
-          <div
-            onClick={() => {
-              //toast.update("Defina su tiro especial")
-              scrollToTop();
-              setThrowType("montado");
-              setMoneda1(0);
-              setMoneda2(0);
-            }}
-          >
-            <Button loading={loading}>{i18["Throw"].mount_throw}</Button>
+        {throwType === "normal" && (
+          <div className={`flex flex-wrap gap-2 justify-center mt-8 mb-4`}>
+            <div
+              onClick={() => {
+                //toast.update("Defina su tiro especial")
+                scrollToTop();
+                setThrowType("montado");
+                setMoneda1(0);
+                setMoneda2(0);
+              }}
+            >
+              <Button loading={loading}>{i18["Throw"].mount_throw}</Button>
+            </div>
+            <div
+              onClick={() => {
+                scrollToTop();
+                setThrowType("parado");
+                setMoneda1(0);
+                setMoneda2(0);
+              }}
+            >
+              <Button loading={loading}>{i18["Throw"].stops_throw}</Button>
+            </div>
+            <div
+              onClick={() => {
+                scrollToTop();
+                setThrowType("tranversal");
+                setMoneda1(0);
+                setMoneda2(0);
+              }}
+            >
+              <Button loading={loading}>{i18["Throw"].tranversal_throw}</Button>
+            </div>
           </div>
-          <div
-            onClick={() => {
-              scrollToTop();
-              setThrowType("parado");
-              setMoneda1(0);
-              setMoneda2(0);
-            }}
-          >
-            <Button loading={loading}>{i18["Throw"].stops_throw}</Button>
-          </div>
-          <div
-            onClick={() => {
-              scrollToTop();
-              setThrowType("tranversal");
-              setMoneda1(0);
-              setMoneda2(0);
-            }}
-          >
-            <Button loading={loading}>{i18["Throw"].tranversal_throw}</Button>
-          </div>
-        </div>
+        )}
       </div>
 
       <div className={`flex flex-row justify-center mt-8`}>
