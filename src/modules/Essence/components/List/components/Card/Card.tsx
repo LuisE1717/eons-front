@@ -19,8 +19,8 @@ export default function Card({ essence, handleClick }: Props) {
       <h2 className="font-semibold text-base mb-0.5">{essence.descripcion}</h2>
 
       <span className="text-sm text-gray-400">
-        {`${essence.precio}$`}{" "}
-        <span className="text-green-400">{`(-${15}%)`}</span>
+        {`${essence.precio}€`}{" "}
+        <span className="text-green-400">{essence.descuento > 0?`(-${essence.descuento}%)`:''}</span>
       </span>
     </article>
   );
