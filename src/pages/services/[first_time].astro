@@ -1,0 +1,10 @@
+---
+import AppContainer from "../../layouts/AppContainer.astro";
+import Services from '../../modules/Services/Services.astro'
+
+const {first_time} = Astro.params
+---
+
+<AppContainer>
+    <Services first_time={first_time}/>
+</AppContainer>

@@ -10,7 +10,7 @@ interface Props {
   text_loading?: string;
   color?: "default" | "primary";
   full?: boolean;
-  size?: "base" | "sm";
+  size?: "base" | "sm" | "xs";
 }
 
 export default function Button({
@@ -41,9 +41,9 @@ export default function Button({
 
     { "w-full": full, "w-max": !full },
 
-    { "px-8 py-3": size === "base", "px-5 py-2": size === "sm" },
+    { "px-8 py-3": size === "base", "px-5 py-2": size === "sm", "px-6 py-3": size === "xs" },
 
-    { "sm:text-lg text-base": size === "base", "text-sm": size === "sm" }
+    { "sm:text-lg text-base": size === "base", "text-sm": size === "sm", "text-xs": size === "xs" }
   );
 
   return (

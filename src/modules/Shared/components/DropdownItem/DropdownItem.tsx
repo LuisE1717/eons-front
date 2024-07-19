@@ -3,8 +3,8 @@ import clsx from "clsx";
 interface Props {
   handleClick?: () => void;
   text: string;
-  id?:string;
-  href?:string;
+  id?: string;
+  href?: string;
 }
 
 export default function DropdownItem({ handleClick, text, id, href }: Props) {
@@ -20,15 +20,7 @@ export default function DropdownItem({ handleClick, text, id, href }: Props) {
 
   return (
     <div className={CLASS} onClick={handleClick}>
-      {href?
-      <a href={href}>
-      {text}
-      </a>
-      :
-      <>
-      {text}
-      </>
-      }
+      {href ? <a href={href}>{text}</a> : <>{text}</>}
     </div>
   );
 }
