@@ -1,6 +1,7 @@
 import React, { type Dispatch, type FC, type SetStateAction } from "react";
 import Coin from "../components/Coin";
 import styles from "../aplication/OpenDialog/OpenDialog.module.css";
+import Book from "../components/Book";
 
 interface Props {
   loading: boolean;
@@ -28,6 +29,8 @@ const MountThrow: FC<Props> = ({
 
   return (
     <>
+      <Book text="Buenas" />
+
       <div className="flex flex-col items-center my-4">
         <span className={styles.span}>
           {throwType == "parado_montado"
