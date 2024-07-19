@@ -13,7 +13,7 @@ export default function ListContainer({ items, children, image }: Props) {
     <main className="flex flex-col items-center px-6 pb-20">
       <div className="w-full max-w-[1100px] flex flex-col">
         <div className="flex lg:flex-row flex-col-reverse items-center justify-between w-full gap-x-10 gap-y-10">
-          <div className="flex flex-col items-center lg:items-start w-full max-w-[500px]">
+          <div className="flex flex-col items-center lg:items-start w-full max-w-[500px] overflow-y-auto max-h-[600px]">
             <Switch items={items} />
 
             {children}
