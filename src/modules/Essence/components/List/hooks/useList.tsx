@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { SECTION, type Transfer, type Essence } from "../domain";
+import { SECTION, type Transfer, type Essence, type Price } from "../domain";
 import {
+  calculatePrice,
   getPackages,
   getTransfers,
+  startCustomPayment,
   startPayment,
 } from "../../../../../utils/api/essenceApi";
 import Cookies from "js-cookie";
@@ -10,15 +12,9 @@ import { toast } from "react-toastify";
 import useTranslation from "../../../../Shared/hooks/useTranslation";
 
 export default function useList() {
-  const [list, setList] = useState<Essence[]>([
-    { id: "1", descripcion: "5 Esencia", precio: 20 },
-    { id: "2", descripcion: "5 Esencia", precio: 20 },
-    { id: "3", descripcion: "5 Esencia", precio: 20 },
-    { id: "4", descripcion: "5 Esencia", precio: 20 },
-    { id: "5", descripcion: "5 Esencia", precio: 20 },
-    { id: "6", descripcion: "5 Esencia", precio: 20 },
-    { id: "7", descripcion: "5 Esencia", precio: 20 },
-  ]);
+  const [list, setList] = useState<Essence[]>([]);
+
+  const [price,setPrice] = useState<Price|null>(null);
 
   const [loading, setloading] = useState<boolean>(false);
 
@@ -54,8 +50,8 @@ export default function useList() {
 
   useEffect(() => {
     // fetchTranfers()
-    // fetchPackages()
-  }, [fetchTranfers, fetchPackages]);
+     fetchPackages()
+  }, [fetchPackages]);
 
   const [section, setSection] = useState<SECTION | null>(null);
 
@@ -67,7 +63,7 @@ export default function useList() {
     setloading(true);
     try {
       const token = Cookies.get("eons_token") || "";
-      const pay = await startPayment(token, id);
+      const pay = await startPayment(token,id);
       console.log(pay);
       window.open(pay.data.shortUrl, "_blank");
     } catch (error) {
@@ -76,5 +72,37 @@ export default function useList() {
     }
   }
 
-  return { list, handleClick, section, handleChangeSection, transferList };
+  async function handleCustomPayment() {
+    if(price){
+      setloading(true);
+      try {
+      const token = Cookies.get("eons_token") || "";
+      const datah = {
+        esencia: price?.esencia,
+        precio: price?.costo
+      }
+      const pay = await startCustomPayment(token,datah);
+      console.log(pay);
+      window.open(pay.data.shortUrl, "_blank");
+    } catch (error) {
+      toast.error(translation.fecth_error);
+      setloading(false);
+    }
+    }
+  }
+
+  async function findCost(esencia: number) {
+    setloading(true);
+    try {
+      const response = await calculatePrice(esencia);
+      if(response.data){
+        setPrice(response.data)
+      }
+    } catch (error) {
+      toast.error(translation.fecth_error);
+      setloading(false);
+    }
+  }
+
+  return { list, handleClick, section, handleChangeSection, transferList, price, findCost, handleCustomPayment };
 }

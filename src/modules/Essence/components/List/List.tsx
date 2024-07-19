@@ -7,8 +7,15 @@ import HeaderImage from "./components/HeaderImage/HeaderImage";
 import Sections from "./components/Sections/Sections";
 
 export default function List() {
-  const { list, handleClick, handleChangeSection, section, transferList } =
-    useList();
+  const { list, 
+    handleClick, 
+    handleChangeSection, 
+    section, 
+    transferList, 
+    price, 
+    findCost,
+    handleCustomPayment
+    } = useList();
 
   return (
     <div className="flex flex-col w-full items-center px-6">
@@ -25,7 +32,7 @@ export default function List() {
               ))}
             </div>
 
-            <Custom />
+            <Custom price={price} handleCustomPayment={handleCustomPayment} findCost={findCost} />
           </section>
 
           <HeaderImage />

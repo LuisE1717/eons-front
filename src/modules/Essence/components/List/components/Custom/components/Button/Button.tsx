@@ -1,10 +1,11 @@
 import React from "react";
 
-export default function Button() {
+export default function Button({handleCustomPayment}) {
   return (
     <button
       type="button"
       className="transition-all duration-200 hover:translate-x-1.5"
+      onClick={handleCustomPayment}
     >
       <svg
         width="24"
