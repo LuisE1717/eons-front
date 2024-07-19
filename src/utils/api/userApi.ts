@@ -105,7 +105,7 @@ export async function getValidateMail(dataH:any) {
 }
 
 export async function sendVerificationMail(email:string) {
-    const res = await intanceAxios.get(`/auth/request-verify-email/?email=${email}`)
+    const res = await intanceAxios.get(`/auth/request-verify-email?email=${email}`)
     const data = await res.data;
 
     if (data) {
