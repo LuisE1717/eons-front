@@ -1,21 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import io from 'socket.io-client';
 import Cookies from 'js-cookie';
 
 const WebSocketComponent: React.FC = () => {
-  const socket = io('http://localhost:3000/', {
-    reconnectionDelayMax:10000,
-    auth: {
-      name: Cookies.get('eons_token') || ''
-    }
-  });
+  const [Socket,setSocket] = useState(
+    io('http://localhost:3000/', {
+      reconnectionDelayMax:10000,
+      auth: {
+        name: Cookies.get('eons_token') || ''
+      }
+    })
+  )
+   const socket = useMemo(() => {
+     return io('http://localhost:3000/', {
+      reconnectionDelayMax:10000,
+      auth: {
+        name: Cookies.get('eons_token') || ''
+      }
+    });
+   }, [Socket]);
+  // const socket = io('http://localhost:3000/', {
+  //   reconnectionDelayMax:10000,
+  //   auth: {
+  //     name: Cookies.get('eons_token') || ''
+  //   }
+  // });
 
   const [lastMessage,setLastMessage] = useState('')
 
   const [connect, setConnect] = useState(false)
+
+  const Connected = useMemo(() => {
+    return connect
+  }, [connect]);
   useEffect(() => {
-    if(!connect){
+    if(!Connected){
       socket.on('connect', () => {
+        setConnect(true)
         console.log('Conectado al servidor');
       });
 
