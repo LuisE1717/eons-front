@@ -2,6 +2,13 @@ export interface Essence {
   id: string;
   descripcion: string;
   precio: number;
+  descuento: number;
+}
+
+export interface Price {
+  descuento: number;
+  costo: number;
+  esencia:string;
 }
 
 export interface Transfer {
@@ -13,5 +20,6 @@ export interface Transfer {
 
 export enum SECTION {
   TRANSFER,
-  BUY,
+  DONATION,
+  PAY,
 }

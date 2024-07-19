@@ -5,4 +5,5 @@ export interface Dialog {
   id_usuario: string;
   fecha: Date;
   tipo: string;
+  favorito:boolean;
 }

@@ -21,10 +21,10 @@ export default function UserInfo() {
         {translation.ServiceMenu.inf_calc_spiritual} <Span>{translation.ServiceMenu.free}</Span>
       </A>
       <Line />
-      <A href="/dialogs">
+      <A href="/dialogs/dialog">
         {translation.ServiceMenu.save_dialogs} <Span>{translation.ServiceMenu.free}</Span>
       </A>
-      <A>
+      <A href="/dialogs/day">
         {translation.ServiceMenu.save_services} <Span>{translation.ServiceMenu.free}</Span>
       </A>
       <Line />

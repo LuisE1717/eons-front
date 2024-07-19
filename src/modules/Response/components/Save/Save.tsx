@@ -14,8 +14,6 @@ interface Props {
 export default function Save({ action, response, question }: Props) {
   const { translation } = useTranslation();
 
-  const navigate = actionsInterprete(action, response,question);
-
   console.log(action)
   console.log(question)
 
@@ -31,7 +29,7 @@ export default function Save({ action, response, question }: Props) {
         .then((response) => {
           toast.success('Dialogo Guardado')
           setTimeout(() => {
-            window.location.href = '/dialogs'
+            window.location.href = '/dialogs/dialog'
           }, 3000);
         })
       }
@@ -40,7 +38,7 @@ export default function Save({ action, response, question }: Props) {
       }
     }
     else if(ACTIONS.DIALOGO_DIA == action){
-      if(question && save){
+      if(save){
         const datah = {
           respuesta:response,
           descripcion: question,
@@ -50,7 +48,7 @@ export default function Save({ action, response, question }: Props) {
         .then((response) => {
           toast.success('Consulta del dia Guardada')
           setTimeout(() => {
-            window.location.href = '/dialogs'
+            window.location.href = '/dialogs/day'
           }, 3000);
         })
       }
@@ -58,6 +56,15 @@ export default function Save({ action, response, question }: Props) {
         window.location.href = "/services"
       }
     }
+
+    else if(ACTIONS.VER_DIALOGO_ABIERTO == action){
+      window.location.href = "/dialogs/dialog"
+    }
+
+    else if(ACTIONS.VER_DIALOGO_DIA == action){
+      window.location.href = "/dialogs/day"
+    }
+    
   }
 
   const viewHandler = () =>{
@@ -66,9 +73,9 @@ export default function Save({ action, response, question }: Props) {
         if(question){
           return(
             <>
-              <Button onClick={() => scriptHandler(false)} loading={false}>{"Continuar sin guardar"}</Button>
+              <Button size="sm" onClick={() => scriptHandler(false)} loading={false}>{"Continuar sin guardar"}</Button>
 
-              <Button onClick={() => scriptHandler(true)} loading={false} color="primary">
+              <Button size="sm" onClick={() => scriptHandler(true)} loading={false} color="primary">
                 {"Guardar diálogo"}
               </Button>
             </>
@@ -85,19 +92,29 @@ export default function Save({ action, response, question }: Props) {
         if (ACTIONS.DIALOGO_DIA == action){
           return(
             <>
-              <Button loading={false}>{"Continuar sin guardar"}</Button>
+              <Button size="sm" onClick={() => scriptHandler(false)} loading={false}>{"Continuar sin guardar"}</Button>
 
-              <Button loading={false} color="primary">
+              <Button size="sm" onClick={() => scriptHandler(true)} loading={false} color="primary">
                 {"Guardar consulta de día de hoy"}
               </Button>
             </>
           )
         }
 
-        else{
+        else if(ACTIONS.VER_DIALOGO_ABIERTO == action){
           return(
-            <></>
+            <Button onClick={() => scriptHandler(false)} loading={false}>{"Volver a Dialogos"}</Button>
           )
+        }
+
+        else if(ACTIONS.VER_DIALOGO_DIA == action){
+          return(
+            <Button onClick={() => scriptHandler(false)} loading={false}>{"Volver a Servicios"}</Button>
+          )
+        }
+
+        else{
+          <></>
         }
 
   }

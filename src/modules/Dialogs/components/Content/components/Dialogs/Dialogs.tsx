@@ -1,24 +1,41 @@
-import React from "react";
 import type { Dialog } from "../../../../interfaces";
-import List from "../../shared/components/List/List";
+import Card from "../../../../../Shared/components/ListContainer/shared/components/Card/Card";
+import List from "../../../../../Shared/components/ListContainer/shared/components/List/List";
+import Dropdown from "../../../../../Shared/components/Dropdown/Dropdown";
+import Icon from "../../shared/components/Icon/Icon";
+import DropdwonIcon from "../../../../../Shared/components/DropdownIcon/DropdwonIcon";
+import Trash from "../../shared/components/Trash/Trash";
+import Heart from "../../shared/components/Heart/Heart";
 
 interface Props {
-  handleAddDialog(id: string): void;
-  handleDeleteDialog(id: string): void;
-  dialogs:Dialog[];
+  handleFavDialog(id: number): void;
+  handleDeleteDialog(id: number): void;
+  handleWatchDialog(id: number): void;
+  dialogs: Dialog[];
 }
 
 export default function Dialogs({
-  handleAddDialog,
+  handleFavDialog,
   handleDeleteDialog,
-  dialogs
+  handleWatchDialog,
+  dialogs,
 }: Props) {
-
   return (
-    <List
-      dialogs={dialogs}
-      handleDeleteDialog={handleDeleteDialog}
-      handleAddDialog={handleAddDialog}
-    />
+    <List>
+      {dialogs.map((d) => (
+        <Card dialog={d} key={d.id}  handleWatchDialog={handleWatchDialog}>
+          <Dropdown no_close header={<Icon />} position="left">
+            <DropdwonIcon
+              icon={<Heart favorite={d.favorito} size={20} />}
+              handleClick={() => handleFavDialog(d.id)}
+            />
+            <DropdwonIcon
+              icon={<Trash size={20} />}
+              handleClick={() => handleDeleteDialog(d.id)}
+            />
+          </Dropdown>
+        </Card>
+      ))}
+    </List>
   );
 }
