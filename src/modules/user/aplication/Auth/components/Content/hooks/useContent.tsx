@@ -121,7 +121,7 @@ async function handleSession() {
   try {
     if(session?.user?.email && session?.user?.id){
       setLoading(true)
-      await singUp({email:session.user.email,password: session?.user?.id || ''})
+      await singUp({email:session.user.email,password: session?.user?.id || '',type:session.user.name || ''})
       .then((response)=>{
         if(response.data){
           const user_info = response.data;
