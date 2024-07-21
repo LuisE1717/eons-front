@@ -8,6 +8,8 @@ const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
 const {bankOrderCode,reference,state} = Astro.params
+
+
 ---
 
 <AppContainer>
