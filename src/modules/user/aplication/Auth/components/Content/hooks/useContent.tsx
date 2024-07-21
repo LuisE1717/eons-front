@@ -76,7 +76,7 @@ export default function useContent(session:Session|null) {
             setLoading(false);
           });
       } else {
-        await singUp({ email, password })
+        await singUp({ email, password, type: 'mail' })
           .then((response) => {
             if (response.data) {
                 const user_info = response.data;
@@ -136,6 +136,12 @@ async function handleSession() {
             valid: user_info.valid || false,
             essence: user_info.essence || 0
           });
+
+          if(user_info.valid)
+            window.location.href = "/services";
+          else{
+            window.location.href = "auth/email-verification/" + user_info.email;
+          }
   
           token=response.data.accessToken;
         }
@@ -145,8 +151,6 @@ async function handleSession() {
         console.log(response)
       })
       setLoading(false)
-        if(token)
-          window.location.href = `/services`
     }
     else{
       setLoading(false)
