@@ -1,6 +1,7 @@
 import Image from "./components/Image/Image";
 import Switch from "./components/Switch/Switch";
 import type { SwitchItem } from "./domain";
+import "react-responsive-modal/styles.css";
 
 interface Props {
   items: SwitchItem[];
