@@ -15,14 +15,16 @@ export default defineConfig({
     })
   ],
   callbacks: {
-    jwt({ token, user }) {
+    jwt({ token, user,account }) {
       if (user) { // User is available during sign-in
         token.id = user.id
+        token.name = account.provider
       }
       return token
     },
     session({ session, token }) {
       session.user.id = token.id
+      session.user.name = token.name
       return session
     },
   },
