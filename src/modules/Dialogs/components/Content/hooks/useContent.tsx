@@ -6,11 +6,17 @@ import useTranslation from "../../../../Shared/hooks/useTranslation";
 import { deleteDialog, putDialog } from "../../../../../utils/api/dialogApi";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { type ModalProps } from "../../../interfaces";
 
 export default function useContent(type: string) {
   const { translation } = useTranslation();
 
   const [selected, setSelected] = useState(SECTIONS.DIALOGS);
+
+  const [openModal, setOpenModal] = useState<ModalProps | null>({
+    id: 2,
+    type: "delete",
+  });
 
   const [control, setControl] = useState(true);
   const dataDialogs = useGetAllDialogs(control, setControl, type);
@@ -19,43 +25,61 @@ export default function useContent(type: string) {
     setSelected(s);
   }
 
-  console.log(dataDialogs.data)
-
   async function handleFavDialog(id: number) {
-    const dialog = dataDialogs.data.find((x) => x.id==id)
-    if(dialog){
-      let dialog_send 
-      if(dialog.favorito){
+    const dialog = dataDialogs.data.find((x) => x.id == id);
+
+    if (dialog) {
+      let dialog_send;
+      if (dialog.favorito) {
         dialog_send = {
           ...dialog,
-          favorito: false
-        }
-      }
-      else{
+          favorito: false,
+        };
+      } else {
         dialog_send = {
           ...dialog,
-          favorito: true
-        }
+          favorito: true,
+        };
       }
-      await putDialog(Cookies.get('eons_token')||'',dialog_send,id.toString())
-        .then(() => {setControl(true)})
-        .catch(() =>{toast.error(translation.fecth_error)})
+
+      await putDialog(
+        Cookies.get("eons_token") || "",
+        dialog_send,
+        id.toString()
+      )
+        .then(() => {
+          setControl(true);
+        })
+        .catch(() => {
+          toast.error(translation.fecth_error);
+        });
     }
   }
 
   async function handleDeleteDialog(id: number) {
-    const dialog = dataDialogs.data.find((x) => x.id==id)
-    if(dialog){
-      await deleteDialog(Cookies.get('eons_token')||'',id.toString())
-        .then(() => {setControl(true)})
-        .catch(() =>{toast.error(translation.fecth_error)})
+    const dialog = dataDialogs.data.find((x) => x.id == id);
+    if (dialog) {
+      await deleteDialog(Cookies.get("eons_token") || "", id.toString())
+        .then(() => {
+          setControl(true);
+          setOpenModal(null);
+        })
+        .catch(() => {
+          toast.error(translation.fecth_error);
+        });
     }
   }
 
+  function handleOpenDelete(id: number) {
+    setOpenModal({ id: id, type: "delete" });
+  }
+
   function handleWatchDialog(id: number) {
-    const dialog = dataDialogs.data.find((x) => x.id==id)
-    if(dialog){
-      window.location.href = `/throw/response/${dialog.respuesta}/${dialog.tipo=='dialog'?'11':'12'}`
+    const dialog = dataDialogs.data.find((x) => x.id == id);
+    if (dialog) {
+      window.location.href = `/throw/response/${dialog.respuesta}/${
+        dialog.tipo == "dialog" ? "11" : "12"
+      }`;
     }
   }
 
@@ -79,6 +103,9 @@ export default function useContent(type: string) {
     handleDeleteDialog,
     dataDialogs,
     items,
-    handleWatchDialog
+    handleWatchDialog,
+    openModal,
+    setOpenModal,
+    handleOpenDelete,
   };
 }
