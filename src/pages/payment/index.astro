@@ -8,7 +8,7 @@ const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
 const currentUrl = Astro.url.href
-console.log("curre:",currentUrl)
+//console.log("curre:",currentUrl)
 
 const queryParams = new URLSearchParams(new URL(currentUrl).search);
 
