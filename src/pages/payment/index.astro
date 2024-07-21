@@ -7,8 +7,18 @@ import AppContainer from '../../layouts/AppContainer.astro'
 const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'en'
 const i18 = getI18N({currentLocale})
 
-const req = Astro.request.body
-console.log(Astro.request)
+const currentUrl = Astro.url.href
+//console.log("curre:",currentUrl)
+
+const queryParams = new URLSearchParams(new URL(currentUrl).search);
+
+const bankOrderCode = queryParams.get('bankOrderCode');
+const reference = queryParams.get('reference');
+const state = queryParams.get('state');
+
+console.log(bankOrderCode); // Imprime el valor de bankOrderCode
+console.log(reference); // Imprime el valor de reference
+console.log(state); // Imprime el valor de state
 ---
 
 <AppContainer>
@@ -16,7 +26,12 @@ console.log(Astro.request)
         <div class="flex w-full justify-center items-center min-h-screen">
             <main class="max-w-[700px] w-full flex flex-col py-10 px-10">
                 <Header/>
-                <Form />            
+                <Form
+                bankOrderCode={bankOrderCode || ''}
+                reference={reference || ''}
+                state={state || ''}
+                client:load
+                 />            
             </main>
         </div>
     </body>

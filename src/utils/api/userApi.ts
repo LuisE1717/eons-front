@@ -35,8 +35,8 @@ export async function singUp(dataLogin:ILogin) {
     }
 }
 
-export async function postLogout() {
-    const res = await intanceAxios.post('auth/logout')
+export async function postLogout(token:string,datah) {
+    const res = await axiosI(token).post('auth/logout',datah)
     const data = await res.data;
 
     if (!data) {
