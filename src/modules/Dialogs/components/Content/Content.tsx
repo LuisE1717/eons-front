@@ -19,7 +19,7 @@ export default function Content({ type }) {
   } = useContent(type);
 
   return (
-    <ListContainer image="/space.png" items={items}>
+    <ListContainer image="/space.webp" items={items}>
       <DeleteModal
         handleClose={() => setOpenModal(null)}
         open={openModal ? openModal.type === "delete" : false}
