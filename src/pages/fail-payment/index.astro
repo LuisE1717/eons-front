@@ -1,0 +1,13 @@
+---
+import AppContainer from "../../layouts/AppContainer.astro";
+import Footer from "../../layouts/Footer.astro";
+import Header from "../../layouts/Header.astro";
+import FailPay from "../../modules/FailPay/FailPay";
+
+---
+
+<AppContainer>
+    <Header/>
+    <FailPay client:load/>
+    <Footer/>
+</AppContainer>
