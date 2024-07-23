@@ -9,7 +9,7 @@ import { getSession } from "auth-astro/server";
 import { singUp } from "../../../../utils/api/userApi";
 import { getExpire } from "../../../../utils/cookies/Cookies";
 
-const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'en'
+const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({ currentLocale })
 
 const session = await getSession(Astro.request)

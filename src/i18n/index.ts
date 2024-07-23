@@ -58,6 +58,6 @@ export const getI18N = ({ currentLocale }: { currentLocale: string }) => {
         case Languages.Pt:
             return Pt;
         default:
-            return En;
+            return Es;
     }
 }
