@@ -29,7 +29,7 @@ const MountThrow: FC<Props> = ({
 
   return (
     <>
-      <Book text="Buenas" />
+      {/* <Book text="Buenas" /> */}
 
       <div className="flex flex-col items-center my-4">
         <span className={styles.span}>

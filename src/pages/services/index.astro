@@ -1,12 +1,25 @@
 ---
 import AppContainer from "../../layouts/AppContainer.astro";
 import Services from '../../modules/Services/Services.astro'
+import { getProfile } from "../../utils/api/userApi";
+import { getExpire } from "../../utils/cookies/Cookies";
 
-/*if(!Astro.cookies.get('eons_token')?.value)
+if(!Astro.cookies.get('eons_token')?.value)
     return Astro.redirect('/auth')
-*/
+
+    let notificaciones = []
+
+try {
+    const profile = await getProfile(Astro.cookies.get("eons_token")?.value || '')
+    console.log(profile)
+    Astro.cookies.set('eons_essence',profile?.data.essence,{expires:getExpire(7)})
+    if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)
+        notificaciones = profile?.data?.notificaciones
+} catch (error) {
+    
+}
 ---
 
 <AppContainer>
-    <Services/>
+    <Services notificaciones={notificaciones}/>
 </AppContainer>

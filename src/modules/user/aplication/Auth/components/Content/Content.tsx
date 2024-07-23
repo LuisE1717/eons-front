@@ -76,7 +76,7 @@ export default function Content({
         </div>
       </div>
 
-      <form className="flex flex-col" onSubmit={handleSubmit}>
+      <form className="flex flex-col">
         <div className="flex flex-col gap-y-2">
           <OutlineInputReact
             loading={loading}
@@ -112,6 +112,7 @@ export default function Content({
 
         <div className="flex flex-col mt-8">
           <LoginButton
+            handleSubmit={handleSubmit}
             text={section === SECTIONS.LOGIN ? button_login : button_singUp}
             loading={loading}
             text_loading={text_loading}
