@@ -28,7 +28,7 @@ export default function Form({
         bankOrderCode,
         reference
       })
-      .then(()=>{})
+      .then(()=>{window.location.href = '/services'})
       .catch((error)=>{console.log(error); window.location.href ='/payment/failed'})
     }
     else{

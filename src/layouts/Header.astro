@@ -4,7 +4,7 @@ import Dropdown from '../components/UI/Dropdown/TranslationMenu.astro';
 import SesionMenu from '../components/UI/Dropdown/SesionMenu.astro';
 import Essence from '../components/UI/EssenceCounter.astro';
 
-const { path } = Astro.props
+const { path, notifications } = Astro.props
 ---
 <nav class="flex justify-between w-full items-center sm:px-8 px-3 py-3">
 	<Logo/>
@@ -20,7 +20,7 @@ const { path } = Astro.props
 			</div>
 
 			<div class="svg">
-				<SesionMenu/>
+				<SesionMenu notifications={notifications}/>
 			</div>
 		</div>
 	</div>

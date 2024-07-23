@@ -26,7 +26,7 @@ const NormalThrow: FC<Props> = ({
 }) => {
   return (
     <>
-      <Book text="Buenas" />
+      <Book text="" />
 
       <div className="flex flex-col items-center my-4">
         {/* {lastThrow>'04' && 

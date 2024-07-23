@@ -32,9 +32,7 @@ export default function useContent(session:Session|null) {
     }
   },[session])
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-
+  async function handleSubmit() {
     if (validMail(email) && validPass(password)) {
       setLoading(true);
 

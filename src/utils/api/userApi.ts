@@ -115,3 +115,25 @@ export async function sendVerificationMail(email:string) {
     }
 }
 
+export async function getProfile(token:string) {
+    const res = await axiosI(token).get(`/auth/profile`)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
+
+export async function patchNotification(token:string,dataH:any) {
+    const res = await axiosI(token).patch(`/auth/profile`,dataH)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
+
