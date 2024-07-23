@@ -14,7 +14,7 @@ import useTranslation from "../../../../Shared/hooks/useTranslation";
 export default function useList() {
   const [list, setList] = useState<Essence[]>([]);
 
-  const [price,setPrice] = useState<Price|null>(null);
+  const [price, setPrice] = useState<Price | null>(null);
 
   const [loading, setloading] = useState<boolean>(false);
 
@@ -50,7 +50,7 @@ export default function useList() {
 
   useEffect(() => {
     // fetchTranfers()
-     fetchPackages()
+    fetchPackages();
   }, [fetchPackages]);
 
   const [section, setSection] = useState<SECTION | null>(null);
@@ -59,11 +59,15 @@ export default function useList() {
     setSection(s);
   }
 
+  function handleClose() {
+    setSection(null);
+  }
+
   async function handleClick(id: string) {
     setloading(true);
     try {
       const token = Cookies.get("eons_token") || "";
-      const pay = await startPayment(token,id);
+      const pay = await startPayment(token, id);
       console.log(pay);
       window.open(pay.data.shortUrl, "_blank");
     } catch (error) {
@@ -73,21 +77,21 @@ export default function useList() {
   }
 
   async function handleCustomPayment() {
-    if(price){
+    if (price) {
       setloading(true);
       try {
-      const token = Cookies.get("eons_token") || "";
-      const datah = {
-        esencia: price?.esencia,
-        precio: price?.costo
+        const token = Cookies.get("eons_token") || "";
+        const datah = {
+          esencia: price?.esencia,
+          precio: price?.costo,
+        };
+        const pay = await startCustomPayment(token, datah);
+        console.log(pay);
+        window.open(pay.data.shortUrl, "_blank");
+      } catch (error) {
+        toast.error(translation.fecth_error);
+        setloading(false);
       }
-      const pay = await startCustomPayment(token,datah);
-      console.log(pay);
-      window.open(pay.data.shortUrl, "_blank");
-    } catch (error) {
-      toast.error(translation.fecth_error);
-      setloading(false);
-    }
     }
   }
 
@@ -95,8 +99,8 @@ export default function useList() {
     setloading(true);
     try {
       const response = await calculatePrice(esencia);
-      if(response.data){
-        setPrice(response.data)
+      if (response.data) {
+        setPrice(response.data);
       }
     } catch (error) {
       toast.error(translation.fecth_error);
@@ -104,5 +108,15 @@ export default function useList() {
     }
   }
 
-  return { list, handleClick, section, handleChangeSection, transferList, price, findCost, handleCustomPayment };
+  return {
+    list,
+    handleClick,
+    section,
+    handleChangeSection,
+    transferList,
+    price,
+    findCost,
+    handleCustomPayment,
+    handleClose,
+  };
 }

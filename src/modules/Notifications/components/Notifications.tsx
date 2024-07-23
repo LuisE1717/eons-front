@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './Notifications.module.css'
+import type { INotifications } from '../domain/INotifications'
 
-const Notifications = () => {
+const Notifications = ({notifications}:{notifications:INotifications[]}) => {
   return (
     <div className={styles.select}>
     <label className={`${styles.selected} w-full flex items-center px-4 py-2 hover:bg-slate-100 cursor-pointer`}>
@@ -12,18 +13,14 @@ const Notifications = () => {
         <span className="ml-2">Notificaciones</span>
     </label>
     <div className={styles.options}>
-      <div className="hover:bg-slate-100 cursor-pointer" title="option-1">
+      {notifications?.length>0 &&
+      notifications.map((n) => (
+        <div className="hover:bg-slate-100 cursor-pointer" title="option-1">
         
-        <label className={styles.option} >asfdsfds</label>
-      </div>
-      <div className="hover:bg-slate-100 cursor-pointer" title="option-2">
-        
-        <label className={styles.option} >dsfdsf</label>
-      </div>
-      <div className="hover:bg-slate-100 cursor-pointer" title="option-3">
-        
-        <label className={styles.option} >dsfdsf</label>
-      </div>
+          <label className={styles.option} >{n.nombre}</label>
+        </div>
+        ))
+      }
     </div>
   </div>
   )
