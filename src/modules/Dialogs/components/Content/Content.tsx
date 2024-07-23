@@ -30,7 +30,44 @@ export default function Content({ type }) {
 
       {selected === SECTIONS.DIALOGS && (
         <Dialogs
-          dialogs={dataDialogs.data}
+          dialogs={[
+            {
+              descripcion: "",
+              favorito: false,
+              fecha: new Date(),
+              id: 1,
+              id_usuario: "3",
+              respuesta: "",
+              tipo: "",
+            },
+            {
+              descripcion: "",
+              favorito: false,
+              fecha: new Date(),
+              id: 1,
+              id_usuario: "3",
+              respuesta: "",
+              tipo: "",
+            },
+            {
+              descripcion: "",
+              favorito: false,
+              fecha: new Date(),
+              id: 1,
+              id_usuario: "3",
+              respuesta: "",
+              tipo: "",
+            },
+            {
+              descripcion: "",
+              favorito: false,
+              fecha: new Date(),
+              id: 1,
+              id_usuario: "3",
+              respuesta: "",
+              tipo: "",
+            },
+          ]}
           handleWatchDialog={handleWatchDialog}
           handleFavDialog={handleFavDialog}
           handleDeleteDialog={handleOpenDelete}
