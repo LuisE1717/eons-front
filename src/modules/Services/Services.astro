@@ -11,19 +11,7 @@ import { io } from "socket.io-client";
 import { getProfile } from '../../utils/api/userApi'
 import { getExpire } from "../../utils/cookies/Cookies";
 
-let notificaciones = []
-
-try {
-    const profile = await getProfile(Astro.cookies.get("eons_token")?.value || '')
-    console.log(profile)
-    Astro.cookies.set('eons_essence',profile?.data.essence,{expires:getExpire(7)})
-    if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)
-        notificaciones = profile?.data?.notificaciones
-} catch (error) {
-    
-}
-
-const {first_time} = Astro.props
+const {first_time, notificaciones} = Astro.props
 ---
 <Header notificaciones={notificaciones}/>
 <!-- <WebSocketComponent client:load/>  -->

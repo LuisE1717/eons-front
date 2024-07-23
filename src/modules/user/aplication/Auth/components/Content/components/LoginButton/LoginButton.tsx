@@ -4,11 +4,12 @@ interface Props {
   text: string;
   loading: boolean;
   text_loading?:string;
+  handleSubmit: () => void;
 }
 
-export function LoginButton({ text, loading, text_loading }: Props) {
+export function LoginButton({ text, loading, text_loading, handleSubmit }: Props) {
   return (
-    <Button type="submit" loading={loading} text_loading={text_loading}>
+    <Button onClick={()=> handleSubmit()} loading={loading} text_loading={text_loading}>
       {text}
     </Button>
   );

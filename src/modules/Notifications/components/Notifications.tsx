@@ -17,7 +17,7 @@ const Notifications = ({notifications}:{notifications:INotifications[]}) => {
       notifications.map((n) => (
         <div className="hover:bg-slate-100 cursor-pointer" title="option-1">
         
-          <label className={styles.option} >{n.descripcion}</label>
+          <label className={styles.option} >{n.nombre}</label>
         </div>
         ))
       }
