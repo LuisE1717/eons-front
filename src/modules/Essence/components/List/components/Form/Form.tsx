@@ -26,7 +26,7 @@ export default function Form() {
 
     setLoading(true);
     try {
-      if(validMail(form.user) && form.count>10){
+      if(validMail(form.user)){
         const datah = {
           receiver: form.user,
           amount: form.count
@@ -70,7 +70,7 @@ export default function Form() {
             type="number"
             className="py-1.5 outline-none border-b-2 focus:border-b-primary border-gray-300 w-full text-base focus:border-gray-400"
             value={form.count}
-            min={10}
+            min={1}
             onChange={(e) => handleChangeCount(Number(e.target.value))}
           />
         </Section>
