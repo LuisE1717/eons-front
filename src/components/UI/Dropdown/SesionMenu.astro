@@ -5,7 +5,7 @@ import { getI18N } from "../../../i18n"
 import Notifications from "../../../modules/Notifications/components/Notifications"
 import LogOut from "../../../modules/Shared/components/LogOut/LogOut"
 
-const currentLocale = Astro.cookies.get('eons_lng')?.value || 'en'
+const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({currentLocale})
 
 const session = await getSession(Astro.request)
