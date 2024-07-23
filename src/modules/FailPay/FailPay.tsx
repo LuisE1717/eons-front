@@ -36,7 +36,7 @@ export default function FailPay() {
           <Button
             loading={false}
             full={false}
-            onClick={() => (window.location.href = "/")}
+            onClick={() => (window.location.href = "/services")}
           >
             Volver al menú principal
           </Button>

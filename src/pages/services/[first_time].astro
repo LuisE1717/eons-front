@@ -2,6 +2,9 @@
 import AppContainer from "../../layouts/AppContainer.astro";
 import Services from '../../modules/Services/Services.astro'
 
+if(!Astro.cookies.get('eons_token')?.value)
+    return Astro.redirect('/auth')
+
 const {first_time} = Astro.params
 ---
 
