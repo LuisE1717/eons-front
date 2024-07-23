@@ -11,7 +11,7 @@ const i18 = getI18N({currentLocale})
 const session = await getSession(Astro.request)
 const user = Astro.cookies.get('eons_user')?.value
 
-//console.log(session)
+const { notifications } = Astro.props
 ---
 
 {user?
@@ -39,7 +39,7 @@ const user = Astro.cookies.get('eons_user')?.value
           
         </li>
         <li id="notifications">
-          <Notifications client:load/>
+          <Notifications notifications={notifications} client:load/>
         </li>
 
         <li id="log-out">

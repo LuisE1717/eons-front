@@ -6,7 +6,7 @@ export default function Inf() {
     <main className="flex w-full px-10 mb-10 justify-center">
       <div className="flex lg:flex-row flex-col w-full gap-y-10 max-w-[1100px] justify-center items-center">
         <img
-          src="/lens.png"
+          src="/lens.webp"
           alt="lens"
           className="object-contain w-full max-w-[600px]"
         />
