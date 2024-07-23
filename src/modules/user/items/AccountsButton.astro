@@ -64,7 +64,7 @@ const {text, bgColor, bg_hover, color, error} = Astro.props
     import { getI18N } from "../../../i18n";
     import Cookies from "js-cookie"
 
-    const currentLocale  = Cookies.get('eons_lng') || 'en'
+    const currentLocale  = Cookies.get('eons_lng') || 'es'
     const i18 = getI18N({ currentLocale })
     
     const google = document.querySelector("#Google")

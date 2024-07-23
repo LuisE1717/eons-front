@@ -74,7 +74,7 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           coinsInterpreter(throwType, moneda1, moneda2),
           transformDataToQuery({
             type: actionsInterprete(action),
-            lang: Cookies.get("eons_lng") || "en",
+            lang: Cookies.get("eons_lng") || "es",
             action,
             param1,
           })
