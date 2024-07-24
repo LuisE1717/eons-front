@@ -1,0 +1,21 @@
+import React from "react";
+
+export default function Arrow() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M36 18L24 30L12 18"
+        stroke="#000000"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+}
