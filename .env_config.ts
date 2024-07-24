@@ -8,7 +8,7 @@ const configEnv = {
     env: 'development'
   },
   production: {
-    api: 'https://eons-back.onrender.com/',
+    api: 'https://eons-services.onrender.com/',
     env: 'production'
   },
   local: {
