@@ -12,9 +12,12 @@ const session = await getSession(Astro.request)
 const user = Astro.cookies.get('eons_user')?.value
 
 const { notifications } = Astro.props
+
+ const unread = notifications?.filter((n) => !n.estado) || [];
 ---
 
-{user?
+<div class="flex items-center gap-x-2">
+  {user?
 <button id="session-menu">
     <AuthIcon/>
 </button>
@@ -26,7 +29,17 @@ const { notifications } = Astro.props
 </button>
 }
 
-    <div id="dropdownUsers" style={{display:'hidden',left:'70%', }} class="z-10 bg-white rounded-lg shadow w-64">
+{unread.length > 0 && (
+          <div class="w-[22px] h-[22px] bg-primary rounded-full ml-2.5 text-white text-xs flex justify-center items-center">
+            {unread.length}
+          </div>
+        )}
+</div>
+
+
+
+
+    <div id="dropdownUsers" style={{display:'hidden',left:'70%' }} class="z-10 bg-white rounded-lg shadow w-64">
       <ul class="py-2 overflow-y-auto text-gray-700" aria-labelledby="dropdownUsersButton">
         <li id="profile">
           <label class="flex items-center px-4 py-2 hover:bg-slate-100 cursor-pointer">
