@@ -99,6 +99,7 @@ export default function Content({
             value={password}
             type={"password"}
             label={password_input_label}
+            icon
           />
 
           <label
