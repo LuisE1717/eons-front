@@ -27,7 +27,7 @@ const { notifications } = Astro.props
     <AuthIcon/>
   </a>
 </button>
-}
+}</div>
 
 {unread.length > 0 && (
           <div class="w-[22px] h-[22px] bg-primary rounded-full ml-2.5 text-white text-xs flex justify-center items-center">
@@ -39,7 +39,7 @@ const { notifications } = Astro.props
 
 
 
-    <div id="dropdownUsers" style={{display:'hidden',left:'70%' }} class="z-10 bg-white rounded-lg shadow w-64">
+    <div id="dropdownUsers" style={{display:'none',left:'70%' }} class="z-10 bg-white rounded-lg shadow w-64">
       <ul class="py-2 overflow-y-auto text-gray-700" aria-labelledby="dropdownUsersButton">
         <li id="profile">
           <label class="flex items-center px-4 py-2 hover:bg-slate-100 cursor-pointer">
@@ -73,7 +73,9 @@ const { notifications } = Astro.props
       
       // Función para mostrar el menú
       function showMenu() {
+        console.log('Hola')
         if(dropdownMenu && dropdownButton){
+     
           dropdownMenu.style.display = 'block'
           dropdownMenu.style.position = 'absolute'
   
