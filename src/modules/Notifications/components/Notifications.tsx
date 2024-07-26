@@ -39,12 +39,6 @@ const Notifications = ({
         </svg>
 
         <span className="ml-2">Notificaciones</span>
-
-        {unread.length > 0 && (
-          <div className="w-[22px] h-[22px] bg-primary rounded-full ml-2.5 text-white text-xs flex justify-center items-center">
-            {unread.length}
-          </div>
-        )}
       </label>
 
       <div className={styles.options}>
