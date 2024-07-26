@@ -4,7 +4,17 @@ import type { INotifications } from "../domain/INotifications";
 import Item from "./Item/Item";
 
 const Notifications = ({
-  notifications = [],
+  notifications = [
+    {
+      id: 1,
+    id_usuario: "string | null",
+    nombre: "string | null",
+    tipo: "string | null",
+    descripcion: "string | null",
+    estado: false,
+    date: new Date()
+    }
+  ],
 }: {
   notifications: INotifications[];
 }) => {
@@ -48,7 +58,7 @@ const Notifications = ({
       </label>
 
       <div className={styles.options}>
-        {notifications?.length > 0 && notifications.map((n) => <Item n={n} />)}
+        {notifications?.length > 0 && notifications.map((n) => <Item key={n.id} n={n} />)}
       </div>
     </div>
   );
