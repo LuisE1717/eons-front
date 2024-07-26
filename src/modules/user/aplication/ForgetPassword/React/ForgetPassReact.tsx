@@ -24,7 +24,7 @@ const ForgetPassReact:FC<Props> = ({i18}) => {
     },[email])
 
     const handleSubmit = async () =>{
-      setLoading(true)
+        setLoading(true)
         if(validMail(email)){
             await postResetPass({email})
             .then((response)=>{
@@ -38,9 +38,10 @@ const ForgetPassReact:FC<Props> = ({i18}) => {
               else{
                 toast.error(i18.fecth_error)
               }
-              setLoading(false)
+              
             })
         }
+        setLoading(false)
     }
 
   return (

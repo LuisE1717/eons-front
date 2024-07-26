@@ -10,7 +10,6 @@ export interface ISessionLogin {
 }
 
 export interface IChangePass {
-    token: string;
     newPassword:string;
 }
 
