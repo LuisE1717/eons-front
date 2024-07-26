@@ -1,4 +1,4 @@
-import React, { type Dispatch, type SetStateAction } from "react";
+import React, { useState, type Dispatch, type SetStateAction } from "react";
 
 interface Props {
   type: string;
@@ -6,6 +6,7 @@ interface Props {
   setValue: Dispatch<SetStateAction<string>>;
   value: string;
   loading: boolean;
+  icon?: boolean;
 }
 
 const OutlineInputReact: React.FC<Props> = ({
@@ -14,24 +15,76 @@ const OutlineInputReact: React.FC<Props> = ({
   setValue,
   value,
   loading,
+  icon,
 }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="form">
-      {/* Aplica el estilo form */}
-      <input
-        disabled={loading}
-        type={type}
-        value={value}
-        onInput={(e) => setValue(e.currentTarget.value)}
-        name="text"
-        autoComplete="off"
-        required
-      />
-      <label htmlFor="text" className="label-name">
-        {" "}
-        {/* Aplica múltiples clases */}
-        <span className="content-name">{label}</span>
-      </label>
+    <div
+      className="flex w-full items-center"
+      style={{ borderBottom: "2px solid #e5e5e5" }}
+    >
+      <div className="form">
+        <input
+          disabled={loading}
+          type={open ? "text" : type}
+          value={value}
+          onInput={(e) => setValue(e.currentTarget.value)}
+          name="text"
+          autoComplete="off"
+          required
+        />
+        <label htmlFor="text" className="label-name">
+          <span className="content-name">{label}</span>
+        </label>
+      </div>
+
+      {icon && (
+        <button className="pt-3" type="button" onClick={() => setOpen(!open)}>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M24 41C33.9411 41 42 32.678 42 27C42 21.322 33.9411 13 24 13C14.0589 13 6 21.3278 6 27C6 32.6722 14.0589 41 24 41Z"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="4"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M24 33C27.3137 33 30 30.3137 30 27C30 23.6863 27.3137 21 24 21C20.6863 21 18 23.6863 18 27C18 30.3137 20.6863 33 24 33Z"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="4"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M13.2637 11.2661L15.8582 14.8863"
+              stroke="#000000"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+            <path
+              d="M35.625 11.7104L33.0304 15.3307"
+              stroke="#000000"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+            <path
+              d="M24.0088 7V13"
+              stroke="#000000"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+      )}
     </div>
   );
 };

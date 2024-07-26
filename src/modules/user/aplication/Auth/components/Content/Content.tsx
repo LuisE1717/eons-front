@@ -14,8 +14,8 @@ interface Props {
   forget_pass: string;
   invalid_email_text: string;
   invalid_pass_text: string;
-  text_loading:string;
-  session:Session|null;
+  text_loading: string;
+  session: Session | null;
 }
 
 export default function Content({
@@ -28,7 +28,7 @@ export default function Content({
   invalid_email_text,
   invalid_pass_text,
   text_loading,
-  session
+  session,
 }: Props) {
   const {
     loading,
@@ -40,7 +40,7 @@ export default function Content({
     handleChangeEmail,
     handleChangePassword,
     password,
-    section
+    section,
   } = useContent(session);
 
   //console.log("req:",req)
@@ -99,6 +99,7 @@ export default function Content({
             value={password}
             type={"password"}
             label={password_input_label}
+            icon
           />
 
           <label
@@ -108,6 +109,16 @@ export default function Content({
           >
             {invalid_pass_text}
           </label>
+
+          {section === SECTIONS.SIGN_UP && (
+            <OutlineInputReact
+              loading={loading}
+              setValue={handleChangePassword}
+              value={password}
+              type={"password"}
+              label={"Confirmar contraseña"}
+            />
+          )}
         </div>
 
         <div className="flex flex-col mt-8">
@@ -123,7 +134,7 @@ export default function Content({
       {SECTIONS.LOGIN === section && (
         <div className="flex flex-col mt-8 items-center">
           <a href="auth/forget-password">
-          <span className="text-sm text-primary">{forget_pass}</span>
+            <span className="text-sm text-primary">{forget_pass}</span>
           </a>
         </div>
       )}
