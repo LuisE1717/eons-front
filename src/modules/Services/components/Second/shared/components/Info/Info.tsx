@@ -13,6 +13,7 @@ export default function Info({ children }: Props) {
     "hide-scrollbar overflow-auto",
     "rounded-xl",
     "w-full max-w-[400px]",
+    "max-h-[430px] overflow-y-auto",
     "flex-col flex",
     "px-6 py-4",
     "bg-white",

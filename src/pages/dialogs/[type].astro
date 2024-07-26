@@ -1,0 +1,10 @@
+---
+import AppContainer from "../../layouts/AppContainer.astro";
+import Dialogs from "../../modules/Dialogs/Dialogs.astro";
+
+const {type} = Astro.params
+---
+
+<AppContainer>
+    <Dialogs type={type}/>
+</AppContainer>

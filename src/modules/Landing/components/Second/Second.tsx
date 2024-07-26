@@ -11,7 +11,7 @@ export default function Second({auth} : {auth:string}) {
 
   return (
     <ImageSection reverse={false} image="/llave.webp">
-      <P>{translation.Landing.text6} <Span>{translation.Landing.text7}</Span> {translation.Landing.text7_1}</P> 
+      <P>{translation.Landing.text6} (<Span>{translation.Landing.text7}</Span>) {translation.Landing.text7_1}</P> 
       <P bold>Eons "Access Technology to the Existential Source"</P>
       <P>{translation.Landing.text8}</P>
       <P>{translation.Landing.text9}</P>

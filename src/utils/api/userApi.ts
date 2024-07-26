@@ -35,8 +35,8 @@ export async function singUp(dataLogin:ILogin) {
     }
 }
 
-export async function postLogout() {
-    const res = await intanceAxios.post('auth/logout')
+export async function postLogout(token:string,datah) {
+    const res = await axiosI(token).post('auth/logout',datah)
     const data = await res.data;
 
     if (!data) {
@@ -104,8 +104,30 @@ export async function getValidateMail(dataH:any) {
     }
 }
 
-export async function sendVerificationMail(token:string,email:string) {
-    const res = await axiosI(token).get(`/auth/request-verify-email/?email=${email}`)
+export async function sendVerificationMail(email:string) {
+    const res = await intanceAxios.get(`/auth/request-verify-email?email=${email}`)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
+
+export async function getProfile(token:string) {
+    const res = await axiosI(token).get(`/auth/profile`)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
+
+export async function patchNotification(token:string,dataH:any) {
+    const res = await axiosI(token).patch(`/auth/profile`,dataH)
     const data = await res.data;
 
     if (data) {

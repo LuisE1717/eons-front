@@ -27,5 +27,9 @@ export enum ACTIONS {
 
   CONTACTAR_EE = '09',
 
-  DIALOGO_EE = "10"
+  DIALOGO_EE = "10",
+
+  VER_DIALOGO_ABIERTO = "11",
+
+  VER_DIALOGO_DIA = "12"
 };

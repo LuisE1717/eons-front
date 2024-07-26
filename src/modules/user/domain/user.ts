@@ -1,6 +1,12 @@
 export interface ILogin {
     email: string;
     password: string;
+    type?: string;
+}
+
+export interface ISessionLogin {
+    email: string;
+    password: string;
 }
 
 export interface IChangePass {

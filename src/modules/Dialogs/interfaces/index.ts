@@ -5,4 +5,10 @@ export interface Dialog {
   id_usuario: string;
   fecha: Date;
   tipo: string;
+  favorito: boolean;
+}
+
+export interface ModalProps {
+  id: number;
+  type: "delete";
 }
