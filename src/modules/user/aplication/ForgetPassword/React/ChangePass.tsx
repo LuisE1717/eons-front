@@ -26,7 +26,7 @@ const ChangePassReact:FC<Props> = ({token,email,i18,currentLocale}) => {
   const handleSubmit = async () =>{    
     setLoading(true)
     if(validPass(pass) && token){
-      await postChangePass({token,newPassword:pass},token)
+      await postChangePass({newPassword:pass},token)
       .then(()=>{
         toast.success(i18["ChangePassword"].succes)
         setTimeout(() => {
