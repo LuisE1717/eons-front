@@ -28,8 +28,8 @@ export default function Form({
         bankOrderCode,
         reference
       })
-      .then(()=>{window.location.href = '/payment/success'})
-      .catch((error)=>{console.log(error)})
+      .then(()=>{window.location.href = '/services'})
+      .catch((error)=>{console.log(error); window.location.href ='/payment/failed'})
     }
     else{
       window.location.href = '/payment/failed'

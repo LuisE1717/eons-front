@@ -10,13 +10,12 @@ import Message from "./components/Message/Message";
 import Empty from "./components/Empty/Empty";
 import { useInView, motion } from "framer-motion";
 import clsx from "clsx";
-import { userProfile } from "../../../../UserStore";
-import { useStore } from "@nanostores/react";
+import FirstTime from "./components/FirstTime/FirstTime";
 
-export default function Second() {
+export default function Second({first_time}) {
   const ref = createRef<HTMLDivElement>();
 
-  const [selected, setSelected] = useState<SECTIONS | null>(null);
+  const [selected, setSelected] = useState<SECTIONS | null>(first_time?SECTIONS.FIRST_TIME:null);
 
   const isInView = useInView(ref, {
     once: true,
@@ -64,6 +63,7 @@ export default function Second() {
           className={clsx(CLASS, "md:bg-triangle bg-none")}
         >
           {selected === null && <Empty />}
+          {selected === SECTIONS.FIRST_TIME && <FirstTime setSelected={setSelected}/>}
           {selected === SECTIONS.BOOK && <BookInfo />}
           {selected === SECTIONS.MESSAGES && <MessageInfo />}
           {selected === SECTIONS.USER && <UserInfo />}

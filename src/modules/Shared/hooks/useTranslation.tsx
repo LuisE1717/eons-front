@@ -10,7 +10,7 @@ export default function useTranslation() {
 
   const translation = getI18N(
     Cookies.get("eons_lng")
-      ? { currentLocale: Cookies.get("eons_lng") || "en" }
+      ? { currentLocale: Cookies.get("eons_lng") || "es" }
       : { currentLocale: $locale }
   );
 

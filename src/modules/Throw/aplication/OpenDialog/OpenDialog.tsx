@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { TYPES } from "../../domain/types";
 import { transformDataToQuery } from "../../../../utils/queryTransformers";
 import Question from "../../components/Question";
+import Book from "../../components/Book";
 
 const ThrowReact = ({ i18, action, param1, param2 }) => {
   const [moneda1, setMoneda1] = useState(0);
@@ -73,7 +74,7 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           coinsInterpreter(throwType, moneda1, moneda2),
           transformDataToQuery({
             type: actionsInterprete(action),
-            lang: Cookies.get("eons_lng") || "en",
+            lang: Cookies.get("eons_lng") || "es",
             action,
             param1,
           })
@@ -103,17 +104,15 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
           else if (result?.data) {
             if (action) {
               console.log(result);
-              if(action && param1)
+              if (action && param1)
                 window.location.href = `/throw/response/${result?.data}/${action}/${param1}`;
-              else if(question){
+              else if (question) {
                 console.log(result);
                 window.location.href = `/throw/response/${result?.data}/${action}/${question}`;
-              }
-              else{
+              } else {
                 window.location.href = `/throw/response/${result?.data}/${action}`;
               }
-            }
-            else {
+            } else {
               console.log(result);
               window.location.href = `/throw/response/${result?.data}`;
             }
@@ -262,66 +261,59 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
         rounded-xl bg-white shadow-xl shadow-black/5 
         ring-1 ring-slate-700/10`}
       >
-        <div className={`throw-counter my-4`}>
-          <label>
-            {i18["Throw"].throw} {count}
-          </label>
-        </div>
-
-        {actionsInterprete(action) == 'day' ?
-        <header className="flex items-center w-full flex-col mb-5">
-        <h2 className="text-xl mb-2 font-bold">Lance las monedas para revelar como irá su día</h2>
-        </header>
-        :
-        actionsInterprete(action) == 'dialog'?
-        <Question
-          question={question}
-          handleChangeQuestion={setQuestion}
-          disabled={count>1}
-        />
-        :
-        <></>
-        }
+        {actionsInterprete(action) == "day" ? (
+          <header className="flex items-center w-full flex-col mb-5">
+            <h2 className="text-xl mb-2 font-bold">
+              Lance las monedas para revelar como irá su día
+            </h2>
+          </header>
+        ) : actionsInterprete(action) == "dialog" ? (
+          <Question
+            question={question}
+            handleChangeQuestion={setQuestion}
+            disabled={count > 1}
+          />
+        ) : (
+          <></>
+        )}
 
         {viewController()}
 
-        <div className={`flex flex-col items-center mt-8 my-4`}>
-          <span>{i18["Throw"].especial_throw}</span>
-        </div>
-
-        <div className={`flex flex-wrap gap-2 justify-center my-4`}>
-          <div
-            onClick={() => {
-              //toast.update("Defina su tiro especial")
-              scrollToTop();
-              setThrowType("montado");
-              setMoneda1(0);
-              setMoneda2(0);
-            }}
-          >
-            <Button loading={loading}>{i18["Throw"].mount_throw}</Button>
+        {throwType === "normal" && (
+          <div className={`flex flex-wrap gap-2 justify-center mt-8 mb-4`}>
+            <div
+              onClick={() => {
+                //toast.update("Defina su tiro especial")
+                scrollToTop();
+                setThrowType("montado");
+                setMoneda1(0);
+                setMoneda2(0);
+              }}
+            >
+              <Button loading={loading}>{i18["Throw"].mount_throw}</Button>
+            </div>
+            <div
+              onClick={() => {
+                scrollToTop();
+                setThrowType("parado");
+                setMoneda1(0);
+                setMoneda2(0);
+              }}
+            >
+              <Button loading={loading}>{i18["Throw"].stops_throw}</Button>
+            </div>
+            <div
+              onClick={() => {
+                scrollToTop();
+                setThrowType("tranversal");
+                setMoneda1(0);
+                setMoneda2(0);
+              }}
+            >
+              <Button loading={loading}>{i18["Throw"].tranversal_throw}</Button>
+            </div>
           </div>
-          <div
-            onClick={() => {
-              scrollToTop();
-              setThrowType("parado");
-              setMoneda1(0);
-              setMoneda2(0);
-            }}
-          >
-            <Button loading={loading}>{i18["Throw"].stops_throw}</Button>
-          </div>
-          <div
-            onClick={() => {
-              scrollToTop();
-              setThrowType("tranversal");
-              setMoneda1(0);
-              setMoneda2(0);
-            }}
-          >
-            <Button loading={loading}>{i18["Throw"].tranversal_throw}</Button>
-          </div>
-        </div>
+        )}
       </div>
 
       <div className={`flex flex-row justify-center mt-8`}>

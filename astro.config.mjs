@@ -13,7 +13,7 @@ export default defineConfig({
   output: 'server',
   integrations: [mdx(), sitemap(), tailwind(), react(), auth()],
   i18n: {
-    defaultLocale: "en",
+    defaultLocale: "es",
     locales: ["es", "en", "ar", "fr", "it", "hi", "ja", "pt", "ru", "zh"],
     routing: {
       prefixDefaultLocale: false,

@@ -13,7 +13,7 @@ export default function Third() {
       <P>{translation.Landing.text11}</P>
       <P>{translation.Landing.text12}</P>
       <P>{translation.Landing.text13}</P>
-      <P bold>{translation.Landing.text14} <Span>{translation.Landing.text14_1}</Span></P>
+      <P bold>{translation.Landing.text14} (<Span>{translation.Landing.text14_1}</Span>)</P>
     </ImageSection>
   );
 }

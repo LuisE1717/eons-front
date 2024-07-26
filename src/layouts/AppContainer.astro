@@ -10,15 +10,16 @@ import { useStore } from '@nanostores/react';
 import { locale } from '../UserStore'
 
 import "react-toastify/dist/ReactToastify.css";
+import WebSocketComponent from "../modules/Shared/context/WebSocket"
 
-locale.set(Astro.cookies.get('eons_lng')?.value || 'en') 
+locale.set(Astro.cookies.get('eons_lng')?.value || 'es') 
 
 //console.log(locale)
 const token = Astro.cookies.get('eons_refresh_token')
 
 cleanURL(Astro.url.href)
 
-console.log(cleanURL(Astro.url.href))
+//console.log(cleanURL(Astro.url.href))
 ---
 <!doctype html>
 <html lang="en">
