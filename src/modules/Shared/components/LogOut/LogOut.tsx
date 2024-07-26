@@ -20,6 +20,7 @@ const LogOut = ({session} : Props) => {
                 Cookies.remove('eons_token')
                 Cookies.remove('eons_user')
                 Cookies.remove('eons_refresh_token')
+                Cookies.remove('eons_essence')
                 await signOut().then(() => window.location.href = "/auth")
             // })
         } catch (error) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, type FC } from 'react'
 import { validMail, validPass } from '../../../../../utils/validations';
 import OutlineInputReact from '../../../../../components/UI/input/OutlineInputReact';
-import Button from './components/Button/Button';
+import Button from '../../ChangePassword/Button/Button';
 import { postChangePass } from '../../../../../utils/api/userApi';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,9 +23,8 @@ const ChangePassReact:FC<Props> = ({token,email,i18,currentLocale}) => {
     setValidation_pass(validPass(pass))
   },[pass])
 
-  const handleSubmit = async () =>{
+  const handleSubmit = async () =>{    
     setLoading(true)
-    
     if(validPass(pass) && token){
       await postChangePass({token,newPassword:pass},token)
       .then(()=>{
@@ -61,7 +60,7 @@ return (
           {i18["Auth"].invalid_email_text}
         </label>
         </div>
-        <Button 
+        <Button
         loading={loading} 
         handleSubmit={handleSubmit}
         loading_text={i18["text_loading"]} 
