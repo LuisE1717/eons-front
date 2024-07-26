@@ -13,10 +13,7 @@ export default function useContent(type: string) {
 
   const [selected, setSelected] = useState(SECTIONS.DIALOGS);
 
-  const [openModal, setOpenModal] = useState<ModalProps | null>({
-    id: 2,
-    type: "delete",
-  });
+  const [openModal, setOpenModal] = useState<ModalProps | null>(null);
 
   const [control, setControl] = useState(true);
   const dataDialogs = useGetAllDialogs(control, setControl, type);
