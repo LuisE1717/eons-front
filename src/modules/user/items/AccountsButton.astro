@@ -11,13 +11,7 @@ interface Props {
 const {text, bgColor, bg_hover, color, error} = Astro.props
 ---
 
-<div class=`inline-flex justify-center 
-  text-sm shadow-lg
-  mt-2
-  py-1 px-4
-  text-${color?color:''}`
-  id={text}
-  >
+<div class=`flex justify-center text-sm shadow-lg mt-2 py-1 px-4` id={text}>
 
   {text=="Microsoft"?
     <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
