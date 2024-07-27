@@ -43,8 +43,6 @@ export default function Content({
     section,
   } = useContent(session);
 
-  //console.log("req:",req)
-
   return (
     <>
       <div className="flex flex-col items-center">
