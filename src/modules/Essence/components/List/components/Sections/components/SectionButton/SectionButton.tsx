@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import useTranslation from "../../../../../../../Shared/hooks/useTranslation";
 
 interface Props {
   handleClick(): void;
@@ -25,10 +26,12 @@ export default function SectionButton({
     }
   );
 
+  const { translation } = useTranslation()
+
   return (
     <button onClick={handleClick} className={CLASS} disabled={disabled}>
       {text}{" "}
-      {disabled && <span className="text-primary">{"(Próximamente)"}</span>}
+      {disabled && <span className="text-primary">{translation.Landing.text14_1}</span>}
     </button>
   );
 }
