@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { INotifications } from "../../domain/INotifications";
 import Arrow from "../Arrow/Arrow";
 import Fire from "../Fire/Fire";
+import { patchNotification } from "../../../../utils/api/userApi";
+import Cookies from "js-cookie";
 
 interface Props {
   n: INotifications;
@@ -9,6 +11,15 @@ interface Props {
 
 export default function Item({ n }: Props) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      patchNotification(Cookies.get("eons_token") || "", {
+        id: n.id,
+        state: true,
+      });
+    }
+  }, [open]);
 
   return (
     <div
