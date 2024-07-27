@@ -55,6 +55,7 @@ export default function useContent(type: string) {
 
   async function handleDeleteDialog(id: number) {
     const dialog = dataDialogs.data.find((x) => x.id == id);
+
     if (dialog) {
       await deleteDialog(Cookies.get("eons_token") || "", id.toString())
         .then(() => {
