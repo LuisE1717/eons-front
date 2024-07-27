@@ -3,6 +3,7 @@ import type { INotifications } from "../../domain/INotifications";
 import Arrow from "../Arrow/Arrow";
 import Fire from "../Fire/Fire";
 import { patchNotification } from "../../../../utils/api/userApi";
+import Cookies from "js-cookie";
 
 interface Props {
   n: INotifications;
@@ -13,7 +14,10 @@ export default function Item({ n }: Props) {
 
   useEffect(() => {
     if (open) {
-      patchNotification("", "");
+      patchNotification(Cookies.get("eons_token") || "", {
+        ...n,
+        estado: true,
+      });
     }
   }, [open]);
 

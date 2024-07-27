@@ -10,7 +10,7 @@ import { validMail } from "../validations";
 import { userProfile } from "../../UserStore";
 
 export const intanceAxios: AxiosInstance = axios.create({
-  baseURL: configEnv?.api,
+  baseURL: "https://eons-back.onrender.com",
 });
 
 export function axiosI(apiToken: string | undefined) {
