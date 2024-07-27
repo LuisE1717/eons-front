@@ -64,6 +64,7 @@ export function UserProvider({
       }
     } catch (error) {
       console.log(error);
+      Cookies.remove('eons_refresh_token')
     }
   };
 
