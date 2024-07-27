@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Custom({price,findCost,handleCustomPayment}:Props) {
-  const [count, setCount] = useState(1000);
+  const [count, setCount] = useState(0);
 
   // const price = useMemo(() => {
   //   return count * 5;

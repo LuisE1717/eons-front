@@ -58,12 +58,13 @@ export function UserProvider({
             window.location.pathname != "/auth" &&
             window.location.pathname != "/"
           ) {
-            // window.location.href = "/auth";
+            window.location.href = "/auth";
           }
         }
       }
     } catch (error) {
       console.log(error);
+      Cookies.remove('eons_refresh_token')
     }
   };
 

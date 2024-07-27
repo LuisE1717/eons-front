@@ -48,13 +48,16 @@ export function axiosI(apiToken: string | undefined) {
         // Access Token was expired
         setCookie("comeback_url", window.location.href, 0.25);
         if (error.response.status === 401) {
+          Cookies.remove('eons_token')
           window.location.reload();
         } else if (error.response.status === 403) {
-           if (validMail(Cookies.get("eons_user")))
+          if (validMail(Cookies.get("eons_user"))) {
             window.location.href = `/auth/email-verification/${
               Cookies.get("eons_user") || ""
             }`;
-          else window.location.href = `/auth`;
+          } else {
+            window.location.href = `/auth`;
+          }
         }
       }
       return Promise.reject(error);

@@ -13,7 +13,6 @@ const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({ currentLocale })
 
 const session = await getSession(Astro.request)
-console.log(session)
 ---
 
 <AuthHeader/>
@@ -34,7 +33,7 @@ console.log(session)
             client:load
         />
 
-        <div class="flex flex-row justify-around mt-4">
+        <div class="flex flex-row mt-4 gap-x-10 justify-center">
             <AccountsButton error={i18.fecth_error} text="Microsoft"/>
             <!-- <AccountsButton error={i18.fecth_error} text="Apple"/> -->
             <AccountsButton error={i18.fecth_error} text="Google"/>
