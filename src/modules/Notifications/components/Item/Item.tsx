@@ -15,8 +15,8 @@ export default function Item({ n }: Props) {
   useEffect(() => {
     if (open) {
       patchNotification(Cookies.get("eons_token") || "", {
-        ...n,
-        estado: true,
+        id: n.id,
+        state: true,
       });
     }
   }, [open]);
