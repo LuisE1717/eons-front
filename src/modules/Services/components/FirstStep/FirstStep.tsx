@@ -10,6 +10,7 @@ export default function FirstStep() {
   return (
     <Step>
       <P>{translation.Services.step_1}</P>
+      <P>{translation.Services.step_3}</P>
     </Step>
   );
 }
