@@ -5,7 +5,9 @@ import { findBackUrl } from "../../utils/navigation"
 const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({currentLocale})
 
-const route = findBackUrl(Astro.url.href)
+const {routeProp} = Astro.props
+
+const route =routeProp?routeProp:findBackUrl(Astro.url.href)
 ---
 
 <div class="flex p-1">

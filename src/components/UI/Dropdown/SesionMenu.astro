@@ -73,11 +73,18 @@ const { notifications } = Astro.props
       
       // Función para mostrar el menú
       function showMenu() {
-        console.log('Hola')
+        
         if(dropdownMenu && dropdownButton){
-     
+          if(
+          dropdownMenu.style.display == 'none'
+          ){
           dropdownMenu.style.display = 'block'
           dropdownMenu.style.position = 'absolute'
+          }
+          else{
+            dropdownMenu.style.display = 'none'
+          }
+          
   
           // console.log(`Top: ${dropdownButton.getBoundingClientRect().top}
           // , Left: ${dropdownButton.getBoundingClientRect().left},
@@ -119,7 +126,8 @@ const { notifications } = Astro.props
         // Agregar event listeners
         dropdownButton.addEventListener('click', showMenu);
         document.addEventListener('mousedown', function(event) {
-        if (event.target && !dropdownMenu.contains(event.target as Node)) {
+        if (event.target && !dropdownMenu.contains(event.target as Node) && !dropdownButton.contains(event.target as Node)) {
+          if(dropdownMenu.style.display == 'block')
             hideMenu();
         }
       }, true);
