@@ -10,7 +10,7 @@ const {type} = Astro.props
 <div>
     <Header/>
     <div class="flex flex-col ml-3 mt-2">
-        <BackButton/>
+        <BackButton routeProp={'/services'}/>
     </div>
     <Content client:load type={type}/>
     <Footer/>

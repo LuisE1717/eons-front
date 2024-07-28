@@ -9,7 +9,7 @@ export default function SectionButton({auth} : {auth:string}) {
   const $user = useStore(userProfile)
   console.log($user)
   return (
-    <div className="flex mt-4">
+    <div className="flex mb-4 mt-4">
       <a href={auth?'/services':'/auth'}>
         <Button loading={false}>
           {translation.Landing.text15} {">"}
