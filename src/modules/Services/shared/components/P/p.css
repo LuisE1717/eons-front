@@ -1,0 +1,18 @@
+@keyframes changeColor {
+  0% {
+    color: #d161b4;
+  }
+  50% {
+    color: black;
+  }
+  100% {
+    color: #d161b4;
+  }
+}
+
+.text-animate {
+  animation-name: changeColor;
+  animation-duration: 1.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

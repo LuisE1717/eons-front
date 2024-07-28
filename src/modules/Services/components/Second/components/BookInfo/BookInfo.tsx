@@ -9,7 +9,7 @@ export default function BookInfo() {
 
   return (
     <Info>
-      <P>
+      <P primary>
         {translation.ServiceMenu.use_instruction}{" "}
         <Span>{translation.ServiceMenu.free}</Span>
       </P>
