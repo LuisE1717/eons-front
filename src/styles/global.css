@@ -177,3 +177,12 @@ hr {
   -ms-overflow-style: none; /* IE y Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1.5s linear infinite;
+}

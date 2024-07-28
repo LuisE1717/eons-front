@@ -15,7 +15,7 @@ import FirstTime from "./components/FirstTime/FirstTime";
 export default function Second({first_time}) {
   const ref = createRef<HTMLDivElement>();
 
-  const [selected, setSelected] = useState<SECTIONS | null>(first_time?SECTIONS.FIRST_TIME:null);
+  const [selected, setSelected] = useState<SECTIONS | null>(first_time?SECTIONS.BOOK:null);
 
   const isInView = useInView(ref, {
     once: true,
@@ -63,8 +63,7 @@ export default function Second({first_time}) {
           className={clsx(CLASS, "md:bg-triangle bg-none")}
         >
           {selected === null && <Empty />}
-          {selected === SECTIONS.FIRST_TIME && <FirstTime setSelected={setSelected}/>}
-          {selected === SECTIONS.BOOK && <BookInfo />}
+          {selected === SECTIONS.BOOK && <BookInfo first_time={first_time}/>}
           {selected === SECTIONS.MESSAGES && <MessageInfo />}
           {selected === SECTIONS.USER && <UserInfo />}
         </motion.div>

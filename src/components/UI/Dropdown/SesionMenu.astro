@@ -75,11 +75,9 @@ const { notifications } = Astro.props
       function showMenu() {
         
         if(dropdownMenu && dropdownButton){
-          console.log(dropdownMenu.style.display)
           if(
           dropdownMenu.style.display == 'none'
           ){
-            console.log()
           dropdownMenu.style.display = 'block'
           dropdownMenu.style.position = 'absolute'
           }
@@ -128,7 +126,8 @@ const { notifications } = Astro.props
         // Agregar event listeners
         dropdownButton.addEventListener('click', showMenu);
         document.addEventListener('mousedown', function(event) {
-        if (event.target && !dropdownMenu.contains(event.target as Node)) {
+        if (event.target && !dropdownMenu.contains(event.target as Node) && !dropdownButton.contains(event.target as Node)) {
+          if(dropdownMenu.style.display == 'block')
             hideMenu();
         }
       }, true);
