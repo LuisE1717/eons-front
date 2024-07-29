@@ -127,7 +127,7 @@ export async function getProfile(token:string) {
 }
 
 export async function patchNotification(token:string,dataH:any) {
-    const res = await axiosI(token).patch(`/auth/profile`,dataH)
+    const res = await axiosI(token).patch(`/notifications`,dataH)
     const data = await res.data;
 
     if (data) {

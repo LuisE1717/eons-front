@@ -30,7 +30,11 @@ const { notifications } = Astro.props
 }</div>
 
 {unread.length > 0 && (
-          <div class="w-[22px] h-[22px] bg-primary rounded-full ml-2.5 text-white text-xs flex justify-center items-center">
+          <div id="unread" class="w-[16px] h-[16px] 
+          bg-red-500 rounded-full 
+          text-white text-xs z-10
+          flex absolute
+           justify-center items-center">
             {unread.length}
           </div>
         )}
@@ -70,6 +74,18 @@ const { notifications } = Astro.props
       const dropdownMenu = document.getElementById('dropdownUsers');
       const english = document.getElementById('profile');
       const log_out = document.getElementById('log-out');
+      const unread = document.getElementById('unread')
+
+      if(unread && dropdownButton){
+        if(screen.width > 1000){
+          unread.style.left = `${dropdownButton.getBoundingClientRect().left - 4}px`
+        }
+        else{
+          unread.style.left = `${dropdownButton.getBoundingClientRect().left + 12}px`
+        }
+        unread.style.right = `${dropdownButton.getBoundingClientRect().right }px`
+        unread.style.top = `${dropdownButton.getBoundingClientRect().top + 13}px`
+      }
       
       // Función para mostrar el menú
       function showMenu() {
