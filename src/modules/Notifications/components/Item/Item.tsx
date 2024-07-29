@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import type { INotifications } from "../../domain/INotifications";
 import Arrow from "../Arrow/Arrow";
-import Fire from "../Fire/Fire";
+import Fire from "../Types/Fire/Fire";
 import { patchNotification } from "../../../../utils/api/userApi";
 import Cookies from "js-cookie";
+import NoValid from "../Types/NoValid/NoValid";
+import Valid from "../Types/Valid/Valid";
 
 interface Props {
   n: INotifications;
@@ -28,7 +30,17 @@ export default function Item({ n }: Props) {
     >
       <div className="flex items-start gap-x-2.5">
         <i className="" style={{ paddingTop: "2.5px" }}>
-          <Fire />
+          { n.tipo == "essence" ?
+            <Fire />
+            :
+            n.tipo == "validAcount"?
+            <Valid/>
+            :
+            n.tipo == "notValidAcount"?
+            <NoValid/>
+            :
+            <></>
+          }
         </i>
 
         <div className="flex flex-col">
