@@ -6,6 +6,7 @@ import Title from "../../shared/components/Title/Title";
 import PhoneView from "../../shared/components/PhoneView/PhoneView";
 import Image from "../../shared/components/Image/Image";
 import Cookies from "js-cookie";
+import Title2 from "../../shared/components/Title/Title2";
 
 export default function Third() {
   const { translation } = useTranslation();
@@ -28,11 +29,11 @@ export default function Third() {
         <Image image="/services-2.webp" />
       </PhoneView>
 
-      <P>{translation.Services.first_text_2}</P>
+      <P>{translation.Services.third_text_2}</P>
 
       <P>{translation.Services.third_text_3}</P>
 
-      <Title>{translation.Services.third_text_4}</Title>
+      <Title2>{translation.Services.third_text_4}</Title2>
     </ImageSection>
   );
 }
