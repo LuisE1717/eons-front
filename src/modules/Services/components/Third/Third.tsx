@@ -33,7 +33,7 @@ export default function Third() {
 
       <P>{translation.Services.third_text_3}</P>
 
-      <Title2>{translation.Services.third_text_4}</Title2>
+      <Title2>{translation.Services.third_text_4}.</Title2>
     </ImageSection>
   );
 }
