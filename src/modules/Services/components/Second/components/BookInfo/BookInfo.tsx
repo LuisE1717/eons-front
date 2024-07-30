@@ -11,7 +11,6 @@ export default function BookInfo({first_time}) {
 
   return (
     <Info>
-<<<<<<< HEAD
       {first_time?
       <Blink>
         {translation.ServiceMenu.use_instruction}{" "}
@@ -19,9 +18,6 @@ export default function BookInfo({first_time}) {
       </Blink>
       :
       <P>
-=======
-      <P primary>
->>>>>>> hector-develop
         {translation.ServiceMenu.use_instruction}{" "}
         <Span>{translation.ServiceMenu.free}</Span>
       </P>
