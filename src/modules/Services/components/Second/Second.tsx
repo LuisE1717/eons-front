@@ -12,7 +12,7 @@ import { useInView, motion } from "framer-motion";
 import clsx from "clsx";
 import FirstTime from "./components/FirstTime/FirstTime";
 
-export default function Second({first_time}) {
+export default function Second({ first_time }) {
   const ref = createRef<HTMLDivElement>();
 
   const [selected, setSelected] = useState<SECTIONS | null>(first_time?SECTIONS.BOOK:null);
@@ -30,16 +30,24 @@ export default function Second({first_time}) {
 
   const CLASS = clsx(
     "bg-no-repeat bg-center bg-contain",
-    "w-full flex max-w-[650px] md:min-h-[600px] h-max",
+    "w-full flex max-w-[650px]",
+    "md:min-h-[600px] min-h-[500px] h-max",
     "justify-center items-center",
-    "transition-all duration-700"
+    "transition-all duration-700",
+    "md:bg-triangle bg-none"
   );
   return (
     <section
       ref={ref}
       className="flex flex-col items-center sm:py-14 py-6 w-full"
     >
-      <div ref={ref} className="flex justify-center md:mb-0 mb-6 gap-x-10">
+      <div
+        ref={ref}
+        className={clsx("flex justify-center transition-all duration-300", {
+          "mb-6": selected !== null,
+          "mb-0": selected === null,
+        })}
+      >
         <Icon
           visible={isInView}
           selected={selected === SECTIONS.USER}
@@ -48,7 +56,15 @@ export default function Second({first_time}) {
         />
       </div>
 
-      <motion.div className="flex items-end w-full justify-center gap-x-4">
+      <motion.div
+        className={clsx(
+          "flex items-end w-full justify-center transition-all duration-300",
+          {
+            "gap-x-0": selected === null,
+            "gap-x-6": selected !== null,
+          }
+        )}
+      >
         <Icon
           visible={isInView}
           selected={selected === SECTIONS.BOOK}
@@ -60,7 +76,7 @@ export default function Second({first_time}) {
           style={{
             transform: isInView ? "scale(1)" : "scale(0.1)",
           }}
-          className={clsx(CLASS, "md:bg-triangle bg-none")}
+          className={CLASS}
         >
           {selected === null && <Empty />}
           {selected === SECTIONS.BOOK && <BookInfo first_time={first_time}/>}
