@@ -13,7 +13,7 @@ const auth = Astro.cookies.get('eons_token')?.value || ''
 <div class="flex w-full flex-col">
     <Header path="landing"/>
 
-    <div class="flex w-full flex-col items-center px-5 mb-8">
+    <div class="flex w-full flex-col items-center px-5 mb-12">
       <main class="w-full flex-col flex max-w-[1100px] lg:pt-0 pt-10">
         <First/>
         <FirstStep />
@@ -23,6 +23,5 @@ const auth = Astro.cookies.get('eons_token')?.value || ''
         <Third />
       </main>
     </div>
-
     <Footer />
 </div>
