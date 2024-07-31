@@ -15,7 +15,9 @@ import FirstTime from "./components/FirstTime/FirstTime";
 export default function Second({ first_time }) {
   const ref = createRef<HTMLDivElement>();
 
-  const [selected, setSelected] = useState<SECTIONS | null>(first_time?SECTIONS.BOOK:null);
+  const [selected, setSelected] = useState<SECTIONS | null>(
+    first_time ? SECTIONS.BOOK : null
+  );
 
   const isInView = useInView(ref, {
     once: true,
@@ -31,7 +33,7 @@ export default function Second({ first_time }) {
   const CLASS = clsx(
     "bg-no-repeat bg-center bg-contain",
     "w-full flex max-w-[650px]",
-    "md:min-h-[600px] min-h-[500px] h-max",
+    "md:min-h-[600px] h-max",
     "justify-center items-center",
     "transition-all duration-700",
     "md:bg-triangle bg-none"
@@ -79,7 +81,7 @@ export default function Second({ first_time }) {
           className={CLASS}
         >
           {selected === null && <Empty />}
-          {selected === SECTIONS.BOOK && <BookInfo first_time={first_time}/>}
+          {selected === SECTIONS.BOOK && <BookInfo first_time={first_time} />}
           {selected === SECTIONS.MESSAGES && <MessageInfo />}
           {selected === SECTIONS.USER && <UserInfo />}
         </motion.div>
