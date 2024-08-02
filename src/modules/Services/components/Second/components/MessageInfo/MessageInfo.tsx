@@ -6,6 +6,9 @@ import Span from "../../../../shared/components/Span/Span";
 import T from "../../../../shared/components/T/T";
 import Info from "../../shared/components/Info/Info";
 import Cookies from "js-cookie";
+import Fire from "../../shared/components/Fire/Fire";
+import Cost from "../../../../shared/components/Cost/Cost";
+import Cost2 from "../../../../shared/components/Cost/Cost2";
 
 export default function MessageInfo() {
   const { translation } = useTranslation();
@@ -23,37 +26,60 @@ export default function MessageInfo() {
   return (
     <Info>
       <A>
-        {translation.ServiceMenu.general_evaluation} <Span>{translation.ServiceMenu.free}</Span>
+      {translation.ServiceMenu.general_evaluation} 
+      <div>
+      <Span color="secundary">({translation.ServiceMenu.free})</Span>.
+      </div>
       </A>
       <A>
-        {translation.ServiceMenu.spirit_calc} <Span>{"proximamente"}</Span>
-      </A>
-
-      <Line />
-
-      <T onclick={() => validateService(1,'/throw/07')}>
-        {translation.ServiceMenu.open_dialog_mod} <Span>{translation.ServiceMenu.free}</Span>
-      </T>
-      <T onclick={() => validateService(1,'/throw/09')}>
-        {translation.ServiceMenu.contact_spirit} <Span>{translation.ServiceMenu.free}</Span>
-      </T>
-
-      <Line />
-
-      <T onclick={() => validateService(1,'/throw/08')}>
-        {translation.ServiceMenu.day_dialog} <Span>{translation.ServiceMenu.free}</Span>
-      </T>
-      <A>
-        {translation.ServiceMenu.adivination_general} <Span>{"proximamente"}</Span>
+        {translation.ServiceMenu.spirit_calc} 
+        <div>
+        <Span>({"proximamente"})</Span>.
+        </div>
       </A>
 
       <Line />
 
+      <Cost 
+      onclick={() => validateService(1,'/throw/07')}
+      name={translation.ServiceMenu.open_dialog_mod}
+      // cost={translation.ServiceMenu.per_question}
+      amount="0.49"
+      />
+
+      <Cost2
+      onclick={() => validateService(1,'/throw/09')}
+      name={translation.ServiceMenu.contact_spirit}
+      // cost={translation.ServiceMenu.per_question}
+      amount="1.29"
+      amount2="0.49"
+      />
+
+      <Line />
+
+      <Cost 
+      onclick={() => validateService(1,'/throw/08')}
+      name={translation.ServiceMenu.day_dialog}
+      amount="0.99"
+      />
+
       <A>
-        {translation.ServiceMenu.concient_evaluation} <Span>{"proximamente"}</Span>
+        <div>
+        {translation.ServiceMenu.adivination_general} <Span>({"proximamente"}).</Span>
+        </div>
+      </A>
+
+      <Line />
+
+      <A>
+        <div>
+        {translation.ServiceMenu.concient_evaluation} <Span>({"proximamente"}).</Span>
+        </div>
       </A>
       <A>
-        {translation.ServiceMenu.fact_evaluation} <Span>{"proximamente"}</Span>
+        <div>
+        {translation.ServiceMenu.fact_evaluation} <Span>({"proximamente"}).</Span>
+        </div>
       </A>
     </Info>
   );
