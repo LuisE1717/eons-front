@@ -10,10 +10,11 @@ export default function UserInfo() {
   const { translation } = useTranslation();
   return (
     <Info>
+      <Line />
       <A >
-        {translation.ServiceMenu.spiritual_family} 
+        {translation.ServiceMenu.spiritual_family}. 
         <div>
-        (<Span>{"proximamente"}</Span>).
+        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
       <Line />
@@ -21,25 +22,25 @@ export default function UserInfo() {
         {translation.ServiceMenu.inf_general_evulation}.
       </A>
       <A>
-        {translation.ServiceMenu.inf_calc_spiritual} 
+        {translation.ServiceMenu.inf_calc_spiritual}. 
         <div>
-        (<Span>{"proximamente"}</Span>).
+        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
 
       <Line />
 
       <A >
-        {"Mercados"} 
+        {"Mercados"}.
         <div>
-        (<Span>{"proximamente"}</Span>).
+        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
 
       <A >
-        {"Lista de Usuarios avalados por el Sistema"} 
+        {"Lista de Usuarios avalados por el Sistema"}.
         <div>
-        (<Span>{"proximamente"}</Span>).
+        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
 
@@ -57,6 +58,7 @@ export default function UserInfo() {
       <A href="/essence">
         {translation.ServiceMenu.money_admin}.
       </A>
+      <Line />
     </Info>
   );
 }
