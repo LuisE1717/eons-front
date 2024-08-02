@@ -25,16 +25,23 @@ export default function MessageInfo() {
 
   return (
     <Info>
+      <Line />
       <A>
-      {translation.ServiceMenu.general_evaluation} 
+      {"Dialogar con la Raíz del Sistema"}.
       <div>
-      <Span color="secundary">({translation.ServiceMenu.free})</Span>.
+      <Span>({"Próximamente"})</Span>
       </div>
       </A>
       <A>
-        {translation.ServiceMenu.spirit_calc} 
+      {translation.ServiceMenu.general_evaluation}. 
+      <div>
+      (<Span color="secundary">{translation.ServiceMenu.free}</Span>)
+      </div>
+      </A>
+      <A>
+        {translation.ServiceMenu.spirit_calc}. 
         <div>
-        <Span>({"proximamente"})</Span>.
+        <Span>({"Próximamente"})</Span>
         </div>
       </A>
 
@@ -65,7 +72,7 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {translation.ServiceMenu.adivination_general} <Span>({"proximamente"}).</Span>
+        {translation.ServiceMenu.adivination_general}. <Span>({"Próximamente"})</Span>
         </div>
       </A>
 
@@ -73,14 +80,61 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {translation.ServiceMenu.concient_evaluation} <Span>({"proximamente"}).</Span>
+        {translation.ServiceMenu.concient_evaluation}. <Span>({"Próximamente"})</Span>
         </div>
       </A>
       <A>
         <div>
-        {translation.ServiceMenu.fact_evaluation} <Span>({"proximamente"}).</Span>
+        {translation.ServiceMenu.fact_evaluation}. <Span>({"Próximamente"})</Span>
         </div>
       </A>
+      <Line />
+
+      <A>
+        <div>
+        {"Revelar consejo exacto"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <A>
+        <div>
+        {"Revelar tiempo"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <A>
+        <div>
+        {"Revelar porcentaje"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <A>
+        <div>
+        {"Revelar una letra"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <A>
+        <div>
+        {"Revelar un dígito decimal"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <Line />
+
+      <A>
+        <div>
+        {"Conocer si algo me conviene y porqué"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <A>
+        <div>
+        {"Conocer cuando algo sucederá y porqué"}. <Span>({"Próximamente"})</Span>
+        </div>
+      </A>
+
+      <Line />
     </Info>
   );
 }

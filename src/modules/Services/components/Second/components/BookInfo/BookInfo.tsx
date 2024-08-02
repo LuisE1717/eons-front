@@ -11,6 +11,7 @@ export default function BookInfo({first_time}) {
 
   return (
     <Info>
+      <Line />
       {first_time?
       <Blink>
         {translation.ServiceMenu.use_instruction}.
@@ -41,6 +42,7 @@ export default function BookInfo({first_time}) {
       <P>
         {translation.ServiceMenu.demostration}.
       </P>
+      <Line />
     </Info>
   );
 }
