@@ -46,7 +46,7 @@ export default function Second({ first_time }) {
       <div
         ref={ref}
         className={clsx("flex justify-center transition-all duration-300", {
-          "mb-6": selected !== null,
+          "mb-12": selected !== null,
           "mb-0": selected === null,
         })}
       >
@@ -63,7 +63,7 @@ export default function Second({ first_time }) {
           "flex items-end w-full justify-center transition-all duration-300",
           {
             "gap-x-0": selected === null,
-            "gap-x-6": selected !== null,
+            "gap-x-12": selected !== null,
           }
         )}
       >
