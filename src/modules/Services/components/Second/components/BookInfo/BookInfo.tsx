@@ -13,40 +13,33 @@ export default function BookInfo({first_time}) {
     <Info>
       {first_time?
       <Blink>
-        {translation.ServiceMenu.use_instruction}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.use_instruction}.
       </Blink>
       :
       <P>
-        {translation.ServiceMenu.use_instruction}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.use_instruction}.
       </P>
       }
       <Line />
       <P>
-        {translation.ServiceMenu.thinks_to_know}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.thinks_to_know}.
       </P>
       <P>
-        {translation.ServiceMenu.cautions}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.cautions}.
       </P>
       <Line />
       <P>
-        {translation.ServiceMenu.security}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.security}.
       </P>
       <Line />
       <P>
-        {translation.ServiceMenu.examples}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.examples}.
       </P>
 
       <Line />
 
       <P>
-        {translation.ServiceMenu.demostration}{" "}
-        <Span>{translation.ServiceMenu.free}</Span>
+        {translation.ServiceMenu.demostration}.
       </P>
     </Info>
   );
