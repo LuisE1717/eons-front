@@ -13,7 +13,7 @@ export default function Third() {
 
   return (
     <ImageSection
-      image="/services-2.webp"
+      image="/pixelcut-export (3).webp"
       reverse={true}
       className="mb-12"
       phoneReverse={false}
@@ -26,7 +26,7 @@ export default function Third() {
       </P>
 
       <PhoneView>
-        <Image image="/services-2.webp" />
+        <Image image="/pixelcut-export (3).webp" />
       </PhoneView>
 
       <P>{translation.Services.third_text_2}</P>

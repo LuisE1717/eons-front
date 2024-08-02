@@ -1,0 +1,33 @@
+import React from 'react'
+
+export default function Cost2 ({
+  name,
+  amount,
+  amount2,
+  cost,
+  onclick,
+}: {
+  name: string;
+  amount:string;
+  cost?: string;
+  amount2:string;
+  onclick?: () => void;
+}) {
+  return (
+    <div 
+      onClick={onclick}
+      className="
+      w-full sm:text-[1rem]
+      text-sm sm:mb-5 mb-3.5 md:px-6 !leading-8 
+      hover:text-primary cursor-pointer items-center">
+      <span className="">{name}</span>
+      <div className='flex'>
+      (
+        <span className="">{amount} + {amount2}</span>
+        <img src="/fire.webp" alt="fire" className="object-contain w-[30px]"/>
+        <span className="">{cost}</span>
+      ).
+      </div>
+    </div>
+  )
+}
