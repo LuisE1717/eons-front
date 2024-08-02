@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         primary: "#d161b4",
+        secundary:"#2563eb"
       },
       backgroundImage: { triangle: "url('/triangle.webp')" },
     },

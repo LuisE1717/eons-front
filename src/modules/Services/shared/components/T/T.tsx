@@ -10,7 +10,10 @@ export default function T({
   return (
     <div
       onClick={onclick}
-      className="cursor-pointer w-full sm:text-[1rem] text-sm sm:mb-5 mb-3.5 md:px-6 !leading-8 hover:text-primary"
+      className="cursor-pointer w-full sm:text-[1rem]
+      text-sm sm:mb-5 mb-3.5 md:px-6 !leading-8 
+      hover:text-primary 
+      "
     >
       {children}
     </div>
