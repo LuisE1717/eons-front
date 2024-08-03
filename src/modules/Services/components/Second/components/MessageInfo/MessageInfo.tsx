@@ -54,12 +54,11 @@ export default function MessageInfo() {
       amount="0.49"
       />
 
-      <Cost2
+      <Cost
       onclick={() => validateService(1,'/throw/09')}
       name={translation.ServiceMenu.contact_spirit}
       // cost={translation.ServiceMenu.per_question}
       amount="1.29"
-      amount2="0.49"
       />
 
       <Line />
