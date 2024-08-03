@@ -20,7 +20,7 @@ export default function First() {
     >
       <Title>
         {translation.Services.first_text_1}{' "'}{translation.Services.first_text_1_1}{'"'}{" "}
-        <Span>{translation.Services.first_phase}</Span>
+        (<Span>{translation.Services.first_phase}</Span>)
       </Title>
       <P>{translation.Services.first_text_2}</P>
 
