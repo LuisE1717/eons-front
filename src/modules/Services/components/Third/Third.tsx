@@ -21,7 +21,7 @@ export default function Third() {
     >
       <P>
         {translation.Services.third_text_1_init}{" "}
-        <Span>{translation.Services.first_phase}</Span>{" "}
+        (<Span>{translation.Services.first_phase}</Span>){" "}
         {translation.Services.third_text_1}
       </P>
 
