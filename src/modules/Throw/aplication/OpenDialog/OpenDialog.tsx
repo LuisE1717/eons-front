@@ -259,7 +259,7 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
       <div
         className={`${styles.card} z-10 
         rounded-xl bg-white shadow-xl shadow-black/5 
-        ring-1 ring-slate-700/10`}
+        ring-1 ring-slate-700/10 border-[3px] border-dashed border-[#9e5df2]`}
       >
         {actionsInterprete(action) == "day" ? (
           <header className="flex items-center w-full flex-col mb-5">

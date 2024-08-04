@@ -1,25 +1,24 @@
 .span {
-    color: #232323;
-    font-weight: 700;
+  color: #232323;
+  font-weight: 700;
 }
 
-.throw-counter{
-    margin: 0rem
+.throw-counter {
+  margin: 0rem;
 }
 
-.card{
-    border-width: 1px;
-    padding: 1em;
+.card {
+  padding: 1em 3rem;
 }
 
-.coin_number{
-    align-items: center;
+.coin_number {
+  align-items: center;
 }
 
-.coin_number span{
-    font-weight: 500;
+.coin_number span {
+  font-weight: 500;
 }
 
-.top{
-    margin-top: 2rem;
+.top {
+  margin-top: 2rem;
 }
