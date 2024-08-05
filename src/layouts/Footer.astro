@@ -1,5 +1,9 @@
 ---
 import Logo from "../components/Logo.astro";
+import { getI18N } from "../i18n"
+
+const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
 ---
 
 <footer class="flex w-full lg:flex-row flex-col py-2 sm:px-10 px-5 items-center justify-between gap-y-2">
@@ -7,15 +11,15 @@ import Logo from "../components/Logo.astro";
 
 	<div class="flex items-center social-links text-base gap-x-8 text-center">
 		<a href="/about/about-us" target="_blank">
-			Acerca de Nosotros
+			{i18.about}
 		</a>
 
 		<a href="/about/terms" target="_blank">
-			Términos y Condiciones
+			{i18.therms}
 		</a>
 
 		<a href="/about/privacy" target="_blank">
-			Política de Privacidad
+			{i18.privacy}
 		</a>
 	</div>
 </footer>

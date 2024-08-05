@@ -34,7 +34,7 @@ export default function MessageInfo() {
       </div>
       </A>
       <Line />
-      <A>
+      <A href="/general-evaluation">
       {translation.ServiceMenu.general_evaluation}. 
       <div>
       (<Span color="secundary">{translation.ServiceMenu.free}</Span>)
