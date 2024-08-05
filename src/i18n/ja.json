@@ -2,6 +2,15 @@
     "fecth_error": "予期しないエラーが発生しました。インターネット接続を確認してください",
     "text_loading": "読み込み中...",
     "continue": "続ける",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "巨大で無限の贈り物がすべての人に届けられます",
@@ -49,6 +58,7 @@
       "title": "メールアカウントを確認する",
       "message": "すぐに確認キーを含むメールを受け取ります",
       "send_button": "メールを再送信",
+      "ReSend_button": "Reenviar correo",
       "error_question": "メールが届いていませんか？"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "安全と保護",
       "examples": "サービスと例",
       "demostration": "科学的なデモンストレーション"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
 }
