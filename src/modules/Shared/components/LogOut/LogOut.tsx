@@ -3,12 +3,14 @@ import { signOut } from 'auth-astro/client'
 import Cookies from 'js-cookie'
 import { postLogout } from '../../../../utils/api/userApi'
 import { toast } from 'react-toastify'
+import useTranslation from '../../hooks/useTranslation'
 
 interface Props{
     session:Session|null
 }
 
 const LogOut = ({session} : Props) => {
+    const {translation} = useTranslation()
     async function handleLogOut() {
         
         try {

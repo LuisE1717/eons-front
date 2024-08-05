@@ -125,8 +125,15 @@ import {
     // Función para mostrar el menú
     function showMenu() {
       if(dropdownMenu && dropdownButton){
-        dropdownMenu.style.display = 'block'
-        dropdownMenu.style.position = 'absolute'
+        if(
+          dropdownMenu.style.display == 'none'
+          ){
+          dropdownMenu.style.display = 'block'
+          dropdownMenu.style.position = 'absolute'
+          }
+          else{
+            dropdownMenu.style.display = 'none'
+          }
 
         // console.log(`Top: ${dropdownButton.getBoundingClientRect().top}
         // , Left: ${dropdownButton.getBoundingClientRect().left},
@@ -155,8 +162,9 @@ import {
       // Agregar event listeners
       dropdownButton.addEventListener('click', showMenu);
       document.addEventListener('mousedown', function(event) {
-      if (event.target && !dropdownMenu.contains(event.target as Node)) {
-          hideMenu();
+      if (event.target && !dropdownMenu.contains(event.target as Node) && !dropdownButton.contains(event.target as Node)) {
+        if(dropdownMenu.style.display == 'block')
+            hideMenu();
       }
     }, true);
     }
