@@ -12,7 +12,7 @@ export default function Sections({ handleChange, selected }: Props) {
       <SectionButton
         handleClick={() => handleChange(SECTION.TRANSFER)}
         selected={selected === SECTION.TRANSFER}
-        text="Transferir"
+        text="Transferir Esencia"
         disabled={false}
       />
 
