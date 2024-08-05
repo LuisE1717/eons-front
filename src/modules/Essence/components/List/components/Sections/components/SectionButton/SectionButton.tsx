@@ -31,7 +31,13 @@ export default function SectionButton({
   return (
     <button onClick={handleClick} className={CLASS} disabled={disabled}>
       {text}{" "}
-      {disabled && <span className="text-primary">{translation.Landing.text14_1}</span>}
+      {disabled && 
+      <>
+      (
+      <span className="text-primary">{translation.Landing.text14_1}</span>
+      )
+      </>
+      }
     </button>
   );
 }

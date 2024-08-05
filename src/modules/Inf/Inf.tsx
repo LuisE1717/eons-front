@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../components/UI/Button/Button";
+import { toast } from "react-toastify";
 
 export default function Inf() {
   return (
@@ -16,7 +17,9 @@ export default function Inf() {
             No haz realizado tu evaluación generalizada
           </p>
 
-          <Button loading={false} full={false}>
+          <Button
+          onClick={() => toast.warning("Este servicio estará disponible próximamente")}
+           loading={false} full={false}>
             Realizar evaluación
           </Button>
         </div>
