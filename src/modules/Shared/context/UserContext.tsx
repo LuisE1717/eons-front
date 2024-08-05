@@ -55,7 +55,7 @@ export function UserProvider({
           }
         } else {
           if (
-            window.location.pathname != "/auth" &&
+            !window.location.pathname.includes("/auth") &&
             window.location.pathname != "/"
           ) {
             window.location.href = "/auth";

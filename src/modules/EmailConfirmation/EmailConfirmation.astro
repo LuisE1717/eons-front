@@ -15,6 +15,6 @@ const {email} = Astro.props
     <div class="max-w-[420px] w-full flex flex-col items-center">
         <Header/>
         <Message message={i18.Verification.message} title={i18.Verification.title}/>
-        <Button email={email} client:load text={i18.Verification.send_button} question={i18.Verification.error_question}/>
+        <Button email={email} client:load text={i18.Verification.ReSend_button} question={i18.Verification.error_question}/>
     </div>
 </div>

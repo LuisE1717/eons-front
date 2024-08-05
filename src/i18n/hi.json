@@ -2,6 +2,15 @@
     "fecth_error": "अप्रत्याशित त्रुटि, कृपया अपना इंटरनेट कनेक्शन जांचें",
     "text_loading": "लोड हो रहा है...",
     "continue": "जारी रखें",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "सभी को विशाल और असीमित उपहार दिए जाएंगे",
@@ -49,6 +58,7 @@
       "title": "अपना ईमेल खाता सत्यापित करें",
       "message": "आपको जल्द ही अपना खाता सत्यापित करने के लिए एक कोड वाला ईमेल प्राप्त होगा",
       "send_button": "ईमेल पुनः भेजें",
+      "ReSend_button": "Reenviar correo",
       "error_question": "क्या आपको ईमेल नहीं मिला?"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "सुरक्षा और संरक्षण",
       "examples": "सेवाएं और उदाहरण",
       "demostration": "वैज्ञानिक प्रदर्शन"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
 }

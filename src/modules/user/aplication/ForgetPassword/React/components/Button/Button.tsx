@@ -18,7 +18,7 @@ export default function Button({ question, text, loading_text,handleSubmit,loadi
         setDisabled(false);
       }, 10000);
     }
-  }, [loading]);
+  }, [disabled,loading]);
 
   function handleClick() {
     setDisabled(true);
