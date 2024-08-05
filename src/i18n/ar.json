@@ -2,6 +2,15 @@
     "fecth_error": "خطأ غير متوقع، تحقق من اتصالك بالإنترنت",
     "text_loading": "جارٍ التحميل...",
     "continue": "استمرار",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "سيتم تقديم هدايا ضخمة ولا نهائية للجميع",
@@ -49,6 +58,7 @@
       "title": "تحقق من حساب بريدك الإلكتروني",
       "message": "ستتلقى قريبًا بريدًا إلكترونيًا يحتوي على الكود للتحقق من حسابك",
       "send_button": "إعادة إرسال البريد الإلكتروني",
+      "ReSend_button": "Reenviar correo",
       "error_question": "لم يصلك البريد الإلكتروني؟"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "الأمان والحماية",
       "examples": "الخدمات والأمثلة",
       "demostration": "العروض العلمية"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+    "therms":"Términos y Condiciones",
+    "privacy":"Política de Privacidad"
 }

@@ -2,6 +2,15 @@
     "fecth_error": "Неожиданная ошибка, проверьте ваше интернет-соединение",
     "text_loading": "Загрузка...",
     "continue": "Продолжить",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "Огромные и бесконечные подарки будут вручены всем",
@@ -49,6 +58,7 @@
       "title": "Подтвердите ваш электронный адрес",
       "message": "Вы скоро получите письмо с ключом для подтверждения вашей учетной записи",
       "send_button": "Отправить письмо повторно",
+      "ReSend_button": "Reenviar correo",
       "error_question": "Не получили письмо?"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "Безопасность и защита",
       "examples": "Услуги и примеры",
       "demostration": "Научная демонстрация"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
   }

@@ -2,6 +2,15 @@
     "fecth_error": "Errore imprevisto, verifica la tua connessione a Internet",
     "text_loading": "Caricamento...",
     "continue": "Continua",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "Enormi e infiniti doni saranno consegnati a tutti",
@@ -49,6 +58,7 @@
       "title": "Verifica il tuo account email",
       "message": "Riceverai presto un'email con la chiave per verificare il tuo account",
       "send_button": "Reinvia email",
+      "ReSend_button": "Reenviar correo",
       "error_question": "Non hai ricevuto l'email?"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "Sicurezza e Protezione",
       "examples": "Servizi ed esempi",
       "demostration": "Dimostrazioni Scientifiche"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
   }
