@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Notifications.module.css";
 import type { INotifications } from "../domain/INotifications";
 import Item from "./Item/Item";
+import useTranslation from "../../Shared/hooks/useTranslation";
 
 const Notifications = ({
   notifications = [],
@@ -9,6 +10,8 @@ const Notifications = ({
   notifications: INotifications[];
 }) => {
   const unread = notifications.filter((n) => !n.estado);
+
+  const {translation} = useTranslation()
 
   return (
     <div className={styles.select}>

@@ -2,6 +2,15 @@
     "fecth_error": "Erro inesperado, verifique sua conexão com a internet",
     "text_loading": "Carregando...",
     "continue": "Continuar",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "Enormes e infinitos presentes serão entregues a todos",
@@ -49,6 +58,7 @@
       "title": "Validar sua conta de email",
       "message": "Você receberá em breve um email com a chave para validar sua conta",
       "send_button": "Reenviar email",
+      "ReSend_button": "Reenviar correo",
       "error_question": "Não recebeu o email?"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "Segurança e Proteção",
       "examples": "Serviços e exemplos",
       "demostration": "Demonstrações Científicas"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
   }
