@@ -6,12 +6,11 @@ import Button from '../React/components/Button/Button';
 import { postResetPass } from '../../../../../utils/api/userApi';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTranslation from '../../../../Shared/hooks/useTranslation';
 
-interface Props {
-    i18:any;
-}
+const ForgetPassReact = () => {
 
-const ForgetPassReact:FC<Props> = ({i18}) => {
+    const {translation} = useTranslation()
 
     const [state,setState] = useState<number>(1)
     const [loading,setLoading] = useState(false)
@@ -28,15 +27,15 @@ const ForgetPassReact:FC<Props> = ({i18}) => {
         if(validMail(email)){
             await postResetPass({email})
             .then((response)=>{
-              toast.success(i18["RessetPassword"].succes_send_mail)
+              toast.success(translation.RessetPassword.succes_send_mail)
               setLoading(false)
             })
             .catch(({response})=>{
               console.log(response?.data?.message)
               if(response?.data?.message=="Email does not exist")
-                toast.error(i18["RessetPassword"].dont_exist_error)
+                toast.error(translation.RessetPassword.dont_exist_error)
               else{
-                toast.error(i18.fecth_error)
+                toast.error(translation.fecth_error)
               }
               
             })
@@ -59,15 +58,15 @@ const ForgetPassReact:FC<Props> = ({i18}) => {
             validation_mail || email == "" ? "hidden" : ""
           } ml-5 text-lg text-red-600`}
         >
-          {i18["Auth"].invalid_email_text}
+          {translation.Auth.invalid_email_text}
         </label>
         </div>
         <Button 
         loading={loading} 
         handleSubmit={handleSubmit} 
-        text={i18.Verification.send_button} 
-        loading_text={i18["text_loading"]} 
-        question={i18.Verification.error_question}/>
+        text={translation.Verification.send_button} 
+        loading_text={translation.text_loading} 
+        question={translation.Verification.error_question}/>
 
         <ToastContainer
             position="bottom-right"

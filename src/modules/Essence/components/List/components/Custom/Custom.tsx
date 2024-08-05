@@ -31,7 +31,7 @@ export default function Custom({price,findCost,handleCustomPayment}:Props) {
   return (
     <article className="mt-10 gap-x-4 gap-y-2 cursor-pointer rounded-lg flex md:flex-row flex-col items-center justify-between">
       <h1 className="text-base mb-0 font-semibold">
-        {"Establecer número de esencia exacta a comprar"}
+        {"Establecer número de Esencia exacta a comprar"}:
       </h1>
 
       <section className="flex items-center gap-x-7">

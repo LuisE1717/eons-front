@@ -39,8 +39,18 @@ export default function Button({ question, text, email }: Props) {
       toast.info('verifique su buzon de correo ' + '(' + email + ')')
     } catch (error) {
       setPending(false)
-      console.log(error)
-      toast.error(translation.fecth_error)
+      if(error?.data?.message){
+        if(error?.data?.message == "Email does not exist")
+          toast.error(translation.Errors.Auth.email_not_found)
+        else if(error?.data?.message == "This user its valid")
+          toast.error(translation.Errors.Auth.user_valid)
+        else{
+          toast.error(translation.fecth_error);
+        }
+      }
+      else{
+        toast.error(translation.fecth_error);
+      }
     }
   }
 
