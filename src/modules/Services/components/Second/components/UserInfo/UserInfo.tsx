@@ -18,7 +18,7 @@ export default function UserInfo() {
         </div>
       </A>
       <Line />
-      <A>
+      <A href="/general-evaluation">
         {translation.ServiceMenu.inf_general_evulation}.
       </A>
       <A>
