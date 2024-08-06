@@ -19,7 +19,7 @@ export default function Inf() {
 
         <div className="w-full max-w-[500px] flex flex-col items-center">
           <p className="text-lg mb-5 text-gray-500 text-center">
-            Aún no ha realizado su Evaluación Generalizada.
+            Aún no ha realizado su Evaluación General.
           </p>
 
           <Button
