@@ -89,7 +89,7 @@ export default function Form({ handleClose }: Props) {
             type="text"
             disabled={loading}
             value={form.user}
-            placeholder="Nombre del usuario"
+            placeholder="Correo del usuario"
             onChange={(e) => handleChangeUser(e.target.value)}
             className="outline-none w-full border-b-2 border-gray-300 pb-1.5 focus:border-primary transition-all duration-200"
           />

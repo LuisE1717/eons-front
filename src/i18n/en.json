@@ -3,6 +3,15 @@
   "text_loading": "Loading...",
   "continue":"Continue",
 
+  "Errors":{
+    "Auth":{
+      "already_exist":"Este usuario ya existe",
+      "check_credentials":"Verifique sus credenciales",
+      "email_not_found":"Correo no encontrado",
+      "user_valid":"Este usuario ya fue validado"
+    }
+  },
+
   "Landing": {
     "text1": "Huge and infinite gifts will be given to everyone",
     "text2": "Eons will bring with it a Scientific and Technological advance of more than 10,000 years in the next decade.",
@@ -44,6 +53,7 @@
     "title": "Validate your email account",
     "message": "You will soon receive an email with the key to validate your account",
     "send_button": "Resend e-mail",
+    "ReSend_button": "Reenviar correo",
     "error_question": "You haven't received the email?"
   },
   "Dialogs": {
@@ -147,5 +157,9 @@
     "security": "Security and Protection",
     "examples": "Services and examples",
     "demostration": "Scientific Demonstrations"
-  }
+  },
+
+  "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
 }

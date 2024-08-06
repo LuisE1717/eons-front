@@ -16,7 +16,8 @@ export default function MessageInfo() {
   function validateService (cost:number,navigate:string) {
     const essence = Cookies.get('eons_essence')
     if(essence && parseInt(essence)>=cost){
-      window.location.href = navigate
+      //window.location.href = navigate
+      toast.warning('Este Servicio será lanzado en los próximos días')
     }
     else{
       toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
@@ -33,7 +34,7 @@ export default function MessageInfo() {
       </div>
       </A>
       <Line />
-      <A>
+      <A href="/general-evaluation">
       {translation.ServiceMenu.general_evaluation}. 
       <div>
       (<Span color="secundary">{translation.ServiceMenu.free}</Span>)

@@ -2,6 +2,15 @@
     "fecth_error": "Erreur inattendue, vérifiez votre connexion Internet",
     "text_loading": "Chargement...",
     "continue": "Continuer",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "D'énormes et infinis cadeaux seront offerts à tous",
@@ -49,6 +58,7 @@
       "title": "Vérifiez votre compte de messagerie",
       "message": "Vous recevrez bientôt un email avec la clé pour vérifier votre compte",
       "send_button": "Renvoyer l'email",
+      "ReSend_button": "Reenviar correo",
       "error_question": "Vous n'avez pas reçu l'email ?"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "Sécurité et protection",
       "examples": "Services et exemples",
       "demostration": "Démonstrations scientifiques"
-    }
+    },
+
+  "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
 }
