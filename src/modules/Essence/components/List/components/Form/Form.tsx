@@ -19,7 +19,7 @@ export default function Form({ handleClose }: Props) {
   const { translation } = useTranslation();
 
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState<IForm>({ count: 100, user: "" });
+  const [form, setForm] = useState<IForm>({ count: 1, user: "" });
 
   function handleChangeCount(c: number) {
     setForm((prev) => ({ ...prev, count: c }));
@@ -41,7 +41,21 @@ export default function Form({ handleClose }: Props) {
               `Se transferido ${form.count} esencias a ${form.user} exitosamente`
             );
           })
-          .catch(() => toast.error(translation.fecth_error));
+          .catch(({response}) => {
+            console.log(response)
+            if(response?.data?.message == "Insufficient essence"){
+              toast.error("Esencia Insuficiente.");
+            }
+            else if(response?.data?.message == "Receiver not found"){
+              toast.error("El usuario beneficiado no existe.");
+            }
+            else if(response?.data?.message == "amount must not be less than 1"){
+              toast.error("Solo puede transferir a partir de 1 esencia.");
+            }
+            else{
+              toast.error(translation.fecth_error);
+            }
+          });
       }
       setLoading(false);
     } catch (error) {
@@ -98,7 +112,7 @@ export default function Form({ handleClose }: Props) {
         <Section label="Cantidad a transferir">
           <input
             disabled={loading}
-            type="number"
+            type="text"
             className="py-1.5 outline-none border-b-2 focus:border-b-primary border-gray-300 w-full text-base focus:border-gray-400"
             value={form.count}
             min={1}
