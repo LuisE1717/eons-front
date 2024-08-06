@@ -78,19 +78,24 @@ export default function useList() {
 
   async function handleCustomPayment() {
     if (price) {
-      setloading(true);
-      try {
-        const token = Cookies.get("eons_token") || "";
-        const datah = {
-          esencia: price?.esencia,
-          precio: price?.costo,
-        };
-        const pay = await startCustomPayment(token, datah);
-        console.log(pay);
-        window.open(pay.data.shortUrl, "_blank");
-      } catch (error) {
-        toast.error(translation.fecth_error);
-        setloading(false);
+      if(price.costo > 1){
+        setloading(true);
+        try {
+          const token = Cookies.get("eons_token") || "";
+          const datah = {
+            esencia: price?.esencia,
+            precio: price?.costo,
+          };
+          const pay = await startCustomPayment(token, datah);
+          console.log(pay);
+          window.open(pay.data.shortUrl, "_blank");
+        } catch (error) {
+          toast.error(translation.fecth_error);
+          setloading(false);
+        }
+      }
+      else{
+        toast.warning("Solo puede comprar a partir de 2 esencias")
       }
     }
   }
