@@ -19,7 +19,7 @@ export default function Content({ type }) {
   } = useContent(type);
 
   return (
-    <ListContainer image="/space.webp" items={items}>
+    <ListContainer image={type=='dialog'?"/pixelcut-export (12).webp":"/informacion 3.webp"} items={items}>
       <DeleteModal
         handleClose={() => setOpenModal(null)}
         open={openModal ? openModal.type === "delete" : false}
@@ -30,6 +30,7 @@ export default function Content({ type }) {
 
       {selected === SECTIONS.DIALOGS && (
         <Dialogs
+          type={type}
           dialogs={dataDialogs.data}
           handleWatchDialog={handleWatchDialog}
           handleFavDialog={handleFavDialog}
@@ -39,6 +40,7 @@ export default function Content({ type }) {
 
       {selected === SECTIONS.FAVORITES && (
         <Favorites
+          type={type}
           dialogs={dataDialogs.data}
           handleFavDialog={handleFavDialog}
           handleDeleteDialog={handleOpenDelete}
