@@ -85,7 +85,7 @@ export default function useContent(type: string) {
     {
       click: () => handleChangeSection(SECTIONS.DIALOGS),
       selected: selected === SECTIONS.DIALOGS,
-      text: translation.Dialogs.saved_dialogs,
+      text: type == 'dialog'?translation.Dialogs.saved_dialogs:"Servicios salvados",
     },
     {
       click: () => handleChangeSection(SECTIONS.FAVORITES),

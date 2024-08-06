@@ -55,7 +55,12 @@
     "add_text": "Añadir",
     "delete_text": "Eliminar",
     "favorites": "Favoritos",
-    "saved_dialogs": "Diálogos salvados"
+    "saved_dialogs": "Diálogos salvados",
+    "saved_services": "Servicios salvados",
+    "no_dialogs": "Aún no tiene ningún Diálogo salvado",
+    "no_dialogs_fav": "Aún no tiene ningún Diálogo Favorito determinado",
+    "no_services": "Aún no tiene ningún Servicio salvado",
+    "no_services_fav": "Aún no tiene ningún Servicio Favorito determinado"
   },
   "Verification": {
     "title": "Validar tu cuenta de correo",

@@ -9,19 +9,21 @@ import Cookies from "js-cookie";
 import Fire from "../../shared/components/Fire/Fire";
 import Cost from "../../../../shared/components/Cost/Cost";
 import Cost2 from "../../../../shared/components/Cost/Cost2";
+import Free from "../../../../shared/components/Free/Free";
 
 export default function MessageInfo() {
   const { translation } = useTranslation();
 
   function validateService (cost:number,navigate:string) {
+    toast.warning('Este Servicio será lanzado en los próximos días')
     const essence = Cookies.get('eons_essence')
-    if(essence && parseInt(essence)>=cost){
-      //window.location.href = navigate
-      toast.warning('Este Servicio será lanzado en los próximos días')
-    }
-    else{
-      toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
-    }
+    // if(essence && parseInt(essence)>=cost){
+    //   //window.location.href = navigate
+    //   
+    // }
+    // else{
+    //   toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
+    // }
   }
 
   return (
@@ -34,12 +36,12 @@ export default function MessageInfo() {
       </div>
       </A>
       <Line />
-      <A href="/general-evaluation">
-      {translation.ServiceMenu.general_evaluation}. 
-      <div>
-      (<Span color="secundary">{translation.ServiceMenu.free}</Span>)
-      </div>
-      </A>
+
+      <Free
+      onclick={() => validateService(1,'/throw/07')}
+      name={translation.ServiceMenu.general_evaluation}>
+      </Free>
+
       <A>
         {translation.ServiceMenu.spirit_calc}. 
         <div>

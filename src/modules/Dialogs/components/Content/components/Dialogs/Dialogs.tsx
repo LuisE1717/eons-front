@@ -6,12 +6,14 @@ import Icon from "../../shared/components/Icon/Icon";
 import DropdwonIcon from "../../../../../Shared/components/DropdownIcon/DropdwonIcon";
 import Trash from "../../shared/components/Trash/Trash";
 import Heart from "../../shared/components/Heart/Heart";
+import NoDialogs from "../NoDialogs/NoDialogs";
 
 interface Props {
   handleFavDialog(id: number): void;
   handleDeleteDialog(id: number): void;
   handleWatchDialog(id: number): void;
   dialogs: Dialog[];
+  type: string;
 }
 
 export default function Dialogs({
@@ -19,8 +21,11 @@ export default function Dialogs({
   handleDeleteDialog,
   handleWatchDialog,
   dialogs,
+  type
 }: Props) {
   return (
+    <>
+    {dialogs.length > 0 ?
     <List>
       {dialogs.map((d) => (
         <Card dialog={d} key={d.id}  handleWatchDialog={handleWatchDialog}>
@@ -37,5 +42,9 @@ export default function Dialogs({
         </Card>
       ))}
     </List>
+    :
+    <NoDialogs fav={false} type={type}/>
+    }
+    </>
   );
 }
