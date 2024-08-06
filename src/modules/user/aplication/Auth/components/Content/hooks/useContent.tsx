@@ -8,6 +8,7 @@ import useTranslation from "../../../../../../Shared/hooks/useTranslation";
 import type { Session } from "@auth/core/types";
 import Cookies from "js-cookie";
 import { userProfile } from "../../../../../../../UserStore";
+import { authErrors } from "../../../../../../../utils/errors/authErrors";
 
 export default function useContent(session: Session | null) {
   const [section, setSection] = useState(SECTIONS.LOGIN);
@@ -63,12 +64,16 @@ export default function useContent(session: Session | null) {
             }
           })
           .catch(({ response }) => {
-            if (response?.status == 401)
-              toast.error("translation.Auth.unauthorized");
-            else {
+            if(response?.data?.message){
+              if(response?.data?.message == "email is wrong" || response?.data?.message == "password is wrong")
+                toast.error(translation.Errors.Auth.check_credentials)
+              else{
+                toast.error(translation.fecth_error);
+              }
+            }
+            else{
               toast.error(translation.fecth_error);
             }
-            console.log(response?.status);
           })
           .finally(() => {
             setLoading(false);
@@ -101,9 +106,14 @@ export default function useContent(session: Session | null) {
           })
           .catch((error) => {
             console.log(error);
-            if (error.status == 401)
-              toast.error("translation.Auth.unauthorized");
-            else {
+            if(error?.data?.message){
+              if(error?.data?.message == "User Alredy exist")
+                toast.error(translation.Errors.Auth.already_exist)
+              else{
+                toast.error(translation.fecth_error);
+              }
+            }
+            else{
               toast.error(translation.fecth_error);
             }
           })
@@ -153,8 +163,16 @@ export default function useContent(session: Session | null) {
             }
           })
           .catch(({ response }) => {
-            toast.error(translation.fecth_error);
-            console.log(response);
+            if(response?.data?.message){
+              if(response?.data?.message == "User Alredy exist")
+                toast.error(translation.Errors.Auth.already_exist)
+              else{
+                toast.error(translation.fecth_error);
+              }
+            }
+            else{
+              toast.error(translation.fecth_error);
+            }
           });
         setLoading(false);
       } else {

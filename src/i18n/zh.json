@@ -2,6 +2,15 @@
     "fecth_error": "意外错误，请检查您的网络连接",
     "text_loading": "加载中...",
     "continue": "继续",
+
+    "Errors":{
+      "Auth":{
+        "already_exist":"Este usuario ya existe",
+        "check_credentials":"Verifique sus credenciales",
+        "email_not_found":"Correo no encontrado",
+        "user_valid":"Este usuario ya fue validado"
+      }
+    },
   
     "Landing": {
       "text1": "巨大的和无限的礼物将送给每个人",
@@ -49,6 +58,7 @@
       "title": "验证您的电子邮件账户",
       "message": "您将很快收到一封包含验证密钥的电子邮件",
       "send_button": "重新发送电子邮件",
+      "ReSend_button": "Reenviar correo",
       "error_question": "没有收到电子邮件吗？"
     },
     "Throw": {
@@ -146,5 +156,9 @@
       "security": "安全和保护",
       "examples": "服务和示例",
       "demostration": "科学展示"
-    }
+    },
+
+    "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
 }

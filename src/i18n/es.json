@@ -2,6 +2,18 @@
   "fecth_error": "Error inesperado, Verifique su conexión a internet",
   "text_loading": "Cargando...",
   "continue":"Continuar",
+  "notifications":"Notificaciones",
+  "log_out":"Cerrar Sesion",
+  "next":"Próximamente",
+
+  "Errors":{
+    "Auth":{
+      "already_exist":"Este usuario ya existe",
+      "check_credentials":"Verifique sus credenciales",
+      "email_not_found":"Correo no encontrado",
+      "user_valid":"Este usuario ya fue validado"
+    }
+  },
 
   "Landing": {
     "text1": "Enormes e infinitos regalos serán entregados a todos",
@@ -48,7 +60,8 @@
   "Verification": {
     "title": "Validar tu cuenta de correo",
     "message": "Pronto recibirás un correo con la clave para validar tu cuenta",
-    "send_button": "Reenviar correo",
+    "ReSend_button": "Reenviar correo",
+    "send_button": "Enviar correo",
     "error_question": "No te ha llegado el correo?"
   },
   "Throw": {
@@ -123,6 +136,14 @@
     "third_text_4": "La Era de la Libertad Espiritual"
   },
   "ServiceMenu": {
+    "system_dialog":"Dialogar con la Raíz del Sistema",
+    "Revelar_consejo_exacto": "Revelar consejo exacto",
+    "Revelar_tiempo": "Revelar tiempo",
+    "Revelar_porcentaje":"Revelar porcentaje",
+    "Revelar_una_letra": "Revelar una letra",
+    "Revelar_un_dígito_decimal":"Revelar un dígito decimal",
+    "Conocer_conviene":"Conocer si algo me conviene y porqué",
+    "Conocer_sucederá":"Conocer cuando algo sucederá y porqué",
     "general_evaluation": "Evaluación general",
     "spirit_calc": "Calcular Espiritualidad",
     "open_dialog_mod": "Modo diálogo abierto",
@@ -140,6 +161,8 @@
     "save_dialogs": "Diálogos Guardados",
     "save_services": "Servicios Guardados",
     "money_admin": "Gestión Monetaria",
+    "Mercados":"Mercados",
+    "user_valid_list":"Lista de Usuarios avalados por el Sistema",
 
     "use_instruction": "Instrucciones de uso",
     "thinks_to_know": "Cosas a saber",
@@ -147,5 +170,19 @@
     "security": "Seguridad y Protección",
     "examples": "Servicios y ejemplos",
     "demostration": "Demostraciones Científicas"
-  }
+  },
+
+  "Esence":{
+    "custom_by":"Establecer número de Esencia exacta a comprar",
+    "user_transfer":"Usuario a transferir",
+    "user_transfer_holder":"Correo del usuario",
+    "cant_transfer":"Cantidad a transferir",
+    "transfer":"Transferir",
+    "donation":"Realizar donación",
+    "pay_deude":"Pagar deuda a la Raíz del Sistema"
+  },
+
+  "about":"Acerca de Nosotros",
+  "therms":"Términos y Condiciones",
+  "privacy":"Política de Privacidad"
 }
