@@ -2,7 +2,6 @@ import useTranslation from "../../../../../Shared/hooks/useTranslation";
 import A from "../../../../shared/components/A/A";
 import Blink from "../../../../shared/components/Blink/Blink";
 import Line from "../../../../shared/components/Line/Line";
-import P from "../../../../shared/components/P/P";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
 
@@ -14,34 +13,55 @@ export default function BookInfo({first_time}) {
       <Line />
       {first_time?
       <Blink>
+        <div>
         {translation.ServiceMenu.use_instruction}.
+        (<Span>{"Próximamente"}</Span>)
+        </div>
       </Blink>
       :
-      <P>
+      <A>
+        <div>
         {translation.ServiceMenu.use_instruction}.
-      </P>
+        (<Span>{"Próximamente"}</Span>)
+        </div>
+      </A>
       }
       <Line />
-      <P>
+      <A>
+        <div>
         {translation.ServiceMenu.thinks_to_know}.
-      </P>
-      <P>
+        (<Span>{"Próximamente"}</Span>)
+        </div>
+      </A>
+      <A>
+        <div>
         {translation.ServiceMenu.cautions}.
-      </P>
+        (<Span>{"Próximamente"}</Span>)
+        </div>
+      </A>
       <Line />
-      <P>
+      <A>
+        <div>
         {translation.ServiceMenu.security}.
-      </P>
+        (<Span>{"Próximamente"}</Span>)
+        </div>
+      </A>
       <Line />
-      <P>
+      <A>
+        <div>
         {translation.ServiceMenu.examples}.
-      </P>
+        (<Span>{"Próximamente"}</Span>)
+        </div>
+      </A>
 
       <Line />
 
-      <P>
+      <A>
+        <div>
         {translation.ServiceMenu.demostration}.
-      </P>
+        (<Span>{"Próximamente"}</Span>)
+        </div>
+      </A>
       <Line />
     </Info>
   );
