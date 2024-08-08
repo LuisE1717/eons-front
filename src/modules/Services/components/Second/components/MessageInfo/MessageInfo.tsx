@@ -12,7 +12,7 @@ import Cost2 from "../../../../shared/components/Cost/Cost2";
 import Free from "../../../../shared/components/Free/Free";
 
 export function validateService (cost:number,navigate:string) {
-  toast.warning('Este Servicio será lanzado en los próximos días')
+  toast.warning('Este Servicio estará disponible en los próximos días.')
   const essence = Cookies.get('eons_essence')
   // if(essence && parseInt(essence)>=cost){
   //   //window.location.href = navigate

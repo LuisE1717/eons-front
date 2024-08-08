@@ -23,7 +23,7 @@ export default function Inf() {
           </p>
 
           <Button
-          onClick={() => toast.warning("Este servicio estará disponible próximamente")}
+          onClick={() => toast.warning("Este servicio estará disponible en los próximos días.")}
            loading={false} full={false}>
             <div>
             {translation.ServiceMenu.general_evaluation}. 

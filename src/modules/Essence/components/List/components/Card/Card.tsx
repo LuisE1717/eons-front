@@ -16,7 +16,7 @@ export default function Card({ essence, handleClick }: Props) {
         <Fire />
       </figure>
 
-      <h2 className="font-semibold text-base mb-0.5">{essence.descripcion}</h2>
+      <h2 className="font-semibold text-base mb-0.5">{essence.descripcion}.</h2>
 
       <span className="text-sm text-gray-400">
         {`${essence.precio}€`}{" "}
