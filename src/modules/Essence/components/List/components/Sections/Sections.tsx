@@ -12,21 +12,21 @@ export default function Sections({ handleChange, selected }: Props) {
       <SectionButton
         handleClick={() => handleChange(SECTION.TRANSFER)}
         selected={selected === SECTION.TRANSFER}
-        text="Transferir Esencia"
+        text="Transferir Esencia."
         disabled={false}
       />
 
       <SectionButton
         handleClick={() => handleChange(SECTION.DONATION)}
         selected={selected === SECTION.DONATION}
-        text="Realizar donación"
+        text="Realizar donación."
         disabled={true}
       />
 
       <SectionButton
         handleClick={() => handleChange(SECTION.PAY)}
         selected={selected === SECTION.PAY}
-        text="Pagar deuda a la Raíz del Sistema"
+        text="Pagar deuda a la Raíz del Sistema."
         disabled={true}
       />
     </div>
