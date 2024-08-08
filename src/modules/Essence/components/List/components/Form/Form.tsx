@@ -38,7 +38,7 @@ export default function Form({ handleClose }: Props) {
         await transferEssence(Cookies.get("eons_token") || "", datah)
           .then(() => {
             toast.success(
-              `Se transferido ${form.count} esencias a ${form.user} exitosamente`
+              `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
             );
           })
           .catch(({response}) => {

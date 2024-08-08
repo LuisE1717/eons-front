@@ -30,7 +30,7 @@ export default function Item({ n }: Props) {
     >
       <div className="flex items-start gap-x-2.5">
         <i className="" style={{ paddingTop: "2.5px" }}>
-          { n.tipo == "essence" ?
+          { n.tipo == "essence" || "transferencia" ?
             <Fire />
             :
             n.tipo == "validAcount"?
