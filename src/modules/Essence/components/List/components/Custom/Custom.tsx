@@ -48,7 +48,7 @@ export default function Custom({price,findCost,handleCustomPayment}:Props) {
           <p className="text-gray-400 whitespace-nowrap">{`$${price?.costo}`}</p>
 
           {price?.descuento > 0 &&
-            <span className=" text-green-400 whitespace-nowrap">{`-$${price?.descuento}`}</span>
+            <span className=" text-green-400 whitespace-nowrap">{`-%${price?.descuento}`}</span>
           }
         </div>
         }

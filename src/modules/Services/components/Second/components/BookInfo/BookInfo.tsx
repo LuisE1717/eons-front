@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";
 import A from "../../../../shared/components/A/A";
 import Blink from "../../../../shared/components/Blink/Blink";
@@ -7,59 +8,56 @@ import Info from "../../shared/components/Info/Info";
 
 export default function BookInfo({first_time}) {
   const { translation } = useTranslation();
+  
+  const validateInfo = () =>{
+    toast.warning("La Sección Informacional estará disponible en los próximos días.")
+  }
 
   return (
     <Info>
       <Line />
       {first_time?
       <Blink>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.use_instruction}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </Blink>
       :
       <A>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.use_instruction}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
       }
       <Line />
       <A>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.thinks_to_know}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
       <A>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.cautions}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
       <Line />
       <A>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.security}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
       <Line />
       <A>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.examples}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
 
       <Line />
 
       <A>
-        <div>
+        <div onClick={validateInfo}>
         {translation.ServiceMenu.demostration}.
-        (<Span>{"Próximamente"}</Span>)
         </div>
       </A>
       <Line />
