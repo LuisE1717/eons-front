@@ -5,6 +5,7 @@ import { SECTION } from "./domain";
 import Form from "./components/Form/Form";
 import HeaderImage from "./components/HeaderImage/HeaderImage";
 import Sections from "./components/Sections/Sections";
+import Tropipay from "./components/Tropipay/Tropipay";
 
 export default function List() {
   const {
@@ -39,6 +40,9 @@ export default function List() {
               handleCustomPayment={handleCustomPayment}
               findCost={findCost}
             />
+
+            <Tropipay/>
+
           </section>
 
           <HeaderImage />
