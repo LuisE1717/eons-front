@@ -81,6 +81,7 @@ export default function Second({ first_time }) {
           className={CLASS}
         >
           {selected === null && <Empty />}
+          {selected === SECTIONS.FIRST_TIME && <FirstTime setSelected={setSelected}/>}
           {selected === SECTIONS.BOOK && <BookInfo first_time={first_time} />}
           {selected === SECTIONS.MESSAGES && <MessageInfo />}
           {selected === SECTIONS.USER && <UserInfo />}
