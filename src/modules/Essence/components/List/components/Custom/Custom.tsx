@@ -38,13 +38,13 @@ export default function Custom({price,findCost,handleCustomPayment,loading}:Prop
 
       <section className="flex items-center gap-x-7">
         <input
-          disabled={loading}
+          //disabled={loading}
           type="text"
           className="py-1 outline-none border-b-2 focus:border-b-primary border-gray-300 w-full max-w-[100px] text-sm focus:border-gray-400"
           value={count}
           min={1}
           max={1000000}
-          onChange={(e) => handleChange(Number(e.target.value))}
+          onChange={(e) => !loading?handleChange(Number(e.target.value)):''}
         />
 
         {price && !loading ?
