@@ -18,6 +18,7 @@ export default function List() {
     findCost,
     handleCustomPayment,
     handleClose,
+    loading
   } = useList();
 
   return (
@@ -36,6 +37,7 @@ export default function List() {
             </div>
 
             <Custom
+              loading={loading}
               price={price}
               handleCustomPayment={handleCustomPayment}
               findCost={findCost}
