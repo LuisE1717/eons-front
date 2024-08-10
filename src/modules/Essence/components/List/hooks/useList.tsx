@@ -29,6 +29,7 @@ export default function useList() {
       const packs = await getPackages();
       console.log(packs);
       setList(packs.data);
+      setloading(false)
     } catch (error) {
       toast.error(translation.fecth_error);
       setloading(false);
@@ -68,6 +69,7 @@ export default function useList() {
     try {
       const token = Cookies.get("eons_token") || "";
       const pay = await startPayment(token, id);
+      setloading(false);
       console.log(pay);
       window.open(pay.data.shortUrl, "_blank");
     } catch (error) {
@@ -77,7 +79,7 @@ export default function useList() {
   }
 
   async function handleCustomPayment() {
-    if (price) {
+    if (price && !loading) {
       if(price.costo > 1){
         setloading(true);
         try {
@@ -86,6 +88,7 @@ export default function useList() {
             esencia: price?.esencia,
             precio: price?.costo,
           };
+          setloading(false);
           const pay = await startCustomPayment(token, datah);
           console.log(pay);
           window.open(pay.data.shortUrl, "_blank");
@@ -107,6 +110,7 @@ export default function useList() {
       if (response.data) {
         setPrice(response.data);
       }
+      setloading(false)
     } catch (error) {
       toast.error(translation.fecth_error);
       setloading(false);
@@ -123,5 +127,6 @@ export default function useList() {
     findCost,
     handleCustomPayment,
     handleClose,
+    loading
   };
 }

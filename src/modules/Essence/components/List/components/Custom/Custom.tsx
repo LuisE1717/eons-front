@@ -1,14 +1,16 @@
 import { useMemo, useState } from "react";
 import Button from "./components/Button/Button";
 import type { Price } from "../../domain";
+import Loading from "../../../../../../components/UI/Button/components/Loading/Loading";
 
 interface Props {
   price:Price|null;
   findCost: (esencia:number) => void;
   handleCustomPayment: (data) => void;
+  loading:boolean;
 }
 
-export default function Custom({price,findCost,handleCustomPayment}:Props) {
+export default function Custom({price,findCost,handleCustomPayment,loading}:Props) {
   const [count, setCount] = useState(0);
 
   // const price = useMemo(() => {
@@ -36,14 +38,16 @@ export default function Custom({price,findCost,handleCustomPayment}:Props) {
 
       <section className="flex items-center gap-x-7">
         <input
+          disabled={loading}
           type="text"
           className="py-1 outline-none border-b-2 focus:border-b-primary border-gray-300 w-full max-w-[100px] text-sm focus:border-gray-400"
           value={count}
           min={1}
+          max={1000000}
           onChange={(e) => handleChange(Number(e.target.value))}
         />
 
-        {price &&
+        {price && !loading ?
         <div className="flex flex-col text-sm">
           <p className="text-gray-400 whitespace-nowrap">{`$${price?.costo}`}</p>
 
@@ -51,9 +55,13 @@ export default function Custom({price,findCost,handleCustomPayment}:Props) {
             <span className=" text-green-400 whitespace-nowrap">{`-%${price?.descuento}`}</span>
           }
         </div>
+        : price && loading ?
+        <Loading/>
+        :
+        <></>
         }
 
-        <Button handleCustomPayment={handleCustomPayment} />
+        <Button loading={loading} handleCustomPayment={handleCustomPayment} />
       </section>
     </article>
   );
