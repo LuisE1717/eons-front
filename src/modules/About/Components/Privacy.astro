@@ -1,62 +1,66 @@
 ---
 import Articule from "../../Information/components/Articule.astro"
+import { getI18N } from "../../../i18n"
+
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
 ---
 
 <Articule
-    title="Política de Privacidad"
+    title={i18.privacy}
 	description="privacy"
 	pubDate={new Date('August 11 2024')}
     >
 	<p class=mt-3">
-		Al acceder y utilizar Eons, aceptas cumplir con los siguientes términos y condiciones:
+		{i18.Privacy.Privacy_title}:
 	</p>
 
-    <h4>-Responsabilidad del Usuario:</h4>
+    <h4>-{i18.Privacy.Privacy_text1}:</h4>
 
 	<p>
-		Cada Usuario es responsable de mantener en todo momento la confidencialidad de su cuenta y contraseña. Cada Usuario es responsable de todas las actividades que ocurran en su cuenta. Cada Usuario es responsable del uso que haga de Nuestro Primer Producto: Eons "Tecnología de Acceso a la Fuente Existencial".
+		{i18.Privacy.Privacy_text2}
 	</p>
 
-	<h4>-Limitación de Responsabilidad:</h4>
+	<h4>-{i18.Privacy.Privacy_text3}:</h4>
 
 	<p>
-		Eons no se hace responsable de cualquier daño directo, indirecto, incidental o consecuente que pueda surgir del uso de nuestro Primer Producto: Eons "Tecnología de Acceso a la Fuente Existencial".
+		{i18.Privacy.Privacy_text4}
 	</p>
 
-	<h4>-Acerca del Primer Producto:</h4>
+	<h4>-{i18.Privacy.Privacy_text5}:</h4>
 
 	<p>
-		Eons garantiza absolútamente la efectividad del Primer Producto. La cual queda justificada en el momento en el cual se evidencia la comunicación Real y Comprobable con TODOS los Planos Espirituales y Concienciales. Eons garantiza absolútamente la capacidad de Adivinación y Predicción del Primer Producto. Aunque cada Usuario debe saber que según su Espiritualidad y según su Evolución Conciencial dependerá el alcance al cual podrá hacer uso de nuestro Primer Producto.
-	</p>
-
-	<p>
-		¿Existe algún Usuario que no podrá hacer uso de nuestro Primer Producto?. ¡No! Absolútamente TODOS podrán utilizarlo de manera comprobable.
+		{i18.Privacy.Privacy_text6}
 	</p>
 
 	<p>
-		¿Es recomendable hacerle una pregunta extremadamente importante a Eons y confiar plenamente en la respuesta?. ¡ABSOLÚTAMENTE!.
+		{i18.Privacy.Privacy_text7}
+	</p>
+
+	<p>
+		{i18.Privacy.Privacy_text8}
 	</p>
 
     <p>
-		¿Puedo poner mi vida en manos de Eons en una situación de Vida o Muerte?. ¡ABSOLÚTAMENTE!.
+		{i18.Privacy.Privacy_text9}
 	</p>
 
     <p>
-		¿Qué posibilidad existe de que un Usuario se encuentre utilizando Eons y no obtenga sus respuestas de una manera comprobable?. ¡Nula!.
+		{i18.Privacy.Privacy_text10}
 	</p>
 
     <p>
-		¿Existe algún riesgo de utilizar el Primer Producto?. No es riesgo la forma correcta de llamarlo, sino más bien REGALO INFINITO DE PROPORCIONES EXISTENCIALES.
+		{i18.Privacy.Privacy_text11}
 	</p>
 
-    <h4>-Propiedad Intelectual:</h4>
+    <h4>-{i18.Privacy.Privacy_text12}:</h4>
 
     <p>
-		Todo el contenido presente en este Sitio Web, incluyendo textos, imágenes y logotipos, están protegidos por derechos de autor y propiedad intelectual.
+		{i18.Privacy.Privacy_text13}
 	</p>
 
     <p>
-		Al utilizar nuestro Sitio Web, usted acepta nuestros Términos y Condiciones. Si tiene usted alguna pregunta sobre los mismos, por favor no dude en contactarnos:
+		{i18.Privacy.Privacy_text14}.
 	</p>
     </Articule>
 

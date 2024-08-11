@@ -1,57 +1,61 @@
 ---
 import Articule from "../../Information/components/Articule.astro"
 import ImageSection from "../../Landing/shared/components/ImageSection/ImageSection"
+import { getI18N } from "../../../i18n"
+
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
 ---
 
 <Articule
-    title="Términos y Condiciones"
+    title={i18.therms}
 	description="terms"
 	pubDate={new Date('August 11 2024')}
     >
 
 	<p class=mt-3">
-		Para Eons, la privacidad y la seguridad de la información es prioridad Existencial, por lo que nos comprometemos infinitamente a proteger los datos personales en todo momento.
+		{i18.Therms.Therms_title}
 	</p>
 
 	<p>
-		A continuación explicamos como recopilamos, utilizamos y protegemos la información que nos proporcionan los Usuarios al utilizar nuestro sitio:
+		{i18.Therms.Therms_text1}:
 	</p>
 
-    <h4>-Recopilación de Datos:</h4>
+    <h4>-{i18.Therms.Therms_text2}:</h4>
 
 	<p>
-		En Eons recopilamos información personal como correo electrónico, cuenta de Google o cuenta de Microsoft. Esto lo hacemos cuando te registras en nuestro Sitio. También, a la hora de realizar una compra, podemos recopilar otros datos necesarios imprescindibles para la realización de la misma.
+		{i18.Therms.Therms_text3}
 	</p>
 
-	<h4>-Uso de la Información:</h4>
+	<h4>-{i18.Therms.Therms_text4}:</h4>
 
 	<p>
-		Utilizamos los datos personales del registro para definir un espacio personal hermético al cual solo el Usuario podrá acceder. Utilizamos los datos personales necesarios a la hora de realizar una compra únicamente para la realización de la misma.
+		{i18.Therms.Therms_text5}
 	</p>
 
-	<h4>-Protección de Datos:</h4>
+	<h4>-{i18.Therms.Therms_text6}:</h4>
 
 	<p>
-		Implementamos medidas de seguridad avanzadas y Encriptado para proteger sus datos personales y garantizar su confidencialidad en todo momento.
+		{i18.Therms.Therms_text7}
 	</p>
 
-	<h4>-Derechos de Privacidad: </h4>
+	<h4>-{i18.Therms.Therms_text8}:</h4>
 
 	<p>
-		Usted tiene derecho a acceder, corregir o eliminar sus datos personales en cualquier momento.
+		{i18.Therms.Therms_text9}
 	</p>
 
 	<p>
-		Al utilizar nuestro Sitio, usted acepta nuestra Política de Privacidad. Si tiene alguna pregunta o inquietud sobre como manejamos sus datos, no dude en contactarnos.
+		{i18.Therms.Therms_text10}
 	</p>
 
-	<h5>-Soporte Técnico:</h5>
+	<h5>-{i18.Therms.Therms_text11}:</h5>
     <a href="mailto:eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
 
-    <h5>-Atención al Cliente:</h5>
+    <h5>-{i18.Therms.Therms_text12}:</h5>
     <a href="mailto:eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
 
-    <h5>-Asuntos de Negocios:</h5>
+    <h5>-{i18.Therms.Therms_text13}:</h5>
     <a href="mailto:eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
 
     </Articule>

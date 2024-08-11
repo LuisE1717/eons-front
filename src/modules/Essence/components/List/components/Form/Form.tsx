@@ -44,13 +44,13 @@ export default function Form({ handleClose }: Props) {
           .catch(({response}) => {
             console.log(response)
             if(response?.data?.message == "Insufficient essence"){
-              toast.error("Esencia Insuficiente.");
+              toast.error(translation.Esence.insuficent_error);
             }
             else if(response?.data?.message == "Receiver not found"){
-              toast.error("El usuario beneficiado no existe.");
+              toast.error(translation.Esence.not_found);
             }
             else if(response?.data?.message == "amount must not be less than 1"){
-              toast.error("Solo puede transferir a partir de 1 esencia.");
+              toast.error(translation.Esence.at_least_error);
             }
             else{
               toast.error(translation.fecth_error);
@@ -98,18 +98,18 @@ export default function Form({ handleClose }: Props) {
       </section>
 
       <form className="flex flex-col w-full gap-y-8" onSubmit={handleSubmit}>
-        <Section label="Usuario a transferir">
+        <Section label={translation.Esence.user_transfer}>
           <input
             type="text"
             disabled={loading}
             value={form.user}
-            placeholder="Correo del usuario"
+            placeholder={translation.Esence.user_transfer_holder}
             onChange={(e) => handleChangeUser(e.target.value)}
             className="outline-none w-full border-b-2 border-gray-300 pb-1.5 focus:border-primary transition-all duration-200"
           />
         </Section>
 
-        <Section label="Cantidad a transferir">
+        <Section label={translation.Esence.cant_transfer}>
           <input
             disabled={loading}
             type="text"
@@ -127,7 +127,7 @@ export default function Form({ handleClose }: Props) {
           full={true}
           size="base"
         >
-          Transferir
+          {translation.Esence.transfer}
         </Button>
       </form>
     </div>

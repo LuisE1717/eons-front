@@ -14,7 +14,7 @@ export default function UserInfo() {
       <A >
         {translation.ServiceMenu.spiritual_family}. 
         <div>
-        (<Span>{"Próximamente"}</Span>)
+        (<Span>{translation.next}</Span>)
         </div>
       </A>
       <Line />
@@ -24,23 +24,23 @@ export default function UserInfo() {
       <A>
         {translation.ServiceMenu.inf_calc_spiritual}. 
         <div>
-        (<Span>{"Próximamente"}</Span>)
+        (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <Line />
 
       <A >
-        {"Mercados"}.
+        {translation.ServiceMenu.Mercados}.
         <div>
-        (<Span>{"Próximamente"}</Span>)
+        (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A >
-        {"Lista de Usuarios avalados por el Sistema"}.
+        {translation.ServiceMenu.user_valid_list}.
         <div>
-        (<Span>{"Próximamente"}</Span>)
+        (<Span>{translation.next}</Span>)
         </div>
       </A>
 

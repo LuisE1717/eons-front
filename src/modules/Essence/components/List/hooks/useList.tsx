@@ -71,7 +71,8 @@ export default function useList() {
       const pay = await startPayment(token, id);
       setloading(false);
       console.log(pay);
-      window.open(pay.data.shortUrl, "_blank");
+      //window.open(pay.data.shortUrl, "_blank");
+      location.href = pay.data.shortUrl
     } catch ({response}) {
       if(response?.data?.message == "limit exceded")
       toast.error("Actualmente su compra no puede ser procesada, contacte a soporte técnico");

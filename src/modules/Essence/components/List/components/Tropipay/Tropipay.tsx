@@ -1,6 +1,8 @@
 import React from 'react'
+import useTranslation from '../../../../../Shared/hooks/useTranslation'
 
 const Tropipay = () => {
+  const {translation} = useTranslation()
   return (
     <article className="mt-10 sm:gap-x-10 sm:px-20 gap-y-2 cursor-pointer rounded-lg flex md:flex-row flex-col items-center justify-between">
       
@@ -10,7 +12,7 @@ const Tropipay = () => {
       </section>
 
       <h1 className="text-base mb-0 font-semibold">
-        {"Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay"}.
+        {translation.Esence.tropipay_text}
       </h1>
     </article>
   )

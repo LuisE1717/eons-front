@@ -30,9 +30,9 @@ export default function MessageInfo() {
     <Info>
       <Line />
       <A>
-      {"Dialogar con la Raíz del Sistema"}.
+      {translation.ServiceMenu.system_dialog}.
       <div>
-      (<Span>{"Próximamente"}</Span>)
+      (<Span>{translation.next}</Span>)
       </div>
       </A>
       <Line />
@@ -45,7 +45,7 @@ export default function MessageInfo() {
       <A>
         {translation.ServiceMenu.spirit_calc}. 
         <div>
-        (<Span>{"Próximamente"}</Span>)
+        (<Span>{translation.next}</Span>)
         </div>
       </A>
 
@@ -75,7 +75,7 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {translation.ServiceMenu.adivination_general}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.adivination_general}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
@@ -83,43 +83,43 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {translation.ServiceMenu.concient_evaluation}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.concient_evaluation}. (<Span>{translation.next}</Span>)
         </div>
       </A>
       <A>
         <div>
-        {translation.ServiceMenu.fact_evaluation}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.fact_evaluation}. (<Span>{translation.next}</Span>)
         </div>
       </A>
       <Line />
 
       <A>
         <div>
-        {"Revelar consejo exacto"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_consejo_exacto}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar tiempo"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_tiempo}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar porcentaje"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_porcentaje}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar una letra"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_una_letra}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar un dígito decimal"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_un_dígito_decimal}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
@@ -127,13 +127,13 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {"Conocer si algo me conviene y porqué"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Conocer_conviene}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Conocer cuando algo sucederá y porqué"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Conocer_sucederá}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 

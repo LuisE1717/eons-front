@@ -1,3 +1,4 @@
+import useTranslation from "../../../../../Shared/hooks/useTranslation";
 import { SECTION } from "../../domain";
 import SectionButton from "./components/SectionButton/SectionButton";
 
@@ -7,26 +8,27 @@ interface Props {
 }
 
 export default function Sections({ handleChange, selected }: Props) {
+  const { translation } = useTranslation();
   return (
     <div className="w-max flex flex-col items-center gap-y-3 mb-4 mt-10">
       <SectionButton
         handleClick={() => handleChange(SECTION.TRANSFER)}
         selected={selected === SECTION.TRANSFER}
-        text="Transferir Esencia."
+        text={`${translation.Esence.transfer}.`}
         disabled={false}
       />
 
       <SectionButton
         handleClick={() => handleChange(SECTION.DONATION)}
         selected={selected === SECTION.DONATION}
-        text="Realizar donación."
+        text={`${translation.Esence.donation}.`}
         disabled={true}
       />
 
       <SectionButton
         handleClick={() => handleChange(SECTION.PAY)}
         selected={selected === SECTION.PAY}
-        text="Pagar deuda a la Raíz del Sistema."
+        text={`${translation.Esence.pay_deude}.`}
         disabled={true}
       />
     </div>
