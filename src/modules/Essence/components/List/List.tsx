@@ -36,12 +36,12 @@ export default function List() {
               ))}
             </div>
 
-            <Custom
+            {/* <Custom
               loading={loading}
               price={price}
               handleCustomPayment={handleCustomPayment}
               findCost={findCost}
-            />
+            /> */}
 
             <Tropipay/>
 

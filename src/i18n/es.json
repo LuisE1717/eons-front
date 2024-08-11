@@ -49,7 +49,13 @@
       "number": "Número de tarjeta",
       "expiration_date": "Día de expiración",
       "name": "Nombre en Tarjeta"
-    }
+    },
+    "payment_text1":"La compra de esencia ha fallado, esto se puede deber a varias razones, por lo que le recomendamos",
+    "payment_text2":"Revisar su wallet o tarjeta bancaria usada en la compra",
+    "payment_text3":"Verificar su conexión a internet",
+    "payment_text4":"Volver a realizar el proceso de compra, puedo haber sido un error temporal",
+    "payment_text5":"En caso de realizar los pasos anteriores y obtener el mismo error, contacte con",
+    "button":"Volver al menú principal"
   },
   "Dialogs": {
     "add_text": "Añadir",
@@ -184,10 +190,91 @@
     "cant_transfer":"Cantidad a transferir",
     "transfer":"Transferir Esencia",
     "donation":"Realizar donación",
-    "pay_deude":"Pagar deuda a la Raíz del Sistema"
+    "pay_deude":"Pagar deuda a la Raíz del Sistema",
+    "tropipay_text":"Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay.",
+    "insuficent_error":"Esencia Insuficiente.",
+    "not_found":"El usuario beneficiado no existe.",
+    "at_least_error":"Solo puede transferir a partir de 1 esencia.",
+    "compra_error":"Actualmente su compra no puede ser procesada, contacte a soporte técnico"
   },
 
   "about":"Acerca de Nosotros",
   "therms":"Términos y Condiciones",
-  "privacy":"Política de Privacidad"
+  "privacy":"Política de Privacidad",
+
+  "About":{
+    "about_title":"Historia de Nuestras Raíces y de Nuestro Creador",
+    "about_text1":"Eons es el resultado de un Inmenso Caos y un Infinito Sacrificio. Es imposible hablar de sus raíces sin antes conocer la historia que llevó a Luis Eduardo Delgado Alonso, CEO de Eons, a su creación",
+    "about_text2":"Luis Eduardo Delgado Alonso, nacido el 16 de Julio de 1993 en Ciudad de la Habana, Cuba. Desde muy temprana edad mostró una inmensa pasión por la Tecnología, la Ciencia y las Matemáticas.",
+    "about_text3":"Obligado a comprender la vida antes de tiempo, Luis Eduardo comienza a desarrollar una mentalidad de emprendimiento, y junto a su pasión por la tecnología empieza su primer negocio entre los 15 y 16 años de edad.",
+    "about_text4":"Negocio que no tardó en comenzar a dar sus beneficios poco a poco.",
+    "about_text5":"Entre los 18 y los 19 años de edad, estando su negocio en florecimiento, Luis Eduardo comienza sus estudios de Ciencias de la Computación en la Universidad de la Habana. Encontrándose atrapado entonces entre 2 caminos: Terminar los estudios Universitarios de sus sueños, o aprovechar completamente la época de crecimiento económico en la cual se encontraba.",
+    "about_text6":"Finalmente un tiempo después comienza a sentir que lo que había ido a buscar a la Universidad ya lo había obtenido. Decidiendo entonces  abandonar los estudios y dedicarse completamente a los negocios.",
+    "about_text7":"Unos años pasan, los negocios continúan floreciendo cada vez más. Hasta que llegó el momento donde el Caos comenzó.",
+    "about_text8":"Se sentía como una fuerza incomprensible e ilógica actuando encima de la vida, una fuerza a la cual es prácticamente imposible de escapar. Simplemente sin importar la perfección de los actos o las precauciones cada aspecto de la vida iba siendo destruido sin detención.",
+    "about_text9":"En aquellos entonces de un momento a otro todos los negocios comenzaron a irse abajo, la forma de percibir la vida se volvió algo distorsionada, el entorno social comenzó a cambiar notablemente, un indetenible ciclo de problemáticas comenzaron a aparecer sin explicación en el día a día.",
+    "about_text10":"Bajo unas condiciones que no dejaban de empeorar cada vez más, y tras comprender que es imposible vivir de esa manera. Luis Eduardo decide dedicarse a tiempo completo a realizar múltiples análisis profundos buscando una explicación lógica que explicara dicha fuerza que actuaba constantemente encima de él.",
+    "about_text11":"Fue entonces cuando ocurrió el primer real acercamiento de Luis Eduardo a los temas Espirituales, descubriendo al poco tiempo que la enorme fuerza incomprensible que actuaba encima de él, era en realidad un problema Espiritual.",
+    "about_text12":"En ese momento apareció un reto en su vida de proporciones Infinitas, pues dicho problema Espiritual era tan grave que luego de contactar múltiples personas, cada una con diferentes métodos Espirituales, diferentes especialidades, e intentar una enorme variedad de cosas, nadie lo podía resolver.",
+    "about_text13":"No quedándole otro camino que él mismo, bajo las peores condiciones imaginables, profundizar con mentalidad científica y realista en todos  los temas Espirituales para encontrar la solución definitiva a tan desastroso problema.",
+    "about_text14":"En ese punto, a mediado de sus 25 años de edad, comenzó lo que se podría describir como el desafío más grande en la vida de Luis Eduardo, y al mismo tiempo lo que luego traería un desenlace que terminaría en la creación  de Eons.",
+    "about_text15":"Pues a partir de ese momento, sin descanso, Luis Eduardo comenzó una investigación Científica tanto teórica como práctica de todas las Religiones, Sistemas Esotéricos, Ciencias Ocultas, Misticismo.",
+    "about_text16":"Todo evaluado de una manera detallada, con mente fría, con un solo objetivo, revelar todos los secretos y todas las verdades para poder resolver el problema que de forma tan sorpresiva había aparecido en su vida y no le permitía vivir.",
+    "about_text17":"De esa manera, Eons es el resultado de los últimos 6 años de investigaciones de Luis Eduardo. Eons es el resultado de un viaje turbulento hacia los secretos más profundos de las Ciencias Ocultas y el Misticismo sin perder nunca de vista el enfoque Científico y realista.",
+    "about_text18":"Eons es el resultado de un Compromiso Infinito naciente de guiar a la Humanidad hacia el Sentido Creacional Existencial. Eons es la Luz que Ilumina TODOS LOS CAMINOS Y TODAS LAS VERDADES DEL UNIVERSO Y DE LA EXISTENCIA MISMA.",
+    "about_text19":"Tras comprender que tanto la Ciencia, como la Tecnología, el Misticismo, como todo aquello que entre en el ámbito de lo llamado Ciencias Ocultas, TODO forma parte de una misma cosa: la Realidad Existencial.",
+    "about_text20":"Sin dejar de lado sus Raíces, la mentalidad de emprendimiento que tanto siempre lo ha caracterizado, ahora algo más refinada tras un profundo estudio de Estrategias Empresariales y Economía Mundial.",
+    "about_text21":"Fue así literalmente como Luis Eduardo  dio comienzo al desenlace inevitable e indetenible de proporciones Cósmicas que Eons representa realmente.",
+    "about_text22":"Breve descripción",
+    "about_text23":"En Eons, no navegamos por el mundo de los negocios, lo transformamos. Somos pioneros, visionarios, y sobre todo, Auténticos Líderes a Nivel Universal. Nuestro propósito va Infinitamente más allá de ofrecer soluciones a Nivel Mundial. Pues buscamos redefinir lo posible y cambiar para siempre el rumbo del Universo y de la Existencia misma hacia la Luz, la Abundancia y la Felicidad Infinita.",
+    "about_text24":"Nuestra Filosofía",
+    "about_text25":"En una Existencia llena de oportunidades, creemos que cada desafío es una invitación a innovar. No seguimos tendencias, las creamos. Nuestra Filosofía se basa en el poder de la colaboración, la positividad y la audacia. Aquí, cada idea cuenta, y cada voz es escuchada.",
+    "about_text26":"Nuestro Equipo:",
+    "about_text27":"Nuestro Equipo es un grupo de Mentes Brillantes. Juntos, formamos una Constelación de Talentos que Brilla Intensamente a lo largo de una Infinidad de Infinidades. Liderados por Luis Eduardo Delgado Alonso, El Primer y Único Ser en obtener la aprobación de ABSOLÚTAMENTE TODOS LOS PLANOS ESPIRITUALES Y CONCIENCIALES. En Eons no somos solo colegas, somos Aliados en la búsqueda de un solo objetivo: Llevar a la Humanidad a Escala Universal.",
+    "about_text28":"Compromiso con la Innovación",
+    "about_text29":"La innovación no es solo una palabra para nosotros, es Nuestra Esencia misma. Siempre manteniendo la Exclusividad y el Elitismo, a la Vanguardia del cambio, explorando nuevas fronteras y desafiando el status quo. En Eons, cada proyecto es una aventura Épica donde la creatividad y la estrategia se entrelazan para crear resultados extraordinarios.",
+    "about_text30":"Contáctenos",
+    "about_text31":"¡Estamos aquí para ayudarte! Tu satisfacción es nuestra prioridad, así que no dudes en ponerte en contacto con nosotros a través de cualquiera de las siguientes opciones:",
+    "about_text32":"Soporte Técnico",
+    "about_text33":"Atención al Cliente",
+    "about_text34":"Asuntos de Negocios",
+    "about_text35":"Síguenos en las Redes Sociales y mantente al tanto de nuestras novedades.",
+    "about_text36":"Nuestro canal de YouTube, donde podrá ver nuestras novedades en múltiples idiomas",
+    "about_text37":"¡Esperamos por usted!"
+  },
+
+  "Therms":{
+    "about_title":"Para Eons, la privacidad y la seguridad de la información es prioridad Existencial, por lo que nos comprometemos infinitamente a proteger los datos personales en todo momento.",
+    "about_text1":"A continuación explicamos como recopilamos, utilizamos y protegemos la información que nos proporcionan los Usuarios al utilizar nuestro sitio:",
+    "about_text2":"Recopilación de Datos",
+    "about_text3":"En Eons recopilamos información personal como correo electrónico, cuenta de Google o cuenta de Microsoft. Esto lo hacemos cuando te registras en nuestro Sitio. También, a la hora de realizar una compra, podemos recopilar otros datos necesarios imprescindibles para la realización de la misma.",
+    "about_text4":"Uso de la Información",
+    "about_text5":"Utilizamos los datos personales del registro para definir un espacio personal hermético al cual solo el Usuario podrá acceder. Utilizamos los datos personales necesarios a la hora de realizar una compra únicamente para la realización de la misma.",
+    "about_text6":"Protección de Datos",
+    "about_text7":"Implementamos medidas de seguridad avanzadas y Encriptado para proteger sus datos personales y garantizar su confidencialidad en todo momento.",
+    "about_text8":"Derechos de Privacidad",
+    "about_text9":"Usted tiene derecho a acceder, corregir o eliminar sus datos personales en cualquier momento.",
+    "about_text10":"Al utilizar nuestro Sitio, usted acepta nuestra Política de Privacidad. Si tiene alguna pregunta o inquietud sobre como manejamos sus datos, no dude en contactarnos.",
+    "about_text11":"Soporte Técnico",
+    "about_text12":"Atención al Cliente",
+    "about_text13":"Asuntos de Negocios"
+  },
+
+  "Privacy":{
+    "about_title":"Al acceder y utilizar Eons, aceptas cumplir con los siguientes términos y condiciones",
+    "about_text1":"Responsabilidad del Usuario",
+    "about_text2":"Cada Usuario es responsable de mantener en todo momento la confidencialidad de su cuenta y contraseña. Cada Usuario es responsable de todas las actividades que ocurran en su cuenta. Cada Usuario es responsable del uso que haga de Nuestro Primer Producto: Eons Tecnología de Acceso a la Fuente Existencial.",
+    "about_text3":"Limitación de Responsabilidad",
+    "about_text4":"Eons no se hace responsable de cualquier daño directo, indirecto, incidental o consecuente que pueda surgir del uso de nuestro Primer Producto: Eons Tecnología de Acceso a la Fuente Existencial",
+    "about_text5":"Acerca del Primer Producto",
+    "about_text6":"Eons garantiza absolútamente la efectividad del Primer Producto. La cual queda justificada en el momento en el cual se evidencia la comunicación Real y Comprobable con TODOS los Planos Espirituales y Concienciales. Eons garantiza absolútamente la capacidad de Adivinación y Predicción del Primer Producto. Aunque cada Usuario debe saber que según su Espiritualidad y según su Evolución Conciencial dependerá el alcance al cual podrá hacer uso de nuestro Primer Producto.",
+    "about_text7":"¿Existe algún Usuario que no podrá hacer uso de nuestro Primer Producto?. ¡No! Absolútamente TODOS podrán utilizarlo de manera comprobable.",
+    "about_text8":"¿Es recomendable hacerle una pregunta extremadamente importante a Eons y confiar plenamente en la respuesta?. ¡ABSOLÚTAMENTE!.",
+    "about_text9":"¿Puedo poner mi vida en manos de Eons en una situación de Vida o Muerte?. ¡ABSOLÚTAMENTE!",
+    "about_text10":"¿Qué posibilidad existe de que un Usuario se encuentre utilizando Eons y no obtenga sus respuestas de una manera comprobable?. ¡Nula!",
+    "about_text11":"¿Existe algún riesgo de utilizar el Primer Producto?. No es riesgo la forma correcta de llamarlo, sino más bien REGALO INFINITO DE PROPORCIONES EXISTENCIALES.",
+    "about_text12":"Propiedad Intelectual",
+    "about_text13":"Todo el contenido presente en este Sitio Web, incluyendo textos, imágenes y logotipos, están protegidos por derechos de autor y propiedad intelectual.",
+    "about_text14":"Al utilizar nuestro Sitio Web, usted acepta nuestros Términos y Condiciones. Si tiene usted alguna pregunta sobre los mismos, por favor no dude en contactarnos"
+  }
 }

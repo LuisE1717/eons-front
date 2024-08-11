@@ -72,8 +72,13 @@ export default function useList() {
       setloading(false);
       console.log(pay);
       window.open(pay.data.shortUrl, "_blank");
-    } catch (error) {
-      toast.error(translation.fecth_error);
+    } catch ({response}) {
+      if(response?.data?.message == "limit exceded")
+      toast.error("Actualmente su compra no puede ser procesada, contacte a soporte técnico");
+      else{
+        toast.error(translation.fecth_error);
+      }
+        
       setloading(false);
     }
   }
@@ -92,9 +97,15 @@ export default function useList() {
           const pay = await startCustomPayment(token, datah);
           console.log(pay);
           window.open(pay.data.shortUrl, "_blank");
-        } catch (error) {
-          toast.error(translation.fecth_error);
-          setloading(false);
+        } catch ({response}) {
+          console.log(response)
+          if(response?.data?.message == "limit exceded")
+          toast.error("Actualmente su compra no puede ser procesada, contacte a soporte técnico");
+          else{
+            toast.error(translation.fecth_error);
+          }
+        
+      setloading(false);
         }
       }
       else{
