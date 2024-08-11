@@ -1,20 +1,22 @@
 ---
+import { getI18N } from "../../../i18n"
 import Articule from "../../Information/components/Articule.astro"
 import ImageSection from "../../Landing/shared/components/ImageSection/ImageSection"
+
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
+
 ---
 
 <Articule
-    title="Acerca de Nosotros"
+    title={i18.about}
 	description="about-us"
-	pubDate={new Date('August 10 2024')}
+	pubDate={new Date('August 11 2024')}
     >
 	<h4>Historia de Nuestras Raíces y de Nuestro Creador:</h4>
 
 	<ImageSection reverse={true} image="/pixelcut-export (7) webp.webp">
-	<p class="">
-		Eons es el resultado de un Inmenso Caos y un Infinito Sacrificio. 
-		Es imposible hablar de sus raíces sin antes conocer la historia que llevó a Luis Eduardo Delgado Alonso, 
-		CEO de Eons, a su creación:</p>
+	<p class=""></p>
 	</ImageSection>
 
 	<p class="mt-3">
@@ -132,13 +134,13 @@ import ImageSection from "../../Landing/shared/components/ImageSection/ImageSect
 	</p>
 
     <h5>-Soporte Técnico:</h5>
-    <a href="eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
+    <a href="mailto:eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
 
     <h5>-Atención al Cliente:</h5>
-    <a href="eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
+    <a href="mailto:eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
 
     <h5>-Asuntos de Negocios:</h5>
-    <a href="eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
+    <a href="mailto:eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
 
     <p class="mt-3">
 		Síguenos en las Redes Sociales y mantente al tanto de nuestras novedades.
@@ -150,10 +152,10 @@ import ImageSection from "../../Landing/shared/components/ImageSection/ImageSect
     <h5>-Instagram:</h5>
     <a href="eonss7070@gmail.com" target="_blank">eonss7070@gmail.com</a>
     
-    <p class="mt-3">
-		Nuestro canal de YouTube, donde podrá ver nuestras novedades en múltiples idiomas:
+    <h5 class="mt-3">
+		-Nuestro canal de YouTube, donde podrá ver nuestras novedades en múltiples idiomas:
         (Link)
-	</p>
+	</h5>
 
     <p>
 		¡Esperamos por usted!

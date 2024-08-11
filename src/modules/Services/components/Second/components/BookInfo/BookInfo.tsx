@@ -8,7 +8,7 @@ import Info from "../../shared/components/Info/Info";
 
 export default function BookInfo({first_time}) {
   const { translation } = useTranslation();
-  
+
   const validateInfo = () =>{
     toast.warning("La Sección Informacional estará disponible en los próximos días.")
   }
@@ -16,7 +16,7 @@ export default function BookInfo({first_time}) {
   return (
     <Info>
       <Line />
-      {first_time?
+      {/* {first_time?
       <Blink>
         <div onClick={validateInfo}>
         {translation.ServiceMenu.use_instruction}.
@@ -28,7 +28,12 @@ export default function BookInfo({first_time}) {
         {translation.ServiceMenu.use_instruction}.
         </div>
       </A>
-      }
+      } */}
+      <A>
+        <div onClick={validateInfo}>
+        {translation.ServiceMenu.use_instruction}.
+        </div>
+      </A>
       <Line />
       <A>
         <div onClick={validateInfo}>
