@@ -8,8 +8,8 @@ interface Props {
 
 export default function Card({ essence, handleClick }: Props) {
   return (
+    <div onClick={handleClick}>
     <article
-      onClick={handleClick}
       className="shadow-lg shadow-gray-300 rounded-3xl px-6 py-4 flex flex-col items-center"
     >
       <figure className="mb-2">
@@ -23,5 +23,6 @@ export default function Card({ essence, handleClick }: Props) {
         <span className="text-green-400">{essence.descuento > 0?`(-${essence.descuento}%)`:''}</span>
       </span>
     </article>
+    </div>
   );
 }
