@@ -5,6 +5,7 @@
   "notifications":"Notifications",
   "log_out":"Log Out",
   "next":"Coming Soon",
+  "verify":"Verificando Pago",
 
   "Errors":{
     "Auth":{
@@ -199,7 +200,7 @@
   "privacy": "Privacy Policy",
   "About": {
     "About_title": "History of Our Roots and Our Creator",
-    "About_text1": "Eons is the result of immense chaos and infinite sacrifice. It is impossible to talk about its roots without first knowing the story that led Luis Eduardo Delgado Alonso, CEO of Eons, to its creation.",
+    "About_text1": "Eons is the result of immense chaos and infinite sacrifice. It is impossible to talk about its roots without first knowing the story that led Luis Eduardo Delgado Alonso, CEO of Eons, to its creation",
     "About_text2": "Luis Eduardo Delgado Alonso, born on July 16, 1993, in Havana, Cuba. From an early age, he showed an immense passion for Technology, Science, and Mathematics.",
     "About_text3": "Forced to understand life ahead of time, Luis Eduardo began developing an entrepreneurial mindset, and along with his passion for technology, he started his first business between the ages of 15 and 16.",
     "About_text4": "The business quickly began to yield benefits little by little.",
@@ -238,8 +239,8 @@
     "About_text37": "We look forward to hearing from you!"
   },
   "Therms": {
-    "Therms_title": "For Eons, privacy and information security are Existential priorities, so we are infinitely committed to protecting personal data at all times.",
-    "Therms_text1": "Below we explain how we collect, use, and protect the information that Users provide when using our site:",
+    "Therms_title": "By accessing and using Eons, you agree to comply with the following terms and conditions",
+    "Therms_text1": "Below we explain how we collect, use, and protect the information that Users provide when using our site",
     "Therms_text2": "Data Collection",
     "Therms_text3": "At Eons, we collect personal information such as email, Google account, or Microsoft account. We do this when you register on our Site. Also, when making a purchase, we may collect other necessary data essential for completing the transaction.",
     "Therms_text4": "Use of Information",
@@ -254,7 +255,7 @@
     "Therms_text13": "Business Matters"
   },
   "Privacy": {
-    "Privacy_title": "By accessing and using Eons, you agree to comply with the following terms and conditions",
+    "Privacy_title": "For Eons, privacy and information security are Existential priorities, so we are infinitely committed to protecting personal data at all times.",
     "Privacy_text1": "User Responsibility",
     "Privacy_text2": "Each user is responsible for maintaining the confidentiality of their access data and for all activities conducted from their account.",
     "Privacy_text3": "Usage Restrictions",

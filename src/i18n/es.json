@@ -5,6 +5,7 @@
   "notifications":"Notificaciones",
   "log_out":"Cerrar Sesion",
   "next":"Próximamente",
+  "verify":"Verificando Pago",
 
   "Errors":{
     "Auth":{
@@ -244,8 +245,8 @@
   },
 
   "Therms":{
-    "Therms_title":"Para Eons, la privacidad y la seguridad de la información es prioridad Existencial, por lo que nos comprometemos infinitamente a proteger los datos personales en todo momento.",
-    "Therms_text1":"A continuación explicamos como recopilamos, utilizamos y protegemos la información que nos proporcionan los Usuarios al utilizar nuestro sitio:",
+    "Therms_title":"Al acceder y utilizar Eons, aceptas cumplir con los siguientes términos y condiciones",
+    "Therms_text1":"A continuación explicamos como recopilamos, utilizamos y protegemos la información que nos proporcionan los Usuarios al utilizar nuestro sitio",
     "Therms_text2":"Recopilación de Datos",
     "Therms_text3":"En Eons recopilamos información personal como correo electrónico, cuenta de Google o cuenta de Microsoft. Esto lo hacemos cuando te registras en nuestro Sitio. También, a la hora de realizar una compra, podemos recopilar otros datos necesarios imprescindibles para la realización de la misma.",
     "Therms_text4":"Uso de la Información",
@@ -261,7 +262,7 @@
   },
 
   "Privacy":{
-    "Privacy_title":"Al acceder y utilizar Eons, aceptas cumplir con los siguientes términos y condiciones",
+    "Privacy_title":"Para Eons, la privacidad y la seguridad de la información es prioridad Existencial, por lo que nos comprometemos infinitamente a proteger los datos personales en todo momento.",
     "Privacy_text1":"Responsabilidad del Usuario",
     "Privacy_text2":"Cada Usuario es responsable de mantener en todo momento la confidencialidad de su cuenta y contraseña. Cada Usuario es responsable de todas las actividades que ocurran en su cuenta. Cada Usuario es responsable del uso que haga de Nuestro Primer Producto: Eons Tecnología de Acceso a la Fuente Existencial.",
     "Privacy_text3":"Limitación de Responsabilidad",
