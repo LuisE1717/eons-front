@@ -38,8 +38,8 @@ export async function transferEssence(token:string,datah:any) {
     }
 }
 
-export async function startPayment(token:string,id:string) {
-    const res = await axiosI(token).post(`/tropipay/create-payment-card/${id}`)
+export async function startPayment(token:string,id:string,lang:string) {
+    const res = await axiosI(token).post(`/tropipay/create-payment-card/${id}?lang=${lang}`)
     const data = await res.data;
 
     return {
