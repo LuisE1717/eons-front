@@ -68,7 +68,7 @@ export default function useList() {
     setloading(true);
     try {
       const token = Cookies.get("eons_token") || "";
-      const pay = await startPayment(token, id);
+      const pay = await startPayment(token, id, Cookies.get('eons_lng') || 'en');
       setloading(false);
       console.log(pay);
       //window.open(pay.data.shortUrl, "_blank");
