@@ -1,14 +1,69 @@
-.span {
-  color: #232323;
-  font-weight: 700;
+.card {
+  width: 100%;
+  max-width: 900px;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 15px;
+  background-color: #d161b4;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  background: white;
+}
+
+.card:before,
+.card:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border-radius: 10px;
+  background: linear-gradient(
+    45deg,
+    #df87cb,
+    #d161b4,
+    #be4498,
+    #a3337e,
+    #872d67,
+    #722958,
+    #441332
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 12s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.card:after {
+  filter: blur(60px);
 }
 
 .throw-counter {
   margin: 0rem;
 }
 
-.card {
-  padding: 1em 3rem;
+.span {
+  color: #232323;
+  font-weight: 700;
 }
 
 .coin_number {
