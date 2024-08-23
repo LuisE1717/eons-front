@@ -24,13 +24,12 @@
   border-radius: 10px;
   background: linear-gradient(
     45deg,
-    #df87cb,
-    #d161b4,
+    #ddc5d8,
+    #d183bc,
     #be4498,
-    #a3337e,
-    #872d67,
-    #722958,
-    #441332
+    #c23b95,
+    #c4268c,
+    #d61693
   );
   background-size: 400%;
   width: calc(100% + 4px);
