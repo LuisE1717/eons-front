@@ -38,7 +38,7 @@ const LogOut = ({session} : Props) => {
             </path> 
             </g>
           </svg>
-            <span className="ml-2">Cerrar Sesion</span>
+            <span className="ml-2">{translation.log_out}</span>
         </label>
     </div>
   )

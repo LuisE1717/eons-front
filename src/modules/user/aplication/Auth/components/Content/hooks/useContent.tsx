@@ -15,17 +15,20 @@ export default function useContent(session: Session | null) {
 
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [validation_mail, setValidation_mail] = useState(true);
   const [validation_pass, setValidation_pass] = useState(true);
+  const [validation_confirm_pass, setValidation_confirm_pass] = useState(true);
 
   const { translation } = useTranslation();
 
   useEffect(() => {
     setValidation_mail(validMail(email));
     setValidation_pass(validPass(password));
-  }, [email, password]);
+    setValidation_confirm_pass( section == SECTIONS.SIGN_UP ? password === confirmPassword : true)
+  }, [email, password,confirmPassword, section]);
 
   useEffect(() => {
     if (session) {
@@ -34,7 +37,7 @@ export default function useContent(session: Session | null) {
   }, [session]);
 
   async function handleSubmit() {
-    if (validMail(email) && validPass(password)) {
+    if (validation_mail && validation_pass && validation_confirm_pass) {
       setLoading(true);
 
       if (section === SECTIONS.LOGIN) {
@@ -195,6 +198,10 @@ export default function useContent(session: Session | null) {
     setPass(p);
   }
 
+  function handleChangeConfirmPassword(p: string) {
+    setConfirmPassword(p);
+  }
+
   function handleChangeEmail(e: string) {
     setEmail(e);
   }
@@ -202,12 +209,15 @@ export default function useContent(session: Session | null) {
   return {
     validation_mail,
     validation_pass,
+    validation_confirm_pass,
     loading,
     handleSubmit,
     handleChangeSection,
     password,
+    confirmPassword,
     email,
     handleChangePassword,
+    handleChangeConfirmPassword,
     handleChangeEmail,
     section,
     session,

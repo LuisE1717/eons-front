@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function Button({handleCustomPayment}) {
+export default function Button({handleCustomPayment,loading}) {
   return (
     <button
+      disabled={loading}
       type="button"
       className="transition-all duration-200 hover:translate-x-1.5"
       onClick={handleCustomPayment}

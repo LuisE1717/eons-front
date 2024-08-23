@@ -1,0 +1,176 @@
+---
+import { getI18N } from "../../../i18n"
+import Articule from "../../Information/components/Articule.astro"
+import ImageSection from "../../Landing/shared/components/ImageSection/ImageSection"
+
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
+
+---
+
+<Articule
+    title={i18.about}
+	description="about-us"
+	pubDate={new Date('August 11 2024')}
+    >
+	<h4>{i18.About.About_title}:</h4>
+
+	<p class="mt-3">
+		{i18.About.About_text1}:
+	</p>
+
+	<ImageSection reverse={true} image="/pixelcut-export (7) webp.webp">
+	<p class=""></p>
+	</ImageSection>
+
+	<p class="mt-3">
+		{i18.About.About_text2}
+	</p>
+
+	<p>
+		{i18.About.About_text3}
+	</p>
+
+	<p>
+		{i18.About.About_text4}
+	</p>
+
+	<p>
+		{i18.About.About_text5}
+	</p>
+
+	<p>
+		{i18.About.About_text6}
+	</p>
+
+	<p>
+		{i18.About.About_text7}
+	</p>
+
+	<p>
+		{i18.About.About_text8}
+	</p>
+
+	<p>
+		{i18.About.About_text9}
+	</p>
+
+	<p>
+		{i18.About.About_text10}
+	</p>
+
+	<p>
+		{i18.About.About_text11}
+	</p>
+
+	<p>
+		{i18.About.About_text12}
+	</p>
+
+	<p>
+		{i18.About.About_text13}
+	</p>
+
+	<p>
+		{i18.About.About_text14}
+	</p>
+
+	<p>
+		{i18.About.About_text15}
+	</p>
+
+    <p>
+		{i18.About.About_text16}
+	</p>
+
+    <p>
+		{i18.About.About_text17}
+	</p>
+
+    <p>
+		{i18.About.About_text18}
+	</p>
+
+    <p>
+		{i18.About.About_text19}
+	</p>
+
+    <p>
+		{i18.About.About_text20}
+	</p>
+
+    <p>
+		{i18.About.About_text21}
+	</p>
+
+    <h4>{i18.About.About_text22}:</h4>
+
+    <p>
+		{i18.About.About_text23}
+	</p>
+
+    <h4>{i18.About.About_text24}:</h4>
+
+    <p>
+		{i18.About.About_text25} 
+	</p>
+
+    <h4>{i18.About.About_text26}</h4>
+
+    <p>
+		{i18.About.About_text27}
+	</p>
+
+    <h4>{i18.About.About_text28}:</h4>
+
+    <p>
+		{i18.About.About_text29}
+	</p>
+
+    <h4>{i18.About.About_text30}:</h4>
+
+    <p>
+		{i18.About.About_text31}
+	</p>
+
+    <h5>-{i18.About.About_text32}:</h5>
+    <a href="mailto:soporte.eons.es@gmail.com" target="_blank">soporte.eons.es@gmail.com</a>
+
+    <h5>-{i18.About.About_text33}:</h5>
+    <a href="mailto:infoeons.es@gmail.com" target="_blank">infoeons.es@gmail.com</a>
+
+    <h5>-{i18.About.About_text34}:</h5>
+    <a href="mailto:business.eons.es@gmail.com" target="_blank">business.eons.es@gmail.com</a>
+
+    <p class="mt-3">
+		{i18.About.About_text35}
+	</p>
+
+    <h5>-Facebook:</h5>
+    <a href="https://www.facebook.com/eons.providence" target="_blank">eons.providence</a>
+
+    <h5>-Instagram:</h5>
+    <a href="https://www.instagram.com/eons_universe" target="_blank">eons_universe</a>
+    
+    <h5 class="mt-3">
+		-{i18.About.About_text36}:
+        <a href="https://www.youtube.com/channel/UCdmLOd_cRwWtn0EKAalpgCQ" target="_blank">(EONS)</a>.
+	</h5>
+
+    <p>
+		{i18.About.About_text37}
+	</p>
+
+    </Articule>
+
+<style>
+    p {
+        margin: 0 0 0.5rem 0;
+    }
+    h5 {
+        margin: 0;
+    }
+    span {
+        margin: 0 0 0.5rem 0;
+    }
+</style>

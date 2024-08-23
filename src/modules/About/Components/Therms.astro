@@ -1,0 +1,80 @@
+---
+import Articule from "../../Information/components/Articule.astro"
+import ImageSection from "../../Landing/shared/components/ImageSection/ImageSection"
+import { getI18N } from "../../../i18n"
+
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
+---
+
+<Articule
+    title={i18.therms}
+	description="terms"
+	pubDate={new Date('August 11 2024')}
+    >
+
+	<p class=mt-3">
+		{i18.Therms.Therms_title}:
+	</p>
+
+    <h4>-{i18.Therms.Therms_text1}:</h4>
+
+	<p>
+		{i18.Therms.Therms_text2}
+	</p>
+
+	<h4>-{i18.Therms.Therms_text3}:</h4>
+
+	<p>
+		{i18.Therms.Therms_text4}
+	</p>
+
+	<h4>-{i18.Therms.Therms_text5}:</h4>
+
+	<p>
+		{i18.Therms.Therms_text6}
+	</p>
+
+	<p>
+		{i18.Therms.Therms_text7}
+	</p>
+
+	<p>
+		{i18.Therms.Therms_text8}
+	</p>
+
+    <p>
+		{i18.Therms.Therms_text9}
+	</p>
+
+    <p>
+		{i18.Therms.Therms_text10}
+	</p>
+
+    <p>
+		{i18.Therms.Therms_text11}
+	</p>
+
+    <h4>-{i18.Therms.Therms_text12}:</h4>
+
+    <p>
+		{i18.Therms.Therms_text13}
+	</p>
+
+    <p>
+		{i18.Therms.Therms_text14}
+	</p>
+
+    </Articule>
+
+<style>
+    p {
+        margin: 0 0 0.5rem 0;
+    }
+    h5 {
+        margin: 0;
+    }
+    span {
+        margin: 0 0 0.5rem 0;
+    }
+</style>

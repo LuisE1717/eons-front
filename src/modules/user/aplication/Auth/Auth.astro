@@ -29,11 +29,13 @@ const session = await getSession(Astro.request)
             invalid_email_text={i18["Auth"].invalid_email_text}
             invalid_pass_text={i18["Auth"].invalid_pass_text}
             text_loading={i18.text_loading}
+            confirm_password_input_label={i18.Auth.confirm_password_input_label}
+            invalid_confirm_pass_text={i18.Auth.invalid_confirm_pass_text}
             session={session}
             client:load
         />
 
-        <div class="flex flex-row mt-4 gap-x-10 justify-center">
+        <div class="flex flex-row mt-4 gap-x-6 justify-center">
             <AccountsButton error={i18.fecth_error} text="Microsoft"/>
             <!-- <AccountsButton error={i18.fecth_error} text="Apple"/> -->
             <AccountsButton error={i18.fecth_error} text="Google"/>
