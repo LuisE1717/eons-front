@@ -256,71 +256,6 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
 
   return (
     <>
-      <div
-        className={`${styles.card} z-10 
-        rounded-xl bg-white shadow-xl shadow-black/5 
-        ring-1 ring-slate-700/10`}
-      >
-        {actionsInterprete(action) == "day" ? (
-          <header className="flex items-center w-full flex-col mb-5">
-            <h2 className="text-xl mb-2 font-bold">
-              Lance las monedas para revelar como irá su día
-            </h2>
-          </header>
-        ) : actionsInterprete(action) == "dialog" ? (
-          <Question
-            question={question}
-            handleChangeQuestion={setQuestion}
-            disabled={count > 1}
-          />
-        ) : (
-          <></>
-        )}
-
-        {viewController()}
-
-        {throwType === "normal" && (
-          <div className={`flex flex-wrap gap-2 justify-center mt-8 mb-4`}>
-            <div
-              onClick={() => {
-                //toast.update("Defina su tiro especial")
-                scrollToTop();
-                setThrowType("montado");
-                setMoneda1(0);
-                setMoneda2(0);
-              }}
-            >
-              <Button loading={loading}>{i18["Throw"].mount_throw}</Button>
-            </div>
-            <div
-              onClick={() => {
-                scrollToTop();
-                setThrowType("parado");
-                setMoneda1(0);
-                setMoneda2(0);
-              }}
-            >
-              <Button loading={loading}>{i18["Throw"].stops_throw}</Button>
-            </div>
-            <div
-              onClick={() => {
-                scrollToTop();
-                setThrowType("tranversal");
-                setMoneda1(0);
-                setMoneda2(0);
-              }}
-            >
-              <Button loading={loading}>{i18["Throw"].tranversal_throw}</Button>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className={`flex flex-row justify-center mt-8`}>
-        {/* {lastThrow!='00' && <ReloadButtonReact loading={loading} closeDialog={closeDialog}/>} */}
-        <NextButton loading={loading} handleSendThrow={sendThrow} />
-      </div>
-
       <ToastContainer
         position="bottom-right"
         autoClose={4000}
@@ -332,6 +267,70 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
         draggable
         pauseOnHover={false}
       />
+
+      <div className={styles.card}>
+        <div className="bg-white px-8 py-4 flex flex-col w-full">
+          {actionsInterprete(action) == "day" ? (
+            <header className="flex items-center w-full flex-col mb-5">
+              <h2 className="text-xl mb-2 font-bold">
+                Lance las monedas para revelar como irá su día
+              </h2>
+            </header>
+          ) : actionsInterprete(action) == "dialog" ? (
+            <Question
+              question={question}
+              handleChangeQuestion={setQuestion}
+              disabled={count > 1}
+            />
+          ) : (
+            <></>
+          )}
+
+          {viewController()}
+
+          {throwType === "normal" && (
+            <div className="flex flex-wrap gap-2 justify-center mt-8 mb-4">
+              <div
+                onClick={() => {
+                  //toast.update("Defina su tiro especial")
+                  scrollToTop();
+                  setThrowType("montado");
+                  setMoneda1(0);
+                  setMoneda2(0);
+                }}
+              >
+                <Button loading={loading}>{i18["Throw"].mount_throw}</Button>
+              </div>
+              <div
+                onClick={() => {
+                  scrollToTop();
+                  setThrowType("parado");
+                  setMoneda1(0);
+                  setMoneda2(0);
+                }}
+              >
+                <Button loading={loading}>{i18["Throw"].stops_throw}</Button>
+              </div>
+              <div
+                onClick={() => {
+                  scrollToTop();
+                  setThrowType("tranversal");
+                  setMoneda1(0);
+                  setMoneda2(0);
+                }}
+              >
+                <Button loading={loading}>
+                  {i18["Throw"].tranversal_throw}
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="flex flex-row justify-center mt-8">
+        <NextButton loading={loading} handleSendThrow={sendThrow} />
+      </div>
     </>
   );
 };
