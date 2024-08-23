@@ -16,6 +16,8 @@ interface Props {
   invalid_pass_text: string;
   text_loading: string;
   session: Session | null;
+  confirm_password_input_label: string;
+  invalid_confirm_pass_text: string;
 }
 
 export default function Content({
@@ -25,8 +27,10 @@ export default function Content({
   sing_up_switch,
   password_input_label,
   forget_pass,
+  confirm_password_input_label,
   invalid_email_text,
   invalid_pass_text,
+  invalid_confirm_pass_text,
   text_loading,
   session,
 }: Props) {
@@ -39,7 +43,10 @@ export default function Content({
     email,
     handleChangeEmail,
     handleChangePassword,
+    handleChangeConfirmPassword,
     password,
+    validation_confirm_pass,
+    confirmPassword,
     section,
   } = useContent(session);
 
@@ -109,13 +116,24 @@ export default function Content({
           </label>
 
           {section === SECTIONS.SIGN_UP && (
+            <>
             <OutlineInputReact
               loading={loading}
-              setValue={handleChangePassword}
-              value={password}
+              setValue={handleChangeConfirmPassword}
+              value={confirmPassword}
               type={"password"}
-              label={"Confirmar contraseña"}
+              label={confirm_password_input_label}
+              icon
             />
+
+            <label
+            className={`${
+              validation_confirm_pass ? "hidden" : ""
+            } ml-5 text-lg text-red-600`}
+            >
+            {invalid_confirm_pass_text}
+            </label>
+            </>
           )}
         </div>
 
