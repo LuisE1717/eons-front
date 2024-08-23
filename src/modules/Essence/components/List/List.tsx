@@ -5,6 +5,7 @@ import { SECTION } from "./domain";
 import Form from "./components/Form/Form";
 import HeaderImage from "./components/HeaderImage/HeaderImage";
 import Sections from "./components/Sections/Sections";
+import Tropipay from "./components/Tropipay/Tropipay";
 
 export default function List() {
   const {
@@ -17,6 +18,7 @@ export default function List() {
     findCost,
     handleCustomPayment,
     handleClose,
+    loading
   } = useList();
 
   return (
@@ -34,11 +36,15 @@ export default function List() {
               ))}
             </div>
 
-            <Custom
+            {/* <Custom
+              loading={loading}
               price={price}
               handleCustomPayment={handleCustomPayment}
               findCost={findCost}
-            />
+            /> */}
+
+            <Tropipay/>
+
           </section>
 
           <HeaderImage />

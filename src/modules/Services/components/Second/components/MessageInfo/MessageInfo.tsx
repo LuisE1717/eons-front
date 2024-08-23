@@ -9,41 +9,42 @@ import Cookies from "js-cookie";
 import Fire from "../../shared/components/Fire/Fire";
 import Cost from "../../../../shared/components/Cost/Cost";
 import Cost2 from "../../../../shared/components/Cost/Cost2";
+import Free from "../../../../shared/components/Free/Free";
+
+export function validateService (cost:number,navigate:string) {
+  //toast.warning('Este Servicio estará disponible en los próximos días.')
+  const essence = Cookies.get('eons_essence')
+   if(essence && parseInt(essence)>=cost){
+     window.location.href = navigate
+   }
+   else{
+     toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
+   }
+}
 
 export default function MessageInfo() {
   const { translation } = useTranslation();
-
-  function validateService (cost:number,navigate:string) {
-    const essence = Cookies.get('eons_essence')
-    if(essence && parseInt(essence)>=cost){
-      //window.location.href = navigate
-      toast.warning('Este Servicio será lanzado en los próximos días')
-    }
-    else{
-      toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
-    }
-  }
 
   return (
     <Info>
       <Line />
       <A>
-      {"Dialogar con la Raíz del Sistema"}.
+      {translation.ServiceMenu.system_dialog}.
       <div>
-      (<Span>{"Próximamente"}</Span>)
+      (<Span>{translation.next}</Span>)
       </div>
       </A>
       <Line />
-      <A href="/general-evaluation">
-      {translation.ServiceMenu.general_evaluation}. 
-      <div>
-      (<Span color="secundary">{translation.ServiceMenu.free}</Span>)
-      </div>
-      </A>
+
+      <Free
+      onclick={() => validateService(1,'/throw/07')}
+      name={translation.ServiceMenu.general_evaluation}>
+      </Free>
+
       <A>
         {translation.ServiceMenu.spirit_calc}. 
         <div>
-        (<Span>{"Próximamente"}</Span>)
+        (<Span>{translation.next}</Span>)
         </div>
       </A>
 
@@ -73,7 +74,7 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {translation.ServiceMenu.adivination_general}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.adivination_general}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
@@ -81,43 +82,43 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {translation.ServiceMenu.concient_evaluation}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.concient_evaluation}. (<Span>{translation.next}</Span>)
         </div>
       </A>
       <A>
         <div>
-        {translation.ServiceMenu.fact_evaluation}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.fact_evaluation}. (<Span>{translation.next}</Span>)
         </div>
       </A>
       <Line />
 
       <A>
         <div>
-        {"Revelar consejo exacto"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_consejo_exacto}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar tiempo"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_tiempo}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar porcentaje"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_porcentaje}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar una letra"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_una_letra}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Revelar un dígito decimal"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Revelar_un_dígito_decimal}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
@@ -125,13 +126,13 @@ export default function MessageInfo() {
 
       <A>
         <div>
-        {"Conocer si algo me conviene y porqué"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Conocer_conviene}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
         <div>
-        {"Conocer cuando algo sucederá y porqué"}. (<Span>{"Próximamente"}</Span>)
+        {translation.ServiceMenu.Conocer_sucederá}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 

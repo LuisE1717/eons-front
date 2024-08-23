@@ -33,7 +33,7 @@ import ArabianFlag from "../../../../public/customized/ArabianFlag.astro";
           <span class="ml-2">Español</span>
         </div>
       </li>
-      <li class="cursor-pointer" id="france">
+      <!-- <li class="cursor-pointer" id="france">
         <div class="flex items-center px-4 py-2 hover:bg-slate-100">
           <FranceFlag/>
           <span class="ml-2">Français</span>
@@ -80,7 +80,7 @@ import ArabianFlag from "../../../../public/customized/ArabianFlag.astro";
           <ArabianFlag/>
           <span class="ml-2">عرب</span>
         </div>
-      </li>
+      </li> -->
   </div>
 
 <style>
@@ -169,30 +169,22 @@ import {
     }, true);
     }
     if(english &&
-       spanish &&
-       france &&
-       italian &&
-       rusia &&
-       japan &&
-       hindi &&
-       portugues &&
-       chiness &&
-       arabian
+       spanish
        ){
       english.addEventListener('click', () => setEnglish(english));
       spanish.addEventListener('click', () => setSpanish(spanish));
 
-      france.addEventListener('click',() => setFrance(france));
-      italian.addEventListener('click',() => setItalian(italian));
+      // france.addEventListener('click',() => setFrance(france));
+      // italian.addEventListener('click',() => setItalian(italian));
 
-      rusia.addEventListener('click',() => setRusia(rusia));
-      japan.addEventListener('click',() => setJapan(japan));
+      // rusia.addEventListener('click',() => setRusia(rusia));
+      // japan.addEventListener('click',() => setJapan(japan));
 
-      hindi.addEventListener('click',() => setHindi(hindi));
-      portugues.addEventListener('click',() => setPortugues(portugues));
+      // hindi.addEventListener('click',() => setHindi(hindi));
+      // portugues.addEventListener('click',() => setPortugues(portugues));
 
-      chiness.addEventListener('click',() => setChiness(chiness));
-      arabian.addEventListener('click',() => setArabian(arabian));
+      // chiness.addEventListener('click',() => setChiness(chiness));
+      // arabian.addEventListener('click',() => setArabian(arabian));
     }
   });
 </script>

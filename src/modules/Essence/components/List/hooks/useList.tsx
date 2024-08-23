@@ -29,6 +29,7 @@ export default function useList() {
       const packs = await getPackages();
       console.log(packs);
       setList(packs.data);
+      setloading(false)
     } catch (error) {
       toast.error(translation.fecth_error);
       setloading(false);
@@ -67,30 +68,49 @@ export default function useList() {
     setloading(true);
     try {
       const token = Cookies.get("eons_token") || "";
-      const pay = await startPayment(token, id);
+      const pay = await startPayment(token, id, Cookies.get('eons_lng') || 'en');
+      setloading(false);
       console.log(pay);
-      window.open(pay.data.shortUrl, "_blank");
-    } catch (error) {
-      toast.error(translation.fecth_error);
+      //window.open(pay.data.shortUrl, "_blank");
+      location.href = pay.data.shortUrl
+    } catch ({response}) {
+      if(response?.data?.message == "limit exceded")
+      toast.error("Actualmente su compra no puede ser procesada, contacte a soporte técnico");
+      else{
+        toast.error(translation.fecth_error);
+      }
+        
       setloading(false);
     }
   }
 
   async function handleCustomPayment() {
-    if (price) {
-      setloading(true);
-      try {
-        const token = Cookies.get("eons_token") || "";
-        const datah = {
-          esencia: price?.esencia,
-          precio: price?.costo,
-        };
-        const pay = await startCustomPayment(token, datah);
-        console.log(pay);
-        window.open(pay.data.shortUrl, "_blank");
-      } catch (error) {
-        toast.error(translation.fecth_error);
-        setloading(false);
+    if (price && !loading) {
+      if(price.costo > 1){
+        setloading(true);
+        try {
+          const token = Cookies.get("eons_token") || "";
+          const datah = {
+            esencia: price?.esencia,
+            precio: price?.costo,
+          };
+          setloading(false);
+          const pay = await startCustomPayment(token, datah);
+          console.log(pay);
+          window.open(pay.data.shortUrl, "_blank");
+        } catch ({response}) {
+          console.log(response)
+          if(response?.data?.message == "limit exceded")
+          toast.error("Actualmente su compra no puede ser procesada, contacte a soporte técnico");
+          else{
+            toast.error(translation.fecth_error);
+          }
+        
+      setloading(false);
+        }
+      }
+      else{
+        toast.warning("Solo puede comprar a partir de 2 esencias")
       }
     }
   }
@@ -102,6 +122,7 @@ export default function useList() {
       if (response.data) {
         setPrice(response.data);
       }
+      setloading(false)
     } catch (error) {
       toast.error(translation.fecth_error);
       setloading(false);
@@ -118,5 +139,6 @@ export default function useList() {
     findCost,
     handleCustomPayment,
     handleClose,
+    loading
   };
 }

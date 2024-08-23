@@ -7,6 +7,7 @@ import { postResetPass } from '../../../../../utils/api/userApi';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useTranslation from '../../../../Shared/hooks/useTranslation';
+import Cookies from 'js-cookie';
 
 const ForgetPassReact = () => {
 
@@ -25,7 +26,7 @@ const ForgetPassReact = () => {
     const handleSubmit = async () =>{
         setLoading(true)
         if(validMail(email)){
-            await postResetPass({email})
+            await postResetPass({email,lang: Cookies.get("eons_lng")||'en'})
             .then((response)=>{
               toast.success(translation.RessetPassword.succes_send_mail)
               setLoading(false)

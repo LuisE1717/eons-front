@@ -19,7 +19,7 @@ export default function Form({ handleClose }: Props) {
   const { translation } = useTranslation();
 
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState<IForm>({ count: 100, user: "" });
+  const [form, setForm] = useState<IForm>({ count: 1, user: "" });
 
   function handleChangeCount(c: number) {
     setForm((prev) => ({ ...prev, count: c }));
@@ -38,10 +38,24 @@ export default function Form({ handleClose }: Props) {
         await transferEssence(Cookies.get("eons_token") || "", datah)
           .then(() => {
             toast.success(
-              `Se transferido ${form.count} esencias a ${form.user} exitosamente`
+              `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
             );
           })
-          .catch(() => toast.error(translation.fecth_error));
+          .catch(({response}) => {
+            console.log(response)
+            if(response?.data?.message == "Insufficient essence"){
+              toast.error(translation.Esence.insuficent_error);
+            }
+            else if(response?.data?.message == "Receiver not found"){
+              toast.error(translation.Esence.not_found);
+            }
+            else if(response?.data?.message == "amount must not be less than 1"){
+              toast.error(translation.Esence.at_least_error);
+            }
+            else{
+              toast.error(translation.fecth_error);
+            }
+          });
       }
       setLoading(false);
     } catch (error) {
@@ -84,21 +98,21 @@ export default function Form({ handleClose }: Props) {
       </section>
 
       <form className="flex flex-col w-full gap-y-8" onSubmit={handleSubmit}>
-        <Section label="Usuario a transferir">
+        <Section label={translation.Esence.user_transfer}>
           <input
             type="text"
             disabled={loading}
             value={form.user}
-            placeholder="Correo del usuario"
+            placeholder={translation.Esence.user_transfer_holder}
             onChange={(e) => handleChangeUser(e.target.value)}
             className="outline-none w-full border-b-2 border-gray-300 pb-1.5 focus:border-primary transition-all duration-200"
           />
         </Section>
 
-        <Section label="Cantidad a transferir">
+        <Section label={translation.Esence.cant_transfer}>
           <input
             disabled={loading}
-            type="number"
+            type="text"
             className="py-1.5 outline-none border-b-2 focus:border-b-primary border-gray-300 w-full text-base focus:border-gray-400"
             value={form.count}
             min={1}
@@ -113,7 +127,7 @@ export default function Form({ handleClose }: Props) {
           full={true}
           size="base"
         >
-          Transferir
+          {translation.Esence.transfer}
         </Button>
       </form>
     </div>

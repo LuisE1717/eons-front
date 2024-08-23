@@ -41,7 +41,7 @@ const Notifications = ({
           </g>
         </svg>
 
-        <span className="ml-2">Notificaciones</span>
+        <span className="ml-2">{translation.notifications}</span>
       </label>
 
       <div className={styles.options}>
