@@ -19,5 +19,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true}
+  }),
 });
