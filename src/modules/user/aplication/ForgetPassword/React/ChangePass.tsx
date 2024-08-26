@@ -5,6 +5,8 @@ import Button from '../../ChangePassword/Button/Button';
 import { postChangePass } from '../../../../../utils/api/userApi';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useChangePass from '../../Auth/components/Content/hooks/useChangePass';
+import useTranslation from '../../../../Shared/hooks/useTranslation';
 
 interface Props {
   i18:any
@@ -13,38 +15,23 @@ interface Props {
   currentLocale:string;
 }
 
-const ChangePassReact:FC<Props> = ({token,email,i18,currentLocale}) => {
-  const [loading,setLoading] = useState(false)
+export default function ChangePassReact ({token,email,i18,currentLocale} : Props ) {
+  const {
+    loading,
+    validation_pass,
+    handleSubmit,
+    handleChangePassword,
+    handleChangeConfirmPassword,
+    password,
+    validation_confirm_pass,
+    confirmPassword
+  } = useChangePass({token,email});
 
-  const [pass,setPass] = useState('')
-  const [validation_pass,setValidation_pass] = useState(true)
-
-  useEffect(()=>{
-    setValidation_pass(validPass(pass))
-  },[pass])
-
-  const handleSubmit = async () =>{    
-    setLoading(true)
-    if(validPass(pass) && token){
-      await postChangePass({newPassword:pass},token)
-      .then(()=>{
-        toast.success(i18["ChangePassword"].succes)
-        setTimeout(() => {
-          setLoading(false)
-          window.location.href = `/auth`
-        }, 3000);
-      })
-      .catch((error)=>{
-        setLoading(false)
-        toast.error(i18.fecth_error)
-      })
-    }
-    setLoading(false)
-  }
+  const {translation} = useTranslation()
 
 return (
   <>
-<div className="flex flex-col text-center w-full mb-10">
+{/* <div className="">
         <OutlineInputReact
           loading={loading}
           setValue={setPass}
@@ -59,7 +46,47 @@ return (
         >
           {i18["Auth"].invalid_email_text}
         </label>
+        </div> */}
+
+        <div className="flex flex-col text-center w-full mb-10">
+
+          <OutlineInputReact
+            loading={loading}
+            setValue={handleChangePassword}
+            value={password}
+            type={"password"}
+            label={translation.ChangePassword.label}
+            icon
+          />
+
+          <label
+            className={`${
+              validation_pass || password == "" ? "hidden" : ""
+            } ml-5 text-lg text-red-600`}
+          >
+            {translation.Auth.invalid_pass_text}
+          </label>
+
+            <>
+            <OutlineInputReact
+              loading={loading}
+              setValue={handleChangeConfirmPassword}
+              value={confirmPassword}
+              type={"password"}
+              label={translation.Auth.confirm_password_input_label}
+              icon
+            />
+
+            <label
+            className={`${
+              validation_confirm_pass ? "hidden" : ""
+            } ml-5 text-lg text-red-600`}
+            >
+            {translation.Auth.invalid_confirm_pass_text}
+            </label>
+            </>
         </div>
+
         <Button
         loading={loading} 
         handleSubmit={handleSubmit}
@@ -80,5 +107,3 @@ return (
     </>
 )
 }
-
-export default ChangePassReact
