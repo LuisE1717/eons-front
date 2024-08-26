@@ -8,6 +8,7 @@ import Fr from './fr.json'
 import Zh from './zh.json'
 import Ru from './ru.json'
 import Pt from './pt.json'
+import De from './de.json'
 
 export const Languages = {
     En: 'en',
@@ -20,6 +21,7 @@ export const Languages = {
     Zh: 'zh',
     Ru: 'ru',
     Pt: 'pt',
+    De: 'de'
 }
 
 export const LanguagesArray = [
@@ -33,6 +35,7 @@ export const LanguagesArray = [
      'zh',
      'ru',
      'pt',
+     'de'
 ]
 
 export const getI18N = ({ currentLocale }: { currentLocale: string }) => {
@@ -57,6 +60,8 @@ export const getI18N = ({ currentLocale }: { currentLocale: string }) => {
             return Ru;
         case Languages.Pt:
             return Pt;
+        case Languages.De:
+            return De;
         default:
             return Es;
     }
