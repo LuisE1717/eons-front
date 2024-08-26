@@ -67,7 +67,7 @@ const ForgetPassReact = () => {
         handleSubmit={handleSubmit} 
         text={translation.Verification.send_button} 
         loading_text={translation.text_loading} 
-        question={translation.Verification.error_question}/>
+        />
 
         <ToastContainer
             position="bottom-right"
