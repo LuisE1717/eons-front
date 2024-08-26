@@ -2,7 +2,7 @@
 import ResponsePage from "../../../../../../modules/Throw/ResponsePage.astro"
 import AppContainer from "../../../../../../layouts/AppContainer.astro"
 const {id,action,question} = Astro.params
-return Astro.redirect('/services')
+//return Astro.redirect('/services')
 ---
 <AppContainer>
 <ResponsePage action={action} response={id} question={question}/>

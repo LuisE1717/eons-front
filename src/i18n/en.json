@@ -42,9 +42,11 @@
     "login_switch": "Log In",
     "sing_up_switch": "Sign Up",
     "password_input_label": "Password",
+    "confirm_password_input_label": "Confirm Password",
     "forget_pass": "Forgot your password?",
     "invalid_email_text": "*Invalid email",
-    "invalid_pass_text": "*Invalid password, must be between 8 and 16 characters"
+    "invalid_pass_text": "*Invalid password, must be between 8 and 16 characters",
+    "invalid_confirm_pass_text": "Both passwords must be the same"
   },
   "Payment": {
     "Labels": {
