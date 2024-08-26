@@ -12,13 +12,13 @@ const {action,param1,param2} = Astro.props
 ---
 
 <Header/>
-<div class="card-conteiner">
-<div class="flex flex-row justify-between">
+
+<main class="flex flex-col items-center w-full px-6 mt-5">
+<div class="flex flex-row w-full justify-between mb-6">
     <BackButton routeProp={'/services'}/>
     <ReloadButton/>
 </div>
 
-<main class="flex flex-col">
     <ThrowReact action={action} param1={param1} param2={param2} i18={i18} client:load/>
 </main>
 
@@ -29,43 +29,7 @@ const {action,param1,param2} = Astro.props
         font-weight: 700;
     }
 
-    html{
-        overflow-y: auto;
-    }
 
-    div {
-        margin: 1rem 0rem;
-    }
-
-    .throw-counter{
-        margin: 0rem
-    }
-
-    main {
-        padding: 1em;
-        align-items: center;
-    }
-
-    .card-conteiner {
-        padding: 0em 2em;
-    }
-
-    .card{
-        border-width: 1px;
-        padding: 1em;
-    }
-
-    .coin-number{
-        align-items: center;
-    }
-
-    .coin-number span{
-        font-weight: 500;
-    }
-
-    .top{
-        margin-top: 2rem;
-    }
 
    
 </style>
