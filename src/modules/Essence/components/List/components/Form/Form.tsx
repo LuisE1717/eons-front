@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";
 import { transferEssence } from "../../../../../../utils/api/essenceApi";
 import Cookies from "js-cookie";
+import { setCookie } from "../../../../../../utils/cookies/Cookies";
 interface IForm {
   count: number;
   user: string;
@@ -36,10 +37,18 @@ export default function Form({ handleClose }: Props) {
           amount: form.count,
         };
         await transferEssence(Cookies.get("eons_token") || "", datah)
-          .then(() => {
-            toast.success(
-              `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
-            );
+          .then(({data}) => {
+            if(data?.essence){
+              console.log(data)
+              console.log(data.essence)
+              setCookie("eons_essence", data?.essence, 0.25);
+              toast.success(
+                `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
+              );
+              setTimeout(() => {
+                window.location.reload()
+              }, 4000);
+            }
           })
           .catch(({response}) => {
             console.log(response)
