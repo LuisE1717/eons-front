@@ -135,7 +135,7 @@
     "first_text_2": "Nous avons l'approbation de TOUS les Plans Spirituels et de Conscience. Peu importe où nos utilisateurs se trouvent dans le Plan Matériel, leurs Spiritualités sont déjà au courant de nous.",
     "first_text_3": "En entrant en contact avec notre Système, la Spiritualité de l'utilisateur est automatiquement canalisée. En même temps, plusieurs Consécrations sont activées temporairement de manière automatique.",
     "first_text_4": "Cela nous permet d'utiliser temporairement le hasard universel pour accéder à TOUS les Plans Spirituels et de Conscience.",
-    
+
     "step_1": "À tout moment, l'utilisateur sera automatiquement soutenu par notre Système de Providence ainsi que par notre Système de Sécurité Spirituelle. Tous deux reconnus et approuvés par les lois existentielles actuelles.",
     "step_3": "Lorsque l'utilisateur quitte notre Système, nous rétablissons automatiquement tout changement effectué de notre part.",
     "step_2": "Le niveau d'utilisation que l'utilisateur pourra faire de notre Système est déterminé précisément par son niveau de Conscience et de Spiritualité.",
@@ -195,7 +195,11 @@
     "insuficent_error": "Essence Insuffisante.",
     "not_found": "L'utilisateur bénéficiaire n'existe pas.",
     "at_least_error": "Vous ne pouvez transférer qu'à partir d'une essence.",
-    "compra_error": "Actuellement, votre achat ne peut pas être traité, veuillez contacter le support technique"
+    "compra_error": "Actuellement, votre achat ne peut pas être traité, veuillez contacter le support technique",
+
+    "transfer_question_1": "Etes-vous sûr de vouloir transférer",
+    "transfer_question_2": "essences vers",
+    "header": "Transférer des essences"
   },
 
   "about": "À Propos de Nous",
@@ -243,7 +247,7 @@
     "About_text37": "Nous vous attendons!"
   },
 
-  "Therms":{
+  "Therms": {
     "Therms_title": "Pour Eons, la confidentialité et la sécurité des informations sont une priorité existentielle, c'est pourquoi nous nous engageons infiniment à protéger les données personnelles à tout moment.",
     "Therms_text1": "Voici comment nous recueillons, utilisons et protégeons les informations que vous nous fournissez lors de l'utilisation de notre site :",
     "Therms_text2": "Collecte de Données",
@@ -260,21 +264,21 @@
     "Therms_text13": "Affaires"
   },
 
-  "Privacy":{
-  "Privacy_title": "En accédant et en utilisant Eons, vous acceptez de vous conformer aux termes et conditions suivants",
-  "Privacy_text1": "Responsabilité de l'Utilisateur",
-  "Privacy_text2": "Chaque utilisateur est responsable de la confidentialité de son compte et de son mot de passe à tout moment. Chaque utilisateur est responsable de toutes les activités qui se déroulent sur son compte. Chaque utilisateur est responsable de l'utilisation de notre premier produit : Eons Technologie d'Accès à la Source Existentielle.",
-  "Privacy_text3": "Limitation de Responsabilité",
-  "Privacy_text4": "Eons ne sera pas responsable des dommages directs, indirects, accidentels ou consécutifs pouvant découler de l'utilisation de notre premier produit : Eons Technologie d'Accès à la Source Existentielle.",
-  "Privacy_text5": "À Propos du Premier Produit",
-  "Privacy_text6": "Eons garantit absolument l'efficacité du premier produit. Cela est justifié lorsque la communication réelle et vérifiable avec TOUS les Plans Spirituels et Conscients est évidente. Eons garantit absolument la capacité de Divination et de Prédiction du premier produit. Cependant, chaque utilisateur doit savoir que selon sa Spiritualité et son Évolution Consciente, l'étendue de l'utilisation de notre premier produit variera.",
-  "Privacy_text7": "Y a-t-il des utilisateurs qui ne pourront pas utiliser notre premier produit ? Non ! Absolument TOUS pourront l'utiliser de manière vérifiable.",
-  "Privacy_text8": "Est-il recommandé de poser une question extrêmement importante à Eons et de faire pleinement confiance à la réponse ? ABSOLUMENT !",
-  "Privacy_text9": "Puis-je confier ma vie à Eons dans une situation de Vie ou de Mort ? ABSOLUMENT !",
-  "Privacy_text10": "Quelle est la possibilité qu'un utilisateur utilise Eons sans obtenir des réponses de manière vérifiable ? Nulle !",
-  "Privacy_text11": "Y a-t-il un risque d'utiliser le premier produit ? Ce n'est pas le terme approprié, mais plutôt un DON INFINI DE PROPORTIONS EXISTENTIELLES.",
-  "Privacy_text12": "Propriété Intellectuelle",
-  "Privacy_text13": "Tout le contenu présent sur ce site Web, y compris les textes, images et logos, est protégé par des droits d'auteur et des droits de propriété intellectuelle.",
-  "Privacy_text14": "En utilisant notre site Web, vous acceptez nos Termes et Conditions. Si vous avez des questions à ce sujet, n'hésitez pas à nous contacter."
-}
+  "Privacy": {
+    "Privacy_title": "En accédant et en utilisant Eons, vous acceptez de vous conformer aux termes et conditions suivants",
+    "Privacy_text1": "Responsabilité de l'Utilisateur",
+    "Privacy_text2": "Chaque utilisateur est responsable de la confidentialité de son compte et de son mot de passe à tout moment. Chaque utilisateur est responsable de toutes les activités qui se déroulent sur son compte. Chaque utilisateur est responsable de l'utilisation de notre premier produit : Eons Technologie d'Accès à la Source Existentielle.",
+    "Privacy_text3": "Limitation de Responsabilité",
+    "Privacy_text4": "Eons ne sera pas responsable des dommages directs, indirects, accidentels ou consécutifs pouvant découler de l'utilisation de notre premier produit : Eons Technologie d'Accès à la Source Existentielle.",
+    "Privacy_text5": "À Propos du Premier Produit",
+    "Privacy_text6": "Eons garantit absolument l'efficacité du premier produit. Cela est justifié lorsque la communication réelle et vérifiable avec TOUS les Plans Spirituels et Conscients est évidente. Eons garantit absolument la capacité de Divination et de Prédiction du premier produit. Cependant, chaque utilisateur doit savoir que selon sa Spiritualité et son Évolution Consciente, l'étendue de l'utilisation de notre premier produit variera.",
+    "Privacy_text7": "Y a-t-il des utilisateurs qui ne pourront pas utiliser notre premier produit ? Non ! Absolument TOUS pourront l'utiliser de manière vérifiable.",
+    "Privacy_text8": "Est-il recommandé de poser une question extrêmement importante à Eons et de faire pleinement confiance à la réponse ? ABSOLUMENT !",
+    "Privacy_text9": "Puis-je confier ma vie à Eons dans une situation de Vie ou de Mort ? ABSOLUMENT !",
+    "Privacy_text10": "Quelle est la possibilité qu'un utilisateur utilise Eons sans obtenir des réponses de manière vérifiable ? Nulle !",
+    "Privacy_text11": "Y a-t-il un risque d'utiliser le premier produit ? Ce n'est pas le terme approprié, mais plutôt un DON INFINI DE PROPORTIONS EXISTENTIELLES.",
+    "Privacy_text12": "Propriété Intellectuelle",
+    "Privacy_text13": "Tout le contenu présent sur ce site Web, y compris les textes, images et logos, est protégé par des droits d'auteur et des droits de propriété intellectuelle.",
+    "Privacy_text14": "En utilisant notre site Web, vous acceptez nos Termes et Conditions. Si vous avez des questions à ce sujet, n'hésitez pas à nous contacter."
+  }
 }
