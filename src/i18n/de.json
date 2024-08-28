@@ -135,7 +135,7 @@
     "first_text_2": "Wir haben die Genehmigung von ALLEN spirituellen und bewussten Ebenen. Egal, auf welcher materiellen Ebene sich unsere Nutzer befinden, ihre Spiritualitäten wissen bereits von uns.",
     "first_text_3": "Beim Kontakt mit unserem System wird die Spiritualität des Nutzers automatisch kanalisiert. Gleichzeitig werden automatisch mehrere Weiheprozesse vorübergehend aktiviert.",
     "first_text_4": "Dies ermöglicht es uns, vorübergehend das universelle Zufallsprinzip zu nutzen, um auf ALLE spirituellen und bewussten Ebenen zuzugreifen.",
-    
+
     "step_1": "Der Nutzer wird jederzeit automatisch sowohl von unserem Providence-System als auch von unserem Spirituellen Sicherheits-System unterstützt. Beide sind anerkannt und genehmigt durch die aktuellen Existenzgesetze.",
     "step_3": "Wenn ein Nutzer unser System verlässt, stellen wir automatisch alle von uns vorgenommenen Änderungen wieder her.",
     "step_2": "Das Maß an Nutzung, das ein Nutzer von unserem System machen kann, wird genau durch sein Niveau an Bewusstsein und Spiritualität bestimmt.",
@@ -195,10 +195,14 @@
     "insuficent_error": "Unzureichende Essenz.",
     "not_found": "Der begünstigte Nutzer existiert nicht.",
     "at_least_error": "Sie können nur ab einer Essenz übertragen.",
-    "compra_error": "Derzeit kann Ihr Kauf nicht verarbeitet werden, bitte kontaktieren Sie den technischen Support"
+    "compra_error": "Derzeit kann Ihr Kauf nicht verarbeitet werden, bitte kontaktieren Sie den technischen Support",
+
+    "transfer_question_1": "Sind Sie sicher, dass Sie",
+    "transfer_question_2": "Essenzen übertragen möchten",
+    "header": "Essenzen übertragen"
   },
 
-    "about": "Über Uns",
+  "about": "Über Uns",
   "therms": "Allgemeine Geschäftsbedingungen",
   "privacy": "Datenschutzrichtlinie",
 
@@ -242,37 +246,37 @@
     "About_text36": "Unser YouTube-Kanal, auf dem Sie unsere Neuigkeiten in mehreren Sprachen sehen können.",
     "About_text37": "Wir freuen uns auf Sie!"
   },
-    "Therms": {
-      "Therms_title": "Für Eons hat die Privatsphäre und Sicherheit der Informationen höchste Existenzpriorität, daher verpflichten wir uns uneingeschränkt, persönliche Daten jederzeit zu schützen.",
-  "Therms_text1": "Im Folgenden erklären wir, wie wir die Informationen sammeln, nutzen und schützen, die Sie uns bei der Nutzung unserer Website bereitstellen:",
-  "Therms_text2": "Datensammlung",
-  "Therms_text3": "Bei Eons sammeln wir persönliche Informationen wie E-Mail-Adresse, Google-Konto oder Microsoft-Konto. Dies geschieht, wenn Sie sich auf unserer Website registrieren. Auch beim Kauf können wir andere notwendige Daten sammeln, die für die Durchführung des Kaufs erforderlich sind.",
-  "Therms_text4": "Nutzung der Informationen",
-  "Therms_text5": "Wir verwenden die persönlichen Daten aus der Registrierung, um einen geschlossenen persönlichen Bereich zu definieren, auf den nur der Benutzer zugreifen kann. Die persönlichen Daten, die beim Kauf benötigt werden, nutzen wir ausschließlich für die Durchführung des Kaufs.",
-  "Therms_text6": "Datenschutz",
-  "Therms_text7": "Wir setzen fortschrittliche Sicherheitsmaßnahmen und Verschlüsselung ein, um Ihre persönlichen Daten zu schützen und deren Vertraulichkeit jederzeit zu gewährleisten.",
-  "Therms_text8": "Datenschutzrechte",
-  "Therms_text9": "Sie haben das Recht, Ihre persönlichen Daten jederzeit einzusehen, zu korrigieren oder zu löschen.",
-  "Therms_text10": "Durch die Nutzung unserer Website akzeptieren Sie unsere Datenschutzrichtlinie. Wenn Sie Fragen oder Bedenken zur Handhabung Ihrer Daten haben, zögern Sie nicht, uns zu kontaktieren.",
-  "Therms_text11": "Technischer Support",
-  "Therms_text12": "Kundendienst",
-  "Therms_text13": "Geschäftsangelegenheiten"
-    },
-    "Privacy": {
-      "Privacy_title": "Durch den Zugriff auf und die Nutzung von Eons akzeptieren Sie die folgenden Bedingungen und Konditionen",
-  "Privacy_text1": "Verantwortung des Nutzers",
-  "Privacy_text2": "Jeder Nutzer ist dafür verantwortlich, die Vertraulichkeit seines Kontos und Passworts jederzeit zu wahren. Jeder Nutzer ist verantwortlich für alle Aktivitäten, die in seinem Konto stattfinden. Jeder Nutzer ist verantwortlich für die Nutzung unseres ersten Produkts: Eons Technologie des Zugangs zur Existenzquelle.",
-  "Privacy_text3": "Haftungsbeschränkung",
-  "Privacy_text4": "Eons übernimmt keine Verantwortung für direkte, indirekte, zufällige oder Folgeschäden, die aus der Nutzung unseres ersten Produkts: Eons Technologie des Zugangs zur Existenzquelle entstehen können.",
-  "Privacy_text5": "Zum ersten Produkt",
-  "Privacy_text6": "Eons garantiert absolut die Wirksamkeit des ersten Produkts. Diese wird dadurch gerechtfertigt, dass die tatsächliche und überprüfbare Kommunikation mit ALLEN spirituellen und bewussten Ebenen nachgewiesen wird. Eons garantiert absolut die Fähigkeit zur Wahrsagung und Vorhersage des ersten Produkts. Allerdings muss jeder Nutzer wissen, dass die Nutzung unseres ersten Produkts von seiner Spiritualität und bewussten Entwicklung abhängt.",
-  "Privacy_text7": "Gibt es Nutzer, die unser erstes Produkt nicht nutzen können? Nein! Absolut ALLE können es nachweislich nutzen.",
-  "Privacy_text8": "Ist es ratsam, Eons eine extrem wichtige Frage zu stellen und voll und ganz auf die Antwort zu vertrauen? ABSOLUT!",
-  "Privacy_text9": "Kann ich mein Leben in eine Situation von Leben oder Tod Eons anvertrauen? ABSOLUT!",
-  "Privacy_text10": "Wie wahrscheinlich ist es, dass ein Nutzer Eons verwendet und keine nachweisbaren Antworten erhält? Null!",
-  "Privacy_text11": "Gibt es Risiken bei der Nutzung des ersten Produkts? Risiko ist nicht das richtige Wort, eher UNENDLICHES GESCHENK VON EXISTENZIELLEN DIMENSIONEN.",
-  "Privacy_text12": "Geistiges Eigentum",
-  "Privacy_text13": "Alle Inhalte auf dieser Website, einschließlich Texte, Bilder und Logos, sind durch Urheberrechte und geistiges Eigentum geschützt.",
-  "Privacy_text14": "Durch die Nutzung unserer Website akzeptieren Sie unsere Allgemeinen Geschäftsbedingungen. Wenn Sie Fragen dazu haben, zögern Sie bitte nicht, uns zu kontaktieren."
-    }
+  "Therms": {
+    "Therms_title": "Für Eons hat die Privatsphäre und Sicherheit der Informationen höchste Existenzpriorität, daher verpflichten wir uns uneingeschränkt, persönliche Daten jederzeit zu schützen.",
+    "Therms_text1": "Im Folgenden erklären wir, wie wir die Informationen sammeln, nutzen und schützen, die Sie uns bei der Nutzung unserer Website bereitstellen:",
+    "Therms_text2": "Datensammlung",
+    "Therms_text3": "Bei Eons sammeln wir persönliche Informationen wie E-Mail-Adresse, Google-Konto oder Microsoft-Konto. Dies geschieht, wenn Sie sich auf unserer Website registrieren. Auch beim Kauf können wir andere notwendige Daten sammeln, die für die Durchführung des Kaufs erforderlich sind.",
+    "Therms_text4": "Nutzung der Informationen",
+    "Therms_text5": "Wir verwenden die persönlichen Daten aus der Registrierung, um einen geschlossenen persönlichen Bereich zu definieren, auf den nur der Benutzer zugreifen kann. Die persönlichen Daten, die beim Kauf benötigt werden, nutzen wir ausschließlich für die Durchführung des Kaufs.",
+    "Therms_text6": "Datenschutz",
+    "Therms_text7": "Wir setzen fortschrittliche Sicherheitsmaßnahmen und Verschlüsselung ein, um Ihre persönlichen Daten zu schützen und deren Vertraulichkeit jederzeit zu gewährleisten.",
+    "Therms_text8": "Datenschutzrechte",
+    "Therms_text9": "Sie haben das Recht, Ihre persönlichen Daten jederzeit einzusehen, zu korrigieren oder zu löschen.",
+    "Therms_text10": "Durch die Nutzung unserer Website akzeptieren Sie unsere Datenschutzrichtlinie. Wenn Sie Fragen oder Bedenken zur Handhabung Ihrer Daten haben, zögern Sie nicht, uns zu kontaktieren.",
+    "Therms_text11": "Technischer Support",
+    "Therms_text12": "Kundendienst",
+    "Therms_text13": "Geschäftsangelegenheiten"
+  },
+  "Privacy": {
+    "Privacy_title": "Durch den Zugriff auf und die Nutzung von Eons akzeptieren Sie die folgenden Bedingungen und Konditionen",
+    "Privacy_text1": "Verantwortung des Nutzers",
+    "Privacy_text2": "Jeder Nutzer ist dafür verantwortlich, die Vertraulichkeit seines Kontos und Passworts jederzeit zu wahren. Jeder Nutzer ist verantwortlich für alle Aktivitäten, die in seinem Konto stattfinden. Jeder Nutzer ist verantwortlich für die Nutzung unseres ersten Produkts: Eons Technologie des Zugangs zur Existenzquelle.",
+    "Privacy_text3": "Haftungsbeschränkung",
+    "Privacy_text4": "Eons übernimmt keine Verantwortung für direkte, indirekte, zufällige oder Folgeschäden, die aus der Nutzung unseres ersten Produkts: Eons Technologie des Zugangs zur Existenzquelle entstehen können.",
+    "Privacy_text5": "Zum ersten Produkt",
+    "Privacy_text6": "Eons garantiert absolut die Wirksamkeit des ersten Produkts. Diese wird dadurch gerechtfertigt, dass die tatsächliche und überprüfbare Kommunikation mit ALLEN spirituellen und bewussten Ebenen nachgewiesen wird. Eons garantiert absolut die Fähigkeit zur Wahrsagung und Vorhersage des ersten Produkts. Allerdings muss jeder Nutzer wissen, dass die Nutzung unseres ersten Produkts von seiner Spiritualität und bewussten Entwicklung abhängt.",
+    "Privacy_text7": "Gibt es Nutzer, die unser erstes Produkt nicht nutzen können? Nein! Absolut ALLE können es nachweislich nutzen.",
+    "Privacy_text8": "Ist es ratsam, Eons eine extrem wichtige Frage zu stellen und voll und ganz auf die Antwort zu vertrauen? ABSOLUT!",
+    "Privacy_text9": "Kann ich mein Leben in eine Situation von Leben oder Tod Eons anvertrauen? ABSOLUT!",
+    "Privacy_text10": "Wie wahrscheinlich ist es, dass ein Nutzer Eons verwendet und keine nachweisbaren Antworten erhält? Null!",
+    "Privacy_text11": "Gibt es Risiken bei der Nutzung des ersten Produkts? Risiko ist nicht das richtige Wort, eher UNENDLICHES GESCHENK VON EXISTENZIELLEN DIMENSIONEN.",
+    "Privacy_text12": "Geistiges Eigentum",
+    "Privacy_text13": "Alle Inhalte auf dieser Website, einschließlich Texte, Bilder und Logos, sind durch Urheberrechte und geistiges Eigentum geschützt.",
+    "Privacy_text14": "Durch die Nutzung unserer Website akzeptieren Sie unsere Allgemeinen Geschäftsbedingungen. Wenn Sie Fragen dazu haben, zögern Sie bitte nicht, uns zu kontaktieren."
   }
+}
