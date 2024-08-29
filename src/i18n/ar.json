@@ -192,11 +192,11 @@
     "donation": "تقديم تبرع",
     "pay_deude": "سداد الديون لجذر النظام",
     "tropipay_text": "جميع المشتريات تتم معالجتها بأمان وكفاءة عبر بوابة الدفع Tropipay.",
+    "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
     "insuficent_error": "الـ essence غير كافية.",
     "not_found": "المستخدم المستفيد غير موجود.",
     "at_least_error": "يمكنك النقل بدءًا من 1 essence فقط.",
     "compra_error": "حاليًا، لا يمكن معالجة عملية الشراء الخاصة بك، يرجى الاتصال بالدعم الفني",
-
     "transfer_question_1": "جوهرًا إلى",
     "transfer_question_2": "هل أنت متأكد أنك تريد نقل",
     "header": "نقل الجواهر"
