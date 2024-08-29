@@ -1,19 +1,19 @@
 {
   "fecth_error": "Unexpected error, check your internet connection",
   "text_loading": "Loading...",
-  "continue":"Continue",
-  "notifications":"Notifications",
-  "log_out":"Log Out",
-  "next":"Coming Soon",
-  "verify":"Verificando Pago",
-  "of_esence":"of Essence",
+  "continue": "Continue",
+  "notifications": "Notifications",
+  "log_out": "Log Out",
+  "next": "Coming Soon",
+  "verify": "Verificando Pago",
+  "of_esence": "of Essence",
 
-  "Errors":{
-    "Auth":{
-      "already_exist":"This user already exists",
-      "check_credentials":"Check your credentials",
-      "email_not_found":"Email not found",
-      "user_valid":"This user has already been validated"
+  "Errors": {
+    "Auth": {
+      "already_exist": "This user already exists",
+      "check_credentials": "Check your credentials",
+      "email_not_found": "Email not found",
+      "user_valid": "This user has already been validated"
     }
   },
 
@@ -33,7 +33,7 @@
     "text12": "Eons has begun an unstoppable outcome that will take humanity to a Universal scale.",
     "text13": "The combination of a concept of the most advanced and refined Technology, along with a concept of the Purest and Most Enlightened Spirituality, describe the Essence that Eons will transmit at all times.",
     "text14": "New products and services will be presented",
-    "text14_1":"soon",
+    "text14_1": "soon",
     "text15": "View Product"
   },
   "Auth": {
@@ -54,12 +54,12 @@
       "expiration_date": "Expiration date",
       "name": "Name on Card"
     },
-    "payment_text1":"The purchase of essence has failed, this can be due to various reasons, so we recommend",
-    "payment_text2":"Check your wallet or bank card used in the purchase",
-    "payment_text3":"Check your internet connection",
-    "payment_text4":"Try the purchase process again, it may have been a temporary error",
-    "payment_text5":"If you follow the above steps and get the same error, contact",
-    "button":"Return to main menu"
+    "payment_text1": "The purchase of essence has failed, this can be due to various reasons, so we recommend",
+    "payment_text2": "Check your wallet or bank card used in the purchase",
+    "payment_text3": "Check your internet connection",
+    "payment_text4": "Try the purchase process again, it may have been a temporary error",
+    "payment_text5": "If you follow the above steps and get the same error, contact",
+    "button": "Return to main menu"
   },
   "Dialogs": {
     "add_text": "Add",
@@ -196,7 +196,11 @@
     "insuficent_error": "Insufficient Essence.",
     "not_found": "The beneficiary user does not exist.",
     "at_least_error": "You can only transfer at least 1 essence.",
-    "compra_error": "Your purchase cannot be processed at this time, please contact technical support."
+    "compra_error": "Your purchase cannot be processed at this time, please contact technical support.",
+
+    "transfer_question_1": "Are you sure you want to transfer",
+    "transfer_question_2": "essences to",
+    "header": "Transferring essences"
   },
   "about": "About Us",
   "therms": "Terms and Conditions",
