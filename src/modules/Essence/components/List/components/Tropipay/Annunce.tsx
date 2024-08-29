@@ -1,0 +1,21 @@
+import React from 'react'
+import useTranslation from '../../../../../Shared/hooks/useTranslation'
+
+const Annunce = () => {
+  const {translation} = useTranslation()
+  return (
+    <article className="mt-10 sm:gap-x-10 sm:px-20 gap-y-2 cursor-pointer rounded-lg flex md:flex-row flex-col items-center justify-between">
+      
+
+      <section className="flex items-center">
+        <img className='w-[80px]' src='euro-01.webp'></img>
+      </section>
+
+      <h1 className="text-base mb-0 font-semibold">
+        {translation.Esence.annunce}
+      </h1>
+    </article>
+  )
+}
+
+export default Annunce

@@ -193,6 +193,7 @@
     "donation": "Make a donation",
     "pay_deude": "Pay debt to the Root of the System",
     "tropipay_text": "All purchases are processed securely and efficiently through the Tropipay payment gateway.",
+    "annunce": "You can make purchases in any currency, as it will be automatically converted to €.",
     "insuficent_error": "Insufficient Essence.",
     "not_found": "The beneficiary user does not exist.",
     "at_least_error": "You can only transfer at least 1 essence.",

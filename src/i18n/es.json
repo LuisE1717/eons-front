@@ -196,6 +196,7 @@
     "donation": "Realizar donación",
     "pay_deude": "Pagar deuda a la Raíz del Sistema",
     "tropipay_text": "Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay.",
+    "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
     "insuficent_error": "Esencia Insuficiente.",
     "not_found": "El usuario beneficiado no existe.",
     "at_least_error": "Solo puede transferir a partir de 1 esencia.",
