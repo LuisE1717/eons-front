@@ -199,7 +199,9 @@
 
     "transfer_question_1": "جوهرًا إلى",
     "transfer_question_2": "هل أنت متأكد أنك تريد نقل",
-    "header": "نقل الجواهر"
+    "header": "نقل الجواهر",
+    "button_1": "Sí",
+    "button_2": "No"
   },
 
   "about": "من نحن",

@@ -201,9 +201,11 @@
     "at_least_error": "Solo puede transferir a partir de 1 esencia.",
     "compra_error": "Actualmente su compra no puede ser procesada, contacte a soporte técnico",
 
-    "transfer_question_1": "¿Está seguro que desea transferir",
-    "transfer_question_2": "esencias a",
-    "header": "Transferir esencias"
+    "transfer_question_1": "¿Realmente desea transferir",
+    "transfer_question_2": "de Esencia a",
+    "header": "¡Aviso!",
+    "button_1": "Sí",
+    "button_2": "No"
   },
 
   "about": "Acerca de Nosotros",
