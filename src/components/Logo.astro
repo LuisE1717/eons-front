@@ -1,7 +1,7 @@
 ---
 import { SITE_TITLE } from '../consts'
 
-const url = Astro.cookies.get('eons_token')?.value? '/services' : '/'
+const {url} = Astro.props
 ---
 
 <div class="flex items-center gap-x-3">
