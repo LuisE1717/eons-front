@@ -200,7 +200,9 @@
 
     "transfer_question_1": "Sind Sie sicher, dass Sie",
     "transfer_question_2": "Essenzen übertragen möchten",
-    "header": "Essenzen übertragen"
+    "header": "Essenzen übertragen",
+    "button_1": "Sí",
+    "button_2": "No"
   },
 
   "about": "Über Uns",
