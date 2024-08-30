@@ -25,19 +25,22 @@ export default function Modal({
 
   return (
     <IModal open={open} onClose={handleClose} center showCloseIcon={false}>
-      <h2 className="text-xl font-semibold mb-4">
+      <h2 className="text-2xl font-semibold mb-4 text-center text-blue-700">
         {translation.Esence.header}
       </h2>
 
-      <p>{`${translation.Esence.transfer_question_1} ${count} ${translation.Esence.transfer_question_2} ${to}?`}</p>
+      <p className="text-center text-base">
+        {`${translation.Esence.transfer_question_1} ${count} ${translation.Esence.transfer_question_2}`}{" "}
+        <span className="text-blue-500">{to}</span>?
+      </p>
 
-      <div className="flex justify-end gap-x-2.5 w-full mt-4">
-        <Button loading={loading} onClick={handleSubmit} full={false} size="sm">
-          Transferir
+      <div className="grid grid-cols-2 gap-x-2.5 w-full mt-7">
+        <Button loading={loading} onClick={handleSubmit} full={true} size="sm">
+          {translation.Esence.button_1}
         </Button>
 
-        <Button loading={loading} onClick={handleClose} full={false} size="sm">
-          Cancelar
+        <Button loading={loading} onClick={handleClose} full={true} size="sm">
+          {translation.Esence.button_2}
         </Button>
       </div>
     </IModal>
