@@ -41,19 +41,22 @@ export default function Form({ handleClose }: Props) {
         await transferEssence(Cookies.get("eons_token") || "", datah)
           .then(({ data }) => {
             if (data?.essence) {
-              console.log(data);
-              console.log(data.essence);
               setCookie("eons_essence", data?.essence, 0.25);
+
+              setOpenModal(null);
+
               toast.success(
                 `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
               );
+
               setTimeout(() => {
                 window.location.reload();
               }, 4000);
             }
           })
           .catch(({ response }) => {
-            console.log(response);
+            setOpenModal(null);
+
             if (response?.data?.message == "Insufficient essence") {
               toast.error(translation.Esence.insuficent_error);
             } else if (response?.data?.message == "Receiver not found") {
@@ -67,6 +70,7 @@ export default function Form({ handleClose }: Props) {
             }
           });
       }
+
       setLoading(false);
     } catch (error) {
       toast.error(translation.fecth_error);
