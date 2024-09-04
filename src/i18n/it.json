@@ -201,8 +201,8 @@
     "transfer_question_1": "Sei sicuro di voler trasferire",
     "transfer_question_2": "essenze a",
     "header": "Trasferimento essenze",
-    "button_1": "Sí",
-    "button_2": "No"
+    "execute":"Transferir",
+    "cancell":"Cancelar"
   },
 
   "about": "Chi Siamo",

@@ -34,13 +34,13 @@ export default function Modal({
         <span className="text-blue-500">{to}</span>?
       </p>
 
-      <div className="grid grid-cols-2 gap-x-2.5 w-full mt-7">
-        <Button loading={loading} onClick={handleSubmit} full={true} size="sm">
-          {translation.Esence.button_1}
+      <div className="flex justify-end gap-x-2.5 w-full mt-4">
+        <Button loading={loading} onClick={handleSubmit} full={false} size="sm">
+          {translation.Esence.execute}
         </Button>
 
-        <Button loading={loading} onClick={handleClose} full={true} size="sm">
-          {translation.Esence.button_2}
+        <Button loading={loading} onClick={handleClose} full={false} size="sm">
+        {translation.Esence.cancell}
         </Button>
       </div>
     </IModal>
