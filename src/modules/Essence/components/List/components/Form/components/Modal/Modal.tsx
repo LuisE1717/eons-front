@@ -33,11 +33,11 @@ export default function Modal({
 
       <div className="flex justify-end gap-x-2.5 w-full mt-4">
         <Button loading={loading} onClick={handleSubmit} full={false} size="sm">
-          Transferir
+          {translation.Esence.execute}
         </Button>
 
         <Button loading={loading} onClick={handleClose} full={false} size="sm">
-          Cancelar
+        {translation.Esence.cancell}
         </Button>
       </div>
     </IModal>

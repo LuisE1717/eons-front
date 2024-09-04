@@ -199,7 +199,9 @@
     "compra_error": "حاليًا، لا يمكن معالجة عملية الشراء الخاصة بك، يرجى الاتصال بالدعم الفني",
     "transfer_question_1": "جوهرًا إلى",
     "transfer_question_2": "هل أنت متأكد أنك تريد نقل",
-    "header": "نقل الجواهر"
+    "header": "نقل الجواهر",
+    "execute":"Transferir",
+    "cancell":"Cancelar"
   },
 
   "about": "من نحن",

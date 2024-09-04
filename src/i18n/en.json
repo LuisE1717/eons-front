@@ -201,7 +201,9 @@
 
     "transfer_question_1": "Are you sure you want to transfer",
     "transfer_question_2": "essences to",
-    "header": "Transferring essences"
+    "header": "Transferring essences",
+    "execute":"Transfer",
+    "cancell":"Cancell"
   },
   "about": "About Us",
   "therms": "Terms and Conditions",

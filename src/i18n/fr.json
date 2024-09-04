@@ -200,7 +200,9 @@
 
     "transfer_question_1": "Etes-vous sûr de vouloir transférer",
     "transfer_question_2": "essences vers",
-    "header": "Transférer des essences"
+    "header": "Transférer des essences",
+    "execute":"Transferir",
+    "cancell":"Cancelar"
   },
 
   "about": "À Propos de Nous",
