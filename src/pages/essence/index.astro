@@ -1,9 +1,28 @@
 ---
 import AppContainer from "../../layouts/AppContainer.astro"
 import Essence from '../../modules/Essence/Essence.astro'
+import type { INotifications } from "../../modules/Notifications/domain/INotifications"
+import { getProfile } from "../../utils/api/userApi"
+import { getExpire } from "../../utils/cookies/Cookies"
+
+if(!Astro.cookies.get('eons_token')?.value)
+    return Astro.redirect('/auth')
+
+    var notificaciones: INotifications[] = []
+
+try {
+    const profile = await getProfile(Astro.cookies.get("eons_token")?.value || '')
+    console.log(profile)
+    Astro.cookies.set('eons_essence',profile?.data?.essence || 0,{expires:getExpire(7),path:'/'})
+    if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)
+        notificaciones = profile?.data?.notificaciones
+    //console.log(notificaciones)     
+} catch (error) {
+    console.log(error)
+}
 ---
 
 <AppContainer>
-   <Essence/>
+   <Essence notificaciones={notificaciones}/>
 </AppContainer>
 
