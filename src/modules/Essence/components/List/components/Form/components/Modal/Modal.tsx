@@ -24,22 +24,22 @@ export default function Modal({
   const { translation } = useTranslation();
 
   return (
-    <IModal open={open} onClose={handleClose} center showCloseIcon={false}>
+    <IModal open={open} onClose={handleClose} center showCloseIcon={true}>
       <h2 className="text-2xl font-semibold mb-4 text-center text-blue-700">
         {translation.Esence.header}
       </h2>
 
       <p className="text-center text-base">
-        {`${translation.Esence.transfer_question_1} ${count} ${translation.Esence.transfer_question_2}`}{" "}
+        {`${translation.Esence.transfer_question_1} ${count} ${translation.Esence.transfer_question_2}`} {" "}
         <span className="text-blue-500">{to}</span>?
       </p>
 
-      <div className="flex justify-end gap-x-2.5 w-full mt-4">
-        <Button loading={loading} onClick={handleSubmit} full={false} size="sm">
+      <div className="flex justify-center gap-x-4 w-full mt-4">
+        <Button loading={loading} onClick={handleSubmit} full={false} size="base">
           {translation.Esence.execute}
         </Button>
 
-        <Button loading={loading} onClick={handleClose} full={false} size="sm">
+        <Button loading={loading} onClick={handleClose} full={false} size="base">
         {translation.Esence.cancell}
         </Button>
       </div>
