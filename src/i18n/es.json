@@ -205,8 +205,8 @@
     "transfer_question_1": "¿Realmente desea transferir",
     "transfer_question_2": "de Esencia a",
     "header": "¡Aviso!",
-    "execute":"si",
-    "cancell":"no"
+    "execute": "Si",
+    "cancell": "No"
   },
 
   "about": "Acerca de Nosotros",
