@@ -205,8 +205,11 @@
     "transfer_question_1": "¿Está seguro que desea transferir",
     "transfer_question_2": "esencias a",
     "header": "Transferir esencias",
-    "execute":"Transferir",
-    "cancell":"Cancelar"
+    "execute": "Transferir",
+    "cancell": "Cancelar",
+    "historial_item_1": "Usted ha recibido",
+    "historial_item_2": "Usted ha transferido",
+    "historial_item_3": "de Esencia de"
   },
 
   "about": "Acerca de Nosotros",

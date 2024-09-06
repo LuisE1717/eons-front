@@ -13,8 +13,13 @@ export default function Card({ children, dialog, handleWatchDialog }: Props) {
 
   return (
     <article className="flex justify-between shadow-md shadow-gray-400 items-center py-2 sm:px-7 px-5 rounded-2xl bg-white border-2">
-      <div className="cursor-pointer" onClick={() => handleWatchDialog(dialog.id)}>
-        <h2 className="text-xl font-medium mb-0">{dialog.tipo=='dialog'?dialog.descripcion:dialog.tipo}</h2>
+      <div
+        className="cursor-pointer"
+        onClick={() => handleWatchDialog(dialog.id)}
+      >
+        <h2 className="text-xl font-medium mb-0">
+          {dialog.tipo == "dialog" ? dialog.descripcion : dialog.tipo}
+        </h2>
       </div>
 
       <div className="flex items-center gap-x-2">
