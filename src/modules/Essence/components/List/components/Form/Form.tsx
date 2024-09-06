@@ -42,7 +42,7 @@ export default function Form({ handleClose }: Props) {
           .then(({ data }) => {
             if (data?.essence) {
               setCookie("eons_essence", data?.essence, 0.25);
-              setOpenModal(null)
+              setOpenModal(null);
               toast.success(
                 `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
               );
@@ -91,7 +91,7 @@ export default function Form({ handleClose }: Props) {
         to={form.user}
       />
 
-      <section className="flex justify-end ">
+      <section className="flex justify-end">
         <button type="button" onClick={handleClose}>
           <svg
             width="18"

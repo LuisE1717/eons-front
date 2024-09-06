@@ -21,30 +21,30 @@ export default function Dialogs({
   handleDeleteDialog,
   handleWatchDialog,
   dialogs,
-  type
+  type,
 }: Props) {
   return (
     <>
-    {dialogs.length > 0 ?
-    <List>
-      {dialogs.map((d) => (
-        <Card dialog={d} key={d.id}  handleWatchDialog={handleWatchDialog}>
-          <Dropdown no_close header={<Icon />} position="left">
-            <DropdwonIcon
-              icon={<Heart favorite={d.favorito} size={20} />}
-              handleClick={() => handleFavDialog(d.id)}
-            />
-            <DropdwonIcon
-              icon={<Trash size={20} />}
-              handleClick={() => handleDeleteDialog(d.id)}
-            />
-          </Dropdown>
-        </Card>
-      ))}
-    </List>
-    :
-    <NoDialogs fav={false} type={type}/>
-    }
+      {dialogs.length > 0 ? (
+        <List>
+          {dialogs.map((d) => (
+            <Card dialog={d} key={d.id} handleWatchDialog={handleWatchDialog}>
+              <Dropdown no_close header={<Icon />} position="left">
+                <DropdwonIcon
+                  icon={<Heart favorite={d.favorito} size={20} />}
+                  handleClick={() => handleFavDialog(d.id)}
+                />
+                <DropdwonIcon
+                  icon={<Trash size={20} />}
+                  handleClick={() => handleDeleteDialog(d.id)}
+                />
+              </Dropdown>
+            </Card>
+          ))}
+        </List>
+      ) : (
+        <NoDialogs fav={false} type={type} />
+      )}
     </>
   );
 }
