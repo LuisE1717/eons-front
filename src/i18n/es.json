@@ -206,7 +206,10 @@
     "transfer_question_2": "de Esencia a",
     "header": "¡Aviso!",
     "execute": "Si",
-    "cancell": "No"
+    "cancell": "No",
+    "historial_item_1": "Usted ha recibido",
+    "historial_item_2": "Usted ha transferido",
+    "historial_item_3": "de Esencia de"
   },
 
   "about": "Acerca de Nosotros",

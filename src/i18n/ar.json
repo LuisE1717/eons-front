@@ -200,8 +200,12 @@
     "transfer_question_1": "جوهرًا إلى",
     "transfer_question_2": "هل أنت متأكد أنك تريد نقل",
     "header": "نقل الجواهر",
-    "execute":"Transferir",
-    "cancell":"Cancelar"
+    "execute": "Transferir",
+    "cancell": "Cancelar",
+
+    "historial_item_1": "Usted ha recibido",
+    "historial_item_2": "Usted ha transferido",
+    "historial_item_3": "de Esencia de"
   },
 
   "about": "من نحن",

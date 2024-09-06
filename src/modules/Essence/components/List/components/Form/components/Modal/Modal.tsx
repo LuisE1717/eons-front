@@ -24,7 +24,13 @@ export default function Modal({
   const { translation } = useTranslation();
 
   return (
-    <IModal open={open} onClose={handleClose} center showCloseIcon={true}>
+    <IModal
+      open={open}
+      classNames={{ closeButton: "hidden" }}
+      onClose={handleClose}
+      center
+      showCloseIcon={true}
+    >
       <h2 className="sm:text-3xl text-2xl font-semibold mb-4 text-center text-blue-700">
         {translation.Esence.header}
       </h2>
@@ -40,11 +46,18 @@ export default function Modal({
           onClick={handleSubmit}
           full={true}
           size="base"
+          shadow="bottom"
         >
           {translation.Esence.execute}
         </Button>
 
-        <Button loading={loading} onClick={handleClose} full={true} size="base">
+        <Button
+          loading={loading}
+          onClick={handleClose}
+          full={true}
+          shadow="bottom"
+          size="base"
+        >
           {translation.Esence.cancell}
         </Button>
       </div>
