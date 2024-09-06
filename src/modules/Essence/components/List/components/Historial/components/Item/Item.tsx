@@ -10,7 +10,7 @@ interface Props {
 export default function Item({ item }: Props) {
   const { translation } = useTranslation();
   const email = Cookies.get("eons_user");
-  const dateStr = moment(item.date).format("MM/DD/yyyy hh:mm");
+  const dateStr = moment(item.date).format("MM/DD/yyyy hh:mm A");
 
   const receive = email === item.receiverEmail;
 
