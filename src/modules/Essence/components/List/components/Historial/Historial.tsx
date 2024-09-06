@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import type { TransferHistorial } from "../../domain";
 import Item from "./components/Item/Item";
+import axios from "axios";
+import { axiosI } from "../../../../../../utils/api";
+import Cookies from "js-cookie";
 
 interface Props {
   handleClose(): void;
@@ -11,29 +14,14 @@ export default function Historial({ handleClose }: Props) {
   const [loading, setLoading] = useState(true);
 
   async function fetchHistorial(): Promise<TransferHistorial[]> {
-    return [
-      {
-        id: 1,
-        fecha: new Date(),
-        recibido: false,
-        cantidad: 4,
-        usuario: "Fulano",
-      },
-      {
-        id: 2,
-        fecha: new Date(),
-        recibido: true,
-        cantidad: 20,
-        usuario: "Fulano",
-      },
-      {
-        id: 3,
-        fecha: new Date(),
-        recibido: false,
-        cantidad: 10,
-        usuario: "Fulano",
-      },
-    ];
+    try {
+      const { data } = await axiosI(Cookies.get("eons_token") || "").get(
+        "/transferencias"
+      );
+      return data;
+    } catch {
+      return [];
+    }
   }
 
   useEffect(() => {
@@ -50,7 +38,7 @@ export default function Historial({ handleClose }: Props) {
   }, []);
 
   return (
-    <div className="flex flex-col w-full max-w-[600px] bg-white sm:px-14 px-8 sm:py-8 py-6 rounded-2xl shadow-lg">
+    <div className="flex flex-col w-max min-w-[600px] bg-white sm:px-14 px-8 sm:py-8 py-6 rounded-3xl shadow-lg">
       <section className="flex justify-end mb-4">
         <button type="button" onClick={handleClose}>
           <svg

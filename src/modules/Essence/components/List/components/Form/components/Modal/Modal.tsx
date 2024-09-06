@@ -26,7 +26,7 @@ export default function Modal({
   return (
     <IModal
       open={open}
-      classNames={{ closeButton: "hidden" }}
+      classNames={{ closeButton: "hidden", modal: "rounded-3xl" }}
       onClose={handleClose}
       center
       showCloseIcon={true}

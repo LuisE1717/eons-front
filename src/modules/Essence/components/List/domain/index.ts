@@ -13,10 +13,10 @@ export interface Price {
 
 export interface TransferHistorial {
   id: number;
-  recibido: boolean;
-  fecha: Date;
-  cantidad: number;
-  usuario: string;
+  amount: number;
+  date: Date;
+  senderEmail: number;
+  receiverEmail: string;
 }
 
 export interface Transfer {
