@@ -42,7 +42,7 @@ export default function Form({ handleClose }: Props) {
           .then(({ data }) => {
             if (data?.essence) {
               setCookie("eons_essence", data?.essence, 0.25);
-              setOpenModal(null)
+              setOpenModal(null);
               toast.success(
                 `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
               );
@@ -81,7 +81,7 @@ export default function Form({ handleClose }: Props) {
   }
 
   return (
-    <div className="flex flex-col w-full max-w-[600px] bg-white sm:px-14 px-8 sm:py-8 py-6 rounded-2xl shadow-lg">
+    <div className="flex flex-col w-full max-w-[600px] bg-white sm:px-14 px-8 sm:py-8 py-6 rounded-3xl shadow-lg">
       <Modal
         handleSubmit={handleSubmit}
         open={Boolean(openModal)}
@@ -91,7 +91,7 @@ export default function Form({ handleClose }: Props) {
         to={form.user}
       />
 
-      <section className="flex justify-end ">
+      <section className="flex justify-end">
         <button type="button" onClick={handleClose}>
           <svg
             width="18"

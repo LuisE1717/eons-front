@@ -200,10 +200,13 @@
     "compra_error": "Your purchase cannot be processed at this time, please contact technical support.",
 
     "transfer_question_1": "Are you sure you want to transfer",
-    "transfer_question_2": "essences to",
-    "header": "Transferring essences",
-    "execute":"Transfer",
-    "cancell":"Cancell"
+    "transfer_question_2": "of Essence to",
+    "header": "Warning!",
+    "execute": "yes",
+    "cancell": "no",
+    "historial_item_1": "Usted ha recibido",
+    "historial_item_2": "Usted ha transferido",
+    "historial_item_3": "de Esencia de"
   },
   "about": "About Us",
   "therms": "Terms and Conditions",

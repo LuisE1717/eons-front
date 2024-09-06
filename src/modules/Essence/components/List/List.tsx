@@ -7,6 +7,7 @@ import HeaderImage from "./components/HeaderImage/HeaderImage";
 import Sections from "./components/Sections/Sections";
 import Tropipay from "./components/Tropipay/Tropipay";
 import Annunce from "./components/Tropipay/Annunce";
+import Historial from "./components/Historial/Historial";
 
 export default function List() {
   const {
@@ -19,7 +20,7 @@ export default function List() {
     findCost,
     handleCustomPayment,
     handleClose,
-    loading
+    loading,
   } = useList();
 
   return (
@@ -44,10 +45,9 @@ export default function List() {
               findCost={findCost}
             /> */}
 
-            <Tropipay/>
+            <Tropipay />
 
-            <Annunce/>
-
+            <Annunce />
           </section>
 
           <HeaderImage />
@@ -59,6 +59,9 @@ export default function List() {
           )}
 
           {section === SECTION.TRANSFER && <Form handleClose={handleClose} />}
+          {section === SECTION.TRANSFER_HISTORIAL && (
+            <Historial handleClose={handleClose} />
+          )}
         </div>
       </main>
     </div>
