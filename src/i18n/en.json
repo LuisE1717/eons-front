@@ -202,8 +202,11 @@
     "transfer_question_1": "Are you sure you want to transfer",
     "transfer_question_2": "of Essence to",
     "header": "Warning!",
-    "execute":"yes",
-    "cancell":"no"
+    "execute": "yes",
+    "cancell": "no",
+    "historial_item_1": "Usted ha recibido",
+    "historial_item_2": "Usted ha transferido",
+    "historial_item_3": "de Esencia de"
   },
   "about": "About Us",
   "therms": "Terms and Conditions",
