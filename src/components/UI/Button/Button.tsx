@@ -11,6 +11,7 @@ interface Props {
   color?: "default" | "primary";
   full?: boolean;
   size?: "base" | "sm" | "xs";
+  shadow?: "bottom" | "default";
 }
 
 export default function Button({
@@ -23,14 +24,18 @@ export default function Button({
   color = "default",
   full = true,
   size = "base",
+  shadow = "default",
 }: Props) {
   const CLASS = clsx(
-    "border-2 border-gray-200",
     "font-medium",
     "rounded-full",
     "transition-all duration-200",
-    "shadow-md",
     "flex justify-center",
+
+    {
+      "shadow-md border-2 border-gray-200": shadow === "default",
+      "shadow-md shadow-gray-400": shadow === "bottom",
+    },
 
     { "hover:shadow-lg": !disabled },
     { "opacity-60": disabled },
@@ -41,9 +46,17 @@ export default function Button({
 
     { "w-full": full, "w-max": !full },
 
-    { "px-8 py-3": size === "base", "px-5 py-2": size === "sm", "px-6 py-3": size === "xs" },
+    {
+      "px-8 py-3": size === "base",
+      "px-5 py-2": size === "sm",
+      "px-6 py-3": size === "xs",
+    },
 
-    { "sm:text-lg text-base": size === "base", "text-sm": size === "sm", "text-xs": size === "xs" }
+    {
+      "sm:text-lg text-base": size === "base",
+      "text-sm": size === "sm",
+      "text-xs": size === "xs",
+    }
   );
 
   return (

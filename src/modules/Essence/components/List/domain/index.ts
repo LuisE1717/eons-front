@@ -8,7 +8,15 @@ export interface Essence {
 export interface Price {
   descuento: number;
   costo: number;
-  esencia:string;
+  esencia: string;
+}
+
+export interface TransferHistorial {
+  id: number;
+  amount: number;
+  date: Date;
+  senderEmail: number;
+  receiverEmail: string;
 }
 
 export interface Transfer {
@@ -22,4 +30,5 @@ export enum SECTION {
   TRANSFER,
   DONATION,
   PAY,
+  TRANSFER_HISTORIAL,
 }
