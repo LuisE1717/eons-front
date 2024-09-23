@@ -21,8 +21,8 @@ export default function Sections({ handleChange, selected }: Props) {
       <SectionButton
         handleClick={() => handleChange(SECTION.TRANSFER_HISTORIAL)}
         selected={selected === SECTION.TRANSFER_HISTORIAL}
-        text="Historial de transferencias"
-        disabled={false}
+        text={`${translation.Esence.historial}.`}
+        disabled={true}
       />
 
       <SectionButton

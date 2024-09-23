@@ -190,6 +190,7 @@
     "cant_transfer": "الكمية التي سيتم نقلها",
     "transfer": "نقل essence",
     "donation": "تقديم تبرع",
+    "historial":"Historial de transferencias",
     "pay_deude": "سداد الديون لجذر النظام",
     "tropipay_text": "جميع المشتريات تتم معالجتها بأمان وكفاءة عبر بوابة الدفع Tropipay.",
     "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
@@ -202,6 +203,10 @@
     "header": "نقل الجواهر",
     "execute": "Transferir",
     "cancell": "Cancelar",
+
+    "toast_1":"Se ha transferido",
+    "toast_2":"de Esencia a",
+    "toast_3":"exitosamente",
 
     "historial_item_1": "Usted ha recibido",
     "historial_item_2": "Usted ha transferido",

@@ -10,7 +10,7 @@ export default function Question({
   disabled,
 }: Props) {
   return (
-    <header className="flex items-center w-full flex-col mb-5">
+    <header className="flex items-center w-full flex-col mt-16 py-10">
       <h2 className="text-xl mb-2 font-bold">Haga su pregunta</h2>
       <input
         type="text"
