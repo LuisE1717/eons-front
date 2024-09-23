@@ -59,9 +59,9 @@ export default function List() {
           )}
 
           {section === SECTION.TRANSFER && <Form handleClose={handleClose} />}
-          {section === SECTION.TRANSFER_HISTORIAL && (
+          {/* {section === SECTION.TRANSFER_HISTORIAL && (
             <Historial handleClose={handleClose} />
-          )}
+          )} */}
         </div>
       </main>
     </div>

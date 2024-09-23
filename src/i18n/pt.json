@@ -194,6 +194,7 @@
     "cant_transfer": "Cantidad a transferir",
     "transfer": "Transferir Esencia",
     "donation": "Realizar donación",
+    "historial":"Historial de transferencias",
     "pay_deude": "Pagar deuda a la Raíz del Sistema",
     "tropipay_text": "Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay.",
     "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
@@ -201,6 +202,10 @@
     "not_found": "El usuario beneficiado no existe.",
     "at_least_error": "Solo puede transferir a partir de 1 esencia.",
     "compra_error": "Actualmente su compra no puede ser procesada, contacte a soporte técnico",
+
+    "toast_1":"Se ha transferido",
+    "toast_2":"de Esencia a",
+    "toast_3":"exitosamente",
 
     "transfer_question_1": "¿Está seguro que desea transferir",
     "transfer_question_2": "esencias a",

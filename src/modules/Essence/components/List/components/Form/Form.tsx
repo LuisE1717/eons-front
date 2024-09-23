@@ -44,7 +44,7 @@ export default function Form({ handleClose }: Props) {
               setCookie("eons_essence", data?.essence, 0.25);
               setOpenModal(null);
               toast.success(
-                `Se transferido ${form.count} de Esencia a ${form.user} exitosamente`
+                `${translation.Esence.toast_1} ${form.count} ${translation.Esence.toast_2} ${form.user} ${translation.Esence.toast_3}`
               );
 
               setTimeout(() => {

@@ -191,6 +191,7 @@
     "cant_transfer": "Amount to transfer",
     "transfer": "Transfer Essence",
     "donation": "Make a donation",
+    "historial":"Transfer History",
     "pay_deude": "Pay debt to the Root of the System",
     "tropipay_text": "All purchases are processed securely and efficiently through the Tropipay payment gateway.",
     "annunce": "You can make purchases in any currency, as it will be automatically converted to €.",
@@ -198,6 +199,10 @@
     "not_found": "The beneficiary user does not exist.",
     "at_least_error": "You can only transfer at least 1 essence.",
     "compra_error": "Your purchase cannot be processed at this time, please contact technical support.",
+
+    "toast_1":"Has been transferred",
+    "toast_2":"of Essence to",
+    "toast_3":"successfully",
 
     "transfer_question_1": "Are you sure you want to transfer",
     "transfer_question_2": "of Essence to",

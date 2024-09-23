@@ -26,9 +26,9 @@ const NormalThrow: FC<Props> = ({
 }) => {
   return (
     <>
-      <Book text="" />
+      {/* <Book text="" /> */}
 
-      <div className="flex flex-col items-center my-4">
+      <div className="flex flex-col items-center my-8">
         {/* {lastThrow>'04' && 
                 <span className={styles.span}>
                     Lance las monedas para definir su lanzamiento especial

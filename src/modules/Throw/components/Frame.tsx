@@ -2,37 +2,39 @@ import React from "react";
 
 export default function Frame() {
   return (
-    <span className="absolute">
-      <svg
-        width="1825"
-        height="1198"
-        viewBox="0 0 1825 1198"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <mask id="path-1-inside-1_1_376" fill="white">
-          <rect x="593.5" y="40" width="638" height="1118" rx="4" />
-        </mask>
-        <rect
-          x="593.5"
-          y="40"
-          width="638"
-          height="1118"
-          rx="4"
-          stroke="#1684F9"
-          stroke-width="40"
-          mask="url(#path-1-inside-1_1_376)"
-        />
-        <rect
-          x="593.5"
-          y="40"
-          width="638"
-          height="1118"
-          rx="4"
-          stroke="url(#paint0_linear_1_376)"
-          stroke-width="40"
-          mask="url(#path-1-inside-1_1_376)"
-        />
+    <span style={{ pointerEvents: 'none' }} className="absolute inset-0 w-[972] h-[798]">
+  <svg
+    className="w-full h-full object-cover"
+    width=""
+    height=""
+    viewBox="512 -100 800 1200"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ pointerEvents: 'none' }}
+  >
+    <mask id="path-1-inside-1_1_376" fill="white">
+      <rect x="593.5" y="40" width="638" height="1200" rx="4" />
+    </mask>
+    <rect
+      x="593.5"
+      y="40"
+      width="638"
+      height="1200"
+      rx="4"
+      stroke="#1684F9"
+      strokeWidth="40"
+      mask="url(#path-1-inside-1_1_376)"
+    />
+    <rect
+      x="593.5"
+      y="40"
+      width="638"
+      height="1200"
+      rx="4"
+      stroke="url(#paint0_linear_1_376)"
+      strokeWidth="40"
+      mask="url(#path-1-inside-1_1_376)"
+    />
         <g clip-path="url(#clip0_1_376)">
           <path
             d="M643.086 1159.52C644.616 1156.08 651.131 1154.81 655.069 1157.09C657.486 1158.49 659.195 1161.38 658.53 1162.41C658.341 1162.7 657.944 1162.86 657.416 1162.93C657.113 1161.61 655.692 1159.72 653.874 1158.67C650.612 1156.78 645.584 1157.32 643.086 1159.52Z"

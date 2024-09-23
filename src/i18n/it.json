@@ -189,6 +189,7 @@
     "user_transfer_holder": "Email dell'utente",
     "cant_transfer": "Quantità da trasferire",
     "transfer": "Trasferire Essenza",
+    "historial":"Historial de transferencias",
     "donation": "Effettuare una donazione",
     "pay_deude": "Pagare il debito alla Radice del Sistema",
     "tropipay_text": "Tutti gli acquisti sono elaborati in modo sicuro ed efficiente tramite il gateway di pagamento Tropipay.",
@@ -197,6 +198,10 @@
     "not_found": "L'utente beneficiario non esiste.",
     "at_least_error": "È possibile trasferire solo a partire da 1 essenza.",
     "compra_error": "Attualmente il tuo acquisto non può essere elaborato, contatta il supporto tecnico",
+
+    "toast_1":"Se ha transferido",
+    "toast_2":"de Esencia a",
+    "toast_3":"exitosamente",
 
     "transfer_question_1": "Sei sicuro di voler trasferire",
     "transfer_question_2": "essenze a",

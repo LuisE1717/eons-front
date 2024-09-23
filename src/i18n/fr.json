@@ -190,6 +190,7 @@
     "cant_transfer": "Quantité à transférer",
     "transfer": "Transférer de l'Essence",
     "donation": "Faire un don",
+    "historial":"Historial de transferencias",
     "pay_deude": "Payer une dette à la Racine du Système",
     "tropipay_text": "Toutes les achats sont traitées de manière sécurisée et efficace via la passerelle de paiement Tropipay.",
     "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
@@ -197,6 +198,10 @@
     "not_found": "L'utilisateur bénéficiaire n'existe pas.",
     "at_least_error": "Vous ne pouvez transférer qu'à partir d'une essence.",
     "compra_error": "Actuellement, votre achat ne peut pas être traité, veuillez contacter le support technique",
+
+    "toast_1":"Se ha transferido",
+    "toast_2":"de Esencia a",
+    "toast_3":"exitosamente",
 
     "transfer_question_1": "Etes-vous sûr de vouloir transférer",
     "transfer_question_2": "essences vers",
