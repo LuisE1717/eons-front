@@ -4,11 +4,11 @@ const env = "production";
 
 const configEnv = {
   development: {
-    api: "https://eons-back.onrender.com/",
+    api: "https://apidev.eons.es/",
     env: "development",
   },
   production: {
-    api: "https://eons-services.onrender.com/",
+    api: "https://api.eons.es/",
     env: "production",
   },
   local: {
