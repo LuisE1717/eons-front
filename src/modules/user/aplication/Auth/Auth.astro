@@ -29,8 +29,8 @@ const session = await getSession(Astro.request)
             invalid_email_text={i18["Auth"].invalid_email_text}
             invalid_pass_text={i18["Auth"].invalid_pass_text}
             text_loading={i18.text_loading}
-            confirm_password_input_label={i18.Auth.confirm_password_input_label}
-            invalid_confirm_pass_text={i18.Auth.invalid_confirm_pass_text}
+            confirm_password_input_label={i18.Auth.password_input_label}
+            invalid_confirm_pass_text={i18.Auth.invalid_pass_text}
             session={session}
             client:load
         />
