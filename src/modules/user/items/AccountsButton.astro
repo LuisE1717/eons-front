@@ -66,8 +66,13 @@ const {text, bgColor, bg_hover, color, error} = Astro.props
     if(google){
         google.addEventListener('click', async (e) => {
             e.preventDefault()
-            console.log(e.target)
-            await signIn("google",{})
+            try {
+                await signIn("google",{})
+            }catch(error){
+                console.error("Error durante el inicio de sesión:", error);
+                
+            }
+            
             // const GOOGLE_CLIENT_ID = "980854020250-j1lva2c7mnqijs105f3jreh50p1ia2cg.apps.googleusercontent.com";
             // const REDIRECT_URI = "http://localhost:4321/api/auth/callback/google";
             // console.log(GOOGLE_CLIENT_ID)

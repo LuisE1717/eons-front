@@ -1,7 +1,5 @@
+// const env = import.meta.env.ENV;
 const env = "production";
-//const env = 'production';
-//const env = 'refactor';
-
 const configEnv = {
   development: {
     api: "https://apidev.eons.es/",
