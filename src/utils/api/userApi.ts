@@ -5,7 +5,6 @@ export async function postLogin(dataLogin:ILogin) {
     const res = await intanceAxios.post('auth/login', dataLogin);
 
     const data = await res.data;
-    console.log(data);
 
     if (!data) {
         return {
@@ -22,7 +21,6 @@ export async function singUp(dataLogin:ILogin) {
     const res = await intanceAxios.post('auth/register', dataLogin);
 
     const data = await res.data;
-    //console.log(res);
 
     if (!data) {
         return {
@@ -54,7 +52,6 @@ export async function refreshSection(refreshToken:string) {
     const res = await axiosI(refreshToken).get('auth/login');
 
     const data = await res.data;
-    console.log(data);
 
     if (!data) {
         return {
