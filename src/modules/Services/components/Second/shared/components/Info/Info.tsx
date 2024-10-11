@@ -90,9 +90,9 @@ export default function Info({ children }: Props) {
               <path
                 d="M13 30L25 18L37 30"
                 stroke="#000000"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -114,9 +114,9 @@ export default function Info({ children }: Props) {
               <path
                 d="M36 18L24 30L12 18"
                 stroke="#000000"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>

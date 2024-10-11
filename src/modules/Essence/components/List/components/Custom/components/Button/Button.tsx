@@ -18,9 +18,9 @@ export default function Button({handleCustomPayment,loading}) {
         <path
           d="M19 12L31 24L19 36"
           stroke="#000000"
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </button>

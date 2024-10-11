@@ -39,7 +39,9 @@ export async function transferEssence(token:string,datah:any) {
 }
 
 export async function startPayment(token:string,id:string,lang:string) {
+    console.log("llega aqui")
     const res = await axiosI(token).post(`/tropipay/create-payment-card/${id}?lang=${lang}`)
+    console.log(res)
     const data = await res.data;
 
     return {
