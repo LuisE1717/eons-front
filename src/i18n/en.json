@@ -211,7 +211,9 @@
     "cancell": "no",
     "historial_item_1": "Usted ha recibido",
     "historial_item_2": "Usted ha transferido",
-    "historial_item_3": "de Esencia de"
+    "historial_item_3": "de Esencia de",
+    "historial_item_4": "de Esencia de",
+    "historial_empty": "No transfers have been made yet."
   },
   "about": "About Us",
   "therms": "Terms and Conditions",
