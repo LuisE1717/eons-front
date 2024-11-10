@@ -15,8 +15,8 @@ export interface TransferHistorial {
   id: number;
   amount: number;
   date: Date;
-  senderEmail: number;
-  receiverEmail: string;
+  sender: number;
+  receiver: string;
 }
 
 export interface Transfer {

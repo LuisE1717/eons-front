@@ -22,7 +22,7 @@ export default function Sections({ handleChange, selected }: Props) {
         handleClick={() => handleChange(SECTION.TRANSFER_HISTORIAL)}
         selected={selected === SECTION.TRANSFER_HISTORIAL}
         text={`${translation.Esence.historial}.`}
-        disabled={true}
+        disabled={false}
       />
 
       <SectionButton
