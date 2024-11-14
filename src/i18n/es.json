@@ -184,7 +184,8 @@
     "cautions": "Precauciones",
     "security": "Seguridad y Protección",
     "examples": "Servicios y ejemplos",
-    "demostration": "Demostraciones Científicas"
+    "demostration": "Demostraciones Científicas",
+    "glosary": "Glosario"
   },
 
   "Esence": {
@@ -216,7 +217,7 @@
     "historial_item_2": "Usted ha transferido",
     "historial_item_3": "de Esencia a",
     "historial_item_4": "de Esencia de",
-    "historial_empty": "No hay historial de transferencias"
+    "historial_empty": "No hay historial de transferencias."
   },
 
   "about": "Acerca de Nosotros",
