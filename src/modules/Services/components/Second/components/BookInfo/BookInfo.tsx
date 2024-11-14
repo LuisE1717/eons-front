@@ -66,6 +66,13 @@ export default function BookInfo({first_time}) {
         </div>
       </A>
       <Line />
+
+      <A>
+        <div onClick={validateInfo}>
+        {translation.ServiceMenu.glosary}.
+        </div>
+      </A>
+      <Line />
     </Info>
   );
 }

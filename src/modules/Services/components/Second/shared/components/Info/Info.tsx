@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -8,27 +8,17 @@ interface Props {
 
 export default function Info({ children }: Props) {
   const menu = useRef<HTMLDivElement | null>(null);
-  const [have, setHave] = useState(() => {
-    if (menu.current) {
-      return (
-        menu.current.scrollHeight > menu.current.offsetHeight ||
-        menu.current.scrollWidth > menu.current.offsetWidth
-      );
-    }
-
-    return true;
-  });
+  const [have, setHave] = useState(false);
 
   const CLASS = clsx(
     "relative",
-    "hide-scrollbar overflow-auto",
+    "hide-scrollbar overflow-hidden",
     "rounded-xl",
     "w-full max-w-[400px]",
-    "max-h-[430px] overflow-y-auto",
-    "flex-col flex items-center",
-    "px-6 py-4",
+    "max-h-[430px]",
     "bg-white",
-    "shadow-gray-400 shadow-md"
+    "shadow-gray-400 shadow-md",
+    "px-6 py-4"
   );
 
   useEffect(() => {
@@ -45,13 +35,12 @@ export default function Info({ children }: Props) {
     }
 
     window.addEventListener("resize", check);
-
     check();
 
     return () => {
       window.removeEventListener("resize", check);
     };
-  }, [menu.current]);
+  }, []);
 
   function scroll(way: "top" | "bottom") {
     if (menu.current) {
@@ -67,18 +56,9 @@ export default function Info({ children }: Props) {
   }
 
   return (
-    <motion.div
-      ref={menu}
-      className={CLASS}
-      animate={{ scale: [0.2, 1] }}
-      transition={{
-        duration: 2,
-        ease: "easeInOut",
-        times: [0, 0.25],
-      }}
-    >
+    <div className={CLASS}>
       {have && (
-        <div className="fixed flex justify-center top-0 md:pt-7">
+        <div className="absolute flex justify-center top-2 w-full">
           <button onClick={() => scroll("top")}>
             <svg
               width="22"
@@ -99,10 +79,21 @@ export default function Info({ children }: Props) {
         </div>
       )}
 
-      {children}
+      <motion.div
+        ref={menu}
+        className="overflow-y-auto max-h-[430px] w-full flex flex-col items-center"
+        animate={{ scale: [0.2, 1] }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          times: [0, 0.25],
+        }}
+      >
+        {children}
+      </motion.div>
 
       {have && (
-        <div className="fixed flex justify-center bottom-0">
+        <div className="absolute flex justify-center bottom-2 w-full">
           <button onClick={() => scroll("bottom")}>
             <svg
               width="24"
@@ -122,6 +113,6 @@ export default function Info({ children }: Props) {
           </button>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }
