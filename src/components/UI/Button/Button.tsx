@@ -27,37 +27,18 @@ export default function Button({
   shadow = "default",
 }: Props) {
   const CLASS = clsx(
-    "font-medium",
     "rounded-full",
-    "transition-all duration-200",
+    "transition-all duration-500",
     "flex justify-center",
+    "bg-transparent",
+    "shadow-lg",
+    "text-lg",
+    "py-4 px-10",
 
-    {
-      "shadow-md border-2 border-gray-200": shadow === "default",
-      "shadow-md shadow-gray-400": shadow === "bottom",
-    },
-
-    { "hover:shadow-lg": !disabled },
     { "opacity-60": disabled },
-
-    { "bg-white": color === "default", "bg-primary": color === "primary" },
-
-    { "text-black": color === "default", "text-white": color === "primary" },
-
-    { "w-full": full, "w-max": !full },
-
-    {
-      "px-8 py-3": size === "base",
-      "px-5 py-2": size === "sm",
-      "px-6 py-3": size === "xs",
-    },
-
-    {
-      "sm:text-lg text-base": size === "base",
-      "text-sm": size === "sm",
-      "text-xs": size === "xs",
-    }
+    { "w-full": full, "w-max": !full }
   );
+
 
   return (
     <button

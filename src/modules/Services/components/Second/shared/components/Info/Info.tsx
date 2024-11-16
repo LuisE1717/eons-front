@@ -12,13 +12,13 @@ export default function Info({ children }: Props) {
 
   const CLASS = clsx(
     "relative",
-    "hide-scrollbar overflow-hidden",
+    "hide-scrollbar",
     "rounded-xl",
     "w-full max-w-[400px]",
-    "max-h-[430px]",
+    "h-[430px]",
     "bg-white",
     "shadow-gray-400 shadow-md",
-    "px-6 py-4"
+    "flex flex-col" // Agregado para el layout flexbox
   );
 
   useEffect(() => {
@@ -57,9 +57,13 @@ export default function Info({ children }: Props) {
 
   return (
     <div className={CLASS}>
+      {/* Contenedor superior para la flecha */}
       {have && (
-        <div className="absolute flex justify-center top-2 w-full">
-          <button onClick={() => scroll("top")}>
+        <div className="h-8 flex items-center justify-center bg-white">
+          <button 
+            onClick={() => scroll("top")}
+            className="hover:bg-gray-100 p-1 rounded-full transition-colors"
+          >
             <svg
               width="22"
               height="22"
@@ -79,9 +83,10 @@ export default function Info({ children }: Props) {
         </div>
       )}
 
+      {/* Contenedor principal del contenido */}
       <motion.div
         ref={menu}
-        className="overflow-y-auto max-h-[430px] w-full flex flex-col items-center"
+        className="overflow-y-auto flex-1 px-6 py-2 flex flex-col items-center"
         animate={{ scale: [0.2, 1] }}
         transition={{
           duration: 2,
@@ -92,9 +97,13 @@ export default function Info({ children }: Props) {
         {children}
       </motion.div>
 
+      {/* Contenedor inferior para la flecha */}
       {have && (
-        <div className="absolute flex justify-center bottom-2 w-full">
-          <button onClick={() => scroll("bottom")}>
+        <div className="h-8 flex items-center justify-center bg-white">
+          <button 
+            onClick={() => scroll("bottom")}
+            className="hover:bg-gray-100 p-1 rounded-full transition-colors"
+          >
             <svg
               width="24"
               height="24"
