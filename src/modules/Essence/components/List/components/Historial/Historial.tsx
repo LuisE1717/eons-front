@@ -70,7 +70,7 @@ export default function Historial({ handleClose }: Props) {
 
   return (
     <div className="flex flex-col w-full sm:min-w-[600px] bg-white sm:px-14 px-8 sm:py-8 py-6 rounded-3xl shadow-lg">
-      <section className="flex justify-end">
+      <section className="flex justify-end mb-4">
         <button type="button" onClick={handleClose}>
           <svg
             width="18"

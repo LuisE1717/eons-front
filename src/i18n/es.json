@@ -44,9 +44,9 @@
     "sing_up_switch": "Crear Cuenta",
     "password_input_label": "Contraseña",
     "forget_pass": "¿Has olvidado tu contraseña?",
-    "invalid_email_text": "*Correo no válido",
-    "invalid_pass_text": "*Contraseña no valida, debe contener entre 8 y 16 caracteres",
-    "invalid_confirm_pass_text": "Ambas contraseñas deben ser iguales"
+    "invalid_email_text": "*Correo no válido.",
+    "invalid_pass_text": "*Contraseña no válida, debe contener entre 8 y 16 caracteres.",
+    "invalid_confirm_pass_text": "Ambas contraseñas deben ser iguales."
   },
   "Payment": {
     "Labels": {
@@ -67,10 +67,10 @@
     "favorites": "Favoritos",
     "saved_dialogs": "Diálogos salvados",
     "saved_services": "Servicios salvados",
-    "no_dialogs": "Aún no tiene ningún Diálogo salvado",
-    "no_dialogs_fav": "Aún no tiene ningún Diálogo Favorito salvado",
-    "no_services": "Aún no tiene ningún Servicio salvado",
-    "no_services_fav": "Aún no tiene ningún Servicio Favorito salvado"
+    "no_dialogs": "Aún no tiene ningún diálogo salvado",
+    "no_dialogs_fav": "Aún no tiene ningún diálogo favorito salvado",
+    "no_services": "Aún no tiene ningún servicio salvado",
+    "no_services_fav": "Aún no tiene ningún servicio savorito salvado"
   },
   "Verification": {
     "title": "Validar tu cuenta de correo",
@@ -110,11 +110,11 @@
     "title": "Recuperar contraseña",
     "dont_exist_error": "Este correo no pertenece a ninguna cuenta",
     "succes_send_mail": "Revisa tu bandeja de entrada de correo electrónico",
-    "message": "Introduce correctamente el correo electrónico asociado a tu cuenta. Pronto recibirás un correo electrónico con la clave para restablecer tu contraseña."
+    "message": "Introduzca correctamente el nombre de su cuenta. Pronto recibirá un correo electrónico con la clave para establecer su contraseña."
   },
   "ChangePassword": {
     "title": "Recuperar contraseña",
-    "message": "Introduce correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
+    "message": "Introduzca correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
     "label": "Nueva contraseña",
     "send": "Enviar",
     "succes": "Contraseña cambiada correctamente"

@@ -7,7 +7,6 @@ import { userProfile } from "../../../../../../UserStore";
 export default function SectionButton({auth} : {auth:string}) {
   const { translation } = useTranslation();
   const $user = useStore(userProfile)
-  console.log($user)
   return (
     <div className="flex mb-4 mt-4">
       <a href={auth?'/services':'/auth'}>

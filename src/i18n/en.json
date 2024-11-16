@@ -44,9 +44,9 @@
     "password_input_label": "Password",
     "confirm_password_input_label": "Confirm Password",
     "forget_pass": "Forgot your password?",
-    "invalid_email_text": "*Invalid email",
-    "invalid_pass_text": "*Invalid password, must be between 8 and 16 characters",
-    "invalid_confirm_pass_text": "Both passwords must be the same"
+    "invalid_email_text": "*Invalid email.",
+    "invalid_pass_text": "*Invalid password, must be between 8 and 16 characters.",
+    "invalid_confirm_pass_text": "Both passwords must be the same."
   },
   "Payment": {
     "Labels": {
@@ -67,10 +67,10 @@
     "favorites": "Favorites",
     "saved_dialogs": "Saved dialogs",
     "saved_services": "Saved services",
-    "no_dialogs": "You do not have any saved Dialogs yet",
-    "no_dialogs_fav": "You do not have any Favorite Dialogs yet",
-    "no_services": "You do not have any saved Services yet",
-    "no_services_fav": "You do not have any Favorite Services yet"
+    "no_dialogs": "You do not have any saved dialogs yet",
+    "no_dialogs_fav": "You do not have any favorite dialogs yet",
+    "no_services": "You do not have any saved services yet",
+    "no_services_fav": "You do not have any favorite services yet"
   },
   "Verification": {
     "title": "Verify your email account",
