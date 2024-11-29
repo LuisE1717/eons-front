@@ -4,10 +4,7 @@ import AuthHeader from "../../../../layouts/AuthHeader.astro";
 import Content from "./components/Content/Content"
 import AccountsButton from "../../items/AccountsButton.astro";
 import { getI18N } from "../../../../i18n";
-import { toast, ToastContainer } from "react-toastify";
 import { getSession } from "auth-astro/server";
-import { singUp } from "../../../../utils/api/userApi";
-import { getExpire } from "../../../../utils/cookies/Cookies";
 
 const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({ currentLocale })
@@ -30,7 +27,7 @@ const session = await getSession(Astro.request)
             invalid_pass_text={i18["Auth"].invalid_pass_text}
             text_loading={i18.text_loading}
             confirm_password_input_label={i18.Auth.password_input_label}
-            invalid_confirm_pass_text={i18.Auth.invalid_pass_text}
+            invalid_confirm_pass_text={i18["Auth"].invalid_confirm_pass_text}
             session={session}
             client:load
         />

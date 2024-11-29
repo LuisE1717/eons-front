@@ -18,6 +18,11 @@ export default function useContent(session: Session | null) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Validation states
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
+
   const [validation_mail, setValidation_mail] = useState(true);
   const [validation_pass, setValidation_pass] = useState(true);
   const [validation_confirm_pass, setValidation_confirm_pass] = useState(true);
@@ -221,5 +226,11 @@ export default function useContent(session: Session | null) {
     handleChangeEmail,
     section,
     session,
+    emailTouched,
+    setEmailTouched,
+    passwordTouched,
+    setPasswordTouched,
+    confirmPasswordTouched,
+    setConfirmPasswordTouched
   };
 }

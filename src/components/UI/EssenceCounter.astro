@@ -1,18 +1,4 @@
 ---
-function formatEssence(value) {
-        // Obtenemos los millones redondeando hacia abajo
-        const millions = Math.floor(value / 1000000);
-        const remainingDecimals = value - (millions * 1000000);
-        
-        // Si no hay decimales, simplemente mostramos los millones
-        if (remainingDecimals === 0) {
-            return `${millions}M`;
-        }
-        
-        // Si hay decimales, mostramos el "+"
-        return `${millions}M+`;
-    }
-
 const essence = parseInt(Astro.cookies.get('eons_essence')?.value || "0") || 0
 ---
 
@@ -21,66 +7,23 @@ const essence = parseInt(Astro.cookies.get('eons_essence')?.value || "0") || 0
         href="/essence" 
         class="flex items-center px-2 sm:px-4 relative group"
         id="essence-counter"
-        onTouchStart="handleTouchStart(event)"
-        onTouchEnd="handleTouchEnd(event)"
     >
         <img src="/fire.webp" alt="fire" class="object-contain w-[24px] sm:w-[30px]">
         <span class="ml-1 sm:ml-2 text-sm sm:text-base truncate max-w-[80px] sm:max-w-none">
-            {formatEssence(essence)}
+            {essence}
         </span>
         
         <!-- Tooltip para móvil (aparece con long press) -->
-        <div class="absolute hidden touch-tooltip top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap z-50">
+        <!-- <div class="absolute hidden touch-tooltip top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap z-50">
             {essence.toLocaleString()}
-        </div>
+        </div> -->
         
         <!-- Tooltip para desktop (aparece con hover) -->
-        <div class="absolute hidden group-hover:sm:block top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap z-50">
+        <!-- <div class="absolute hidden group-hover:sm:block top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap z-50">
             {essence.toLocaleString()}
-        </div>
+        </div> -->
     </a>
 </div>
-
-<script>
-    function formatEssence(value) {
-        const formatter = new Intl.NumberFormat('en-US', {
-            notation: 'compact',
-            maximumFractionDigits: 1
-        });
-        
-        // Obtener el valor formateado base
-        const baseFormatted = formatter.format(Math.floor(value));
-        
-        // Verificar si hay decimales
-        const hasDecimals = value > Math.floor(value);
-        
-        // Si hay decimales, agregar el "+"
-        return hasDecimals ? baseFormatted + "+" : baseFormatted;
-    }
-
-    // Variables para el long press
-    let pressTimer;
-    const longPressDuration = 500; // 500ms para activar el long press
-
-    function handleTouchStart(event) {
-        const tooltip = event.currentTarget.querySelector('.touch-tooltip');
-        
-        pressTimer = setTimeout(() => {
-            tooltip.classList.remove('hidden');
-            
-            // Vibrar el dispositivo si es posible
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-        }, longPressDuration);
-    }
-
-    function handleTouchEnd(event) {
-        clearTimeout(pressTimer);
-        const tooltip = event.currentTarget.querySelector('.touch-tooltip');
-        tooltip.classList.add('hidden');
-    }
-</script>
 
 <style>
     /* Prevenir la selección de texto durante el long press */

@@ -43,7 +43,7 @@
     "confirm_password_input_label": "Confirmar Contraseña",
     "sing_up_switch": "Crear Cuenta",
     "password_input_label": "Contraseña",
-    "forget_pass": "¿Has olvidado tu contraseña?",
+    "forget_pass": "¿Ha olvidado su contraseña?",
     "invalid_email_text": "*Correo no válido.",
     "invalid_pass_text": "*Contraseña no válida, debe contener entre 8 y 16 caracteres.",
     "invalid_confirm_pass_text": "Ambas contraseñas deben ser iguales."
