@@ -1,8 +1,6 @@
-import React from "react";
 import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import P from "../../shared/components/P/P";
 import useTranslation from "../../../Shared/hooks/useTranslation";
-import Cookies from "js-cookie";
 
 export default function First() {
   //console.log(Cookies.get('eons_lng'))
@@ -10,7 +8,8 @@ export default function First() {
 
   return (
     <ImageSection reverse={true} image="/manos.webp">
-      <P>{translation.Landing.text1}.</P>
+      <h3>{translation.Landing.title}</h3>
+      <P>{translation.Landing.text1}</P>
       <P>{translation.Landing.text2}</P>
       <P>{translation.Landing.text3}</P>
       <P>{translation.Landing.text4}</P>
