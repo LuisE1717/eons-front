@@ -7,9 +7,9 @@ const Frame: React.FC<{ children: ReactElement }> = ({ children }) => {
                 <img
                     src="/marco-ok.png"
                     alt="marco"
-                    className="object-contain w-full h-full "
+                    className="object-contain w-full desktop:h-[80%] laptop:h-[80%] tablet:h-[88%] phone:h-full"
                 />
-                <div className="absolute inset-0 flex mt-28 items-center justify-center" >
+                <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8" >
                     {children}
                 </div>
             </div>
