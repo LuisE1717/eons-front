@@ -8,6 +8,7 @@ import Span from "../Services/shared/components/Span/Span";
 
 export default function Inf() {
   const { translation } = useTranslation();
+  const handleRoute =()=>   window.location.href = '/launch';
   return (
     <main className="flex w-full px-10 mb-10 justify-center">
       <div className="flex lg:flex-row flex-col w-full gap-y-10 max-w-[1100px] justify-center items-center">
@@ -23,7 +24,7 @@ export default function Inf() {
           </p>
 
           <Button
-          onClick={() => toast.warning("Este servicio estará disponible en los próximos días.")}
+          onClick={() => handleRoute()}
            loading={false} full={false}>
             <div>
             {translation.ServiceMenu.general_evaluation}. 

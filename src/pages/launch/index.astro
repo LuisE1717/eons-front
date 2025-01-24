@@ -3,14 +3,14 @@ import Launch from '../../modules/Launch/Launch';
 import AppContainer from "../../layouts/AppContainer.astro";
 import Footer from "../../layouts/Footer.astro";
 import Header from "../../layouts/Header.astro";
-import Inf from '../../modules/Inf/Inf'
 import BackButton from '../../components/UI/BackButton.astro'
+const token =Astro.cookies.get('eons_token')?.value || ''
 ---
 <AppContainer>
     <Header/>
     <div class="flex flex-col ml-3 mt-2">
         <BackButton routeProp={'/general-evaluation'}/>
     </div>
-    <Launch client:load />
+    <Launch token={token} steps={7} client:load />
     <Footer/>
 </AppContainer>
