@@ -9,7 +9,7 @@ export default function SecondStep() {
 
   return (
     <Step>
-      <P>{translation.Landing.text10}</P>
+      <P bold>{translation.Landing.text10}<span className="ml-2">{translation.Landing.text101}</span></P>
     </Step>
   );
 }

@@ -3,7 +3,6 @@ import P from "../../shared/components/P/P";
 import useTranslation from "../../../Shared/hooks/useTranslation";
 
 export default function First() {
-  //console.log(Cookies.get('eons_lng'))
   const { translation } = useTranslation();
 
   return (

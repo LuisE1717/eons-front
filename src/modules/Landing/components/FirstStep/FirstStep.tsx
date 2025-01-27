@@ -41,7 +41,7 @@ export default function FirstStep() {
 
   return (
     <Step>
-      <P className={visible ? "fade-in" : "fade-out"}>{texts[currentTextIndex]}</P>
+      <P bold className={visible ? "fade-in" : "fade-out"}>{texts[currentTextIndex]}</P>
     </Step>
   );
 }

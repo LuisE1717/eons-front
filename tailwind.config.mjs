@@ -15,6 +15,8 @@ export default {
 
       'desktop': '1280px',
       // => @media (min-width: 1280px) { ... }
+      
+      'lg': {'min': '1024px'},
     },
     extend: {
       colors: {
