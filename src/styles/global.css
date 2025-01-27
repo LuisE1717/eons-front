@@ -4,7 +4,7 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
-:root {
+ :root {
   --accent: #2337ff;
   --accent-dark: #000d8a;
   --black: 15, 18, 25;
@@ -230,16 +230,6 @@ hr {
     transform: scale(0.78); 
   }
 }
-   /* margin-top: -200px;
-   flex-direction: column;
-   align-items: center;
-   justify-content: start;
-   border-color: black;
-   border-width: 2px;
-   gap: 2rem;
-   height: 60%;
-
- } */
 
 .coin-container {
   display: flex;
