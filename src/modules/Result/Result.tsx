@@ -32,9 +32,10 @@ const Result: React.FC<ResultProps> = ({ token, language }) => {
        tablet:w-[50%]
        laptop:w-[30%]
        desktop:w-[20%]
-       max-h-[70vh] 
+       max-h-[58vh] 
        overflow-y-auto 
        p-4 
+       pb-8
        text-center"
           style={{
             fontSize:
@@ -43,7 +44,7 @@ const Result: React.FC<ResultProps> = ({ token, language }) => {
                 : "clamp(16px, 3vw, 20px)",
           }}
         >
-          <p className="leading-relaxed">{message}</p>
+          <p className="leading-relaxed mb-8">{message}</p>
         </div>
       </div>
     </Frame>

@@ -40,9 +40,11 @@ export default function FirstStep() {
   return (
     <Step>
       <div className="flex flex-col ">
-      <P bold>{translation.Landing.subTitle1}</P>
+      <P bold>{translation.Landing.subTitle1}</P><br/>
+      <p></p>
       {/* <P className={visible ? "fade-in" : "fade-out"}>{texts[currentTextIndex]}</P> */}
-    <P>{translation.Landing.text5}<span className="ml-2">{translation.Landing.text51}</span></P>
+    <P>{translation.Landing.text5}</P><br/>
+    <P>{translation.Landing.text51}</P>
       </div>
     </Step>
   );

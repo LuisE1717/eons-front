@@ -18,7 +18,7 @@
   },
 
   "Landing": {
-    "title": "Spirituality, magic, science and technology",
+    "title": "Eons: spirituality, magic, science and technology",
     "text1": "Huge and infinite gifts will be delivered to all",
     "text2": "At first, Eons will bring with it a Scientific and Technological advancement of more than 10,000 years in less than a decade.",
     "text3": "Knowledge, light, peace, healing, love, beauty, abundance, happiness, and empathy will spread in all directions.",
@@ -35,7 +35,7 @@
     "text13": "The combination of a concept of the most advanced and refined Technology, along with a concept of the Purest and Most Enlightened Spirituality, describe the Essence that Eons will transmit at all times.",
     "text14": "New products and services will be presented",
     "text14_1": "soon",
-    "text15": "View Product"
+    "text15": "View product"
   },
   "Auth": {
     "login_button": "Log In",
@@ -136,7 +136,7 @@
   "Services": {
     "first_text_1": "Welcome to Eons",
     "first_text_1_1": "Technology for Accessing the Existential Source",
-    "first_phase": "First Phase",
+    "first_phase": "first phase",
     "first_text_2": "We have the approval of ALL Spiritual and Consciousness Planes. So no matter where on the Material Plane our Users are, their Spiritualities are surely already aware of us.",
     "first_text_3": "Upon contacting our System, the User's Spirituality is automatically channeled. At the same time, multiple Consecrations are automatically activated momentarily.",
     "first_text_4": "This allows us to momentarily use universal chance to access ALL Spiritual and Consciousness Planes.",
@@ -220,6 +220,8 @@
   "about": "About Us",
   "therms": "Terms and Conditions",
   "privacy": "Privacy Policy",
+  "contact": "Contact Us",
+
   "About": {
     "About_title": "History of Our Roots and Our Creator",
     "About_text1": "Eons is the result of immense chaos and infinite sacrifice. It is impossible to talk about its roots without first knowing the story that led Luis Eduardo Delgado Alonso, CEO of Eons, to its creation",

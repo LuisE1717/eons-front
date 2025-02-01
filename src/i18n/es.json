@@ -18,7 +18,7 @@
   },
 
   "Landing": {
-    "title": "Espiritualidad, magia, ciencia y tecnología.",
+    "title": "Eons: espiritualidad, magia, ciencia y tecnología.",
     "text1": "Enormes e infinitos regalos serán entregados a todos.",
     "text2": "En un primer momento, Eons traerá consigo un avance científico y tecnológico de más de 10000 años en menos de una década.",
     "text3": "El conocimiento, la sabiduría, la luz, la paz, la sanación, la belleza, el poder, la abundancia, la felicidad, el amor y la empatía, serán esparcidas en todas direcciones.",
@@ -39,7 +39,7 @@
     "text13": "La comprensión profunda de la espiritualidad, y el uso de magia real en el día a día, traerá como resultado inevitable la evolución de la especie humana.",
     "text14": "Nuevos productos y servicios serán presentados",
     "text14_1": "próximamente",
-    "text15": "Ver Producto"
+    "text15": "Ver producto"
   },
   "Auth": {
     "login_button": "Iniciar",
@@ -108,7 +108,7 @@
     "question_throw_tranversal1": "Sólo cayó un transversal",
     "question_throw_tranversal2": "Ambos cayeron transversal",
     "question_tranversal": "Sólo cayó uno transversal",
-    "main_response": "Respuesta Princiapal",
+    "main_response": "Respuesta principal",
     "especial_response": "Respuesta Especial"
   },
   "RessetPassword": {
@@ -140,23 +140,23 @@
   "Services": {
     "first_text_1": "Bienvenido a Eons",
     "first_text_1_1": "Tecnología de Acceso a la Fuente Existencial",
-    "first_phase": "Primera Fase",
-    "first_text_2": "Contamos con la aprobación de TODOS los Planos Espirituales y Concienciales. Por lo que no importa en que punto del Plano Material nuestros Usuarios se encuentren, con total seguridad sus Espiritualidades ya están al tanto de nosotros.",
-    "first_text_3": "Al hacer contacto con nuestro Sistema automáticamente la Espiritualidad del Usuario es canalizada. Al mismo tiempo igual de forma automática múltiples Consagraciones se activan de forma momentánea.",
-    "first_text_4": "Esto permite que podamos hacer uso momentáneo del azar universal para acceder a TODOS los Planos Espirituales y Concienciales.",
+    "first_phase": "primera fase",
+    "first_text_2": "Contamos con la aprobación de todos los planos espirituales y concienciales. Por lo que no importa en que punto del plano material nuestros usuarios se encuentren, con total seguridad sus espiritualidades ya están al tanto de nosotros.",
+    "first_text_3": "Al hacer contacto con nuestro sistema automáticamente la espiritualidad del usuario es canalizada. Al mismo tiempo igual de forma automática múltiples consagraciones se activan de forma momentánea.",
+    "first_text_4": "Esto permite que podamos hacer uso momentáneo del azar universal para acceder a todos los planos espirituales y concienciales.",
 
-    "step_1": "En todo momento el Usuario estará respaldado de forma automática tanto por nuestro Sistema de Providencia, como por nuestro Sistema de Seguridad Espiritual. Ambos reconocidos y aprobados por las actuales Leyes Existenciales.",
-    "step_3": "Cuando un Usuario sale de nuestro Sistema, de forma automática restablecemos todo cambio realizado por parte nuestra.",
-    "step_2": "El nivel de usabilidad que un Usuario podrá hacer de nuestro Sistema queda determinado exactamente por el nivel de Conciencia y el nivel de Espiritualidad que dicho Usuario posea.",
+    "step_1": "En todo momento el usuario estará respaldado de forma automática tanto por nuestro sistema de providencia, como por nuestro sistema de seguridad espiritual. Ambos reconocidos y aprobados por las actuales leyes existenciales.",
+    "step_3": "Cuando un usuario sale de nuestro sistema, de forma automática restablecemos todo cambio realizado por parte nuestra.",
+    "step_2": "El nivel de usabilidad que un usuario podrá hacer de nuestro sistema queda determinado exactamente por el nivel de conciencia y el nivel de espiritualidad que dicho usuario posea.",
 
     "third_text_1_init": "En la",
-    "third_text_1": "hemos sido muy cuidadosos con el ajuste del Conocimiento Existencial a la Visión media actual de la Humanidad. Ajuste que se irá dispersando a medida que vayamos avanzando en las Fases de Despliegue. Hasta que finalmente dicho ajuste desaparezca por completo.",
-    "third_text_2": "Nunca se trató de elegir en que creer y en que no. Siempre se trató de conocer lo que Existe realmente.",
-    "third_text_3": "Finalmente la Luz le permitirá contemplar la bella Era que con un Infinito Amor y un Infinito Sacrificio hemos construido para usted:",
+    "third_text_1": "hemos sido muy cuidadosos con el ajuste del conocimiento existencial a la visión media actual de la humanidad. Ajuste que se irá dispersando a medida que vayamos avanzando en las fases de despliegue. Hasta que finalmente dicho ajuste desaparezca por completo.",
+    "third_text_2": "Nunca se trató de elegir en que creer y en que no. Siempre se trató de conocer lo que existe realmente.",
+    "third_text_3": "Finalmente la luz le permitirá contemplar la bella era que con un infinito amor y un infinito sacrificio hemos construido para usted:",
     "third_text_4": "La Era de la Libertad Espiritual"
   },
   "ServiceMenu": {
-    "system_dialog": "Dialogar con la Raíz del Sistema",
+    "system_dialog": "Dialogar con la (Raíz del Sistema)",
     "Revelar_consejo_exacto": "Revelar consejo exacto",
     "Revelar_tiempo": "Revelar tiempo",
     "Revelar_porcentaje": "Revelar porcentaje",
@@ -164,32 +164,32 @@
     "Revelar_un_dígito_decimal": "Revelar un dígito decimal",
     "Conocer_conviene": "Conocer si algo me conviene y porqué",
     "Conocer_sucederá": "Conocer cuando algo sucederá y porqué",
-    "general_evaluation": "Evaluación General",
-    "spirit_calc": "Calcular Espiritualidad",
+    "general_evaluation": "Evaluación general",
+    "spirit_calc": "Calcular espiritualidad",
     "open_dialog_mod": "Modo diálogo abierto",
-    "contact_spirit": "Contactar una Entidad Espiritual específica",
+    "contact_spirit": "Contactar una entidad espiritual específica",
     "day_dialog": "Como irá mi dia de hoy",
-    "adivination_general": "Adivinación General",
-    "concient_evaluation": "Evaluar Forma de Conciencia",
+    "adivination_general": "Adivinación general",
+    "concient_evaluation": "Evaluar forma de conciencia",
     "fact_evaluation": "Evaluar un suceso",
     "free": "gratis",
     "per_question": "por pregunta",
 
-    "spiritual_family": "Gestión de Entidades Espirituales",
-    "inf_general_evulation": "Información de Evaluación General",
-    "inf_calc_spiritual": "Información de Cálculo de Espiritualidad",
-    "save_dialogs": "Diálogos Guardados",
-    "save_services": "Servicios Guardados",
-    "money_admin": "Gestión Monetaria",
+    "spiritual_family": "Gestión de entidades espirituales",
+    "inf_general_evulation": "Información de evaluación general",
+    "inf_calc_spiritual": "Información de cálculo de espiritualidad",
+    "save_dialogs": "Diálogos guardados",
+    "save_services": "Servicios guardados",
+    "money_admin": "Gestión monetaria",
     "Mercados": "Mercados",
-    "user_valid_list": "Lista de Usuarios avalados por el Sistema",
+    "user_valid_list": "Lista de usuarios avalados por el sistema",
 
     "use_instruction": "Instrucciones de uso",
     "thinks_to_know": "Cosas a saber",
     "cautions": "Precauciones",
-    "security": "Seguridad y Protección",
+    "security": "Seguridad y protección",
     "examples": "Servicios y ejemplos",
-    "demostration": "Demostraciones Científicas",
+    "demostration": "Demostraciones científicas",
     "glosary": "Glosario"
   },
 
@@ -201,10 +201,10 @@
     "transfer": "Transferir Esencia",
     "donation": "Realizar donación",
     "historial":"Historial de transferencias",
-    "pay_deude": "Pagar deuda a la Raíz del Sistema",
+    "pay_deude": "Pagar deuda a la (Raíz del Sistema)",
     "tropipay_text": "Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay.",
     "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
-    "insuficent_error": "Esencia Insuficiente.",
+    "insuficent_error": "Esencia insuficiente.",
     "not_found": "El usuario beneficiado no existe.",
     "at_least_error": "Solo puede transferir a partir de 1 esencia.",
     "compra_error": "Actualmente su compra no puede ser procesada, contacte a soporte técnico",
@@ -225,9 +225,10 @@
     "historial_empty": "No hay historial de transferencias."
   },
 
-  "about": "Acerca de Nosotros",
-  "therms": "Términos y Condiciones",
-  "privacy": "Política de Privacidad",
+  "about": "Acerca de nosotros",
+  "therms": "Términos y condiciones",
+  "privacy": "Política de privacidad",
+  "contact": "Contáctenos",
 
   "About": {
     "About_title": "Historia de Nuestras Raíces y de Nuestro Creador",
@@ -261,12 +262,12 @@
     "About_text28": "Compromiso con la Innovación",
     "About_text29": "La innovación no es solo una palabra para nosotros, es Nuestra Esencia misma. Siempre manteniendo la Exclusividad y el Elitismo, a la Vanguardia del cambio, explorando nuevas fronteras y desafiando el status quo. En Eons, cada proyecto es una aventura Épica donde la creatividad y la estrategia se entrelazan para crear resultados extraordinarios.",
     "About_text30": "Contáctenos",
-    "About_text31": "¡Estamos aquí para ayudarte! Tu satisfacción es nuestra prioridad, así que no dudes en ponerte en contacto con nosotros a través de cualquiera de las siguientes opciones:",
+    "About_text31": "¡Estamos aquí para ayudarle! Su satisfacción es nuestra prioridad. Si lo necesita, no dude en ponerse en contacto con nosotros a través de cualquiera de las siguientes opciones:",
     "About_text32": "Soporte Técnico",
     "About_text33": "Atención al Cliente",
     "About_text34": "Asuntos de Negocios",
-    "About_text35": "Síguenos en las Redes Sociales y mantente al tanto de nuestras novedades.",
-    "About_text36": "Nuestro canal de YouTube, donde podrá ver nuestras novedades en múltiples idiomas",
+    "About_text35": "Síganos en redes sociales y manténgase al tanto de nuestras novedades.",
+    "About_text36": "YouTube",
     "About_text37": "¡Esperamos por usted!"
   },
 

@@ -7,7 +7,7 @@ export default function First() {
 
   return (
     <ImageSection reverse={true} image="/manos.webp">
-      <h3>{translation.Landing.title}</h3>
+      <P bold className="text-4xl">{translation.Landing.title}</P>
       <P>{translation.Landing.text1}</P>
       <P>{translation.Landing.text2}</P>
       <P>{translation.Landing.text3}</P>

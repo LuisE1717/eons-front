@@ -1,17 +1,11 @@
 ---
 import AboutUs from '../../modules/About/Components/AboutUs.astro';
-import Therms from '../../modules/About/Components/Therms.astro';
-import Privacy from '../../modules/About/Components/Privacy.astro';
-import Articule from '../../modules/Information/components/Articule.astro';
 import Layout from '../../modules/Information/Shared/InformationLayout.astro';
-import ImageSection from '../../modules/Landing/shared/components/ImageSection/ImageSection';
-import P from '../../modules/Landing/shared/components/P/P';
 import BackButton from '../../components/UI/BackButton.astro';
 
-const {theme} = Astro.params
 ---
 
-<div class={`articules_conteiner ${theme}`}>
+<div class={`articules_conteiner`}>
 <Layout
 	heroImage="/blog-placeholder-about.jpg"
 >
@@ -19,18 +13,10 @@ const {theme} = Astro.params
 	<BackButton/>
 </div>
     <AboutUs/>
-
-    <br/>
-
-    <Therms/>
-
-    <br/>
-
-    <Privacy/>
 </Layout>
 </div>
 
-<script>
+<!-- <script>
 document.addEventListener('DOMContentLoaded', () => {
 
     const conteiner = document.querySelector('.articules_conteiner')
@@ -51,4 +37,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   });
-</script>
+</script> -->

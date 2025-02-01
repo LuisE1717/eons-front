@@ -48,10 +48,16 @@ export default function UserInfo() {
 
       <A href="/dialogs/dialog">
         {translation.ServiceMenu.save_dialogs}.
+        <div>
+        (<Span>{translation.next}</Span>)
+        </div>
       </A>
 
       <A href="/dialogs/day">
         {translation.ServiceMenu.save_services}.
+        <div>
+        (<Span>{translation.next}</Span>)
+        </div>
       </A>
       
       <Line />
