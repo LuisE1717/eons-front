@@ -23,9 +23,11 @@ export default function Cost2 ({
       <span className="">{name}.</span>
       <div className='flex'>
       (
-        <span className="">{amount} + {amount2}</span>
+        <span className="">{amount}</span>
         <img src="/fire.webp" alt="fire" className="object-contain w-[30px]"/>
-        <span className="">{cost}</span>
+        <span className="">+ {amount2} </span>
+        <img src="/fire.webp" alt="fire" className="object-contain w-[30px]"/>
+        <span className="pl-1">{cost}</span>
       )
       </div>
     </div>

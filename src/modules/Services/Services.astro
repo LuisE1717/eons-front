@@ -19,9 +19,17 @@ const {first_time, notificaciones} = Astro.props
     
     <div class="flex flex-col max-w-[1200px] w-full">
         <First/>
-        <FirstStep/>
+        <div class="w-screen relative left-[calc(-50vw+50%)] bg-[#f7ebf9] justify-center align-middle mt-2 mb-2">
+            <div class="max-w-[1200px] mx-auto px-4">
+                <FirstStep client:load/>
+            </div>
+        </div>
         <Second first_time={first_time?true:false} client:load/>
-        <SecondStep/>
+        <div class="w-screen relative left-[calc(-50vw+50%)] bg-[#f7ebf9] justify-center align-middle mt-2 mb-2">
+            <div class="max-w-[1200px] mx-auto px-4">
+                <SecondStep client:load/>
+            </div>
+        </div>
         <Third/>
     </div>
 </div>

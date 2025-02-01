@@ -36,40 +36,58 @@ export default function BookInfo({first_time}) {
       </A>
       <Line />
       <A>
-        <div onClick={validateInfo}>
+        <div >
         {translation.ServiceMenu.thinks_to_know}.
+        <div>
+                (<Span>{translation.next}</Span>)
+                </div>
         </div>
       </A>
       <A>
-        <div onClick={validateInfo}>
+        <div >
         {translation.ServiceMenu.cautions}.
+        <div>
+                (<Span>{translation.next}</Span>)
+                </div>
         </div>
       </A>
       <Line />
       <A>
-        <div onClick={validateInfo}>
+        <div >
         {translation.ServiceMenu.security}.
+        <div>
+                (<Span>{translation.next}</Span>)
+                </div>
         </div>
       </A>
       <Line />
       <A>
-        <div onClick={validateInfo}>
+        <div >
         {translation.ServiceMenu.examples}.
+        <div>
+                (<Span>{translation.next}</Span>)
+                </div>
         </div>
       </A>
 
       <Line />
 
       <A>
-        <div onClick={validateInfo}>
+        <div >
         {translation.ServiceMenu.demostration}.
+        <div>
+                (<Span>{translation.next}</Span>)
+                </div>
         </div>
       </A>
       <Line />
 
       <A>
-        <div onClick={validateInfo}>
+        <div >
         {translation.ServiceMenu.glosary}.
+        <div>
+                (<Span>{translation.next}</Span>)
+                </div>
         </div>
       </A>
       <Line />

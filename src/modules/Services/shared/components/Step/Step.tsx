@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Step({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col xl:text-center text-left sm:mt-10 mt-3">
+    <div className="text-start flex w-full lg:pt-12 lg:pb-12 pb-4 pt-4 text-lg">
       {children}
     </div>
   );
