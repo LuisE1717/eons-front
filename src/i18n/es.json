@@ -8,6 +8,25 @@
   "verify": "Verificando Pago",
   "of_esence": "de Esencia",
 
+  "Usage":{
+   "title": "Instrucciones de uso:",
+   "text1": "Para utilizar nuestro sistema usted necesitará una pequeña herramienta que solo le tomará un par de minutos realizar. Y podrá hacerla con objetos que estén a su alcance.",
+   "text2":"En la siguiente imagen le mostramos un ejemplo de dicha herramienta terminada:",
+   "text3": "Como pueden ver en la imagen se muestran dos monedas que fueron marcadas con un símbolo cada una. De hecho, si le damos la vuelta a ambas monedas podemos ver que por detrás cada una fue marcada con un símbolo también:",
+   "text4": "Exacto, una moneda tiene un círculo grande blanco por una cara y un círculo grande negro por la otra. Y la otra moneda tiene un círculo pequeño blanco por una cara y un círculo pequeño negro por la otra.",
+   "text5": "La forma de marcarlas puede variar. Usted puede dibujar los símbolos en la misma superficie de la moneda, puede marcarlas con un objeto con punta, o simplemente pegarles una pegatina y dibujar encima de las mismas como pudo apreciar en las fotos anteriores.",
+   "text6": "Las monedas no tienen que ser obligatoriamente iguales, pueden ser diferentes. De hecho, no es necesario que sean monedas exactamente, pueden ser algo similar. Por ejemplo dos objetos de madera de un tamaño y características más o menos similares a dos monedas, dos objetos de plástico, dos pedazos de cáscara de coco, o cualquier otro objeto cuyas características sean más o menos similares a dos monedas.",
+   "text7": "No importa que la herramienta se pierda, siempre que usted haga uso de nuestro servicio, en ese momento, la herramienta que tenga en sus manos será consagrada. Y al salir de nuestro servicio, se desvanece la consagración.",
+   "text8": "Al hacer uso de nuestro servicio, en todo momento se mostrará el siguiente panel:",
+   "text9": "En el panel se representan dos monedas, al interactuar con una de ellas esta cambia al otro símbolo.",
+   "text10": "El usuario solo debe tomar las dos monedas entre sus manos y batirlas un par de segundos para luego lanzarlas a una superficie con la intención de que estas caigan al azar.",
+   "text11": "La herramienta, en este caso las dos monedas, pueden ser lanzadas en todo tipo de superficies. Solo debemos tener en cuenta que dichas superficies sean algo lisas y tengan las condiciones para facilidad de caída de las monedas.",
+   "text12": "Una vez caigan se marca en el panel exactamente los símbolos que cayeron hacia arriba, se presiona en siguiente, y eso completa un lanzamiento.",
+   "text13": "Al completar todos los lanzamientos se presiona en resultado y se obtiene la respuesta equivalente al servicio utilizado.",
+   "text14": "Al lanzar la herramienta a una superficie tener en cuenta lanzarlas a una altura igual o mayor a 20 cm.",
+   "text15": "Finalmente, ya conoce todo lo necesario para hacer uso de nuestro primer servicio. Procedamos en cuanto tenga lista sus herramientas:"
+  },
+
   "Errors": {
     "Auth": {
       "already_exist": "Este usuario ya existe",
@@ -18,7 +37,7 @@
   },
 
   "Landing": {
-    "title": "Eons: espiritualidad, magia, ciencia y tecnología.",
+    "title": "EONS: espiritualidad, magia, ciencia y tecnología.",
     "text1": "Enormes e infinitos regalos serán entregados a todos.",
     "text2": "En un primer momento, Eons traerá consigo un avance científico y tecnológico de más de 10000 años en menos de una década.",
     "text3": "El conocimiento, la sabiduría, la luz, la paz, la sanación, la belleza, el poder, la abundancia, la felicidad, el amor y la empatía, serán esparcidas en todas direcciones.",

@@ -7,7 +7,24 @@
   "next": "Coming Soon",
   "verify": "Verificando Pago",
   "of_esence": "of Essence",
-
+  "Usage":{
+    "title": "Instructions for use:",
+    "text1": "To use our system you will need a small tool that will only take you a couple of minutes to make. And you will be able to do it with objects that are within your reach.",
+    "text2": "In the following image we show you an example of such a finished tool:",
+    "text3": "As you can see in the image there are two coins that were marked with a symbol each. In fact, if we turn both coins over we can see that on the back each one was marked with a symbol as well:",
+    "text4": "Exactly, one coin has a large white circle on one side and a large black circle on the other side. And the other coin has a small white circle on one side and a small black circle on the other side.",
+    "text5": "The way to mark them can vary. You can draw the symbols on the surface of the coin itself, you can mark them with a pointed object, or you can simply stick a sticker on them and draw on top of them as you could see in the pictures above.",
+    "text6": "The coins do not have to be the same, they can be different. In fact, they don't have to be coins exactly, they can be something similar. For example, two wooden objects of a size and characteristics more or less similar to two coins, two plastic objects, two pieces of coconut shell, or any other object whose characteristics are more or less similar to two coins.",
+    "text7": "It does not matter if the tool is lost, as long as you make use of our service, at that moment, the tool you have in your hands will be consecrated. And when you leave our service, the consecration vanishes.",
+    "text8": "When you make use of our service, the following panel will be displayed at all times:",
+    "text9": "In the panel are represented two coins, when interacting with one of them it changes to the other symbol.",
+    "text10": "The user only has to take the two coins between his hands and shake them for a couple of seconds and then throw them to a surface with the intention that they fall at random.",
+    "text11": "The tool, in this case the two coins, can be thrown on all kinds of surfaces. We only have to take into account that these surfaces must be somewhat smooth and have the conditions for the coins to fall easily.",
+    "text12": "Once they fall, mark on the panel exactly the symbols that fell upwards, press “next”, and that completes a throw.",
+    "text13": "When all the throws are completed, click on “result” and you get the answer equivalent to the service used.",
+    "text14": "When throwing the tool to a surface keep in mind to throw them at a height equal to or greater than 20 cm.",
+    "text15": "Finally, you now know everything you need to make use of our first service. Let's proceed as soon as you have your tools ready:"
+   },
   "Errors": {
     "Auth": {
       "already_exist": "This user already exists",
