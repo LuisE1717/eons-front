@@ -44,7 +44,7 @@ const MoneyCircle: React.FC<MoneyCircleProps> = ({
                 <div
                     style={{
                         borderRadius: "50%",
-                        backgroundColor: isOuterCircleFilled ? "#0e0e0d" : "transparent",
+                        backgroundColor: isOuterCircleFilled ? "transparent" : "#0e0e0d" ,
                         border: "2px solid #0e0e0d",
                         width: "60px",
                         height: "60px",
@@ -55,7 +55,7 @@ const MoneyCircle: React.FC<MoneyCircleProps> = ({
                 <div
                     style={{
                         borderRadius: "50%",
-                        backgroundColor: isOuterCircleFilled ? "#0e0e0d" : "transparent",
+                        backgroundColor: isOuterCircleFilled ? "transparent" : "#0e0e0d" ,
                         border: "2px solid #0e0e0d",
                         width: "30px",
                         height: "30px",

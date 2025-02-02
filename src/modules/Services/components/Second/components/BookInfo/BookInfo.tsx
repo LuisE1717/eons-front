@@ -30,7 +30,7 @@ export default function BookInfo({first_time}) {
       </A>
       } */}
       <A>
-        <div onClick={validateInfo}>
+        <div onClick={()=> window.location.href = `/usage`}>
         {translation.ServiceMenu.use_instruction}.
         </div>
       </A>

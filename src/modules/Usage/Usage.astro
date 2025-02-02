@@ -1,0 +1,136 @@
+---
+import { getI18N } from "../../i18n"
+import Articule from "../Information/components/Articule.astro"
+import ButtonSecction from "./ButtonSection"
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
+
+---
+
+<Articule
+    title={i18.Usage.title}
+	description="usage"
+	pubDate={new Date('January 31 2025')}
+    >
+
+	<p class="mt-3">
+		{i18.Usage.text1}
+	</p>
+	<p class="mt-3">
+		{i18.Usage.text2}
+	</p>
+	<div class="flex items-center justify-center my-4">
+		<img src="/usage1.webp" alt="Monedas Blancas" class="w-3/5">
+	</div>
+
+	<p>
+		{i18.Usage.text3}
+	</p>
+
+	<div class="flex items-center justify-center my-4">
+		<img src="/usage2.webp" alt="Monedas Negras" class="w-3/5">
+	</div>
+
+	
+
+	<p>
+		{i18.Usage.text4}
+	</p>
+
+	<p>
+		{i18.Usage.text5}
+	</p>
+
+	<p>
+		{i18.Usage.text6}
+	</p>
+
+	<p>
+		{i18.Usage.text7}
+	</p>
+
+	<p>
+		{i18.Usage.text8}
+	</p>
+
+	<div class="flex items-center justify-center">
+		<img src="/panel.webp" alt="Panel" class="w-3/5">
+	</div>
+	<p>
+		{i18.Usage.text9}
+	</p>
+
+	<p>
+		{i18.Usage.text10}
+	</p>
+
+	<p>
+		{i18.Usage.text11}
+	</p>
+
+	<p>
+		{i18.Usage.text12}
+	</p>
+
+	<p>
+		{i18.Usage.text13}
+	</p>
+
+	<p>
+		{i18.Usage.text14}
+	</p>
+
+	<p>
+		{i18.Usage.text15}
+	</p>
+	<div class="flex items-center justify-center my-6">
+		<ButtonSecction client:load/>
+    </div>
+
+    <!-- <h4>{i18.About.About_text30}:</h4>
+
+    <p>
+		{i18.About.About_text31}
+	</p>
+
+    <h5>-{i18.About.About_text32}:</h5>
+    <a href="mailto:soporte.eons.es@gmail.com" target="_blank">soporte.eons.es@gmail.com</a>
+
+    <h5>-{i18.About.About_text33}:</h5>
+    <a href="mailto:infoeons.es@gmail.com" target="_blank">infoeons.es@gmail.com</a>
+
+    <h5>-{i18.About.About_text34}:</h5>
+    <a href="mailto:business.eons.es@gmail.com" target="_blank">business.eons.es@gmail.com</a>
+
+    <p class="mt-3">
+		{i18.About.About_text35}
+	</p>
+
+    <h5>-Facebook:</h5>
+    <a class="text-secundary" href="https://www.facebook.com/eons.providence" target="_blank">eons.providence</a>
+
+    <h5>-Instagram:</h5>
+    <a class="text-secundary" href="https://www.instagram.com/eons_universe" target="_blank">eons_universe</a>
+    
+    <h5 class="mt-3">
+		-{i18.About.About_text36}:
+        (<a class="text-secundary" href="https://www.youtube.com/channel/UCdmLOd_cRwWtn0EKAalpgCQ" target="_blank">EONS</a>).
+	</h5>
+
+    <p>
+		{i18.About.About_text37}
+	</p> -->
+
+    </Articule>
+
+<style>
+    p {
+        margin: 0 0 0.5rem 0;
+    }
+    h5 {
+        margin: 0;
+    }
+    span {
+        margin: 0 0 0.5rem 0;
+    }
+</style>
