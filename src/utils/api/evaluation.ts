@@ -1,5 +1,4 @@
 import { axiosI, intanceAxios } from ".";
-import Cookies from "js-cookie";
 export async function postSaveEvaluation(token: string, data: any) {
     try {
         const response = await axiosI(token).post(`launch/`, data);

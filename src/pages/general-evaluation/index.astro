@@ -4,14 +4,36 @@ import Footer from "../../layouts/Footer.astro";
 import Header from "../../layouts/Header.astro";
 import Inf from '../../modules/Inf/Inf'
 import BackButton from '../../components/UI/BackButton.astro'
+import {getLaunches} from '../../utils/api/launch';
+const token =Astro.cookies.get('eons_token')?.value || ''
+const data = await getLaunches(token);
+const launchesData = JSON.stringify(data?.data || []);
 
 ---
 
 <AppContainer>
     <Header/>
-    <div class="flex flex-col ml-3 mt-2">
+    <div class="flex flex-col ml-3 mt-2" id="data" data-launch=`${launchesData}`>
         <BackButton routeProp={'/services'}/>
     </div>
-    <Inf client:load/>
+    <Inf token={token} client:load/>
     <Footer/>
 </AppContainer>
+
+<script>
+    try {
+      const launchesDataElement = document.getElementById('data')?.getAttribute('data-launch') ?? "[]";;
+      const launchesData = JSON.parse(launchesDataElement);
+  
+      launchesData.forEach((item) => {
+        const shortType = item?.shortType;
+        const hexResults = item?.hexResults;
+  
+        if (shortType && hexResults && !localStorage.getItem(shortType)) {
+          localStorage.setItem(shortType, JSON.stringify(hexResults));
+        }
+      });
+    } catch (error) {
+      console.error("Error handling localStorage:", error);
+    }
+  </script>

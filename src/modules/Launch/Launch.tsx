@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
 import Frame from '../../components/UI/Frame/Frame';
@@ -10,9 +10,10 @@ interface CoinState {
 interface LaunchProps {
     token: string;
     steps: number;
+    type: string;
 }
 
-const Launch: React.FC<LaunchProps> = ({token, steps}) => {
+const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
     const [coinPositions, setCoinPositions] = useState<CoinState[]>([
         { isFaceUp: true, isOuterCircleFilled: false },
         { isFaceUp: true, isOuterCircleFilled: false },
@@ -52,9 +53,10 @@ const Launch: React.FC<LaunchProps> = ({token, steps}) => {
             const evaluation = JSON.parse(localStorage.getItem('evaluation') || '[]');
             const coinPositions = evaluation.map(step => [step.coin1, step.coin2]);
             console.log(coinPositions);
+            console.log(type);
             const data = {
-                type: "evaluacion-etapa1",
-                shortType: "etp1",
+                type: type === "etp1" ? "evaluacion-etapa1" : "evaluacion-etapa2",
+                shortType: type,
                 coinPositions,
             };
             const response = await postSaveEvaluation(token, data);
@@ -62,7 +64,7 @@ const Launch: React.FC<LaunchProps> = ({token, steps}) => {
                 const dat = JSON.stringify(response.data.hexResults);
                 console.log(dat);
                 console.log(typeof dat);
-                localStorage.setItem("etp1", dat);
+                localStorage.setItem(type, dat);
                 
             }
             setCoinPositions([

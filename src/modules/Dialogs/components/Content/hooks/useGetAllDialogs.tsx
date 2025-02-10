@@ -30,7 +30,6 @@ export default function useGetAllDialogs(
       setloading(true);
       try {
         const spirits = await getAllDialogs(token, type);
-        console.log(spirits);
         setData(spirits.data);
       } catch (error) {
         toast.error(translation.fecth_error);

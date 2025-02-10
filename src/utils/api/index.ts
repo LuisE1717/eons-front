@@ -44,6 +44,7 @@ export function axiosI(apiToken: string | undefined) {
     },
     async (error) => {
       if (error.response) {
+        console.log("Error in response", error.response);
         const originalConfig = error.config;
         // Access Token was expired
         setCookie("comeback_url", window.location.href, 0.25);
