@@ -1,5 +1,5 @@
 // const env = import.meta.env.ENV;
-const env = "production";
+const env = "development";
 const configEnv = {
   development: {
     api: "https://apidev.eons.es/",

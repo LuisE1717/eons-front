@@ -12,14 +12,14 @@ import Cost2 from "../../../../shared/components/Cost/Cost2";
 import Free from "../../../../shared/components/Free/Free";
 
 export function validateService (cost:number,navigate:string) {
-  //toast.warning('Este Servicio estará disponible en los próximos días.')
-   const essence = Cookies.get('eons_essence')
-    if(essence && parseInt(essence)>=cost){
-      window.location.href = navigate
-    }
-    else{
-      toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
-    }
+  toast.warning('Este servicio estará disponible en los próximos días.')
+  //  const essence = Cookies.get('eons_essence')
+  //   if(essence && parseInt(essence)>=cost){
+  //     window.location.href = navigate
+  //   }
+  //   else{
+  //     toast.warning('Cantidad de esencia insuficiente para usar este servicio, consulte su gestión monetaria')
+  //   }
 }
 
 export default function MessageInfo() {
@@ -37,7 +37,7 @@ export default function MessageInfo() {
       <Line />
 
       <Free
-      onclick={() => validateService(1,'/throw/07')}
+      onclick={() => window.location.href = '/launch'}
       name={translation.ServiceMenu.general_evaluation}>
       </Free>
 
@@ -55,13 +55,16 @@ export default function MessageInfo() {
       name={translation.ServiceMenu.open_dialog_mod}
       // cost={translation.ServiceMenu.per_question}
       amount="0.49"
+      cost={translation.ServiceMenu.per_question}
       />
 
-      <Cost
+      <Cost2
       onclick={() => validateService(1,'/throw/09')}
       name={translation.ServiceMenu.contact_spirit}
       // cost={translation.ServiceMenu.per_question}
       amount="1.29"
+      amount2="0.49"
+      cost={translation.ServiceMenu.per_question}
       />
 
       <Line />

@@ -21,11 +21,11 @@ export default function ImageSection({
   const CLASS = clsx(
     "flex ",
     "gap-x-8 sm:gap-y-12",
-    "xl:items-start items-center",
+    "lg:items-start items-center",
     className,
     {
-      "xl:flex-row-reverse": reverse,
-      "xl:flex-row": !reverse,
+      "lg:flex-row-reverse": reverse,
+      "lg:flex-row": !reverse,
     },
     { "flex-col-reverse": phoneReverse, "flex-col": !phoneReverse }
   );
@@ -33,14 +33,14 @@ export default function ImageSection({
   return (
     <section className={CLASS}>
       <div
-        className={clsx("w-full xl:max-w-[500px] max-w-[700px] xl:pt-24 pt-10")}
+        className={clsx("w-full xl:max-w-[500px] max-w-[700px] lg:pt-24 pt-10")}
       >
         {children}
       </div>
 
       <div
         className={clsx("w-full", {
-          "hidden sm:flex": !imageInPhone,
+          "hidden lg:flex": !imageInPhone,
           "flex justify-center": imageInPhone,
         })}
       >

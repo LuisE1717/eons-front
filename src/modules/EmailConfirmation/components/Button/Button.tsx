@@ -35,7 +35,6 @@ export default function Button({ question, text, email }: Props) {
       setPending(true)
       const mail = await sendVerificationMail(email, Cookies.get("eons_lng") || "en")
       setPending(false)
-      console.log(mail)
       toast.info('verifique su buzon de correo ' + '(' + email + ')')
     } catch (error) {
       setPending(false)

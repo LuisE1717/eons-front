@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -8,27 +8,17 @@ interface Props {
 
 export default function Info({ children }: Props) {
   const menu = useRef<HTMLDivElement | null>(null);
-  const [have, setHave] = useState(() => {
-    if (menu.current) {
-      return (
-        menu.current.scrollHeight > menu.current.offsetHeight ||
-        menu.current.scrollWidth > menu.current.offsetWidth
-      );
-    }
-
-    return true;
-  });
+  const [have, setHave] = useState(false);
 
   const CLASS = clsx(
     "relative",
-    "hide-scrollbar overflow-auto",
+    "hide-scrollbar",
     "rounded-xl",
     "w-full max-w-[400px]",
-    "max-h-[430px] overflow-y-auto",
-    "flex-col flex items-center",
-    "px-6 py-4",
+    "h-[430px]",
     "bg-white",
-    "shadow-gray-400 shadow-md"
+    "shadow-gray-400 shadow-md",
+    "flex flex-col" // Agregado para el layout flexbox
   );
 
   useEffect(() => {
@@ -45,13 +35,12 @@ export default function Info({ children }: Props) {
     }
 
     window.addEventListener("resize", check);
-
     check();
 
     return () => {
       window.removeEventListener("resize", check);
     };
-  }, [menu.current]);
+  }, []);
 
   function scroll(way: "top" | "bottom") {
     if (menu.current) {
@@ -67,19 +56,14 @@ export default function Info({ children }: Props) {
   }
 
   return (
-    <motion.div
-      ref={menu}
-      className={CLASS}
-      animate={{ scale: [0.2, 1] }}
-      transition={{
-        duration: 2,
-        ease: "easeInOut",
-        times: [0, 0.25],
-      }}
-    >
+    <div className={CLASS}>
+      {/* Contenedor superior para la flecha */}
       {have && (
-        <div className="fixed flex justify-center top-0 md:pt-7">
-          <button onClick={() => scroll("top")}>
+        <div className="h-8 flex items-center justify-center bg-white">
+          <button 
+            onClick={() => scroll("top")}
+            className="hover:bg-gray-100 p-1 rounded-full transition-colors"
+          >
             <svg
               width="22"
               height="22"
@@ -90,20 +74,36 @@ export default function Info({ children }: Props) {
               <path
                 d="M13 30L25 18L37 30"
                 stroke="#000000"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
         </div>
       )}
 
-      {children}
+      {/* Contenedor principal del contenido */}
+      <motion.div
+        ref={menu}
+        className="overflow-y-auto flex-1 px-6 py-2 flex flex-col items-center"
+        animate={{ scale: [0.2, 1] }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          times: [0, 0.25],
+        }}
+      >
+        {children}
+      </motion.div>
 
+      {/* Contenedor inferior para la flecha */}
       {have && (
-        <div className="fixed flex justify-center bottom-0">
-          <button onClick={() => scroll("bottom")}>
+        <div className="h-8 flex items-center justify-center bg-white">
+          <button 
+            onClick={() => scroll("bottom")}
+            className="hover:bg-gray-100 p-1 rounded-full transition-colors"
+          >
             <svg
               width="24"
               height="24"
@@ -114,14 +114,14 @@ export default function Info({ children }: Props) {
               <path
                 d="M36 18L24 30L12 18"
                 stroke="#000000"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }

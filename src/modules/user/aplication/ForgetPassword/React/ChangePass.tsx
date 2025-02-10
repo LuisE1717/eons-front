@@ -73,7 +73,7 @@ return (
               setValue={handleChangeConfirmPassword}
               value={confirmPassword}
               type={"password"}
-              label={translation.Auth.confirm_password_input_label}
+              label={translation.Auth.password_input_label}
               icon
             />
 
@@ -82,7 +82,7 @@ return (
               validation_confirm_pass ? "hidden" : ""
             } ml-5 text-lg text-red-600`}
             >
-            {translation.Auth.invalid_confirm_pass_text}
+            {translation.Auth.invalid_pass_text}
             </label>
             </>
         </div>

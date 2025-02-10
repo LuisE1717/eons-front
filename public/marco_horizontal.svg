@@ -2,8 +2,8 @@
 <mask id="path-1-inside-1_40_196" fill="white">
 <rect x="58" y="40" width="1619" height="716" rx="4"/>
 </mask>
-<rect x="58" y="40" width="1619" height="716" rx="4" stroke="#1684F9" stroke-width="40" mask="url(#path-1-inside-1_40_196)"/>
-<rect x="58" y="40" width="1619" height="716" rx="4" stroke="url(#paint0_linear_40_196)" stroke-width="40" mask="url(#path-1-inside-1_40_196)"/>
+<rect x="58" y="40" width="1619" height="716" rx="4" stroke="#1684F9" strokeWidth="40" mask="url(#path-1-inside-1_40_196)"/>
+<rect x="58" y="40" width="1619" height="716" rx="4" stroke="url(#paint0_linear_40_196)" strokeWidth="40" mask="url(#path-1-inside-1_40_196)"/>
 <g clip-path="url(#clip0_40_196)">
 <path d="M111.586 762.022C113.116 758.575 119.631 757.313 123.569 759.593C125.986 760.99 127.695 763.879 127.03 764.907C126.841 765.197 126.444 765.357 125.916 765.427C125.613 764.114 124.192 762.219 122.374 761.169C119.112 759.278 114.084 759.822 111.586 762.022Z" fill="white"/>
 <path d="M50.0468 690.459C50.094 689.765 50.2545 689.249 50.6086 689.024C51.6426 688.362 54.551 690.06 55.958 692.461C57.9552 695.862 57.2517 701.195 54.7588 703.535C56.2271 700.862 56.3876 696.809 54.7635 694.037C53.5831 692.025 51.3452 690.501 50.0468 690.459Z" fill="white"/>
