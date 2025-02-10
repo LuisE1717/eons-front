@@ -7,6 +7,7 @@ interface Props {
   value: string;
   loading: boolean;
   icon?: boolean;
+  change?: Function;
 }
 
 const OutlineInputReact: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const OutlineInputReact: React.FC<Props> = ({
   value,
   loading,
   icon,
+  change
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -32,6 +34,7 @@ const OutlineInputReact: React.FC<Props> = ({
           onInput={(e) => setValue(e.currentTarget.value)}
           name="text"
           autoComplete="off"
+          onBlur={()=> change ? change() : null}
           required
         />
         <label htmlFor="text" className="label-name">

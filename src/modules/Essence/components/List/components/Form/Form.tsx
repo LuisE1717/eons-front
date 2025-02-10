@@ -40,8 +40,11 @@ export default function Form({ handleClose }: Props) {
         };
         await transferEssence(Cookies.get("eons_token") || "", datah)
           .then(({ data }) => {
-            if (data?.essence) {
-              setCookie("eons_essence", data?.essence, 0.25);
+            if (data?.message === 'Transfer successful') {
+              const currentEssence = parseInt(Cookies.get("eons_essence") ?? "0");
+              const newEssence = Math.max(currentEssence - form.count, 0);
+
+              setCookie("eons_essence", newEssence.toString(), 0.25);
               setOpenModal(null);
               toast.success(
                 `${translation.Esence.toast_1} ${form.count} ${translation.Esence.toast_2} ${form.user} ${translation.Esence.toast_3}`
@@ -55,17 +58,14 @@ export default function Form({ handleClose }: Props) {
           .catch(({ response }) => {
             setOpenModal(null);
 
-            if (response?.data?.message == "Insufficient essence") {
-              toast.error(translation.Esence.insuficent_error);
-            } else if (response?.data?.message == "Receiver not found") {
-              toast.error(translation.Esence.not_found);
-            } else if (
-              response?.data?.message == "amount must not be less than 1"
-            ) {
-              toast.error(translation.Esence.at_least_error);
-            } else {
-              toast.error(translation.fecth_error);
-            }
+            const errorMessages = {
+              "Insufficient essence": translation.Esence.insuficent_error,
+              "Receiver not found": translation.Esence.not_found,
+              "amount must not be less than 1": translation.Esence.at_least_error
+            };
+            
+            const errorMessage = errorMessages[response?.data?.message] || translation.fecth_error;
+            toast.error(errorMessage);
           });
       }
 
@@ -103,16 +103,16 @@ export default function Form({ handleClose }: Props) {
             <path
               d="M8 8L40 40"
               stroke="#000000"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M8 40L40 8"
               stroke="#000000"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </button>

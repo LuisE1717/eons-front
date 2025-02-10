@@ -9,7 +9,13 @@ export default function SecondStep() {
 
   return (
     <Step>
-      <P>{translation.Landing.text10}</P>
+      <div className="flex flex-col">
+      <P bold>{translation.Landing.subTitle2}</P><br/>
+      <p></p>
+      <P>{translation.Landing.text10}</P><br/>
+      <P>{translation.Landing.text101}</P>
+      </div>
+      
     </Step>
   );
 }

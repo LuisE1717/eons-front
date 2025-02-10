@@ -12,9 +12,9 @@ export default function Arrow() {
       <path
         d="M36 18L24 30L12 18"
         stroke="#000000"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

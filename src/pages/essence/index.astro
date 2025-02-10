@@ -12,7 +12,7 @@ if(!Astro.cookies.get('eons_token')?.value)
 
 try {
     const profile = await getProfile(Astro.cookies.get("eons_token")?.value || '')
-    console.log(profile)
+    console.log("Profile:",JSON.stringify(profile,null,2));
     Astro.cookies.set('eons_essence',profile?.data?.essence || 0,{expires:getExpire(7),path:'/'})
     if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)
         notificaciones = profile?.data?.notificaciones

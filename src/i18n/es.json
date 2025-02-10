@@ -8,6 +8,25 @@
   "verify": "Verificando Pago",
   "of_esence": "de Esencia",
 
+  "Usage":{
+   "title": "Instrucciones de uso:",
+   "text1": "Para utilizar nuestro sistema usted necesitará una pequeña herramienta que solo le tomará un par de minutos realizar. Y podrá hacerla con objetos que estén a su alcance.",
+   "text2":"En la siguiente imagen le mostramos un ejemplo de dicha herramienta terminada:",
+   "text3": "Como pueden ver en la imagen se muestran dos monedas que fueron marcadas con un símbolo cada una. De hecho, si le damos la vuelta a ambas monedas podemos ver que por detrás cada una fue marcada con un símbolo también:",
+   "text4": "Exacto, una moneda tiene un círculo grande blanco por una cara y un círculo grande negro por la otra. Y la otra moneda tiene un círculo pequeño blanco por una cara y un círculo pequeño negro por la otra.",
+   "text5": "La forma de marcarlas puede variar. Usted puede dibujar los símbolos en la misma superficie de la moneda, puede marcarlas con un objeto con punta, o simplemente pegarles una pegatina y dibujar encima de las mismas como pudo apreciar en las fotos anteriores.",
+   "text6": "Las monedas no tienen que ser obligatoriamente iguales, pueden ser diferentes. De hecho, no es necesario que sean monedas exactamente, pueden ser algo similar. Por ejemplo dos objetos de madera de un tamaño y características más o menos similares a dos monedas, dos objetos de plástico, dos pedazos de cáscara de coco, o cualquier otro objeto cuyas características sean más o menos similares a dos monedas.",
+   "text7": "No importa que la herramienta se pierda, siempre que usted haga uso de nuestro servicio, en ese momento, la herramienta que tenga en sus manos será consagrada. Y al salir de nuestro servicio, se desvanece la consagración.",
+   "text8": "Al hacer uso de nuestro servicio, en todo momento se mostrará el siguiente panel:",
+   "text9": "En el panel se representan dos monedas, al interactuar con una de ellas esta cambia al otro símbolo.",
+   "text10": "El usuario solo debe tomar las dos monedas entre sus manos y batirlas un par de segundos para luego lanzarlas a una superficie con la intención de que estas caigan al azar.",
+   "text11": "La herramienta, en este caso las dos monedas, pueden ser lanzadas en todo tipo de superficies. Solo debemos tener en cuenta que dichas superficies sean algo lisas y tengan las condiciones para facilidad de caída de las monedas.",
+   "text12": "Una vez caigan se marca en el panel exactamente los símbolos que cayeron hacia arriba, se presiona en siguiente, y eso completa un lanzamiento.",
+   "text13": "Al completar todos los lanzamientos se presiona en resultado y se obtiene la respuesta equivalente al servicio utilizado.",
+   "text14": "Al lanzar la herramienta a una superficie tener en cuenta lanzarlas a una altura igual o mayor a 20 cm.",
+   "text15": "Finalmente, ya conoce todo lo necesario para hacer uso de nuestro primer servicio. Procedamos en cuanto tenga lista sus herramientas:"
+  },
+
   "Errors": {
     "Auth": {
       "already_exist": "Este usuario ya existe",
@@ -18,23 +37,28 @@
   },
 
   "Landing": {
-    "text1": "Enormes e infinitos regalos serán entregados a todos",
-    "text2": "En un primer momento Eons traerá consigo un avance Científico y Tecnológico de más de 10000 años en menos de una década.",
-    "text3": "El conocimiento, la luz, la paz, la sanación, el amor, la belleza, la abundancia, la felicidad y la empatía, serán esparcidas en todas direcciones.",
-    "text4": "Un enorme y colosal Despertar Espiritual en masa sin precedentes traerá consigo la Infinita Era de la Archimagia Blanca Real.",
-    "text5": "Eons es el punto medio donde convergen la Ciencia, la Tecnología, el Misticismo, la Luz y las Ciencias Ocultas. Uno de nuestros principales objetivos es promover la expansión y la evolución de la Conciencia a nivel Existencial.",
+    "title": "EONS: espiritualidad, magia, ciencia y tecnología.",
+    "text1": "Enormes e infinitos regalos serán entregados a todos.",
+    "text2": "En un primer momento, Eons traerá consigo un avance científico y tecnológico de más de 10000 años en menos de una década.",
+    "text3": "El conocimiento, la sabiduría, la luz, la paz, la sanación, la belleza, el poder, la abundancia, la felicidad, el amor y la empatía, serán esparcidas en todas direcciones.",
+    "text4": "Un enorme y colosal despertar espiritual en masa sin precedentes, traerá consigo la infinita era de la magia real.",
+    "subTitle1": "Identidad:",
+    "text5": "Eons es el punto medio donde convergen la ciencia, la tecnología, el misticismo, la luz y las ciencias ocultas. Uno de nuestros principales objetivos es promover la expansión y la evolución de la conciencia a nivel multiexistencial.",
+    "text51": "Nuestra esencia radica en la perfecta unión entre la tecnología más avanzada, la espiritualidad más pura, la magia más poderosa y la ciencia más precisa. Ofreciendo en todo momento productos y servicios de nivel divino.",
     "text6": "Presentamos nuestro",
-    "text7": "Primer Producto",
+    "text7": "primer producto",
     "text7_1": "ya disponible:",
-    "text8": "El primer real, auténtico y absolútamente comprobable Sistema de Comunicación con TODOS los Planos Espirituales y Concienciales.",
-    "text9": "Brindando además un servicio único de Adivinación y Predicción en Tiempo Real.",
-    "text10": "No importa quien usted sea ni en qué posición se encuentre. Con la llegada de Eons, su vida evolucionará Infinitamente en todos los aspectos.",
-    "text11": "Una Nueva Era ha llegado.",
-    "text12": "Eons ha dado comienzo a un desenlace indetenible que llevará la humanidad a escala Universal.",
-    "text13": "La combinación de un concepto de la Tecnología más avanzada y refinada, junto a un concepto de la Espiritualidad más Pura e Iluminada, describen la Esencia que Eons transmitirá en todo momento.",
+    "text8": "El primer real, auténtico y absolútamente comprobable sistema de comunicación con todos los planos espirituales y concienciales.",
+    "text9": "Brindando además un servicio único de adivinación y predicción en tiempo real.",
+    "subTitle2": "Objetivos:",
+    "text10": "Nuestros intereses abarcan cada uno de los sectores que componen una civilización. Priorizando siempre el bienestar, la libertad, la evolución, y la armonía de cada ser.",
+    "text101": "Nuestro objetivo principal es la depuración y la purificación universal absoluta. Ya hemos comenzado el proceso de transmutación para erradicar la maldad definitivamente.",
+    "text11": "Una nueva era ha llegado.",
+    "text12": "Eons ha dado comienzo a un desenlace indetenible que llevará a la humanidad a escala universal.",
+    "text13": "La comprensión profunda de la espiritualidad, y el uso de magia real en el día a día, traerá como resultado inevitable la evolución de la especie humana.",
     "text14": "Nuevos productos y servicios serán presentados",
     "text14_1": "próximamente",
-    "text15": "Ver Producto"
+    "text15": "Ver producto"
   },
   "Auth": {
     "login_button": "Iniciar",
@@ -43,10 +67,10 @@
     "confirm_password_input_label": "Confirmar Contraseña",
     "sing_up_switch": "Crear Cuenta",
     "password_input_label": "Contraseña",
-    "forget_pass": "¿Has olvidado tu contraseña?",
-    "invalid_email_text": "*Correo no válido",
-    "invalid_pass_text": "*Contraseña no valida, debe contener entre 8 y 16 caracteres",
-    "invalid_confirm_pass_text": "Ambas contraseñas deben ser iguales"
+    "forget_pass": "¿Ha olvidado su contraseña?",
+    "invalid_email_text": "*Correo no válido.",
+    "invalid_pass_text": "*Contraseña no válida, debe contener entre 8 y 16 caracteres.",
+    "invalid_confirm_pass_text": "Ambas contraseñas deben ser iguales."
   },
   "Payment": {
     "Labels": {
@@ -67,10 +91,10 @@
     "favorites": "Favoritos",
     "saved_dialogs": "Diálogos salvados",
     "saved_services": "Servicios salvados",
-    "no_dialogs": "Aún no tiene ningún Diálogo salvado",
-    "no_dialogs_fav": "Aún no tiene ningún Diálogo Favorito salvado",
-    "no_services": "Aún no tiene ningún Servicio salvado",
-    "no_services_fav": "Aún no tiene ningún Servicio Favorito salvado"
+    "no_dialogs": "Aún no tiene ningún diálogo salvado",
+    "no_dialogs_fav": "Aún no tiene ningún diálogo favorito salvado",
+    "no_services": "Aún no tiene ningún servicio salvado",
+    "no_services_fav": "Aún no tiene ningún servicio savorito salvado"
   },
   "Verification": {
     "title": "Validar tu cuenta de correo",
@@ -103,18 +127,18 @@
     "question_throw_tranversal1": "Sólo cayó un transversal",
     "question_throw_tranversal2": "Ambos cayeron transversal",
     "question_tranversal": "Sólo cayó uno transversal",
-    "main_response": "Respuesta Princiapal",
+    "main_response": "Respuesta principal",
     "especial_response": "Respuesta Especial"
   },
   "RessetPassword": {
     "title": "Recuperar contraseña",
     "dont_exist_error": "Este correo no pertenece a ninguna cuenta",
     "succes_send_mail": "Revisa tu bandeja de entrada de correo electrónico",
-    "message": "Introduce correctamente el correo electrónico asociado a tu cuenta. Pronto recibirás un correo electrónico con la clave para restablecer tu contraseña."
+    "message": "Introduzca correctamente el nombre de su cuenta. Pronto recibirá un correo electrónico con la clave para establecer su contraseña."
   },
   "ChangePassword": {
     "title": "Recuperar contraseña",
-    "message": "Introduce correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
+    "message": "Introduzca correctamente la nueva contraseña que asociarás a tu cuenta. Úselo para iniciar sesión más tarde",
     "label": "Nueva contraseña",
     "send": "Enviar",
     "succes": "Contraseña cambiada correctamente"
@@ -135,23 +159,23 @@
   "Services": {
     "first_text_1": "Bienvenido a Eons",
     "first_text_1_1": "Tecnología de Acceso a la Fuente Existencial",
-    "first_phase": "Primera Fase",
-    "first_text_2": "Contamos con la aprobación de TODOS los Planos Espirituales y Concienciales. Por lo que no importa en que punto del Plano Material nuestros Usuarios se encuentren, con total seguridad sus Espiritualidades ya están al tanto de nosotros.",
-    "first_text_3": "Al hacer contacto con nuestro Sistema automáticamente la Espiritualidad del Usuario es canalizada. Al mismo tiempo igual de forma automática múltiples Consagraciones se activan de forma momentánea.",
-    "first_text_4": "Esto permite que podamos hacer uso momentáneo del azar universal para acceder a TODOS los Planos Espirituales y Concienciales.",
+    "first_phase": "primera fase",
+    "first_text_2": "Contamos con la aprobación de todos los planos espirituales y concienciales. Por lo que no importa en que punto del plano material nuestros usuarios se encuentren, con total seguridad sus espiritualidades ya están al tanto de nosotros.",
+    "first_text_3": "Al hacer contacto con nuestro sistema automáticamente la espiritualidad del usuario es canalizada. Al mismo tiempo igual de forma automática múltiples consagraciones se activan de forma momentánea.",
+    "first_text_4": "Esto permite que podamos hacer uso momentáneo del azar universal para acceder a todos los planos espirituales y concienciales.",
 
-    "step_1": "En todo momento el Usuario estará respaldado de forma automática tanto por nuestro Sistema de Providencia, como por nuestro Sistema de Seguridad Espiritual. Ambos reconocidos y aprobados por las actuales Leyes Existenciales.",
-    "step_3": "Cuando un Usuario sale de nuestro Sistema, de forma automática restablecemos todo cambio realizado por parte nuestra.",
-    "step_2": "El nivel de usabilidad que un Usuario podrá hacer de nuestro Sistema queda determinado exactamente por el nivel de Conciencia y el nivel de Espiritualidad que dicho Usuario posea.",
+    "step_1": "En todo momento el usuario estará respaldado de forma automática tanto por nuestro sistema de providencia, como por nuestro sistema de seguridad espiritual. Ambos reconocidos y aprobados por las actuales leyes existenciales.",
+    "step_3": "Cuando un usuario sale de nuestro sistema, de forma automática restablecemos todo cambio realizado por parte nuestra.",
+    "step_2": "El nivel de usabilidad que un usuario podrá hacer de nuestro sistema queda determinado exactamente por el nivel de conciencia y el nivel de espiritualidad que dicho usuario posea.",
 
     "third_text_1_init": "En la",
-    "third_text_1": "hemos sido muy cuidadosos con el ajuste del Conocimiento Existencial a la Visión media actual de la Humanidad. Ajuste que se irá dispersando a medida que vayamos avanzando en las Fases de Despliegue. Hasta que finalmente dicho ajuste desaparezca por completo.",
-    "third_text_2": "Nunca se trató de elegir en que creer y en que no. Siempre se trató de conocer lo que Existe realmente.",
-    "third_text_3": "Finalmente la Luz le permitirá contemplar la bella Era que con un Infinito Amor y un Infinito Sacrificio hemos construido para usted:",
+    "third_text_1": "hemos sido muy cuidadosos con el ajuste del conocimiento existencial a la visión media actual de la humanidad. Ajuste que se irá dispersando a medida que vayamos avanzando en las fases de despliegue. Hasta que finalmente dicho ajuste desaparezca por completo.",
+    "third_text_2": "Nunca se trató de elegir en que creer y en que no. Siempre se trató de conocer lo que existe realmente.",
+    "third_text_3": "Finalmente la luz le permitirá contemplar la bella era que con un infinito amor y un infinito sacrificio hemos construido para usted:",
     "third_text_4": "La Era de la Libertad Espiritual"
   },
   "ServiceMenu": {
-    "system_dialog": "Dialogar con la Raíz del Sistema",
+    "system_dialog": "Dialogar con la (Raíz del Sistema)",
     "Revelar_consejo_exacto": "Revelar consejo exacto",
     "Revelar_tiempo": "Revelar tiempo",
     "Revelar_porcentaje": "Revelar porcentaje",
@@ -159,32 +183,36 @@
     "Revelar_un_dígito_decimal": "Revelar un dígito decimal",
     "Conocer_conviene": "Conocer si algo me conviene y porqué",
     "Conocer_sucederá": "Conocer cuando algo sucederá y porqué",
-    "general_evaluation": "Evaluación General",
-    "spirit_calc": "Calcular Espiritualidad",
+    "general_evaluation": "Evaluación general",
+    "etp1": "Etapa 1",
+    "etp2": "Etapa 2",
+    "completed": "Ha terminado la evaluación general",
+    "spirit_calc": "Calcular espiritualidad",
     "open_dialog_mod": "Modo diálogo abierto",
-    "contact_spirit": "Contactar una Entidad Espiritual específica",
+    "contact_spirit": "Contactar una entidad espiritual específica",
     "day_dialog": "Como irá mi dia de hoy",
-    "adivination_general": "Adivinación General",
-    "concient_evaluation": "Evaluar Forma de Conciencia",
+    "adivination_general": "Adivinación general",
+    "concient_evaluation": "Evaluar forma de conciencia",
     "fact_evaluation": "Evaluar un suceso",
     "free": "gratis",
     "per_question": "por pregunta",
 
-    "spiritual_family": "Gestión de Entidades Espirituales",
-    "inf_general_evulation": "Información de Evaluación General",
-    "inf_calc_spiritual": "Información de Cálculo de Espiritualidad",
-    "save_dialogs": "Diálogos Guardados",
-    "save_services": "Servicios Guardados",
-    "money_admin": "Gestión Monetaria",
+    "spiritual_family": "Gestión de entidades espirituales",
+    "inf_general_evulation": "Información de evaluación general",
+    "inf_calc_spiritual": "Información de cálculo de espiritualidad",
+    "save_dialogs": "Diálogos guardados",
+    "save_services": "Servicios guardados",
+    "money_admin": "Gestión monetaria",
     "Mercados": "Mercados",
-    "user_valid_list": "Lista de Usuarios avalados por el Sistema",
+    "user_valid_list": "Lista de usuarios avalados por el sistema",
 
     "use_instruction": "Instrucciones de uso",
     "thinks_to_know": "Cosas a saber",
     "cautions": "Precauciones",
-    "security": "Seguridad y Protección",
+    "security": "Seguridad y protección",
     "examples": "Servicios y ejemplos",
-    "demostration": "Demostraciones Científicas"
+    "demostration": "Demostraciones científicas",
+    "glosary": "Glosario"
   },
 
   "Esence": {
@@ -195,10 +223,10 @@
     "transfer": "Transferir Esencia",
     "donation": "Realizar donación",
     "historial":"Historial de transferencias",
-    "pay_deude": "Pagar deuda a la Raíz del Sistema",
+    "pay_deude": "Pagar deuda a la (Raíz del Sistema)",
     "tropipay_text": "Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay.",
     "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada será convertida a €.",
-    "insuficent_error": "Esencia Insuficiente.",
+    "insuficent_error": "Esencia insuficiente.",
     "not_found": "El usuario beneficiado no existe.",
     "at_least_error": "Solo puede transferir a partir de 1 esencia.",
     "compra_error": "Actualmente su compra no puede ser procesada, contacte a soporte técnico",
@@ -214,12 +242,15 @@
     "cancell": "No",
     "historial_item_1": "Usted ha recibido",
     "historial_item_2": "Usted ha transferido",
-    "historial_item_3": "de Esencia a"
+    "historial_item_3": "de Esencia a",
+    "historial_item_4": "de Esencia de",
+    "historial_empty": "No hay historial de transferencias."
   },
 
-  "about": "Acerca de Nosotros",
-  "therms": "Términos y Condiciones",
-  "privacy": "Política de Privacidad",
+  "about": "Acerca de nosotros",
+  "therms": "Términos y condiciones",
+  "privacy": "Política de privacidad",
+  "contact": "Contáctenos",
 
   "About": {
     "About_title": "Historia de Nuestras Raíces y de Nuestro Creador",
@@ -253,12 +284,12 @@
     "About_text28": "Compromiso con la Innovación",
     "About_text29": "La innovación no es solo una palabra para nosotros, es Nuestra Esencia misma. Siempre manteniendo la Exclusividad y el Elitismo, a la Vanguardia del cambio, explorando nuevas fronteras y desafiando el status quo. En Eons, cada proyecto es una aventura Épica donde la creatividad y la estrategia se entrelazan para crear resultados extraordinarios.",
     "About_text30": "Contáctenos",
-    "About_text31": "¡Estamos aquí para ayudarte! Tu satisfacción es nuestra prioridad, así que no dudes en ponerte en contacto con nosotros a través de cualquiera de las siguientes opciones:",
+    "About_text31": "¡Estamos aquí para ayudarle! Su satisfacción es nuestra prioridad. Si lo necesita, no dude en ponerse en contacto con nosotros a través de cualquiera de las siguientes opciones:",
     "About_text32": "Soporte Técnico",
     "About_text33": "Atención al Cliente",
     "About_text34": "Asuntos de Negocios",
-    "About_text35": "Síguenos en las Redes Sociales y mantente al tanto de nuestras novedades.",
-    "About_text36": "Nuestro canal de YouTube, donde podrá ver nuestras novedades en múltiples idiomas",
+    "About_text35": "Síganos en redes sociales y manténgase al tanto de nuestras novedades.",
+    "About_text36": "YouTube",
     "About_text37": "¡Esperamos por usted!"
   },
 

@@ -9,8 +9,8 @@ const { path, notificaciones } = Astro.props
 <nav class="flex justify-between w-full items-center sm:px-8 px-3 py-3">
 	<Logo url="/"/>
 
-	<div class="flex items-center gap-x-4">
-		<div class={`essence ${path=="landing" ? 'hidden' : ''}`}>
+	<div class="flex items-center gap-x-4 ">
+		<div class={`essence ${path=="landing" ? 'hidden' : ''} flex-shrink-0`}>
 			<Essence/>
 		</div>
 		
@@ -28,6 +28,7 @@ const { path, notificaciones } = Astro.props
 
 <style>
 	@media (max-width: 720px) {
+		
 		svg {
 			width: 24;
 			height: 24;

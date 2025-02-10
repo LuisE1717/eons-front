@@ -48,6 +48,12 @@ export default function Content({
     validation_confirm_pass,
     confirmPassword,
     section,
+    emailTouched,
+    setEmailTouched,
+    passwordTouched,
+    setPasswordTouched,
+    confirmPasswordTouched,
+    setConfirmPasswordTouched
   } = useContent(session);
 
   return (
@@ -89,14 +95,13 @@ export default function Content({
             value={email}
             type={"text"}
             label="Email"
+            change={() => setEmailTouched(true)}
           />
-          <label
-            className={`${
-              validation_mail || email == "" ? "hidden" : ""
-            } ml-5 text-lg text-red-600`}
-          >
-            {invalid_email_text}
-          </label>
+          {emailTouched && !validation_mail && (
+            <label className="ml-5 text-lg text-red-600">
+              {invalid_email_text}
+            </label>
+          )}
 
           <OutlineInputReact
             loading={loading}
@@ -105,15 +110,13 @@ export default function Content({
             type={"password"}
             label={password_input_label}
             icon
+            change={() => setPasswordTouched(true)}
           />
-
-          <label
-            className={`${
-              validation_pass || password == "" ? "hidden" : ""
-            } ml-5 text-lg text-red-600`}
-          >
-            {invalid_pass_text}
-          </label>
+          {passwordTouched && !validation_pass && (
+            <label className="ml-5 text-lg text-red-600">
+              {invalid_pass_text}
+            </label>
+          )}
 
           {section === SECTIONS.SIGN_UP && (
             <>
@@ -124,15 +127,14 @@ export default function Content({
               type={"password"}
               label={confirm_password_input_label}
               icon
+              change={() => setConfirmPasswordTouched(true)}
             />
 
-            <label
-            className={`${
-              validation_confirm_pass ? "hidden" : ""
-            } ml-5 text-lg text-red-600`}
-            >
-            {invalid_confirm_pass_text}
-            </label>
+              {confirmPasswordTouched && !validation_confirm_pass && (
+                <label className="ml-5 text-lg text-red-600">
+                  {invalid_confirm_pass_text}
+                </label>
+              )}
             </>
           )}
         </div>

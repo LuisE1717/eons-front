@@ -3,8 +3,48 @@ const essence = parseInt(Astro.cookies.get('eons_essence')?.value || "0") || 0
 ---
 
 <div class="rounded-full shadow-md hover:shadow-lg">
-    <a href="/essence" class="flex items-center px-4 ">
-       <img src="/fire.webp" alt="fire" class="object-contain w-[30px]" >
-        <span class="ml-2">{essence}</span>
+    <a 
+        href="/essence" 
+        class="flex items-center px-2 sm:px-4 relative group"
+        id="essence-counter"
+    >
+        <img src="/fire.webp" alt="fire" class="object-contain w-[24px] sm:w-[30px]">
+        <span class="ml-1 sm:ml-2 text-sm sm:text-base truncate max-w-[80px] sm:max-w-none">
+            {essence}
+        </span>
+        
+        <!-- Tooltip para móvil (aparece con long press) -->
+        <!-- <div class="absolute hidden touch-tooltip top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap z-50">
+            {essence.toLocaleString()}
+        </div> -->
+        
+        <!-- Tooltip para desktop (aparece con hover) -->
+        <!-- <div class="absolute hidden group-hover:sm:block top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg whitespace-nowrap z-50">
+            {essence.toLocaleString()}
+        </div> -->
     </a>
 </div>
+
+<style>
+    /* Prevenir la selección de texto durante el long press */
+    .group {
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
+    /* Animación para el tooltip */
+    .touch-tooltip {
+        transition: opacity 0.2s ease-in-out;
+        pointer-events: none;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .touch-tooltip:not(.hidden) {
+        display: block;
+        animation: fadeIn 0.2s ease-in-out;
+    }
+</style>

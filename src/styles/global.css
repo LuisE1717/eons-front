@@ -4,7 +4,7 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
-:root {
+ :root {
   --accent: #2337ff;
   --accent-dark: #000d8a;
   --black: 15, 18, 25;
@@ -201,3 +201,38 @@ hr {
 .blink {
   animation: blink 1.5s linear infinite;
 }
+
+/* src/styles/global.css */
+
+
+
+
+ .launch-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 2rem;
+   height: 40%;
+   
+ }
+ @media (max-width: 884px) {
+  .launch-container {
+    margin-top: 2px;
+   margin-bottom: 40%; 
+  }
+}
+ @media (max-width: 320px) {
+  .launch-container {
+    margin-top: 2px;
+    margin-bottom: 40%;
+      
+    transform: scale(0.78); 
+  }
+}
+
+.coin-container {
+  display: flex;
+  gap: 2rem;
+}
+

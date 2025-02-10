@@ -12,9 +12,9 @@ export default function SecondStep() {
     <Step>
       <P>{translation.Services.step_2}</P>
 
-      <PhoneView>
+      {/* <PhoneView>
         <Image image="/brain.png" />
-      </PhoneView>
+      </PhoneView> */}
     </Step>
   );
 }
