@@ -6,12 +6,12 @@ import Header from "../../layouts/Header.astro";
 import BackButton from '../../components/UI/BackButton.astro';
 
 const token =Astro.cookies.get('eons_token')?.value || '';
-const language = Astro.cookies.get("eons_lng")?.value || "en";
+const language = Astro.cookies.get("eons_lng")?.value || "es";
 ---
 <AppContainer>
     <Header/>
     <div class="flex flex-col ml-3 mt-2">
-        <BackButton routeProp={'/general-evaluation'}/>
+        <BackButton routeProp={'/services'}/>
     </div>
     <Result language={language} token={token} client:load />
     <Footer/>

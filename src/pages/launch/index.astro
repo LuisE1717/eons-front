@@ -4,13 +4,36 @@ import AppContainer from "../../layouts/AppContainer.astro";
 import Footer from "../../layouts/Footer.astro";
 import Header from "../../layouts/Header.astro";
 import BackButton from '../../components/UI/BackButton.astro'
-const token =Astro.cookies.get('eons_token')?.value || ''
+import {getLaunches} from '../../utils/api/launch';
+const token = Astro.cookies.get('eons_token')?.value || ''
+const data = await getLaunches(token);
+let steps = 7;
+let type = 'etp1';
+let redirect = '';
+if (data?.data?.some(item => item?.shortType === 'etp2')) {
+    redirect = '/general-evaluation';
+}
+
+data?.data?.forEach((item) => {
+    if (item?.shortType === 'etp1') {
+        steps = 11;
+        type = "etp2";
+    }
+});
 ---
 <AppContainer>
     <Header/>
-    <div class="flex flex-col ml-3 mt-2">
+    <div class="flex flex-col ml-3 mt-2" id="data" data-launch=`${redirect}`>
         <BackButton routeProp={'/general-evaluation'}/>
     </div>
-    <Launch token={token} steps={7} client:load />
+    <Launch token={token} type={type} steps={steps} client:load />
     <Footer/>
 </AppContainer>
+
+<script>
+    const dataElement = window.document.getElementById('data');
+    const data = dataElement ? dataElement.getAttribute('data-launch') : null;
+    if (data) {
+        window.location.href = data
+    }
+</script>
