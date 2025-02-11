@@ -37,7 +37,7 @@ const Result: React.FC<ResultProps> = ({ token, language }) => {
 
   return (
     <Frame>
-      <div className="launch-container w-full h-full flex items-center justify-center">
+      <div className="launch-container w-full h-full phone:h-auto flex items-center justify-center">
         <div
           className="coin-container 
        w-[90%]

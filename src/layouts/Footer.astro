@@ -6,24 +6,14 @@ const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({currentLocale})
 ---
 
-<footer class="flex w-full lg:flex-row flex-col py-2 sm:px-10 px-5 items-center justify-between gap-y-2">
+<footer class="flex w-full lg:flex-row flex-col py-4 px-5 sm:px-10 items-center justify-between gap-y-4">
 	<Logo/>
 
-	<div class="flex items-center social-links text-base gap-x-8 text-center">
-		<a href="/about/about-us">
-			{i18.about}.
-		</a>
-
-		<a href="/terms" >
-			{i18.therms}.
-		</a>
-
-		<a href="/privacy">
-			{i18.privacy}.
-		</a>
-		<a href="/contact">
-			{i18.contact}.
-		</a>
+	<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-base text-center sm:flex-nowrap sm:justify-start">
+		<a href="/about/about-us">{i18.about}.</a>
+		<a href="/terms">{i18.therms}.</a>
+		<a href="/privacy">{i18.privacy}.</a>
+		<a href="/contact">{i18.contact}.</a>
 	</div>
 </footer>
 
@@ -38,9 +28,12 @@ const i18 = getI18N({currentLocale})
 	.social-links a {
 		text-decoration: none;
 		color: rgb(var(--gray-dark));
+		padding: 0.5rem; /* Espaciado adicional */
+		display: block;
 	}
 
 	.social-links a:hover {
 		color: rgb(var(--gray));
 	}
 </style>
+
