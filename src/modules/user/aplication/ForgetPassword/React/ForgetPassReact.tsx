@@ -26,7 +26,7 @@ const ForgetPassReact = () => {
     const handleSubmit = async () =>{
         setLoading(true)
         if(validMail(email)){
-            await postResetPass({email,lang: Cookies.get("eons_lng")||'en'})
+            await postResetPass({email,lang: Cookies.get("eons_lng")||'es'})
             .then((response)=>{
               toast.success(translation.RessetPassword.succes_send_mail)
               setLoading(false)

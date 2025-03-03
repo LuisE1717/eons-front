@@ -17,7 +17,7 @@ const auth = Astro.cookies.get('eons_token')?.value || ''
       <main class="w-full flex-col flex max-w-[1100px] lg:pt-0 pt-10">
         <First/>
         <div class="w-screen relative left-[calc(-50vw+50%)] bg-[#f7ebf9] justify-center align-middle">
-          <div class="max-w-[1200px] mx-auto px-4">
+          <div class="max-w-[1200px] mx-auto desktop:px-12 phone:px-5">
            <FirstStep client:load />
           </div>
         </div>
@@ -25,7 +25,7 @@ const auth = Astro.cookies.get('eons_token')?.value || ''
         <Second auth={auth}/>
         <Forth />
         <div class="w-screen relative left-[calc(-50vw+50%)] bg-[#f7ebf9] justify-center align-middle">
-          <div class="max-w-[1200px] mx-auto px-4">
+          <div class="max-w-[1200px] mx-auto desktop:px-12 phone:px-5">
             <SecondStep client:load />
           </div>
         </div>

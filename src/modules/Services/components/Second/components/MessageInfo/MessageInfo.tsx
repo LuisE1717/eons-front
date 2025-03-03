@@ -37,7 +37,7 @@ export default function MessageInfo() {
       <Line />
 
       <Free
-      onclick={() => window.location.href = '/launch'}
+      onclick={() => window.location.href = '/general-evaluation'}
       name={translation.ServiceMenu.general_evaluation}>
       </Free>
 

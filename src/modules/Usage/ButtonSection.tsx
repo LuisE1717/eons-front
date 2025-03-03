@@ -5,7 +5,7 @@ import useTranslation from "../Shared/hooks/useTranslation";
 const ButtonSection = () => {
       const { translation } = useTranslation();
     
-    const handleRoute=()=>   window.location.href = '/launch';
+    const handleRoute=()=>   window.location.href = '/general-evaluation';
   return (
     <Button onClick={() => handleRoute()} loading={false} full={false}>
       <div>

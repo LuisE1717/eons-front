@@ -1,5 +1,6 @@
 import { axiosI, intanceAxios } from ".";
 import type { IChangePass, ILogin } from "../../modules/user/domain/user";
+import Cookies from 'js-cookie';
 
 export async function postLogin(dataLogin:ILogin) {
     const res = await intanceAxios.post('auth/login', dataLogin);
