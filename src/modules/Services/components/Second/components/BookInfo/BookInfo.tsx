@@ -5,6 +5,8 @@ import Blink from "../../../../shared/components/Blink/Blink";
 import Line from "../../../../shared/components/Line/Line";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
+import clsx from "clsx";
+import { motion } from "framer-motion";
 
 export default function BookInfo({first_time}) {
   const { translation } = useTranslation();
@@ -30,10 +32,15 @@ export default function BookInfo({first_time}) {
       </A>
       } */}
       <A>
-        <div onClick={()=> window.location.href = `/usage`}>
-        {translation.ServiceMenu.use_instruction}.
-        </div>
-      </A>
+  <div onClick={() => window.location.href = `/usage`} className="relative">
+    <motion.span
+      animate={first_time ? { color: ["#ffffff", "#800080", "#ffffff"] } : {}}
+      transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+    >
+      {translation.ServiceMenu.use_instruction}
+    </motion.span>
+  </div>
+</A>
       <Line />
       <A>
         <div >

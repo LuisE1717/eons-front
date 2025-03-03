@@ -10,7 +10,9 @@ export default function SecondStep() {
 
   return (
     <Step>
-      <P>{translation.Services.step_2}</P>
+      <div className="flex flex-col ">
+        <P>{translation.Services.step_2}</P>
+      </div>
 
       {/* <PhoneView>
         <Image image="/brain.png" />

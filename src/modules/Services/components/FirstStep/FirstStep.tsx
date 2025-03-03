@@ -11,7 +11,7 @@ export default function FirstStep() {
     <Step>
       <div className="flex flex-col ">
 
-      <P>{translation.Services.step_1}<span className="ml-2">{translation.Services.step_3}</span></P>
+      <P>{translation.Services.step_1}<br/><div className="mt-6">{translation.Services.step_3}</div></P>
       </div>
     </Step>
   );

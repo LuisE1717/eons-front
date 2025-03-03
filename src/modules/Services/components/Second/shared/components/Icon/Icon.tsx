@@ -4,18 +4,20 @@ import { motion } from "framer-motion";
 interface Props {
   icon: React.FC<{ size: number }>;
   selected: boolean;
+  className?: string;
+  showAura?: boolean;
   handleClick(): void;
   visible: boolean;
 }
 
-export default function Icon({ selected, icon, handleClick, visible }: Props) {
+export default function Icon({ selected, icon, handleClick, visible, className, showAura }: Props) {
   const CLASS = clsx(
     "shadow-gray-400",
     "sm:px-6 px-3.5 sm:py-4 py-2.5",
     "rounded-2xl",
     "cursor-pointer",
     "transition-all duration-500",
-
+    className, 
     {
       "shadow-inner": selected,
       "shadow-md": !selected,

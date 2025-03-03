@@ -15,14 +15,23 @@ import FirstTime from "./components/FirstTime/FirstTime";
 export default function Second({ first_time }) {
   const ref = createRef<HTMLDivElement>();
 
-  const [selected, setSelected] = useState<SECTIONS | null>(
-    first_time ? SECTIONS.BOOK : null
-  );
+  const [selected, setSelected] = useState<SECTIONS | null>(null);
+
+  const [showInstructions, setShowInstructions] = useState(false);
 
   const isInView = useInView(ref, {
     once: true,
     amount: "some",
   });
+
+  function handleBookClick() {
+    if (first_time) {
+      setShowInstructions(true);
+      // Si necesitas desactivar el efecto después del primer uso:
+      // localStorage.setItem('first_time', 'false');
+    }
+    handleChange(SECTIONS.BOOK);
+  }
 
   function handleChange(s: SECTIONS) {
     setSelected((prev) => {
@@ -67,12 +76,35 @@ export default function Second({ first_time }) {
           }
         )}
       >
-        <Icon
-          visible={isInView}
-          selected={selected === SECTIONS.BOOK}
-          icon={Book}
-          handleClick={() => handleChange(SECTIONS.BOOK)}
-        />
+        <div className="relative">
+          <Icon
+            visible={isInView}
+            selected={selected === SECTIONS.BOOK}
+            icon={Book}
+            handleClick={() => handleBookClick()}
+          />
+          {first_time && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 rounded-full"
+              style={{ pointerEvents: "none" }}
+            >
+              <motion.div
+                className="absolute inset-0 rounded-2xl "
+                animate={{
+                  boxShadow: [
+                    "0px 0px 5px rgba(128,0,128,0.5)",
+                    "0px 0px 15px rgba(128,0,128,0.9)",
+                    "0px 0px 5px rgba(128,0,128,0.5)",
+                  ],
+                }}
+                transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+              />
+            </motion.div>
+          )}
+        </div>
 
         <motion.div
           style={{
