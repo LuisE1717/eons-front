@@ -1,4 +1,5 @@
 ---
+import BackButton from "@components/UI/BackButton.astro"
 import AppContainer from "../../../layouts/AppContainer.astro"
 import EmailConfirmation from '../../../modules/EmailConfirmation/EmailConfirmation.astro'
 
@@ -6,5 +7,8 @@ const {email} = Astro.params
 ---
 
 <AppContainer>
+    <div class="flex flex-col ml-3 mt-2" >
+        <BackButton routeProp={'/'}/>
+    </div>
     <EmailConfirmation email={email}/>
 </AppContainer>
