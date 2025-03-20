@@ -4,15 +4,29 @@ import type { INotifications } from "../../modules/Notifications/domain/INotific
 import Services from '../../modules/Services/Services.astro'
 import { getProfile } from "../../utils/api/userApi";
 import { getExpire } from "../../utils/cookies/Cookies";
+let readed = false;
+const token = Astro.cookies.get('eons_token')?.value || '';
+const email = Astro.cookies.get('eons_user')?.value || '';
 
-if(!Astro.cookies.get('eons_token')?.value)
+if(token === ''){
     return Astro.redirect('/auth')
+}
+    
 
     var notificaciones: INotifications[] = []
 
 try {
     const profile = await getProfile(Astro.cookies.get("eons_token")?.value || '')
-    console.log(profile)
+    console.log('profile');
+    readed = profile?.data.notificaciones.some(
+  (notificacion) => notificacion.tipo === "readDocumentation"
+);
+const isValidateAccount = profile?.data.notificaciones.some(
+  (notificacion) => notificacion.tipo === "validAcount"
+);
+if(email !== '' && !isValidateAccount){
+    return Astro.redirect(`/auth/validate-account/${email}`)
+}
     Astro.cookies.set('eons_essence',profile?.data?.essence || 0,{expires:getExpire(7),path:'/'})
     if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)
         notificaciones = profile?.data?.notificaciones
@@ -23,5 +37,5 @@ try {
 ---
 
 <AppContainer>
-    <Services notificaciones={notificaciones}/>
+    <Services notificaciones={notificaciones} first_time={!readed}/>
 </AppContainer>

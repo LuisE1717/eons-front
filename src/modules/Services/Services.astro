@@ -10,7 +10,7 @@ import BackButton from "../../components/UI/BackButton.astro";
 import PhoneView from "./shared/components/PhoneView/PhoneView";
 import Image from "./shared/components/Image/Image";
 
-const {first_time, notificaciones} = Astro.props
+const {first_time, notificaciones, toast} = Astro.props
 ---
 <Header notificaciones={notificaciones}/>
 <div class="flex flex-col ml-3 mt-2">
@@ -26,7 +26,7 @@ const {first_time, notificaciones} = Astro.props
                 <FirstStep client:load/>
             </div>
         </div>
-        <Second first_time={first_time?true:false} client:load/>
+        <Second first_time={first_time?true:false} toast={toast} client:load/>
         <div class="w-screen relative left-[calc(-50vw+50%)] bg-[#f7ebf9] justify-center align-middle mt-2 mb-2">
             <div class="max-w-[1200px] mx-auto phone:px-8">
                 <SecondStep client:load/>

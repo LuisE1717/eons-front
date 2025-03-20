@@ -3,7 +3,7 @@ import AppContainer from "../../layouts/AppContainer.astro";
 import Services from '../../modules/Services/Services.astro'
 import { getProfile } from "../../utils/api/userApi";
 import { getExpire } from "../../utils/cookies/Cookies";
-
+let readed = false;
 if(!Astro.cookies.get('eons_token')?.value)
     return Astro.redirect('/auth')
 
@@ -11,6 +11,9 @@ if(!Astro.cookies.get('eons_token')?.value)
 
 try {
     const profile = await getProfile(Astro.cookies.get("eons_token")?.value || '')
+    readed = profile?.data.notificaciones.some(
+  (notificacion) => notificacion.tipo === "readDocumentation"
+);
     Astro.cookies.set('eons_essence',profile?.data?.essence || 0,{expires:getExpire(7),path:'/'})
     if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)
         notificaciones = profile?.data?.notificaciones
@@ -23,5 +26,5 @@ const {first_time} = Astro.params
 ---
 
 <AppContainer>
-    <Services notificaciones={notificaciones} first_time={first_time}/>
+    <Services notificaciones={notificaciones} toast={first_time} first_time={!readed}/>
 </AppContainer>

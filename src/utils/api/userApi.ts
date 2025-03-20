@@ -124,6 +124,17 @@ export async function getProfile(token:string) {
     }
 }
 
+export async function setReaded(token:string) {
+    const res = await axiosI(token).get(`/auth/is-readed`)
+    const data = await res.data;
+
+    if (data) {
+        return {
+            data: data
+        }
+    }
+}
+
 export async function patchNotification(token:string,dataH:any) {
     const res = await axiosI(token).patch(`/notifications`,dataH)
     const data = await res.data;

@@ -1,5 +1,5 @@
 ---
-
+import { Picture } from "astro:assets";
 import Header from "./components/Header/Header";
 import Message from './components/Message/Message'
 import Button from './components/Button/Button'
@@ -13,7 +13,17 @@ const {email} = Astro.props
 
 <div class="flex w-full justify-center px-7 pt-16">
     <div class="max-w-[420px] w-full flex flex-col items-center">
-        <Header/>
+        <!-- <Header/> -->
+        <header class="flex justify-center w-full mb-12">
+            <Picture
+                      class="sm:w-[270px] w-[220px]"
+                      src="/pixelcut-export.webp"
+                      alt="email-verification"
+                      width={50}
+                      height={50}
+                      loading="eager"
+                    />
+          </header>
         <Message message={i18.Verification.message} title={i18.Verification.title}/>
         <Button email={email} client:load text={i18.Verification.ReSend_button} question={i18.Verification.error_question}/>
     </div>

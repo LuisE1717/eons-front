@@ -5,7 +5,17 @@ import Header from "../../layouts/Header.astro";
 import Inf from '../../modules/Inf/Inf'
 import BackButton from '../../components/UI/BackButton.astro'
 import {getLaunches} from '../../utils/api/launch';
-const token =Astro.cookies.get('eons_token')?.value || ''
+import { getProfile } from "src/utils/api/userApi";
+const token =Astro.cookies.get('eons_token')?.value || '';
+const profile = await getProfile(token);
+let readed = false;
+    readed = profile?.data.notificaciones.some(
+  (notificacion) => notificacion.tipo === "readDocumentation"
+);
+if(!readed){
+    return Astro.redirect('/services/read')
+}
+
 const data = await getLaunches(token);
 const launchesData = JSON.stringify(data?.data || []);
 
