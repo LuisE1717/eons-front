@@ -19,6 +19,8 @@ const LogOut = ({session} : Props) => {
             }
             // await postLogout(Cookies.get('eons_token')||'',datah)
             // .then( async ()=>{
+                localStorage.clear(); 
+                sessionStorage.clear();
                 Cookies.remove('eons_token')
                 Cookies.remove('eons_user')
                 Cookies.remove('eons_refresh_token')

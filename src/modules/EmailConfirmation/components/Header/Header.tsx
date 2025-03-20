@@ -3,7 +3,7 @@ export default function Header() {
     <header className="flex justify-center w-full mb-12">
       <img
         src="/pixelcut-export.webp"
-        alt="email-verification-image"
+        alt="email-verification"
         className="sm:w-[270px] w-[220px]"
       />
     </header>

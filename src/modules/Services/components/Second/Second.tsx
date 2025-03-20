@@ -1,4 +1,4 @@
-import { createRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { SECTIONS } from "./constants";
 import BookInfo from "./components/BookInfo/BookInfo";
 import MessageInfo from "./components/MessageInfo/MessageInfo";
@@ -11,8 +11,9 @@ import Empty from "./components/Empty/Empty";
 import { useInView, motion } from "framer-motion";
 import clsx from "clsx";
 import FirstTime from "./components/FirstTime/FirstTime";
+import { showToast } from "@components/UI/Toast";
 
-export default function Second({ first_time }) {
+export default function Second({ first_time, toast }) {
   const ref = createRef<HTMLDivElement>();
 
   const [selected, setSelected] = useState<SECTIONS | null>(null);
@@ -23,6 +24,10 @@ export default function Second({ first_time }) {
     once: true,
     amount: "some",
   });
+  useEffect(() => {
+    
+    toast === "read" && showToast("Es necesario que lea las instrucciones de uso antes de utilizar nuestros servicios.", "info");
+  },[])
 
   function handleBookClick() {
     if (first_time) {

@@ -97,11 +97,11 @@
     "no_services_fav": "Aún no tiene ningún servicio savorito salvado"
   },
   "Verification": {
-    "title": "Validar tu cuenta de correo",
-    "message": "Pronto recibirás un correo con la clave para validar tu cuenta",
-    "ReSend_button": "Reenviar correo",
+    "title": "Valide su cuenta de correo.",
+    "message": "Pronto recibirá un correo con la información de verificación.",
+    "ReSend_button": "Reenviar correo.",
     "send_button": "Enviar correo",
-    "error_question": "No te ha llegado el correo?"
+    "error_question": "¿No le ha llegado el correo?"
   },
   "Throw": {
     "dialog_close": "Diálogo cerrado exitosamente",
