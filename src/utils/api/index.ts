@@ -47,17 +47,17 @@ export function axiosI(apiToken: string | undefined) {
         console.log("Error in response", error.response);
         const originalConfig = error.config;
         // Access Token was expired
-        setCookie("comeback_url", window.location.href, 0.25);
+        // setCookie("comeback_url", window.location.href, 0.25);
         if (error.response.status === 401) {
           Cookies.remove('eons_token')
-          window.location.reload();
+          // window.location.reload();
         } else if (error.response.status === 403) {
           if (validMail(Cookies.get("eons_user"))) {
-            window.location.href = `/auth/email-verification/${
-              Cookies.get("eons_user") || ""
-            }`;
+            // window.location.href = `/auth/email-verification/${
+            //   Cookies.get("eons_user") || ""
+            // }`;
           } else {
-            window.location.href = `/auth`;
+            // window.location.href = `/auth`;
           }
         }
       }
