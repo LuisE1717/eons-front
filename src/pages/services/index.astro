@@ -6,7 +6,6 @@ import { getProfile } from "../../utils/api/userApi";
 import { getExpire } from "../../utils/cookies/Cookies";
 let readed = false;
 const token = Astro.cookies.get('eons_token')?.value || '';
-const email = Astro.cookies.get('eons_user')?.value || '';
 
 if(token === ''){
     return Astro.redirect('/auth')
@@ -18,9 +17,10 @@ if(token === ''){
 try {
     const profile = await getProfile(token);
 
-    readed = profile?.data.notificaciones.some(
-  (notificacion) => notificacion.tipo === "readDocumentation"
-);
+    readed = profile?.data.isRead;
+    if(profile?.data.isVerified === false){
+        return Astro.redirect(`/auth/email-verification/${Astro.cookies.get('eons_user')?.value || ''}`)
+    }
 
     Astro.cookies.set('eons_essence',profile?.data?.essence || 0,{expires:getExpire(7),path:'/'})
     if(profile?.data?.notificaciones && profile?.data?.notificaciones?.length > 0)

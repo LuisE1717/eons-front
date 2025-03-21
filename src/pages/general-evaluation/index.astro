@@ -9,9 +9,7 @@ import { getProfile } from "src/utils/api/userApi";
 const token =Astro.cookies.get('eons_token')?.value || '';
 const profile = await getProfile(token);
 let readed = false;
-    readed = profile?.data.notificaciones.some(
-  (notificacion) => notificacion.tipo === "readDocumentation"
-);
+    readed = profile?.data.isRead;
 if(!readed){
     return Astro.redirect('/services/read')
 }
