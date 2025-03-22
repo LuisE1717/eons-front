@@ -4,6 +4,7 @@ import useTranslation from "../Shared/hooks/useTranslation";
 import Span from "../Services/shared/components/Span/Span";
 import Modal from "./components/modal";
 import { postMesagges } from "../../utils/api/evaluation";
+import { toast } from "react-toastify";
 
 export default function Inf({ token }: { token: string }) {
   const { translation } = useTranslation();
@@ -74,11 +75,11 @@ export default function Inf({ token }: { token: string }) {
       setMessage(translation.ServiceMenu.etp2);
     } else if (etp1 !== "null" && etp2 !== "null") {
       setCompleted(true);
-      setMessage("");
+      setMessage(translation.ServiceMenu.etp3);
     }
   }, []);
 
-  const handleRoute = () => window.location.href = "/launch";
+  const handleRoute = () => completed ? toast.warning('Este servicio estará disponible en los próximos días.') : window.location.href = "/launch";
 
   return (
     <main className="flex w-full px-10 mb-10 justify-center">
@@ -90,7 +91,7 @@ export default function Inf({ token }: { token: string }) {
             La Evaluación General es un servicio que se debe realizar una sola vez en la vida.
           </p>
 
-          <Button onClick={handleRoute} disabled={completed} loading={false} full={false}>
+          <Button onClick={handleRoute}  loading={false} full={false}>
             <div>
               {translation.ServiceMenu.general_evaluation}.<br /> {message}
               <div>
