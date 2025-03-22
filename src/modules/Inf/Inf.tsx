@@ -88,7 +88,7 @@ export default function Inf({ token }: { token: string }) {
 
         <div className="w-full max-w-[500px] flex flex-col items-center gap-4">
         <p className="text-lg mb-5 text-gray-500 text-center">
-            La Evaluación General es un servicio que se debe realizar una sola vez en la vida.
+            La Evaluación general es un servicio que se debe realizar una sola vez en la vida.
           </p>
 
           <Button onClick={handleRoute}  loading={false} full={false}>
