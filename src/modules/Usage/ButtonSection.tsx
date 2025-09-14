@@ -2,6 +2,7 @@ import Button from "../../components/UI/Button/Button";
 import Span from "../Services/shared/components/Span/Span";
 import useTranslation from "../Shared/hooks/useTranslation";
 
+/*
 const ButtonSection = () => {
       const { translation } = useTranslation();
     
@@ -18,4 +19,4 @@ const ButtonSection = () => {
     </Button>
   );
 };
-export default ButtonSection;
+export default ButtonSection;*/
