@@ -1,7 +1,6 @@
 ---
 import { getI18N } from "../../i18n"
 import Articule from "../Information/components/Articule.astro"
-import ButtonSecction from "./ButtonSection"
 const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
 const i18 = getI18N({currentLocale})
 
@@ -52,7 +51,6 @@ const i18 = getI18N({currentLocale})
 	<p>
 		{i18.Usage.text8}
 	</p>
-
 	<div class="flex items-center justify-center">
 		<img src="/panel.webp" alt="Panel" class="w-3/5">
 	</div>
@@ -83,9 +81,6 @@ const i18 = getI18N({currentLocale})
 	<p>
 		{i18.Usage.text15}
 	</p>
-	<div class="flex items-center justify-center my-6">
-		<ButtonSecction client:load/>
-    </div>
 
     <!-- <h4>{i18.About.About_text30}:</h4>
 
