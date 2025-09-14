@@ -1,16 +1,16 @@
-// const env = import.meta.env.ENV;
-const env = "production";
+const env = import.meta.env.ENV || "local";
+
 const configEnv = {
   development: {
-    api: "https://apidev.eons.es/",
+    api: import.meta.env.API_BASE_URL || "https://apidev.eons.es/",
     env: "development",
   },
   production: {
-    api: "https://api.eons.es/",
+    api: import.meta.env.API_BASE_URL || "https://api.eons.es/",
     env: "production",
   },
   local: {
-    api: "http://localhost:3000/",
+    api: import.meta.env.API_BASE_URL || "http://localhost:3000/",
     env: "local",
   },
 }[env];
