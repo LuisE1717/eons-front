@@ -13,15 +13,14 @@ const {email} = Astro.props
 
 <div class="flex w-full justify-center px-7 pt-16">
     <div class="max-w-[420px] w-full flex flex-col items-center">
-        <!-- <Header/> -->
         <header class="flex justify-center w-full mb-12 -mt-2">
             <img
-                      class="sm:w-[270px] w-[220px]"
-                      src="/pixelcut-export.webp"
-                      alt="email-verification"
-                      loading="eager"
-                    />
-          </header>
+                class="sm:w-[270px] w-[220px]"
+                src="/pixelcut-export.webp"
+                alt="email-verification"
+                loading="eager"
+            />
+        </header>
         <Message message={i18.Verification.message} title={i18.Verification.title}/>
         <Message message="Activar vpn si presenta problemas en el proceso de validación." title="¡Importante!"/>
         <Button email={email} client:load text={i18.Verification.ReSend_button} question={i18.Verification.error_question}/>
