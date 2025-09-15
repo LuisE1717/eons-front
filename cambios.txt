@@ -1,0 +1,5 @@
+src/modules/Services/components/Second/components/MessageInfo/MessageInfo.tsx:
+<Free
+ onclick={() => window.location.href = '/general-evaluation'}
+ name={translation.ServiceMenu.general_evaluation}>
+</Free>
