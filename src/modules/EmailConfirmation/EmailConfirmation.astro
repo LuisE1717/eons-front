@@ -22,7 +22,9 @@ const {email} = Astro.props
             />
         </header>
         <Message message={i18.Verification.message} title={i18.Verification.title}/>
+        <!-- 
         <Message message="Activar vpn si presenta problemas en el proceso de validación." title="¡Importante!"/>
+        -->
         <Button email={email} client:load text={i18.Verification.ReSend_button} question={i18.Verification.error_question}/>
     </div>
 </div>
