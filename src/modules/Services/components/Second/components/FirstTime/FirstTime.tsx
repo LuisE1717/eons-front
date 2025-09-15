@@ -10,24 +10,25 @@ export default function FirstTime({ setSelected }) {
   const { translation } = useTranslation();
 
   const handleInstructionsClick = () => {
+    // Marcar como visto cuando hacen clic en el botón
     markInstructionsAsSeen();
   };
 
   return (
     <Info>
       <P>
-        {translation.Services.firstTime_text}
+        Para captar el azar Universal se necesitará una herramienta que construiremos en un par de minutos, con objetos que usted tenga en mano.
       </P>
       
       <div className="flex flex-col mt-3 gap-4">
         <Button size="xs" color="primary" loading={false}>
             <a href="/usage" onClick={handleInstructionsClick}>
-              {translation.Services.view_instructions}
+              Ver instrucciones de uso  
             </a>
         </Button>
 
         <Button size="xs" onClick={() => setSelected(null)} loading={false}>
-            {translation.Services.know_method}
+            Conozco el método
         </Button>
       </div>
     </Info>
