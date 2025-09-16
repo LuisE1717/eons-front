@@ -182,12 +182,27 @@ export async function sendVerificationMail(email: string, lang: string) {
 }
 
 export async function getProfile(token: string) {
-    const res = await axiosI(token).get(`/auth/profile`);
-    const data = await res.data;
+    try {
+        const res = await axiosI(token).get(`/auth/profile`);
+        const data = await res.data;
 
-    if (data) {
+        if (data) {
+            return {
+                data: data,
+                success: true
+            };
+        } else {
+            return {
+                data: null,
+                success: false
+            };
+        }
+    } catch (error) {
+        console.error('Error getting profile:', error);
         return {
-            data: data
+            data: null,
+            success: false,
+            error: error
         };
     }
 }
