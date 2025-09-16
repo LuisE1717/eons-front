@@ -7,11 +7,10 @@ const i18 = getI18N({ currentLocale });
 // Obtener parámetros de la URL para mostrar mensajes personalizados
 const url = new URL(Astro.request.url);
 const success = url.searchParams.get('success');
-const message = url.searchParams.get('message');
+const message = url.searchParams.get('error'); // Cambiado a 'error' para coincidir con el backend
 
-// Determinar la URL base según el entorno
-const isDevelopment = import.meta.env.ENV === 'local' || window.location.hostname === 'localhost';
-const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+// Forzar desarrollo
+const baseUrl = 'http://localhost:4321';
 ---
 
 <!DOCTYPE html>
@@ -133,7 +132,7 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
             <h1 class="message-title">¡Email Verificado Exitosamente!</h1>
             <p class="message-text">
               Tu dirección de correo electrónico ha sido verificada correctamente. 
-              Ahora puedes disfrutar de todos los servicios de EONS.
+              Ahora puedes iniciar sesión y disfrutar de todos los servicios de EONS.
             </p>
           </>
         ) : (
@@ -148,194 +147,20 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
       </div>
       
       <div class="button-container">
-        <a href={baseUrl} class="button">
-          Ir a EONS
-        </a>
-      </div>
-      
-      {success === 'true' && (
-        <p class="redirect-text">
-          Serás redirigido automáticamente en 5 segundos...
-        </p>
-      )}
-      
-      {message && success !== 'true' && (
-        <p class="error">
-          Error: {message}
-        </p>
-      )}
-    </div>
-
-    {success === 'true' && (
-      <script>
-        // Determinar la URL base según el entorno
-        const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
-        
-        // Redirección automática después de 5 segundos
-        setTimeout(() => {
-          window.location.href = baseUrl;
-        }, 5000);
-      </script>
-    )}
-  </body>
-</html>
-
-<!-- 
----
-import { getI18N } from "../i18n";
-
-const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
-const i18 = getI18N({ currentLocale });
-
-// Obtener parámetros de la URL para mostrar mensajes personalizados
-const url = new URL(Astro.request.url);
-const success = url.searchParams.get('success');
-const message = url.searchParams.get('message');
----
-
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Verificado - EONS</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-      }
-      
-      .container {
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 420px;
-        width: 100%;
-        padding: 2rem;
-      }
-      
-      .header {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      
-      .header img {
-        max-width: 220px;
-        height: auto;
-      }
-      
-      .message-container {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      
-      .message-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 1rem;
-      }
-      
-      .message-text {
-        color: #666;
-        line-height: 1.5;
-        font-size: 0.95rem;
-      }
-      
-      .success-icon {
-        color: #28a745;
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-      
-      .button-container {
-        text-align: center;
-      }
-      
-      .button {
-        background-color: #8a2be2;
-        color: white;
-        padding: 12px 24px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        display: inline-block;
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
-      }
-      
-      .button:hover {
-        background-color: #7a1bd2;
-      }
-      
-      .error {
-        color: #dc3545;
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 0.9rem;
-      }
-      
-      .redirect-text {
-        text-align: center;
-        margin-top: 1.5rem;
-        color: #888;
-        font-size: 0.9rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <img
-          src="/pixelcut-export.webp"
-          alt="EONS"
-        />
-      </header>
-      
-      <div class="message-container">
         {success === 'true' ? (
-          <>
-            <div class="success-icon">✅</div>
-            <h1 class="message-title">¡Email Verificado Exitosamente!</h1>
-            <p class="message-text">
-              Tu dirección de correo electrónico ha sido verificada correctamente. 
-              Ahora puedes disfrutar de todos los servicios de EONS.
-            </p>
-          </>
+          <a href={`${baseUrl}/auth`} class="button">
+            Iniciar Sesión
+          </a>
         ) : (
-          <>
-            <div class="success-icon" style="color: #dc3545;">❌</div>
-            <h1 class="message-title">Error en la Verificación</h1>
-            <p class="message-text">
-              {message || 'Ha ocurrido un error al verificar tu email. Por favor, intenta nuevamente.'}
-            </p>
-          </>
+          <a href={`${baseUrl}/email-verification`} class="button">
+            Intentar Nuevamente
+          </a>
         )}
-      </div>
-      
-      <div class="button-container">
-        <a href="https://eons.es" class="button">
-          Ir a EONS
-        </a>
       </div>
       
       {success === 'true' && (
         <p class="redirect-text">
-          Serás redirigido automáticamente en 5 segundos...
+          Serás redirigido automáticamente a la página de login en 5 segundos...
         </p>
       )}
       
@@ -348,12 +173,11 @@ const message = url.searchParams.get('message');
 
     {success === 'true' && (
       <script>
-        // Redirección automática después de 5 segundos
+        // Redirección automática después de 5 segundos a la página de login
         setTimeout(() => {
-          window.location.href = 'https://eons.es';
+          window.location.href = 'http://localhost:4321/auth';
         }, 5000);
       </script>
     )}
   </body>
 </html>
--->
