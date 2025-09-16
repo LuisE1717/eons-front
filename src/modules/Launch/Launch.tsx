@@ -94,31 +94,7 @@ const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
 
     return (
         <Frame>
-            {/* Icono de grimorio en la parte superior derecha */}
-            <div className="absolute top-4 right-4 z-10">
-                <button 
-                    onClick={handleSaveDialog}
-                    className="p-2 rounded-full bg-purple-800 hover:bg-purple-700 transition-colors shadow-lg"
-                    aria-label="Guardar preguntas y respuestas"
-                    title="Guardar diálogo"
-                >
-                    {/* Icono de grimorio/libro mágico */}
-                    <svg 
-                        width="24" 
-                        height="24" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="text-white"
-                    >
-                        <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2V2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10 8H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10 12H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-
+            
             <div className="launch-container">
                 <h5 className="text-xl font-bold mb-4 text-center">Que símbolos cayeron hacia arriba?</h5>
                 <div className="coin-container flex justify-center space-x-8 mb-6">
