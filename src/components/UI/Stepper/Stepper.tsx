@@ -10,22 +10,20 @@ interface StepperProps {
 }
 
 const Stepper: React.FC<StepperProps> = ({
-  totalSteps,
+  totalSteps = 3,
   onChange,
   isLoading,
   currentStep,
 }) => {
-
-
   return (
-    <div className=" flex flex-col w-full sm:min-w-[300px] bg-white sm:px-14 px-8 sm:py-8 py-6 rounded-3xl shadow-lg">
-      <div className="stepper-progress-bar">
+    <div className="">
+      <div className="stepper-progress-bar mb-2">
         <div
           className="stepper-progress"
           style={{ width: `${(currentStep / totalSteps) * 100}%` }}
         ></div>
       </div>
-      <div className="stepper-step-info">
+      <div className="stepper-step-info mb-3 text-center">
         Lanzamiento {currentStep} de {totalSteps}
       </div>
       <div className="stepper-buttons">
@@ -34,9 +32,10 @@ const Stepper: React.FC<StepperProps> = ({
           loading={isLoading}
           onClick={onChange}
           full={true}
-          size="base"
+          size="sm"
+          className="bg-purple-600 hover:bg-purple-700 transition-colors text-sm py-2"
         >
-          {currentStep === totalSteps ? "Resultado" : "Siguiente"}
+          {currentStep === totalSteps ? "Ver Resultados" : "Siguiente"}
         </Button>
       </div>
     </div>

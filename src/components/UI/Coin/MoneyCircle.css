@@ -22,8 +22,38 @@
 
 .money-circle {
     position: absolute;
+    transition: all 0.5s ease;
 }
 
 .money-circle + .money-circle {
     transform: rotateY(180deg);
+}
+
+/* Efectos de brillo y sombra para las monedas */
+.money-circle::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.money-circle:hover::before {
+    opacity: 0.6;
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.money-circle.floating {
+    animation: float 3s ease-in-out infinite;
 }
