@@ -35,11 +35,14 @@ export default function MessageInfo() {
       </div>
       </A>
       <Line />
-
-      <Free
-      onclick={() => window.location.href = '/general-evaluation'}
-      name={translation.ServiceMenu.general_evaluation}>
-      </Free>
+      
+      <A>
+        {translation.ServiceMenu.general_evaluation}. 
+        <div>
+        (<Span>{translation.next}</Span>)
+        </div>
+      </A>
+      
 
       <A>
         {translation.ServiceMenu.spirit_calc}. 
