@@ -18,8 +18,11 @@ export default function UserInfo() {
         </div>
       </A>
       <Line />
-      <A href="/general-evaluation">
+      <A>
         {translation.ServiceMenu.inf_general_evulation}.
+        <div>
+        (<Span>{translation.next}</Span>)
+        </div>
       </A>
       <A>
         {translation.ServiceMenu.inf_calc_spiritual}. 
