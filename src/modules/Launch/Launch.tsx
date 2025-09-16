@@ -96,7 +96,7 @@ const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
         <Frame>
             
             <div className="launch-container">
-                <h5 className="text-xl font-bold mb-4 text-center">Que símbolos cayeron hacia arriba?</h5>
+                <h5 className="text-xl font-bold mb-20 text-center">Que símbolos cayeron hacia arriba?</h5>
                 <div className="coin-container flex justify-center space-x-8 mb-6">
                     <div className="flex flex-col items-center">
                         <Coin
