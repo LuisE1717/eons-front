@@ -3,13 +3,10 @@ import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
 import Frame from '../../components/UI/Frame/Frame';
 import {postSaveEvaluation} from '../../utils/api/evaluation';
-import { toast } from 'react-toastify';
-
 interface CoinState {
     isFaceUp: boolean;
     isOuterCircleFilled: boolean;
 }
-
 interface LaunchProps {
     token: string;
     steps: number;
@@ -31,8 +28,7 @@ const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
             )
         );
     };
-
-    const onChange = () => {
+    const onChange = ()=>{
         if(currentStep <= steps){
             const evaluation = JSON.parse(localStorage.getItem('evaluation') || '[]');
         
@@ -86,18 +82,11 @@ const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
         }
     };
 
-    const handleSaveDialog = () => {
-        // Lógica para guardar preguntas y respuestas
-        console.log("Guardar preguntas y respuestas");
-        toast.info("Funcionalidad de guardar preguntas y respuestas pronto disponible");
-    };
-
     return (
         <Frame>
-            
             <div className="launch-container">
-                <h5 className="text-xl font-bold mb-20 text-center">Que símbolos cayeron hacia arriba?</h5>
-                <div className="coin-container flex justify-center space-x-8 mb-6">
+                <h5>Que símbolos cayeron hacia arriba?</h5>
+                <div className="coin-container">
                     <div className="flex flex-col items-center">
                         <Coin
                             coin={true}
@@ -105,7 +94,7 @@ const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
                             isOuterCircleFilled={coinPositions[0].isOuterCircleFilled}
                             onFlip={() => handleCoinFlip(0)}
                         />
-                        <span className='mt-2 text-sm'>Moneda 1</span>
+                        <span className='mt-2'>Moneda 1</span>
                     </div>
                     <div className="flex flex-col items-center">
                         <Coin
@@ -114,8 +103,10 @@ const Launch: React.FC<LaunchProps> = ({token, steps, type}) => {
                             isOuterCircleFilled={coinPositions[1].isOuterCircleFilled}
                             onFlip={() => handleCoinFlip(1)}
                         />
-                        <span className='mt-2 text-sm'>Moneda 2</span>
+                        <span className='mt-2'>Moneda 2</span>
                     </div>
+
+
                 </div>
                 <Stepper totalSteps={steps} onChange={onChange} currentStep={currentStep} isLoading={isLoading} />
             </div>
