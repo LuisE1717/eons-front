@@ -236,3 +236,87 @@ hr {
   gap: 2rem;
 }
 
+
+
+/* Estilos responsive para el componente Launch */
+.launch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.coin-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive para móviles */
+@media (max-width: 640px) {
+    .coin-container {
+        gap: 1rem;
+    }
+    
+    .launch-container {
+        padding: 0.5rem;
+    }
+}
+
+/* Estilos para el botón de grimorio */
+.grimorio-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: rgb(107, 33, 168);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.grimorio-btn:hover {
+    background-color: rgb(126, 34, 206);
+}
+
+/* Asegurar que el Frame sea responsive */
+.frame {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajustes para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .frame {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .frame {
+        padding: 0.5rem;
+    }
+    
+    .grimorio-btn {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.4rem;
+    }
+    
+    .grimorio-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+

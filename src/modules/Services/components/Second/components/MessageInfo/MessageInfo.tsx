@@ -25,6 +25,11 @@ export function validateService (cost:number,navigate:string) {
 export default function MessageInfo() {
   const { translation } = useTranslation();
 
+  const handleOpenDialogMode = () => {
+    // Redirigir directamente a la vista de lanzamiento
+    window.location.href = '/launch';
+  };
+
   return (
     <Info>
       <Line />
@@ -54,9 +59,8 @@ export default function MessageInfo() {
       <Line />
 
       <Cost 
-      onclick={() => validateService(1,'/throw/07')}
+      onclick={handleOpenDialogMode}
       name={translation.ServiceMenu.open_dialog_mod}
-      // cost={translation.ServiceMenu.per_question}
       amount="0.49"
       cost={translation.ServiceMenu.per_question}
       />
@@ -64,7 +68,6 @@ export default function MessageInfo() {
       <Cost2
       onclick={() => validateService(1,'/throw/09')}
       name={translation.ServiceMenu.contact_spirit}
-      // cost={translation.ServiceMenu.per_question}
       amount="1.29"
       amount2="0.49"
       cost={translation.ServiceMenu.per_question}
