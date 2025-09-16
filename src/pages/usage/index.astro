@@ -3,6 +3,45 @@ import Usage from '../../modules/Usage/Usage.astro';
 import Layout from '../../modules/Information/Shared/InformationLayout.astro';
 import BackButton from '../../components/UI/BackButton.astro';
 import { setReaded } from "../../utils/api/userApi";
+
+// Obtener token y llamar a la API solo si existe
+const token = Astro.cookies.get('eons_token')?.value;
+let response = null;
+
+if (token) {
+  try {
+    // Usar la función corregida setReaded
+    response = await setReaded(token);
+    console.log("Response are:", response);
+    
+    // Guardar en localStorage que el usuario ya vio las instrucciones
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('hasSeenInstructions', 'true');
+    }
+  } catch (error) {
+    console.error("Error setting read status:", error);
+    // No lanzar el error para no interrumpir la renderización de la página
+  }
+}
+---
+
+<div class={`articules_conteiner`}>
+<Layout
+	heroImage="/blog-placeholder-about.jpg"
+>
+<div class="flex flex-col ml-3 mt-2">
+	<BackButton routeProp={'/services'}/>
+</div>
+    <Usage/>
+</Layout>
+</div>
+
+<!-- 
+---
+import Usage from '../../modules/Usage/Usage.astro';
+import Layout from '../../modules/Information/Shared/InformationLayout.astro';
+import BackButton from '../../components/UI/BackButton.astro';
+import { setReaded } from "../../utils/api/userApi";
 const response = await setReaded(Astro.cookies.get('eons_token')?.value || '');
 console.log("Response are:", response);
 ---
@@ -17,3 +56,4 @@ console.log("Response are:", response);
     <Usage/>
 </Layout>
 </div>
+-->
