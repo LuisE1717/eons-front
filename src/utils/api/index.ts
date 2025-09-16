@@ -46,18 +46,24 @@ export function axiosI(apiToken: string | undefined) {
       if (error.response) {
         console.log("Error in response", error.response);
         const originalConfig = error.config;
+        
+        // Evitar redirecciones automáticas en desarrollo para ciertas rutas
+        const currentPath = window.location.pathname;
+        const isAuthPage = currentPath.includes('/auth');
+        const isVerificationPage = currentPath.includes('verification-success') || 
+                                  currentPath.includes('email-verification');
+        
         // Access Token was expired
-        // setCookie("comeback_url", window.location.href, 0.25);
-        if (error.response.status === 401) {
-          Cookies.remove('eons_token')
-          // window.location.reload();
-        } else if (error.response.status === 403) {
+        if (error.response.status === 401 && !isAuthPage && !isVerificationPage) {
+          Cookies.remove('eons_token');
+          // Solo redirigir si no estamos ya en una página de auth/verificación
+          window.location.href = '/auth';
+        } else if (error.response.status === 403 && !isVerificationPage) {
           if (validMail(Cookies.get("eons_user"))) {
-            // window.location.href = `/auth/email-verification/${
-            //   Cookies.get("eons_user") || ""
-            // }`;
-          } else {
-            // window.location.href = `/auth`;
+            // Solo redirigir si no estamos ya en una página de verificación
+            window.location.href = `/email-verification/${Cookies.get("eons_user") || ""}`;
+          } else if (!isAuthPage) {
+            window.location.href = `/auth`;
           }
         }
       }
