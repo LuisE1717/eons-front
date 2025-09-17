@@ -25,7 +25,14 @@ export interface EvaluationResponse {
 
 export async function postSaveEvaluation(token: string, data: EvaluationData): Promise<EvaluationResponse> {
   try {
-    const response = await axiosI(token).post(`lanzamientos`, data);
+    let endpoint = 'lanzamientos/secuencia';
+    
+    // Determinar el endpoint basado en el tipo
+    if (data.type === 'dialogo-abierto') {
+      endpoint = 'lanzamientos/dialogo-abierto';
+    }
+    
+    const response = await axiosI(token).post(endpoint, data);
     
     return {
       data: response.data,
