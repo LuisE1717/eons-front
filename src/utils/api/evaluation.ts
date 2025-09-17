@@ -23,27 +23,28 @@ export interface EvaluationResponse {
 
 export async function postSaveEvaluation(token: string, data: EvaluationData): Promise<EvaluationResponse> {
   try {
-    console.log('Enviando evaluación a endpoint:', 'lanzamientos/dialogo-abierto');
-    console.log('Datos enviados:', JSON.stringify(data, null, 2));
+    console.log('🔐 Token usado:', token ? token.substring(0, 20) + '...' : 'No token');
+    console.log('📤 Enviando evaluación a endpoint:', 'lanzamientos/dialogo-abierto');
+    console.log('📊 Datos enviados:', JSON.stringify(data, null, 2));
     
     const response = await axiosI(token).post('lanzamientos/dialogo-abierto', data);
-    console.log('Respuesta del servidor:', response.data);
+    console.log('✅ Respuesta del servidor:', response.status, response.data);
     
     return {
       data: response.data,
       success: true,
     };
   } catch (error: any) {
-    console.error('Error completo en postSaveEvaluation:', error);
+    console.error('❌ Error completo en postSaveEvaluation:', error);
     
     // Log detallado del error
     if (error.response) {
-      console.error('Response error:', error.response.status, error.response.data);
-      console.error('Response headers:', error.response.headers);
+      console.error('📋 Response error:', error.response.status, error.response.data);
+      console.error('🔧 Response config:', error.response.config);
     } else if (error.request) {
-      console.error('Request error:', error.request);
+      console.error('🌐 Request error:', error.request);
     } else {
-      console.error('Error message:', error.message);
+      console.error('💬 Error message:', error.message);
     }
     
     return {
