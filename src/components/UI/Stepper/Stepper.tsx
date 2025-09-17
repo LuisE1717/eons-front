@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 interface StepperProps {
   totalSteps: number;
   isLoading: boolean;
-  onChange?: (e: React.FormEvent) => void;
+  onChange?: (e: React.MouseEvent) => void;
   currentStep: number;
 }
 
@@ -15,7 +15,8 @@ const Stepper: React.FC<StepperProps> = ({
   isLoading,
   currentStep,
 }) => {
-  const handleClick = (e: React.FormEvent) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (onChange) {
       onChange(e);
     }
@@ -34,7 +35,7 @@ const Stepper: React.FC<StepperProps> = ({
       </div>
       <div className="stepper-buttons">
         <Button
-          type="submit"
+          type="button"
           loading={isLoading}
           onClick={handleClick}
           full={true}

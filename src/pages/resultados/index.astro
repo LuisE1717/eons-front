@@ -3,10 +3,10 @@ import AppContainer from "../../layouts/AppContainer.astro";
 import Header from "../../layouts/Header.astro";
 import Footer from "../../layouts/Footer.astro";
 import BackButton from '../../components/UI/BackButton.astro'
-import { getUltimaConsulta } from '../../utils/api/evaluation';
+import { getResultadoPorId } from '../../utils/api/evaluation';
 
 const token = Astro.cookies.get('eons_token')?.value || ''
-const type = Astro.url.searchParams.get('type') || 'etp1'
+const type = Astro.url.searchParams.get('type') || 'dialogo'
 const consultaId = Astro.url.searchParams.get('id') || ''
 
 let resultadosData = null;
@@ -14,15 +14,32 @@ let resultadosData = null;
 // Intentar obtener datos de la consulta
 if (token && consultaId) {
   try {
-    // En un entorno real, aquí harías una llamada a la API para obtener los datos específicos
-    // Por ahora usamos localStorage como fallback
-    const resultadosLocal = Astro.cookies.get(`resultados_${type}`)?.value;
-    if (resultadosLocal) {
-      resultadosData = JSON.parse(resultadosLocal);
+    // Primero intentar desde localStorage
+    if (typeof window !== 'undefined') {
+      const resultadosLocal = localStorage.getItem('resultados_dialogo');
+      if (resultadosLocal) {
+        resultadosData = JSON.parse(resultadosLocal);
+        console.log('Datos cargados desde localStorage:', resultadosData);
+      } else {
+        // Si no hay en localStorage, hacer llamada a la API
+        const response = await getResultadoPorId(token, consultaId);
+        if (response.success && response.data) {
+          resultadosData = response.data;
+          // Guardar en localStorage para futuras visitas
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('resultados_dialogo', JSON.stringify(resultadosData));
+          }
+        }
+      }
     }
   } catch (e) {
     console.error('Error loading results:', e);
   }
+}
+
+// Si no hay datos, mostrar mensaje de error
+if (!resultadosData && typeof window !== 'undefined') {
+  console.log('No se encontraron datos de resultados');
 }
 
 const fechaHoy = new Date().toLocaleDateString('es-ES', {
@@ -74,7 +91,7 @@ const fechaHoy = new Date().toLocaleDateString('es-ES', {
                 <div class="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-8">
                     <div class="resultados-content w-full h-full overflow-y-auto px-4 sm:px-8 py-6 custom-scrollbar">
                         <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
-                            🔮 Oráculo del Día 🔮
+                            🔮 Resultados del Diálogo Abierto 🔮
                         </h2>
                         
                         <p class="text-purple-300 text-center mb-6 text-sm">
@@ -83,70 +100,44 @@ const fechaHoy = new Date().toLocaleDateString('es-ES', {
 
                         {resultadosData ? (
                             <div class="space-y-6">
-                                {/* Párrafo unificado */}
+                                {/* Resultado final */}
                                 <div class="parrafo-unificado bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-6 border-2 border-purple-400 shadow-lg">
                                     <h3 class="text-xl font-bold text-white mb-3">✨ Tu Lectura Completa ✨</h3>
                                     <p class="text-white text-lg leading-relaxed">
-                                        {resultadosData.parrafoUnificado}
+                                        {resultadosData.data?.resultadoFinal || 'No se pudo cargar el resultado'}
                                     </p>
                                 </div>
 
-                                {/* Mensaje final */}
-                                {resultadosData.mensajeFinal && (
+                                {/* Interpretación */}
+                                {resultadosData.data?.interpretacion && (
                                     <div class="mensaje-final bg-purple-800 bg-opacity-60 rounded-xl p-5 border border-purple-500">
-                                        <h3 class="text-lg font-semibold text-purple-200 mb-3">🌟 Mensaje Final</h3>
+                                        <h3 class="text-lg font-semibold text-purple-200 mb-3">💫 Interpretación</h3>
                                         <p class="text-white leading-relaxed">
-                                            {resultadosData.mensajeFinal}
+                                            {resultadosData.data.interpretacion}
                                         </p>
                                     </div>
                                 )}
 
-                                {/* Detalles de cada lanzamiento */}
-                                <div class="detalles-lanzamientos">
-                                    <h3 class="text-lg font-semibold text-purple-200 mb-4 border-b border-purple-700 pb-2">
-                                        📜 Detalles de tus Lanzamientos
-                                    </h3>
-                                    <div class="space-y-4">
-                                        {resultadosData.pasos.map((paso: any, index: number) => (
-                                            <div key={index} class="paso-detalle bg-purple-900 bg-opacity-60 rounded-lg p-4 border border-purple-600">
-                                                <div class="flex items-center justify-between mb-3">
-                                                    <span class="text-lg font-bold text-purple-300">
-                                                        Lanzamiento {paso.paso}
-                                                    </span>
-                                                    <span class="text-sm text-purple-400 bg-purple-800 px-2 py-1 rounded">
-                                                        {paso.combinacion}
-                                                    </span>
-                                                </div>
-                                                
-                                                <div class="respuesta-detallada mb-3">
-                                                    <h4 class="text-md font-semibold text-purple-200 mb-2">📖 Predicción:</h4>
-                                                    <p class="text-white text-sm leading-relaxed">
-                                                        {paso.resultado}
-                                                    </p>
-                                                </div>
-                                                
-                                                <div class="interpretacion-detallada">
-                                                    <h4 class="text-md font-semibold text-purple-200 mb-2">💫 Interpretación:</h4>
-                                                    <p class="text-purple-300 text-sm italic">
-                                                        {paso.interpretacion}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        ))}
+                                {/* Sistema usado */}
+                                {resultadosData.data?.sistemaUsado && (
+                                    <div class="sistema-usado bg-purple-900 bg-opacity-60 rounded-lg p-4 border border-purple-600">
+                                        <h3 class="text-md font-semibold text-purple-200 mb-2">🎯 Sistema Utilizado</h3>
+                                        <p class="text-purple-300">
+                                            {resultadosData.data.sistemaUsado}
+                                        </p>
                                     </div>
-                                </div>
+                                )}
 
                                 {/* Botón para nuevo test */}
                                 <div class="nuevo-test text-center pt-6 border-t border-purple-700">
                                     <a 
-                                        href="/launch" 
+                                        href="/services" 
                                         class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-                                        onclick="localStorage.removeItem('evaluation'); localStorage.removeItem('resultados_etp1'); localStorage.removeItem('resultados_etp2');"
                                     >
-                                        🎯 Realizar Nuevo Test
+                                        🎯 Volver a Servicios
                                     </a>
                                     <p class="text-purple-300 text-sm mt-3">
-                                        Descubre nuevos mensajes del universo
+                                        Explora más opciones del oráculo
                                     </p>
                                 </div>
                             </div>
@@ -155,8 +146,8 @@ const fechaHoy = new Date().toLocaleDateString('es-ES', {
                                 <div class="text-6xl mb-4">🔍</div>
                                 <p class="text-xl mb-4">No hay resultados de consulta disponibles</p>
                                 <p class="text-purple-300">Realiza una consulta al oráculo primero</p>
-                                <a href="/launch" class="mt-6 inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full transition-colors">
-                                    Realizar Consulta
+                                <a href="/services" class="mt-6 inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full transition-colors">
+                                    Ir a Servicios
                                 </a>
                             </div>
                         )}
@@ -199,15 +190,6 @@ const fechaHoy = new Date().toLocaleDateString('es-ES', {
         box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
     }
     
-    .paso-detalle {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .paso-detalle:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
-    }
-    
     @keyframes float {
         0%, 100% { transform: translateY(0) rotate(0deg); }
         50% { transform: translateY(-20px) rotate(10deg); }
@@ -217,10 +199,6 @@ const fechaHoy = new Date().toLocaleDateString('es-ES', {
         .resultados-content {
             padding: 0.5rem;
             max-height: 60vh;
-        }
-        
-        .paso-detalle {
-            padding: 0.75rem;
         }
         
         .parrafo-unificado {

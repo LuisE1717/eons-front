@@ -3,36 +3,32 @@ import { axiosI, intanceAxios } from ".";
 export interface EvaluationData {
   type: string;
   shortType: string;
-  coinPositions: boolean[][];
+  coinPositions: number[][];
 }
 
 export interface EvaluationResponse {
   success: boolean;
   data?: {
     id: string;
-    pasos: Array<{
-      paso: number;
-      combinacion: string;
-      resultado: string;
-      interpretacion: string;
-    }>;
-    mensajeFinal: string;
-    parrafoUnificado: string;
-    fecha: string;
+    resultadoFinal: string;
+    interpretacion: string;
+    sistemaUsado: string;
+    detalles: {
+      principal: any;
+      sistemita: any;
+    };
   };
   error?: any;
 }
 
 export async function postSaveEvaluation(token: string, data: EvaluationData): Promise<EvaluationResponse> {
   try {
-    let endpoint = 'lanzamientos/secuencia';
+    console.log('Enviando evaluación:', data);
     
-    // Determinar el endpoint basado en el tipo
-    if (data.type === 'dialogo-abierto') {
-      endpoint = 'lanzamientos/dialogo-abierto';
-    }
+    let endpoint = 'lanzamientos/dialogo-abierto';
     
     const response = await axiosI(token).post(endpoint, data);
+    console.log('Respuesta recibida:', response.data);
     
     return {
       data: response.data,
@@ -59,6 +55,25 @@ export async function getUltimaConsulta(token: string): Promise<EvaluationRespon
     };
   } catch (error: any) {
     console.error('Error getting last consultation:', error);
+
+    return {
+      data: null,
+      success: false,
+      error: error.response ? error.response.data : error.message,
+    };
+  }
+}
+
+export async function getResultadoPorId(token: string, id: string): Promise<EvaluationResponse> {
+  try {
+    const response = await axiosI(token).get(`lanzamientos/resultado/${id}`);
+    
+    return {
+      data: response.data,
+      success: true,
+    };
+  } catch (error: any) {
+    console.error('Error getting resultado by id:', error);
 
     return {
       data: null,
