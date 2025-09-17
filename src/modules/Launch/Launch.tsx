@@ -63,38 +63,41 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
   const handleSubmit = async (evaluationData: any[]) => {
     try {
-      setIsLoading(true);
-      console.log('Enviando datos:', evaluationData);
+        setIsLoading(true);
+        console.log('Datos a enviar:', evaluationData);
 
-      const data = {
+        const data = {
         type: "dialogo-abierto",
         shortType: "DAB",
         coinPositions: evaluationData,
-      };
+        };
 
-      const response = await postSaveEvaluation(token, data);
-      console.log('Respuesta del servidor:', response);
+        console.log('Enviando datos completos:', data);
 
-      if (response.success && response.data) {
+        const response = await postSaveEvaluation(token, data);
+        console.log('Respuesta completa:', response);
+
+        if (response.success && response.data) {
+        console.log('Procesamiento exitoso, redirigiendo...');
+        
         // Guardar en localStorage para acceso inmediato
         localStorage.setItem('resultados_dialogo', JSON.stringify(response.data));
         localStorage.setItem('ultima_consulta_id', response.data.id);
         localStorage.setItem('ultima_consulta_tipo', 'dialogo');
         
-        console.log('Redirigiendo a resultados...');
         // Redirigir a la vista de resultados
         window.location.href = `/resultados?type=dialogo&id=${response.data.id}`;
-      } else {
-        console.error('Error en la respuesta del servidor:', response.error);
-        alert('Error al procesar los resultados. Intenta nuevamente.');
-      }
+        } else {
+        console.error('Error en la respuesta:', response.error);
+        alert(`Error: ${response.error?.message || 'Error al procesar los resultados. Intenta nuevamente.'}`);
+        }
     } catch (error) {
-      console.error('Error sending data:', error);
-      alert('Error al conectar con el servidor. Verifica tu conexión.');
+        console.error('Error inesperado:', error);
+        alert('Error inesperado. Por favor revisa la consola para más detalles.');
     } finally {
-      setIsLoading(false);
+        setIsLoading(false);
     }
-  };
+    };
 
   return (
     <Frame>
