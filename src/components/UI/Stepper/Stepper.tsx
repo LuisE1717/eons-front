@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Stepper.css";
 import Button from "../Button/Button";
 
 interface StepperProps {
   totalSteps: number;
   isLoading: boolean;
-  onChange?: () => void;
+  onChange?: (e: React.FormEvent) => void;
   currentStep: number;
 }
 
@@ -15,6 +15,12 @@ const Stepper: React.FC<StepperProps> = ({
   isLoading,
   currentStep,
 }) => {
+  const handleClick = (e: React.FormEvent) => {
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   return (
     <div className="">
       <div className="stepper-progress-bar mb-2">
@@ -28,9 +34,9 @@ const Stepper: React.FC<StepperProps> = ({
       </div>
       <div className="stepper-buttons">
         <Button
-          type="button"
+          type="submit"
           loading={isLoading}
-          onClick={onChange}
+          onClick={handleClick}
           full={true}
           size="sm"
           className="bg-purple-600 hover:bg-purple-700 transition-colors text-sm py-2"
