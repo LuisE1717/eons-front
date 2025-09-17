@@ -35,7 +35,7 @@ function separarTexto(texto: string) {
 export default function Card({ essence, handleClick }: Props) {
   const { translation } = useTranslation();
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{ cursor: 'pointer' }}>
       <article className="shadow-lg shadow-gray-300 rounded-3xl px-6 py-4 flex flex-col items-center">
         <figure className="mb-2">
           <Fire />
