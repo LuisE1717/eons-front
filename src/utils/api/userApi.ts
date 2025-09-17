@@ -3,9 +3,12 @@ import type { IChangePass, ILogin } from "../../modules/user/domain/user";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
+// Función para verificar si estamos en el cliente
+const isClient = () => typeof window !== 'undefined';
+
 // Forzar desarrollo
 const isDevelopment = true;
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
 
 // Función para marcar como leído usando axios directamente
 export const setReadedWithAxios = async (token: string) => {
@@ -27,7 +30,7 @@ export const setReadedWithAxios = async (token: string) => {
   }
 };
 
-// Función para marcar como leído usando axiosI (la que deberíamos usar)
+// Función para marcar como leído usando axiosI
 export async function setReaded(token: string) {
     try {
         const res = await axiosI(token).post(`/user/set-readed`, {});
@@ -183,6 +186,15 @@ export async function sendVerificationMail(email: string, lang: string) {
 
 export async function getProfile(token: string) {
     try {
+        // Solo ejecutar en el cliente
+        if (!isClient()) {
+            return {
+                data: null,
+                success: false,
+                error: 'Cannot get profile on server side'
+            };
+        }
+
         const res = await axiosI(token).get(`/auth/profile`);
         const data = await res.data;
 

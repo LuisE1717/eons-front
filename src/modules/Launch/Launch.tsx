@@ -38,7 +38,11 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     );
   };
 
-  const onChange = async () => {
+  const onChange = async (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault(); // Prevenir comportamiento por defecto
+    }
+
     if (currentStep < steps) {
       // Guardar el estado actual de las monedas
       const currentData = coinPositions.map(coin => coin.isFaceUp ? 1 : 0);
@@ -117,12 +121,13 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           )}
         </div>
 
-        <Stepper 
-          totalSteps={steps} 
-          onChange={onChange} 
-          currentStep={currentStep} 
-          isLoading={isLoading} 
-        />
+        <form onSubmit={onChange}>
+          <Stepper 
+            totalSteps={steps} 
+            currentStep={currentStep} 
+            isLoading={isLoading} 
+          />
+        </form>
       </div>
     </Frame>
   );
