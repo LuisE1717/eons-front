@@ -23,24 +23,33 @@ export interface EvaluationResponse {
 
 export async function postSaveEvaluation(token: string, data: EvaluationData): Promise<EvaluationResponse> {
   try {
-    console.log('Enviando evaluación:', data);
+    console.log('Enviando evaluación a endpoint:', 'lanzamientos/dialogo-abierto');
+    console.log('Datos enviados:', JSON.stringify(data, null, 2));
     
-    let endpoint = 'lanzamientos/dialogo-abierto';
-    
-    const response = await axiosI(token).post(endpoint, data);
-    console.log('Respuesta recibida:', response.data);
+    const response = await axiosI(token).post('lanzamientos/dialogo-abierto', data);
+    console.log('Respuesta del servidor:', response.data);
     
     return {
       data: response.data,
       success: true,
     };
   } catch (error: any) {
-    console.error('Error in postSaveEvaluation:', error);
-
+    console.error('Error completo en postSaveEvaluation:', error);
+    
+    // Log detallado del error
+    if (error.response) {
+      console.error('Response error:', error.response.status, error.response.data);
+      console.error('Response headers:', error.response.headers);
+    } else if (error.request) {
+      console.error('Request error:', error.request);
+    } else {
+      console.error('Error message:', error.message);
+    }
+    
     return {
       data: null,
       success: false,
-      error: error.response ? error.response.data : error.message,
+      error: error.response?.data || error.message,
     };
   }
 }
