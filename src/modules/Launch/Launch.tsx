@@ -38,11 +38,9 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     );
   };
 
-  const onChange = async (e?: React.FormEvent) => {
-    if (e) {
-      e.preventDefault(); // Prevenir comportamiento por defecto
-    }
-
+  const handleNextStep = async (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevenir comportamiento por defecto
+    
     if (currentStep < steps) {
       // Guardar el estado actual de las monedas
       const currentData = coinPositions.map(coin => coin.isFaceUp ? 1 : 0);
@@ -66,6 +64,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const handleSubmit = async (evaluationData: any[]) => {
     try {
       setIsLoading(true);
+      console.log('Enviando datos:', evaluationData);
 
       const data = {
         type: "dialogo-abierto",
@@ -74,18 +73,24 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
       };
 
       const response = await postSaveEvaluation(token, data);
+      console.log('Respuesta del servidor:', response);
 
       if (response.success && response.data) {
         // Guardar en localStorage para acceso inmediato
         localStorage.setItem('resultados_dialogo', JSON.stringify(response.data));
+        localStorage.setItem('ultima_consulta_id', response.data.id);
+        localStorage.setItem('ultima_consulta_tipo', 'dialogo');
         
+        console.log('Redirigiendo a resultados...');
         // Redirigir a la vista de resultados
         window.location.href = `/resultados?type=dialogo&id=${response.data.id}`;
       } else {
-        console.error('Error en la respuesta del servidor');
+        console.error('Error en la respuesta del servidor:', response.error);
+        alert('Error al procesar los resultados. Intenta nuevamente.');
       }
     } catch (error) {
       console.error('Error sending data:', error);
+      alert('Error al conectar con el servidor. Verifica tu conexión.');
     } finally {
       setIsLoading(false);
     }
@@ -121,13 +126,12 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           )}
         </div>
 
-        <form onSubmit={onChange}>
-          <Stepper 
-            totalSteps={steps} 
-            currentStep={currentStep} 
-            isLoading={isLoading} 
-          />
-        </form>
+        <Stepper 
+          totalSteps={steps} 
+          onChange={handleNextStep}
+          currentStep={currentStep} 
+          isLoading={isLoading} 
+        />
       </div>
     </Frame>
   );
