@@ -13,16 +13,17 @@ export const intanceAxios: AxiosInstance = axios.create({
   baseURL: configEnv?.api,
 });
 
-export function axiosI(apiToken: string | undefined) {
-  //console.log(configEnv)
+// Función para verificar si estamos en el cliente (navegador)
+const isClient = () => typeof window !== 'undefined';
 
+export function axiosI(apiToken: string | undefined) {
   const intance = axios.create({
     baseURL: configEnv?.api,
   });
 
   intance.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-      if (!apiToken) {
+      if (!apiToken && isClient()) {
         apiToken = Cookies.get("eons_token") || "";
       }
 
@@ -30,7 +31,6 @@ export function axiosI(apiToken: string | undefined) {
         config.headers.Authorization = `Bearer ${apiToken}`;
       }
 
-      //console.log("Request was sent", config);
       return config;
     },
     (error) => {
@@ -43,7 +43,7 @@ export function axiosI(apiToken: string | undefined) {
       return response;
     },
     async (error) => {
-      if (error.response) {
+      if (error.response && isClient()) {
         console.log("Error in response", error.response);
         const originalConfig = error.config;
         
