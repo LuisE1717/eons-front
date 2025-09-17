@@ -1,8 +1,10 @@
+// modules/Launch/Launch.tsx
 import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
 import Frame from '../../components/UI/Frame/Frame';
 import { postSaveEvaluation } from '../../utils/api/evaluation';
+import Cookies from 'js-cookie';
 
 interface CoinState {
   isFaceUp: boolean;
@@ -20,6 +22,22 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [evaluationHistory, setEvaluationHistory] = useState<any[]>([]);
+  const [currentToken, setCurrentToken] = useState(token);
+
+  // Verificar y actualizar el token si es necesario
+  useEffect(() => {
+    const checkToken = () => {
+      const freshToken = Cookies.get("eons_token");
+      if (freshToken && freshToken !== currentToken) {
+        console.log('🔄 Token actualizado');
+        setCurrentToken(freshToken);
+      }
+    };
+
+    // Verificar el token periódicamente
+    const interval = setInterval(checkToken, 30000); // Cada 30 segundos
+    return () => clearInterval(interval);
+  }, [currentToken]);
 
   // Inicializar monedas basado en el tipo de lanzamiento
   useEffect(() => {
@@ -39,7 +57,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   };
 
   const handleNextStep = async (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevenir comportamiento por defecto
+    e.preventDefault();
     
     if (currentStep < steps) {
       // Guardar el estado actual de las monedas
@@ -64,40 +82,54 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const handleSubmit = async (evaluationData: any[]) => {
     try {
         setIsLoading(true);
-        console.log('Datos a enviar:', evaluationData);
+        console.log('📋 Datos a enviar:', evaluationData);
+
+        // Verificar token antes de enviar
+        const freshToken = Cookies.get("eons_token") || currentToken;
+        if (!freshToken) {
+          alert('❌ Sesión expirada. Por favor inicia sesión nuevamente.');
+          window.location.href = '/auth';
+          return;
+        }
 
         const data = {
-        type: "dialogo-abierto",
-        shortType: "DAB",
-        coinPositions: evaluationData,
+          type: "dialogo-abierto",
+          shortType: "DAB",
+          coinPositions: evaluationData,
         };
 
-        console.log('Enviando datos completos:', data);
+        console.log('🚀 Enviando datos completos con token:', freshToken.substring(0, 20) + '...');
 
-        const response = await postSaveEvaluation(token, data);
-        console.log('Respuesta completa:', response);
+        const response = await postSaveEvaluation(freshToken, data);
+        console.log('📨 Respuesta completa:', response);
 
         if (response.success && response.data) {
-        console.log('Procesamiento exitoso, redirigiendo...');
-        
-        // Guardar en localStorage para acceso inmediato
-        localStorage.setItem('resultados_dialogo', JSON.stringify(response.data));
-        localStorage.setItem('ultima_consulta_id', response.data.id);
-        localStorage.setItem('ultima_consulta_tipo', 'dialogo');
-        
-        // Redirigir a la vista de resultados
-        window.location.href = `/resultados?type=dialogo&id=${response.data.id}`;
+          console.log('✅ Procesamiento exitoso, redirigiendo...');
+          
+          // Guardar en localStorage para acceso inmediato
+          localStorage.setItem('resultados_dialogo', JSON.stringify(response.data));
+          localStorage.setItem('ultima_consulta_id', response.data.id);
+          localStorage.setItem('ultima_consulta_tipo', 'dialogo');
+          
+          // Redirigir a la vista de resultados
+          window.location.href = `/resultados?type=dialogo&id=${response.data.id}`;
         } else {
-        console.error('Error en la respuesta:', response.error);
-        alert(`Error: ${response.error?.message || 'Error al procesar los resultados. Intenta nuevamente.'}`);
+          console.error('❌ Error en la respuesta:', response.error);
+          
+          if (response.error?.message?.includes('Token') || response.error?.includes('token')) {
+            alert('❌ Tu sesión ha expirado. Por favor inicia sesión nuevamente.');
+            window.location.href = '/auth';
+          } else {
+            alert(`Error: ${response.error?.message || 'Error al procesar los resultados. Intenta nuevamente.'}`);
+          }
         }
     } catch (error) {
-        console.error('Error inesperado:', error);
+        console.error('❌ Error inesperado:', error);
         alert('Error inesperado. Por favor revisa la consola para más detalles.');
     } finally {
         setIsLoading(false);
     }
-    };
+  };
 
   return (
     <Frame>
@@ -112,7 +144,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           {coinPositions.map((coin, index) => (
             <div key={index} className="flex flex-col items-center">
               <Coin
-                coin={index === 0} // Primera moneda es grande, las demás pequeñas
+                coin={index === 0}
                 isFaceUp={coin.isFaceUp}
                 isOuterCircleFilled={coin.isOuterCircleFilled}
                 onFlip={() => handleCoinFlip(index)}
