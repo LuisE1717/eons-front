@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback, memo } from "react";
 import { motion } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export default function Info({ children }: Props) {
+function InfoComponent({ children }: Props) {
   const menu = useRef<HTMLDivElement | null>(null);
   const [have, setHave] = useState(false);
 
@@ -18,7 +18,7 @@ export default function Info({ children }: Props) {
     "h-[430px]",
     "bg-white",
     "shadow-gray-400 shadow-md",
-    "flex flex-col" // Agregado para el layout flexbox
+    "flex flex-col"
   );
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Info({ children }: Props) {
     };
   }, []);
 
-  function scroll(way: "top" | "bottom") {
+  const scroll = useCallback((way: "top" | "bottom") => {
     if (menu.current) {
       const posicionActual = menu.current.scrollTop;
       const distance = 100;
@@ -53,11 +53,10 @@ export default function Info({ children }: Props) {
 
       menu.current.scrollTo({ top: nuevaPosicion, behavior: "smooth" });
     }
-  }
+  }, []);
 
   return (
     <div className={CLASS}>
-      {/* Contenedor superior para la flecha */}
       {have && (
         <div className="h-8 flex items-center justify-center bg-white">
           <button 
@@ -83,7 +82,6 @@ export default function Info({ children }: Props) {
         </div>
       )}
 
-      {/* Contenedor principal del contenido */}
       <motion.div
         ref={menu}
         className="overflow-y-auto flex-1 px-6 py-2 flex flex-col items-center"
@@ -97,7 +95,6 @@ export default function Info({ children }: Props) {
         {children}
       </motion.div>
 
-      {/* Contenedor inferior para la flecha */}
       {have && (
         <div className="h-8 flex items-center justify-center bg-white">
           <button 
@@ -125,3 +122,5 @@ export default function Info({ children }: Props) {
     </div>
   );
 }
+
+export default memo(InfoComponent);
