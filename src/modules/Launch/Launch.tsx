@@ -1,4 +1,4 @@
-// modules/Launch/Launch.tsx
+// Launch.tsx - CORREGIDO (sin react-router-dom)
 import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
@@ -31,11 +31,14 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
       if (freshToken && freshToken !== currentToken) {
         console.log('🔄 Token actualizado');
         setCurrentToken(freshToken);
+      } else if (!freshToken) {
+        console.error('❌ No se encontró token, redirigiendo a login');
+        window.location.href = '/auth';
       }
     };
 
     // Verificar el token periódicamente
-    const interval = setInterval(checkToken, 30000); // Cada 30 segundos
+    const interval = setInterval(checkToken, 30000);
     return () => clearInterval(interval);
   }, [currentToken]);
 

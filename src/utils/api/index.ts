@@ -1,14 +1,11 @@
-// utils/api/index.ts
+// utils/api/index.ts - ACTUALIZADO
 import axios, {
-  Axios,
   type AxiosInstance,
   type InternalAxiosRequestConfig,
 } from "axios";
 import configEnv from "../../../.env_config";
 import Cookies from "js-cookie";
-import { setCookie } from "../cookies/Cookies";
 import { validMail } from "../validations";
-import { userProfile } from "../../UserStore";
 
 export const intanceAxios: AxiosInstance = axios.create({
   baseURL: configEnv?.api,
@@ -20,6 +17,7 @@ const isClient = () => typeof window !== 'undefined';
 export function axiosI(apiToken: string | undefined) {
   const intance = axios.create({
     baseURL: configEnv?.api,
+    timeout: 30000, // Aumentar timeout a 30 segundos
   });
 
   intance.interceptors.request.use(
