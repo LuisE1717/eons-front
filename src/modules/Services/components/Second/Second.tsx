@@ -1,8 +1,5 @@
-import { createRef, useEffect, useState } from "react";
+import { createRef, useEffect, useState, useCallback, memo } from "react";
 import { SECTIONS } from "./constants";
-import BookInfo from "./components/BookInfo/BookInfo";
-import MessageInfo from "./components/MessageInfo/MessageInfo";
-import UserInfo from "./components/UserInfo/UserInfo";
 import Icon from "./shared/components/Icon/Icon";
 import User from "./components/User/User";
 import Book from "./components/Book/Book";
@@ -10,15 +7,19 @@ import Message from "./components/Message/Message";
 import Empty from "./components/Empty/Empty";
 import { useInView, motion } from "framer-motion";
 import clsx from "clsx";
-import FirstTime from "./components/FirstTime/FirstTime";
 import { showToast } from "@components/UI/Toast";
 import { checkInstructionsSeen } from "../../../../utils/developmentHelpers";
+import React from "react";
 
-export default function Second({ first_time, toast }) {
+// Componentes cargados perezosamente
+const BookInfo = React.lazy(() => import("./components/BookInfo/BookInfo"));
+const MessageInfo = React.lazy(() => import("./components/MessageInfo/MessageInfo"));
+const UserInfo = React.lazy(() => import("./components/UserInfo/UserInfo"));
+const FirstTime = React.lazy(() => import("./components/FirstTime/FirstTime"));
+
+function SecondComponent({ first_time, toast }) {
   const ref = createRef<HTMLDivElement>();
-
   const [selected, setSelected] = useState<SECTIONS | null>(null);
-
   const [showInstructions, setShowInstructions] = useState(false);
   const [hasSeenInstructions, setHasSeenInstructions] = useState(false);
 
@@ -28,28 +29,26 @@ export default function Second({ first_time, toast }) {
   });
 
   useEffect(() => {
-    // Verificar si ya vio las instrucciones (para desarrollo)
     const seen = checkInstructionsSeen();
     setHasSeenInstructions(seen);
     
-    // Mostrar toast solo si es la primera vez Y no ha visto las instrucciones
     if (toast === "read" && first_time && !seen) {
       showToast("Es necesario que lea las instrucciones de uso antes de utilizar nuestros servicios.", "info");
     }
   }, [first_time, toast]);
 
-  function handleBookClick() {
+  const handleBookClick = useCallback(() => {
     if (first_time && !hasSeenInstructions) {
       setShowInstructions(true);
     }
     handleChange(SECTIONS.BOOK);
-  }
+  }, [first_time, hasSeenInstructions]);
 
-  function handleChange(s: SECTIONS) {
+  const handleChange = useCallback((s: SECTIONS) => {
     setSelected((prev) => {
       return s === prev ? null : s;
     });
-  }
+  }, []);
 
   const CLASS = clsx(
     "bg-no-repeat bg-center bg-contain",
@@ -94,9 +93,8 @@ export default function Second({ first_time, toast }) {
             visible={isInView}
             selected={selected === SECTIONS.BOOK}
             icon={Book}
-            handleClick={() => handleBookClick()}
+            handleClick={handleBookClick}
           />
-          {/* Mostrar parpadeo solo si es la primera vez Y no ha visto instrucciones */}
           {first_time && !hasSeenInstructions && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -127,9 +125,21 @@ export default function Second({ first_time, toast }) {
           className={CLASS}
         >
           {selected === null && <Empty />}
-          {selected === SECTIONS.BOOK && <BookInfo first_time={first_time && !hasSeenInstructions} />}
-          {selected === SECTIONS.MESSAGES && <MessageInfo />}
-          {selected === SECTIONS.USER && <UserInfo />}
+          {selected === SECTIONS.BOOK && (
+            <React.Suspense fallback={<div>Cargando...</div>}>
+              <BookInfo first_time={first_time && !hasSeenInstructions} />
+            </React.Suspense>
+          )}
+          {selected === SECTIONS.MESSAGES && (
+            <React.Suspense fallback={<div>Cargando...</div>}>
+              <MessageInfo />
+            </React.Suspense>
+          )}
+          {selected === SECTIONS.USER && (
+            <React.Suspense fallback={<div>Cargando...</div>}>
+              <UserInfo />
+            </React.Suspense>
+          )}
         </motion.div>
 
         <Icon
@@ -140,13 +150,16 @@ export default function Second({ first_time, toast }) {
         />
       </motion.div>
 
-      {/* Modal de instrucciones */}
       {showInstructions && (
-        <FirstTime setSelected={setSelected} />
+        <React.Suspense fallback={<div>Cargando...</div>}>
+          <FirstTime setSelected={setSelected} />
+        </React.Suspense>
       )}
     </section>
   );
 }
+
+export default memo(SecondComponent);
 
 /*
 import { createRef, useEffect, useState } from "react";
