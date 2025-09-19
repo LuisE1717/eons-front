@@ -1,4 +1,4 @@
-// Launch.tsx - CORREGIDO (con manejo específico de la respuesta)
+// Launch.tsx - ACTUALIZADO (con botones de Reintentar y Salir)
 import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
@@ -26,6 +26,8 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const [currentToken, setCurrentToken] = useState(token);
   const [showWritingEffect, setShowWritingEffect] = useState(false);
   const [resultText, setResultText] = useState('');
+  const [showButtons, setShowButtons] = useState(false);
+  const [isHoveringRetry, setIsHoveringRetry] = useState(false);
 
   // Verificar y actualizar el token si es necesario
   useEffect(() => {
@@ -207,23 +209,10 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
               currentIndex++;
               setTimeout(typeWriter, 30); // Velocidad de escritura
             } else {
-              // Cuando termine la escritura, guardar y redirigir después de un breve momento
+              // Cuando termine la escritura, mostrar los botones
               setTimeout(() => {
-                // Guardar datos para la página de resultados
-                if (response && response.data) {
-                  localStorage.setItem('resultados_dialogo', JSON.stringify(response.data));
-                  localStorage.setItem('ultima_consulta_id', response.data.id || 'unknown');
-                } else if (response && response.id) {
-                  localStorage.setItem('resultados_dialogo', JSON.stringify(response));
-                  localStorage.setItem('ultima_consulta_id', response.id);
-                }
-                localStorage.setItem('ultima_consulta_tipo', 'dialogo');
-                
-                // Redirigir a la vista de resultados
-                const resultadoId = (response && response.data && response.data.id) || 
-                                  (response && response.id) || 'unknown';
-                window.location.href = `/resultados?type=dialogo&id=${resultadoId}`;
-              }, 2000);
+                setShowButtons(true);
+              }, 500);
             }
           };
           
@@ -254,6 +243,28 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     }
   };
 
+  const handleRetry = () => {
+    // Reiniciar todo el estado para un nuevo lanzamiento
+    setShowWritingEffect(false);
+    setShowButtons(false);
+    setResultText('');
+    setCurrentStep(1);
+    setEvaluationHistory([]);
+    
+    // Reiniciar monedas
+    const newCoins = Array(type === 'dialogo-abierto' ? 2 : 2).fill(null).map(() => ({
+      isFaceUp: false,
+      isOuterCircleFilled: false,
+      isConfirmed: false
+    }));
+    setCoinPositions(newCoins);
+  };
+
+  const handleExit = () => {
+    // Redirigir a la vista de servicios
+    window.location.href = '/services';
+  };
+
   // Si estamos mostrando el efecto de escritura, ocultar todos los elementos excepto el texto
   if (showWritingEffect) {
     return (
@@ -282,7 +293,58 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           </div>
           
           <div className="writing-glow"></div>
+
+          {/* Botones de Reintentar y Salir */}
+          {showButtons && (
+            <div className="absolute bottom-60 left-0 right-0 flex justify-center items-center gap-4 z-20">
+              {/* Botón de Reintentar */}
+              <button
+                className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center gap-2 spiritual-glow"
+                onClick={handleRetry}
+                onMouseEnter={() => setIsHoveringRetry(true)}
+                onMouseLeave={() => setIsHoveringRetry(false)}
+              >
+                <svg
+                  className={`w-5 h-5 transition-transform duration-300 ${isHoveringRetry ? 'rotate-360' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                Reintentar
+              </button>
+
+              {/* Botón de Salir */}
+              <button
+                className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-sm"
+                onClick={handleExit}
+              >
+                Salir
+              </button>
+            </div>
+          )}
         </div>
+
+        <style jsx>{`
+          @keyframes rotate-360 {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          .rotate-360 {
+            animation: rotate-360 0.5s ease-in-out;
+          }
+        `}</style>
       </Frame>
     );
   }
