@@ -693,7 +693,7 @@ hr {
 /* Sección del Stepper — MOVIDO MÁS ARRIBA */
 .arcane-stepper-section {
     margin-top: 1rem;
-    margin-bottom: 6rem;
+    margin-bottom: 12rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -975,7 +975,7 @@ button[data-testid="stepper-next"]:hover {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     animation-delay: -2s;
-    color: #8b5cf6;
+    color: #e7e3f0;
 }
 
 .arcane-symbol-3 {

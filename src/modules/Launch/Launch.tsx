@@ -176,11 +176,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
        
 
-        <div className="arcane-symbols">
-          <div className="arcane-symbol arcane-symbol-1">∞</div>
-          <div className="arcane-symbol arcane-symbol-2">☯</div>
-          <div className="arcane-symbol arcane-symbol-3">⚡</div>
-        </div>
+        
       </div>
     </Frame>
   );
