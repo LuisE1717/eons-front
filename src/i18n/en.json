@@ -216,7 +216,7 @@
     "historial":"Transfer History",
     "pay_deude": "Pay debt to the Root of the System",
     "tropipay_text": "All purchases are processed securely and efficiently through the Tropipay payment gateway.",
-    "annunce": "Tropipay platform only operates with €.",
+    "annunce": "You can make purchases in any currency, as it will be automatically converted €.",
     "insuficent_error": "Insufficient Essence.",
     "not_found": "The beneficiary user does not exist.",
     "at_least_error": "You can only transfer at least 1 essence.",
@@ -235,7 +235,9 @@
     "historial_item_2": "Usted ha transferido",
     "historial_item_3": "de Esencia de",
     "historial_item_4": "de Esencia de",
-    "historial_empty": "No transfers have been made yet."
+    "historial_empty": "No transfers have been made yet.",
+
+    "promo_announcement": "All Essence purchased will be doubled. Offer available until paid services are activated."
   },
   "about": "About Us",
   "therms": "Terms and Conditions",
