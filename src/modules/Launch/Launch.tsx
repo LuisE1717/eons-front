@@ -136,40 +136,51 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
   return (
     <Frame>
-      <div className="launch-container text-center">
-        <h5 className='mb-20 text-white text-xl font-bold'>
+      <div className="launch-container text-center arcane-container">
+        <div className="arcane-background-elements">
+          <div className="arcane-orb arcane-orb-1"></div>
+          <div className="arcane-orb arcane-orb-2"></div>
+          <div className="arcane-orb arcane-orb-3"></div>
+          <div className="arcane-orb arcane-orb-4"></div>
+        </div>
+        
+        <h5 className='mb-43 text-white text-xl font-bold arcane-title'>
           {type === 'dialogo-abierto' 
             ? 'Modo Diálogo Abierto - Selecciona los símbolos' 
             : '¿Qué símbolos cayeron hacia arriba?'}
         </h5>
         
-        <div className="coin-container flex justify-center gap-8 mb-8">
+        <div className="coin-container flex justify-center gap-8 mb-8 arcane-coin-area">
           {coinPositions.map((coin, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className="flex flex-col items-center arcane-coin-wrapper" data-index={index}>
               <Coin
                 coin={index === 0}
                 isFaceUp={coin.isFaceUp}
                 isOuterCircleFilled={coin.isOuterCircleFilled}
                 onFlip={() => handleCoinFlip(index)}
               />
-              <span className='mt-2 text-white'>Moneda {index + 1}</span>
+              <span className='mt-2 text-white arcane-coin-label'>Moneda {index + 1}</span>
             </div>
           ))}
         </div>
 
-        <div className="mb-4 text-white">
-          <p>Lanzamiento {currentStep} de {steps}</p>
-          {type === 'dialogo-abierto' && currentStep <= 2 && (
-            <p className="text-sm text-purple-300">Primeros 2 lanzamientos determinan el sistema</p>
-          )}
+        {/* MOVIDO MÁS ARRIBA — BOTÓN DE SIGUIENTE (STEPPER) */}
+        <div className="arcane-stepper-section mb-30">
+          <Stepper 
+            totalSteps={steps} 
+            onChange={handleNextStep}
+            currentStep={currentStep} 
+            isLoading={isLoading} 
+          />
         </div>
 
-        <Stepper 
-          totalSteps={steps} 
-          onChange={handleNextStep}
-          currentStep={currentStep} 
-          isLoading={isLoading} 
-        />
+       
+
+        <div className="arcane-symbols">
+          <div className="arcane-symbol arcane-symbol-1">∞</div>
+          <div className="arcane-symbol arcane-symbol-2">☯</div>
+          <div className="arcane-symbol arcane-symbol-3">⚡</div>
+        </div>
       </div>
     </Frame>
   );
