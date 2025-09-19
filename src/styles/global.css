@@ -1081,3 +1081,362 @@ button:focus {
         transform: rotate(360deg) scale(1);
     }
 }
+
+
+/* Estilos para monedas confirmadas */
+.coin.confirmed {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.gold-glow {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.5);
+  transition: box-shadow 0.7s ease;
+}
+
+/* Orbes espirituales */
+.spiritual-orbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.spiritual-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent);
+  animation: floatOrb 3s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 15px;
+  height: 15px;
+  top: -5px;
+  left: 50%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 12px;
+  height: 12px;
+  bottom: -5px;
+  right: 30%;
+  animation-delay: 1s;
+}
+
+.orb-3 {
+  width: 10px;
+  height: 10px;
+  top: 30%;
+  left: -5px;
+  animation-delay: 2s;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(10px, -10px);
+    opacity: 1;
+  }
+}
+
+/* Botón espiritual */
+.spiritual-button {
+  background: linear-gradient(135deg, #6D28D9, #8B5CF6) !important;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.4) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.spiritual-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: rotate(45deg);
+  animation: spiritualShine 3s infinite;
+}
+
+.spiritual-button:hover {
+  background: linear-gradient(135deg, #7C3AED, #9F7AEA) !important;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.6) !important;
+}
+
+.spiritual-glow {
+  animation: spiritualPulse 2s infinite;
+}
+
+@keyframes spiritualPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes spiritualShine {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg) translateX(-100%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) translateX(100%);
+  }
+}
+
+/* Efecto de onda para el botón */
+.wave-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-effect:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.wave-effect:focus:not(:active)::after {
+  animation: waveEffect 1s ease-out;
+}
+
+@keyframes waveEffect {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(10, 10);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(30, 30);
+    opacity: 0;
+  }
+}
+
+/* Botón de lanzamiento especial */
+.special-launch-btn-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.special-launch-btn {
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  color: #E9D5FF;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+}
+
+.special-launch-btn:hover {
+  background: rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.7);
+}
+
+.prox-text {
+  color: #C4B5FD;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Efecto de escritura */
+.writing-effect-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.writing-text-container {
+  position: relative;
+  max-width: 80%;
+  max-height: 70%;
+  background: rgba(11, 14, 38, 0.7);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.writing-text {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  text-align: left;
+}
+
+.writing-cursor {
+  animation: blink 1s infinite;
+  color: #06b6d4;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.writing-sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: sparkleFloat 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.5);
+    opacity: 1;
+  }
+}
+
+.writing-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%);
+  animation: writingPulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes writingPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.writing-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.4;
+  animation: writingOrbFloat 15s ease-in-out infinite;
+}
+
+.writing-orb-1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.writing-orb-2 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent);
+  bottom: 10%;
+  right: 10%;
+  animation-delay: -5s;
+}
+
+.writing-orb-3 {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.4), transparent);
+  top: 60%;
+  left: 20%;
+  animation-delay: -10s;
+}
+
+@keyframes writingOrbFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  75% {
+    transform: translate(25px, 25px) scale(1.05);
+  }
+}
+
+/* Ajuste para el texto de escritura - posición horizontal */
+.writing-text-container {
+  position: absolute;
+  top: 25%; /* Ajusta esta posición según donde quieras el texto */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15%;
+  max-height: 60%;
+  text-align: left;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .writing-text-container {
+    width: 60%;
+    padding: 1.5rem;
+  }
+  
+  .writing-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .writing-text-container {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .writing-text {
+    font-size: 0.9rem;
+  }
+}
