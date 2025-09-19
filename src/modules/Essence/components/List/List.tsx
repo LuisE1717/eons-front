@@ -8,8 +8,10 @@ import Sections from "./components/Sections/Sections";
 import Tropipay from "./components/Tropipay/Tropipay";
 import Annunce from "./components/Tropipay/Annunce";
 import Historial from "./components/Historial/Historial";
+import useTranslation from "src/modules/Shared/hooks/useTranslation";
 
 export default function List() {
+  const { translation } = useTranslation();
   const {
     list,
     handleClick,
@@ -28,7 +30,8 @@ export default function List() {
       <main className="flex flex-col max-w-[1100px] w-full">
         <div className="flex lg:flex-row flex-col-reverse items-center gap-x-10 gap-y-7 mb-10">
           <section className="flex flex-col w-full max-w-[700px]">
-            <h4 className="text-center mb-10 text-secundary">Toda la Esencia que se compre será duplicada. Oferta disponible hasta la activación de los servicios pagos.</h4>
+            <h4 className="text-center mb-10 text-secundary">{translation.Esence.promo_announcement}
+</h4>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
               {list.map((e) => (
                 <Card

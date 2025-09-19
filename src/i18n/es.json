@@ -229,7 +229,7 @@
     "historial":"Historial de transferencias",
     "pay_deude": "Pagar deuda a la (Raíz del Sistema)",
     "tropipay_text": "Todas las compras son procesadas de manera segura y eficiente a través de la pasarela de pago Tropipay.",
-    "annunce": "La plataforma Tropipay solo opera con €.",
+    "annunce": "Usted puede efectuar las compras en cualquier tipo de moneda, pues de manera automatizada sera convertida a €.",
     "insuficent_error": "Esencia insuficiente.",
     "not_found": "El usuario beneficiado no existe.",
     "at_least_error": "Solo puede transferir a partir de 1 esencia.",
@@ -248,7 +248,9 @@
     "historial_item_2": "Usted ha transferido",
     "historial_item_3": "de Esencia a",
     "historial_item_4": "de Esencia de",
-    "historial_empty": "No hay historial de transferencias."
+    "historial_empty": "No hay historial de transferencias.",
+
+    "promo_announcement": "Toda la Esencia que se compre será duplicada. Oferta disponible hasta la activación de los servicios pagos."
   },
 
   "about": "Acerca de nosotros",
