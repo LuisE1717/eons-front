@@ -24,15 +24,6 @@ const Stepper: React.FC<StepperProps> = ({
 
   return (
     <div className="">
-      <div className="stepper-progress-bar mb-2">
-        <div
-          className="stepper-progress"
-          style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-        ></div>
-      </div>
-      <div className="stepper-step-info mb-3 text-center">
-        Lanzamiento {currentStep} de {totalSteps}
-      </div>
       <div className="stepper-buttons">
         <Button
           type="button"
@@ -40,9 +31,9 @@ const Stepper: React.FC<StepperProps> = ({
           onClick={handleClick}
           full={true}
           size="sm"
-          className="bg-purple-600 hover:bg-purple-700 transition-colors text-sm py-2"
+          className="spiritual-button bg-purple-700 hover:bg-purple-800 transition-colors text-sm py-3 spiritual-glow wave-effect"
         >
-          {currentStep === totalSteps ? "Ver Resultados" : "Siguiente"}
+          {currentStep === totalSteps ? "Ver Resultados" : `Siguiente ${currentStep}/${totalSteps}`}
         </Button>
       </div>
     </div>
