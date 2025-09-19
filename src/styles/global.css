@@ -1089,10 +1089,7 @@ button:focus {
   transition: transform 0.5s ease;
 }
 
-.gold-glow {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.5);
-  transition: box-shadow 0.7s ease;
-}
+
 
 /* Orbes espirituales */
 .spiritual-orbs {
@@ -1410,7 +1407,7 @@ button:focus {
 /* Ajuste para el texto de escritura - posición horizontal */
 .writing-text-container {
   position: absolute;
-  top: 25%; /* Ajusta esta posición según donde quieras el texto */
+  top: 40%; /* Ajusta esta posición según donde quieras el texto */
   left: 50%;
   transform: translate(-50%, -50%);
   width: 15%;
@@ -1423,6 +1420,7 @@ button:focus {
   .writing-text-container {
     width: 60%;
     padding: 1.5rem;
+    bottom: 20%;
   }
   
   .writing-text {
