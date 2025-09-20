@@ -1,4 +1,4 @@
-// Launch.tsx - ACTUALIZADO (con botones de Reintentar y Salir)
+// Launch.tsx - ACTUALIZADO (con todos los cambios solicitados)
 import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
@@ -21,13 +21,15 @@ interface LaunchProps {
 const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const [coinPositions, setCoinPositions] = useState<CoinState[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0); // 0 significa que no ha comenzado
   const [evaluationHistory, setEvaluationHistory] = useState<any[]>([]);
   const [currentToken, setCurrentToken] = useState(token);
   const [showWritingEffect, setShowWritingEffect] = useState(false);
   const [resultText, setResultText] = useState('');
   const [showButtons, setShowButtons] = useState(false);
   const [isHoveringRetry, setIsHoveringRetry] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
+  const [isStarting, setIsStarting] = useState(false);
 
   // Verificar y actualizar el token si es necesario
   useEffect(() => {
@@ -50,7 +52,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   // Inicializar monedas basado en el tipo de lanzamiento
   useEffect(() => {
     const initialCoins = Array(type === 'dialogo-abierto' ? 2 : 2).fill(null).map(() => ({
-      isFaceUp: false,
+      isFaceUp: true, // Cambiado a true para que sea cara blanca por defecto
       isOuterCircleFilled: false,
       isConfirmed: false
     }));
@@ -58,6 +60,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   }, [type]);
 
   const handleCoinFlip = (index: number) => {
+    if (currentStep === 0) return; // No permitir cambios antes de comenzar
     if (coinPositions[index].isConfirmed) return; // No permitir cambios después de confirmar
     
     setCoinPositions((prev) =>
@@ -76,6 +79,19 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     })));
   };
 
+  const handleStart = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Animación de inicio
+    setIsStarting(true);
+    
+    // Esperar a que termine la animación
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setCurrentStep(1);
+    setIsStarting(false);
+  };
+
   const handleNextStep = async (e: React.MouseEvent) => {
     e.preventDefault();
     
@@ -92,9 +108,9 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
       setEvaluationHistory(updatedEvaluation);
       setCurrentStep(currentStep + 1);
 
-      // Resetear monedas para el próximo lanzamiento (sin confirmar)
+      // Resetear monedas para el próximo lanzamiento (sin confirmar, con caras blancas por defecto)
       const newCoins = coinPositions.map(() => ({
-        isFaceUp: false,
+        isFaceUp: true, // Cambiado a true para cara blanca por defecto
         isOuterCircleFilled: false,
         isConfirmed: false
       }));
@@ -110,6 +126,13 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     try {
         setIsLoading(true);
         console.log('📋 Datos a enviar:', evaluationData);
+
+        // Mostrar "Cargando resultados" durante 5 segundos
+        setShowWritingEffect(true);
+        setResultText('Cargando resultados');
+        
+        // Simular carga de 5 segundos
+        await new Promise(resolve => setTimeout(resolve, 5000));
 
         // Verificar token antes de enviar
         const freshToken = Cookies.get("eons_token") || currentToken;
@@ -130,23 +153,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         const response = await postSaveEvaluation(freshToken, data);
         console.log('📨 Respuesta completa:', response);
         console.log('📊 Estructura completa de response:', JSON.stringify(response, null, 2));
-
-        // DEPURACIÓN: Verificar la estructura exacta de la respuesta
-        if (response) {
-          console.log('✅ Response existe');
-          console.log('✅ Response.success:', response.success);
-          console.log('✅ Response.data:', response.data);
-          
-          // Verificar diferentes estructuras posibles
-          if (response.data) {
-            console.log('✅ Response.data existe');
-            console.log('✅ Response.data.resultadoFinal:', response.data.resultadoFinal);
-          }
-          
-          if (response.resultadoFinal) {
-            console.log('✅ Response.resultadoFinal existe:', response.resultadoFinal);
-          }
-        }
 
         // Extraer el resultado final basado en la estructura real de la respuesta
         let resultadoFinal = '';
@@ -197,8 +203,8 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         if (resultadoFinal && resultadoFinal.length > 0) {
           console.log('✅ Procesamiento exitoso, mostrando efecto de escritura...');
           
-          // Activar el efecto de escritura
-          setShowWritingEffect(true);
+          // Limpiar texto de carga
+          setResultText('');
           
           // Efecto de escritura gradual del resultado
           let currentIndex = 0;
@@ -207,7 +213,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             if (currentIndex < resultadoFinal.length) {
               setResultText(prev => prev + resultadoFinal.charAt(currentIndex));
               currentIndex++;
-              setTimeout(typeWriter, 30); // Velocidad de escritura
+              setTimeout(typeWriter, 50); // Velocidad de escritura más lenta
             } else {
               // Cuando termine la escritura, mostrar los botones
               setTimeout(() => {
@@ -221,7 +227,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         } else {
           console.error('❌ No se pudo extraer el resultado final de la respuesta. Estructura completa:');
           console.error(JSON.stringify(response, null, 2));
-          alert('Error: El servidor respondió pero no se pudo extraer el resultado. Por favor revisa la consola para más detalles.');
+          setResultText('Error: El servidor respondió pero no se pudo extraer el resultado. Por favor revisa la consola para más detalles.');
         }
     } catch (error: any) {
         console.error('❌ Error inesperado:', error);
@@ -237,7 +243,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           errorMessage = JSON.stringify(error.response.data);
         }
         
-        alert(`Error: ${errorMessage}`);
+        setResultText(`Error: ${errorMessage}`);
     } finally {
         setIsLoading(false);
     }
@@ -248,21 +254,33 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     setShowWritingEffect(false);
     setShowButtons(false);
     setResultText('');
-    setCurrentStep(1);
+    setCurrentStep(0);
     setEvaluationHistory([]);
     
-    // Reiniciar monedas
+    // Reiniciar monedas (con caras blancas por defecto)
     const newCoins = Array(type === 'dialogo-abierto' ? 2 : 2).fill(null).map(() => ({
-      isFaceUp: false,
+      isFaceUp: true, // Cambiado a true para cara blanca por defecto
       isOuterCircleFilled: false,
       isConfirmed: false
     }));
     setCoinPositions(newCoins);
   };
 
-  const handleExit = () => {
-    // Redirigir a la vista de servicios
+  const handleGoBack = () => {
+    if (currentStep > 0) {
+      setShowExitModal(true);
+    } else {
+      window.location.href = '/services';
+    }
+  };
+
+  const confirmExit = () => {
+    setShowExitModal(false);
     window.location.href = '/services';
+  };
+
+  const cancelExit = () => {
+    setShowExitModal(false);
   };
 
   // Si estamos mostrando el efecto de escritura, ocultar todos los elementos excepto el texto
@@ -275,9 +293,16 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             <div className="writing-orb writing-orb-2"></div>
             <div className="writing-orb writing-orb-3"></div>
           </div>
+
+          
           
           <div className="writing-text-container">
             <p className="writing-text">{resultText}</p>
+            {isLoading && (
+              <div className="loading-spinner">
+                <div className="spinner-ball purple-spinner"></div>
+              </div>
+            )}
             <span className="writing-cursor">|</span>
             
             {/* Efectos de partículas de brillo */}
@@ -294,12 +319,12 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           
           <div className="writing-glow"></div>
 
-          {/* Botones de Reintentar y Salir */}
+          {/* Botones de Modo Diálogo Abierto */}
           {showButtons && (
             <div className="absolute bottom-60 left-0 right-0 flex justify-center items-center gap-4 z-20">
-              {/* Botón de Reintentar */}
+              {/* Botón de Modo Diálogo Abierto */}
               <button
-                className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center gap-2 spiritual-glow"
+                className="bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center gap-2 spiritual-glow"
                 onClick={handleRetry}
                 onMouseEnter={() => setIsHoveringRetry(true)}
                 onMouseLeave={() => setIsHoveringRetry(false)}
@@ -318,15 +343,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>
-                Reintentar
-              </button>
-
-              {/* Botón de Salir */}
-              <button
-                className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-sm"
-                onClick={handleExit}
-              >
-                Salir
+                Modo Diálogo Abierto
               </button>
             </div>
           )}
@@ -344,6 +361,29 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           .rotate-360 {
             animation: rotate-360 0.5s ease-in-out;
           }
+          
+          .loading-spinner {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+          }
+          
+          .spinner-ball {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+          
+          .purple-spinner {
+            background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
         `}</style>
       </Frame>
     );
@@ -351,6 +391,33 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
   return (
     <Frame>
+      {/* Botón de ir atrás */}
+      <div className="back-button-container" onClick={handleGoBack}>
+        <div className="back-button-bg"></div>
+        <button className="back-button">
+          <svg className="back-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Modal de confirmación de salida */}
+      {showExitModal && (
+        <div className="exit-modal-overlay">
+          <div className="exit-modal">
+            <div className="exit-modal-content">
+              <img src="/informacion 3.webp" alt="Información" className="exit-modal-image" />
+              <h3>¿Estás seguro?</h3>
+              <p>Si sales ahora, perderás todos los lanzamientos realizados.</p>
+              <div className="exit-modal-buttons">
+                <button className="exit-modal-confirm" onClick={confirmExit}>Sí, salir</button>
+                <button className="exit-modal-cancel" onClick={cancelExit}>Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="launch-container text-center arcane-container">
         <div className="arcane-background-elements">
           <div className="arcane-orb arcane-orb-1"></div>
@@ -359,7 +426,12 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           <div className="arcane-orb arcane-orb-4"></div>
         </div>
         
-        <h5 className='mb-43 text-white text-xl font-bold arcane-title'>
+        {/* Círculo verde brillante en el centro (solo visible antes de comenzar) */}
+        {currentStep === 0 && (
+          <div className="green-glow-circle"></div>
+        )}
+        
+        <h5 className='mb-2 text-white text-xl font-bold arcane-title'>
           {type === 'dialogo-abierto' 
             ? 'Modo Diálogo Abierto - Coloca las monedas como cayeron' 
             : '¿Cómo cayeron tus monedas?'}
@@ -387,19 +459,278 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           </button>
         </div>
 
-        {/* BOTÓN DE SIGUIENTE CON CONTADOR */}
+        {/* BOTÓN DE SIGUIENTE/Comenzar */}
         <div className="arcane-stepper-section mb-30">
-          <Stepper 
-            totalSteps={steps} 
-            onChange={handleNextStep}
-            currentStep={currentStep} 
-            isLoading={isLoading} 
-          />
+          {currentStep === 0 ? (
+            <button 
+              className={`start-button white-button ${isStarting ? 'rotating' : ''}`}
+              onClick={handleStart}
+              disabled={isStarting}
+            >
+              {isStarting ? (
+                <div className="loading-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              ) : (
+                'Comenzar'
+              )}
+            </button>
+          ) : (
+            <Stepper 
+              totalSteps={steps} 
+              onChange={handleNextStep}
+              currentStep={currentStep} 
+              isLoading={isLoading} 
+            />
+          )}
         </div>
         
       </div>
+
+      <style jsx>{`
+        /* Estilos para el botón de ir atrás */
+        .back-button-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 70px;
+          z-index: 100;
+        }
+        
+        .back-button-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          z-index: -1;
+        }
+        
+        .back-button {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          z-index: 101;
+          padding: 8px;
+          border-radius: 50%;
+          transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-arrow {
+          width: 24px;
+          height: 24px;
+          color: #4C1D95;
+        }
+        
+        /* Estilos para el círculo verde brillante */
+        .green-glow-circle {
+          position: absolute;
+          top: -23%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #00ff00, #00cc00);
+          box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+          z-index: 5;
+          animation: pulse-green 2s infinite;
+        }
+        
+        @keyframes pulse-green {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.8;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.8;
+          }
+        }
+        
+        /* Estilos para el modal de confirmación */
+        .exit-modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+        }
+        
+        .exit-modal {
+          background: linear-gradient(135deg, #ffffff, #8B5CF6);
+          border-radius: 20px;
+          padding: 2rem;
+          max-width: 400px;
+          width: 90%;
+          text-align: center;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          animation: modal-appear 0.3s ease-out;
+        }
+        
+        @keyframes modal-appear {
+          from {
+            opacity: 0;
+            transform: scale(0.9) translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+        
+        .exit-modal-content h3 {
+          color: #4C1D95;
+          margin-bottom: 1rem;
+        }
+        
+        .exit-modal-content p {
+          color: #333;
+          margin-bottom: 2rem;
+        }
+        
+        .exit-modal-image {
+          width: 80px;
+          height: 80px;
+          margin: 0 auto 1rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        
+        .exit-modal-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+        }
+        
+        .exit-modal-confirm, .exit-modal-cancel {
+          padding: 0.8rem 1.5rem;
+          border: none;
+          border-radius: 50px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+        }
+        
+        .exit-modal-confirm {
+          background-color: #ff4d4d;
+          color: white;
+        }
+        
+        .exit-modal-confirm:hover {
+          background-color: #ff3333;
+        }
+        
+        .exit-modal-cancel {
+          background-color: #8B5CF6;
+          color: white;
+        }
+        
+        .exit-modal-cancel:hover {
+          background-color: #7C3AED;
+        }
+        
+        /* Estilos para el botón Comenzar */
+        .start-button {
+          background: white !important;
+          color: #4C1D95 !important;
+          border: none !important;
+          padding: 15px 40px !important;
+          border-radius: 50px !important;
+          font-weight: 700 !important;
+          font-size: 1.2rem !important;
+          letter-spacing: 1px !important;
+          box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4) !important;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+          position: relative !important;
+          overflow: hidden !important;
+          cursor: pointer;
+        }
+        
+        .start-button:hover:not(:disabled) {
+          transform: translateY(-3px) !important;
+          box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6) !important;
+        }
+        
+        .start-button:disabled {
+          opacity: 0.8;
+          cursor: not-allowed;
+        }
+        
+        .rotating {
+          animation: rotate 1s linear infinite;
+        }
+        
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
+        .loading-dots {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 4px;
+        }
+        
+        .loading-dots span {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #8B5CF6;
+          animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .loading-dots span:nth-child(1) {
+          animation-delay: -0.32s;
+        }
+        
+        .loading-dots span:nth-child(2) {
+          animation-delay: -0.16s;
+        }
+        
+        @keyframes bounce {
+          0%, 80%, 100% {
+            transform: scale(0);
+          }
+          40% {
+            transform: scale(1);
+          }
+        }
+        
+        .white-button {
+          background: white !important;
+          color: #4C1D95 !important;
+        }
+      `}</style>
     </Frame>
   );
 };
 
 export default Launch;
+
+

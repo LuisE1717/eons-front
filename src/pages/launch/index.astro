@@ -3,7 +3,7 @@ import Launch from '../../modules/Launch/Launch';
 import AppContainer from "../../layouts/AppContainer.astro";
 import Footer from "../../layouts/Footer.astro";
 import Header from "../../layouts/Header.astro";
-import BackButton from '../../components/UI/BackButton.astro'
+
 
 const token = Astro.cookies.get('eons_token')?.value || ''
 const mode = Astro.url.searchParams.get('mode') || 'normal'; // 'normal' o 'dialogo'
@@ -16,7 +16,7 @@ const steps = mode === 'dialogo' ? 6 : 7;
 <AppContainer>
     <Header/>
     <div class="flex flex-col ml-3 mt-2">
-        <BackButton routeProp={'/services'}/>
+        
     </div>
     <Launch token={token} type={tipoConsulta} steps={steps} client:load />
     <Footer/>

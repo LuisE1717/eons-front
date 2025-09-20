@@ -1236,9 +1236,9 @@ button:focus {
 }
 
 .special-launch-btn {
-  background: rgba(139, 92, 246, 0.2);
+  background: rgba(246, 244, 249, 0.971);
   border: 1px solid rgba(139, 92, 246, 0.5);
-  color: #E9D5FF;
+  color: #1c1b1c;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 0.9rem;
@@ -1247,12 +1247,12 @@ button:focus {
 }
 
 .special-launch-btn:hover {
-  background: rgba(139, 92, 246, 0.3);
-  border-color: rgba(139, 92, 246, 0.7);
+  background: rgba(250, 249, 251, 0.94);
+  border-color: rgba(247, 247, 249, 0.7);
 }
 
 .prox-text {
-  color: #C4B5FD;
+  color: #f50cd6;
   font-size: 0.8rem;
   font-style: italic;
 }
@@ -1436,5 +1436,242 @@ button:focus {
   
   .writing-text {
     font-size: 0.9rem;
+  }
+}
+
+.writing-text-container {
+  overflow: hidden !important;
+}
+
+.writing-text {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  text-align: left;
+  transition: all 0.05s ease;
+}
+
+
+
+.back-button-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 100;
+}
+
+.back-button-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: -1;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.back-arrow {
+  width: 24px;
+  height: 24px;
+  color: #4C1D95;
+}
+
+/* Círculo verde brillante */
+.green-glow-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ff00, #00cc00);
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+  z-index: 5;
+  animation: pulse-green 2s infinite;
+}
+
+
+
+
+
+
+/* Modal de confirmación */
+.exit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.exit-modal {
+  background: linear-gradient(135deg, #ffffff, #8B5CF6);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modal-appear 0.3s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.exit-modal-content h3 {
+  color: #4C1D95;
+  margin-bottom: 1rem;
+}
+
+.exit-modal-content p {
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.exit-modal-image {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.exit-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.exit-modal-confirm, .exit-modal-cancel {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.exit-modal-confirm {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.exit-modal-confirm:hover {
+  background-color: #ff3333;
+}
+
+.exit-modal-cancel {
+  background-color: #8B5CF6;
+  color: white;
+}
+
+.exit-modal-cancel:hover {
+  background-color: #7C3AED;
+}
+
+/* Botón Comenzar */
+.start-button {
+  background: white !important;
+  color: #4C1D95 !important;
+  border: none !important;
+  padding: 15px 40px !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer;
+}
+
+.start-button:hover:not(:disabled) {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6) !important;
+}
+
+.start-button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.rotating {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #8B5CF6;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
   }
 }

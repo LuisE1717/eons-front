@@ -31,9 +31,9 @@ const Stepper: React.FC<StepperProps> = ({
           onClick={handleClick}
           full={true}
           size="sm"
-          className="spiritual-button bg-purple-700 hover:bg-purple-800 transition-colors text-sm py-3 spiritual-glow wave-effect"
+          className="spiritual-button bg-white text-purple-700 hover:bg-gray-100 transition-colors text-sm py-3 spiritual-glow wave-effect"
         >
-          {currentStep === totalSteps ? "Ver Resultados" : `Siguiente ${currentStep}/${totalSteps}`}
+          {currentStep === totalSteps ? "Ver Resultados" : "Siguiente"}
         </Button>
       </div>
     </div>
