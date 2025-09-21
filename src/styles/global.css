@@ -1459,7 +1459,7 @@ button:focus {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw; /* Cambiado a viewport width */
   height: 70px;
   z-index: 100;
 }
@@ -1468,34 +1468,46 @@ button:focus {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw; /* Ocupa todo el ancho del viewport */
   height: 100%;
-  background-color: white;
+  
   z-index: -1;
 }
 
-.back-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 101;
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.3s;
+.back-button-container, .back-button-bg {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.back-button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .back-button-container {
+    width: 120vw;
+    height: 60px;
+    
+  }
+  
+  .back-button-bg {
+    width: 100vw;
+   
+  }
 }
+
+@media (max-width: 480px) {
+  .back-button-container {
+    height: 70px;
+  }
+}
+
 
 .back-arrow {
   width: 24px;
   height: 24px;
   color: #4C1D95;
 }
+
+
 
 /* Círculo verde brillante */
 .green-glow-circle {
