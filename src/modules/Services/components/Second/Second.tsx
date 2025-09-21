@@ -104,15 +104,20 @@ function SecondComponent({ first_time, toast }) {
               style={{ pointerEvents: "none" }}
             >
               <motion.div
-                className="absolute inset-0 rounded-2xl "
+                className="absolute inset-0 rounded-2xl"
                 animate={{
                   boxShadow: [
-                    "0px 0px 5px rgba(128,0,128,0.5)",
-                    "0px 0px 15px rgba(128,0,128,0.9)",
-                    "0px 0px 5px rgba(128,0,128,0.5)",
+                    "0 0 8px rgba(128,0,128,0.3), 0 0 20px rgba(128,0,128,0.6)",
+                    "0 0 20px rgba(128,0,128,0.8), 0 0 40px rgba(128,0,128,1), 0 0 60px rgba(128,0,128,0.9)",
+                    "0 0 8px rgba(128,0,128,0.3), 0 0 20px rgba(128,0,128,0.6)",
                   ],
                 }}
-                transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
+                transition={{
+                  duration: 1.2,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  ease: [0.25, 0.1, 0.25, 1.0], // cubic-bezier suave tipo "easeInOut" más pronunciado
+                }}
               />
             </motion.div>
           )}
