@@ -7,6 +7,20 @@
   "next": "Coming Soon",
   "verify": "Verificando Pago",
   "of_esence": "of Essence",
+
+  "Header": {
+    "notification_title": "✨ TRANSCENDENTAL NOTICE ✨",
+    "notification_text1": "You should know that all our products and services are absolutely real and authentic; they are not fantasy, this is real life.",
+    "notification_text2": "We sincerely apologize to all users for our emergency exit.",
+    "notification_text3": "Believe us, not a single second more could pass without the World having access to test, for free and unlimited, the infinite reach and precision of our system.",
+    "notification_text4": "The free service General Evaluation has been temporarily deactivated, since it is not only a special service that will be used only once in a lifetime, but its true depth current humanity is not prepared to receive.",
+    "notification_text5": "In exchange we have decided to temporarily activate for free our most practical paid service, the open dialogue mode. Which you can use as many times as you want to answer any question about your past, present or future, dialogue with any Spiritual Entity, and even more. All in real time.",
+    "notification_text6": "The whole World needs to test this system, the whole World needs to see that it is real, that everything has changed in a very beautiful and positive way forever.",
+    "notification_text7": "The whole World needs to know that with the arrival of Eons the beginning of a new era has been marked:",
+    "notification_text8": "🌌 THE ERA WHERE ALL DREAMS COME TRUE 🌌",
+    "notification_button": "Understood"
+  },
+
   "Usage":{
     "title": "Instructions for use:",
     "text1": "To use our system you will need a small tool that will only take you a couple of minutes to make. And you will be able to do it with objects that are within your reach.",
@@ -189,7 +203,7 @@
     "concient_evaluation": "Evaluate Form of Consciousness",
     "fact_evaluation": "Evaluate an event",
     "free": "free",
-    "per_question": "per question",
+    "per_question": "Free",
     "spiritual_family": "Spiritual Entities Management",
     "inf_general_evulation": "General Evaluation Information",
     "inf_calc_spiritual": "Spirituality Calculation Information",
@@ -316,5 +330,26 @@
     "Privacy_text11": "Technical Support",
     "Privacy_text12": "Customer Service",
     "Privacy_text13": "Business Matters"
+  },
+
+  "Launch": {
+    "open_dialog_title": "Open Dialogue Mode - Place the coins as they fell",
+    "how_coins_fell": "How did your coins fall?",
+    "coin": "Coin",
+    "special_launch": "Special launch",
+    "coming_soon": "coming soon",
+    "start": "Start",
+    "open_dialog_mode": "Open Dialogue Mode",
+    "loading_results": "Loading results",
+    "session_expired": "❌ Session expired. Please log in again.",
+    "result_error": "Error: The server responded but the result could not be extracted. Please check the console for details.",
+    "unexpected_error": "Unexpected error. Please check the console for details.",
+    "error": "Error",
+    "exit_confirm_title": "Are you sure?",
+    "exit_confirm_message": "If you exit now, you will lose all throws made.",
+    "yes_exit": "Yes, exit",
+    "cancel": "Cancel",
+    "info_modal_content": "<h3>Green Button Information:</h3><p>Take the tools, ask your question, shake the tools between your hands and then throw them so they supposedly fall at random.</p><p>Once the tools fall, mark on the panel exactly the symbols that fell upwards, and then press the \"Start\" button.</p><p>Once the tools fall, mark on the panel exactly the symbols that fell upwards, and then press the \"Next\" button.</p><p>Once the tools fall, mark on the panel exactly the symbols that fell upwards, and then press the \"View Results\" button.</p><p>When asking a question, you can do it verbally or mentally, as just asking the question in your mind is effective. However, make sure to ask each question in a clean, exact, and respectful manner, being careful not to ask 2 questions in 1. You can ask anything about your past, present, or future, you can ask anything about yourself, any event, or any person. You can request communication with any Spirit from any Era, Culture, or \"density level\", including of course Spirits of family and friends. That and much more. As you get answers, you will see how far you can go with the system and where you cannot.</p><p>Below we show you 3 small examples of Users who ask a question and get an answer. These examples also include small explanatory tips:</p><p><strong>User 1 asks:</strong><br>\"Approximately 5 months and 12 days ago I suspected that my partner had been unfaithful to me. Was it really like that?\"</p><p><strong>The system responds:</strong><br>\"It is best to accept everything for now and continue with the main plan\"</p><p><strong>Tips:</strong><br>There the user can proceed to try to press the system to see if it is capable of obtaining a clear and exact answer. Or you can proceed as the system says, since if it says so, it is with total certainty what suits you best.</p><p><strong>User 2 asks:</strong><br>\"I have 3 business opportunities ahead, is the one Juan proposes the one that suits me best as I think?\"</p><p><strong>The system responds:</strong><br>\"Yes, definitive, unless a case of self-destruction occurs.<br>Our spiritual security system alerts you of a discussion due to material reasons that is approaching\"</p><p><strong>Tips:</strong><br>There the user can proceed to investigate the other 2 business cases, since, although he already knows the positive answer for Juan's case, it is also convenient to know the nature of the other 2 proposals, and thus analyze if he can stay with 1, with 2, or with the 3. It should be noted that here the alert from the spiritual security system indicates a discussion due to material reasons, it is necessary to investigate this indication, it would be convenient to ask something similar to this: \"Did the alert from the spiritual security system that indicates a discussion due to material reasons refer to any of the other 2 business proposals that remain to be investigated?\" If the answer is positive, we know that there is at least one of the other 2 proposals that is negative. If the answer is negative, we would still have pending to investigate where the discussion due to material reasons indicated by the system comes from, and we would have pending to investigate the other 2 business proposals.</p><p><strong>User 3 asks:</strong><br>\"Is it possible to converse directly and without interruption with the Spirit of my daughter?\"</p><p><strong>The system responds:</strong><br>\"Yes, definitive\".</p><p><strong>Tips:</strong><br>In this case the answer is clear, when the system responds like this to this type of questions you can count on the total certainty that the Spiritual Entity with which you wish to contact is already present at the moment. The next question in this case is advised to focus it more on a personal conversation with said Spiritual Entity."
+    
   }
 }

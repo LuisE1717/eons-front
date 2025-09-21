@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Step from "../../shared/components/Step/Step";
 import P from "../../shared/components/P/P";
 import useTranslation from "../../../Shared/hooks/useTranslation";
+
 import "./FirstStep.css";
 
 export default function FirstStep() {
@@ -45,6 +46,7 @@ export default function FirstStep() {
       {/* <P className={visible ? "fade-in" : "fade-out"}>{texts[currentTextIndex]}</P> */}
     <P>{translation.Landing.text5}</P><br/>
     <P>{translation.Landing.text51}</P>
+    
       </div>
     </Step>
   );

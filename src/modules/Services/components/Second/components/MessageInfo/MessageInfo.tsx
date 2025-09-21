@@ -48,7 +48,6 @@ function MessageInfoComponent() {
       <Cost 
         onclick={handleOpenDialogMode}
         name={translation.ServiceMenu.open_dialog_mod}
-        amount="0.49"
         cost={translation.ServiceMenu.per_question}
       />
 
