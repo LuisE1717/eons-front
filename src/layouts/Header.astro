@@ -5,9 +5,71 @@ import SesionMenu from '../components/UI/Dropdown/SesionMenu.astro';
 import Essence from '../components/UI/EssenceCounter.astro';
 
 const { path, notificaciones } = Astro.props
+
+// Importar las traducciones directamente
+import en from '../i18n/en.json';
+import es from '../i18n/es.json';
+
+// Obtener el idioma actual del localStorage o usar 'es' por defecto
+let currentLang = 'en';
+if (typeof window !== 'undefined') {
+  currentLang = localStorage.getItem('language') || 'es';
+}
+
+// Seleccionar las traducciones basado en el idioma
+const translation = currentLang === 'en' ? en.Header : es.Header;
 ---
+
 <nav class="flex justify-between w-full items-center sm:px-8 px-3 py-3">
-	<Logo url="/"/>
+	<div class="flex items-center">
+		<Logo url="/"/>
+		<!-- BOTÓN DIABÓLICO ESPIRITISTA SUPREMO — ahora con PARPADEO BRUTAL por defecto y se calma al hover -->
+		<div 
+			id="notificationButton"
+			class="relative ml-14 mt-3 w-12 h-12 cursor-pointer transition-all duration-300 group hover:scale-110"
+			aria-label="Aviso importante"
+		>
+			<!-- Capa de fondo — gradiente infernal animado -->
+			<div class="absolute inset-0 rounded-full bg-gradient-to-br from-red-900 via-pink-800 to-purple-900 animate-infernal-glow"></div>
+
+			<!-- Capa de distorsión dimensional — ondas que se expanden -->
+			<div class="absolute inset-0 rounded-full animate-distortion-pulse"></div>
+
+			<!-- Capa de brillo interno pulsante -->
+			<div class="absolute inset-1 rounded-full bg-gradient-to-br from-yellow-300 via-red-400 to-orange-500 opacity-70 blur-sm animate-core-pulse"></div>
+
+			<!-- Orbes satélites orbitando con trayectorias espirales -->
+			<div class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-r from-yellow-200 to-red-300 opacity-90 animate-spiral-orb-1 shadow-lg"></div>
+			<div class="absolute -bottom-1 -left-1 w-2.5 h-2.5 rounded-full bg-gradient-to-r from-cyan-300 to-purple-400 opacity-90 animate-spiral-orb-2 shadow-lg"></div>
+			<div class="absolute -top-1 -left-1 w-2 h-2 rounded-full bg-gradient-to-r from-pink-300 to-yellow-400 opacity-90 animate-spiral-orb-3 shadow-lg"></div>
+
+			<!-- Partículas flotantes emergiendo del botón -->
+			<div class="absolute inset-0 overflow-hidden rounded-full">
+				<div class="particle particle-1"></div>
+				<div class="particle particle-2"></div>
+				<div class="particle particle-3"></div>
+				<div class="particle particle-4"></div>
+				<div class="particle particle-5"></div>
+			</div>
+
+			<!-- Icono de exclamación blanco con sombra dimensional — ¡AHORA PARPADEA COMO UNA ALARMA ESPIRITUAL! -->
+			<div class="absolute inset-0 flex items-center justify-center">
+				<svg class="w-7 h-7 text-white drop-shadow-2xl spirit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+					<circle cx="12" cy="12" r="10" fill="none"/>
+					<line x1="12" y1="7" x2="12" y2="12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+					<line x1="12" y1="16" x2="12" y2="16.5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+				</svg>
+			</div>
+
+			<!-- Aura externa cambiante — arcoíris infernal -->
+			<div class="absolute inset-0 rounded-full border-2 border-transparent animate-rainbow-halo"></div>
+
+			<!-- Efecto de explosión al hover (solo visual) -->
+			<div class="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-0 group-hover:opacity-30 animate-ping-slow pointer-events-none"></div>
+			<div class="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-0 group-hover:opacity-20 animate-ping-medium pointer-events-none"></div>
+			<div class="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-10 animate-ping-fast pointer-events-none"></div>
+		</div>
+	</div>
 
 	<div class="flex items-center gap-x-4 ">
 		<div class={`essence ${path=="landing" ? 'hidden' : ''} flex-shrink-0`}>
@@ -26,16 +88,489 @@ const { path, notificaciones } = Astro.props
 	</div>
 </nav>
 
-<style>
-	@media (max-width: 720px) {
+<!-- Modal de notificación: Majestuoso, con transiciones místicas y scrollbar espiritista -->
+<div id="notificationModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-gradient-to-br from-purple-900/60 via-black/40 to-indigo-900/60 backdrop-blur-sm transition-opacity duration-500 ease-out">
+	<div class="relative bg-gradient-to-br from-white via-purple-50 to-indigo-100 rounded-2xl max-w-2xl w-full mx-auto p-8 shadow-2xl border border-purple-200/60 transform transition-all duration-600 scale-90 opacity-0 origin-center animate-modal-entrance"
+		 id="modalContent">
+		<button class="absolute top-4 right-4 text-gray-400 hover:text-purple-600 transition-colors duration-200" id="closeModal" aria-label="Cerrar aviso">
+			<svg class="w-7 h-7 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+			</svg>
+		</button>
 		
-		svg {
-			width: 24;
-			height: 24;
+		<div class="text-center max-h-[65vh] overflow-y-auto pr-2 custom-scrollbar">
+			<h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 mb-6 tracking-tight">
+				{translation?.notification_title || '✨ AVISO TRASCENDENTAL ✨'}
+			</h2>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text1 || 'Usted debe saber que todos nuestros productos y servicios son absolutamente reales y auténticos; no son fantasía, esto es la vida real.'}
+			</p>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text2 || 'Pedimos perdón de corazón a todos los usuarios por nuestra salida de emergencia.'}
+			</p>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text3 || 'Crénnos que no podía pasar un solo segundo más sin que el Mundo tuviera acceso a probar de manera gratuita e ilimitada el infinito alcance y precisión de nuestro sistema.'}
+			</p>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text4 || 'El servicio gratuito Evaluación General ha sido desactivado momentáneamente, ya que no solo se trata de un servicio especial que se utilizará una sola vez en la vida, sino que su verdadera profundidad la humanidad actual no está preparada para recibirla.'}
+			</p>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text5 || 'A cambio hemos decidido activar de gratis momentáneamente nuestro servicio pago más práctico, el modo diálogo abierto. El cual podrá utilizar todas las veces que desee para responder cualquier pregunta de su pasado, de su presente o de su futuro, dialogar con cualquier Entidad Espiritual, e incluso más. Todo en tiempo real.'}
+			</p>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text6 || 'El Mundo entero necesita probar este sistema, el Mundo entero necesita ver que es real, que ya todo cambió de una manera muy bella y positiva para siempre.'}
+			</p>
+			<p class="text-gray-800 leading-relaxed mb-5 text-lg">
+				{translation?.notification_text7 || 'El Mundo entero necesita saber que con la llegada de Eons se ha marcado el inicio de una nueva era:'}
+			</p>
+			<p class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 font-extrabold text-2xl mb-8 animate-pulse">
+				{translation.notification_text8}
+			</p>
+			
+			<!-- Imagen de manos con brillo místico -->
+			<div class="flex justify-center mb-6">
+				<img src="/manos.webp" alt="Manos conectadas con energía espiritual" class="max-w-full h-auto rounded-xl shadow-lg border-2 border-purple-200/50 hover:shadow-purple-300/50 transition-shadow duration-500" />
+			</div>
+
+			<!-- Botón "Entendido" -->
+			<button id="acknowledgeButton" class="mt-6 px-8 py-3 bg-purple-700 hover:bg-purple-800 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+				{translation?.notification_button || 'Entendido'}
+			</button>
+		</div>
+	</div>
+</div>
+
+<style>
+	/* Animaciones del botón DIABÓLICO ESPIRITISTA SUPREMO — MEJORADAS PARA QUE PARPADEE COMO UNA ALARMA DEL INFIERNO */
+
+	/* Gradiente infernal animado — más intenso */
+	@keyframes infernal-glow {
+		0%, 100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	.animate-infernal-glow {
+		background-size: 300% 300%;
+		animation: infernal-glow 2.5s ease-in-out infinite;
+		box-shadow: 0 0 30px rgba(255, 0, 80, 0.8);
+	}
+
+	/* Distorsión dimensional — más agresiva */
+	@keyframes distortion-pulse {
+		0% {
+			box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6), 0 0 0 0 rgba(255, 105, 180, 0.5);
+		}
+		25% {
+			box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.3), 0 0 0 8px rgba(255, 105, 180, 0.2);
+		}
+		50% {
+			box-shadow: 0 0 0 16px rgba(255, 255, 255, 0), 0 0 0 16px rgba(255, 105, 180, 0);
+		}
+		75% {
+			box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.3), 0 0 0 8px rgba(255, 105, 180, 0.2);
+		}
+		100% {
+			box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6), 0 0 0 0 rgba(255, 105, 180, 0.5);
+		}
+	}
+
+	.animate-distortion-pulse {
+		animation: distortion-pulse 1.8s cubic-bezier(0.1, 0.9, 0.9, 0.1) infinite;
+	}
+
+	/* Brillo interno del núcleo — más pulsante */
+	@keyframes core-pulse {
+		0%, 100% {
+			transform: scale(1);
+			opacity: 0.7;
+		}
+		50% {
+			transform: scale(1.2);
+			opacity: 0.9;
+		}
+	}
+
+	.animate-core-pulse {
+		animation: core-pulse 1.2s ease-in-out infinite;
+	}
+
+	/* Órbitas espirales para orbes satélite — más rápidas y brillantes */
+	@keyframes spiral-orb-1 {
+		0% { transform: translate(0, 0) rotate(0deg) translateX(16px) rotate(0deg); opacity: 0.8; }
+		25% { opacity: 1; }
+		50% { transform: translate(0, 0) rotate(180deg) translateX(16px) rotate(-180deg); opacity: 0.8; }
+		75% { opacity: 1; }
+		100% { transform: translate(0, 0) rotate(360deg) translateX(16px) rotate(-360deg); opacity: 0.8; }
+	}
+
+	@keyframes spiral-orb-2 {
+		0% { transform: translate(0, 0) rotate(0deg) translateX(14px) rotate(0deg); opacity: 0.7; }
+		50% { transform: translate(0, 0) rotate(-180deg) translateX(14px) rotate(180deg); opacity: 1; }
+		100% { transform: translate(0, 0) rotate(-360deg) translateX(14px) rotate(360deg); opacity: 0.7; }
+	}
+
+	@keyframes spiral-orb-3 {
+		0% { transform: translate(0, 0) rotate(0deg) translateX(12px) rotate(0deg); opacity: 0.9; }
+		33% { opacity: 1; }
+		66% { opacity: 0.6; }
+		100% { transform: translate(0, 0) rotate(720deg) translateX(12px) rotate(-720deg); opacity: 0.9; }
+	}
+
+	.animate-spiral-orb-1 { animation: spiral-orb-1 3s ease-in-out infinite; }
+	.animate-spiral-orb-2 { animation: spiral-orb-2 2.5s ease-in-out infinite; }
+	.animate-spiral-orb-3 { animation: spiral-orb-3 2s ease-in-out infinite; }
+
+	/* Halo de arcoíris infernal — más rápido y brillante */
+	@keyframes rainbow-halo {
+		0% { box-shadow: 0 0 15px 3px #ff0080; }
+		16% { box-shadow: 0 0 15px 3px #ff8000; }
+		33% { box-shadow: 0 0 15px 3px #ffff00; }
+		50% { box-shadow: 0 0 15px 3px #00ff80; }
+		66% { box-shadow: 0 0 15px 3px #0080ff; }
+		83% { box-shadow: 0 0 15px 3px #8000ff; }
+		100% { box-shadow: 0 0 15px 3px #ff0080; }
+	}
+
+	.animate-rainbow-halo {
+		animation: rainbow-halo 4s linear infinite;
+	}
+
+	/* ✅ PARPADEO ESPIRITISTA BRUTAL — por defecto fuerte, al hover se calma */
+	@keyframes spirit-shimmer-strong {
+		0%, 100% {
+			filter: drop-shadow(0 0 12px white) drop-shadow(0 0 24px gold);
+			transform: scale(1);
+		}
+		50% {
+			filter: drop-shadow(0 0 24px yellow) drop-shadow(0 0 48px gold) drop-shadow(0 0 60px orange);
+			transform: scale(1.1);
+		}
+	}
+
+	@keyframes spirit-shimmer-soft {
+		0%, 100% {
+			filter: drop-shadow(0 0 6px white);
+			transform: scale(1);
+		}
+		50% {
+			filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 16px gold);
+			transform: scale(1.03);
+		}
+	}
+
+	.spirit-icon {
+		animation: spirit-shimmer-strong 1.5s ease-in-out infinite;
+		transition: all 0.3s cubic-bezier(0.1, 0.9, 0.9, 0.1);
+	}
+
+	/* Efectos de explosión al hover — más dramáticos */
+	@keyframes ping-slow { 0% { transform: scale(1); opacity: 0.4; } 70%, 100% { transform: scale(3); opacity: 0; } }
+	@keyframes ping-medium { 0% { transform: scale(1); opacity: 0.3; } 60%, 100% { transform: scale(2.5); opacity: 0; } }
+	@keyframes ping-fast { 0% { transform: scale(1); opacity: 0.2; } 50%, 100% { transform: scale(2); opacity: 0; } }
+
+	.animate-ping-slow { animation: ping-slow 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+	.animate-ping-medium { animation: ping-medium 1.2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+	.animate-ping-fast { animation: ping-fast 0.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+	/* Partículas flotantes — más frecuentes y brillantes */
+	.particle {
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: white;
+		pointer-events: none;
+		opacity: 0;
+	}
+
+	.particle-1 {
+		animation: particle-rise 2s ease-in infinite;
+		left: 50%;
+		top: 50%;
+		background: #ffdd00;
+	}
+
+	.particle-2 {
+		animation: particle-rise 1.8s ease-in 0.3s infinite;
+		left: 40%;
+		top: 60%;
+		background: #ff55dd;
+	}
+
+	.particle-3 {
+		animation: particle-rise 2.5s ease-in 0.6s infinite;
+		left: 60%;
+		top: 40%;
+		background: #00ddff;
+	}
+
+	.particle-4 {
+		animation: particle-rise 2.2s ease-in 0.1s infinite;
+		left: 30%;
+		top: 70%;
+		background: #ffaa00;
+	}
+
+	.particle-5 {
+		animation: particle-rise 3s ease-in 0.9s infinite;
+		left: 70%;
+		top: 30%;
+		background: #dd33ff;
+	}
+
+	@keyframes particle-rise {
+		0% {
+			transform: translate(0, 0) rotate(0deg);
+			opacity: 1;
+		}
+		100% {
+			transform: translate(var(--tx, 25px), var(--ty, -50px)) rotate(var(--r, 360deg));
+			opacity: 0;
+		}
+	}
+
+	.particle-1 { --tx: 20px; --ty: -45px; --r: 180deg; }
+	.particle-2 { --tx: -25px; --ty: -60px; --r: -90deg; }
+	.particle-3 { --tx: 30px; --ty: -55px; --r: 270deg; }
+	.particle-4 { --tx: -15px; --ty: -40px; --r: 90deg; }
+	.particle-5 { --tx: 35px; --ty: -70px; --r: 360deg; }
+
+	/* Transición majestuosa del modal: zoom con rebote místico */
+	@keyframes modal-entrance {
+		0% {
+			opacity: 0;
+			transform: scale(0.8) rotate(-2deg);
+		}
+		50% {
+			opacity: 0.8;
+			transform: scale(1.05) rotate(1deg);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1) rotate(0deg);
+		}
+	}
+
+	.animate-modal-entrance {
+		animation: modal-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	}
+
+	/* Scrollbar ESPIRITISTA y SORPRENDENTE */
+	.custom-scrollbar::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background: linear-gradient(to bottom, #f3e8ff, #e0c0ff);
+		border-radius: 10px;
+		box-shadow: inset 0 0 8px rgba(100, 50, 150, 0.3);
+	}
+
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background: linear-gradient(to bottom, #9333ea, #7c3aed, #6d28d9);
+		border-radius: 10px;
+		border: 3px solid transparent;
+		background-clip: content-box;
+		box-shadow: 0 0 12px rgba(147, 51, 234, 0.6), inset 0 0 6px rgba(255, 255, 255, 0.3);
+		transition: all 0.3s ease;
+	}
+
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background: linear-gradient(to bottom, #a855f7, #8b5cf6, #7c3aed);
+		box-shadow: 0 0 20px rgba(168, 85, 247, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.5);
+		transform: scale(1.05);
+	}
+
+	/* Estilo responsivo para móviles */
+	@media (max-width: 720px) {
+		#notificationButton {
+			width: 10rem;
+			height: 10rem;
+		}
+		#notificationButton svg {
+			width: 5rem;
+			height: 5rem;
+		}
+		#modalContent {
+			padding: 1.5rem;
+			margin: 1rem;
+		}
+		h2 {
+			font-size: 1.8rem;
 		}
 	}
 
 	img {
 		padding: 0.5em 1em;
+		border-radius: 12px;
+		transition: transform 0.3s ease;
+	}
+
+	img:hover {
+		transform: translateY(-4px);
+	}
+
+	#modalContent {
+		transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-out;
+		max-height: 80vh;
+		overflow-y: auto;
+		scrollbar-width: thin;
+		scrollbar-color: #8b5cf6 #f3e8ff;
 	}
 </style>
+
+<script>
+	// Script para manejar la apertura y cierre del modal con efectos místicos
+	document.addEventListener('DOMContentLoaded', () => {
+		const notificationButton = document.getElementById('notificationButton');
+		const modal = document.getElementById('notificationModal');
+		const modalContent = document.getElementById('modalContent');
+		const closeButton = document.getElementById('closeModal');
+		const acknowledgeButton = document.getElementById('acknowledgeButton');
+		
+		// Función para obtener el idioma actual
+		function getCurrentLanguage() {
+			return localStorage.getItem('language') || 'es';
+		}
+		
+		// Función para actualizar las traducciones dinámicamente
+		function updateTranslations() {
+			const lang = getCurrentLanguage();
+			fetch(`/i18n/${lang}.json`)
+				.then(response => response.json())
+				.then(translations => {
+					const headerTranslations = translations.Header;
+					if (headerTranslations) {
+						// Actualizar todos los textos del modal
+						const titleElement = modalContent.querySelector('h2');
+						const buttonElement = modalContent.querySelector('#acknowledgeButton');
+						const textElements = modalContent.querySelectorAll('p.text-gray-800');
+						
+						if (titleElement && headerTranslations.notification_title) {
+							titleElement.textContent = headerTranslations.notification_title;
+						}
+						
+						if (buttonElement && headerTranslations.notification_button) {
+							buttonElement.textContent = headerTranslations.notification_button;
+						}
+						
+						// Actualizar los párrafos de texto
+						if (textElements.length >= 7 && headerTranslations.notification_text1) {
+							textElements[0].textContent = headerTranslations.notification_text1;
+							textElements[1].textContent = headerTranslations.notification_text2;
+							textElements[2].textContent = headerTranslations.notification_text3;
+							textElements[3].textContent = headerTranslations.notification_text4;
+							textElements[4].textContent = headerTranslations.notification_text5;
+							textElements[5].textContent = headerTranslations.notification_text6;
+							textElements[6].textContent = headerTranslations.notification_text7;
+						}
+						
+						// Actualizar el último párrafo especial
+						const specialTextElement = modalContent.querySelector('p.text-transparent');
+						if (specialTextElement && headerTranslations.notification_text8) {
+							specialTextElement.textContent = headerTranslations.notification_text8;
+						}
+					}
+				})
+				.catch(error => {
+					console.error('Error loading translations:', error);
+				});
+		}
+		
+		// Función para abrir el modal con animación majestuosa
+		function openModal() {
+			modal.classList.remove('hidden');
+			document.body.style.overflow = 'hidden'; // Previene el scroll del body
+			
+			// Actualizar traducciones antes de mostrar el modal
+			updateTranslations();
+			
+			// Añadimos clase de animación de entrada
+			setTimeout(() => {
+				modalContent.classList.remove('scale-90', 'opacity-0');
+				modalContent.classList.add('animate-modal-entrance');
+			}, 50);
+		}
+		
+		// Función para cerrar el modal con animación de salida mística
+		function closeModal() {
+			modalContent.classList.remove('animate-modal-entrance');
+			modalContent.style.animation = 'none';
+			modalContent.offsetHeight; // Trigger reflow
+			modalContent.style.animation = null;
+			
+			// Aplicamos animación de salida
+			modalContent.classList.add('scale-90', 'opacity-0');
+			
+			setTimeout(() => {
+				modal.classList.add('hidden');
+				document.body.style.overflow = 'auto';
+			}, 600); // Sincronizado con la duración de la transición
+		}
+		
+		// Abrir modal al hacer clic en el botón
+		if (notificationButton) {
+			notificationButton.addEventListener('click', openModal);
+		}
+		
+		// Cerrar al hacer clic en el botón de cerrar
+		if (closeButton) {
+			closeButton.addEventListener('click', closeModal);
+		}
+		
+		// Cerrar al hacer clic en "Entendido"
+		if (acknowledgeButton) {
+			acknowledgeButton.addEventListener('click', closeModal);
+		}
+		
+		// Cerrar al hacer clic fuera del contenido del modal
+		if (modal) {
+			modal.addEventListener('click', (e) => {
+				if (e.target === modal) {
+					closeModal();
+				}
+			});
+		}
+		
+		// Cerrar con la tecla Escape
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+				closeModal();
+			}
+		});
+		
+		// Escuchar cambios en el idioma
+		window.addEventListener('languageChanged', updateTranslations);
+
+		// ✅✅✅ LÓGICA DEFINITIVA DEL PARPADEO ESPIRITISTA BRUTAL:
+		// Por defecto → animación FUERTE (spirit-shimmer-strong)
+		// Al hover → cambia a animación SUAVE (spirit-shimmer-soft)
+		// Al salir → vuelve a la animación FUERTE
+		if (notificationButton) {
+			const icon = notificationButton.querySelector('.spirit-icon');
+
+			// Función para aplicar animación fuerte
+			function setStrongPulse() {
+				icon.style.animation = 'spirit-shimmer-strong 1.5s ease-in-out infinite';
+			}
+
+			// Función para aplicar animación suave
+			function setSoftPulse() {
+				icon.style.animation = 'spirit-shimmer-soft 1.5s ease-in-out infinite';
+			}
+
+			// Iniciar con parpadeo FUERTE
+			setStrongPulse();
+
+			// Al pasar el mouse → parpadeo SUAVE
+			notificationButton.addEventListener('mouseenter', setSoftPulse);
+
+			// Al salir el mouse → parpadeo FUERTE otra vez
+			notificationButton.addEventListener('mouseleave', setStrongPulse);
+		}
+	});
+</script>
