@@ -1687,3 +1687,29 @@ button:focus {
     transform: scale(1);
   }
 }
+
+
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3), 
+                0 0 12px rgba(130, 210, 255, 0.25),
+                inset 0 0 4px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 
+                0 0 20px rgba(130, 230, 255, 0.4),
+                inset 0 0 6px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.shadow-glow {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3), 
+              0 0 12px rgba(130, 210, 255, 0.25);
+}
+
+/* Pequeña rotación sutil para dar dinamismo al hover */
+.hover\\:rotate-0\\.5:hover {
+  --tw-rotate: 0.5deg;
+  transform: rotate(var(--tw-rotate)) scale(var(--tw-scale-x), var(--tw-scale-y));
+}
