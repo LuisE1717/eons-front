@@ -21,6 +21,7 @@ export interface EvaluationResponse {
   error?: any;
 }
 
+// Función ORIGINAL que ya existía
 export async function postSaveEvaluation(token: string, data: EvaluationData): Promise<EvaluationResponse> {
   try {
     console.log('🔐 Token usado:', token ? token.substring(0, 20) + '...' : 'No token');
@@ -55,6 +56,40 @@ export async function postSaveEvaluation(token: string, data: EvaluationData): P
   }
 }
 
+// NUEVA FUNCIÓN AÑADIDA - que es la que falta y causa el error
+export async function postMesagges(token: string, data: any): Promise<EvaluationResponse> {
+  try {
+    console.log('🔐 Token usado para mensajes:', token ? token.substring(0, 20) + '...' : 'No token');
+    console.log('📤 Enviando mensaje a endpoint:', 'lanzamientos/mensajes');
+    console.log('📊 Datos del mensaje:', JSON.stringify(data, null, 2));
+    
+    const response = await axiosI(token).post('lanzamientos/mensajes', data);
+    console.log('✅ Respuesta del servidor para mensajes:', response.status, response.data);
+    
+    return {
+      data: response.data,
+      success: true,
+    };
+  } catch (error: any) {
+    console.error('❌ Error en postMesagges:', error);
+    
+    if (error.response) {
+      console.error('📋 Response error:', error.response.status, error.response.data);
+    } else if (error.request) {
+      console.error('🌐 Request error:', error.request);
+    } else {
+      console.error('💬 Error message:', error.message);
+    }
+    
+    return {
+      data: null,
+      success: false,
+      error: error.response?.data || error.message,
+    };
+  }
+}
+
+// Función ORIGINAL que ya existía
 export async function getUltimaConsulta(token: string): Promise<EvaluationResponse> {
   try {
     const response = await axiosI(token).get(`lanzamientos/ultima`);
@@ -74,6 +109,7 @@ export async function getUltimaConsulta(token: string): Promise<EvaluationRespon
   }
 }
 
+// Función ORIGINAL que ya existía
 export async function getResultadoPorId(token: string, id: string): Promise<EvaluationResponse> {
   try {
     const response = await axiosI(token).get(`lanzamientos/resultado/${id}`);
