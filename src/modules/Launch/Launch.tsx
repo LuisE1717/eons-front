@@ -401,7 +401,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
-            <img src="/brain.png" alt="Brain" className="info-modal-brain" />
+            
             <div className="info-modal-content" dangerouslySetInnerHTML={{ __html: translation.Launch.info_modal_content || '' }}></div>
           </div>
         </div>
@@ -416,6 +416,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         </div>
 
         {/* Círculo verde brillante en el centro (solo visible antes de comenzar) */}
+        
         {currentStep === 0 && (
           <div className="green-glow-circle" onClick={openInfoModal}></div>
         )}
@@ -639,7 +640,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           padding: 20px;
         }
         .info-modal {
-          background: linear-gradient(135deg, #ffffff, #8B5CF6, #ffffff);
+          background: linear-gradient(135deg, #ffffff, #80db8dff, #ffffff);
           border-radius: 20px;
           padding: 2rem;
           max-width: 800px;
@@ -668,13 +669,14 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           border: none;
           font-size: 24px;
           cursor: pointer;
-          color: #4C1D95;
+          color: #1e1e1fff;
           padding: 5px;
           border-radius: 50%;
           transition: background-color 0.3s;
         }
         .info-modal-close:hover {
           background-color: rgba(76, 29, 149, 0.1);
+          color: white;
         }
         .info-modal-content {
           margin-top: 20px;
@@ -684,7 +686,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           font-size: 1rem;
         }
         .info-modal-content h3 {
-          color: #4C1D95;
+          color: #1b1b1cff;
           margin-bottom: 1rem;
           font-size: 1.3rem;
         }
@@ -692,7 +694,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           margin-bottom: 1rem;
         }
         .info-modal-content strong {
-          color: #4C1D95;
+          color: #0e0d0fff;
         }
 
         /* Estilos para el botón Comenzar */
