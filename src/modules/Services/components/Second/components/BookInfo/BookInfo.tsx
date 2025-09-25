@@ -5,9 +5,14 @@ import Line from "../../../../shared/components/Line/Line";
 import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
 import { motion } from "framer-motion";
+import { showToast } from "@components/UI/Toast";
 
 function BookInfoComponent({ first_time }) {
   const { translation } = useTranslation();
+
+  const showComingSoon = () => {
+    showToast("Esta sección estará disponible en próximas actualizaciones", "info");
+  };
 
   return (
     <Info>
@@ -24,7 +29,7 @@ function BookInfoComponent({ first_time }) {
       </A>
       <Line />
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.thinks_to_know}.
           <div>
             (<Span>{translation.next}</Span>)
@@ -32,7 +37,7 @@ function BookInfoComponent({ first_time }) {
         </div>
       </A>
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.cautions}.
           <div>
             (<Span>{translation.next}</Span>)
@@ -41,7 +46,7 @@ function BookInfoComponent({ first_time }) {
       </A>
       <Line />
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.security}.
           <div>
             (<Span>{translation.next}</Span>)
@@ -50,16 +55,13 @@ function BookInfoComponent({ first_time }) {
       </A>
       <Line />
       <A>
-        <div>
-          {translation.ServiceMenu.examples}.
-          <div>
-            (<Span>{translation.next}</Span>)
-          </div>
+        <div onClick={() => window.location.href = `/services-examples`}>
+          {translation.ServiceMenu.examples}
         </div>
       </A>
       <Line />
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.demostration}.
           <div>
             (<Span>{translation.next}</Span>)
@@ -68,7 +70,7 @@ function BookInfoComponent({ first_time }) {
       </A>
       <Line />
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.glosary}.
           <div>
             (<Span>{translation.next}</Span>)

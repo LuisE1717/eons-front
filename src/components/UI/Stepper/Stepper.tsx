@@ -33,7 +33,7 @@ const Stepper: React.FC<StepperProps> = ({
           size="sm"
           className="spiritual-button bg-white text-purple-700 hover:bg-gray-100 transition-colors text-sm py-3 spiritual-glow wave-effect"
         >
-          {currentStep === totalSteps ? "Ver Resultados" : "Siguiente"}
+          Siguiente
         </Button>
       </div>
     </div>
