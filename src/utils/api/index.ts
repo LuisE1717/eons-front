@@ -1,4 +1,4 @@
-// utils/api/index.ts - ACTUALIZADO
+// utils/api/index.ts - ACTUALIZADO PARA PRODUCCIÓN
 import axios, {
   type AxiosInstance,
   type InternalAxiosRequestConfig,
@@ -7,8 +7,12 @@ import configEnv from "../../../.env_config";
 import Cookies from "js-cookie";
 import { validMail } from "../validations";
 
+// Configuración dinámica según el entorno
+const isDevelopment = process.env.ENV === "local";
+const API_BASE_URL = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
+
 export const intanceAxios: AxiosInstance = axios.create({
-  baseURL: configEnv?.api,
+  baseURL: API_BASE_URL,
 });
 
 // Función para verificar si estamos en el cliente (navegador)
@@ -16,7 +20,7 @@ const isClient = () => typeof window !== 'undefined';
 
 export function axiosI(apiToken: string | undefined) {
   const intance = axios.create({
-    baseURL: configEnv?.api,
+    baseURL: API_BASE_URL,
     timeout: 30000, // Aumentar timeout a 30 segundos
   });
 
@@ -64,7 +68,7 @@ export function axiosI(apiToken: string | undefined) {
             const refreshToken = Cookies.get("eons_refresh_token");
             if (refreshToken) {
               const refreshResponse = await axios.post(
-                `${configEnv?.api}/auth/login`,
+                `${API_BASE_URL}/auth/login`,
                 {},
                 {
                   headers: {
@@ -94,7 +98,8 @@ export function axiosI(apiToken: string | undefined) {
         } else if (error.response.status === 403) {
           console.log('🔒 Acceso denegado, verificando email...');
           if (validMail(Cookies.get("eons_user"))) {
-            window.location.href = `/email-verification/${Cookies.get("eons_user") || ""}`;
+            const frontendUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+            window.location.href = `${frontendUrl}/email-verification/${Cookies.get("eons_user") || ""}`;
           }
         }
       }
