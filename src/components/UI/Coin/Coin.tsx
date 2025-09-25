@@ -19,7 +19,7 @@ const Coin: React.FC<CoinProps>  = ({
   return (
     <div className={`coin relative cursor-pointer ${isConfirmed ? 'confirmed' : ''}`} onClick={onFlip}>
       <div className={`face ${isFaceUp ? 'face-up' : 'face-down'} ${isConfirmed ? 'gold-glow' : ''}`}>
-          <MoneyCircle className="money-circle" isOuterCircleFilled={isFaceUp || isConfirmed} coin={coin} isConfirmed={isConfirmed} />
+          <MoneyCircle className="money-circle" isOuterCircleFilled={isFaceUp || isConfirmed} coin={coin} isConfirmed={isConfirmed} isFaceUp={isFaceUp} />
       </div>
       {/* Efecto de brillo místico */}
       <div className="absolute inset-0 flex items-center justify-center">

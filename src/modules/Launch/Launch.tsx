@@ -1,4 +1,4 @@
-// Launch.tsx - ACTUALIZADO con sistema de traducción y Modal de Información
+// Launch.tsx - ACTUALIZADO con botón de traducción manual al inglés
 import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
@@ -19,6 +19,30 @@ interface LaunchProps {
   type: string;
 }
 
+// Función para traducir texto de español a inglés usando un proxy público (solo para demo)
+const translateToEnglish = async (text: string): Promise<string> => {
+  if (!text || text.trim() === '') return text;
+
+  try {
+    // ⚠️ ADVERTENCIA: Este proxy es público y no recomendado para producción.
+    // En producción, usa tu propio backend con la API de Google Translate o similar.
+    const proxyUrl = 'https://api.corsproxy.io/  ';
+    const targetUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=es&tl=en&dt=t&q=${encodeURIComponent(text)}`;
+
+    const response = await fetch(proxyUrl + targetUrl);
+    if (!response.ok) throw new Error('Translation service unavailable');
+
+    const data = await response.json();
+    if (data && Array.isArray(data[0])) {
+      return data[0].map((item: any) => item[0]).join(' ');
+    }
+    return text;
+  } catch (error) {
+    console.warn('⚠️ Falló la traducción. Mostrando texto original.', error);
+    return text;
+  }
+};
+
 const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const { translation } = useTranslation();
   const [coinPositions, setCoinPositions] = useState<CoinState[]>([]);
@@ -28,13 +52,17 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const [currentToken, setCurrentToken] = useState(token);
   const [showWritingEffect, setShowWritingEffect] = useState(false);
   const [resultText, setResultText] = useState('');
+  const [originalResultText, setOriginalResultText] = useState(''); // Guardamos el original en español
   const [showButtons, setShowButtons] = useState(false);
   const [isHoveringRetry, setIsHoveringRetry] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [isStarting, setIsStarting] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false); // Nuevo estado para controlar si se está traduciendo
 
   // Nuevo estado para controlar la visibilidad del modal de información
   const [showInfoModal, setShowInfoModal] = useState(false);
+  // Estado para controlar la animación de cierre del modal
+  const [isClosingInfoModal, setIsClosingInfoModal] = useState(false);
 
   // Verificar y actualizar el token si es necesario
   useEffect(() => {
@@ -64,7 +92,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   }, [type]);
 
   const handleCoinFlip = (index: number) => {
-    if (currentStep === 0) return; // No permitir cambios antes de comenzar
+    // ✅ REMOVIDO: if (currentStep === 0) return; → Ahora se permite voltear antes de comenzar
     if (coinPositions[index].isConfirmed) return; // No permitir cambios después de confirmar
     setCoinPositions((prev) =>
       prev.map((coin, i) =>
@@ -186,6 +214,8 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         console.log('📝 Resultado final extraído:', resultadoFinal);
         if (resultadoFinal && resultadoFinal.length > 0) {
           console.log('✅ Procesamiento exitoso, mostrando efecto de escritura...');
+          // Guardar el resultado original en español
+          setOriginalResultText(resultadoFinal);
           // Limpiar texto de carga
           setResultText('');
           // Efecto de escritura gradual del resultado
@@ -226,11 +256,23 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     }
   };
 
+  // Función para traducir el resultado al inglés al hacer clic en el ícono
+  const handleTranslateToEnglish = async () => {
+    if (isTranslating) return;
+    setIsTranslating(true);
+    setResultText('Translating results...');
+    const translated = await translateToEnglish(originalResultText);
+    setResultText(translated);
+    setIsTranslating(false);
+  };
+
   const handleRetry = () => {
     // Reiniciar todo el estado para un nuevo lanzamiento
     setShowWritingEffect(false);
     setShowButtons(false);
     setResultText('');
+    setOriginalResultText('');
+    setIsTranslating(false);
     setCurrentStep(0);
     setEvaluationHistory([]);
     // Reiniciar monedas (con caras blancas por defecto)
@@ -262,16 +304,60 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   // Funciones para el nuevo Modal de Información
   const openInfoModal = () => {
     setShowInfoModal(true);
+    setIsClosingInfoModal(false);
   };
 
   const closeInfoModal = () => {
-    setShowInfoModal(false);
+    // Iniciar animación de cierre
+    setIsClosingInfoModal(true);
+    // Esperar a que termine la animación antes de ocultar el modal
+    setTimeout(() => {
+      setShowInfoModal(false);
+      setIsClosingInfoModal(false);
+    }, 300); // Duración de la animación de cierre
+  };
+
+  // Generar contenido dinámico para el modal según el paso actual usando traducciones
+  const getInfoModalContent = () => {
+    let stepInstructions = '';
+    
+    if (currentStep === 0) {
+      stepInstructions = translation.Launch.info_modal_step0_instructions || 'Una vez las herramientas caigan, marque en el panel exactamente los símbolos que cayeron hacia arriba, y luego presione el botón "Comenzar"';
+    } else if (currentStep > 0 && currentStep < steps) {
+      stepInstructions = translation.Launch.info_modal_step1_instructions || 'Una vez las herramientas caigan, marque en el panel exactamente los símbolos que cayeron hacia arriba, y luego presione el botón "Siguiente"';
+    } else if (currentStep === steps) {
+      stepInstructions = translation.Launch.info_modal_final_instructions || 'Una vez las herramientas caigan, marque en el panel exactamente los símbolos que cayeron hacia arriba, y luego presione el botón "Siguiente"';
+    }
+
+    return (
+      <div className="info-modal-content">
+        <img src="/informacion 3.webp" alt="Información" className="info-modal-image" />
+        
+        {currentStep === 0 ? (
+          <p>{translation.Launch.info_modal_general_instructions_with_question || 'Tome las herramientas, realice su pregunta, bata las herramientas entre sus manos y luego láncelas para que estas caigan supuestamente al azar.'}</p>
+        ) : (
+          <p>{translation.Launch.info_modal_general_instructions || 'Tome las herramientas, bátalas entre sus manos y luego láncelas para que estas caigan supuestamente al azar.'}</p>
+        )}
+        
+        <p>{stepInstructions}</p>
+      </div>
+    );
   };
 
   // Si estamos mostrando el efecto de escritura, ocultar todos los elementos excepto el texto
   if (showWritingEffect) {
     return (
       <Frame>
+        {/* ✅ Botón de ir atrás en modo escritura: mismo diseño, color blanco, redirige directamente a /services */}
+        <div className="back-button-container-writing" onClick={() => window.location.href = '/services'}>
+          <div className="back-button-bg"></div>
+          <button className="back-button-writing">
+            <svg className="back-arrow-writing" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        </div>
+
         <div className="writing-effect-container text-center">
           <div className="arcane-writing-background">
             <div className="writing-orb writing-orb-1"></div>
@@ -279,6 +365,19 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             <div className="writing-orb writing-orb-3"></div>
           </div>
           <div className="writing-text-container">
+            {/* Ícono de traducción (solo visible cuando el resultado ya terminó de escribirse y no se está traduciendo) */}
+            {showButtons && !isTranslating && (
+              <button
+                className="translate-button"
+                onClick={handleTranslateToEnglish}
+                title="Translate to English"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </button>
+            )}
             <p className="writing-text">{resultText}</p>
             {isLoading && (
               <div className="loading-spinner">
@@ -358,6 +457,62 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
           }
+
+          /* Estilos para el botón de ir atrás en modo escritura */
+          .back-button-container-writing {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 100;
+          }
+          .back-button-writing {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 101;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+          }
+          .back-button-writing:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+          .back-arrow-writing {
+            width: 24px;
+            height: 24px;
+            color: #ffffff; /* ✅ Color blanco */
+          }
+
+          /* Estilo para el botón de traducción */
+          .translate-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.2s;
+          }
+          .translate-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+          }
+          .translate-button svg {
+            color: white;
+            width: 20px;
+            height: 20px;
+          }
         `}</style>
       </Frame>
     );
@@ -380,7 +535,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         <div className="exit-modal-overlay">
           <div className="exit-modal">
             <div className="exit-modal-content">
-              <img src="/informacion 3.webp" alt="Información" className="exit-modal-image" />
+              <img src="/moon.webp" alt="Información" className="exit-modal-image" />
               <h3>{translation.Launch.exit_confirm_title || '¿Estás seguro?'}</h3>
               <p>{translation.Launch.exit_confirm_message || 'Si sales ahora, perderás todos los lanzamientos realizados.'}</p>
               <div className="exit-modal-buttons">
@@ -394,15 +549,15 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
       {/* Modal de Información para el botón verde */}
       {showInfoModal && (
-        <div className="info-modal-overlay" onClick={closeInfoModal}>
-          <div className="info-modal" onClick={(e) => e.stopPropagation()}>
+        <div className={`info-modal-overlay ${isClosingInfoModal ? 'closing' : ''}`} onClick={closeInfoModal}>
+          <div className={`info-modal ${isClosingInfoModal ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
             <button className="info-modal-close" onClick={closeInfoModal}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
             
-            <div className="info-modal-content" dangerouslySetInnerHTML={{ __html: translation.Launch.info_modal_content || '' }}></div>
+            {getInfoModalContent()}
           </div>
         </div>
       )}
@@ -415,19 +570,15 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           <div className="arcane-orb arcane-orb-4"></div>
         </div>
 
-        {/* Círculo verde brillante en el centro (solo visible antes de comenzar) */}
+        {/* Círculo que cambia de color según el estado del modal */}
+        <div 
+          className={`glow-circle ${showInfoModal ? 'red-glow-circle' : 'green-glow-circle'}`} 
+          onClick={openInfoModal}
+        ></div>
         
-        {currentStep === 0 && (
-          <div className="green-glow-circle" onClick={openInfoModal}></div>
-        )}
+        
 
-        <h5 className='mb-2 text-white text-xl font-bold arcane-title'>
-          {type === 'dialogo-abierto' 
-            ? translation.Launch.open_dialog_title || 'Modo Diálogo Abierto - Coloca las monedas como cayeron'
-            : translation.Launch.how_coins_fell || '¿Cómo cayeron tus monedas?'}
-        </h5>
-
-        <div className="coin-container flex justify-center gap-8 mb-8 arcane-coin-area">
+        <div className="coin-container flex justify-center gap-8 mt-24 arcane-coin-area">
           {coinPositions.map((coin, index) => (
             <div key={index} className="flex flex-col items-center arcane-coin-wrapper" data-index={index}>
               <Coin
@@ -437,9 +588,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
                 isConfirmed={coin.isConfirmed}
                 onFlip={() => handleCoinFlip(index)}
               />
-              <span className='mt-2 text-white arcane-coin-label'>
-                {translation.Launch.coin || 'Moneda'} {index + 1}
-              </span>
+              
             </div>
           ))}
         </div>
@@ -519,22 +668,50 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           color: #f8f5fbff;
         }
 
-        /* Estilos para el círculo verde brillante */
-        .green-glow-circle {
+        /* Estilos base para el círculo brillante */
+        .glow-circle {
           position: absolute;
-          top: -23%;
+          top: -17%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 20px;
           height: 20px;
           border-radius: 50%;
+          z-index: 5;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+        }
+
+        /* Círculo verde brillante (estado normal) */
+        .green-glow-circle {
           background: radial-gradient(circle, #00ff00, #00cc00);
           box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
-          z-index: 5;
           animation: pulse-green 2s infinite;
-          cursor: pointer; /* Hace que el cursor cambie al pasar sobre el círculo */
         }
+
+        /* Círculo rojo brillante (cuando el modal está abierto) */
+        .red-glow-circle {
+          background: radial-gradient(circle, #ff0000, #cc0000);
+          box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+          animation: pulse-red 2s infinite;
+        }
+
         @keyframes pulse-green {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.8;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.8;
+          }
+        }
+
+        @keyframes pulse-red {
           0% {
             transform: translate(-50%, -50%) scale(1);
             opacity: 0.8;
@@ -556,22 +733,27 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: rgba(255, 255, 255, 0.15); /* CAMBIADO: fondo claro en lugar de oscuro */
           display: flex;
           justify-content: center;
           align-items: center;
           z-index: 1000;
+          backdrop-filter: blur(5px); /* AÑADIDO: efecto de desenfoque */
+          animation: modalFadeIn 0.3s ease-out;
         }
+
         .exit-modal {
-          background: linear-gradient(135deg, #ffffff, #8B5CF6);
+          background: linear-gradient(135deg, #ffffff, #b89ef4ff); /* CAMBIADO: fondo más claro */
           border-radius: 20px;
           padding: 2rem;
           max-width: 400px;
           width: 90%;
           text-align: center;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-          animation: modal-appear 0.3s ease-out;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* REDUCIDO: sombra más suave */
+          animation: modalSlideIn 0.3s ease-out;
+          border: 1px solid rgba(139, 92, 246, 0.2); /* AÑADIDO: borde sutil */
         }
+
         @keyframes modal-appear {
           from {
             opacity: 0;
@@ -582,14 +764,17 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             transform: scale(1) translateY(0);
           }
         }
+
         .exit-modal-content h3 {
           color: #4C1D95;
           margin-bottom: 1rem;
         }
+
         .exit-modal-content p {
-          color: #333;
+          color: #2d2d2d; /* CAMBIADO: texto más oscuro para mejor contraste */
           margin-bottom: 2rem;
         }
+
         .exit-modal-image {
           width: 80px;
           height: 80px;
@@ -597,11 +782,13 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           border-radius: 50%;
           object-fit: cover;
         }
+
         .exit-modal-buttons {
           display: flex;
           justify-content: center;
           gap: 1rem;
         }
+
         .exit-modal-confirm, .exit-modal-cancel {
           padding: 0.8rem 1.5rem;
           border: none;
@@ -610,91 +797,164 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           cursor: pointer;
           transition: all 0.3s;
         }
+
         .exit-modal-confirm {
           background-color: #ff4d4d;
           color: white;
         }
+
         .exit-modal-confirm:hover {
           background-color: #ff3333;
         }
+
         .exit-modal-cancel {
           background-color: #8B5CF6;
           color: white;
         }
+
         .exit-modal-cancel:hover {
           background-color: #7C3AED;
         }
 
-        /* Estilos para el nuevo Modal de Información */
+        /* Estilos para el nuevo Modal de Información con animaciones de cierre */
         .info-modal-overlay {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(0, 0, 0, 0.8);
+          background-color: rgba(255, 255, 255, 0.15); /* CAMBIADO: fondo claro en lugar de oscuro */
           display: flex;
           justify-content: center;
           align-items: center;
           z-index: 2000;
           padding: 20px;
+          backdrop-filter: blur(5px); /* AÑADIDO: efecto de desenfoque */
+          animation: modalFadeIn 0.3s ease-out;
         }
+
+        .info-modal-overlay.closing {
+          animation: modalFadeOut 0.3s ease-in forwards;
+        }
+
         .info-modal {
-          background: linear-gradient(135deg, #ffffff, #80db8dff, #ffffff);
+          background: linear-gradient(135deg, #ffffff, #d03bf1ff); /* CAMBIADO: fondo más claro */
           border-radius: 20px;
           padding: 2rem;
-          max-width: 800px;
+          max-width: 450px;
           width: 100%;
-          max-height: 80vh;
+          max-height: 90vh;
           overflow-y: auto;
           position: relative;
-          box-shadow: 0 10px 50px rgba(139, 92, 246, 0.5);
-          animation: modal-appear 0.3s ease-out;
+          box-shadow: 0 10px 50px rgba(139, 92, 246, 0.3); /* REDUCIDO: sombra más suave */
+          animation: modalSlideIn 0.3s ease-out;
+          border: 1px solid rgba(139, 92, 246, 0.2); /* AÑADIDO: borde sutil */
         }
-        .info-modal-brain {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          width: 80px;
-          height: 80px;
+
+        .info-modal.closing {
+          animation: modalSlideOut 0.3s ease-in forwards;
+        }
+
+        @keyframes modalFadeIn {
+          from {
+            background-color: rgba(255, 255, 255, 0);
+          }
+          to {
+            background-color: rgba(255, 255, 255, 0.15);
+          }
+        }
+
+        @keyframes modalFadeOut {
+          from {
+            background-color: rgba(255, 255, 255, 0.15);
+          }
+          to {
+            background-color: rgba(255, 255, 255, 0);
+          }
+        }
+
+        @keyframes modalSlideIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9) translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        @keyframes modalSlideOut {
+          from {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+          }
+        }
+
+        .info-modal-image {
+          width: 100px;
+          height: 100px;
+          margin: 0 auto 1rem;
           border-radius: 50%;
           object-fit: cover;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          display: block;
         }
+
         .info-modal-close {
           position: absolute;
           top: 20px;
-          right: 120px; /* A la izquierda de la imagen del cerebro */
+          right: 20px;
           background: none;
           border: none;
           font-size: 24px;
           cursor: pointer;
-          color: #1e1e1fff;
+          color: #2d2d2d; /* CAMBIADO: color más oscuro */
           padding: 5px;
           border-radius: 50%;
           transition: background-color 0.3s;
         }
+
         .info-modal-close:hover {
           background-color: rgba(76, 29, 149, 0.1);
-          color: white;
+          color: #4C1D95;
         }
+
         .info-modal-content {
           margin-top: 20px;
-          color: #333;
+          color: #2d2d2d; /* CAMBIADO: texto más oscuro para mejor contraste */
           text-align: left;
           line-height: 1.6;
           font-size: 1rem;
         }
+
         .info-modal-content h3 {
-          color: #1b1b1cff;
+          color: #4C1D95;
           margin-bottom: 1rem;
           font-size: 1.3rem;
         }
+
         .info-modal-content p {
           margin-bottom: 1rem;
+          color: #2d2d2d; /* CAMBIADO: texto más oscuro */
         }
+
         .info-modal-content strong {
           color: #0e0d0fff;
+        }
+
+        .info-modal-examples {
+          margin-top: 1.5rem;
+        }
+
+        .example {
+          margin-bottom: 1.5rem;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
         }
 
         /* Estilos para el botón Comenzar */
@@ -713,17 +973,21 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           overflow: hidden !important;
           cursor: pointer;
         }
+
         .start-button:hover:not(:disabled) {
           transform: translateY(-3px) !important;
           box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6) !important;
         }
+
         .start-button:disabled {
           opacity: 0.8;
           cursor: not-allowed;
         }
+
         .rotating {
           animation: rotate 1s linear infinite;
         }
+
         @keyframes rotate {
           from {
             transform: rotate(0deg);
@@ -732,12 +996,14 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             transform: rotate(360deg);
           }
         }
+
         .loading-dots {
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 4px;
         }
+
         .loading-dots span {
           width: 10px;
           height: 10px;
@@ -745,12 +1011,15 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           background-color: #8B5CF6;
           animation: bounce 1.4s infinite ease-in-out both;
         }
+
         .loading-dots span:nth-child(1) {
           animation-delay: -0.32s;
         }
+
         .loading-dots span:nth-child(2) {
           animation-delay: -0.16s;
         }
+
         @keyframes bounce {
           0%, 80%, 100% {
             transform: scale(0);
@@ -759,6 +1028,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             transform: scale(1);
           }
         }
+
         .white-button {
           background: white !important;
           color: #4C1D95 !important;
