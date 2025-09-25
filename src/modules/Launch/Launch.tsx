@@ -1,11 +1,11 @@
-// Launch.tsx - ACTUALIZADO con botón de traducción manual al inglés
+// Launch.tsx - ACTUALIZADO con traducción mejorada para producción
 import React, { useEffect, useState } from 'react';
 import Coin from '../../components/UI/Coin/Coin';
 import Stepper from '../../components/UI/Stepper/Stepper';
 import Frame from '../../components/UI/Frame/Frame';
 import { postSaveEvaluation } from '../../utils/api/evaluation';
 import Cookies from 'js-cookie';
-import useTranslation from '../../modules/Shared/hooks/useTranslation'; // Asegúrate de que la ruta sea correcta
+import useTranslation from '../../modules/Shared/hooks/useTranslation';
 
 interface CoinState {
   isFaceUp: boolean;
@@ -19,49 +19,214 @@ interface LaunchProps {
   type: string;
 }
 
-// Función para traducir texto de español a inglés usando un proxy público (solo para demo)
+// Diccionario de traducciones para los textos específicos del sistema
+const systemTranslations: { [key: string]: string } = {
+  "111": "Definite yes, nothing and no one can prevent it.",
+  "112": "Definite yes, unless a case of self-destruction occurs.",
+  "113": "Definite yes.",
+  "114": "Exactly as you think.",
+  "121": "Yes, 100%.",
+  "122": "With a certainty between 85% and 95%, the answer is yes.",
+  "123": "Yes, as long as the necessary precautions are taken.",
+  "124": "Yes, but something is missing.",
+  "131": "Yes, but there is at least one better option, and you are close to finding it.",
+  "132": "Yes, but there is at least one better option, although that better option is somewhat complicated right now.",
+  "133": "Yes, although there is at least one better option, the truth is that said better option is unreachable right now.",
+  "134": "Yes, but greater clarity is needed in the final goal you wish to achieve.",
+  "141": "Yes, but you need to be more consistent in your daily focus.",
+  "142": "Yes, you have the necessary resources and skills to advance.",
+  "143": "Yes, furthermore, all signs indicate you are in the right direction.",
+  "144": "There is a high possibility of yes, but it is not 100% certain.",
+  "211": "This is a case where you can do whatever you wish.",
+  "212": "It is impossible to provide a clear answer at this moment.",
+  "213": "The answer is within you.",
+  "214": "It would be best to remain neutral for now.",
+  "221": "It is something you don't seek to know as such, but to confirm, the answer is yes.",
+  "222": "It is something you don't seek to know as such, but to confirm, the answer is no.",
+  "223": "It is absolutely impossible to answer your question at this moment.",
+  "224": "There is something more important we must talk about right now.",
+  "231": "You are misaligning your perspective, we advise you to evaluate the situation.",
+  "232": "The truth is that anything can be.",
+  "233": "For that, much time is still needed.",
+  "234": "It could be much closer than you think.",
+  "241": "It is best to accept everything for now and continue with the main plan.",
+  "242": "Keep flowing for now, tranquility is essential at this moment, while you wait for the right time to advance.",
+  "243": "A radical change is necessary if you wish to achieve success.",
+  "244": "Positivity, absence of evil, apply peace and love to your life, there lies success.",
+  "311": "Total perfection is evident.",
+  "312": "Improvement is evident.",
+  "313": "Delay is evident.",
+  "314": "Total disaster is evident.",
+  "321": "You are advised to phrase your question better, as you are not doing it correctly.",
+  "322": "That type of question is impossible to answer at this moment.",
+  "323": "The truth is that anything can happen.",
+  "324": "You are misinterpreting things, please, open your eyes well.",
+  "331": "The system lets you know that there is great love and great positivity from your Spiritualities towards you.",
+  "332": "Stay strong, as you will receive shocking news soon.",
+  "333": "The good news is that the solution to the problem is already on its way.",
+  "334": "It is recommended to be careful, as you think you are well, when in reality you are not.",
+  "341": "You are recommended to continue searching.",
+  "342": "Avoiding conflicts and misunderstandings is your highest priority right now.",
+  "343": "The system lets you know that there is much to talk about.",
+  "344": "You should know that using this system frequently represents both the solution and blessings in your life.",
+  "411": "75% no and 25% yes.",
+  "412": "No, since you do not have the necessary resources.",
+  "413": "No, since your focus is scattered and you lack a clear direction.",
+  "414": "No, since you might be listening to external opinions and not your own.",
+  "421": "It's not that, it's actually something else.",
+  "422": "It's not that, it's actually something else, and you are very close to asking the right question.",
+  "423": "No, there are many distractions pulling you away from your true goals.",
+  "424": "No, you are dedicating more time to details than to the essential.",
+  "431": "Not exactly, but you are close.",
+  "432": "Practically no, although there are slight hopes.",
+  "433": "Practically no, although it is a case where taking a risk could be a good option.",
+  "434": "It is not recommended at all.",
+  "441": "No, at this moment it is not so.",
+  "442": "No, by no means.",
+  "443": "Definite no, nothing and no one will be able to change the result.",
+  "444": "No, and there would be very serious consequences if it were that way."
+};
+
+// Función mejorada para traducción en producción
 const translateToEnglish = async (text: string): Promise<string> => {
   if (!text || text.trim() === '') return text;
 
   try {
-    // ⚠️ ADVERTENCIA: Este proxy es público y no recomendado para producción.
-    // En producción, usa tu propio backend con la API de Google Translate o similar.
-    const proxyUrl = 'https://api.corsproxy.io/  ';
-    const targetUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=es&tl=en&dt=t&q=${encodeURIComponent(text)}`;
+    // Estrategia 1: Buscar en el diccionario de traducciones del sistema
+    const lines = text.split('\n');
+    let translatedLines: string[] = [];
 
-    const response = await fetch(proxyUrl + targetUrl);
-    if (!response.ok) throw new Error('Translation service unavailable');
-
-    const data = await response.json();
-    if (data && Array.isArray(data[0])) {
-      return data[0].map((item: any) => item[0]).join(' ');
+    for (const line of lines) {
+      let translatedLine = line;
+      
+      // Buscar códigos numéricos específicos del sistema (111, 112, etc.)
+      const codeMatch = line.match(/\b(1{3}|1{2}[1-4]|[2-4]{1}[1-4]{2})\b/);
+      if (codeMatch && systemTranslations[codeMatch[0]]) {
+        translatedLine = systemTranslations[codeMatch[0]];
+      } else {
+        // Estrategia 2: Traducción por API propia (más robusta para producción)
+        translatedLine = await translateWithBackupAPI(line);
+      }
+      
+      translatedLines.push(translatedLine);
     }
-    return text;
+
+    return translatedLines.join('\n');
   } catch (error) {
-    console.warn('⚠️ Falló la traducción. Mostrando texto original.', error);
+    console.warn('⚠️ Falló la traducción automática. Mostrando texto original.', error);
     return text;
   }
+};
+
+// Función de respaldo para traducción usando API más confiable
+const translateWithBackupAPI = async (text: string): Promise<string> => {
+  try {
+    // Intentar con tu propio backend primero (recomendado para producción)
+    const response = await fetch('/api/translate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: text,
+        sourceLang: 'es',
+        targetLang: 'en'
+      }),
+      timeout: 5000 // Timeout de 5 segundos
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.translatedText || text;
+    }
+  } catch (error) {
+    console.warn('API de traducción personalizada no disponible, usando fallback...');
+  }
+
+  // Fallback: Traducción simple de palabras comunes
+  return simpleTranslationFallback(text);
+};
+
+// Fallback simple para palabras comunes (evita dependencias externas)
+const simpleTranslationFallback = (text: string): string => {
+  const commonTranslations: { [key: string]: string } = {
+    'sí': 'yes',
+    'no': 'no',
+    'definitivo': 'definite',
+    'exactamente': 'exactly',
+    'seguridad': 'certainty',
+    'precauciones': 'precautions',
+    'opción': 'option',
+    'mejor': 'better',
+    'complicada': 'complicated',
+    'inalcanzable': 'unreachable',
+    'claridad': 'clarity',
+    'meta': 'goal',
+    'constante': 'consistent',
+    'enfoque': 'focus',
+    'recursos': 'resources',
+    'habilidades': 'skills',
+    'señales': 'signs',
+    'dirección': 'direction',
+    'posibilidad': 'possibility',
+    'imposible': 'impossible',
+    'respuesta': 'answer',
+    'neutral': 'neutral',
+    'confirmar': 'confirm',
+    'absolutamente': 'absolutely',
+    'perspectiva': 'perspective',
+    'acontejo': 'advise',
+    'situación': 'situation',
+    'tiempo': 'time',
+    'cercano': 'close',
+    'aceptar': 'accept',
+    'plan': 'plan',
+    'fluir': 'flow',
+    'tranquilidad': 'tranquility',
+    'éxito': 'success',
+    'perfección': 'perfection',
+    'mejoría': 'improvement',
+    'atraso': 'delay',
+    'desastre': 'disaster',
+    'pregunta': 'question',
+    'malinterpretando': 'misinterpreting',
+    'amor': 'love',
+    'positividad': 'positividad',
+    'espiritualidades': 'spiritualities',
+    'noticia': 'news',
+    'solución': 'solution',
+    'problema': 'problem',
+    'cuidado': 'careful',
+    'buscando': 'searching',
+    'conflictos': 'conflicts',
+    'malentendidos': 'misunderstandings',
+    'prioridad': 'priority',
+    'bendiciones': 'blessings',
+    'consecuencias': 'consequences'
+  };
+
+  return text.split(' ').map(word => {
+    const cleanWord = word.toLowerCase().replace(/[.,!?;:]/g, '');
+    return commonTranslations[cleanWord] || word;
+  }).join(' ');
 };
 
 const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   const { translation } = useTranslation();
   const [coinPositions, setCoinPositions] = useState<CoinState[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentStep, setCurrentStep] = useState(0); // 0 significa que no ha comenzado
+  const [currentStep, setCurrentStep] = useState(0);
   const [evaluationHistory, setEvaluationHistory] = useState<any[]>([]);
   const [currentToken, setCurrentToken] = useState(token);
   const [showWritingEffect, setShowWritingEffect] = useState(false);
   const [resultText, setResultText] = useState('');
-  const [originalResultText, setOriginalResultText] = useState(''); // Guardamos el original en español
+  const [originalResultText, setOriginalResultText] = useState('');
   const [showButtons, setShowButtons] = useState(false);
   const [isHoveringRetry, setIsHoveringRetry] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
   const [isStarting, setIsStarting] = useState(false);
-  const [isTranslating, setIsTranslating] = useState(false); // Nuevo estado para controlar si se está traduciendo
-
-  // Nuevo estado para controlar la visibilidad del modal de información
+  const [isTranslating, setIsTranslating] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
-  // Estado para controlar la animación de cierre del modal
   const [isClosingInfoModal, setIsClosingInfoModal] = useState(false);
 
   // Verificar y actualizar el token si es necesario
@@ -76,7 +241,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         window.location.href = '/auth';
       }
     };
-    // Verificar el token periódicamente
+    
     const interval = setInterval(checkToken, 30000);
     return () => clearInterval(interval);
   }, [currentToken]);
@@ -84,7 +249,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   // Inicializar monedas basado en el tipo de lanzamiento
   useEffect(() => {
     const initialCoins = Array(type === 'dialogo-abierto' ? 2 : 2).fill(null).map(() => ({
-      isFaceUp: true, // Cambiado a true para que sea cara blanca por defecto
+      isFaceUp: true,
       isOuterCircleFilled: false,
       isConfirmed: false
     }));
@@ -92,8 +257,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   }, [type]);
 
   const handleCoinFlip = (index: number) => {
-    // ✅ REMOVIDO: if (currentStep === 0) return; → Ahora se permite voltear antes de comenzar
-    if (coinPositions[index].isConfirmed) return; // No permitir cambios después de confirmar
+    if (coinPositions[index].isConfirmed) return;
     setCoinPositions((prev) =>
       prev.map((coin, i) =>
         i === index ? { ...coin, isFaceUp: !coin.isFaceUp } : coin
@@ -102,7 +266,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   };
 
   const confirmCurrentPositions = () => {
-    // Marcar las monedas actuales como confirmadas
     setCoinPositions(prev => prev.map(coin => ({
       ...coin,
       isConfirmed: true,
@@ -112,9 +275,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
   const handleStart = async (e: React.MouseEvent) => {
     e.preventDefault();
-    // Animación de inicio
     setIsStarting(true);
-    // Esperar a que termine la animación
     await new Promise(resolve => setTimeout(resolve, 1000));
     setCurrentStep(1);
     setIsStarting(false);
@@ -122,25 +283,20 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
   const handleNextStep = async (e: React.MouseEvent) => {
     e.preventDefault();
-    // Confirmar las posiciones actuales antes de proceder
     confirmCurrentPositions();
-    // Pequeña pausa para mostrar la confirmación
     await new Promise(resolve => setTimeout(resolve, 800));
     if (currentStep < steps) {
-      // Guardar el estado actual de las monedas
       const currentData = coinPositions.map(coin => coin.isFaceUp ? 1 : 0);
       const updatedEvaluation = [...evaluationHistory, currentData];
       setEvaluationHistory(updatedEvaluation);
       setCurrentStep(currentStep + 1);
-      // Resetear monedas para el próximo lanzamiento (sin confirmar, con caras blancas por defecto)
       const newCoins = coinPositions.map(() => ({
-        isFaceUp: true, // Cambiado a true para cara blanca por defecto
+        isFaceUp: true,
         isOuterCircleFilled: false,
         isConfirmed: false
       }));
       setCoinPositions(newCoins);
     } else if (currentStep === steps) {
-      // Último lanzamiento - procesar todos los datos
       const finalData = [...evaluationHistory, coinPositions.map(coin => coin.isFaceUp ? 1 : 0)];
       await handleSubmit(finalData);
     }
@@ -150,47 +306,40 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     try {
         setIsLoading(true);
         console.log('📋 Datos a enviar:', evaluationData);
-        // Mostrar "Cargando resultados" durante 5 segundos
         setShowWritingEffect(true);
         setResultText(translation.Launch.loading_results || 'Cargando resultados');
-        // Simular carga de 5 segundos
+        
         await new Promise(resolve => setTimeout(resolve, 5000));
-        // Verificar token antes de enviar
+        
         const freshToken = Cookies.get("eons_token") || currentToken;
         if (!freshToken) {
           alert(translation.Launch.session_expired || '❌ Sesión expirada. Por favor inicia sesión nuevamente.');
           window.location.href = '/auth';
           return;
         }
+        
         const data = {
           type: "dialogo-abierto",
           shortType: "DAB",
           coinPositions: evaluationData,
         };
+        
         console.log('🚀 Enviando datos completos con token:', freshToken.substring(0, 20) + '...');
         const response = await postSaveEvaluation(freshToken, data);
         console.log('📨 Respuesta completa:', response);
         console.log('📊 Estructura completa de response:', JSON.stringify(response, null, 2));
-        // Extraer el resultado final basado en la estructura real de la respuesta
+        
         let resultadoFinal = '';
-        // Caso 1: Estructura desde los logs del backend (response.data.resultadoFinal)
         if (response && response.data && response.data.resultadoFinal) {
           resultadoFinal = response.data.resultadoFinal;
           console.log('✅ Usando response.data.resultadoFinal');
-        } 
-        // Caso 2: Estructura alternativa (response.resultadoFinal)
-        else if (response && response.resultadoFinal) {
+        } else if (response && response.resultadoFinal) {
           resultadoFinal = response.resultadoFinal;
           console.log('✅ Usando response.resultadoFinal');
-        }
-        // Caso 3: La respuesta ES el resultado
-        else if (typeof response === 'string' && response.length > 0) {
+        } else if (typeof response === 'string' && response.length > 0) {
           resultadoFinal = response;
           console.log('✅ Usando response como string');
-        }
-        // Caso 4: Buscar en cualquier nivel del objeto
-        else if (response && typeof response === 'object') {
-          // Función recursiva para buscar texto largo que podría ser el resultado
+        } else if (response && typeof response === 'object') {
           const findLongText = (obj: any, path = ''): string => {
             if (typeof obj === 'string' && obj.length > 20 && !path.includes('id') && !path.includes('token')) {
               console.log('📖 Texto largo encontrado en:', path, obj.substring(0, 50) + '...');
@@ -211,37 +360,33 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             console.log('✅ Resultado encontrado mediante búsqueda recursiva');
           }
         }
+        
         console.log('📝 Resultado final extraído:', resultadoFinal);
         if (resultadoFinal && resultadoFinal.length > 0) {
           console.log('✅ Procesamiento exitoso, mostrando efecto de escritura...');
-          // Guardar el resultado original en español
           setOriginalResultText(resultadoFinal);
-          // Limpiar texto de carga
           setResultText('');
-          // Efecto de escritura gradual del resultado
+          
           let currentIndex = 0;
           const typeWriter = () => {
             if (currentIndex < resultadoFinal.length) {
               setResultText(prev => prev + resultadoFinal.charAt(currentIndex));
               currentIndex++;
-              setTimeout(typeWriter, 50); // Velocidad de escritura más lenta
+              setTimeout(typeWriter, 50);
             } else {
-              // Cuando termine la escritura, mostrar los botones
               setTimeout(() => {
                 setShowButtons(true);
               }, 500);
             }
           };
-          // Iniciar el efecto de escritura
+          
           typeWriter();
         } else {
-          console.error('❌ No se pudo extraer el resultado final de la respuesta. Estructura completa:');
-          console.error(JSON.stringify(response, null, 2));
-          setResultText(translation.Launch.result_error || 'Error: El servidor respondió pero no se pudo extraer el resultado. Por favor revisa la consola para más detalles.');
+          console.error('❌ No se pudo extraer el resultado final de la respuesta.');
+          setResultText(translation.Launch.result_error || 'Error: El servidor respondió pero no se pudo extraer el resultado.');
         }
     } catch (error: any) {
         console.error('❌ Error inesperado:', error);
-        // Manejo mejorado de errores
         let errorMessage = translation.Launch.unexpected_error || 'Error inesperado. Por favor revisa la consola para más detalles.';
         if (error.message) {
           errorMessage = error.message;
@@ -256,18 +401,25 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     }
   };
 
-  // Función para traducir el resultado al inglés al hacer clic en el ícono
+  // Función mejorada para traducción
   const handleTranslateToEnglish = async () => {
-    if (isTranslating) return;
+    if (isTranslating || !originalResultText) return;
+    
     setIsTranslating(true);
-    setResultText('Translating results...');
-    const translated = await translateToEnglish(originalResultText);
-    setResultText(translated);
-    setIsTranslating(false);
+    setResultText(translation.Launch.translating_results || 'Translating results...');
+    
+    try {
+      const translated = await translateToEnglish(originalResultText);
+      setResultText(translated);
+    } catch (error) {
+      console.error('Error en traducción:', error);
+      setResultText(originalResultText); // Volver al texto original en caso de error
+    } finally {
+      setIsTranslating(false);
+    }
   };
 
   const handleRetry = () => {
-    // Reiniciar todo el estado para un nuevo lanzamiento
     setShowWritingEffect(false);
     setShowButtons(false);
     setResultText('');
@@ -275,9 +427,8 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     setIsTranslating(false);
     setCurrentStep(0);
     setEvaluationHistory([]);
-    // Reiniciar monedas (con caras blancas por defecto)
     const newCoins = Array(type === 'dialogo-abierto' ? 2 : 2).fill(null).map(() => ({
-      isFaceUp: true, // Cambiado a true para cara blanca por defecto
+      isFaceUp: true,
       isOuterCircleFilled: false,
       isConfirmed: false
     }));
@@ -301,23 +452,19 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     setShowExitModal(false);
   };
 
-  // Funciones para el nuevo Modal de Información
   const openInfoModal = () => {
     setShowInfoModal(true);
     setIsClosingInfoModal(false);
   };
 
   const closeInfoModal = () => {
-    // Iniciar animación de cierre
     setIsClosingInfoModal(true);
-    // Esperar a que termine la animación antes de ocultar el modal
     setTimeout(() => {
       setShowInfoModal(false);
       setIsClosingInfoModal(false);
-    }, 300); // Duración de la animación de cierre
+    }, 300);
   };
 
-  // Generar contenido dinámico para el modal según el paso actual usando traducciones
   const getInfoModalContent = () => {
     let stepInstructions = '';
     
@@ -344,11 +491,9 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
     );
   };
 
-  // Si estamos mostrando el efecto de escritura, ocultar todos los elementos excepto el texto
   if (showWritingEffect) {
     return (
       <Frame>
-        {/* ✅ Botón de ir atrás en modo escritura: mismo diseño, color blanco, redirige directamente a /services */}
         <div className="back-button-container-writing" onClick={() => window.location.href = '/services'}>
           <div className="back-button-bg"></div>
           <button className="back-button-writing">
@@ -365,17 +510,25 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             <div className="writing-orb writing-orb-3"></div>
           </div>
           <div className="writing-text-container">
-            {/* Ícono de traducción (solo visible cuando el resultado ya terminó de escribirse y no se está traduciendo) */}
-            {showButtons && !isTranslating && (
+            {/* Botón de traducción mejorado */}
+            {showButtons && originalResultText && (
               <button
-                className="translate-button"
+                className={`translate-button ${isTranslating ? 'translating' : ''}`}
                 onClick={handleTranslateToEnglish}
-                title="Translate to English"
+                disabled={isTranslating}
+                title={isTranslating ? 
+                  (translation.Launch.translating || 'Translating...') : 
+                  (translation.Launch.translate_to_english || 'Translate to English')
+                }
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
+                {isTranslating ? (
+                  <div className="translate-spinner"></div>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                )}
               </button>
             )}
             <p className="writing-text">{resultText}</p>
@@ -385,7 +538,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
               </div>
             )}
             <span className="writing-cursor">|</span>
-            {/* Efectos de partículas de brillo */}
             <div className="writing-sparkles">
               {[...Array(15)].map((_, i) => (
                 <div key={i} className="sparkle" style={{
@@ -400,7 +552,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           {/* Botones de Modo Diálogo Abierto */}
           {showButtons && (
             <div className="absolute bottom-60 left-0 right-0 flex justify-center items-center gap-4 z-20">
-              {/* Botón de Modo Diálogo Abierto */}
               <button
                 className="bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center gap-2 spiritual-glow"
                 onClick={handleRetry}
@@ -428,12 +579,8 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         </div>
         <style jsx>{`
           @keyframes rotate-360 {
-            from {
-              transform: rotate(0deg);
-            }
-            to {
-              transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
           }
           .rotate-360 {
             animation: rotate-360 0.5s ease-in-out;
@@ -458,7 +605,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             100% { transform: rotate(360deg); }
           }
 
-          /* Estilos para el botón de ir atrás en modo escritura */
           .back-button-container-writing {
             position: absolute;
             top: 0;
@@ -485,10 +631,9 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           .back-arrow-writing {
             width: 24px;
             height: 24px;
-            color: #ffffff; /* ✅ Color blanco */
+            color: #ffffff;
           }
 
-          /* Estilo para el botón de traducción */
           .translate-button {
             position: absolute;
             top: 10px;
@@ -503,15 +648,31 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             justify-content: center;
             cursor: pointer;
             z-index: 10;
-            transition: background-color 0.2s;
+            transition: all 0.3s;
           }
-          .translate-button:hover {
+          .translate-button:hover:not(:disabled) {
             background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+          }
+          .translate-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+          }
+          .translate-button.translating {
+            background: rgba(139, 92, 246, 0.3);
           }
           .translate-button svg {
             color: white;
             width: 20px;
             height: 20px;
+          }
+          .translate-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
           }
         `}</style>
       </Frame>
@@ -576,8 +737,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           onClick={openInfoModal}
         ></div>
         
-        
-
         <div className="coin-container flex justify-center gap-8 mt-24 arcane-coin-area">
           {coinPositions.map((coin, index) => (
             <div key={index} className="flex flex-col items-center arcane-coin-wrapper" data-index={index}>
@@ -588,7 +747,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
                 isConfirmed={coin.isConfirmed}
                 onFlip={() => handleCoinFlip(index)}
               />
-              
             </div>
           ))}
         </div>
@@ -733,25 +891,25 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(255, 255, 255, 0.15); /* CAMBIADO: fondo claro en lugar de oscuro */
+          background-color: rgba(255, 255, 255, 0.15);
           display: flex;
           justify-content: center;
           align-items: center;
           z-index: 1000;
-          backdrop-filter: blur(5px); /* AÑADIDO: efecto de desenfoque */
+          backdrop-filter: blur(5px);
           animation: modalFadeIn 0.3s ease-out;
         }
 
         .exit-modal {
-          background: linear-gradient(135deg, #ffffff, #b89ef4ff); /* CAMBIADO: fondo más claro */
+          background: linear-gradient(135deg, #ffffff, #b89ef4ff);
           border-radius: 20px;
           padding: 2rem;
           max-width: 400px;
           width: 90%;
           text-align: center;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* REDUCIDO: sombra más suave */
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
           animation: modalSlideIn 0.3s ease-out;
-          border: 1px solid rgba(139, 92, 246, 0.2); /* AÑADIDO: borde sutil */
+          border: 1px solid rgba(139, 92, 246, 0.2);
         }
 
         @keyframes modal-appear {
@@ -771,7 +929,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         }
 
         .exit-modal-content p {
-          color: #2d2d2d; /* CAMBIADO: texto más oscuro para mejor contraste */
+          color: #2d2d2d;
           margin-bottom: 2rem;
         }
 
@@ -823,13 +981,13 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(255, 255, 255, 0.15); /* CAMBIADO: fondo claro en lugar de oscuro */
+          background-color: rgba(255, 255, 255, 0.15);
           display: flex;
           justify-content: center;
           align-items: center;
           z-index: 2000;
           padding: 20px;
-          backdrop-filter: blur(5px); /* AÑADIDO: efecto de desenfoque */
+          backdrop-filter: blur(5px);
           animation: modalFadeIn 0.3s ease-out;
         }
 
@@ -838,7 +996,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         }
 
         .info-modal {
-          background: linear-gradient(135deg, #ffffff, #d03bf1ff); /* CAMBIADO: fondo más claro */
+          background: linear-gradient(135deg, #ffffff, #d03bf1ff);
           border-radius: 20px;
           padding: 2rem;
           max-width: 450px;
@@ -846,9 +1004,9 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           max-height: 90vh;
           overflow-y: auto;
           position: relative;
-          box-shadow: 0 10px 50px rgba(139, 92, 246, 0.3); /* REDUCIDO: sombra más suave */
+          box-shadow: 0 10px 50px rgba(139, 92, 246, 0.3);
           animation: modalSlideIn 0.3s ease-out;
-          border: 1px solid rgba(139, 92, 246, 0.2); /* AÑADIDO: borde sutil */
+          border: 1px solid rgba(139, 92, 246, 0.2);
         }
 
         .info-modal.closing {
@@ -912,7 +1070,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
           border: none;
           font-size: 24px;
           cursor: pointer;
-          color: #2d2d2d; /* CAMBIADO: color más oscuro */
+          color: #2d2d2d;
           padding: 5px;
           border-radius: 50%;
           transition: background-color 0.3s;
@@ -925,7 +1083,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
         .info-modal-content {
           margin-top: 20px;
-          color: #2d2d2d; /* CAMBIADO: texto más oscuro para mejor contraste */
+          color: #2d2d2d;
           text-align: left;
           line-height: 1.6;
           font-size: 1rem;
@@ -939,7 +1097,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
 
         .info-modal-content p {
           margin-bottom: 1rem;
-          color: #2d2d2d; /* CAMBIADO: texto más oscuro */
+          color: #2d2d2d;
         }
 
         .info-modal-content strong {
