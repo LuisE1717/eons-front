@@ -6,8 +6,8 @@ import axios from 'axios';
 // Función para verificar si estamos en el cliente
 const isClient = () => typeof window !== 'undefined';
 
-// Forzar desarrollo
-const isDevelopment = true;
+// Configuración dinámica según el entorno
+const isDevelopment = process.env.ENV === "local";
 const API_BASE_URL = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
 
 // Función para marcar como leído usando axios directamente
