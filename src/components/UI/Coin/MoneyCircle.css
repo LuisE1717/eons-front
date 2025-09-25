@@ -58,6 +58,22 @@
     animation: float 3s ease-in-out infinite;
 }
 
+/* Animación de giro para la transición de caras */
+@keyframes coinFlip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(90deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+.money-circle.flipping .face-inner {
+    animation: coinFlip 1.5s ease-in-out;
+}
 
 /* Efectos para monedas confirmadas */
 .money-circle.confirmed {

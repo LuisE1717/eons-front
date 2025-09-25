@@ -6,40 +6,51 @@ import Span from "../../../../shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
 import Cost from "../../../../shared/components/Cost/Cost";
 import Cost2 from "../../../../shared/components/Cost/Cost2";
+import { showToast } from "@components/UI/Toast";
 
 function MessageInfoComponent() {
   const { translation } = useTranslation();
+
+  const showComingSoon = () => {
+    showToast("Esta sección estará disponible en próximas actualizaciones", "info");
+  };
 
   const handleOpenDialogMode = () => {
     window.location.href = '/launch';
   };
 
   const validateService = (cost: number, navigate: string) => {
-    // Lógica de validación
+    showComingSoon();
   };
 
   return (
     <Info>
       <Line />
       <A>
-        {translation.ServiceMenu.system_dialog}.
-        <div>
-          (<Span>{translation.next}</Span>)
+        <div onClick={showComingSoon}>
+          {translation.ServiceMenu.system_dialog}.
+          <div>
+            (<Span>{translation.next}</Span>)
+          </div>
         </div>
       </A>
       <Line />
       
       <A>
-        {translation.ServiceMenu.general_evaluation}. 
-        <div>
-          (<Span>{translation.next}</Span>)
+        <div onClick={showComingSoon}>
+          {translation.ServiceMenu.general_evaluation}. 
+          <div>
+            (<Span>{translation.next}</Span>)
+          </div>
         </div>
       </A>
       
       <A>
-        {translation.ServiceMenu.spirit_calc}. 
-        <div>
-          (<Span>{translation.next}</Span>)
+        <div onClick={showComingSoon}>
+          {translation.ServiceMenu.spirit_calc}. 
+          <div>
+            (<Span>{translation.next}</Span>)
+          </div>
         </div>
       </A>
 
@@ -48,6 +59,7 @@ function MessageInfoComponent() {
       <Cost 
         onclick={handleOpenDialogMode}
         name={translation.ServiceMenu.open_dialog_mod}
+        amount="0.49"
         cost={translation.ServiceMenu.per_question}
       />
 
@@ -68,7 +80,7 @@ function MessageInfoComponent() {
       />
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.adivination_general}. (<Span>{translation.next}</Span>)
         </div>
       </A>
@@ -76,43 +88,43 @@ function MessageInfoComponent() {
       <Line />
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.concient_evaluation}. (<Span>{translation.next}</Span>)
         </div>
       </A>
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.fact_evaluation}. (<Span>{translation.next}</Span>)
         </div>
       </A>
       <Line />
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Revelar_consejo_exacto}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Revelar_tiempo}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Revelar_porcentaje}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Revelar_una_letra}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Revelar_un_dígito_decimal}. (<Span>{translation.next}</Span>)
         </div>
       </A>
@@ -120,13 +132,13 @@ function MessageInfoComponent() {
       <Line />
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Conocer_conviene}. (<Span>{translation.next}</Span>)
         </div>
       </A>
 
       <A>
-        <div>
+        <div onClick={showComingSoon}>
           {translation.ServiceMenu.Conocer_sucederá}. (<Span>{translation.next}</Span>)
         </div>
       </A>

@@ -1,0 +1,119 @@
+---
+import { getI18N } from "../../i18n"
+import Articule from "../Information/components/Articule.astro"
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
+
+---
+
+<Articule
+    title={i18.ServicesExamples.title}
+	description="services-examples"
+	pubDate={new Date('September 24 2025')}
+    >
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text1}
+	</p>
+	
+	<p class="mt-3">
+		{i18.ServicesExamples.text2}
+	</p>
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text3}
+	</p>
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text4}
+	</p>
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text5}
+	</p>
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text6}
+	</p>
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text7}
+	</p>
+
+	<p class="mt-3">
+		{i18.ServicesExamples.text8}
+	</p>
+
+	<!-- Ejemplo 1 -->
+	<p class="mt-4 font-semibold">
+		{i18.ServicesExamples.example1_question}
+	</p>
+	<p class="italic">
+		{i18.ServicesExamples.example1_question_text}
+	</p>
+	<p class="mt-2 font-semibold">
+		{i18.ServicesExamples.example1_answer}
+	</p>
+	<p class="italic">
+		{i18.ServicesExamples.example1_answer_text}
+	</p>
+	<p class="mt-2 font-semibold">
+		{i18.ServicesExamples.example1_advice}
+	</p>
+	<p>
+		{i18.ServicesExamples.example1_advice_text}
+	</p>
+
+	<!-- Ejemplo 2 -->
+	<p class="mt-4 font-semibold">
+		{i18.ServicesExamples.example2_question}
+	</p>
+	<p class="italic">
+		{i18.ServicesExamples.example2_question_text}
+	</p>
+	<p class="mt-2 font-semibold">
+		{i18.ServicesExamples.example2_answer}
+	</p>
+	<p class="italic">
+		{i18.ServicesExamples.example2_answer_text}
+	</p>
+	<p class="mt-2 font-semibold">
+		{i18.ServicesExamples.example2_advice}
+	</p>
+	<p>
+		{i18.ServicesExamples.example2_advice_text}
+	</p>
+
+	<!-- Ejemplo 3 -->
+	<p class="mt-4 font-semibold">
+		{i18.ServicesExamples.example3_question}
+	</p>
+	<p class="italic">
+		{i18.ServicesExamples.example3_question_text}
+	</p>
+	<p class="mt-2 font-semibold">
+		{i18.ServicesExamples.example3_answer}
+	</p>
+	<p class="italic">
+		{i18.ServicesExamples.example3_answer_text}
+	</p>
+	<p class="mt-2 font-semibold">
+		{i18.ServicesExamples.example3_advice}
+	</p>
+	<p>
+		{i18.ServicesExamples.example3_advice_text}
+	</p>
+
+</Articule>
+
+<style>
+    p {
+        margin: 0 0 0.5rem 0;
+    }
+    h5 {
+        margin: 0;
+    }
+    span {
+        margin: 0 0 0.5rem 0;
+    }
+</style>
