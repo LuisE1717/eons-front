@@ -13,8 +13,9 @@ const message = url.searchParams.get('error'); // Cambiado a 'error' para coinci
 const isDevelopment = import.meta.env.ENV === "local";
 const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
 
-// Determinar la ruta correcta del login
+// Determinar la ruta correcta del login y services
 const loginUrl = `${baseUrl}/auth`;
+const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
 ---
 
 <!DOCTYPE html>
@@ -157,8 +158,8 @@ const loginUrl = `${baseUrl}/auth`;
       
       <div class="button-container">
         {success === 'true' ? (
-          <a href={loginUrl} class="button">
-            Iniciar Sesión
+          <a href={servicesUrl} class="button"> {/* ✅ CORRECCIÓN: Cambiado a servicesUrl */}
+            Ir a Servicios
           </a>
         ) : (
           <a href={`${baseUrl}/auth/email-verification`} class="button">
@@ -169,7 +170,7 @@ const loginUrl = `${baseUrl}/auth`;
       
       {success === 'true' && (
         <p class="redirect-text">
-          Serás redirigido automáticamente a la página de login en <span id="countdown" class="countdown">5</span> segundos...
+          Serás redirigido automáticamente a la página de servicios en <span id="countdown" class="countdown">5</span> segundos... {/* ✅ CORRECCIÓN: Texto actualizado */}
         </p>
       )}
       
@@ -182,10 +183,10 @@ const loginUrl = `${baseUrl}/auth`;
 
     {success === 'true' && (
       <script>
-        // Redirección automática después de 5 segundos a la página de login
+        // ✅ CORRECCIÓN: Redirección automática después de 5 segundos a la página de SERVICES
         let seconds = 5;
         const countdownElement = document.getElementById('countdown');
-        const loginUrl = '${loginUrl}';
+        const servicesUrl = '${servicesUrl}'; // ✅ CORRECCIÓN: Usar servicesUrl
         
         const countdown = setInterval(() => {
           seconds--;
@@ -195,12 +196,12 @@ const loginUrl = `${baseUrl}/auth`;
           
           if (seconds <= 0) {
             clearInterval(countdown);
-            window.location.href = loginUrl;
+            window.location.href = servicesUrl; // ✅ CORRECCIÓN: Redirigir a services
           }
         }, 1000);
         
         setTimeout(() => {
-          window.location.href = loginUrl;
+          window.location.href = servicesUrl; // ✅ CORRECCIÓN: Redirigir a services
         }, 5000);
       </script>
     )}
