@@ -12,6 +12,9 @@ const message = url.searchParams.get('error'); // Cambiado a 'error' para coinci
 // Configuración dinámica para producción/desarrollo
 const isDevelopment = import.meta.env.ENV === "local";
 const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+
+// Determinar la ruta correcta del login
+const loginUrl = `${baseUrl}/auth`;
 ---
 
 <!DOCTYPE html>
@@ -115,6 +118,11 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
         color: #888;
         font-size: 0.9rem;
       }
+      
+      .countdown {
+        color: #8a2be2;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
@@ -149,7 +157,7 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
       
       <div class="button-container">
         {success === 'true' ? (
-          <a href={`${baseUrl}/auth`} class="button">
+          <a href={loginUrl} class="button">
             Iniciar Sesión
           </a>
         ) : (
@@ -161,7 +169,7 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
       
       {success === 'true' && (
         <p class="redirect-text">
-          Serás redirigido automáticamente a la página de login en 5 segundos...
+          Serás redirigido automáticamente a la página de login en <span id="countdown" class="countdown">5</span> segundos...
         </p>
       )}
       
@@ -175,8 +183,24 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
     {success === 'true' && (
       <script>
         // Redirección automática después de 5 segundos a la página de login
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown');
+        const loginUrl = '${loginUrl}';
+        
+        const countdown = setInterval(() => {
+          seconds--;
+          if (countdownElement) {
+            countdownElement.textContent = seconds;
+          }
+          
+          if (seconds <= 0) {
+            clearInterval(countdown);
+            window.location.href = loginUrl;
+          }
+        }, 1000);
+        
         setTimeout(() => {
-          window.location.href = '${baseUrl}/auth';
+          window.location.href = loginUrl;
         }, 5000);
       </script>
     )}
