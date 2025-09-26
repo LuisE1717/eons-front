@@ -10,7 +10,8 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://eons.es',
+  base: '/',
   output: 'server',
   integrations: [mdx(), sitemap(), tailwind(), react(), auth()],
   i18n: {
