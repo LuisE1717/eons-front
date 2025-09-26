@@ -9,8 +9,9 @@ const url = new URL(Astro.request.url);
 const success = url.searchParams.get('success');
 const message = url.searchParams.get('error'); // Cambiado a 'error' para coincidir con el backend
 
-// Forzar desarrollo
-const baseUrl = 'http://localhost:4321';
+// Configuración dinámica para producción/desarrollo
+const isDevelopment = import.meta.env.ENV === "local";
+const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
 ---
 
 <!DOCTYPE html>
@@ -175,7 +176,7 @@ const baseUrl = 'http://localhost:4321';
       <script>
         // Redirección automática después de 5 segundos a la página de login
         setTimeout(() => {
-          window.location.href = 'http://localhost:4321/auth';
+          window.location.href = '${baseUrl}/auth';
         }, 5000);
       </script>
     )}
