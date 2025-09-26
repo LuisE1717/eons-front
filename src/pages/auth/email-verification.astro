@@ -1,0 +1,205 @@
+---
+import { getI18N } from "../../i18n";
+
+const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
+const i18 = getI18N({ currentLocale });
+
+// Obtener parámetros de la URL para mostrar mensajes de error
+const url = new URL(Astro.request.url);
+const error = url.searchParams.get('error');
+
+// Configuración dinámica para producción/desarrollo
+const isDevelopment = import.meta.env.ENV === "local";
+const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificación de Email - EONS</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      
+      .container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 420px;
+        width: 100%;
+        padding: 2rem;
+      }
+      
+      .header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      
+      .header img {
+        max-width: 220px;
+        height: auto;
+      }
+      
+      .message-container {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      
+      .message-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      
+      .message-text {
+        color: #666;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+      
+      .info-icon {
+        color: #8a2be2;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      
+      .button-container {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+      
+      .button {
+        background-color: #8a2be2;
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        margin: 0 0.5rem;
+      }
+      
+      .button:hover {
+        background-color: #7a1bd2;
+      }
+      
+      .button-secondary {
+        background-color: #6c757d;
+      }
+      
+      .button-secondary:hover {
+        background-color: #5a6268;
+      }
+      
+      .error {
+        color: #dc3545;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        background-color: #f8d7da;
+        padding: 0.75rem;
+        border-radius: 5px;
+        border: 1px solid #f5c6cb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img
+          src="/pixelcut-export.webp"
+          alt="EONS"
+        />
+      </header>
+      
+      <div class="message-container">
+        <div class="info-icon">📧</div>
+        <h1 class="message-title">Verificación de Email Requerida</h1>
+        <p class="message-text">
+          {error 
+            ? 'Ha ocurrido un error con la verificación de tu email. Por favor, solicita un nuevo enlace de verificación.'
+            : 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico. Por favor, verifica tu email para completar el registro.'}
+        </p>
+      </div>
+      
+      {error && (
+        <div class="error">
+          Error: {error}
+        </div>
+      )}
+      
+      <div class="button-container">
+        <a href={`${baseUrl}/auth`} class="button button-secondary">
+          Volver al Login
+        </a>
+        <button onclick="requestNewVerification()" class="button">
+          Reenviar Email de Verificación
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function requestNewVerification() {
+        // Obtener el email de las cookies o localStorage
+        const userEmail = getCookie('eons_user') || localStorage.getItem('userEmail');
+        
+        if (!userEmail) {
+          alert('No se pudo encontrar tu email. Por favor, inicia sesión nuevamente.');
+          window.location.href = '${baseUrl}/auth';
+          return;
+        }
+
+        // Mostrar mensaje de carga
+        const button = document.querySelector('button[onclick="requestNewVerification()"]');
+        const originalText = button.textContent;
+        button.textContent = 'Enviando...';
+        button.disabled = true;
+
+        // Hacer la petición al backend
+        fetch('${baseUrl}/api/auth/request-verify-email?email=' + encodeURIComponent(userEmail) + '&lang=es')
+          .then(response => response.json())
+          .then(data => {
+            if (data.message) {
+              alert('Se ha enviado un nuevo email de verificación. Por favor, revisa tu bandeja de entrada.');
+            } else {
+              alert('Error al enviar el email de verificación. Por favor, intenta nuevamente.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Error al enviar el email de verificación. Por favor, intenta nuevamente.');
+          })
+          .finally(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+          });
+      }
+
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+    </script>
+  </body>
+</html>
