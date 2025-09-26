@@ -1,17 +1,34 @@
 ---
 import { getI18N } from "../i18n";
 
+// Manejo seguro de cookies y parámetros
 const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
 const i18 = getI18N({ currentLocale });
 
-// Obtener parámetros de la URL para mostrar mensajes personalizados
-const url = new URL(Astro.request.url);
-const success = url.searchParams.get('success');
-const message = url.searchParams.get('error'); // Cambiado a 'error' para coincidir con el backend
+// Obtener parámetros de la URL de forma segura
+let success = false;
+let message = '';
 
-// Configuración dinámica para producción/desarrollo
-const isDevelopment = import.meta.env.ENV === "local";
+try {
+    const url = new URL(Astro.request.url);
+    success = url.searchParams.get('success') === 'true';
+    message = url.searchParams.get('error') || '';
+} catch (error) {
+    console.error('Error parsing URL parameters:', error);
+}
+
+// Configuración dinámica más robusta
+const isDevelopment = import.meta.env?.ENV === "local" || import.meta.env?.MODE === "development";
 const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+
+// Log para debugging en producción
+console.log('Verification success page loaded:', {
+    success,
+    message,
+    isDevelopment,
+    baseUrl,
+    url: Astro.request.url
+});
 ---
 
 <!DOCTYPE html>
@@ -19,7 +36,12 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Verificado - EONS</title>
+    <title>{success ? 'Email Verificado - EONS' : 'Error de Verificación - EONS'}</title>
+    
+    <!-- Meta tags importantes para SEO y compatibilidad -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
     <style>
       * {
         margin: 0;
@@ -29,91 +51,145 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
 
       body {
         font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         padding: 20px;
+        line-height: 1.6;
       }
       
       .container {
         background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 420px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
         width: 100%;
-        padding: 2rem;
+        padding: 3rem 2rem;
+        text-align: center;
       }
       
       .header {
-        text-align: center;
         margin-bottom: 2rem;
       }
       
       .header img {
-        max-width: 220px;
+        max-width: 200px;
         height: auto;
-      }
-      
-      .message-container {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      
-      .message-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #333;
         margin-bottom: 1rem;
       }
       
-      .message-text {
-        color: #666;
-        line-height: 1.5;
-        font-size: 0.95rem;
+      .icon-container {
+        margin-bottom: 1.5rem;
       }
       
       .success-icon {
         color: #28a745;
-        font-size: 3rem;
+        font-size: 4rem;
+        animation: bounce 1s ease-in-out;
+      }
+      
+      .error-icon {
+        color: #dc3545;
+        font-size: 4rem;
+        animation: shake 0.5s ease-in-out;
+      }
+      
+      .message-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #2d3748;
         margin-bottom: 1rem;
       }
       
+      .message-text {
+        color: #4a5568;
+        line-height: 1.6;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      
       .button-container {
-        text-align: center;
+        margin: 2rem 0;
       }
       
       .button {
-        background-color: #8a2be2;
+        background: linear-gradient(135deg, #8a2be2, #6a11cb);
         color: white;
-        padding: 12px 24px;
+        padding: 15px 30px;
         text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
+        border-radius: 8px;
+        font-weight: 600;
         display: inline-block;
         border: none;
         cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
       }
       
       .button:hover {
-        background-color: #7a1bd2;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
       }
       
-      .error {
-        color: #dc3545;
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 0.9rem;
+      .error-message {
+        background: #fee;
+        border: 1px solid #f5c6cb;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        color: #721c24;
       }
       
       .redirect-text {
-        text-align: center;
-        margin-top: 1.5rem;
-        color: #888;
+        color: #718096;
         font-size: 0.9rem;
+        margin-top: 1.5rem;
+      }
+      
+      .loading-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #f3f3f3;
+        border-top: 2px solid #8a2be2;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+      }
+      
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-10px);}
+        60% {transform: translateY(-5px);}
+      }
+      
+      @keyframes shake {
+        0%, 100% {transform: translateX(0);}
+        25% {transform: translateX(-5px);}
+        75% {transform: translateX(5px);}
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @media (max-width: 480px) {
+        .container {
+          padding: 2rem 1rem;
+          margin: 10px;
+        }
+        
+        .message-title {
+          font-size: 1.5rem;
+        }
+        
+        .message-text {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
@@ -122,14 +198,22 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
       <header class="header">
         <img
           src="/pixelcut-export.webp"
-          alt="EONS"
+          alt="EONS - Sabiduría Ancestral"
+          onerror="this.style.display='none'"
         />
       </header>
       
+      <div class="icon-container">
+        {success ? (
+          <div class="success-icon">✅</div>
+        ) : (
+          <div class="error-icon">❌</div>
+        )}
+      </div>
+      
       <div class="message-container">
-        {success === 'true' ? (
+        {success ? (
           <>
-            <div class="success-icon">✅</div>
             <h1 class="message-title">¡Email Verificado Exitosamente!</h1>
             <p class="message-text">
               Tu dirección de correo electrónico ha sido verificada correctamente. 
@@ -138,19 +222,25 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
           </>
         ) : (
           <>
-            <div class="success-icon" style="color: #dc3545;">❌</div>
             <h1 class="message-title">Error en la Verificación</h1>
             <p class="message-text">
-              {message || 'Ha ocurrido un error al verificar tu email. Por favor, intenta nuevamente.'}
+              {message ? `Error: ${message}` : 'Ha ocurrido un error al verificar tu email. Por favor, intenta nuevamente.'}
             </p>
+            {message && (
+              <div class="error-message">
+                <strong>Detalles del error:</strong><br/>
+                {message}
+              </div>
+            )}
           </>
         )}
       </div>
       
       <div class="button-container">
-        {success === 'true' ? (
-          <a href={`${baseUrl}/auth`} class="button">
+        {success ? (
+          <a href={`${baseUrl}/auth`} class="button" id="loginButton">
             Iniciar Sesión
+            <div class="loading-spinner" id="loginSpinner"></div>
           </a>
         ) : (
           <a href={`${baseUrl}/email-verification`} class="button">
@@ -159,26 +249,97 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
         )}
       </div>
       
-      {success === 'true' && (
-        <p class="redirect-text">
-          Serás redirigido automáticamente a la página de login en 5 segundos...
-        </p>
-      )}
-      
-      {message && success !== 'true' && (
-        <p class="error">
-          Error: {message}
+      {success && (
+        <p class="redirect-text" id="redirectText">
+          Serás redirigido automáticamente a la página de login en <span id="countdown">5</span> segundos...
         </p>
       )}
     </div>
 
-    {success === 'true' && (
-      <script>
-        // Redirección automática después de 5 segundos a la página de login
+    <script>
+      // Configuración base
+      const baseUrl = '${baseUrl}';
+      const success = ${success};
+      
+      console.log('Verification page script loaded:', { baseUrl, success });
+      
+      // Redirección automática solo si fue exitoso
+      if (success) {
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+        const redirectText = document.getElementById('redirectText');
+        const loginButton = document.getElementById('loginButton');
+        const loginSpinner = document.getElementById('loginSpinner');
+        
+        // Actualizar contador
+        const countdownInterval = setInterval(() => {
+          countdown--;
+          if (countdownElement) {
+            countdownElement.textContent = countdown;
+          }
+          
+          if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            redirectToLogin();
+          }
+        }, 1000);
+        
+        // Función de redirección
+        function redirectToLogin() {
+          console.log('Redirecting to login page...');
+          if (loginSpinner) loginSpinner.style.display = 'block';
+          if (loginButton) loginButton.style.opacity = '0.7';
+          
+          // Usar replace para evitar que el usuario vuelva atrás a esta página
+          window.location.replace(baseUrl + '/auth');
+        }
+        
+        // Manejar clic en el botón
+        if (loginButton) {
+          loginButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            clearInterval(countdownInterval);
+            if (redirectText) redirectText.style.display = 'none';
+            redirectToLogin();
+          });
+        }
+        
+        // Redirección de emergencia después de 10 segundos
         setTimeout(() => {
-          window.location.href = '${baseUrl}/auth';
-        }, 5000);
-      </script>
-    )}
+          if (window.location.href.includes('verification-success')) {
+            console.log('Emergency redirect after 10 seconds');
+            window.location.replace(baseUrl + '/auth');
+          }
+        }, 10000);
+      } else {
+        // Log del error para debugging
+        console.error('Verification error:', '${message}');
+      }
+      
+      // Verificar que la página se cargó correctamente
+      window.addEventListener('load', function() {
+        console.log('Verification success page fully loaded');
+        document.body.style.opacity = '1';
+      });
+      
+      // Transición suave al cargar
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    </script>
+    
+    <!-- Script de analytics o tracking si es necesario -->
+    <script>
+      // Tracking básico de la página de verificación
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'email_verification', {
+          'event_category': 'authentication',
+          'event_label': success ? 'success' : 'error',
+          'value': success ? 1 : 0
+        });
+      }
+    </script>
   </body>
 </html>
