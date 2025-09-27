@@ -21,37 +21,56 @@ const isClient = () => typeof window !== 'undefined';
 export function axiosI(apiToken: string | undefined) {
   const intance = axios.create({
     baseURL: API_BASE_URL,
-    timeout: 30000, // Aumentar timeout a 30 segundos
+    timeout: 60000, // Aumentar timeout a 30 segundos
   });
 
-  intance.interceptors.request.use(
-    (config: InternalAxiosRequestConfig) => {
-      // Obtener el token de las cookies si no se proporcionó
-      if (!apiToken && isClient()) {
-        apiToken = Cookies.get("eons_token") || "";
-      }
-
-      if (apiToken && config.headers) {
-        config.headers.Authorization = `Bearer ${apiToken}`;
-        console.log('✅ Token añadido a la solicitud:', apiToken.substring(0, 20) + '...');
-      } else {
-        console.warn('⚠️ No se pudo obtener token para la solicitud');
-      }
-
-      return config;
-    },
-    (error) => {
-      console.error('Error en interceptor de request:', error);
-      return Promise.reject(error);
+  // 🔧 INTERCEPTOR DE REQUEST CON LOGGING MEJORADO - AGREGADO
+  intance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    console.log('🌐 Request URL:', config.url);
+    if (isClient()) {
+      console.log('📱 User Agent:', navigator.userAgent);
     }
-  );
+    console.log('🔧 Config:', {
+      method: config.method,
+      url: config.url,
+      headers: config.headers,
+      data: config.data
+    });
+    
+    // Obtener el token de las cookies si no se proporcionó
+    if (!apiToken && isClient()) {
+      apiToken = Cookies.get("eons_token") || "";
+    }
 
+    if (apiToken && config.headers) {
+      config.headers.Authorization = `Bearer ${apiToken}`;
+      console.log('✅ Token añadido a la solicitud:', apiToken.substring(0, 20) + '...');
+    } else {
+      console.warn('⚠️ No se pudo obtener token para la solicitud');
+    }
+
+    return config;
+  },
+  (error) => {
+    console.error('❌ Error en interceptor de request:', error);
+    return Promise.reject(error);
+  });
+
+  // 🔧 INTERCEPTOR DE RESPONSE CON LOGGING MEJORADO - AGREGADO
   intance.interceptors.response.use(
     (response) => {
-      console.log('✅ Respuesta exitosa:', response.config.url);
+      console.log('✅ Response success:', response.status, response.config.url);
+      console.log('📊 Response data:', response.data);
       return response;
     },
     async (error) => {
+      console.error('❌ Full error details:', {
+        message: error.message,
+        code: error.code,
+        config: error.config,
+        response: error.response?.data
+      });
+      
       console.error('❌ Error en respuesta:', error.response?.status, error.config?.url);
       
       if (error.response && isClient()) {
