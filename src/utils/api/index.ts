@@ -24,7 +24,7 @@ export function axiosI(apiToken: string | undefined) {
     timeout: 60000, // Aumentar timeout a 60 segundos
   });
 
-  // 🔧 INTERCEPTOR DE REQUEST CON LOGGING MEJORADO - AGREGADO
+  // 🔧 INTERCEPTOR DE REQUEST CON LOGGING MEJORADO
   intance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
     console.log('🌐 Request URL:', config.url);
     if (isClient()) {
@@ -56,7 +56,7 @@ export function axiosI(apiToken: string | undefined) {
     return Promise.reject(error);
   });
 
-  // 🔧 INTERCEPTOR DE RESPONSE CON LOGGING MEJORADO - AGREGADO
+  // 🔧 INTERCEPTOR DE RESPONSE CON LOGGING MEJORADO
   intance.interceptors.response.use(
     (response) => {
       console.log('✅ Response success:', response.status, response.config.url);
