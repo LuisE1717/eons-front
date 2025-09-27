@@ -21,7 +21,7 @@ const isClient = () => typeof window !== 'undefined';
 export function axiosI(apiToken: string | undefined) {
   const intance = axios.create({
     baseURL: API_BASE_URL,
-    timeout: 60000, // Aumentar timeout a 30 segundos
+    timeout: 60000, // Aumentar timeout a 60 segundos
   });
 
   // 🔧 INTERCEPTOR DE REQUEST CON LOGGING MEJORADO - AGREGADO
