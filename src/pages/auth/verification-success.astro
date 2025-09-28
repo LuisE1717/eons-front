@@ -8,6 +8,9 @@ const i18 = getI18N({ currentLocale });
 const url = new URL(Astro.request.url);
 const success = url.searchParams.get('success');
 const message = url.searchParams.get('error'); // Cambiado a 'error' para coincidir con el backend
+const email = url.searchParams.get('email');
+const fromLogin = url.searchParams.get('fromLogin');
+const userExists = url.searchParams.get('userExists');
 
 // Configuración dinámica para producción/desarrollo
 const isDevelopment = import.meta.env.ENV === "local";
@@ -124,6 +127,21 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
         color: #8a2be2;
         font-weight: bold;
       }
+
+      .info-box {
+        background-color: #e7f3ff;
+        border: 1px solid #b3d9ff;
+        border-radius: 5px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .email-display {
+        font-weight: bold;
+        color: #8a2be2;
+        word-break: break-all;
+      }
     </style>
   </head>
   <body>
@@ -134,6 +152,13 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
           alt="EONS"
         />
       </header>
+
+      <!-- Mostrar email si está disponible -->
+      {email && (
+        <div class="info-box">
+          <p>Verification email sent to: <span class="email-display">{email}</span></p>
+        </div>
+      )}
       
       <div class="message-container">
         {success === 'true' ? (
@@ -143,6 +168,24 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
             <p class="message-text">
               Tu dirección de correo electrónico ha sido verificada correctamente. 
               Ahora puedes iniciar sesión y disfrutar de todos los servicios de EONS.
+            </p>
+          </>
+        ) : userExists === 'true' ? (
+          <>
+            <div class="success-icon" style="color: #ffc107;">⚠️</div>
+            <h1 class="message-title">Cuenta Existente</h1>
+            <p class="message-text">
+              Ya existe una cuenta con este email. Hemos enviado un nuevo correo de verificación.
+              Por favor, verifica tu email para continuar.
+            </p>
+          </>
+        ) : fromLogin === 'true' ? (
+          <>
+            <div class="success-icon" style="color: #17a2b8;">📧</div>
+            <h1 class="message-title">Verificación Requerida</h1>
+            <p class="message-text">
+              Para iniciar sesión, primero debes verificar tu dirección de email.
+              Hemos enviado un correo de verificación a tu dirección.
             </p>
           </>
         ) : (
@@ -158,19 +201,30 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
       
       <div class="button-container">
         {success === 'true' ? (
-          <a href={servicesUrl} class="button"> {/* ✅ CORRECCIÓN: Cambiado a servicesUrl */}
-            Ir a Servicios
+          <a href={loginUrl} class="button"> {/* ✅ CORRECCIÓN: Cambiado a loginUrl */}
+            Iniciar Sesión
           </a>
         ) : (
-          <a href={`${baseUrl}/auth/email-verification`} class="button">
-            Intentar Nuevamente
-          </a>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            {email && (
+              <button 
+                onclick="resendVerification()" 
+                class="button"
+                style="background-color: #17a2b8;"
+              >
+                Reenviar Verificación
+              </button>
+            )}
+            <a href={loginUrl} class="button">
+              Volver al Login
+            </a>
+          </div>
         )}
       </div>
       
       {success === 'true' && (
         <p class="redirect-text">
-          Serás redirigido automáticamente a la página de servicios en <span id="countdown" class="countdown">5</span> segundos... {/* ✅ CORRECCIÓN: Texto actualizado */}
+          Serás redirigido automáticamente a la página de login en <span id="countdown" class="countdown">5</span> segundos...
         </p>
       )}
       
@@ -183,10 +237,10 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
 
     {success === 'true' && (
       <script>
-        // ✅ CORRECCIÓN: Redirección automática después de 5 segundos a la página de SERVICES
+        // ✅ CORRECCIÓN: Redirección automática después de 5 segundos a la página de LOGIN
         let seconds = 5;
         const countdownElement = document.getElementById('countdown');
-        const servicesUrl = '${servicesUrl}'; // ✅ CORRECCIÓN: Usar servicesUrl
+        const loginUrl = '${loginUrl}';
         
         const countdown = setInterval(() => {
           seconds--;
@@ -196,13 +250,52 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
           
           if (seconds <= 0) {
             clearInterval(countdown);
-            window.location.href = servicesUrl; // ✅ CORRECCIÓN: Redirigir a services
+            window.location.href = loginUrl; 
           }
         }, 1000);
         
         setTimeout(() => {
-          window.location.href = servicesUrl; // ✅ CORRECCIÓN: Redirigir a services
+          window.location.href = loginUrl; 
         }, 5000);
+      </script>
+    )}
+
+    {email && (
+      <script>
+        async function resendVerification() {
+          const button = event.target;
+          const originalText = button.textContent;
+          
+          button.textContent = 'Enviando...';
+          button.disabled = true;
+          
+          try {
+            const response = await fetch('${isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es'}/auth/resend-verification', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: '${email}',
+                lang: 'es'
+              })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+              alert('✅ Correo de verificación reenviado exitosamente. Revisa tu bandeja de entrada.');
+            } else {
+              alert('❌ Error al reenviar el correo: ' + (result.message || 'Intenta nuevamente.'));
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('❌ Error de conexión. Por favor, intenta nuevamente.');
+          } finally {
+            button.textContent = originalText;
+            button.disabled = false;
+          }
+        }
       </script>
     )}
   </body>
