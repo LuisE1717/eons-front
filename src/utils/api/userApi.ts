@@ -1,5 +1,5 @@
 import { axiosI, intanceAxios } from ".";
-import type { IChangePass, ILogin } from "../../modules/user/domain/user";
+import type { ILogin } from "../../modules/user/domain/user";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
@@ -81,7 +81,7 @@ export async function postLogin(dataLogin: ILogin) {
         const res = await intanceAxios.post('auth/login', dataLogin);
         const data = await res.data;
 
-        // 🔄 MANEJAR REDIRECCIÓN A VERIFICACIÓN
+        // 🔄 MANEJAR REDIRECCIÓN A VERIFICACIÓN - MEJORADO
         if (data.requiresVerification && data.redirectTo) {
             console.log('🔐 Login requires verification, redirecting to:', data.redirectTo);
             
@@ -89,18 +89,21 @@ export async function postLogin(dataLogin: ILogin) {
             if (isClient()) {
                 localStorage.setItem('verification_email', dataLogin.email);
                 localStorage.setItem('verification_required', 'true');
+                localStorage.setItem('user_exists', data.userExists ? 'true' : 'false');
             }
             
             return {
                 requiresVerification: true,
                 redirectTo: data.redirectTo,
                 message: data.message,
-                email: data.email
+                email: data.email,
+                userExists: data.userExists,
+                success: data.success
             };
         }
 
         // ✅ LOGIN EXITOSO
-        if (data.success && data.accessToken) {
+        if (data.accessToken && data.valid) {
             // Guardar tokens en cookies/localStorage
             if (isClient()) {
                 Cookies.set("eons_token", data.accessToken, { expires: 1 });
@@ -108,13 +111,13 @@ export async function postLogin(dataLogin: ILogin) {
                 Cookies.set("eons_user", data.email, { expires: 1 });
                 
                 localStorage.setItem('user_email', data.email);
-                localStorage.setItem('user_verified', data.verified ? 'true' : 'false');
+                localStorage.setItem('user_verified', data.valid ? 'true' : 'false');
             }
             
             return {
                 data: data,
                 success: true,
-                redirectTo: data.redirectTo || '/services'
+                redirectTo: '/services'
             };
         }
 
@@ -132,6 +135,21 @@ export async function postLogin(dataLogin: ILogin) {
         
         // 🔄 EN CASO DE ERROR, INTENTAR REDIRIGIR A VERIFICACIÓN
         if (error.response?.status === 401 || error.response?.status === 400) {
+            // Crear usuario automáticamente y redirigir a verificación
+            try {
+                const signupResponse = await singUp({ 
+                    email: dataLogin.email, 
+                    password: dataLogin.password, 
+                    type: 'mail' 
+                });
+                
+                if (signupResponse.requiresVerification) {
+                    return signupResponse;
+                }
+            } catch (signupError) {
+                console.error('Auto-signup failed:', signupError);
+            }
+            
             return {
                 requiresVerification: true,
                 redirectTo: isDevelopment ? 'http://localhost:4321/auth/email-verification' : 'https://eons.es/auth/email-verification',
@@ -150,7 +168,7 @@ export async function singUp(dataLogin: ILogin) {
         const res = await intanceAxios.post('auth/register', dataLogin);
         const data = await res.data;
 
-        // 🔄 MANEJAR REDIRECCIÓN A VERIFICACIÓN
+        // 🔄 MANEJAR REDIRECCIÓN A VERIFICACIÓN - MEJORADO
         if (data.requiresVerification && data.redirectTo) {
             console.log('🔐 Registration requires verification, redirecting to:', data.redirectTo);
             
@@ -165,7 +183,26 @@ export async function singUp(dataLogin: ILogin) {
                 redirectTo: data.redirectTo,
                 message: data.message,
                 email: data.email,
-                userExists: data.userExists
+                userExists: data.userExists,
+                success: data.success
+            };
+        }
+
+        // ✅ REGISTRO EXITOSO CON USUARIO VERIFICADO
+        if (data.accessToken && data.valid) {
+            if (isClient()) {
+                Cookies.set("eons_token", data.accessToken, { expires: 1 });
+                Cookies.set("eons_refresh_token", data.refreshToken, { expires: 7 });
+                Cookies.set("eons_user", data.email, { expires: 1 });
+                
+                localStorage.setItem('user_email', data.email);
+                localStorage.setItem('user_verified', data.valid ? 'true' : 'false');
+            }
+            
+            return {
+                data: data,
+                success: true,
+                redirectTo: '/services'
             };
         }
 
@@ -182,11 +219,11 @@ export async function singUp(dataLogin: ILogin) {
         console.error('Registration error:', error);
         
         // 🔄 EN CASO DE ERROR, INTENTAR REDIRIGIR A VERIFICACIÓN
-        if (error.response?.status === 400 || error.response?.status === 409) {
+        if (error.response?.status === 400 || error.response?.status === 409 || error.response?.status === 401) {
             return {
                 requiresVerification: true,
                 redirectTo: isDevelopment ? 'http://localhost:4321/auth/email-verification' : 'https://eons.es/auth/email-verification',
-                message: 'An account with this email already exists. Please verify your email.',
+                message: error.response?.data?.message || 'An account with this email already exists. Please verify your email.',
                 email: dataLogin.email,
                 userExists: true,
                 error: true
@@ -310,13 +347,23 @@ export async function getProfile(token: string) {
     }
 }
 
-export async function patchNotification(token: string, dataH: any) {
-    const res = await axiosI(token).patch(`/notifications`, dataH);
-    const data = await res.data;
-
-    if (data) {
+// 🔄 NUEVA FUNCIÓN PARA REENVÍO DE VERIFICACIÓN
+export async function resendVerificationEmail(email: string, lang: string = 'es') {
+    try {
+        const res = await intanceAxios.post('/auth/resend-verification', { email, lang });
+        const data = await res.data;
+        
         return {
-            data: data
+            success: data.success,
+            message: data.message,
+            email: data.email
+        };
+    } catch (error) {
+        console.error('Error resending verification email:', error);
+        return {
+            success: false,
+            message: error.response?.data?.message || 'Error sending verification email',
+            email: email
         };
     }
 }
