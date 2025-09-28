@@ -1,16 +1,20 @@
 ---
+// src/pages/auth/email-verification.astro
+
 import { getI18N } from "../../i18n";
 
 const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
 const i18 = getI18N({ currentLocale });
 
-// Obtener parámetros de la URL para mostrar mensajes de error
+// Obtener parámetros de la URL para mostrar mensajes
 const url = new URL(Astro.request.url);
 const error = url.searchParams.get('error');
+const fromLogin = url.searchParams.get('fromLogin');
 
 // Configuración dinámica para producción/desarrollo
 const isDevelopment = import.meta.env.ENV === "local";
 const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+const apiUrl = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
 ---
 
 <!DOCTYPE html>
@@ -18,7 +22,7 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verificación de Email - EONS</title>
+    <title>Valide su cuenta de correo - EONS</title>
     <style>
       * {
         margin: 0;
@@ -40,7 +44,7 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
         background: white;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 420px;
+        max-width: 450px;
         width: 100%;
         padding: 2rem;
       }
@@ -71,17 +75,25 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
         color: #666;
         line-height: 1.5;
         font-size: 0.95rem;
+        margin-bottom: 1rem;
       }
       
-      .info-icon {
-        color: #8a2be2;
+      .icon {
         font-size: 3rem;
         margin-bottom: 1rem;
       }
       
+      .success-icon {
+        color: #28a745;
+      }
+      
+      .warning-icon {
+        color: #ffc107;
+      }
+      
       .button-container {
         text-align: center;
-        margin-top: 1.5rem;
+        margin: 1.5rem 0;
       }
       
       .button {
@@ -96,19 +108,15 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
         cursor: pointer;
         font-size: 1rem;
         transition: background-color 0.3s ease;
-        margin: 0 0.5rem;
       }
       
       .button:hover {
         background-color: #7a1bd2;
       }
       
-      .button-secondary {
-        background-color: #6c757d;
-      }
-      
-      .button-secondary:hover {
-        background-color: #5a6268;
+      .button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
       }
       
       .error {
@@ -117,9 +125,50 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
         margin-top: 1rem;
         font-size: 0.9rem;
         background-color: #f8d7da;
-        padding: 0.75rem;
+        padding: 10px;
         border-radius: 5px;
         border: 1px solid #f5c6cb;
+      }
+      
+      .success {
+        color: #155724;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        background-color: #d4edda;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #c3e6cb;
+      }
+      
+      .info {
+        color: #856404;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        background-color: #fff3cd;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ffeaa7;
+      }
+      
+      .countdown {
+        color: #8a2be2;
+        font-weight: bold;
+      }
+      
+      .login-link {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+      
+      .login-link a {
+        color: #8a2be2;
+        text-decoration: none;
+      }
+      
+      .login-link a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -133,72 +182,124 @@ const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
       </header>
       
       <div class="message-container">
-        <div class="info-icon">📧</div>
-        <h1 class="message-title">Verificación de Email Requerida</h1>
+        <div class="icon warning-icon">📧</div>
+        <h1 class="message-title">Valide su cuenta de correo</h1>
         <p class="message-text">
-          {error 
-            ? 'Ha ocurrido un error con la verificación de tu email. Por favor, solicita un nuevo enlace de verificación.'
-            : 'Se ha enviado un enlace de verificación a tu dirección de correo electrónico. Por favor, verifica tu email para completar el registro.'}
+          {fromLogin === 'true' 
+            ? 'Para iniciar sesión, primero debe verificar su dirección de correo electrónico. Pronto recibirá un correo con la información de verificación.'
+            : 'Pronto recibirá un correo con la información de verificación.'
+          }
         </p>
+        
+        {error && (
+          <p class="error">
+            Error: {error}
+          </p>
+        )}
       </div>
       
-      {error && (
-        <div class="error">
-          Error: {error}
-        </div>
-      )}
+      <div class="info">
+        <strong>¿No ha llegado el correo?</strong>
+        <p>Revise su carpeta de spam o solicite un nuevo correo de verificación.</p>
+      </div>
       
       <div class="button-container">
-        <a href={`${baseUrl}/auth`} class="button button-secondary">
-          Volver al Login
-        </a>
-        <button onclick="requestNewVerification()" class="button">
-          Reenviar Email de Verificación
+        <button id="resendButton" class="button" onclick="resendVerification()">
+          Reenviar correo
         </button>
       </div>
+      
+      <div id="successMessage" class="success" style="display: none;">
+        ✅ Correo de verificación enviado exitosamente
+      </div>
+      
+      <div id="errorMessage" class="error" style="display: none;">
+        ❌ Error al enviar el correo. Intente nuevamente.
+      </div>
+      
+      {fromLogin === 'true' && (
+        <div class="login-link">
+          <p>¿Ya verificó su correo? <a href={`${baseUrl}/auth`}>Volver al inicio de sesión</a></p>
+        </div>
+      )}
     </div>
 
     <script>
-      function requestNewVerification() {
-        // Obtener el email de las cookies o localStorage
-        const userEmail = getCookie('eons_user') || localStorage.getItem('userEmail');
+      let countdown = 60;
+      let countdownInterval;
+      
+      function resendVerification() {
+        const button = document.getElementById('resendButton');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Obtener el email del localStorage (asumiendo que se guardó durante el login/registro)
+        const userEmail = localStorage.getItem('userEmail') || '';
         
         if (!userEmail) {
-          alert('No se pudo encontrar tu email. Por favor, inicia sesión nuevamente.');
-          window.location.href = '${baseUrl}/auth';
+          errorMessage.textContent = '❌ No se encontró la dirección de correo. Por favor, inicie sesión nuevamente.';
+          errorMessage.style.display = 'block';
           return;
         }
-
-        // Mostrar mensaje de carga
-        const button = document.querySelector('button[onclick="requestNewVerification()"]');
-        const originalText = button.textContent;
-        button.textContent = 'Enviando...';
+        
+        // Deshabilitar el botón durante el countdown
         button.disabled = true;
-
-        // Hacer la petición al backend
-        fetch('${baseUrl}/api/auth/request-verify-email?email=' + encodeURIComponent(userEmail) + '&lang=es')
-          .then(response => response.json())
-          .then(data => {
-            if (data.message) {
-              alert('Se ha enviado un nuevo email de verificación. Por favor, revisa tu bandeja de entrada.');
-            } else {
-              alert('Error al enviar el email de verificación. Por favor, intenta nuevamente.');
-            }
+        
+        // Enviar solicitud al backend
+        fetch('${apiUrl}/auth/resend-verification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            lang: 'es'
           })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Error al enviar el email de verificación. Por favor, intenta nuevamente.');
-          })
-          .finally(() => {
-            button.textContent = originalText;
-            button.disabled = false;
-          });
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            // Iniciar countdown de 60 segundos
+            startCountdown();
+          } else {
+            throw new Error(data.message || 'Error al enviar el correo');
+          }
+        })
+        .catch(error => {
+          errorMessage.textContent = '❌ ' + error.message;
+          errorMessage.style.display = 'block';
+          successMessage.style.display = 'none';
+          button.disabled = false;
+          button.textContent = 'Reenviar correo';
+        });
       }
-
-      function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
+      
+      function startCountdown() {
+        const button = document.getElementById('resendButton');
+        countdown = 60;
+        
+        countdownInterval = setInterval(() => {
+          countdown--;
+          button.textContent = `Reenviar en ${countdown}s`;
+          
+          if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            button.disabled = false;
+            button.textContent = 'Reenviar correo';
+          }
+        }, 1000);
+      }
+      
+      // Verificar si hay un mensaje de error en la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('error')) {
+        // Mostrar el error que viene del backend
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = '❌ ' + decodeURIComponent(urlParams.get('error'));
+        errorMessage.style.display = 'block';
       }
     </script>
   </body>
