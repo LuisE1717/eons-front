@@ -1,5 +1,5 @@
 import { axiosI, intanceAxios } from ".";
-import type { ILogin } from "../../modules/user/domain/user";
+import type { ILogin, IChangePass } from "../../modules/user/domain/user";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
@@ -364,6 +364,33 @@ export async function resendVerificationEmail(email: string, lang: string = 'es'
             success: false,
             message: error.response?.data?.message || 'Error sending verification email',
             email: email
+        };
+    }
+}
+
+// 🔄 FUNCIÓN patchNotification QUE FALTABA - AGREGADA
+export async function patchNotification(token: string, dataH: any) {
+    try {
+        const res = await axiosI(token).patch(`/notifications`, dataH);
+        const data = await res.data;
+
+        if (data) {
+            return {
+                data: data,
+                success: true
+            };
+        } else {
+            return {
+                data: null,
+                success: false
+            };
+        }
+    } catch (error) {
+        console.error('Error patching notification:', error);
+        return {
+            data: null,
+            success: false,
+            error: error
         };
     }
 }
