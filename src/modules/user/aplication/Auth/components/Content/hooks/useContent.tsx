@@ -8,6 +8,7 @@ import useTranslation from "../../../../../../Shared/hooks/useTranslation";
 import type { Session } from "@auth/core/types";
 import Cookies from "js-cookie";
 import { userProfile } from "../../../../../../../UserStore";
+import { authErrors } from "../../../../../../../utils/errors/authErrors";
 
 export default function useContent(session: Session | null) {
   const [section, setSection] = useState(SECTIONS.LOGIN);
@@ -40,143 +41,93 @@ export default function useContent(session: Session | null) {
     }
   }, [session]);
 
-  // Función para redirigir a verificación de email
-  const redirectToEmailVerification = (email: string, message?: string) => {
-    console.log('🔐 Redirecting to email verification for:', email);
-    
-    // Guardar datos en localStorage para la página de verificación
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('verification_email', email);
-      localStorage.setItem('verification_required', 'true');
-      localStorage.setItem('verification_message', message || 'Please verify your email address');
-      
-      // Redirigir a la página de verificación de email
-      const verificationUrl = `/auth/email-verification/${email}`;
-      window.location.href = verificationUrl;
-    }
-  };
-
-  // Función para manejar redirección desde la respuesta de la API
-  const handleApiRedirect = (response: any) => {
-    if (response.requiresVerification && response.redirectTo) {
-      console.log('🔐 API requires verification, redirecting to:', response.redirectTo);
-      
-      // Usar la URL proporcionada por el backend
-      if (typeof window !== 'undefined') {
-        window.location.href = response.redirectTo;
-      }
-      return true;
-    }
-    return false;
-  };
-
   async function handleSubmit() {
     if (validation_mail && validation_pass && validation_confirm_pass) {
       setLoading(true);
 
-      try {
-        let response;
+      if (section === SECTIONS.LOGIN) {
+        await postLogin({ email, password })
+          .then((response) => {
+            if (response.data) {
+              const user_info = response.data;
 
-        if (section === SECTIONS.LOGIN) {
-          // 🔄 INTENTAR LOGIN
-          response = await postLogin({ email, password });
-          
-          // Manejar redirección a verificación
-          if (handleApiRedirect(response)) {
-            setLoading(false);
-            return;
-          }
+              setCookie("eons_user", user_info.email, 0.25);
+              setCookie("eons_essence", user_info.essence, 0.25);
+              setCookie("eons_token", user_info.accessToken, 0.25);
+              setCookie("eons_refresh_token", user_info.refreshToken, 7);
 
-          if (response.data) {
-            const user_info = response.data;
+              userProfile.set({
+                email: user_info.email || "",
+                valid: user_info.valid || false,
+                essence: user_info.essence || 0,
+              });
 
-            setCookie("eons_user", user_info.email, 0.25);
-            setCookie("eons_essence", user_info.essence, 0.25);
-            setCookie("eons_token", user_info.accessToken, 0.25);
-            setCookie("eons_refresh_token", user_info.refreshToken, 7);
-
-            userProfile.set({
-              email: user_info.email || "",
-              valid: user_info.valid || false,
-              essence: user_info.essence || 0,
-            });
-
-            if (user_info.valid) {
-              if (typeof window !== 'undefined') {
-                window.location.href = "/services";
+              if (user_info.valid) window.location.href = "/services";
+              else {
+                window.location.href =
+                  "auth/email-verification/" + user_info.email;
               }
             } else {
-              redirectToEmailVerification(user_info.email, 'Please verify your email address to continue');
+              setLoading(false);
             }
-          } else {
-            // 🔄 FALLBACK: REDIRIGIR A VERIFICACIÓN SI EL LOGIN FALLA
-            console.log('🔐 Login failed, redirecting to verification');
-            redirectToEmailVerification(email, 'Please verify your email address to continue');
-          }
-        } else {
-          // 🔄 REGISTRO
-          response = await singUp({ email, password, type: "mail" });
-          
-          // Manejar redirección a verificación
-          if (handleApiRedirect(response)) {
+          })
+          .catch(({ response }) => {
+            if(response?.data?.message){
+              if(response?.data?.message == "email is wrong" || response?.data?.message == "password is wrong")
+                toast.error(translation.Errors.Auth.check_credentials)
+              else{
+                toast.error(translation.fecth_error);
+              }
+            }
+            else{
+              toast.error(translation.fecth_error);
+            }
+          })
+          .finally(() => {
             setLoading(false);
-            return;
-          }
+          });
+      } else {
+        await singUp({ email, password, type: "mail" })
+          .then((response) => {
+            if (response.data) {
+              const user_info = response.data;
 
-          if (response.data) {
-            const user_info = response.data;
+              setCookie("eons_user", user_info.email, 0.25);
+              setCookie("eons_essence", user_info.essence, 0.25);
+              setCookie("eons_token", user_info.accessToken, 0.25);
+              setCookie("eons_refresh_token", user_info.refreshToken, 7);
 
-            setCookie("eons_user", user_info.email, 0.25);
-            setCookie("eons_essence", user_info.essence, 0.25);
-            setCookie("eons_token", user_info.accessToken, 0.25);
-            setCookie("eons_refresh_token", user_info.refreshToken, 7);
+              userProfile.set({
+                email: user_info.email || "",
+                valid: user_info.valid || false,
+                essence: user_info.essence || 0,
+              });
 
-            userProfile.set({
-              email: user_info.email || "",
-              valid: user_info.valid || false,
-              essence: user_info.essence || 0,
-            });
-
-            if (user_info.valid) {
-              if (typeof window !== 'undefined') {
-                window.location.href = "/services";
+              if (user_info.valid) window.location.href = "/services";
+              else {
+                window.location.href =
+                  "auth/email-verification/" + user_info.email;
               }
             } else {
-              redirectToEmailVerification(user_info.email, 'Registration successful. Please verify your email address.');
+              setLoading(false);
             }
-          } else {
-            // 🔄 FALLBACK: REDIRIGIR A VERIFICACIÓN SI EL REGISTRO FALLA
-            console.log('🔐 Registration failed, redirecting to verification');
-            redirectToEmailVerification(email, 'Registration successful. Please verify your email address.');
-          }
-        }
-      } catch (error: any) {
-        console.error("Auth error:", error);
-        
-        // 🔄 MANEJO ROBUSTO DE ERRORES - SIEMPRE REDIRIGIR A VERIFICACIÓN
-        if (error.response?.status === 401 || error.response?.status === 400 || error.response?.status === 409) {
-          const errorMessage = error.response?.data?.message || 'An error occurred. Please verify your email address.';
-          
-          // Mostrar mensaje de error específico
-          if (errorMessage.includes('already exists') || errorMessage.includes('ya existe')) {
-            toast.info('An account with this email already exists. Please verify your email address.');
-          } else {
-            toast.info(errorMessage);
-          }
-          
-          // 🔄 REDIRECCIÓN AUTOMÁTICA A VERIFICACIÓN EN CASO DE ERROR
-          redirectToEmailVerification(email, errorMessage);
-        } else {
-          // Error de conexión u otro error
-          toast.error(translation.fecth_error);
-          
-          // 🔄 REDIRECCIÓN DE FALLBACK A VERIFICACIÓN
-          setTimeout(() => {
-            redirectToEmailVerification(email, 'Connection error. Please verify your email address.');
-          }, 2000);
-        }
-      } finally {
-        setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
+            if(error?.data?.message){
+              if(error?.data?.message == "User Alredy exist")
+                toast.error(translation.Errors.Auth.already_exist)
+              else{
+                toast.error(translation.fecth_error);
+              }
+            }
+            else{
+              toast.error(translation.fecth_error);
+            }
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       }
     }
   }
@@ -210,10 +161,10 @@ export default function useContent(session: Session | null) {
                 essence: user_info.essence || 0,
               });
 
-              if (user_info.valid && typeof window !== 'undefined') {
-                window.location.href = "/services";
-              } else if (typeof window !== 'undefined') {
-                window.location.href = `/auth/email-verification/${user_info.email}`;
+              if (user_info.valid) window.location.href = "/services";
+              else {
+                window.location.href =
+                  "auth/email-verification/" + user_info.email;
               }
 
               token = response.data.accessToken;
@@ -221,13 +172,8 @@ export default function useContent(session: Session | null) {
           })
           .catch(({ response }) => {
             if(response?.data?.message){
-              if(response?.data?.message == "User Alredy exist") {
-                toast.error(translation.Errors.Auth.already_exist);
-                // Redirigir a verificación
-                if (session?.user?.email && typeof window !== 'undefined') {
-                  window.location.href = `/auth/email-verification/${session.user.email}`;
-                }
-              }
+              if(response?.data?.message == "User Alredy exist")
+                toast.error(translation.Errors.Auth.already_exist)
               else{
                 toast.error(translation.fecth_error);
               }
