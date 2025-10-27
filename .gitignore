@@ -26,3 +26,8 @@ pnpm-debug.log*
 .idea/
 
 package-lock.json
+
+.cursor/
+GEMINI.md
+CLAUDE.md
+.kilocode/
