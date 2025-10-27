@@ -270,7 +270,7 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
           button.disabled = true;
           
           try {
-            const response = await fetch('${isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es'}/auth/resend-verification', {
+            const response = await fetch(`${isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es'}/auth/resend-verification`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
