@@ -49,7 +49,7 @@ export async function postSaveEvaluation(token: string, data: EvaluationData): P
     }
     
     return {
-      data: null,
+      data: undefined,
       success: false,
       error: error.response?.data || error.message,
     };
@@ -82,7 +82,7 @@ export async function postMesagges(token: string, data: any): Promise<Evaluation
     }
     
     return {
-      data: null,
+      data: undefined,
       success: false,
       error: error.response?.data || error.message,
     };
@@ -93,7 +93,7 @@ export async function postMesagges(token: string, data: any): Promise<Evaluation
 export async function getUltimaConsulta(token: string): Promise<EvaluationResponse> {
   try {
     const response = await axiosI(token).get(`lanzamientos/ultima`);
-    
+
     return {
       data: response.data,
       success: true,
@@ -102,7 +102,7 @@ export async function getUltimaConsulta(token: string): Promise<EvaluationRespon
     console.error('Error getting last consultation:', error);
 
     return {
-      data: null,
+      data: undefined,
       success: false,
       error: error.response ? error.response.data : error.message,
     };
@@ -113,7 +113,7 @@ export async function getUltimaConsulta(token: string): Promise<EvaluationRespon
 export async function getResultadoPorId(token: string, id: string): Promise<EvaluationResponse> {
   try {
     const response = await axiosI(token).get(`lanzamientos/resultado/${id}`);
-    
+
     return {
       data: response.data,
       success: true,
@@ -122,7 +122,7 @@ export async function getResultadoPorId(token: string, id: string): Promise<Eval
     console.error('Error getting resultado by id:', error);
 
     return {
-      data: null,
+      data: undefined,
       success: false,
       error: error.response ? error.response.data : error.message,
     };

@@ -1,5 +1,6 @@
 ---
 import { getI18N } from "../../i18n";
+import configEnv from "../../../.env_config.ts";
 
 const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
 const i18 = getI18N({ currentLocale });
@@ -12,13 +13,13 @@ const email = url.searchParams.get('email');
 const fromLogin = url.searchParams.get('fromLogin');
 const userExists = url.searchParams.get('userExists');
 
-// Configuración dinámica para producción/desarrollo
-const isDevelopment = import.meta.env.ENV === "local";
-const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
+// Configuración unificada: solo cambian las URLs según las variables de entorno
+const baseUrl = configEnv.frontend;
+const apiUrl = configEnv.api;
 
 // Determinar la ruta correcta del login y services
 const loginUrl = `${baseUrl}/auth`;
-const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
+const servicesUrl = `${baseUrl}/services`;
 ---
 
 <!DOCTYPE html>
@@ -261,16 +262,16 @@ const servicesUrl = `${baseUrl}/services`; // ✅ CORRECCIÓN: Ruta a services
     )}
 
     {email && (
-      <script>
+      <script define:vars={{ apiUrl }}>
         async function resendVerification() {
           const button = event.target;
           const originalText = button.textContent;
-          
+
           button.textContent = 'Enviando...';
           button.disabled = true;
-          
+
           try {
-            const response = await fetch(`${isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es'}/auth/resend-verification`, {
+            const response = await fetch(`${apiUrl}/auth/resend-verification`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

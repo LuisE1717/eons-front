@@ -1,4 +1,4 @@
-import { createRef, useState } from "react";
+import { useRef, useState } from "react";
 import Menu from "./components/Menu/Menu";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function Dropdown({
   position = "bottom",
   no_close
 }: Props) {
-  const ref = createRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
 
   const [openMenu, setOpenMenu] = useState(false);
 

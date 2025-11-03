@@ -1,4 +1,4 @@
-// utils/api/index.ts - ACTUALIZADO PARA PRODUCCIÓN
+// utils/api/index.ts - CONFIGURACIÓN UNIFICADA
 import axios, {
   type AxiosInstance,
   type InternalAxiosRequestConfig,
@@ -7,9 +7,9 @@ import configEnv from "../../../.env_config";
 import Cookies from "js-cookie";
 import { validMail } from "../validations";
 
-// Configuración dinámica según el entorno
-const isDevelopment = process.env.ENV === "local";
-const API_BASE_URL = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
+// Configuración unificada: solo cambian las URLs según las variables de entorno
+const API_BASE_URL = configEnv.api;
+const FRONTEND_BASE_URL = configEnv.frontend;
 
 export const intanceAxios: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -117,8 +117,7 @@ export function axiosI(apiToken: string | undefined) {
         } else if (error.response.status === 403) {
           console.log('🔒 Acceso denegado, verificando email...');
           if (validMail(Cookies.get("eons_user"))) {
-            const frontendUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
-            window.location.href = `${frontendUrl}/email-verification/${Cookies.get("eons_user") || ""}`;
+            window.location.href = `${FRONTEND_BASE_URL}/email-verification/${Cookies.get("eons_user") || ""}`;
           }
         }
       }

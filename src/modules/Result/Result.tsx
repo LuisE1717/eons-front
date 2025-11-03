@@ -28,10 +28,16 @@ const Result: React.FC<ResultProps> = ({ token, language }) => {
     };
 
     postMesagges(token, data)
-      .then((res) => res.data)
-      .then((data: string[]) => {
-        setMessages(data);
-        console.log(JSON.stringify(data, null, 2));
+      .then((res) => {
+        if (res.data) {
+          // Convert the response object to an array of strings for display
+          const messages = [
+            res.data.resultadoFinal,
+            res.data.interpretacion
+          ].filter(Boolean);
+          setMessages(messages);
+          console.log(JSON.stringify(res.data, null, 2));
+        }
       });
   }, []);
 

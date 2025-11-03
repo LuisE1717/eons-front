@@ -35,7 +35,7 @@ export default function Content() {
   }
 
   return (
-    <ListContainer>
+    <ListContainer items={[]} image="/pixelcut-export (12).webp">
       {!selected && <Header />}
 
       {dataSpirits.data.length === 0 && <Empty handleAdd={handleAdd} />}

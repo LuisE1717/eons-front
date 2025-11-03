@@ -1,7 +1,6 @@
 import React, { useEffect, useState, type FC } from 'react'
 import OutlineInputReact from '../../../../../components/UI/input/OutlineInputReact'
 import { validMail } from '../../../../../utils/validations';
-import EmailConfirmation from '../../../../EmailConfirmation/EmailConfirmation.astro';
 import Button from '../React/components/Button/Button';
 import { postResetPass } from '../../../../../utils/api/userApi';
 import { toast, ToastContainer } from 'react-toastify';

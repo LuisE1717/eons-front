@@ -35,8 +35,8 @@ export default function AlertEmergency() {
       modalContent.classList.remove('animate-modal-entrance');
       modalContent.style.animation = 'none';
       // Trigger reflow
-      if (modalContent.offsetHeight) {} 
-      modalContent.style.animation = null;
+      if (modalContent.offsetHeight) {}
+      modalContent.style.animation = '';
       
       // Aplicamos animación de salida
       modalContent.classList.add('scale-90', 'opacity-0');
