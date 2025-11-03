@@ -4,7 +4,7 @@ import useClickOutside from "./hooks/useClickOutside";
 
 interface Props {
   handleClose(): void;
-  wrapRef: RefObject<HTMLDivElement>;
+  wrapRef: RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
   position: "bottom" | "left";
 }

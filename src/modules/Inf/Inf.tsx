@@ -57,9 +57,9 @@ export default function Inf({ token }: { token: string }) {
     if (typeof data === "string") {
       return data.split("\n"); // Si es string, dividir por líneas
     } else if (Array.isArray(data)) {
-      return data.map((item) => item.toString()); // Si es array, convertir elementos a string
+      return data.map((item) => String(item)); // Si es array, convertir elementos a string
     } else if (typeof data === "object") {
-      return Object.values(data).map((item) => item.toString()); // Si es objeto, extraer valores y convertir a string
+      return Object.values(data).map((item) => String(item)); // Si es objeto, extraer valores y convertir a string
     }
     return ["Formato desconocido de resultados"]; // Fallback en caso de error
   };
