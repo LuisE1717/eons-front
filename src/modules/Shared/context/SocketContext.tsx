@@ -1,6 +1,7 @@
 
 import { createContext, useMemo, type ReactElement } from "react"
 import { io, Socket } from "socket.io-client"
+import configEnv from "../../../../.env_config"
 
 interface Props {
   socket: Socket
@@ -11,7 +12,7 @@ const SocketContext = createContext<Props>({} as Props)
 function SocketProvider({ children }: { children: ReactElement }) {
 
   const socket = useMemo(() => {
-    return io('http://localhost:3000', {
+    return io(configEnv.ws, {
     })
   }, [])
 

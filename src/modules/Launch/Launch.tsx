@@ -333,8 +333,8 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         if (response && response.data && response.data.resultadoFinal) {
           resultadoFinal = response.data.resultadoFinal;
           console.log('✅ Usando response.data.resultadoFinal');
-        } else if (response && response.resultadoFinal) {
-          resultadoFinal = response.resultadoFinal;
+        } else if (response && typeof (response as any).resultadoFinal === 'string') {
+          resultadoFinal = (response as any).resultadoFinal;
           console.log('✅ Usando response.resultadoFinal');
         } else if (typeof response === 'string' && response.length > 0) {
           resultadoFinal = response;
@@ -577,7 +577,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
             </div>
           )}
         </div>
-        <style jsx>{`
+        <style>{`
           @keyframes rotate-360 {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -787,7 +787,7 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         /* Estilos para el botón de ir atrás */
         .back-button-container {
           position: absolute;

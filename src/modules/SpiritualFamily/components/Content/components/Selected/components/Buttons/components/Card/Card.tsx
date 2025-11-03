@@ -1,3 +1,4 @@
+import React from "react";
 import Fire from "./components/Fire/Fire";
 
 interface Props {
@@ -14,7 +15,7 @@ export default function Card({ icon, text, fire }: Props) {
         <span className="text-sm mb-0">{fire}</span>
       </div>
 
-      <i className="mb-1">{icon({ size: 32 })}</i>
+      <i className="mb-1">{React.createElement(icon, { size: 32 })}</i>
       <p className="mb-0 text-sm font-semibold text-center">{text}</p>
     </div>
   );

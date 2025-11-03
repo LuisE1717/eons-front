@@ -12,6 +12,7 @@ interface Props {
   full?: boolean;
   size?: "base" | "sm" | "xs";
   shadow?: "bottom" | "default";
+  className?: string;
 }
 
 export default function Button({
@@ -25,6 +26,7 @@ export default function Button({
   full = true,
   size = "base",
   shadow = "default",
+  className,
 }: Props) {
   const handleClick = (e: React.MouseEvent) => {
     if (onClick) {
@@ -42,7 +44,8 @@ export default function Button({
     "py-4 px-10",
 
     { "opacity-60": disabled },
-    { "w-full": full, "w-max": !full }
+    { "w-full": full, "w-max": !full },
+    className
   );
 
   return (

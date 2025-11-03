@@ -2,13 +2,13 @@ import { axiosI, intanceAxios } from ".";
 import type { IChangePass, ILogin } from "../../modules/user/domain/user";
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import configEnv from '../../../.env_config';
 
 // Función para verificar si estamos en el cliente
 const isClient = () => typeof window !== 'undefined';
 
-// Configuración dinámica según el entorno
-const isDevelopment = process.env.ENV === "local";
-const API_BASE_URL = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
+// Configuración unificada: solo cambian las URLs según las variables de entorno
+const API_BASE_URL = configEnv.api;
 
 // Función para marcar como leído usando axios directamente
 export const setReadedWithAxios = async (token: string) => {

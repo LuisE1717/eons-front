@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 interface Props {
   onClickOutside(): void;
-  element: RefObject<HTMLDivElement>;
+  element: RefObject<HTMLDivElement | null>;
 }
 
 export default function useClickOutside({ onClickOutside, element }: Props) {

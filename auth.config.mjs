@@ -1,17 +1,18 @@
 import Google from '@auth/core/providers/google';
 import AzureAD from "@auth/core/providers/azure-ad"
 import { defineConfig } from 'auth-astro';
+import configEnv from './.env_config.ts';
 
 export default defineConfig({
   providers: [
     Google({
-      clientId: import.meta.env.GOOGLE_CLIENT_ID,
-      clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET,
+      clientId: configEnv.google.clientId,
+      clientSecret: configEnv.google.clientSecret,
     }),
     AzureAD({
-      clientId: import.meta.env.AZURE_AD_CLIENT_ID,
-      clientSecret: import.meta.env.AZURE_AD_CLIENT_SECRET,
-      tenantId: import.meta.env.AZURE_AD_TENANT_ID,
+      clientId: configEnv.azure.clientId,
+      clientSecret: configEnv.azure.clientSecret,
+      tenantId: configEnv.azure.tenantId,
     })
   ],
   callbacks: {

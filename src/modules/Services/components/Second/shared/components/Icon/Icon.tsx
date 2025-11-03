@@ -1,3 +1,4 @@
+import React from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
@@ -34,7 +35,7 @@ export default function Icon({ selected, icon, handleClick, visible, className, 
         transitionDelay: "0.4s",
       }}
     >
-      <i className="stroke-primary">{icon({ size: 36 })}</i>
+      <i className="stroke-primary">{React.createElement(icon, { size: 36 })}</i>
     </motion.div>
   );
 }

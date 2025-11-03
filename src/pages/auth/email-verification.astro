@@ -1,6 +1,7 @@
 ---
 
 import { getI18N } from "../../i18n";
+import configEnv from "../../../.env_config.ts";
 
 const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
 const i18 = getI18N({ currentLocale });
@@ -10,10 +11,9 @@ const url = new URL(Astro.request.url);
 const error = url.searchParams.get('error');
 const fromLogin = url.searchParams.get('fromLogin');
 
-// Configuración dinámica para producción/desarrollo
-const isDevelopment = import.meta.env.ENV === "local";
-const baseUrl = isDevelopment ? 'http://localhost:4321' : 'https://eons.es';
-const apiUrl = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
+// Configuración unificada: solo cambian las URLs según las variables de entorno
+const baseUrl = configEnv.frontend;
+const apiUrl = configEnv.api;
 ---
 
 <!DOCTYPE html>
@@ -223,29 +223,29 @@ const apiUrl = isDevelopment ? 'http://localhost:3000' : 'https://api.eons.es';
       )}
     </div>
 
-    <script>
+    <script define:vars={{ apiUrl }}>
       let countdown = 60;
       let countdownInterval;
-      
+
       function resendVerification() {
         const button = document.getElementById('resendButton');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
-        
+
         // Obtener el email del localStorage (asumiendo que se guardó durante el login/registro)
         const userEmail = localStorage.getItem('userEmail') || '';
-        
+
         if (!userEmail) {
           errorMessage.textContent = '❌ No se encontró la dirección de correo. Por favor, inicie sesión nuevamente.';
           errorMessage.style.display = 'block';
           return;
         }
-        
+
         // Deshabilitar el botón durante el countdown
         button.disabled = true;
-        
+
         // Enviar solicitud al backend
-        fetch('${apiUrl}/auth/resend-verification', {
+        fetch(`${apiUrl}/auth/resend-verification`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
