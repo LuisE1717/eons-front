@@ -1,6 +1,6 @@
-import React, {type ReactElement} from 'react';
+import React, {type ReactNode} from 'react';
 
-const Frame: React.FC<{ children: ReactElement }> = ({ children }) => {
+const Frame: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <div className="frame relative w-full h-screen overflow-hidden">
             {/* Fondo místico */}
