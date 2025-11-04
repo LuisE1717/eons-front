@@ -6,9 +6,7 @@ import { postLogin, singUp } from "../../../../../../../utils/api/userApi";
 import { toast } from "react-toastify";
 import useTranslation from "../../../../../../Shared/hooks/useTranslation";
 import type { Session } from "@auth/core/types";
-import Cookies from "js-cookie";
 import { userProfile } from "../../../../../../../UserStore";
-import { authErrors } from "../../../../../../../utils/errors/authErrors";
 
 export default function useContent(session: Session | null) {
   const [section, setSection] = useState(SECTIONS.LOGIN);
@@ -51,9 +49,9 @@ export default function useContent(session: Session | null) {
             if (response.data) {
               const user_info = response.data;
 
-              setCookie("eons_user", user_info.email, 0.25);
-              setCookie("eons_essence", user_info.essence, 0.25);
-              setCookie("eons_token", user_info.accessToken, 0.25);
+              setCookie("eons_user", user_info.email, 7);
+              setCookie("eons_essence", user_info.essence, 7);
+              setCookie("eons_token", user_info.accessToken, 7);
               setCookie("eons_refresh_token", user_info.refreshToken, 7);
 
               userProfile.set({
@@ -92,9 +90,9 @@ export default function useContent(session: Session | null) {
             if (response.data) {
               const user_info = response.data;
 
-              setCookie("eons_user", user_info.email, 0.25);
-              setCookie("eons_essence", user_info.essence, 0.25);
-              setCookie("eons_token", user_info.accessToken, 0.25);
+              setCookie("eons_user", user_info.email, 7);
+              setCookie("eons_essence", user_info.essence, 7);
+              setCookie("eons_token", user_info.accessToken, 7);
               setCookie("eons_refresh_token", user_info.refreshToken, 7);
 
               userProfile.set({
@@ -133,69 +131,63 @@ export default function useContent(session: Session | null) {
   }
 
   async function handleSession() {
-    let token = "";
+    const intent = sessionStorage.getItem("authIntent");
+    sessionStorage.removeItem("authIntent"); // Clean up immediately
+
+    if (!session?.user?.email || !session?.user?.id) {
+      toast.error(translation.fecth_error);
+      return;
+    }
+
+    setLoading(true);
+
+    const { email, id: password, name: type } = session.user;
+
     try {
-      if (session?.user?.email && session?.user?.id) {
-        setLoading(true);
-        await singUp({
-          email: session.user.email,
-          password: session?.user?.id || "",
-          type: session.user.name || "",
-        })
-          .then((response) => {
-            if (response.data) {
-              const user_info = response.data;
-
-              setCookie("eons_user", user_info.email, 0.25);
-              setCookie("eons_essence", user_info.essence, 0.25);
-              setCookie("eons_token", response.data.accessToken, 0.25);
-              setCookie(
-                "eons_refresh_token",
-                response.data.refreshToken || "",
-                0.25
-              );
-
-              userProfile.set({
-                email: user_info.email || "",
-                valid: user_info.valid || false,
-                essence: user_info.essence || 0,
-              });
-
-              if (user_info.valid) window.location.href = "/services";
-              else {
-                window.location.href =
-                  "auth/email-verification/" + user_info.email;
-              }
-
-              token = response.data.accessToken;
-            }
-          })
-          .catch(({ response }) => {
-            if(response?.data?.message){
-              if(response?.data?.message == "User Alredy exist")
-                toast.error(translation.Errors.Auth.already_exist)
-              else{
-                toast.error(translation.fecth_error);
-              }
-            }
-            else{
-              toast.error(translation.fecth_error);
-            }
-          });
-        setLoading(false);
+      let response;
+      if (intent === "login") {
+        response = await postLogin({ email, password, type });
       } else {
-        setLoading(false);
-        Cookies.remove("eons_token");
-        userProfile.set(null);
+        // Default to signup if no intent is found
+        response = await singUp({ email, password, type });
+      }
+
+      if (response.data) {
+        const user_info = response.data;
+
+        setCookie("eons_user", user_info.email, 7);
+        setCookie("eons_essence", user_info.essence, 7);
+        setCookie("eons_token", user_info.accessToken, 7);
+        setCookie("eons_refresh_token", user_info.refreshToken, 7);
+
+        userProfile.set({
+          email: user_info.email || "",
+          valid: user_info.valid || false,
+          essence: user_info.essence || 0,
+        });
+
+        if (user_info.valid) {
+          window.location.href = "/services";
+        } else {
+          window.location.href = "auth/email-verification/" + user_info.email;
+        }
       }
     } catch (error) {
-      console.log(error);
-      toast.error(translation.fecth_error);
+      if (intent === "login" && error.response?.data?.message === "User not found") {
+        toast.error("User not registered. Please sign up first.");
+      } else if (intent === "signup" && error.response?.data?.message === "User Alredy exist") {
+        toast.error(translation.Errors.Auth.already_exist);
+      } else {
+        toast.error(translation.fecth_error);
+      }
+    } finally {
       setLoading(false);
     }
   }
 
   function handleChangeSection(s: SECTIONS) {
+    const intent = s === SECTIONS.LOGIN ? "login" : "signup";
+    sessionStorage.setItem("authIntent", intent);
     setSection(s);
   }
 

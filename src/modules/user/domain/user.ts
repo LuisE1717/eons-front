@@ -1,7 +1,7 @@
 export interface ILogin {
     email: string;
     password: string;
-    type?: string;
+    type?: string | null;
 }
 
 export interface ISessionLogin {
