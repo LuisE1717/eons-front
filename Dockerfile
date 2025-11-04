@@ -9,9 +9,9 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Install dependencies (this layer will be cached if package.json/yarn.lock don't change)
-RUN yarn install --frozen-lockfile --production=false && \
-    yarn cache clean && \
-    rm -rf /tmp/* /var/lib/apt/lists/*
+RUN yarn install --frozen-lockfile --production=false
+RUN yarn cache clean
+RUN rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Copy source files
 COPY . .
@@ -56,9 +56,9 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Install ONLY production dependencies
-RUN yarn install --frozen-lockfile --production=true && \
-    yarn cache clean && \
-    rm -rf /tmp/* /var/lib/apt/lists/* /root/.cache /var/cache/apt/*
+RUN yarn install --frozen-lockfile --production=true
+RUN yarn cache clean
+RUN rm -rf /tmp/* /var/lib/apt/lists/* /root/.cache /var/cache/apt/*
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
