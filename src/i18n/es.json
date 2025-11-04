@@ -404,9 +404,11 @@
     "info_modal_example3_answer": "El sistema le responde:",
     "info_modal_example3_answer_text": "\"Sí definitivo\".",
     "info_modal_example3_advice": "Concejo:",
-    "info_modal_example3_advice_text": "En este caso la respuesta es clara, cuando el sistema responde así a ese tipo de preguntas usted puede contar con la total seguridad de que la Entidad Espiritual con que se desea contactar ya está presente en el momento. La próxima pregunta en ese caso se aconseja enfocarla más en una conversación personal con dicha Entidad Espiritual." 
-
-  },
+        "info_modal_example3_advice_text": "En este caso la respuesta es clara, cuando el sistema responde así a ese tipo de preguntas usted puede contar con la total seguridad de que la Entidad Espiritual con que se desea contactar ya está presente en el momento. La próxima pregunta en ese caso se aconseja enfocarla más en una conversación personal con dicha Entidad Espiritual.",
+        "translating_results": "Traduciendo resultados...",
+        "translating": "Traduciendo...",
+        "translate_to_english": "Traducir al inglés"
+      },
 
   "Results": {
     "111": "Sí definitivo, nada ni nadie puede evitarlo.",
