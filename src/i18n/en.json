@@ -394,9 +394,11 @@
     "info_modal_example3_answer": "The system responds:",
     "info_modal_example3_answer_text": "\"Yes definitely\".",
     "info_modal_example3_advice": "Advice:",
-    "info_modal_example3_advice_text": "In this case the answer is clear, when the system responds like this to that type of questions you can count on the total certainty that the Spiritual Entity you wish to contact is already present at the moment. The next question in that case is advised to focus more on a personal conversation with said Spiritual Entity."
-    
-  },
+        "info_modal_example3_advice_text": "In this case the answer is clear, when the system responds like this to that type of questions you can count on the total certainty that the Spiritual Entity you wish to contact is already present at the moment. The next question in that case is advised to focus more on a personal conversation with said Spiritual Entity.",
+        "translating_results": "Translating results...",
+        "translating": "Translating...",
+        "translate_to_english": "Translate to English"
+      },
 
   "Results": {
     "111": "Yes definitely, nothing and no one can prevent it.",
