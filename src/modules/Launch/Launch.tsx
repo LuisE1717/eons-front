@@ -122,6 +122,9 @@ const translateToEnglish = async (text: string): Promise<string> => {
 const translateWithBackupAPI = async (text: string): Promise<string> => {
   try {
     // Intentar con tu propio backend primero (recomendado para producción)
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), 5000); // Timeout de 5 segundos
+
     const response = await fetch('/api/translate', {
       method: 'POST',
       headers: {
@@ -132,8 +135,9 @@ const translateWithBackupAPI = async (text: string): Promise<string> => {
         sourceLang: 'es',
         targetLang: 'en'
       }),
-      timeout: 5000 // Timeout de 5 segundos
+      signal: controller.signal
     });
+    clearTimeout(id);
 
     if (response.ok) {
       const data = await response.json();
@@ -336,9 +340,6 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
         } else if (response && typeof (response as any).resultadoFinal === 'string') {
           resultadoFinal = (response as any).resultadoFinal;
           console.log('✅ Usando response.resultadoFinal');
-        } else if (typeof response === 'string' && response.length > 0) {
-          resultadoFinal = response;
-          console.log('✅ Usando response como string');
         } else if (response && typeof response === 'object') {
           const findLongText = (obj: any, path = ''): string => {
             if (typeof obj === 'string' && obj.length > 20 && !path.includes('id') && !path.includes('token')) {
@@ -494,187 +495,184 @@ const Launch: React.FC<LaunchProps> = ({ token, steps, type }) => {
   if (showWritingEffect) {
     return (
       <Frame>
-        <div className="back-button-container-writing" onClick={() => window.location.href = '/services'}>
-          <div className="back-button-bg"></div>
-          <button className="back-button-writing">
-            <svg className="back-arrow-writing" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="writing-effect-container text-center">
-          <div className="arcane-writing-background">
-            <div className="writing-orb writing-orb-1"></div>
-            <div className="writing-orb writing-orb-2"></div>
-            <div className="writing-orb writing-orb-3"></div>
-          </div>
-          <div className="writing-text-container">
-            {/* Botón de traducción mejorado */}
-            {showButtons && originalResultText && (
-              <button
-                className={`translate-button ${isTranslating ? 'translating' : ''}`}
-                onClick={handleTranslateToEnglish}
-                disabled={isTranslating}
-                title={isTranslating ? 
-                  (translation.Launch.translating || 'Translating...') : 
-                  (translation.Launch.translate_to_english || 'Translate to English')
-                }
-              >
-                {isTranslating ? (
-                  <div className="translate-spinner"></div>
-                ) : (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
-                    <path d="M12 6v6l4 2" />
-                  </svg>
-                )}
+        <>
+          <div>
+            <div className="back-button-container-writing" onClick={() => window.location.href = '/services'}>
+              <div className="back-button-bg"></div>
+              <button className="back-button-writing">
+                <svg className="back-arrow-writing" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
               </button>
-            )}
-            <p className="writing-text">{resultText}</p>
-            {isLoading && (
-              <div className="loading-spinner">
-                <div className="spinner-ball purple-spinner"></div>
+            </div>
+
+            <div className="writing-effect-container text-center">
+              {/* Botón de traducción mejorado */}
+              {showButtons && originalResultText && (
+                <button
+                  className={`translate-button ${isTranslating ? 'translating' : ''}`}
+                  onClick={handleTranslateToEnglish}
+                  disabled={isTranslating}
+                  title={isTranslating ? 
+                    (translation.Launch.translating || 'Translating...') : 
+                    (translation.Launch.translate_to_english || 'Translate to English')
+                  }
+                >
+                  {isTranslating ? (
+                    <div className="translate-spinner"></div>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
+                      <path d="M12 6v6l4 2" />
+                    </svg>
+                  )}
+                </button>
+              )}
+              <p className="writing-text">{resultText}</p>
+              {isLoading && (
+                <div className="loading-spinner">
+                  <div className="spinner-ball purple-spinner"></div>
+                </div>
+              )}
+              <span className="writing-cursor">|</span>
+              <div className="writing-sparkles">
+                {[...Array(15)].map((_, i) => (
+                  <div key={i} className="sparkle" style={{
+                    animationDelay: `${i * 0.2}s`,
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`
+                  }}></div>
+                ))}
+              </div>
+            </div>
+            <div className="writing-glow"></div>
+            {/* Botones de Modo Diálogo Abierto */}
+            {showButtons && (
+              <div className="absolute bottom-60 left-0 right-0 flex justify-center items-center gap-4 z-20">
+                <button
+                  className="bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center gap-2 spiritual-glow"
+                  onClick={handleRetry}
+                  onMouseEnter={() => setIsHoveringRetry(true)}
+                  onMouseLeave={() => setIsHoveringRetry(false)}
+                >
+                  <svg
+                    className={`w-5 h-5 transition-transform duration-300 ${isHoveringRetry ? 'rotate-360' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                    />
+                  </svg>
+                  {translation.Launch.open_dialog_mode || 'Modo Diálogo Abierto'}
+                </button>
               </div>
             )}
-            <span className="writing-cursor">|</span>
-            <div className="writing-sparkles">
-              {[...Array(15)].map((_, i) => (
-                <div key={i} className="sparkle" style={{
-                  animationDelay: `${i * 0.2}s`,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`
-                }}></div>
-              ))}
-            </div>
           </div>
-          <div className="writing-glow"></div>
-          {/* Botones de Modo Diálogo Abierto */}
-          {showButtons && (
-            <div className="absolute bottom-60 left-0 right-0 flex justify-center items-center gap-4 z-20">
-              <button
-                className="bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center gap-2 spiritual-glow"
-                onClick={handleRetry}
-                onMouseEnter={() => setIsHoveringRetry(true)}
-                onMouseLeave={() => setIsHoveringRetry(false)}
-              >
-                <svg
-                  className={`w-5 h-5 transition-transform duration-300 ${isHoveringRetry ? 'rotate-360' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
-                {translation.Launch.open_dialog_mode || 'Modo Diálogo Abierto'}
-              </button>
-            </div>
-          )}
-        </div>
-        <style>{`
-          @keyframes rotate-360 {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          .rotate-360 {
-            animation: rotate-360 0.5s ease-in-out;
-          }
-          .loading-spinner {
-            display: flex;
-            justify-content: center;
-            margin: 1rem 0;
-          }
-          .spinner-ball {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-          }
-          .purple-spinner {
-            background: linear-gradient(135deg, #8B5CF6, #6D28D9);
-            box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
-          }
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
+          <style>{`
+            @keyframes rotate-360 {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            .rotate-360 {
+              animation: rotate-360 0.5s ease-in-out;
+            }
+            .loading-spinner {
+              display: flex;
+              justify-content: center;
+              margin: 1rem 0;
+            }
+            .spinner-ball {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              animation: spin 1s linear infinite;
+            }
+            .purple-spinner {
+              background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+              box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+            }
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
 
-          .back-button-container-writing {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            z-index: 100;
-          }
-          .back-button-writing {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 101;
-            padding: 8px;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-          }
-          .back-button-writing:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-          }
-          .back-arrow-writing {
-            width: 24px;
-            height: 24px;
-            color: #ffffff;
-          }
+            .back-button-container-writing {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 70px;
+              z-index: 100;
+            }
+            .back-button-writing {
+              position: absolute;
+              top: 20px;
+              left: 20px;
+              background: none;
+              border: none;
+              cursor: pointer;
+              z-index: 101;
+              padding: 8px;
+              border-radius: 50%;
+              transition: background-color 0.3s;
+            }
+            .back-button-writing:hover {
+              background-color: rgba(255, 255, 255, 0.2);
+            }
+            .back-arrow-writing {
+              width: 24px;
+              height: 24px;
+              color: #ffffff;
+            }
 
-          .translate-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s;
-          }
-          .translate-button:hover:not(:disabled) {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-          }
-          .translate-button:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-          }
-          .translate-button.translating {
-            background: rgba(139, 92, 246, 0.3);
-          }
-          .translate-button svg {
-            color: white;
-            width: 20px;
-            height: 20px;
-          }
-          .translate-spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid transparent;
-            border-top: 2px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-          }
-        `}</style>
+            .translate-button {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background: rgba(255, 255, 255, 0.2);
+              border: none;
+              border-radius: 50%;
+              width: 36px;
+              height: 36px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              z-index: 10;
+              transition: all 0.3s;
+            }
+            .translate-button:hover:not(:disabled) {
+              background: rgba(255, 255, 255, 0.3);
+              transform: scale(1.1);
+            }
+            .translate-button:disabled {
+              cursor: not-allowed;
+              opacity: 0.7;
+            }
+            .translate-button.translating {
+              background: rgba(139, 92, 246, 0.3);
+            }
+            .translate-button svg {
+              color: white;
+              width: 20px;
+              height: 20px;
+            }
+            .translate-spinner {
+              width: 16px;
+              height: 16px;
+              border: 2px solid transparent;
+              border-top: 2px solid white;
+              border-radius: 50%;
+              animation: spin 1s linear infinite;
+            }
+          `}</style>
+        </>
       </Frame>
     );
   }
