@@ -66,3 +66,76 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+
+## 🔐 Authentication Flow
+
+The application supports three authentication methods: traditional email/password, Google OAuth, and Microsoft OAuth.
+
+### 1. Email & Password Authentication
+
+This is the standard login flow.
+
+**Frontend:**
+
+1. **UI Component**: The login form is located in `eons-front/src/modules/user/aplication/Auth/components/Content/Content.tsx`. This React component handles user input for email and password.
+2. **API Call**: On form submission, the `postLogin` function within `Content.tsx` is triggered. It uses an `userApi` instance to send a `POST` request to the backend.
+3. **Communication**: The request targets the `/auth/login` endpoint, sending the user's credentials in the request body.
+
+**Backend:**
+
+1. **Controller**: The request is handled by the `AuthController` at `eons-api/src/auth/auth.controller.ts`, specifically the method decorated with `@Post('/auth/login')`.
+2. **Service Logic**: The controller calls the `login` method in `AuthService` (`eons-api/src/auth/auth.service.ts`).
+3. **Validation**: `AuthService` finds the user by email and validates the provided password against the stored hash using `bcryptjs`.
+4. **Response**: Upon successful validation, the service generates a JWT `access_token` and `refresh_token`, which are returned to the frontend to be stored for session management.
+
+### 2. OAuth 2.0 Authentication (Google & Microsoft)
+
+This flow is managed by the `auth-astro` library on the frontend.
+
+**Frontend:**
+
+1. **UI Component**: The "Continue with Google" and "Continue with Microsoft" buttons are in `eons-front/src/modules/user/items/AccountsButton.astro`.
+2. **OAuth Initiation**: Clicking these buttons calls `signIn("google")` or `signIn("azure-ad")` from `auth-astro/client`. Provider configurations are in `eons-front/auth.config.mjs`.
+3. **Redirect**: The user is redirected to the respective provider's login page.
+4. **Callback & Backend Sync**: After successful authentication with the provider, the user is redirected back. A `useEffect` hook in `Content.tsx` detects the provider's session and calls the backend's `/auth/register` endpoint, sending the provider's token.
+
+**Backend:**
+
+1. **Controller**: The request is received by the `@Post('/auth/register')` method in `auth.controller.ts`.
+2. **Service Logic**: This controller method calls the `register` (or a similarly named) method in `auth.service.ts`.
+3. **Upsert Logic**: The service performs an "upsert" operation:
+    - If a user with the provider's email **exists**, the system logs them in.
+    - If the user **does not exist**, a new user is created with the email marked as verified (`isEmailVerified: true`), and then they are logged in.
+4. **Response**: In both cases, the backend generates its own JWT `access_token` and `refresh_token` and returns them to the frontend, ensuring a consistent session state.
+
+### Key Files Summary
+
+- **Frontend (UI & Client Logic)**:
+  - `eons-front/src/modules/user/aplication/Auth/components/Content/Content.tsx`: Core logic for forms and API calls.
+  - `eons-front/src/modules/user/items/AccountsButton.astro`: Social login buttons.
+  - `eons-front/auth.config.mjs`: OAuth provider settings for `auth-astro`.
+- **Backend (Server Logic)**:
+  - `eons-api/src/auth/auth.controller.ts`: Defines authentication endpoints (`/login`, `/register`).
+  - `eons-api/src/auth/auth.service.ts`: Implements the business logic for all three authentication methods.
+
+---
+
+## 🚀 Proposed Authentication Flow (Future Implementation)
+
+This section describes the target behavior for the OAuth login flow, which will be implemented in the future.
+
+The goal is to separate the login and registration processes for social accounts. A user should not be automatically registered if they attempt to log in with a social account without having an existing account.
+
+### Target OAuth 2.0 Flow (Google & Microsoft)
+
+1. **Frontend Initiates Login**: The user clicks "Continue with Google" or "Continue with Microsoft".
+2. **Provider Authentication**: The user is redirected to the provider, authenticates, and is sent back to the application.
+3. **Frontend Calls Backend**: The frontend takes the token from the provider and sends it to a new, dedicated backend endpoint: `POST /auth/social-login`.
+4. **Backend Validates**: The backend receives the token.
+    - It verifies the token and extracts the user's email.
+    - It searches the database for a user with that email.
+    - **If the user exists**: The backend generates the application's own JWT `access_token` and `refresh_token` and returns them to the frontend. The user is successfully logged in.
+    - **If the user does not exist**: The backend returns an error (e.g., `404 Not Found` or `401 Unauthorized`) with a message indicating that the user is not registered.
+5. **Frontend Handles Response**:
+    - On success, the frontend stores the tokens and redirects the user to their dashboard.
+    - On error, the frontend displays a clear message to the user, such as "This account is not registered. Please sign up first."
