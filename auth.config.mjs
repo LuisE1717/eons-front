@@ -1,5 +1,4 @@
 import Google from '@auth/core/providers/google';
-import AzureAD from "@auth/core/providers/azure-ad"
 import { defineConfig } from 'auth-astro';
 import configEnv from './.env_config.ts';
 
@@ -9,11 +8,6 @@ export default defineConfig({
       clientId: configEnv.google.clientId,
       clientSecret: configEnv.google.clientSecret,
     }),
-    AzureAD({
-      clientId: configEnv.azure.clientId,
-      clientSecret: configEnv.azure.clientSecret,
-      tenantId: configEnv.azure.tenantId,
-    })
   ],
   callbacks: {
     jwt({ token, user,account }) {
