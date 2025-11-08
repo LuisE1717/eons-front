@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { validMail, validPass } from "../../../../../../../utils/validations";
 import { setCookie } from "../../../../../../../utils/cookies/Cookies";
 import { SECTIONS } from "../../../domain";
-import { postLogin, singUp, googleLogin, microsoftLogin } from "../../../../../../../utils/api/userApi";
+import { postLogin, singUp, googleLogin, googleRegister, microsoftLogin } from "../../../../../../../utils/api/userApi";
 import { toast } from "react-toastify";
 import useTranslation from "../../../../../../Shared/hooks/useTranslation";
 import type { Session } from "@auth/core/types";
@@ -37,7 +37,7 @@ export default function useContent(session: Session | null) {
     if (session) {
       handleSession();
     }
-  }, [session]);
+  }, [session, section]);
 
   async function handleSubmit() {
     if (validation_mail && validation_pass && validation_confirm_pass) {
@@ -143,11 +143,25 @@ export default function useContent(session: Session | null) {
     try {
       let response;
 
-      // Use the appropriate social login endpoint based on provider type
+      // Distinguish between login and register based on current section
       if (type === "google") {
-        response = await googleLogin({ email, password, type });
+        if (section === SECTIONS.LOGIN) {
+          // Google Login - only login, error if user doesn't exist
+          response = await googleLogin({ email, password, type });
+        } else {
+          // Google Register - only register
+          response = await googleRegister({ email, password, type });
+        }
       } else if (type === "azure-ad") {
-        response = await microsoftLogin({ email, password, type });
+        if (section === SECTIONS.LOGIN) {
+          // Microsoft Login - only login, error if user doesn't exist
+          response = await microsoftLogin({ email, password, type });
+        } else {
+          // Microsoft Register - TODO: implement when needed
+          toast.error("Microsoft register not yet implemented");
+          setLoading(false);
+          return;
+        }
       } else {
         toast.error("Unknown provider");
         setLoading(false);
@@ -171,8 +185,19 @@ export default function useContent(session: Session | null) {
         // Go directly to services - social login already verified email
         window.location.href = "/services";
       }
-    } catch (error) {
-      toast.error(translation.fecth_error);
+    } catch (error: any) {
+      // Handle specific error messages
+      if (error?.response?.data?.message) {
+        if (error.response.data.message === "Usuario no existe") {
+          toast.error(translation?.Errors?.Auth?.user_not_found || "Usuario no existe");
+        } else if (error.response.data.message === "El usuario ya existe") {
+          toast.error(translation?.Errors?.Auth?.already_exist || "El usuario ya existe");
+        } else {
+          toast.error(error.response.data.message);
+        }
+      } else {
+        toast.error(translation.fecth_error);
+      }
     } finally {
       setLoading(false);
     }
