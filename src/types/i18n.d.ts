@@ -46,6 +46,7 @@ export interface TranslationKeys {
       check_credentials: string;
       email_not_found: string;
       user_valid: string;
+      user_not_found: string;
     };
   };
 
@@ -314,6 +315,7 @@ export interface TranslationKeys {
       check_credentials: string;
       email_not_found: string;
       user_valid: string;
+      user_not_found: string;
     };
   };
 
