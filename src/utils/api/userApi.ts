@@ -112,7 +112,7 @@ export async function postSocialLogin(dataLogin: ILogin) {
 
 export async function googleLogin(dataLogin: ILogin) {
     try {
-        const res = await intanceAxios.post('auth/google', dataLogin);
+        const res = await intanceAxios.post('auth/google-login', dataLogin);
         const data = await res.data;
 
         if (!data) {
@@ -126,6 +126,46 @@ export async function googleLogin(dataLogin: ILogin) {
         }
     } catch (error) {
         console.error('Google login error:', error);
+        throw error;
+    }
+}
+
+export async function googleRegister(dataLogin: ILogin) {
+    try {
+        const res = await intanceAxios.post('auth/google-register', dataLogin);
+        const data = await res.data;
+
+        if (!data) {
+            return {
+                notFound: true,
+            };
+        } else {
+            return {
+                data: data,
+            };
+        }
+    } catch (error) {
+        console.error('Google register error:', error);
+        throw error;
+    }
+}
+
+export async function microsoftLogin(dataLogin: ILogin) {
+    try {
+        const res = await intanceAxios.post('auth/microsoft', dataLogin);
+        const data = await res.data;
+
+        if (!data) {
+            return {
+                notFound: true,
+            };
+        } else {
+            return {
+                data: data,
+            };
+        }
+    } catch (error) {
+        console.error('Microsoft login error:', error);
         throw error;
     }
 }
