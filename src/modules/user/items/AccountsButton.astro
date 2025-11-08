@@ -13,15 +13,7 @@ const {text, bgColor, bg_hover, color, error} = Astro.props
 
 <div class=`flex justify-center text-sm shadow-lg mt-2 py-1 px-4` id={text}>
 
-  {text=="Microsoft"?
-    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="17" y="17" width="10" height="10" fill="#FEBA08"/>
-        <rect x="5" y="17" width="10" height="10" fill="#05A6F0"/>
-        <rect x="17" y="5" width="10" height="10" fill="#80BC06"/>
-        <rect x="5" y="5" width="10" height="10" fill="#F25325"/>
-    </svg>
-  
-    : text=="Google"?
+  {text=="Google"?
     <svg width="24" height="24" viewBox="-0.5 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Google-color</title>
     <desc>Created with Sketch.</desc>
@@ -62,7 +54,6 @@ const {text, bgColor, bg_hover, color, error} = Astro.props
     const i18 = getI18N({ currentLocale })
     
     const google = document.querySelector("#Google")
-    const microsoft = document.querySelector('#Microsoft')
     if(google){
         google.addEventListener('click', async (e) => {
             e.preventDefault()
@@ -70,24 +61,15 @@ const {text, bgColor, bg_hover, color, error} = Astro.props
                 await signIn("google",{})
             }catch(error){
                 console.error("Error durante el inicio de sesión:", error);
-                
+
             }
-            
+
             // const GOOGLE_CLIENT_ID = "980854020250-j1lva2c7mnqijs105f3jreh50p1ia2cg.apps.googleusercontent.com";
             // const REDIRECT_URI = "http://localhost:4321/api/auth/callback/google";
             // console.log(GOOGLE_CLIENT_ID)
 
             // const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=email%20profile`;
             // window.location.href = `${url}`
-        })
-    }
-
-    if(microsoft){
-        microsoft.addEventListener('click', async (e) =>{
-            e.preventDefault()
-            await signIn("azure-ad")
-            // .then(data => toast.error(i18.fecth_error))     
-            // .catch(error => toast.error(i18.fecth_error))
         })
     }
          
