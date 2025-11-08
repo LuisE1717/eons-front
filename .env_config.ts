@@ -31,13 +31,6 @@ const configEnv = {
     clientId: import.meta.env.GOOGLE_CLIENT_ID || "",
     clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET || "",
   },
-
-  // Credenciales de autenticación OAuth - Azure AD (solo servidor)
-  azure: {
-    clientId: import.meta.env.AZURE_AD_CLIENT_ID || "",
-    clientSecret: import.meta.env.AZURE_AD_CLIENT_SECRET || "",
-    tenantId: import.meta.env.AZURE_AD_TENANT_ID || "",
-  },
 };
 
 export default configEnv;

@@ -136,26 +136,6 @@ export async function googleLogin(dataLogin: ILogin) {
     }
 }
 
-export async function microsoftLogin(dataLogin: ILogin) {
-    try {
-        const res = await intanceAxios.post('auth/microsoft', dataLogin);
-        const data = await res.data;
-
-        if (!data) {
-            return {
-                notFound: true,
-            };
-        } else {
-            return {
-                data: data,
-            };
-        }
-    } catch (error) {
-        console.error('Microsoft login error:', error);
-        throw error;
-    }
-}
-
 export async function singUp(dataLogin: ILogin) {
     try {
         const res = await intanceAxios.post('auth/register', dataLogin);
