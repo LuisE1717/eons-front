@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { validMail, validPass } from "../../../../../../../utils/validations";
 import { setCookie } from "../../../../../../../utils/cookies/Cookies";
 import { SECTIONS } from "../../../domain";
-import { postLogin, singUp } from "../../../../../../../utils/api/userApi";
+import { postLogin, singUp, googleLogin, microsoftLogin } from "../../../../../../../utils/api/userApi";
 import { toast } from "react-toastify";
 import useTranslation from "../../../../../../Shared/hooks/useTranslation";
 import type { Session } from "@auth/core/types";
@@ -131,10 +131,7 @@ export default function useContent(session: Session | null) {
   }
 
   async function handleSession() {
-    const intent = sessionStorage.getItem("authIntent");
-    sessionStorage.removeItem("authIntent"); // Clean up immediately
-
-    if (!session?.user?.email || !session?.user?.id) {
+    if (!session?.user?.email || !session?.user?.id || !session?.user?.name) {
       toast.error(translation.fecth_error);
       return;
     }
@@ -145,11 +142,16 @@ export default function useContent(session: Session | null) {
 
     try {
       let response;
-      if (intent === "login") {
-        response = await postLogin({ email, password, type });
+
+      // Use the appropriate social login endpoint based on provider type
+      if (type === "google") {
+        response = await googleLogin({ email, password, type });
+      } else if (type === "azure-ad") {
+        response = await microsoftLogin({ email, password, type });
       } else {
-        // Default to signup if no intent is found
-        response = await singUp({ email, password, type });
+        toast.error("Unknown provider");
+        setLoading(false);
+        return;
       }
 
       if (response.data) {
@@ -166,28 +168,17 @@ export default function useContent(session: Session | null) {
           essence: user_info.essence || 0,
         });
 
-        if (user_info.valid) {
-          window.location.href = "/services";
-        } else {
-          window.location.href = "auth/email-verification/" + user_info.email;
-        }
+        // Go directly to services - social login already verified email
+        window.location.href = "/services";
       }
     } catch (error) {
-      if (intent === "login" && error.response?.data?.message === "User not found") {
-        toast.error("User not registered. Please sign up first.");
-      } else if (intent === "signup" && error.response?.data?.message === "User Alredy exist") {
-        toast.error(translation.Errors.Auth.already_exist);
-      } else {
-        toast.error(translation.fecth_error);
-      }
+      toast.error(translation.fecth_error);
     } finally {
       setLoading(false);
     }
   }
 
   function handleChangeSection(s: SECTIONS) {
-    const intent = s === SECTIONS.LOGIN ? "login" : "signup";
-    sessionStorage.setItem("authIntent", intent);
     setSection(s);
   }
 
