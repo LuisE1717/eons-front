@@ -1,8 +1,8 @@
 ---
-import Usage from '../../modules/Usage/Usage.astro';
-import Layout from '../../modules/Information/Shared/InformationLayout.astro';
+import Usage from '../../modules/Usage/ui/Usage.astro';
+import Layout from '../../layouts/InformationLayout.astro';
 import BackButton from '../../components/UI/BackButton.astro';
-import { setReaded } from "../../utils/api/userApi";
+import { setReaded } from "@modules/user/infrastructure/userApi";
 
 // Obtener token y llamar a la API solo si existe
 const token = Astro.cookies.get('eons_token')?.value;
@@ -38,10 +38,10 @@ if (token) {
 
 <!-- 
 ---
-import Usage from '../../modules/Usage/Usage.astro';
-import Layout from '../../modules/Information/Shared/InformationLayout.astro';
+import Usage from '../../modules/Usage/ui/Usage.astro';
+import Layout from '../../layouts/InformationLayout.astro';
 import BackButton from '../../components/UI/BackButton.astro';
-import { setReaded } from "../../utils/api/userApi";
+import { setReaded } from "@modules/user/infrastructure/userApi";
 const response = await setReaded(Astro.cookies.get('eons_token')?.value || '');
 console.log("Response are:", response);
 ---

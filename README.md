@@ -46,18 +46,25 @@ The `src/content/` directory contains "collections" of related Markdown and MDX 
 
 Any static assets, like images, can be placed in the `public/` directory.
 
+## 🧞 Toolchain
+
+This project targets **Node 24** and uses **pnpm** as the package manager.
+
+- The Node version is pinned in `.nvmrc`. With [nvm](https://github.com/nvm-sh/nvm) installed, run `nvm use` (or `nvm install`) from the project root to switch to it.
+- pnpm is pinned via the `packageManager` field in `package.json`; enable it with `corepack enable`.
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `pnpm install`      | Installs dependencies                            |
+| `pnpm dev`          | Starts local dev server at `localhost:4321`      |
+| `pnpm build`        | Build your production site to `./dist/`          |
+| `pnpm preview`      | Preview your build locally, before deploying     |
+| `pnpm test`         | Run the Vitest suite                             |
+| `pnpm exec astro …` | Run CLI commands like `astro add`, `astro check` |
 
 ## 👀 Want to learn more?
 

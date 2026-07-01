@@ -3,12 +3,18 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "packageManager": "pnpm@11.3.0",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.8",
@@ -49,13 +55,18 @@
     "terser": "^5.44.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/dom": "^10",
+    "@testing-library/jest-dom": "^6",
+    "@testing-library/react": "^16",
+    "@testing-library/user-event": "^14",
     "@types/js-cookie": "^3.0.6",
-    "typescript": "^5.9.3"
-  },
-  "resolutions": {
-    "path-to-regexp": "^6.3.0",
-    "esbuild": "^0.25.0"
+    "@vitest/coverage-v8": "^2",
+    "jsdom": "^25",
+    "typescript": "^5.9.3",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^2"
   }
 }

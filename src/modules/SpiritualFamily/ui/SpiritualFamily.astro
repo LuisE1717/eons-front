@@ -1,0 +1,11 @@
+---
+import Footer from "../../../layouts/Footer.astro";
+import Header from "../../../layouts/Header.astro";
+import NewContent from './NewContent/NewContent'
+---
+
+<div class="flex flex-col min-h-svh justify-between">
+    <Header/>
+   <NewContent client:load/>
+    <Footer/>
+</div>

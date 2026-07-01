@@ -1,8 +1,8 @@
 ---
 import AppContainer from "../../layouts/AppContainer.astro"
-import Essence from '../../modules/Essence/Essence.astro'
+import Essence from '../../modules/Essence/ui/Essence.astro'
 import type { INotifications } from "../../modules/Notifications/domain/INotifications"
-import { getProfile } from "../../utils/api/userApi"
+import { getProfile } from "@modules/user/infrastructure/userApi"
 import { getExpire } from "../../utils/cookies/Cookies"
 
 if(!Astro.cookies.get('eons_token')?.value)

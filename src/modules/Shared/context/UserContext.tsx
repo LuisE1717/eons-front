@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { refreshSection } from "../../../utils/api/userApi";
+import { refreshSection } from "@modules/user/infrastructure/userApi";
 import { setCookie } from "../../../utils/cookies/Cookies";
 import type { ICurrentUser } from "../../user/domain/user";
 import { userProfile } from "../../../UserStore";

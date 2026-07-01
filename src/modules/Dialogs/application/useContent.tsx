@@ -1,0 +1,112 @@
+import { useState } from "react";
+import { SECTIONS } from "@modules/Dialogs/domain";
+import useGetAllDialogs from "./useGetAllDialogs";
+import type { SwitchItem } from "@modules/Shared/components/ListContainer/domain";
+import useTranslation from "@modules/Shared/hooks/useTranslation";
+import { deleteDialog, putDialog } from "@modules/Dialogs/infrastructure/dialogApi";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { type ModalProps } from "@modules/Dialogs/domain";
+
+export default function useContent(type: string) {
+  const { translation } = useTranslation();
+
+  const [selected, setSelected] = useState(SECTIONS.DIALOGS);
+
+  const [openModal, setOpenModal] = useState<ModalProps | null>(null);
+
+  const [control, setControl] = useState(true);
+  const dataDialogs = useGetAllDialogs(control, setControl, type);
+
+  function handleChangeSection(s: SECTIONS) {
+    setSelected(s);
+  }
+
+  async function handleFavDialog(id: number) {
+    const dialog = dataDialogs.data.find((x) => x.id == id);
+
+    if (dialog) {
+      let dialog_send;
+      if (dialog.favorito) {
+        dialog_send = {
+          ...dialog,
+          favorito: false,
+        };
+      } else {
+        dialog_send = {
+          ...dialog,
+          favorito: true,
+        };
+      }
+
+      await putDialog(
+        Cookies.get("eons_token") || "",
+        dialog_send,
+        id.toString()
+      )
+        .then(() => {
+          setControl(true);
+        })
+        .catch(() => {
+          toast.error(translation.fecth_error);
+        });
+    }
+  }
+
+  async function handleDeleteDialog(id: number) {
+    const dialog = dataDialogs.data.find((x) => x.id == id);
+
+    if (dialog) {
+      await deleteDialog(Cookies.get("eons_token") || "", id.toString())
+        .then(() => {
+          setControl(true);
+          setOpenModal(null);
+        })
+        .catch(() => {
+          toast.error(translation.fecth_error);
+        });
+    }
+  }
+
+  function handleOpenDelete(id: number) {
+    setOpenModal({ id: id, type: "delete" });
+  }
+
+  function handleWatchDialog(id: number) {
+    const dialog = dataDialogs.data.find((x) => x.id == id);
+    if (dialog) {
+      window.location.href = `/throw/response/${dialog.respuesta}/${
+        dialog.tipo == "dialog" ? "11" : "12"
+      }`;
+    }
+  }
+
+  const items: SwitchItem[] = [
+    {
+      click: () => handleChangeSection(SECTIONS.DIALOGS),
+      selected: selected === SECTIONS.DIALOGS,
+      text:
+        type == "dialog"
+          ? translation.Dialogs.saved_dialogs
+          : "Servicios salvados",
+    },
+    {
+      click: () => handleChangeSection(SECTIONS.FAVORITES),
+      selected: selected === SECTIONS.FAVORITES,
+      text: translation.Dialogs.favorites,
+    },
+  ];
+
+  return {
+    selected,
+    handleChangeSection,
+    handleFavDialog,
+    handleDeleteDialog,
+    dataDialogs,
+    items,
+    handleWatchDialog,
+    openModal,
+    setOpenModal,
+    handleOpenDelete,
+  };
+}

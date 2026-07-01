@@ -1,0 +1,131 @@
+// modules/Shared/infrastructure/httpClient.ts — shared axios client
+import axios, {
+  type AxiosInstance,
+  type InternalAxiosRequestConfig,
+} from "axios";
+import configEnv from "../../../../.env_config";
+import Cookies from "js-cookie";
+import { validMail } from "../../../utils/validations";
+
+const API_BASE_URL = configEnv.api;
+const FRONTEND_BASE_URL = configEnv.frontend;
+
+export const intanceAxios: AxiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+});
+
+const isClient = () => typeof window !== "undefined";
+
+export function axiosI(apiToken: string | undefined) {
+  const intance = axios.create({
+    baseURL: API_BASE_URL,
+    timeout: 60000,
+  });
+
+  intance.interceptors.request.use(
+    (config: InternalAxiosRequestConfig) => {
+      console.log("🌐 Request URL:", config.url);
+      if (isClient()) {
+        console.log("📱 User Agent:", navigator.userAgent);
+      }
+      console.log("🔧 Config:", {
+        method: config.method,
+        url: config.url,
+        headers: config.headers,
+        data: config.data,
+      });
+
+      if (!apiToken && isClient()) {
+        apiToken = Cookies.get("eons_token") || "";
+      }
+
+      if (apiToken && config.headers) {
+        config.headers.Authorization = `Bearer ${apiToken}`;
+        console.log(
+          "✅ Token añadido a la solicitud:",
+          apiToken.substring(0, 20) + "..."
+        );
+      } else {
+        console.warn("⚠️ No se pudo obtener token para la solicitud");
+      }
+
+      return config;
+    },
+    (error) => {
+      console.error("❌ Error en interceptor de request:", error);
+      return Promise.reject(error);
+    }
+  );
+
+  intance.interceptors.response.use(
+    (response) => {
+      console.log("✅ Response success:", response.status, response.config.url);
+      console.log("📊 Response data:", response.data);
+      return response;
+    },
+    async (error) => {
+      console.error("❌ Full error details:", {
+        message: error.message,
+        code: error.code,
+        config: error.config,
+        response: error.response?.data,
+      });
+
+      console.error(
+        "❌ Error en respuesta:",
+        error.response?.status,
+        error.config?.url
+      );
+
+      if (error.response && isClient()) {
+        const originalConfig = error.config;
+
+        if (error.response.status === 401 && !originalConfig._retry) {
+          originalConfig._retry = true;
+
+          console.log("🔄 Token expirado, intentando renovar...");
+
+          try {
+            const refreshToken = Cookies.get("eons_refresh_token");
+            if (refreshToken) {
+              const refreshResponse = await axios.post(
+                `${API_BASE_URL}/auth/login`,
+                {},
+                {
+                  headers: {
+                    Authorization: `Bearer ${refreshToken}`,
+                  },
+                }
+              );
+
+              if (refreshResponse.data.accessToken) {
+                const newAccessToken = refreshResponse.data.accessToken;
+                Cookies.set("eons_token", newAccessToken);
+
+                originalConfig.headers.Authorization = `Bearer ${newAccessToken}`;
+                return intance(originalConfig);
+              }
+            }
+          } catch (refreshError) {
+            console.error("❌ Error al renovar token:", refreshError);
+            Cookies.remove("eons_token");
+            Cookies.remove("eons_refresh_token");
+            if (isClient() && !window.location.pathname.includes("/auth")) {
+              window.location.href = "/auth";
+            }
+          }
+        } else if (error.response.status === 403) {
+          console.log("🔒 Acceso denegado, verificando email...");
+          if (validMail(Cookies.get("eons_user"))) {
+            window.location.href = `${FRONTEND_BASE_URL}/email-verification/${
+              Cookies.get("eons_user") || ""
+            }`;
+          }
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  return intance;
+}

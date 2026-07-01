@@ -1,0 +1,42 @@
+---
+import Footer from "../../../../layouts/Footer.astro";
+import AuthHeader from "../../../../layouts/AuthHeader.astro";
+import Content from "./components/Content/Content"
+import AccountsButton from "@modules/user/ui/items/AccountsButton.astro";
+import { getI18N } from "../../../../i18n";
+import { getSession } from "auth-astro/server";
+
+const currentLocale  = Astro?.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({ currentLocale })
+
+const session = await getSession(Astro.request)
+---
+
+<AuthHeader/>
+
+<div class="flex w-full justify-center px-10 mb-12">
+    <main class="flex flex-col w-full max-w-[500px]">
+        <Content
+            button_login={i18["Auth"].login_button} 
+            button_singUp={i18["Auth"].singUp_button} 
+            login_switch={i18["Auth"].login_switch}
+            sing_up_switch={i18["Auth"].sing_up_switch}
+            password_input_label={i18["Auth"].password_input_label}
+            forget_pass={i18["Auth"].forget_pass}
+            invalid_email_text={i18["Auth"].invalid_email_text}
+            invalid_pass_text={i18["Auth"].invalid_pass_text}
+            text_loading={i18.text_loading}
+            confirm_password_input_label={i18.Auth.password_input_label}
+            invalid_confirm_pass_text={i18["Auth"].invalid_confirm_pass_text}
+            session={session}
+            client:load
+        />
+
+        <div class="flex flex-row mt-4 gap-x-6 justify-center">
+            <!-- <AccountsButton error={i18.fecth_error} text="Apple"/> -->
+            <AccountsButton error={i18.fecth_error} text="Google"/>
+        </div>
+    </main>
+</div>
+
+<Footer/>

@@ -1,7 +1,7 @@
 ---
 import AppContainer from "../../layouts/AppContainer.astro";
-import Services from '../../modules/Services/Services.astro'
-import { getProfile } from "../../utils/api/userApi";
+import Services from '../../modules/Services/ui/Services.astro'
+import { getProfile } from "@modules/user/infrastructure/userApi";
 import { getExpire } from "../../utils/cookies/Cookies";
 let readed = false;
 if(!Astro.cookies.get('eons_token')?.value)

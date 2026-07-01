@@ -1,5 +1,5 @@
 import moment from "moment";
-import type { Dialog } from "../../../../../../Dialogs/interfaces";
+import type { Dialog } from "@modules/Dialogs/domain";
 
 interface Props {
   dialog: Dialog;

@@ -1,0 +1,40 @@
+---
+import Header from "src/layouts/Header.astro";
+import ThrowReact from './ThrowReact'
+import ReloadButton from "@modules/user/ui/items/ReloadButton.astro";
+import { getI18N } from "src/i18n";
+import BackButton from "@components/UI/BackButton.astro";
+
+const currentLocale  = Astro.cookies.get('eons_lng')?.value || 'es'
+const i18 = getI18N({currentLocale})
+
+const {action,param1,param2} = Astro.props
+---
+
+<Header/>
+
+<main class="flex flex-col items-center w-full px-6 mt-5">
+<div class="flex flex-row w-full justify-between mb-6">
+    <BackButton routeProp={'/services'}/>
+    <ReloadButton/>
+</div>
+
+    <ThrowReact action={action} param1={param1} param2={param2} i18={i18} client:load/>
+</main>
+
+
+<style>
+    span {
+        color: #232323;
+        font-weight: 700;
+    }
+
+
+
+   
+</style>
+
+
+
+
+

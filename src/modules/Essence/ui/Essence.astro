@@ -1,0 +1,15 @@
+---
+import BackButton from "@components/UI/BackButton.astro";
+import Footer from "src/layouts/Footer.astro";
+import Header from "src/layouts/Header.astro";
+import List from "./List";
+
+const {notificaciones} = Astro.props
+---
+
+<Header notificaciones={notificaciones}/>
+<div class="flex flex-col ml-3 mt-2">
+    <BackButton routeProp={'/services'}/>
+</div>
+<List client:load/>
+<Footer/>

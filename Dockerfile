@@ -1,16 +1,19 @@
 # ============================================
 # Stage 1: Builder - Build the application
 # ============================================
-FROM node:22 AS builder
+FROM node:24 AS builder
 
 WORKDIR /app
 
-# Copy package files first for better caching
-COPY package.json yarn.lock ./
+# Enable pnpm via corepack (version pinned by package.json "packageManager")
+RUN corepack enable
 
-# Install dependencies (this layer will be cached if package.json/yarn.lock don't change)
-RUN yarn install --frozen-lockfile --production=false
-RUN yarn cache clean
+# Copy manifest + lockfile + workspace config first for better caching
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
+# Install dependencies (this layer is cached if the manifest/lockfile don't change)
+RUN pnpm install --frozen-lockfile
+RUN pnpm store prune
 RUN rm -rf /tmp/* /var/lib/apt/lists/*
 
 # Copy source files
@@ -43,21 +46,24 @@ ENV PUBLIC_API_BASE_URL=${PUBLIC_API_BASE_URL}
 ENV PUBLIC_FRONTEND_BASE_URL=${PUBLIC_FRONTEND_BASE_URL}
 
 # Build the application
-RUN yarn build
+RUN pnpm build
 
 # ============================================
 # Stage 2: Runtime - Minimal production image
 # ============================================
-FROM node:22-slim AS runtime
+FROM node:24-slim AS runtime
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json yarn.lock ./
+# Enable pnpm via corepack (version pinned by package.json "packageManager")
+RUN corepack enable
+
+# Copy manifest + lockfile + workspace config
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 # Install ONLY production dependencies
-RUN yarn install --frozen-lockfile --production=true
-RUN yarn cache clean
+RUN pnpm install --frozen-lockfile --prod
+RUN pnpm store prune
 RUN rm -rf /tmp/* /var/lib/apt/lists/* /root/.cache /var/cache/apt/*
 
 # Copy built application from builder stage

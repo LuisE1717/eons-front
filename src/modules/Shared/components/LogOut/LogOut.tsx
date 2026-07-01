@@ -1,7 +1,6 @@
 import type { Session } from '@auth/core/types'
 import { signOut } from 'auth-astro/client'
 import Cookies from 'js-cookie'
-import { postLogout } from '../../../../utils/api/userApi'
 import { toast } from 'react-toastify'
 import useTranslation from '../../hooks/useTranslation'
 
