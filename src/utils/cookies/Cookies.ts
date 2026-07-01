@@ -10,10 +10,6 @@ export function setCookie(name:string, value:string, days:number) {
     }
 }
 
-export function deleteCookie(name) {
-    setCookie(name, "", -1);
-}
-
 export function getExpire(days?:number) {
     var expires = new Date();
     days?

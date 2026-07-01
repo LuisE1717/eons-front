@@ -3,7 +3,7 @@ import type { TranslationKeys } from '../types/i18n';
 import En from './en.json'
 import Es from './es.json'
 
-export const Languages = {
+const Languages = {
     En: 'en',
     Es: 'es'
 }
