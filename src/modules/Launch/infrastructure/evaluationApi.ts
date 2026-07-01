@@ -90,26 +90,6 @@ export async function postMesagges(token: string, data: any): Promise<Evaluation
 }
 
 // Función ORIGINAL que ya existía
-export async function getUltimaConsulta(token: string): Promise<EvaluationResponse> {
-  try {
-    const response = await axiosI(token).get(`lanzamientos/ultima`);
-
-    return {
-      data: response.data,
-      success: true,
-    };
-  } catch (error: any) {
-    console.error('Error getting last consultation:', error);
-
-    return {
-      data: undefined,
-      success: false,
-      error: error.response ? error.response.data : error.message,
-    };
-  }
-}
-
-// Función ORIGINAL que ya existía
 export async function getResultadoPorId(token: string, id: string): Promise<EvaluationResponse> {
   try {
     const response = await axiosI(token).get(`lanzamientos/resultado/${id}`);

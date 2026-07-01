@@ -1,4 +1,4 @@
-export const omitBy = (obj:any, fn:any) => {
+const omitBy = (obj:any, fn:any) => {
 
     return Object.keys(obj)
     .filter(k => !fn(obj[k], k))

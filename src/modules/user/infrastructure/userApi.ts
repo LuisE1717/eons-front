@@ -1,36 +1,9 @@
 import { axiosI, intanceAxios } from "@modules/Shared/infrastructure/httpClient";
 import type { IChangePass, ILogin } from "@modules/user/domain/user";
-import Cookies from 'js-cookie';
-import axios from 'axios';
-import configEnv from '../../../../.env_config';
 
 // Función para verificar si estamos en el cliente
 const isClient = () => typeof window !== 'undefined';
 
-// Configuración unificada: solo cambian las URLs según las variables de entorno
-const API_BASE_URL = configEnv.api;
-
-// Función para marcar como leído usando axios directamente
-export const setReadedWithAxios = async (token: string) => {
-  try {
-    const response = await axios.post(
-      `${API_BASE_URL}/user/set-readed`,
-      {},
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.error('Error in setReaded:', error);
-    throw error;
-  }
-};
-
-// Función para marcar como leído usando axiosI
 export async function setReaded(token: string) {
     try {
         const res = await axiosI(token).post(`/user/set-readed`, {});
@@ -57,48 +30,9 @@ export async function setReaded(token: string) {
     }
 }
 
-// Otras funciones de API para usuario...
-export const getUserProfile = async (token: string) => {
-  try {
-    const response = await axios.get(
-      `${API_BASE_URL}/auth/profile`,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.error('Error getting user profile:', error);
-    throw error;
-  }
-};
-
 export async function postLogin(dataLogin: ILogin) {
     try {
         const res = await intanceAxios.post('auth/login', dataLogin);
-        const data = await res.data;
-
-        if (!data) {
-            return {
-                notFound: true,
-            };
-        } else {
-            return {
-                data: data,
-            };
-        }
-    } catch (error) {
-        console.error('Login error:', error);
-        throw error;
-    }
-}
-
-export async function postSocialLogin(dataLogin: ILogin) {
-    try {
-        const res = await intanceAxios.post('auth/social-login', dataLogin);
         const data = await res.data;
 
         if (!data) {
@@ -193,21 +127,6 @@ export async function singUp(dataLogin: ILogin) {
     } catch (error) {
         console.error('Registration error:', error);
         throw error;
-    }
-}
-
-export async function postLogout(token: string, datah: any) {
-    const res = await axiosI(token).post('auth/logout', datah);
-    const data = await res.data;
-
-    if (!data) {
-        return {
-            notFound: true,
-        };
-    } else {
-        return {
-            data: data
-        };
     }
 }
 

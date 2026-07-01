@@ -4,11 +4,6 @@ export interface ILogin {
     type?: string | null;
 }
 
-export interface ISessionLogin {
-    email: string;
-    password: string;
-}
-
 export interface IChangePass {
     newPassword:string;
 }

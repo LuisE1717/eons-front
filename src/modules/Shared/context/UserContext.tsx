@@ -10,7 +10,7 @@ interface Props {
   loading: boolean;
 }
 
-export const UserContext = createContext<Props>({
+const UserContext = createContext<Props>({
   user: null,
   loading: true,
 });
