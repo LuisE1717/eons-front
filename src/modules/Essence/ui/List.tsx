@@ -1,6 +1,5 @@
 import useList from "@modules/Essence/application/useList";
 import Card from "./components/Card/Card";
-import Custom from "./components/Custom/Custom";
 import { SECTION } from "@modules/Essence/domain";
 import Form from "./components/Form/Form";
 import HeaderImage from "./components/HeaderImage/HeaderImage";
@@ -17,12 +16,7 @@ export default function List() {
     handleClick,
     handleChangeSection,
     section,
-    transferList,
-    price,
-    findCost,
-    handleCustomPayment,
     handleClose,
-    loading,
   } = useList();
 
   return (

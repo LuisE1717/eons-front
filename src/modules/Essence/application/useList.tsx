@@ -3,7 +3,6 @@ import { SECTION, type Transfer, type Essence, type Price } from "@modules/Essen
 import {
   calculatePrice,
   getPackages,
-  getTransfers,
   startCustomPayment,
   startPayment,
 } from "@modules/Essence/infrastructure/essenceApi";
@@ -20,7 +19,7 @@ export default function useList() {
 
   const { translation } = useTranslation();
 
-  const [transferList, setTransferList] = useState<Transfer[]>([]);
+  const [transferList] = useState<Transfer[]>([]);
 
   const fetchPackages = useCallback(async () => {
     setloading(true);
@@ -30,19 +29,6 @@ export default function useList() {
       console.log(packs);
       setList(packs.data);
       setloading(false)
-    } catch (error) {
-      toast.error(translation.fecth_error);
-      setloading(false);
-    }
-  }, []);
-
-  const fetchTranfers = useCallback(async () => {
-    const token = Cookies.get("eons_token") || "";
-    setloading(true);
-    try {
-      const transfers = await getTransfers(token);
-      console.log(transfers);
-      setTransferList(transfers.data);
     } catch (error) {
       toast.error(translation.fecth_error);
       setloading(false);

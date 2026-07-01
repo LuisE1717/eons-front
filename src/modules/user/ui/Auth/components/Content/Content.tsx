@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Session } from "@auth/core/types";
 import OutlineInputReact from "@components/UI/input/OutlineInputReact";
 import { SECTIONS } from "@modules/user/domain/sections";

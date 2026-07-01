@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Button from "./components/Button/Button";
 import type { Price } from "@modules/Essence/domain";
 import Loading from "@components/UI/Button/components/Loading/Loading";
@@ -24,10 +24,6 @@ export default function Custom({price,findCost,handleCustomPayment,loading}:Prop
   function handleChange(v: number) {
     setCount(v)
     findCost(v)
-  }
-
-  function onClick() {
-    handleCustomPayment(price)
   }
 
   return (

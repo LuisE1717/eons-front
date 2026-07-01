@@ -1,4 +1,3 @@
-import React from 'react'
 import useTranslation from '@modules/Shared/hooks/useTranslation'
 
 const Tropipay = () => {

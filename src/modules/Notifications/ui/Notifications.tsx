@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Notifications.module.css";
 import type { INotifications } from "../domain/INotifications";
 import Item from "./Item/Item";

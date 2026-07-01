@@ -1,10 +1,6 @@
 ---
 
-import { getI18N } from "../../i18n";
 import configEnv from "../../../.env_config.ts";
-
-const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
-const i18 = getI18N({ currentLocale });
 
 // Obtener parámetros de la URL para mostrar mensajes
 const url = new URL(Astro.request.url);

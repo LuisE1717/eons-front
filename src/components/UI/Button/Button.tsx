@@ -22,10 +22,7 @@ export default function Button({
   loading,
   type = "button",
   text_loading,
-  color = "default",
   full = true,
-  size = "base",
-  shadow = "default",
   className,
 }: Props) {
   const handleClick = (e: React.MouseEvent) => {

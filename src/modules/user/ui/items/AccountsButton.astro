@@ -8,7 +8,7 @@ interface Props {
     error?:string;
 }
 
-const {text, bgColor, bg_hover, color, error} = Astro.props
+const {text, bgColor, bg_hover} = Astro.props
 ---
 
 <div class=`flex justify-center text-sm shadow-lg mt-2 py-1 px-4` id={text}>
@@ -46,13 +46,7 @@ const {text, bgColor, bg_hover, color, error} = Astro.props
 
 <script>
     const { signIn } = await import("auth-astro/client")
-    import { toast } from "react-toastify";
-    import { getI18N } from "src/i18n";
-    import Cookies from "js-cookie"
 
-    const currentLocale  = Cookies.get('eons_lng') || 'es'
-    const i18 = getI18N({ currentLocale })
-    
     const google = document.querySelector("#Google")
     if(google){
         google.addEventListener('click', async (e) => {

@@ -1,8 +1,6 @@
 import { toast } from "react-toastify";
 import Button from "@components/UI/Button/Button";
 import useSaveDialog from "@modules/Response/application/useSaveDialog";
-import useTranslation from "@modules/Shared/hooks/useTranslation";
-import { actionsInterprete } from "@modules/Throw/domain/interpreter";
 import { ACTIONS } from "@modules/Throw/domain/types";
 interface Props {
   action: string;
@@ -11,7 +9,6 @@ interface Props {
 }
 
 export default function Save({ action, response, question }: Props) {
-  const { translation } = useTranslation();
   const { saveDialog } = useSaveDialog();
 
   console.log(action)

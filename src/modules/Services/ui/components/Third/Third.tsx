@@ -2,10 +2,8 @@ import P from "../../shared/components/P/P";
 import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
 import Span from "@modules/Shared/components/Span/Span";
-import Title from "../../shared/components/Title/Title";
 import PhoneView from "../../shared/components/PhoneView/PhoneView";
 import Image from "../../shared/components/Image/Image";
-import Cookies from "js-cookie";
 import Title2 from "../../shared/components/Title/Title2";
 
 export default function Third() {

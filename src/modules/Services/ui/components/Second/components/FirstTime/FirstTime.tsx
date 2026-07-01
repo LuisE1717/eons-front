@@ -1,8 +1,6 @@
 import Button from "@components/UI/Button/Button";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
-import Line from "../../../../shared/components/Line/Line";
 import P from "../../../../shared/components/P/P";
-import Span from "@modules/Shared/components/Span/Span";
 import Info from "../../shared/components/Info/Info";
 import { markInstructionsAsSeen } from "src/utils/developmentHelpers";
 

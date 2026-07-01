@@ -1,4 +1,4 @@
-import React, { useState, type FormEvent } from "react";
+import { useState } from "react";
 import Button from "@components/UI/Button/Button";
 import Section from "./components/Section/Section";
 import { validMail } from "src/utils/validations";

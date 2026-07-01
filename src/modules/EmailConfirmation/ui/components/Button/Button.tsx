@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AppButton from "@components/UI/Button/Button";
-import { validMail } from "src/utils/validations";
 import useEmailVerification from "@modules/EmailConfirmation/application/useEmailVerification";
 import { toast } from "react-toastify";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
@@ -33,7 +32,7 @@ export default function Button({ question, text, email }: Props) {
     try {
       setDisabled(true);
       setPending(true)
-      const mail = await sendVerification(email)
+      await sendVerification(email)
       setPending(false)
       toast.info('verifique su buzon de correo ' + '(' + email + ')')
     } catch (error) {

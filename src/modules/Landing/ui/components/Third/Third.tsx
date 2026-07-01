@@ -1,8 +1,6 @@
-import React from "react";
 import ImageSection from "@modules/Shared/components/ImageSection/ImageSection";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
 import P from "../../shared/components/P/P";
-import Cookies from "js-cookie";
 import Span from "../../shared/components/Span/Span";
 
 export default function Third() {

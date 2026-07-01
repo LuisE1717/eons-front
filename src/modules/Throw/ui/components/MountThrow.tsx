@@ -1,7 +1,6 @@
-import React, { type Dispatch, type FC, type SetStateAction } from "react";
+import { type Dispatch, type FC, type SetStateAction } from "react";
 import Coin from "./Coin";
 import styles from "../ThrowReact.module.css";
-import Book from "./Book";
 
 interface Props {
   loading: boolean;

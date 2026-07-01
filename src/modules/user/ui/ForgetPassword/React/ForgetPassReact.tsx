@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type FC } from 'react'
+import { useEffect, useState } from 'react'
 import OutlineInputReact from '@components/UI/input/OutlineInputReact'
 import { validMail } from 'src/utils/validations';
 import Button from '../React/components/Button/Button';
@@ -12,8 +12,6 @@ const ForgetPassReact = () => {
     const {translation} = useTranslation()
 
     const { loading, handleSubmit } = useForgetPass()
-
-    const [state,setState] = useState<number>(1)
 
     const [email,setEmail] = useState('')
     const [validation_mail,setValidation_mail] = useState(true)

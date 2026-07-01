@@ -1,4 +1,4 @@
-import { Languages, LanguagesArray } from "../i18n";
+import { LanguagesArray } from "../i18n";
 
 export function cleanURL (url:string) {
     // Obtener la URL completa de la solicitud

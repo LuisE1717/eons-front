@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function HeaderImage() {
   return (
     <section className="flex w-full justify-center">

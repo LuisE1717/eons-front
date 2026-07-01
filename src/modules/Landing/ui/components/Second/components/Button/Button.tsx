@@ -1,12 +1,11 @@
 import Button from "@components/UI/Button/Button";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
-import Cookies from "js-cookie";
 import { useStore } from "@nanostores/react";
 import { userProfile } from "src/UserStore";
 
 export default function SectionButton({auth} : {auth:string}) {
   const { translation } = useTranslation();
-  const $user = useStore(userProfile)
+  useStore(userProfile)
   return (
     <div className="flex mb-4 mt-4">
       <a href={auth?'/services':'/auth'}>

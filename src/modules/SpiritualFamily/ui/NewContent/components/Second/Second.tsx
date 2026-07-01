@@ -7,7 +7,7 @@ interface ISpirit {
 }
 
 export default function Second() {
-  const [spirits, setSpirits] = useState<ISpirit[]>([
+  const [spirits] = useState<ISpirit[]>([
     { id: "1", name: "Espiritu 1" },
     { id: "2", name: "Espiritu 2" },
     { id: "3", name: "Espiritu 3" },

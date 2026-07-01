@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Frame() {
   return (
     <span style={{ pointerEvents: 'none' }} className="absolute inset-0 w-[972] h-[798]">

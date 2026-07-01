@@ -1,4 +1,4 @@
-import { axiosI, intanceAxios } from "@modules/Shared/infrastructure/httpClient";
+import { axiosI } from "@modules/Shared/infrastructure/httpClient";
 
 export interface EvaluationData {
   type: string;

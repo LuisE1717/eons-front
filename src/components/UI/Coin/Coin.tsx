@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MoneyCircle from './MoneyCircle';
 
 interface CoinProps {
@@ -11,7 +11,6 @@ interface CoinProps {
 const Coin: React.FC<CoinProps>  = ({
     coin = true,
     isFaceUp,
-    isOuterCircleFilled,
     isConfirmed,
     onFlip
   }) => {

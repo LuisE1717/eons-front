@@ -1,9 +1,4 @@
 ---
-import { getI18N } from "../i18n";
-
-const currentLocale = Astro.cookies.get('eons_lng')?.value || 'es';
-const i18 = getI18N({ currentLocale });
-
 // Obtener parámetros de la URL para mostrar mensajes personalizados
 const url = new URL(Astro.request.url);
 const success = url.searchParams.get('success');

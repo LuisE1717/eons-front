@@ -1,7 +1,6 @@
 import type { Session } from '@auth/core/types'
 import { signOut } from 'auth-astro/client'
 import Cookies from 'js-cookie'
-import { toast } from 'react-toastify'
 import useTranslation from '../../hooks/useTranslation'
 
 interface Props{
@@ -13,9 +12,6 @@ const LogOut = ({session} : Props) => {
     async function handleLogOut() {
         
         try {
-            const datah = {
-                providerId:session?.user?.id
-            }
             // await postLogout(Cookies.get('eons_token')||'',datah)
             // .then( async ()=>{
                 localStorage.clear(); 

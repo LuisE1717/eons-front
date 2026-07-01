@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@components/UI/Button/Button";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
 import Span from "@modules/Shared/components/Span/Span";

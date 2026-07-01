@@ -11,7 +11,7 @@ interface Props {
   visible: boolean;
 }
 
-export default function Icon({ selected, icon, handleClick, visible, className, showAura }: Props) {
+export default function Icon({ selected, icon, handleClick, visible, className }: Props) {
   const CLASS = clsx(
     "shadow-gray-400",
     "sm:px-6 px-3.5 sm:py-4 py-2.5",

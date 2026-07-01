@@ -2,7 +2,6 @@ import moment from "moment";
 import type { TransferHistorial } from "@modules/Essence/domain";
 import Cookies from "js-cookie";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
-import ChevronDownIcon from "@components/UI/ChevronDownIcon";
 
 interface Props {
   item: TransferHistorial;

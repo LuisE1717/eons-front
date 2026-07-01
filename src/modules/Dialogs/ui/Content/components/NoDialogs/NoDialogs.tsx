@@ -1,4 +1,3 @@
-import React from 'react'
 import useTranslation from '../../../../../Shared/hooks/useTranslation'
 
 export default function NoDialogs ({type,fav}:{type:string,fav:boolean}) {

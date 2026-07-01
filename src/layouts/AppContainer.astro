@@ -1,16 +1,13 @@
 ---
 import BaseHead from "./BaseHead.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
-import { LanguageProvider } from "../modules/Shared/context/LanguageContext"
 import LoadingSpinner from "../components/UI/LoadingSpinner.astro"
 import { UserProvider } from "../modules/Shared/context/UserContext"
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { cleanURL } from "../utils/navigation";
-import { useStore } from '@nanostores/react';
 import { locale } from '../UserStore'
 
 import "react-toastify/dist/ReactToastify.css";
-import WebSocketComponent from "../modules/Shared/context/WebSocket"
 
 locale.set(Astro.cookies.get('eons_lng')?.value || 'es') 
 

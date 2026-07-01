@@ -1,11 +1,9 @@
-import React, {
+import {
   useEffect,
   useState,
   type Dispatch,
   type SetStateAction,
 } from "react";
-import Coin from "./components/Coin";
-import styles from "./ThrowReact.module.css";
 import Button from "@components/UI/Button/Button";
 import NextButton from "@components/UI/NextButton";
 import useThrow from "../application/useThrow";
@@ -20,7 +18,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { TYPES } from "../domain/types";
 import { transformDataToQuery } from "src/utils/queryTransformers";
 import Question from "./components/Question";
-import Book from "./components/Book";
 import Frame from "./components/Frame";
 
 const ThrowReact = ({ i18, action, param1, param2 }) => {
@@ -38,8 +35,6 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
   const [lastThrow, setLastThrow] = useState("00");
 
   const [question, setQuestion] = useState("");
-
-  const [block, setBlock] = useState(false);
 
   const handleSelectCoin = (
     setState: Dispatch<SetStateAction<number>>,
@@ -133,23 +128,6 @@ const ThrowReact = ({ i18, action, param1, param2 }) => {
         toast.error(i18.fecth_error);
         setLoading(false);
       }
-      setLoading(false);
-    }
-  };
-
-  const closeDialog = async () => {
-    try {
-      setLoading(true);
-      await closeThrow(Cookies.get("eons_token") || "").then((response) => {
-        console.log(response);
-        toast.success(i18["Throw"].dialog_close);
-
-        setCount(1);
-        setLastThrow("00");
-        scrollToTop();
-      });
-      setLoading(false);
-    } catch (error) {
       setLoading(false);
     }
   };

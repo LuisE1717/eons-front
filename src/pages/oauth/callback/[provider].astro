@@ -1,7 +1,6 @@
 ---
 import { getSession } from "auth-astro/server"
 
-const {provider} = Astro.params
 const session = await getSession(Astro.request)
 ---
 

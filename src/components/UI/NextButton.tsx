@@ -1,4 +1,3 @@
-import { useContext, type FC } from "react";
 interface Props {
   handleSendThrow(): void;
   loading:boolean;

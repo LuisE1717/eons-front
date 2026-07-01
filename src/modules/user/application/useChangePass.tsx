@@ -1,19 +1,8 @@
 import { useEffect, useState } from "react";
-import { validMail, validPass } from "src/utils/validations";
-import { setCookie } from "src/utils/cookies/Cookies";
-import { SECTIONS } from "@modules/user/domain/sections";
-import { postChangePass, postLogin, singUp } from "@modules/user/infrastructure/userApi";
+import { validPass } from "src/utils/validations";
+import { postChangePass } from "@modules/user/infrastructure/userApi";
 import { toast } from "react-toastify";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
-import type { Session } from "@auth/core/types";
-import Cookies from "js-cookie";
-import { userProfile } from "src/UserStore";
-import { authErrors } from "src/utils/errors/authErrors";
-
-interface Props {
-    token?:string;
-    email?:string;
-}
 
 export default function useChangePass({
     token,
@@ -24,7 +13,7 @@ export default function useChangePass({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [validation_mail, setValidation_mail] = useState(true);
+  const [validation_mail] = useState(true);
   const [validation_pass, setValidation_pass] = useState(true);
   const [validation_confirm_pass, setValidation_confirm_pass] = useState(true);
 

@@ -1,4 +1,3 @@
-import React from "react";
 import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import P from "../../shared/components/P/P";
 import useTranslation from "../../../../../Shared/hooks/useTranslation";

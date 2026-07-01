@@ -1,4 +1,4 @@
-import React, {
+import {
   useState,
   type Dispatch,
   type FC,
@@ -24,10 +24,7 @@ const TranversalThrow: FC<Props> = ({
   loading,
   moneda1,
   setMoneda1,
-  moneda2,
-  setMoneda2,
   handleSelectCoin,
-  setType,
   sendThrow,
   i18,
 }) => {

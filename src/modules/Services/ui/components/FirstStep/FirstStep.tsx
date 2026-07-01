@@ -1,8 +1,6 @@
-import React from "react";
 import Step from "../../shared/components/Step/Step";
 import P from "../../shared/components/P/P";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
-import Cookies from "js-cookie";
 
 export default function FirstStep() {
   const { translation } = useTranslation();

@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from "react";
 import Step from "../../shared/components/Step/Step";
 import P from "../../shared/components/P/P";
 import useTranslation from "@modules/Shared/hooks/useTranslation";

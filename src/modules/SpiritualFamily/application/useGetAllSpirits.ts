@@ -14,7 +14,7 @@ export default function useGetAllSpirits (
     const [loading, setloading] = useState<boolean>(false)
     const [error, setError] = useState<any>(null)
     const [data, setData] = useState<Spirit[]>([])
-    const [total_pages,setTotal_pages] = useState<number>()
+    const [total_pages] = useState<number>()
 
     const fetchBookings = useCallback(async () =>{
         if(control){

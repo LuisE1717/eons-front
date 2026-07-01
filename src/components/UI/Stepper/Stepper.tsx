@@ -10,10 +10,8 @@ interface StepperProps {
 }
 
 const Stepper: React.FC<StepperProps> = ({
-  totalSteps = 3,
   onChange,
   isLoading,
-  currentStep,
 }) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();

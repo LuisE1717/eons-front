@@ -1,8 +1,5 @@
 import { useEffect } from "react";
 import Loading from "@components/UI/Button/components/Loading/Loading";
-import Button from "./components/Button/Button";
-import Check from "./components/Check/Check";
-import Section from "./components/Section/Section";
 import useForm from "@modules/payment/application/useForm";
 interface Props {
   bankOrderCode?:string,
@@ -12,8 +9,7 @@ interface Props {
 
 export default function Form({
   bankOrderCode,
-  reference,
-  state
+  reference
 } : Props) {
 
   const { confirm } = useForm();

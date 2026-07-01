@@ -1,11 +1,5 @@
 import { ACTIONS, TYPES } from "./types";
 
-interface Props {
-  type: string;
-  coin1: number;
-  coin2: number;
-}
-
 export function coinsInterpreter(type:string, coin1:number, coin2:number ): string {
   switch (type) {
     case TYPES.NORMAL:

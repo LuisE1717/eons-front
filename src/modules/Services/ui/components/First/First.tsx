@@ -1,4 +1,3 @@
-import React from "react";
 import P from "../../shared/components/P/P";
 import Title from "../../shared/components/Title/Title";
 import Span from "@modules/Shared/components/Span/Span";
@@ -6,7 +5,6 @@ import ImageSection from "../../shared/components/ImageSection/ImageSection";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
 import PhoneView from "../../shared/components/PhoneView/PhoneView";
 import Image from "../../shared/components/Image/Image";
-import Cookies from "js-cookie";
 
 export default function First() {
   const { translation } = useTranslation();

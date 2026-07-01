@@ -14,7 +14,6 @@ interface Props {
 }
 
 const Coin: FC<Props> = ({
-  condition,
   selectedCoin,
   setSelected,
   handleSelect,

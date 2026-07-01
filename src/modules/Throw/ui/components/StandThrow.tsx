@@ -1,4 +1,4 @@
-import React, {
+import {
   useState,
   type Dispatch,
   type FC,

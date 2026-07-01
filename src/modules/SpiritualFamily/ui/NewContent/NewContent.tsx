@@ -1,4 +1,3 @@
-import React from "react";
 import First from "./components/First/First";
 import FirstStep from "./components/FirstStep/FirstStep";
 import Second from "./components/Second/Second";

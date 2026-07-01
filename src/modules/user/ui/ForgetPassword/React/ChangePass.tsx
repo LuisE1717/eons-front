@@ -1,8 +1,6 @@
-import React, { useEffect, useState, type FC } from 'react'
-import { validMail, validPass } from 'src/utils/validations';
 import OutlineInputReact from '@components/UI/input/OutlineInputReact';
 import Button from '../../ChangePassword/Button/Button';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useChangePass from '@modules/user/application/useChangePass';
 import useTranslation from '@modules/Shared/hooks/useTranslation';
@@ -14,7 +12,7 @@ interface Props {
   currentLocale:string;
 }
 
-export default function ChangePassReact ({token,email,i18,currentLocale} : Props ) {
+export default function ChangePassReact ({token,email,i18} : Props ) {
   const {
     loading,
     validation_pass,

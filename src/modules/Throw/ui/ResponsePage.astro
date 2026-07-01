@@ -4,29 +4,11 @@ import BaseHead from "src/layouts/BaseHead.astro";
 import Footer from "src/layouts/Footer.astro";
 import Header from "src/layouts/Header.astro";
 import { getI18N } from "src/i18n";
-import Button from "@components/UI/Button/Button"
-import {actionsInterprete} from "../domain/interpreter";
 import Save from '@modules/Response/ui/Save'
 
-const {action,param1,response,question} = Astro.props
+const {action,response,question} = Astro.props
 
 let arrayResponses = response.split(';')
-
-function textExtract(texto: string): string {
-    // Expresión regular para encontrar el texto entre "Primer lanzamiento:" y la primera coma
-    const regex = /Primer lanzamiento:(.*?)\s*,/;
-    
-    // Buscar coincidencias en el texto
-    const resultado = texto.match(regex);
-    
-    // Si se encontró una coincidencia, devolver el primer grupo capturado
-    if (resultado && resultado[1]) {
-        return resultado[1].trim(); // Eliminar espacios en blanco al principio y al final
-    }
-    
-    // Si no se encontró ninguna coincidencia o el resultado es nulo, devolver null
-    return '';
-}
 
 // function extraerAntesDeLaPrimeraComa(texto: string): string {
 //     // Encuentra la posición de la primera coma

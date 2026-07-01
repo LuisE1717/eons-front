@@ -6,7 +6,6 @@ import {
   type SetStateAction,
 } from "react";
 import Cookies from "js-cookie";
-import { getAllSpirits } from "@modules/SpiritualFamily/infrastructure/spiritsApi";
 import { toast } from "react-toastify";
 import useTranslation from "@modules/Shared/hooks/useTranslation";
 import { getAllDialogs } from "@modules/Dialogs/infrastructure/dialogApi";
@@ -22,7 +21,7 @@ export default function useGetAllDialogs(
   const [loading, setloading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<Dialog[]>([]);
-  const [total_pages, setTotal_pages] = useState<number>();
+  const [total_pages] = useState<number>();
 
   const fetchDialogs = useCallback(async () => {
     if (control) {
