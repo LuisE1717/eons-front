@@ -11,6 +11,6 @@ const {provider} = Astro.params
 
     const provider = document.getElementById('provider')
     if(provider && provider?.className.includes('google')){
-        signIn("google", { callbackUrl: "/auth/callback" })
+        signIn("google", {})
     }
 </script>
